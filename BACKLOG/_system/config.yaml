@@ -1,0 +1,182 @@
+# =============================================================================
+# BACKLOG AUTOMATION - Configuration
+# =============================================================================
+# Ce fichier configure le systeme d'automatisation du backlog.
+# Utilise par /backlog:prepare et /backlog:run
+# =============================================================================
+
+automation:
+  # ---------------------------------------------------------------------------
+  # Limites d'execution
+  # ---------------------------------------------------------------------------
+  max_tickets_per_run: 10          # Nombre max de tickets par execution
+  max_turns_per_ticket: 50         # Nombre max de tours Claude par ticket
+  timeout_per_ticket_minutes: 30   # Timeout par ticket (minutes)
+
+  # ---------------------------------------------------------------------------
+  # Criteres de succes par defaut
+  # Utilises si le ticket n'en definit pas de specifiques
+  # ---------------------------------------------------------------------------
+  default_success_criteria:
+    - flutter analyze --no-fatal-infos
+    - flutter test
+
+  # ---------------------------------------------------------------------------
+  # Tags non automatisables
+  # Les tickets avec ces tags seront envoyes vers NON_AUTOMATABLE/
+  # ---------------------------------------------------------------------------
+  non_automatable_tags:
+    - requires-visual-validation
+    - requires-device-testing
+    - requires-manual-qa
+    - requires-user-feedback
+
+  # ---------------------------------------------------------------------------
+  # Mots-cles non automatisables
+  # Si ces mots apparaissent dans la description, le ticket est rejete
+  # ---------------------------------------------------------------------------
+  non_automatable_keywords:
+    - "verifier visuellement"
+    - "tester sur device"
+    - "validation manuelle"
+    - "feedback utilisateur"
+
+  # ---------------------------------------------------------------------------
+  # Priorite d'execution
+  # Ordre dans lequel les tickets READY sont traites
+  # ---------------------------------------------------------------------------
+  execution_order:
+    - priority: critique
+    - priority: haute
+    - type: bugs
+    - type: improvements
+    - type: features
+
+  # ---------------------------------------------------------------------------
+  # Seuil d'automatisabilite
+  # Score minimum (0-100) pour qu'un ticket soit considere automatisable
+  # ---------------------------------------------------------------------------
+  automatability_threshold: 50
+
+# =============================================================================
+# Notifications
+# =============================================================================
+notifications:
+  on_complete:
+    - type: file
+      path: BACKLOG/_system/reports/
+    # Exemples d'autres notifications (desactivees par defaut)
+    # - type: slack
+    #   webhook: https://hooks.slack.com/services/XXX
+    # - type: email
+    #   to: dev@example.com
+
+# =============================================================================
+# Configuration Git
+# =============================================================================
+git:
+  auto_commit: true              # Commit automatique apres chaque ticket resolu
+  commit_prefix: "fix"           # Prefixe des messages de commit
+  commit_template: "{prefix}({ticket_id}): {title}"  # Template du message
+  auto_push: false               # NE PAS push automatiquement (securite)
+
+# =============================================================================
+# Paths
+# =============================================================================
+paths:
+  backlog_root: "BACKLOG"
+  pending_dir: "PENDING"
+  ready_dir: "READY"
+  done_dir: "DONE"
+  non_automatable_dir: "NON_AUTOMATABLE"
+  reports_dir: "_system/reports"
+  templates_dir: "_system/decision_templates"
+
+# =============================================================================
+# Project Stack Detection (Multi-stack support)
+# =============================================================================
+# La stack est auto-detectee si non specifiee.
+# Override manuel possible pour forcer une stack specifique.
+# =============================================================================
+project:
+  # Stack du projet: auto, flutter, swift, react, vue, angular, svelte,
+  # nodejs, php, python, go, rust, ruby, java, dotnet, generic
+  stack: auto
+
+  # Overrides manuels (optionnel - auto-detecte si null)
+  # Decommenter et remplir pour forcer des valeurs specifiques
+  # language: dart
+  # test_pattern: "test/**/*_test.dart"
+  # file_extensions: [".dart"]
+
+# =============================================================================
+# Stack Detection Rules
+# =============================================================================
+# Reference pour la detection automatique (utilise par Claude)
+# Voir aussi: decision_templates/_detection.md
+# =============================================================================
+stack_detection:
+  flutter:
+    indicators: ["pubspec.yaml"]
+    test_pattern: "test/**/*_test.dart"
+    extensions: [".dart"]
+  swift:
+    indicators: ["Package.swift", "*.xcodeproj", "*.xcworkspace"]
+    test_pattern: "**/*Tests.swift"
+    extensions: [".swift", ".m", ".h"]
+  react:
+    indicators: ["package.json"]
+    check_deps: ["react", "react-dom"]
+    test_pattern: "**/*.test.{js,jsx,ts,tsx}"
+    extensions: [".js", ".jsx", ".ts", ".tsx"]
+  vue:
+    indicators: ["package.json"]
+    check_deps: ["vue"]
+    test_pattern: "**/*.spec.{js,ts}"
+    extensions: [".vue", ".js", ".ts"]
+  angular:
+    indicators: ["package.json"]
+    check_deps: ["@angular/core"]
+    test_pattern: "**/*.spec.ts"
+    extensions: [".ts", ".html"]
+  svelte:
+    indicators: ["package.json"]
+    check_deps: ["svelte"]
+    test_pattern: "**/*.test.{js,ts}"
+    extensions: [".svelte", ".js", ".ts"]
+  nodejs:
+    indicators: ["package.json"]
+    test_pattern: "**/*.test.js"
+    extensions: [".js", ".ts", ".mjs"]
+  php:
+    indicators: ["composer.json"]
+    test_pattern: "tests/**/*Test.php"
+    extensions: [".php"]
+  python:
+    indicators: ["requirements.txt", "setup.py", "pyproject.toml"]
+    test_pattern: "test_*.py"
+    extensions: [".py"]
+  go:
+    indicators: ["go.mod"]
+    test_pattern: "*_test.go"
+    extensions: [".go"]
+  rust:
+    indicators: ["Cargo.toml"]
+    test_pattern: "tests/*.rs"
+    extensions: [".rs"]
+  ruby:
+    indicators: ["Gemfile"]
+    test_pattern: "spec/**/*_spec.rb"
+    extensions: [".rb"]
+  java:
+    indicators: ["pom.xml", "build.gradle", "build.gradle.kts"]
+    test_pattern: "**/*Test.java"
+    extensions: [".java", ".kt"]
+  dotnet:
+    indicators: ["*.csproj", "*.sln"]
+    test_pattern: "**/*Tests.cs"
+    extensions: [".cs"]
+  generic:
+    indicators: []
+    test_pattern: "test*"
+    extensions: [".*"]

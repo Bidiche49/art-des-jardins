@@ -1,0 +1,28 @@
+{
+  "name": "art-et-jardin",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Digitalisation complete d'une entreprise de paysage",
+  "scripts": {
+    "dev": "pnpm -r --parallel dev",
+    "dev:vitrine": "pnpm --filter vitrine dev",
+    "dev:pwa": "pnpm --filter pwa dev",
+    "dev:api": "pnpm --filter api dev",
+    "build": "pnpm -r build",
+    "test": "pnpm -r test",
+    "test:unit": "pnpm -r test:unit",
+    "test:e2e": "pnpm -r test:e2e",
+    "test:coverage": "pnpm -r test:coverage",
+    "lint": "pnpm -r lint",
+    "format": "pnpm -r format",
+    "docker:up": "docker compose up -d",
+    "docker:down": "docker compose down",
+    "db:migrate": "pnpm --filter database migrate",
+    "db:seed": "pnpm --filter database seed",
+    "db:reset": "pnpm --filter database reset"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  }
+}
