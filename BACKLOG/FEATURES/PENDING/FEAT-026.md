@@ -1,7 +1,7 @@
 # FEAT-026: Backend signature electronique devis
 
 **Type:** Feature
-**Statut:** A faire
+**Statut:** Fait
 **Priorite:** Critique
 **Complexite:** M
 **Tags:** api, signature, devis
