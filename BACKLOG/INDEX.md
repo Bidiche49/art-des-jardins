@@ -9,7 +9,7 @@
 | Type | Prochain ID |
 |------|-------------|
 | BUG | BUG-001 |
-| FEAT | FEAT-033 |
+| FEAT | FEAT-037 |
 | IMP | IMP-001 |
 
 ---
@@ -19,9 +19,9 @@
 | Type | Pending | Ready | Done | Total |
 |------|---------|-------|------|-------|
 | Bugs | 0 | 0 | 0 | 0 |
-| Features | 0 | 0 | 32 | 32 |
+| Features | 4 | 0 | 32 | 36 |
 | Improvements | 0 | 0 | 0 | 0 |
-| **Total** | **0** | **0** | **32** | **32** |
+| **Total** | **4** | **0** | **32** | **36** |
 
 ---
 
@@ -89,12 +89,27 @@
 
 ---
 
+## Roadmap Phase 5.3 - Calendrier equipe
+
+| Ordre | Ticket | Description | Statut |
+|-------|--------|-------------|--------|
+| 1 | FEAT-033 | Vue calendrier interventions | PENDING |
+| 2 | FEAT-034 | Drag & drop planification | PENDING |
+| 3 | FEAT-035 | Gestion disponibilites employes | PENDING |
+| 4 | FEAT-036 | Export calendrier iCal | PENDING |
+
+---
+
 ## Features
 
-### Pending (0)
+### Pending (4)
 
 | ID | Titre | Priorite | Complexite | Tags |
 |----|-------|----------|------------|------|
+| FEAT-033 | Vue calendrier interventions | Haute | M | calendar, pwa |
+| FEAT-034 | Drag & drop planification | Haute | M | calendar, drag-drop |
+| FEAT-035 | Gestion disponibilites employes | Moyenne | M | calendar, employes |
+| FEAT-036 | Export calendrier iCal | Basse | S | calendar, export |
 
 ### Ready (0)
 
