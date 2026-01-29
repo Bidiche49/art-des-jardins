@@ -19,9 +19,9 @@
 | Type | Pending | Ready | Done | Total |
 |------|---------|-------|------|-------|
 | Bugs | 0 | 0 | 0 | 0 |
-| Features | 2 | 0 | 30 | 32 |
+| Features | 1 | 0 | 31 | 32 |
 | Improvements | 0 | 0 | 0 | 0 |
-| **Total** | **2** | **0** | **30** | **32** |
+| **Total** | **1** | **0** | **31** | **32** |
 
 ---
 
@@ -82,18 +82,17 @@
 | Ordre | Ticket | Description | Statut |
 |-------|--------|-------------|--------|
 | 1 | FEAT-030 | Backend push notifications | DONE |
-| 2 | FEAT-031 | Abonnement push PWA | PENDING |
+| 2 | FEAT-031 | Abonnement push PWA | DONE |
 | 3 | FEAT-032 | Rappels interventions | PENDING |
 
 ---
 
 ## Features
 
-### Pending (2)
+### Pending (1)
 
 | ID | Titre | Priorite | Complexite | Tags |
 |----|-------|----------|------------|------|
-| FEAT-031 | Abonnement Push dans la PWA | Haute | S | notifications, push, pwa |
 | FEAT-032 | Rappels automatiques interventions | Haute | M | notifications, cron |
 
 ### Ready (0)
@@ -101,7 +100,7 @@
 | ID | Titre | Priorite | Complexite | Tags |
 |----|-------|----------|------------|------|
 
-### Done (30)
+### Done (31)
 
 | ID | Titre | Priorite | Date resolution |
 |----|-------|----------|-----------------|
@@ -135,6 +134,7 @@
 | FEAT-028 | PDF devis avec signature | Haute | 2026-01-29 |
 | FEAT-029 | Emails signature devis | Haute | 2026-01-29 |
 | FEAT-030 | Backend push notifications | Haute | 2026-01-29 |
+| FEAT-031 | Abonnement push PWA | Haute | 2026-01-29 |
 
 ---
 

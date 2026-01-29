@@ -13,10 +13,13 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from 'recharts';
+import { usePushPermission } from '@/hooks';
 
 export function Dashboard() {
   const navigate = useNavigate();
   const user = useAuthStore((state) => state.user);
+
+  usePushPermission();
 
   const [stats, setStats] = useState<DashboardStats | null>(null);
   const [interventions, setInterventions] = useState<InterventionAVenir[]>([]);

@@ -7,6 +7,7 @@ export { default as facturesApi } from './factures';
 export { default as interventionsApi } from './interventions';
 export { default as uploadApi } from './upload';
 export { default as statsApi } from './stats';
+export { default as notificationsApi } from './notifications';
 
 export type { DevisFilters } from './devis';
 export type { FactureFilters } from './factures';

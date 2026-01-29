@@ -1,6 +1,7 @@
 import { Outlet, NavLink, useNavigate } from 'react-router-dom';
 import { useAuthStore } from '@/stores/auth';
 import { useUIStore } from '@/stores/ui';
+import { NotificationToggle } from '@/components/NotificationToggle';
 
 const navigation = [
   { name: 'Accueil', href: '/', icon: '📊' },
@@ -38,7 +39,8 @@ export function Layout() {
               </span>
             )}
           </div>
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-3">
+            <NotificationToggle compact />
             <span className="text-sm text-primary-100">
               {user?.prenom} {user?.nom}
             </span>
