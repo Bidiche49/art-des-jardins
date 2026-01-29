@@ -19,9 +19,9 @@
 | Type | Pending | Ready | Done | Total |
 |------|---------|-------|------|-------|
 | Bugs | 0 | 0 | 0 | 0 |
-| Features | 4 | 0 | 25 | 29 |
+| Features | 1 | 0 | 28 | 29 |
 | Improvements | 0 | 0 | 0 | 0 |
-| **Total** | **4** | **0** | **25** | **29** |
+| **Total** | **1** | **0** | **28** | **29** |
 
 ---
 
@@ -68,9 +68,9 @@
 
 | Ordre | Ticket | Description | Statut |
 |-------|--------|-------------|--------|
-| 1 | FEAT-026 | Backend signature electronique | PENDING |
-| 2 | FEAT-027 | Page signature client | PENDING |
-| 3 | FEAT-028 | PDF avec signature | PENDING |
+| 1 | FEAT-026 | Backend signature electronique | DONE |
+| 2 | FEAT-027 | Page signature client | DONE |
+| 3 | FEAT-028 | PDF avec signature | DONE |
 | 4 | FEAT-029 | Emails signature | PENDING |
 
 > Voir `ROADMAP_PHASE5.md` pour le plan complet.
@@ -79,13 +79,10 @@
 
 ## Features
 
-### Pending (4)
+### Pending (1)
 
 | ID | Titre | Priorite | Complexite | Tags |
 |----|-------|----------|------------|------|
-| FEAT-026 | Backend signature electronique devis | Critique | M | api, signature, devis |
-| FEAT-027 | Page signature client (frontend) | Critique | M | ui, signature, vitrine |
-| FEAT-028 | PDF devis avec signature integree | Haute | S | pdf, signature, devis |
 | FEAT-029 | Emails signature devis | Haute | S | email, signature, notifications |
 
 ### Ready (0)
@@ -93,7 +90,7 @@
 | ID | Titre | Priorite | Complexite | Tags |
 |----|-------|----------|------------|------|
 
-### Done (25)
+### Done (28)
 
 | ID | Titre | Priorite | Date resolution |
 |----|-------|----------|-----------------|
@@ -122,6 +119,9 @@
 | FEAT-023 | Tests e2e Audit logging | Haute | 2026-01-29 |
 | FEAT-024 | Tests e2e Export | Haute | 2026-01-29 |
 | FEAT-025 | Tests integration flow complet | Critique | 2026-01-29 |
+| FEAT-026 | Backend signature electronique | Critique | 2026-01-29 |
+| FEAT-027 | Page signature client | Critique | 2026-01-29 |
+| FEAT-028 | PDF devis avec signature | Haute | 2026-01-29 |
 
 ---
 

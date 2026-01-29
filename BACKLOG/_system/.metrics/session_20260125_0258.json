@@ -2,14 +2,24 @@
   "session_id": "20260125_0258",
   "start_time": "2026-01-25T02:58:49+01:00",
   "end_time": null,
-  "tickets": [],
+  "tickets": [
+    {
+      "id": "FEAT-005",
+      "complexity": "L",
+      "duration_seconds": 206,
+      "group_id": "1",
+      "grouped_with": "",
+      "tokens_estimated": 100000,
+      "tokens_saved": 0
+    }
+  ],
   "groups": [],
   "totals": {
-    "tickets_executed": 0,
+    "tickets_executed": 1,
     "tickets_skipped": 0,
     "tickets_failed": 0,
     "groups_executed": 0,
     "estimated_tokens_saved": 0,
-    "estimated_tokens_used": 0
+    "estimated_tokens_used": 100000
   }
 }

@@ -272,7 +272,41 @@ export class DevisService {
   }
 
   async findOneWithDetails(id: string) {
-    const devis = await this.findOne(id);
+    const devis = await this.prisma.devis.findUnique({
+      where: { id },
+      include: {
+        chantier: {
+          include: {
+            client: true,
+          },
+        },
+        lignes: {
+          orderBy: { ordre: 'asc' },
+        },
+        signature: true,
+      },
+    });
+
+    if (!devis) {
+      throw new NotFoundException(`Devis ${id} non trouve`);
+    }
+
+    // Build signature data if signed
+    let signatureData: {
+      imageBase64: string;
+      signedAt: Date;
+      ipAddress: string;
+      reference: string;
+    } | undefined;
+
+    if (devis.signature && devis.signature.imageBase64 && devis.signature.signedAt) {
+      signatureData = {
+        imageBase64: devis.signature.imageBase64,
+        signedAt: devis.signature.signedAt,
+        ipAddress: devis.signature.ipAddress || '',
+        reference: `SIG-${devis.signature.id.substring(0, 8).toUpperCase()}`,
+      };
+    }
 
     // Map to PDF-compatible format
     return {
@@ -294,6 +328,7 @@ export class DevisService {
         prixUnitaire: l.prixUnitaireHT,
         montantHT: l.montantHT,
       })),
+      signature: signatureData,
     };
   }
 }

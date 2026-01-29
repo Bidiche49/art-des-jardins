@@ -54,7 +54,7 @@ export class DevisController {
   @Get(':id/pdf')
   @ApiOperation({ summary: 'Telecharger le PDF du devis' })
   @ApiProduces('application/pdf')
-  @ApiResponse({ status: 200, description: 'PDF du devis' })
+  @ApiResponse({ status: 200, description: 'PDF du devis (avec signature si signe)' })
   @ApiResponse({ status: 404, description: 'Devis non trouve' })
   async getPdf(@Param('id') id: string, @Res({ passthrough: true }) res: Response) {
     const devis = await this.devisService.findOneWithDetails(id);
@@ -85,11 +85,16 @@ export class DevisController {
       montantTVA: Number(devis.montantTVA),
       totalTTC: Number(devis.totalTTC),
       notes: devis.notes || undefined,
+      signature: devis.signature,
     });
+
+    const filename = devis.signature
+      ? `devis-${devis.numero}-signe.pdf`
+      : `devis-${devis.numero}.pdf`;
 
     res.set({
       'Content-Type': 'application/pdf',
-      'Content-Disposition': `attachment; filename="devis-${devis.numero}.pdf"`,
+      'Content-Disposition': `attachment; filename="${filename}"`,
     });
 
     return new StreamableFile(pdfBuffer);
@@ -129,6 +134,7 @@ export class DevisController {
       montantTVA: Number(devis.montantTVA),
       totalTTC: Number(devis.totalTTC),
       notes: devis.notes || undefined,
+      signature: devis.signature,
     });
 
     const sent = await this.mailService.sendDevis(client.email, devis.numero, clientName, pdfBuffer);

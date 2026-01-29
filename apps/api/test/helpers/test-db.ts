@@ -93,7 +93,8 @@ export async function seedTestDb() {
       adresse: '1 rue de Test',
       codePostal: '49000',
       ville: 'Angers',
-      typePrestation: 'entretien',
+      description: 'Chantier de test',
+      typePrestation: ['entretien'],
       statut: 'en_cours',
     },
   });

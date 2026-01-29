@@ -27,6 +27,13 @@ export interface DocumentLine {
   montantHT: number;
 }
 
+export interface SignatureData {
+  imageBase64: string;
+  signedAt: Date;
+  ipAddress: string;
+  reference: string;
+}
+
 export interface DevisData {
   numero: string;
   dateCreation: Date;
@@ -38,6 +45,7 @@ export interface DevisData {
   montantTVA: number;
   totalTTC: number;
   notes?: string;
+  signature?: SignatureData;
 }
 
 export interface FactureData {
@@ -101,8 +109,12 @@ export class PdfService {
           doc.fontSize(9).text(`Notes: ${data.notes}`);
         }
 
-        // Footer / CGV
-        this.addDevisFooter(doc);
+        // Footer / Signature
+        if (data.signature) {
+          this.addElectronicSignature(doc, data.signature);
+        } else {
+          this.addDevisFooter(doc);
+        }
 
         doc.end();
       } catch (error) {
@@ -251,6 +263,77 @@ export class PdfService {
     doc.text('Signature précédée de la mention "Bon pour accord":');
     doc.moveDown(2);
     doc.text('Date:                          Signature:');
+  }
+
+  private addElectronicSignature(doc: PDFKit.PDFDocument, signature: SignatureData): void {
+    const y = doc.page.height - 180;
+    const boxWidth = 500;
+    const boxX = 50;
+
+    // Separator line
+    doc.moveTo(boxX, y).lineTo(boxX + boxWidth, y).stroke();
+
+    // Title
+    doc.fontSize(11).font('Helvetica-Bold');
+    doc.text('SIGNATURE ELECTRONIQUE', boxX, y + 10, { align: 'center', width: boxWidth });
+
+    // Signature image
+    doc.font('Helvetica');
+    if (signature.imageBase64) {
+      try {
+        // Extract base64 data (remove data:image/...;base64, prefix)
+        const base64Data = signature.imageBase64.replace(/^data:image\/\w+;base64,/, '');
+        const imageBuffer = Buffer.from(base64Data, 'base64');
+
+        // Center the signature image
+        doc.image(imageBuffer, boxX + 150, y + 30, {
+          fit: [200, 80],
+          align: 'center',
+        });
+      } catch (error) {
+        this.logger.warn('Failed to embed signature image in PDF', error);
+        doc.fontSize(9).text('[Signature electronique enregistree]', boxX, y + 50, {
+          align: 'center',
+          width: boxWidth
+        });
+      }
+    }
+
+    // Signature details
+    const signedDate = new Date(signature.signedAt);
+    const dateStr = signedDate.toLocaleDateString('fr-FR', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+    });
+    const timeStr = signedDate.toLocaleTimeString('fr-FR', {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+    });
+
+    doc.fontSize(10);
+    doc.text(`Signe le ${dateStr} a ${timeStr}`, boxX, y + 120, { align: 'center', width: boxWidth });
+
+    // Legal mention
+    doc.fontSize(8).fillColor('#666666');
+    doc.text(
+      'Document signe electroniquement conformement aux articles 1366 et 1367 du Code civil.',
+      boxX, y + 140, { align: 'center', width: boxWidth }
+    );
+
+    // Technical reference (small text)
+    doc.fontSize(7).fillColor('#999999');
+    doc.text(
+      `Ref: ${signature.reference} | IP: ${signature.ipAddress}`,
+      boxX, y + 155, { align: 'center', width: boxWidth }
+    );
+
+    // Reset color
+    doc.fillColor('#000000');
+
+    // Bottom line
+    doc.moveTo(boxX, y + 170).lineTo(boxX + boxWidth, y + 170).stroke();
   }
 
   private addFactureFooter(doc: PDFKit.PDFDocument): void {
