@@ -9,7 +9,7 @@
 | Type | Prochain ID |
 |------|-------------|
 | BUG | BUG-001 |
-| FEAT | FEAT-026 |
+| FEAT | FEAT-030 |
 | IMP | IMP-001 |
 
 ---
@@ -19,9 +19,9 @@
 | Type | Pending | Ready | Done | Total |
 |------|---------|-------|------|-------|
 | Bugs | 0 | 0 | 0 | 0 |
-| Features | 0 | 0 | 25 | 25 |
+| Features | 4 | 0 | 25 | 29 |
 | Improvements | 0 | 0 | 0 | 0 |
-| **Total** | **0** | **0** | **25** | **25** |
+| **Total** | **4** | **0** | **25** | **29** |
 
 ---
 
@@ -64,12 +64,29 @@
 
 ---
 
+## Roadmap Phase 5 (Evolutions)
+
+| Ordre | Ticket | Description | Statut |
+|-------|--------|-------------|--------|
+| 1 | FEAT-026 | Backend signature electronique | PENDING |
+| 2 | FEAT-027 | Page signature client | PENDING |
+| 3 | FEAT-028 | PDF avec signature | PENDING |
+| 4 | FEAT-029 | Emails signature | PENDING |
+
+> Voir `ROADMAP_PHASE5.md` pour le plan complet.
+
+---
+
 ## Features
 
-### Pending (0)
+### Pending (4)
 
 | ID | Titre | Priorite | Complexite | Tags |
 |----|-------|----------|------------|------|
+| FEAT-026 | Backend signature electronique devis | Critique | M | api, signature, devis |
+| FEAT-027 | Page signature client (frontend) | Critique | M | ui, signature, vitrine |
+| FEAT-028 | PDF devis avec signature integree | Haute | S | pdf, signature, devis |
+| FEAT-029 | Emails signature devis | Haute | S | email, signature, notifications |
 
 ### Ready (0)
 

@@ -47,6 +47,7 @@ enum TypePrestation {
 enum DevisStatut {
   brouillon
   envoye
+  signe
   accepte
   refuse
   expire
@@ -171,14 +172,35 @@ model Devis {
   updatedAt             DateTime    @updatedAt
 
   // Relations
-  chantier   Chantier     @relation(fields: [chantierId], references: [id], onDelete: Cascade)
+  chantier   Chantier        @relation(fields: [chantierId], references: [id], onDelete: Cascade)
   lignes     LigneDevis[]
   factures   Facture[]
+  signature  SignatureDevis?
 
   @@index([chantierId])
   @@index([statut])
   @@index([numero])
   @@map("devis")
+}
+
+model SignatureDevis {
+  id            String   @id @default(uuid())
+  devisId       String   @unique
+  token         String   @unique
+  imageBase64   String   @db.Text
+  signedAt      DateTime @default(now())
+  expiresAt     DateTime
+  ipAddress     String
+  userAgent     String
+  cgvAccepted   Boolean  @default(true)
+  createdAt     DateTime @default(now())
+
+  // Relations
+  devis Devis @relation(fields: [devisId], references: [id], onDelete: Cascade)
+
+  @@index([token])
+  @@index([devisId])
+  @@map("signatures_devis")
 }
 
 model LigneDevis {
