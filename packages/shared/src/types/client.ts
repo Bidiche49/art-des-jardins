@@ -1,4 +1,4 @@
-import { BaseEntity, UUID } from './common';
+import { BaseEntity } from './common';
 
 export type ClientType = 'particulier' | 'professionnel' | 'syndic';
 

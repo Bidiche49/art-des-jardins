@@ -1,10 +1,15 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from '@/stores/auth';
+import { authApi } from '@/api';
+import { Button, Input } from '@/components/ui';
+import { usePWAInstall } from '@/hooks';
 
 export function Login() {
   const navigate = useNavigate();
   const login = useAuthStore((state) => state.login);
+  const { isInstalled } = usePWAInstall();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -16,21 +21,15 @@ export function Login() {
     setLoading(true);
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/auth/login`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
-      });
-
-      if (!response.ok) {
-        throw new Error('Identifiants invalides');
-      }
-
-      const data = await response.json();
+      const data = await authApi.login({ email, password });
       login(data.user, data.accessToken, data.refreshToken);
       navigate('/');
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Erreur de connexion');
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError('Identifiants invalides');
+      }
     } finally {
       setLoading(false);
     }
@@ -43,55 +42,56 @@ export function Login() {
           <span className="text-5xl">🌿</span>
           <h2 className="mt-4 text-3xl font-bold text-gray-900">Art & Jardin</h2>
           <p className="mt-2 text-gray-600">Connectez-vous a votre compte</p>
+          {!isInstalled && (
+            <p className="mt-1 text-xs text-gray-400">
+              Installez l'app pour un acces rapide
+            </p>
+          )}
         </div>
 
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           {error && (
-            <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-md text-sm">
+            <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm">
               {error}
             </div>
           )}
 
           <div className="space-y-4">
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                Email
-              </label>
-              <input
-                id="email"
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
-                placeholder="votre@email.com"
-              />
-            </div>
+            <Input
+              id="email"
+              type="email"
+              label="Email"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="votre@email.com"
+              autoComplete="email"
+            />
 
-            <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                Mot de passe
-              </label>
-              <input
-                id="password"
-                type="password"
-                required
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
-                placeholder="••••••••"
-              />
-            </div>
+            <Input
+              id="password"
+              type="password"
+              label="Mot de passe"
+              required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="••••••••"
+              autoComplete="current-password"
+            />
           </div>
 
-          <button
+          <Button
             type="submit"
-            disabled={loading}
-            className="w-full btn-primary py-3"
+            isLoading={loading}
+            className="w-full py-3"
           >
-            {loading ? 'Connexion...' : 'Se connecter'}
-          </button>
+            Se connecter
+          </Button>
         </form>
+
+        <p className="text-center text-xs text-gray-400 mt-8">
+          Art & Jardin - Application de gestion
+        </p>
       </div>
     </div>
   );
