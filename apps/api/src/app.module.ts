@@ -18,6 +18,7 @@ import { PdfModule } from './modules/pdf/pdf.module';
 import { SignatureModule } from './modules/signature/signature.module';
 import { NotificationsModule } from './modules/notifications/notifications.module';
 import { AbsencesModule } from './modules/absences/absences.module';
+import { CalendarModule } from './modules/calendar/calendar.module';
 import { DatabaseModule } from './database/database.module';
 import { envValidationSchema } from './config/env.validation';
 
@@ -102,6 +103,7 @@ import { envValidationSchema } from './config/env.validation';
     SignatureModule,
     NotificationsModule,
     AbsencesModule,
+    CalendarModule,
   ],
   providers: [
     {

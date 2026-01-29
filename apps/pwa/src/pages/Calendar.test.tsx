@@ -15,6 +15,12 @@ vi.mock('@/api', () => ({
   absencesApi: {
     getForCalendar: vi.fn().mockResolvedValue([]),
   },
+  calendarApi: {
+    getIcalToken: vi.fn().mockResolvedValue({ token: null }),
+    generateIcalToken: vi.fn().mockResolvedValue({ token: 'test-token' }),
+    revokeIcalToken: vi.fn().mockResolvedValue(undefined),
+    getIcalSubscriptionUrl: vi.fn().mockReturnValue('http://localhost:3001/calendar/ical?token=test'),
+  },
 }));
 
 // Mock toast

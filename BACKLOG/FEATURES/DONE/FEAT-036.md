@@ -1,11 +1,12 @@
 # FEAT-036: Export calendrier iCal
 
 **Type:** Feature
-**Statut:** A faire
+**Statut:** Fait
 **Priorite:** Basse
 **Complexite:** S
 **Tags:** calendar, export, ical
 **Date creation:** 2026-01-29
+**Date completion:** 2026-01-29
 **Phase:** 5.3
 
 ---
@@ -22,11 +23,11 @@ Permettre l'export du calendrier au format iCal pour synchronisation avec les ag
 
 ## Criteres d'acceptation
 
-- [ ] Export .ics telechargeable
-- [ ] Lien d'abonnement iCal (URL dynamique)
-- [ ] Filtrage par employe (mes interventions uniquement)
-- [ ] Mise a jour automatique via URL d'abonnement
-- [ ] Contenu: titre, lieu, heure, description
+- [x] Export .ics telechargeable
+- [x] Lien d'abonnement iCal (URL dynamique)
+- [x] Filtrage par employe (mes interventions uniquement)
+- [x] Mise a jour automatique via URL d'abonnement
+- [x] Contenu: titre, lieu, heure, description
 
 ## Fichiers concernes
 
@@ -59,11 +60,11 @@ END:VCALENDAR
 
 ## Tests de validation
 
-- [ ] Export .ics valide
-- [ ] Import dans Google Calendar OK
-- [ ] URL d'abonnement fonctionne
-- [ ] Seules mes interventions exportees
-- [ ] Token securise
+- [x] Export .ics valide (ical-generator)
+- [ ] Import dans Google Calendar OK (test manuel)
+- [x] URL d'abonnement fonctionne
+- [x] Seules mes interventions exportees
+- [x] Token securise (token unique par user)
 
 ## Dependencies
 

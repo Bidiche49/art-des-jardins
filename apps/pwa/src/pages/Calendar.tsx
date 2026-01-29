@@ -4,9 +4,9 @@ import withDragAndDrop, { EventInteractionArgs } from 'react-big-calendar/lib/ad
 import { format, parse, startOfWeek, getDay, startOfMonth, endOfMonth, addMonths, subMonths } from 'date-fns';
 import { fr } from 'date-fns/locale';
 import { useNavigate } from 'react-router-dom';
-import { interventionsApi, absencesApi, type Absence } from '@/api';
+import { interventionsApi, absencesApi, calendarApi, type Absence } from '@/api';
 import { useAuthStore } from '@/stores/auth';
-import { Card, Button, Spinner } from '@/components/ui';
+import { Card, Button, Spinner, Modal } from '@/components/ui';
 import { CalendarToolbar } from '@/components/calendar/CalendarToolbar';
 import { CalendarEvent } from '@/components/calendar/CalendarEvent';
 import toast from 'react-hot-toast';
@@ -75,6 +75,9 @@ export function Calendar() {
   const [employees, setEmployees] = useState<Array<{ id: string; nom: string; prenom: string }>>([]);
   const [selectedEmployee, setSelectedEmployee] = useState<string>('all');
   const [showAbsences, setShowAbsences] = useState(true);
+  const [showExportModal, setShowExportModal] = useState(false);
+  const [icalToken, setIcalToken] = useState<string | null>(null);
+  const [isGeneratingToken, setIsGeneratingToken] = useState(false);
 
   const employeeColorMap = useMemo(() => {
     const map = new Map<string, string>();
@@ -431,6 +434,52 @@ export function Calendar() {
     };
   }, []);
 
+  // iCal export functions
+  const loadIcalToken = useCallback(async () => {
+    try {
+      const response = await calendarApi.getIcalToken();
+      setIcalToken(response.token);
+    } catch {
+      setIcalToken(null);
+    }
+  }, []);
+
+  const handleGenerateToken = async () => {
+    setIsGeneratingToken(true);
+    try {
+      const response = await calendarApi.generateIcalToken();
+      setIcalToken(response.token);
+      toast.success('Lien d\'abonnement genere');
+    } catch {
+      toast.error('Erreur lors de la generation');
+    } finally {
+      setIsGeneratingToken(false);
+    }
+  };
+
+  const handleRevokeToken = async () => {
+    try {
+      await calendarApi.revokeIcalToken();
+      setIcalToken(null);
+      toast.success('Lien d\'abonnement revoque');
+    } catch {
+      toast.error('Erreur lors de la revocation');
+    }
+  };
+
+  const handleCopyUrl = () => {
+    if (icalToken) {
+      const url = calendarApi.getIcalSubscriptionUrl(icalToken);
+      navigator.clipboard.writeText(url);
+      toast.success('URL copiee dans le presse-papier');
+    }
+  };
+
+  const handleOpenExportModal = () => {
+    setShowExportModal(true);
+    loadIcalToken();
+  };
+
   const messages = {
     today: "Aujourd'hui",
     previous: 'Precedent',
@@ -473,6 +522,9 @@ export function Calendar() {
               </option>
             ))}
           </select>
+          <Button size="sm" variant="outline" onClick={handleOpenExportModal}>
+            Exporter
+          </Button>
           <Button size="sm" variant="outline" onClick={() => navigate('/absences')}>
             Absences
           </Button>
@@ -568,6 +620,88 @@ export function Calendar() {
           </>
         )}
       </div>
+
+      {/* Export Modal */}
+      <Modal
+        isOpen={showExportModal}
+        onClose={() => setShowExportModal(false)}
+        title="Exporter le calendrier"
+        size="md"
+      >
+        <div className="space-y-6">
+          {/* Download section */}
+          <div>
+            <h3 className="text-sm font-medium text-gray-900 mb-2">
+              Telechargement ponctuel
+            </h3>
+            <p className="text-sm text-gray-500 mb-3">
+              Telecharge un fichier .ics avec vos interventions des 6 prochains mois.
+            </p>
+            <a
+              href={`${import.meta.env.VITE_API_URL || 'http://localhost:3001'}/calendar/ical/download`}
+              className="inline-flex items-center px-4 py-2 bg-primary-600 text-white text-sm font-medium rounded-md hover:bg-primary-700"
+              download
+            >
+              <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+              </svg>
+              Telecharger .ics
+            </a>
+          </div>
+
+          <hr />
+
+          {/* Subscription section */}
+          <div>
+            <h3 className="text-sm font-medium text-gray-900 mb-2">
+              Abonnement automatique
+            </h3>
+            <p className="text-sm text-gray-500 mb-3">
+              Ajoutez cette URL a votre agenda (Google Calendar, Outlook, Apple Calendar) pour une synchronisation automatique.
+            </p>
+
+            {icalToken ? (
+              <div className="space-y-3">
+                <div className="flex items-center gap-2">
+                  <input
+                    type="text"
+                    readOnly
+                    value={calendarApi.getIcalSubscriptionUrl(icalToken)}
+                    className="flex-1 px-3 py-2 text-sm bg-gray-100 border border-gray-300 rounded-md"
+                  />
+                  <Button size="sm" onClick={handleCopyUrl}>
+                    Copier
+                  </Button>
+                </div>
+                <div className="bg-blue-50 border border-blue-200 rounded-md p-3">
+                  <p className="text-sm text-blue-800">
+                    <strong>Comment ajouter a votre agenda:</strong>
+                  </p>
+                  <ul className="text-sm text-blue-700 mt-2 space-y-1 list-disc list-inside">
+                    <li>Google Calendar: Parametres &gt; Ajouter un agenda &gt; A partir de l'URL</li>
+                    <li>Apple Calendar: Fichier &gt; Nouvel abonnement</li>
+                    <li>Outlook: Ajouter un calendrier &gt; S'abonner depuis le web</li>
+                  </ul>
+                </div>
+                <button
+                  onClick={handleRevokeToken}
+                  className="text-sm text-red-600 hover:text-red-800"
+                >
+                  Revoquer ce lien
+                </button>
+              </div>
+            ) : (
+              <Button
+                onClick={handleGenerateToken}
+                disabled={isGeneratingToken}
+                variant="outline"
+              >
+                {isGeneratingToken ? 'Generation...' : 'Generer un lien d\'abonnement'}
+              </Button>
+            )}
+          </div>
+        </div>
+      </Modal>
     </div>
   );
 }

@@ -9,6 +9,7 @@ export { default as uploadApi } from './upload';
 export { default as statsApi } from './stats';
 export { default as notificationsApi } from './notifications';
 export { default as absencesApi } from './absences';
+export { default as calendarApi } from './calendar';
 
 export type { DevisFilters } from './devis';
 export type { FactureFilters } from './factures';
