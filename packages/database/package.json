@@ -7,12 +7,12 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
-    "generate": "prisma generate",
-    "migrate": "prisma migrate dev",
-    "migrate:prod": "prisma migrate deploy",
-    "seed": "ts-node prisma/seed.ts",
-    "reset": "prisma migrate reset",
-    "studio": "prisma studio",
+    "generate": "dotenv -e ../../.env -- prisma generate",
+    "migrate": "dotenv -e ../../.env -- prisma migrate dev",
+    "migrate:prod": "dotenv -e ../../.env -- prisma migrate deploy",
+    "seed": "dotenv -e ../../.env -- ts-node prisma/seed.ts",
+    "reset": "dotenv -e ../../.env -- prisma migrate reset",
+    "studio": "dotenv -e ../../.env -- prisma studio",
     "lint": "eslint src --ext .ts"
   },
   "dependencies": {
@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
+    "dotenv-cli": "^7.4.2",
     "prisma": "^5.8.0",
     "ts-node": "^10.9.0",
     "typescript": "^5.3.0"

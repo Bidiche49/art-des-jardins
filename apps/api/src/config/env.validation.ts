@@ -33,10 +33,10 @@ export const envValidationSchema = Joi.object({
 
   // Email - Optional in development
   SMTP_HOST: Joi.string().allow('').optional(),
-  SMTP_PORT: Joi.number().default(587),
+  SMTP_PORT: Joi.number().allow('').default(587),
   SMTP_USER: Joi.string().allow('').optional(),
   SMTP_PASSWORD: Joi.string().allow('').optional(),
-  SMTP_FROM: Joi.string().email().default('noreply@artjardin.fr'),
+  SMTP_FROM: Joi.string().email({ tlds: false }).default('noreply@artjardin.fr'),
 
   // Logging
   LOG_LEVEL: Joi.string()

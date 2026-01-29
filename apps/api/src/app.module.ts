@@ -20,6 +20,10 @@ import { envValidationSchema } from './config/env.validation';
         `.env.${process.env.NODE_ENV || 'development'}`,
         '.env.local',
         '.env',
+        // Monorepo root paths
+        `../../.env.${process.env.NODE_ENV || 'development'}`,
+        '../../.env.local',
+        '../../.env',
       ],
       validationSchema: envValidationSchema,
       validationOptions: {

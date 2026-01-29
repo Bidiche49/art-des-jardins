@@ -8,6 +8,15 @@ build/
 .next/
 .turbo/
 out/
+*.tsbuildinfo
+
+# TypeScript compiled files (outside dist/)
+packages/*/src/*.js
+packages/*/src/*.d.ts
+packages/*/src/*.map
+apps/*/test/**/*.js
+apps/*/test/**/*.d.ts
+apps/*/test/**/*.map
 
 # Environment
 .env
