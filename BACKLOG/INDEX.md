@@ -19,9 +19,9 @@
 | Type | Pending | Ready | Done | Total |
 |------|---------|-------|------|-------|
 | Bugs | 0 | 0 | 0 | 0 |
-| Features | 1 | 0 | 31 | 32 |
+| Features | 0 | 0 | 32 | 32 |
 | Improvements | 0 | 0 | 0 | 0 |
-| **Total** | **1** | **0** | **31** | **32** |
+| **Total** | **0** | **0** | **32** | **32** |
 
 ---
 
@@ -77,30 +77,31 @@
 
 ---
 
-## Roadmap Phase 5.2 - Notifications Push
+## Roadmap Phase 5.2 - Notifications Push (COMPLETE)
 
 | Ordre | Ticket | Description | Statut |
 |-------|--------|-------------|--------|
 | 1 | FEAT-030 | Backend push notifications | DONE |
 | 2 | FEAT-031 | Abonnement push PWA | DONE |
-| 3 | FEAT-032 | Rappels interventions | PENDING |
+| 3 | FEAT-032 | Rappels interventions | DONE |
+
+> Phase 5.2 terminee le 2026-01-29.
 
 ---
 
 ## Features
 
-### Pending (1)
+### Pending (0)
 
 | ID | Titre | Priorite | Complexite | Tags |
 |----|-------|----------|------------|------|
-| FEAT-032 | Rappels automatiques interventions | Haute | M | notifications, cron |
 
 ### Ready (0)
 
 | ID | Titre | Priorite | Complexite | Tags |
 |----|-------|----------|------------|------|
 
-### Done (31)
+### Done (32)
 
 | ID | Titre | Priorite | Date resolution |
 |----|-------|----------|-----------------|
@@ -135,6 +136,7 @@
 | FEAT-029 | Emails signature devis | Haute | 2026-01-29 |
 | FEAT-030 | Backend push notifications | Haute | 2026-01-29 |
 | FEAT-031 | Abonnement push PWA | Haute | 2026-01-29 |
+| FEAT-032 | Rappels interventions | Haute | 2026-01-29 |
 
 ---
 

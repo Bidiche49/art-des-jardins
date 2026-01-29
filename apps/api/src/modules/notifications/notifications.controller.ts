@@ -6,9 +6,11 @@ import {
   Body,
   UseGuards,
   Request,
+  Query,
 } from '@nestjs/common';
-import { ApiTags, ApiOperation, ApiBearerAuth, ApiResponse } from '@nestjs/swagger';
+import { ApiTags, ApiOperation, ApiBearerAuth, ApiResponse, ApiQuery } from '@nestjs/swagger';
 import { NotificationsService } from './notifications.service';
+import { NotificationsCronService } from './notifications.cron';
 import { SubscribeDto, SendNotificationDto } from './dto';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { RolesGuard } from '../auth/guards/roles.guard';
@@ -18,7 +20,10 @@ import { UserRole } from '@art-et-jardin/database';
 @ApiTags('Notifications')
 @Controller('notifications')
 export class NotificationsController {
-  constructor(private notificationsService: NotificationsService) {}
+  constructor(
+    private notificationsService: NotificationsService,
+    private notificationsCronService: NotificationsCronService,
+  ) {}
 
   @Get('vapid-public-key')
   @ApiOperation({ summary: 'Get VAPID public key for push subscription' })
@@ -85,5 +90,22 @@ export class NotificationsController {
       body: 'Si vous voyez ce message, les notifications fonctionnent !',
       url: '/dashboard',
     });
+  }
+
+  @Post('reminders/trigger')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(UserRole.patron)
+  @ApiBearerAuth()
+  @ApiOperation({ summary: 'Manually trigger intervention reminders (patron only)' })
+  @ApiQuery({ name: 'type', enum: ['morning', 'evening'], required: true })
+  @ApiResponse({ status: 200, description: 'Reminder triggered' })
+  async triggerReminder(@Query('type') type: 'morning' | 'evening') {
+    if (type === 'morning') {
+      await this.notificationsCronService.triggerMorningReminder();
+      return { success: true, type: 'morning', message: 'Rappel matin declenche' };
+    } else {
+      await this.notificationsCronService.triggerEveningReminder();
+      return { success: true, type: 'evening', message: 'Rappel soir declenche' };
+    }
   }
 }
