@@ -1,5 +1,6 @@
-import { useState, useEffect, useCallback, useMemo } from 'react';
+import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import { Calendar as BigCalendar, dateFnsLocalizer, View, SlotInfo } from 'react-big-calendar';
+import withDragAndDrop, { EventInteractionArgs } from 'react-big-calendar/lib/addons/dragAndDrop';
 import { format, parse, startOfWeek, getDay, startOfMonth, endOfMonth, addMonths, subMonths } from 'date-fns';
 import { fr } from 'date-fns/locale';
 import { useNavigate } from 'react-router-dom';
@@ -10,6 +11,9 @@ import { CalendarToolbar } from '@/components/calendar/CalendarToolbar';
 import { CalendarEvent } from '@/components/calendar/CalendarEvent';
 import toast from 'react-hot-toast';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
+import 'react-big-calendar/lib/addons/dragAndDrop/styles.css';
+
+const DnDCalendar = withDragAndDrop<CalendarEventData>(BigCalendar);
 
 const locales = { fr };
 
@@ -150,6 +154,187 @@ export function Calendar() {
     [navigate, user]
   );
 
+  // Ref to track pending undo operations
+  const undoTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Check if user can drag (only patron)
+  const canDrag = user?.role === 'patron';
+
+  const draggableAccessor = useCallback(
+    () => canDrag,
+    [canDrag]
+  );
+
+  const resizableAccessor = useCallback(
+    () => canDrag,
+    [canDrag]
+  );
+
+  // Handle event drop (date/time change)
+  const handleEventDrop = useCallback(
+    async ({ event, start, end }: EventInteractionArgs<CalendarEventData>) => {
+      if (!canDrag) return;
+
+      const originalEvent = events.find((e) => e.id === event.id);
+      if (!originalEvent) return;
+
+      // Store original for rollback
+      const originalStart = originalEvent.start;
+      const originalEnd = originalEvent.end;
+
+      // Optimistic update
+      setEvents((prev) =>
+        prev.map((e) =>
+          e.id === event.id
+            ? { ...e, start: start as Date, end: end as Date }
+            : e
+        )
+      );
+
+      // Clear any pending undo
+      if (undoTimeoutRef.current) {
+        clearTimeout(undoTimeoutRef.current);
+      }
+
+      // Show toast with undo option
+      const toastId = toast.success(
+        (t) => (
+          <div className="flex items-center gap-3">
+            <span>Intervention deplacee</span>
+            <button
+              onClick={() => {
+                // Rollback
+                setEvents((prev) =>
+                  prev.map((e) =>
+                    e.id === event.id
+                      ? { ...e, start: originalStart, end: originalEnd }
+                      : e
+                  )
+                );
+                toast.dismiss(t.id);
+                if (undoTimeoutRef.current) {
+                  clearTimeout(undoTimeoutRef.current);
+                }
+              }}
+              className="px-2 py-1 text-xs bg-gray-200 hover:bg-gray-300 rounded"
+            >
+              Annuler
+            </button>
+          </div>
+        ),
+        { duration: 5000 }
+      );
+
+      // Call API after delay (allows undo)
+      undoTimeoutRef.current = setTimeout(async () => {
+        try {
+          await interventionsApi.update(event.id, {
+            date: start as Date,
+            heureDebut: format(start as Date, "yyyy-MM-dd'T'HH:mm:ss"),
+            heureFin: format(end as Date, "yyyy-MM-dd'T'HH:mm:ss"),
+          });
+          toast.dismiss(toastId);
+          toast.success('Modification enregistree');
+        } catch (error) {
+          console.error('Failed to update intervention:', error);
+          // Rollback on error
+          setEvents((prev) =>
+            prev.map((e) =>
+              e.id === event.id
+                ? { ...e, start: originalStart, end: originalEnd }
+                : e
+            )
+          );
+          toast.dismiss(toastId);
+          toast.error('Erreur lors de la modification');
+        }
+      }, 3000);
+    },
+    [canDrag, events]
+  );
+
+  // Handle event resize (duration change)
+  const handleEventResize = useCallback(
+    async ({ event, start, end }: EventInteractionArgs<CalendarEventData>) => {
+      if (!canDrag) return;
+
+      const originalEvent = events.find((e) => e.id === event.id);
+      if (!originalEvent) return;
+
+      // Store original for rollback
+      const originalStart = originalEvent.start;
+      const originalEnd = originalEvent.end;
+
+      // Optimistic update
+      setEvents((prev) =>
+        prev.map((e) =>
+          e.id === event.id
+            ? { ...e, start: start as Date, end: end as Date }
+            : e
+        )
+      );
+
+      // Clear any pending undo
+      if (undoTimeoutRef.current) {
+        clearTimeout(undoTimeoutRef.current);
+      }
+
+      // Show toast with undo option
+      const toastId = toast.success(
+        (t) => (
+          <div className="flex items-center gap-3">
+            <span>Duree modifiee</span>
+            <button
+              onClick={() => {
+                // Rollback
+                setEvents((prev) =>
+                  prev.map((e) =>
+                    e.id === event.id
+                      ? { ...e, start: originalStart, end: originalEnd }
+                      : e
+                  )
+                );
+                toast.dismiss(t.id);
+                if (undoTimeoutRef.current) {
+                  clearTimeout(undoTimeoutRef.current);
+                }
+              }}
+              className="px-2 py-1 text-xs bg-gray-200 hover:bg-gray-300 rounded"
+            >
+              Annuler
+            </button>
+          </div>
+        ),
+        { duration: 5000 }
+      );
+
+      // Call API after delay (allows undo)
+      undoTimeoutRef.current = setTimeout(async () => {
+        try {
+          await interventionsApi.update(event.id, {
+            heureDebut: format(start as Date, "yyyy-MM-dd'T'HH:mm:ss"),
+            heureFin: format(end as Date, "yyyy-MM-dd'T'HH:mm:ss"),
+          });
+          toast.dismiss(toastId);
+          toast.success('Modification enregistree');
+        } catch (error) {
+          console.error('Failed to update intervention:', error);
+          // Rollback on error
+          setEvents((prev) =>
+            prev.map((e) =>
+              e.id === event.id
+                ? { ...e, start: originalStart, end: originalEnd }
+                : e
+            )
+          );
+          toast.dismiss(toastId);
+          toast.error('Erreur lors de la modification');
+        }
+      }, 3000);
+    },
+    [canDrag, events]
+  );
+
   const eventStyleGetter = useCallback((event: CalendarEventData) => {
     return {
       style: {
@@ -211,7 +396,7 @@ export function Calendar() {
           </div>
         ) : (
           <Card className="h-full p-0 overflow-hidden">
-            <BigCalendar
+            <DnDCalendar
               localizer={localizer}
               events={filteredEvents}
               startAccessor="start"
@@ -226,6 +411,12 @@ export function Calendar() {
               eventPropGetter={eventStyleGetter}
               messages={messages}
               culture="fr"
+              // Drag & Drop props
+              onEventDrop={handleEventDrop}
+              onEventResize={handleEventResize}
+              draggableAccessor={draggableAccessor}
+              resizableAccessor={resizableAccessor}
+              resizable
               components={{
                 toolbar: CalendarToolbar,
                 event: CalendarEvent,
