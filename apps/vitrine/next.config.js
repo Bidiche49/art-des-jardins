@@ -1,13 +1,20 @@
 /** @type {import('next').NextConfig} */
+
+// Use standalone for Docker, export for Cloudflare Pages
+const isDocker = process.env.DOCKER_BUILD === 'true';
+
 const nextConfig = {
-  output: 'export',
+  // 'standalone' for Docker, 'export' for static hosting (Cloudflare)
+  output: isDocker ? 'standalone' : 'export',
   trailingSlash: true,
   images: {
-    unoptimized: true,
+    // Disable optimization for static export, enable for standalone
+    unoptimized: !isDocker,
   },
-  // Pour Cloudflare Pages
-  experimental: {
-    // Rien pour l'instant
+  // Environment variables available at build time
+  env: {
+    NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
+    NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL,
   },
 };
 
