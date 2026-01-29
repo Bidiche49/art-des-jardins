@@ -10,12 +10,22 @@ import { InterventionsModule } from './modules/interventions/interventions.modul
 import { AuditModule } from './modules/audit/audit.module';
 import { ExportModule } from './modules/export/export.module';
 import { DatabaseModule } from './database/database.module';
+import { envValidationSchema } from './config/env.validation';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: ['.env.local', '.env'],
+      envFilePath: [
+        `.env.${process.env.NODE_ENV || 'development'}`,
+        '.env.local',
+        '.env',
+      ],
+      validationSchema: envValidationSchema,
+      validationOptions: {
+        abortEarly: true, // Stop on first error
+        allowUnknown: true, // Allow env vars not in schema
+      },
     }),
     DatabaseModule,
     HealthModule,
