@@ -53,6 +53,7 @@ describe('NotificationsStore', () => {
     it('should keep default permission when all APIs are available', () => {
       // Mock all required APIs
       global.Notification = { permission: 'default' } as unknown as typeof Notification;
+      // @ts-expect-error - serviceWorker is read-only in tests
       global.navigator.serviceWorker = {} as ServiceWorkerContainer;
       // @ts-expect-error - PushManager is read-only
       global.PushManager = {};

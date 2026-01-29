@@ -8,7 +8,7 @@ const navigation = [
   { name: 'Clients', href: '/clients', icon: '👥' },
   { name: 'Chantiers', href: '/chantiers', icon: '🏗️' },
   { name: 'Devis', href: '/devis', icon: '📋' },
-  { name: 'Planning', href: '/interventions', icon: '📅' },
+  { name: 'Calendrier', href: '/calendar', icon: '📅' },
 ];
 
 export function Layout() {
