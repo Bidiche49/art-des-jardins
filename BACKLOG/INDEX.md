@@ -9,7 +9,7 @@
 | Type | Prochain ID |
 |------|-------------|
 | BUG | BUG-001 |
-| FEAT | FEAT-008 |
+| FEAT | FEAT-026 |
 | IMP | IMP-001 |
 
 ---
@@ -19,9 +19,9 @@
 | Type | Pending | Ready | Done | Total |
 |------|---------|-------|------|-------|
 | Bugs | 0 | 0 | 0 | 0 |
-| Features | 3 | 0 | 4 | 7 |
+| Features | 0 | 9 | 16 | 25 |
 | Improvements | 0 | 0 | 0 | 0 |
-| **Total** | **3** | **0** | **4** | **7** |
+| **Total** | **0** | **9** | **16** | **25** |
 
 ---
 
@@ -33,28 +33,59 @@
 | 2 | FEAT-002 | Backend NestJS | DONE |
 | 3 | FEAT-003 | Site vitrine Next.js | DONE |
 | 4 | FEAT-004 | PWA React | DONE |
-| 5 | FEAT-005 | Entites metier | PENDING |
-| 6 | FEAT-006 | RBAC & Audit | PENDING |
-| 7 | FEAT-007 | Exports | PENDING |
+| 5 | FEAT-005 | Entites metier | DONE |
+| 6 | FEAT-006 | RBAC & Audit | DONE |
+| 7 | FEAT-007 | Exports | DONE |
+
+---
+
+## Roadmap Tests (Phase 2)
+
+| Ordre | Ticket | Description | Statut |
+|-------|--------|-------------|--------|
+| 1 | FEAT-008 | Configuration Jest + setup tests | DONE |
+| 2 | FEAT-009 | Tests unitaires AuthService | DONE |
+| 3 | FEAT-010 | Tests unitaires ClientsService | DONE |
+| 4 | FEAT-011 | Tests unitaires ChantiersService | DONE |
+| 5 | FEAT-012 | Tests unitaires DevisService | DONE |
+| 6 | FEAT-013 | Tests unitaires FacturesService | DONE |
+| 7 | FEAT-014 | Tests unitaires InterventionsService | DONE |
+| 8 | FEAT-015 | Tests unitaires AuditService | DONE |
+| 9 | FEAT-016 | Tests unitaires ExportService | DONE |
+| 10 | FEAT-017 | Tests e2e Auth flow | READY |
+| 11 | FEAT-018 | Tests e2e CRUD Clients | READY |
+| 12 | FEAT-019 | Tests e2e CRUD Chantiers | READY |
+| 13 | FEAT-020 | Tests e2e Devis workflow | READY |
+| 14 | FEAT-021 | Tests e2e Factures workflow | READY |
+| 15 | FEAT-022 | Tests e2e Interventions | READY |
+| 16 | FEAT-023 | Tests e2e Audit logging | READY |
+| 17 | FEAT-024 | Tests e2e Export | READY |
+| 18 | FEAT-025 | Tests integration flow complet | READY |
 
 ---
 
 ## Features
 
-### Pending (3)
-
-| ID | Titre | Priorite | Complexite | Tags |
-|----|-------|----------|------------|------|
-| FEAT-005 | Entites metier - Client, Chantier, Devis, Facture | Critique | L | api, data |
-| FEAT-006 | RBAC et Audit Logs | Haute | M | security, auth |
-| FEAT-007 | Exports et reversibilite | Critique | M | export, data |
-
-### Ready (0)
+### Pending (0)
 
 | ID | Titre | Priorite | Complexite | Tags |
 |----|-------|----------|------------|------|
 
-### Done (4)
+### Ready (9)
+
+| ID | Titre | Priorite | Complexite | Tags |
+|----|-------|----------|------------|------|
+| FEAT-017 | Tests e2e Auth flow | Critique | M | tests, e2e, auth, security |
+| FEAT-018 | Tests e2e CRUD Clients | Haute | M | tests, e2e, clients |
+| FEAT-019 | Tests e2e CRUD Chantiers | Haute | M | tests, e2e, chantiers |
+| FEAT-020 | Tests e2e Devis workflow | Critique | L | tests, e2e, devis, workflow |
+| FEAT-021 | Tests e2e Factures workflow | Critique | L | tests, e2e, factures, workflow |
+| FEAT-022 | Tests e2e Interventions | Haute | M | tests, e2e, interventions |
+| FEAT-023 | Tests e2e Audit logging | Haute | M | tests, e2e, audit, security |
+| FEAT-024 | Tests e2e Export | Haute | S | tests, e2e, export, data |
+| FEAT-025 | Tests integration flow complet | Critique | XL | tests, integration, e2e, flow |
+
+### Done (16)
 
 | ID | Titre | Priorite | Date resolution |
 |----|-------|----------|-----------------|
@@ -62,6 +93,18 @@
 | FEAT-002 | Backend NestJS - Setup initial | Critique | 2025-01-25 |
 | FEAT-003 | Site vitrine Next.js | Haute | 2025-01-25 |
 | FEAT-004 | PWA React - Setup initial | Haute | 2025-01-25 |
+| FEAT-005 | Entites metier - Tous modules | Critique | 2026-01-25 |
+| FEAT-006 | RBAC et Audit Logs | Haute | 2026-01-25 |
+| FEAT-007 | Exports et reversibilite | Critique | 2026-01-25 |
+| FEAT-008 | Configuration Jest et setup tests API | Critique | 2026-01-29 |
+| FEAT-009 | Tests unitaires AuthService | Critique | 2026-01-29 |
+| FEAT-010 | Tests unitaires ClientsService | Haute | 2026-01-29 |
+| FEAT-011 | Tests unitaires ChantiersService | Haute | 2026-01-29 |
+| FEAT-012 | Tests unitaires DevisService | Critique | 2026-01-29 |
+| FEAT-013 | Tests unitaires FacturesService | Critique | 2026-01-29 |
+| FEAT-014 | Tests unitaires InterventionsService | Haute | 2026-01-29 |
+| FEAT-015 | Tests unitaires AuditService | Haute | 2026-01-29 |
+| FEAT-016 | Tests unitaires ExportService | Haute | 2026-01-29 |
 
 ---
 
