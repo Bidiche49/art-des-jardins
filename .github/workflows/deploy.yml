@@ -1,0 +1,103 @@
+# ===========================================
+# Deploy to Production
+# Manual trigger only
+# ===========================================
+
+name: Deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to deploy to'
+        required: true
+        default: 'production'
+        type: choice
+        options:
+          - production
+          - staging
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_PREFIX: ${{ github.repository_owner }}/art-et-jardin
+
+jobs:
+  # ----------------------------
+  # Deploy to VPS
+  # ----------------------------
+  deploy:
+    name: Deploy to ${{ inputs.environment }}
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Deploy to server
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /opt/art-et-jardin
+
+            # Pull latest code
+            git pull origin ${{ github.ref_name }}
+
+            # Pull latest images
+            docker compose -f docker-compose.prod.yml pull
+
+            # Run migrations
+            docker compose -f docker-compose.prod.yml run --rm api npx prisma migrate deploy
+
+            # Restart services with zero downtime
+            docker compose -f docker-compose.prod.yml up -d --remove-orphans
+
+            # Cleanup old images
+            docker image prune -f
+
+            # Health check
+            sleep 10
+            curl -f http://localhost:3000/health || exit 1
+
+            echo "Deployment completed successfully!"
+
+      - name: Notify on success
+        if: success()
+        run: |
+          echo "✅ Deployment to ${{ inputs.environment }} successful!"
+          echo "🔗 API: https://api.artjardin.fr"
+          echo "🔗 App: https://app.artjardin.fr"
+          echo "🔗 Site: https://artjardin.fr"
+
+      - name: Notify on failure
+        if: failure()
+        run: |
+          echo "❌ Deployment to ${{ inputs.environment }} failed!"
+          echo "Check the logs for details."
+
+  # ----------------------------
+  # Run post-deploy tests
+  # ----------------------------
+  smoke-test:
+    name: Smoke Tests
+    runs-on: ubuntu-latest
+    needs: deploy
+
+    steps:
+      - name: Test API health
+        run: |
+          curl -f https://api.artjardin.fr/health || exit 1
+          echo "✅ API is healthy"
+
+      - name: Test Vitrine
+        run: |
+          curl -f https://artjardin.fr || exit 1
+          echo "✅ Vitrine is up"
+
+      - name: Test PWA
+        run: |
+          curl -f https://app.artjardin.fr || exit 1
+          echo "✅ PWA is up"
