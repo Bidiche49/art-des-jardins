@@ -19,9 +19,9 @@
 | Type | Pending | Ready | Done | Total |
 |------|---------|-------|------|-------|
 | Bugs | 0 | 0 | 0 | 0 |
-| Features | 0 | 9 | 16 | 25 |
+| Features | 0 | 0 | 25 | 25 |
 | Improvements | 0 | 0 | 0 | 0 |
-| **Total** | **0** | **9** | **16** | **25** |
+| **Total** | **0** | **0** | **25** | **25** |
 
 ---
 
@@ -52,15 +52,15 @@
 | 7 | FEAT-014 | Tests unitaires InterventionsService | DONE |
 | 8 | FEAT-015 | Tests unitaires AuditService | DONE |
 | 9 | FEAT-016 | Tests unitaires ExportService | DONE |
-| 10 | FEAT-017 | Tests e2e Auth flow | READY |
-| 11 | FEAT-018 | Tests e2e CRUD Clients | READY |
-| 12 | FEAT-019 | Tests e2e CRUD Chantiers | READY |
-| 13 | FEAT-020 | Tests e2e Devis workflow | READY |
-| 14 | FEAT-021 | Tests e2e Factures workflow | READY |
-| 15 | FEAT-022 | Tests e2e Interventions | READY |
-| 16 | FEAT-023 | Tests e2e Audit logging | READY |
-| 17 | FEAT-024 | Tests e2e Export | READY |
-| 18 | FEAT-025 | Tests integration flow complet | READY |
+| 10 | FEAT-017 | Tests e2e Auth flow | DONE |
+| 11 | FEAT-018 | Tests e2e CRUD Clients | DONE |
+| 12 | FEAT-019 | Tests e2e CRUD Chantiers | DONE |
+| 13 | FEAT-020 | Tests e2e Devis workflow | DONE |
+| 14 | FEAT-021 | Tests e2e Factures workflow | DONE |
+| 15 | FEAT-022 | Tests e2e Interventions | DONE |
+| 16 | FEAT-023 | Tests e2e Audit logging | DONE |
+| 17 | FEAT-024 | Tests e2e Export | DONE |
+| 18 | FEAT-025 | Tests integration flow complet | DONE |
 
 ---
 
@@ -71,21 +71,12 @@
 | ID | Titre | Priorite | Complexite | Tags |
 |----|-------|----------|------------|------|
 
-### Ready (9)
+### Ready (0)
 
 | ID | Titre | Priorite | Complexite | Tags |
 |----|-------|----------|------------|------|
-| FEAT-017 | Tests e2e Auth flow | Critique | M | tests, e2e, auth, security |
-| FEAT-018 | Tests e2e CRUD Clients | Haute | M | tests, e2e, clients |
-| FEAT-019 | Tests e2e CRUD Chantiers | Haute | M | tests, e2e, chantiers |
-| FEAT-020 | Tests e2e Devis workflow | Critique | L | tests, e2e, devis, workflow |
-| FEAT-021 | Tests e2e Factures workflow | Critique | L | tests, e2e, factures, workflow |
-| FEAT-022 | Tests e2e Interventions | Haute | M | tests, e2e, interventions |
-| FEAT-023 | Tests e2e Audit logging | Haute | M | tests, e2e, audit, security |
-| FEAT-024 | Tests e2e Export | Haute | S | tests, e2e, export, data |
-| FEAT-025 | Tests integration flow complet | Critique | XL | tests, integration, e2e, flow |
 
-### Done (16)
+### Done (25)
 
 | ID | Titre | Priorite | Date resolution |
 |----|-------|----------|-----------------|
@@ -105,6 +96,15 @@
 | FEAT-014 | Tests unitaires InterventionsService | Haute | 2026-01-29 |
 | FEAT-015 | Tests unitaires AuditService | Haute | 2026-01-29 |
 | FEAT-016 | Tests unitaires ExportService | Haute | 2026-01-29 |
+| FEAT-017 | Tests e2e Auth flow | Critique | 2026-01-29 |
+| FEAT-018 | Tests e2e CRUD Clients | Haute | 2026-01-29 |
+| FEAT-019 | Tests e2e CRUD Chantiers | Haute | 2026-01-29 |
+| FEAT-020 | Tests e2e Devis workflow | Critique | 2026-01-29 |
+| FEAT-021 | Tests e2e Factures workflow | Critique | 2026-01-29 |
+| FEAT-022 | Tests e2e Interventions | Haute | 2026-01-29 |
+| FEAT-023 | Tests e2e Audit logging | Haute | 2026-01-29 |
+| FEAT-024 | Tests e2e Export | Haute | 2026-01-29 |
+| FEAT-025 | Tests integration flow complet | Critique | 2026-01-29 |
 
 ---
 
