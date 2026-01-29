@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { LocalBusinessSchema } from '@/components/seo/LocalBusinessSchema';
+import { Testimonials } from '@/components/Testimonials';
 
 export default function HomePage() {
   return (
@@ -34,15 +35,29 @@ export default function HomePage() {
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Nos services</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((service) => (
-              <div key={service.title} className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+              <Link
+                key={service.title}
+                href={service.href}
+                className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow group"
+              >
                 <div className="text-4xl mb-4">{service.icon}</div>
-                <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
+                <h3 className="text-xl font-semibold mb-2 group-hover:text-primary-600 transition-colors">
+                  {service.title}
+                </h3>
                 <p className="text-gray-600">{service.description}</p>
-              </div>
+              </Link>
             ))}
+          </div>
+          <div className="text-center mt-8">
+            <Link href="/services/" className="btn-secondary">
+              Voir tous nos services
+            </Link>
           </div>
         </div>
       </section>
+
+      {/* Testimonials */}
+      <Testimonials />
 
       {/* CTA Section */}
       <section className="py-16 lg:py-24 bg-primary-700 text-white">
@@ -66,20 +81,24 @@ const services = [
     icon: '🌳',
     title: 'Paysagisme',
     description: 'Conception et amenagement de jardins sur mesure.',
+    href: '/services/paysagisme/',
   },
   {
     icon: '✂️',
     title: 'Entretien',
     description: 'Tonte, taille, desherbage et entretien regulier.',
+    href: '/services/entretien-jardin/',
   },
   {
     icon: '🪓',
     title: 'Elagage',
     description: 'Taille et elagage de tous types d\'arbres.',
+    href: '/services/elagage/',
   },
   {
     icon: '🌲',
     title: 'Abattage',
     description: 'Abattage securise d\'arbres dangereux ou genants.',
+    href: '/services/abattage/',
   },
 ];

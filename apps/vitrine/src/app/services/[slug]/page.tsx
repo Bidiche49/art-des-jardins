@@ -1,0 +1,234 @@
+import { Metadata } from 'next';
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
+import { services, getServiceBySlug } from '@/lib/services-data';
+import { ServiceSchema } from '@/components/seo/ServiceSchema';
+
+interface PageProps {
+  params: { slug: string };
+}
+
+export async function generateStaticParams() {
+  return services.map((service) => ({
+    slug: service.slug,
+  }));
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const service = getServiceBySlug(params.slug);
+  if (!service) return {};
+
+  return {
+    title: service.metaTitle,
+    description: service.metaDescription,
+    openGraph: {
+      title: service.metaTitle,
+      description: service.metaDescription,
+      type: 'website',
+    },
+  };
+}
+
+export default function ServicePage({ params }: PageProps) {
+  const service = getServiceBySlug(params.slug);
+  if (!service) notFound();
+
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: service.faq.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer,
+      },
+    })),
+  };
+
+  return (
+    <>
+      <ServiceSchema
+        name={service.title}
+        description={service.metaDescription}
+        url={`https://art-et-jardin.fr/services/${service.slug}/`}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+
+      {/* Hero */}
+      <section className="bg-gradient-to-br from-primary-600 to-primary-800 text-white py-16 lg:py-24">
+        <div className="container-custom">
+          <nav className="text-primary-200 text-sm mb-4">
+            <Link href="/" className="hover:text-white">
+              Accueil
+            </Link>
+            <span className="mx-2">/</span>
+            <Link href="/services/" className="hover:text-white">
+              Services
+            </Link>
+            <span className="mx-2">/</span>
+            <span className="text-white">{service.shortTitle}</span>
+          </nav>
+          <div className="flex items-center gap-4 mb-6">
+            <span className="text-6xl">{service.icon}</span>
+            <h1 className="text-4xl md:text-5xl font-bold">{service.heroTitle}</h1>
+          </div>
+          <p className="text-xl text-primary-100 max-w-2xl">{service.heroSubtitle}</p>
+        </div>
+      </section>
+
+      {/* Description */}
+      <section className="py-16 lg:py-24">
+        <div className="container-custom">
+          <div className="grid lg:grid-cols-3 gap-12">
+            <div className="lg:col-span-2">
+              <h2 className="text-3xl font-bold mb-6">Notre expertise</h2>
+              <div className="prose prose-lg max-w-none text-gray-600">
+                {service.description.split('\n\n').map((paragraph, i) => (
+                  <p key={i}>{paragraph.trim()}</p>
+                ))}
+              </div>
+
+              {/* Features */}
+              <h3 className="text-2xl font-bold mt-12 mb-6">Nos prestations</h3>
+              <div className="grid sm:grid-cols-2 gap-4">
+                {service.features.map((feature, i) => (
+                  <div key={i} className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg">
+                    <svg
+                      className="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                    <span className="text-gray-700">{feature}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Sidebar */}
+            <div className="lg:col-span-1">
+              <div className="sticky top-24 space-y-6">
+                {/* Benefits */}
+                <div className="bg-primary-50 rounded-xl p-6">
+                  <h3 className="text-lg font-bold text-primary-800 mb-4">Pourquoi nous choisir ?</h3>
+                  <ul className="space-y-3">
+                    {service.benefits.map((benefit, i) => (
+                      <li key={i} className="flex items-start gap-2 text-primary-700">
+                        <svg
+                          className="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                        <span>{benefit}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* CTA Card */}
+                <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+                  <h3 className="text-lg font-bold mb-2">Devis gratuit</h3>
+                  <p className="text-gray-600 text-sm mb-4">
+                    Recevez une estimation personnalisee sous 48h.
+                  </p>
+                  <Link href="/contact/" className="btn-primary w-full text-center block">
+                    Demander un devis
+                  </Link>
+                  <p className="text-center text-sm text-gray-500 mt-3">
+                    Ou appelez-nous au{' '}
+                    <a href="tel:+33600000000" className="text-primary-600 font-medium">
+                      06 XX XX XX XX
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Process */}
+      <section className="py-16 lg:py-24 bg-gray-50">
+        <div className="container-custom">
+          <h2 className="text-3xl font-bold text-center mb-12">Comment ca marche ?</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
+            {service.process.map((step, i) => (
+              <div key={i} className="relative">
+                <div className="bg-white rounded-xl p-6 h-full shadow-sm">
+                  <div className="w-10 h-10 bg-primary-600 text-white rounded-full flex items-center justify-center font-bold mb-4">
+                    {i + 1}
+                  </div>
+                  <h3 className="font-bold text-gray-900 mb-2">{step.title}</h3>
+                  <p className="text-gray-600 text-sm">{step.description}</p>
+                </div>
+                {i < service.process.length - 1 && (
+                  <div className="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2">
+                    <svg className="w-6 h-6 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
+                      <path
+                        fillRule="evenodd"
+                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-16 lg:py-24">
+        <div className="container-custom max-w-3xl">
+          <h2 className="text-3xl font-bold text-center mb-12">Questions frequentes</h2>
+          <div className="space-y-6">
+            {service.faq.map((item, i) => (
+              <div key={i} className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+                <h3 className="font-bold text-gray-900 mb-3">{item.question}</h3>
+                <p className="text-gray-600">{item.answer}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Final */}
+      <section className="py-16 bg-primary-700 text-white">
+        <div className="container-custom text-center">
+          <h2 className="text-3xl font-bold mb-4">Pret a demarrer votre projet ?</h2>
+          <p className="text-primary-100 mb-8 max-w-xl mx-auto">
+            Contactez-nous pour un devis gratuit et sans engagement. Notre equipe vous repond sous
+            48h.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/contact/" className="btn-primary bg-white text-primary-700 hover:bg-gray-100">
+              Demander un devis
+            </Link>
+            <a
+              href="tel:+33600000000"
+              className="btn-secondary border-white text-white hover:bg-white/10"
+            >
+              Appeler maintenant
+            </a>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
