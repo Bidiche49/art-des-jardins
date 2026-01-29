@@ -17,9 +17,13 @@
     "format": "pnpm -r format",
     "docker:up": "docker compose up -d",
     "docker:down": "docker compose down",
+    "db:generate": "pnpm --filter database generate",
     "db:migrate": "pnpm --filter database migrate",
+    "db:migrate:prod": "pnpm --filter database migrate:prod",
     "db:seed": "pnpm --filter database seed",
-    "db:reset": "pnpm --filter database reset"
+    "db:reset": "pnpm --filter database reset",
+    "db:studio": "pnpm --filter database studio",
+    "db:init": "pnpm db:generate && pnpm db:migrate && pnpm db:seed"
   },
   "engines": {
     "node": ">=20.0.0",
