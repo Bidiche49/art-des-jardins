@@ -5,9 +5,54 @@
 #   docker compose -f docker-compose.prod.yml up -d
 # ===========================================
 
-version: '3.8'
-
 services:
+  # -----------------------------
+  # Traefik Reverse Proxy
+  # -----------------------------
+  traefik:
+    image: traefik:v3.0
+    container_name: artjardin_traefik
+    restart: always
+    command:
+      # API & Dashboard
+      - "--api.dashboard=true"
+      - "--api.insecure=false"
+      # Providers
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--providers.docker.network=artjardin_web"
+      # Entrypoints
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+      # HTTP to HTTPS redirect
+      - "--entrypoints.web.http.redirections.entrypoint.to=websecure"
+      - "--entrypoints.web.http.redirections.entrypoint.scheme=https"
+      # Let's Encrypt
+      - "--certificatesresolvers.letsencrypt.acme.email=${ACME_EMAIL}"
+      - "--certificatesresolvers.letsencrypt.acme.storage=/letsencrypt/acme.json"
+      - "--certificatesresolvers.letsencrypt.acme.httpchallenge.entrypoint=web"
+      # Logs
+      - "--log.level=${TRAEFIK_LOG_LEVEL:-INFO}"
+      - "--accesslog=true"
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - traefik_letsencrypt:/letsencrypt
+    networks:
+      - web
+      - internal
+    labels:
+      # Dashboard
+      - "traefik.enable=true"
+      - "traefik.http.routers.dashboard.rule=Host(`traefik.${DOMAIN}`)"
+      - "traefik.http.routers.dashboard.entrypoints=websecure"
+      - "traefik.http.routers.dashboard.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.dashboard.service=api@internal"
+      - "traefik.http.routers.dashboard.middlewares=auth"
+      - "traefik.http.middlewares.auth.basicauth.users=${TRAEFIK_DASHBOARD_AUTH}"
+
   # -----------------------------
   # Database
   # -----------------------------
@@ -21,6 +66,7 @@ services:
       POSTGRES_DB: ${POSTGRES_DB}
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - ./docker/postgres/backup:/backup
     healthcheck:
       test: ['CMD-SHELL', 'pg_isready -U ${POSTGRES_USER}']
       interval: 10s
@@ -55,7 +101,7 @@ services:
       SMTP_PASSWORD: ${SMTP_PASSWORD}
       SMTP_FROM: ${SMTP_FROM}
       LOG_LEVEL: ${LOG_LEVEL:-info}
-      CORS_ORIGINS: ${CORS_ORIGINS}
+      CORS_ORIGINS: https://${DOMAIN},https://app.${DOMAIN}
     depends_on:
       postgres:
         condition: service_healthy
@@ -66,7 +112,18 @@ services:
       retries: 3
       start_period: 40s
     networks:
+      - web
       - internal
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.api.rule=Host(`api.${DOMAIN}`)"
+      - "traefik.http.routers.api.entrypoints=websecure"
+      - "traefik.http.routers.api.tls.certresolver=letsencrypt"
+      - "traefik.http.services.api.loadbalancer.server.port=3000"
+      # Rate limiting
+      - "traefik.http.middlewares.api-ratelimit.ratelimit.average=100"
+      - "traefik.http.middlewares.api-ratelimit.ratelimit.burst=50"
+      - "traefik.http.routers.api.middlewares=api-ratelimit"
 
   # -----------------------------
   # Site Vitrine (Next.js)
@@ -79,15 +136,26 @@ services:
     restart: always
     environment:
       NODE_ENV: production
-      NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL}
-      NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL}
+      NEXT_PUBLIC_API_URL: https://api.${DOMAIN}
+      NEXT_PUBLIC_SITE_URL: https://${DOMAIN}
     healthcheck:
       test: ['CMD', 'wget', '--quiet', '--tries=1', '--spider', 'http://localhost:3001']
       interval: 30s
       timeout: 10s
       retries: 3
     networks:
-      - internal
+      - web
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.vitrine.rule=Host(`${DOMAIN}`) || Host(`www.${DOMAIN}`)"
+      - "traefik.http.routers.vitrine.entrypoints=websecure"
+      - "traefik.http.routers.vitrine.tls.certresolver=letsencrypt"
+      - "traefik.http.services.vitrine.loadbalancer.server.port=3001"
+      # Redirect www to non-www
+      - "traefik.http.middlewares.www-redirect.redirectregex.regex=^https://www\\.(.*)"
+      - "traefik.http.middlewares.www-redirect.redirectregex.replacement=https://$${1}"
+      - "traefik.http.middlewares.www-redirect.redirectregex.permanent=true"
+      - "traefik.http.routers.vitrine.middlewares=www-redirect"
 
   # -----------------------------
   # PWA (Vite + Nginx)
@@ -97,7 +165,7 @@ services:
       context: .
       dockerfile: docker/pwa/Dockerfile
       args:
-        VITE_API_URL: ${NEXT_PUBLIC_API_URL}
+        VITE_API_URL: https://api.${DOMAIN}
     container_name: artjardin_pwa
     restart: always
     healthcheck:
@@ -106,34 +174,44 @@ services:
       timeout: 10s
       retries: 3
     networks:
-      - internal
+      - web
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.pwa.rule=Host(`app.${DOMAIN}`)"
+      - "traefik.http.routers.pwa.entrypoints=websecure"
+      - "traefik.http.routers.pwa.tls.certresolver=letsencrypt"
+      - "traefik.http.services.pwa.loadbalancer.server.port=80"
 
   # -----------------------------
-  # Reverse Proxy (Nginx)
+  # Monitoring - Uptime Kuma
   # -----------------------------
-  nginx:
-    image: nginx:alpine
-    container_name: artjardin_nginx
+  uptime-kuma:
+    image: louislam/uptime-kuma:1
+    container_name: artjardin_uptime
     restart: always
-    ports:
-      - '80:80'
-      - '443:443'
     volumes:
-      - ./docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
-      # Uncomment for SSL
-      # - ./docker/nginx/ssl:/etc/nginx/ssl:ro
-      # - ./docker/nginx/certbot:/var/www/certbot:ro
-    depends_on:
-      - api
-      - vitrine
-      - pwa
+      - uptime_data:/app/data
     networks:
+      - web
       - internal
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.uptime.rule=Host(`status.${DOMAIN}`)"
+      - "traefik.http.routers.uptime.entrypoints=websecure"
+      - "traefik.http.routers.uptime.tls.certresolver=letsencrypt"
+      - "traefik.http.services.uptime.loadbalancer.server.port=3001"
 
 networks:
+  web:
+    name: artjardin_web
+    driver: bridge
   internal:
     driver: bridge
 
 volumes:
   postgres_data:
+    driver: local
+  traefik_letsencrypt:
+    driver: local
+  uptime_data:
     driver: local
