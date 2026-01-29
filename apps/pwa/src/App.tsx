@@ -11,13 +11,16 @@ import { DevisBuilder } from './pages/DevisBuilder';
 import { Factures } from './pages/Factures';
 import { Interventions } from './pages/Interventions';
 import { Login } from './pages/Login';
+import { SignerDevis } from './pages/SignerDevis';
 import { ProtectedRoute } from './components/auth/ProtectedRoute';
 
 function App() {
   return (
     <>
       <Routes>
+        {/* Routes publiques */}
         <Route path="/login" element={<Login />} />
+        <Route path="/signer/:token" element={<SignerDevis />} />
         <Route
           path="/"
           element={
