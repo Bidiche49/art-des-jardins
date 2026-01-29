@@ -5,12 +5,14 @@ import { NotFoundException, BadRequestException, ForbiddenException } from '@nes
 import { SignatureService } from './signature.service';
 import { PrismaService } from '../../database/prisma.service';
 import { MailService } from '../mail/mail.service';
+import { PdfService } from '../pdf/pdf.service';
 
 describe('SignatureService', () => {
   let service: SignatureService;
   let prisma: PrismaService;
   let jwtService: JwtService;
   let mailService: MailService;
+  let pdfService: PdfService;
 
   const mockDevis = {
     id: 'devis-123',
@@ -19,6 +21,7 @@ describe('SignatureService', () => {
     totalHT: 100,
     totalTVA: 20,
     totalTTC: 120,
+    notes: null,
     dateEmission: new Date(),
     dateValidite: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
     chantier: {
@@ -46,6 +49,7 @@ describe('SignatureService', () => {
         prixUnitaireHT: 100,
         montantHT: 100,
         montantTTC: 120,
+        ordre: 0,
       },
     ],
     signature: null,
@@ -87,6 +91,12 @@ describe('SignatureService', () => {
 
   const mockMailService = {
     sendMail: jest.fn().mockResolvedValue(true),
+    sendSignatureConfirmation: jest.fn().mockResolvedValue(true),
+    sendSignatureNotification: jest.fn().mockResolvedValue(true),
+  };
+
+  const mockPdfService = {
+    generateDevis: jest.fn().mockResolvedValue(Buffer.from('mock-pdf')),
   };
 
   const mockConfigService = {
@@ -94,6 +104,7 @@ describe('SignatureService', () => {
       const config: Record<string, string> = {
         FRONTEND_URL: 'https://artjardin.fr',
         JWT_SECRET: 'test-secret',
+        PATRON_EMAIL: 'patron@artjardin.fr',
       };
       return config[key];
     }),
@@ -107,6 +118,7 @@ describe('SignatureService', () => {
         { provide: JwtService, useValue: mockJwtService },
         { provide: ConfigService, useValue: mockConfigService },
         { provide: MailService, useValue: mockMailService },
+        { provide: PdfService, useValue: mockPdfService },
       ],
     }).compile();
 
@@ -114,6 +126,7 @@ describe('SignatureService', () => {
     prisma = module.get<PrismaService>(PrismaService);
     jwtService = module.get<JwtService>(JwtService);
     mailService = module.get<MailService>(MailService);
+    pdfService = module.get<PdfService>(PdfService);
 
     // Reset mocks
     jest.clearAllMocks();
@@ -237,7 +250,9 @@ describe('SignatureService', () => {
 
       expect(result.success).toBe(true);
       expect(mockPrismaService.$transaction).toHaveBeenCalled();
-      expect(mockMailService.sendMail).toHaveBeenCalled();
+      expect(mockPdfService.generateDevis).toHaveBeenCalled();
+      expect(mockMailService.sendSignatureConfirmation).toHaveBeenCalled();
+      expect(mockMailService.sendSignatureNotification).toHaveBeenCalled();
     });
 
     it('should throw BadRequestException if CGV not accepted', async () => {

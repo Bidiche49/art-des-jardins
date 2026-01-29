@@ -19,9 +19,9 @@
 | Type | Pending | Ready | Done | Total |
 |------|---------|-------|------|-------|
 | Bugs | 0 | 0 | 0 | 0 |
-| Features | 1 | 0 | 28 | 29 |
+| Features | 0 | 0 | 29 | 29 |
 | Improvements | 0 | 0 | 0 | 0 |
-| **Total** | **1** | **0** | **28** | **29** |
+| **Total** | **0** | **0** | **29** | **29** |
 
 ---
 
@@ -64,33 +64,32 @@
 
 ---
 
-## Roadmap Phase 5 (Evolutions)
+## Roadmap Phase 5.1 - Signature electronique (COMPLETE)
 
 | Ordre | Ticket | Description | Statut |
 |-------|--------|-------------|--------|
 | 1 | FEAT-026 | Backend signature electronique | DONE |
 | 2 | FEAT-027 | Page signature client | DONE |
 | 3 | FEAT-028 | PDF avec signature | DONE |
-| 4 | FEAT-029 | Emails signature | PENDING |
+| 4 | FEAT-029 | Emails signature | DONE |
 
-> Voir `ROADMAP_PHASE5.md` pour le plan complet.
+> Phase 5.1 terminee le 2026-01-29.
 
 ---
 
 ## Features
 
-### Pending (1)
+### Pending (0)
 
 | ID | Titre | Priorite | Complexite | Tags |
 |----|-------|----------|------------|------|
-| FEAT-029 | Emails signature devis | Haute | S | email, signature, notifications |
 
 ### Ready (0)
 
 | ID | Titre | Priorite | Complexite | Tags |
 |----|-------|----------|------------|------|
 
-### Done (28)
+### Done (29)
 
 | ID | Titre | Priorite | Date resolution |
 |----|-------|----------|-----------------|
@@ -122,6 +121,7 @@
 | FEAT-026 | Backend signature electronique | Critique | 2026-01-29 |
 | FEAT-027 | Page signature client | Critique | 2026-01-29 |
 | FEAT-028 | PDF devis avec signature | Haute | 2026-01-29 |
+| FEAT-029 | Emails signature devis | Haute | 2026-01-29 |
 
 ---
 

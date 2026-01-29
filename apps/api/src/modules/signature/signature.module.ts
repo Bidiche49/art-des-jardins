@@ -4,12 +4,14 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { SignatureController } from './signature.controller';
 import { SignatureService } from './signature.service';
 import { MailModule } from '../mail/mail.module';
+import { PdfModule } from '../pdf/pdf.module';
 import { DatabaseModule } from '../../database/database.module';
 
 @Module({
   imports: [
     DatabaseModule,
     MailModule,
+    PdfModule,
     JwtModule.registerAsync({
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => ({

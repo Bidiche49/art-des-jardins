@@ -3,11 +3,13 @@ import {
   NotFoundException,
   BadRequestException,
   ForbiddenException,
+  Logger,
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 import { PrismaService } from '../../database/prisma.service';
 import { MailService } from '../mail/mail.service';
+import { PdfService } from '../pdf/pdf.service';
 import { SendSignatureRequestDto, SignDevisDto } from './dto';
 
 interface SignatureTokenPayload {
@@ -17,16 +19,20 @@ interface SignatureTokenPayload {
 
 @Injectable()
 export class SignatureService {
+  private readonly logger = new Logger(SignatureService.name);
   private readonly signatureTokenExpiry = '7d';
   private readonly frontendUrl: string;
+  private readonly patronEmail: string;
 
   constructor(
     private prisma: PrismaService,
     private jwtService: JwtService,
     private configService: ConfigService,
     private mailService: MailService,
+    private pdfService: PdfService,
   ) {
     this.frontendUrl = this.configService.get<string>('FRONTEND_URL') || 'https://artjardin.fr';
+    this.patronEmail = this.configService.get<string>('PATRON_EMAIL') || '';
   }
 
   /**
@@ -196,6 +202,9 @@ export class SignatureService {
                 client: true,
               },
             },
+            lignes: {
+              orderBy: { ordre: 'asc' },
+            },
           },
         },
       },
@@ -265,20 +274,86 @@ export class SignatureService {
       }),
     ]);
 
-    // Envoyer l'email de confirmation au client
+    // Generer le PDF signe
     const client = signature.devis.chantier.client;
-    await this.mailService.sendMail({
-      to: client.email,
-      subject: `Confirmation signature - Devis N° ${signature.devis.numero}`,
-      html: this.buildSignatureConfirmationEmail(
-        client.prenom || client.nom,
-        signature.devis.numero,
-        signature.devis.totalTTC,
-        now,
-      ),
-    });
+    const chantier = signature.devis.chantier;
+    const devis = signature.devis;
+    const clientName = client.prenom
+      ? `${client.prenom} ${client.nom}`
+      : client.nom;
 
-    // TODO: Envoyer notification au patron
+    let pdfBuffer: Buffer | null = null;
+    try {
+      pdfBuffer = await this.pdfService.generateDevis({
+        numero: devis.numero,
+        dateCreation: devis.dateEmission,
+        dateValidite: devis.dateValidite,
+        client: {
+          nom: client.nom,
+          prenom: client.prenom || undefined,
+          adresse: client.adresse,
+          codePostal: client.codePostal,
+          ville: client.ville,
+          email: client.email,
+        },
+        lignes: (devis as any).lignes?.map((l: any) => ({
+          designation: l.description,
+          quantite: Number(l.quantite),
+          unite: l.unite,
+          prixUnitaire: Number(l.prixUnitaireHT),
+          montantHT: Number(l.montantHT),
+        })) || [],
+        totalHT: Number(devis.totalHT),
+        tauxTVA: 20,
+        montantTVA: Number(devis.totalTVA),
+        totalTTC: Number(devis.totalTTC),
+        notes: devis.notes || undefined,
+        signature: {
+          imageBase64: dto.signatureBase64,
+          signedAt: now,
+          ipAddress,
+          reference: `SIG-${signature.id.substring(0, 8).toUpperCase()}`,
+        },
+      });
+    } catch (error) {
+      this.logger.error('Failed to generate signed PDF', error);
+    }
+
+    // Envoyer l'email de confirmation au client avec PDF en piece jointe
+    if (pdfBuffer) {
+      await this.mailService.sendSignatureConfirmation(
+        client.email,
+        clientName,
+        devis.numero,
+        Number(devis.totalTTC),
+        now,
+        pdfBuffer,
+      );
+    } else {
+      // Fallback: email sans piece jointe
+      await this.mailService.sendMail({
+        to: client.email,
+        subject: `Confirmation signature - Devis N° ${devis.numero}`,
+        html: this.buildSignatureConfirmationEmail(
+          client.prenom || client.nom,
+          devis.numero,
+          Number(devis.totalTTC),
+          now,
+        ),
+      });
+    }
+
+    // Envoyer notification au patron
+    if (this.patronEmail) {
+      await this.mailService.sendSignatureNotification(
+        this.patronEmail,
+        clientName,
+        devis.numero,
+        Number(devis.totalTTC),
+        now,
+        chantier.description || '',
+      );
+    }
 
     return {
       success: true,

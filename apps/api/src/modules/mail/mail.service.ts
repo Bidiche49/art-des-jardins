@@ -149,4 +149,198 @@ export class MailService {
       html,
     });
   }
+
+  /**
+   * Email de confirmation de signature au client avec PDF signe en piece jointe
+   */
+  async sendSignatureConfirmation(
+    to: string,
+    clientName: string,
+    devisNumero: string,
+    montantTTC: number,
+    signedAt: Date,
+    pdfBuffer: Buffer,
+  ): Promise<boolean> {
+    const dateStr = signedAt.toLocaleDateString('fr-FR', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+    });
+
+    const html = `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; }
+    .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+    .header { background: #2d5a27; color: white; padding: 20px; text-align: center; border-radius: 8px 8px 0 0; }
+    .content { padding: 30px; background: #f9f9f9; }
+    .success-box { background: #d4edda; border: 1px solid #c3e6cb; padding: 20px; border-radius: 8px; margin: 20px 0; text-align: center; }
+    .success-icon { font-size: 48px; color: #28a745; }
+    .details { background: white; padding: 20px; border-radius: 8px; margin: 20px 0; }
+    .details-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #eee; }
+    .details-row:last-child { border-bottom: none; }
+    .label { color: #666; }
+    .value { font-weight: bold; }
+    .footer { padding: 20px; text-align: center; font-size: 12px; color: #666; background: #f0f0f0; border-radius: 0 0 8px 8px; }
+    .legal { font-size: 11px; color: #888; margin-top: 15px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1 style="margin: 0;">Art & Jardin</h1>
+      <p style="margin: 5px 0 0 0; opacity: 0.9;">Confirmation de signature</p>
+    </div>
+    <div class="content">
+      <p>Bonjour ${clientName},</p>
+
+      <div class="success-box">
+        <div class="success-icon">&#10004;</div>
+        <h2 style="margin: 10px 0 5px 0; color: #28a745;">Signature enregistree</h2>
+        <p style="margin: 0; color: #666;">Votre accord a bien ete enregistre</p>
+      </div>
+
+      <div class="details">
+        <div class="details-row">
+          <span class="label">Devis N°</span>
+          <span class="value">${devisNumero}</span>
+        </div>
+        <div class="details-row">
+          <span class="label">Montant TTC</span>
+          <span class="value">${montantTTC.toFixed(2)} €</span>
+        </div>
+        <div class="details-row">
+          <span class="label">Date de signature</span>
+          <span class="value">${dateStr}</span>
+        </div>
+      </div>
+
+      <p>Vous trouverez le devis signe en piece jointe de cet email.</p>
+
+      <p>Nous vous contacterons prochainement pour planifier l'intervention.</p>
+
+      <p>Cordialement,<br><strong>L'equipe Art & Jardin</strong></p>
+
+      <p class="legal">
+        Document signe electroniquement conformement aux articles 1366 et 1367 du Code civil.
+        Conservez cet email et la piece jointe comme preuve de votre accord.
+      </p>
+    </div>
+    <div class="footer">
+      <p>Art & Jardin - Paysagiste a Angers</p>
+      <p>Ce message est envoye automatiquement, merci de ne pas y repondre.</p>
+    </div>
+  </div>
+</body>
+</html>
+    `;
+
+    return this.sendMail({
+      to,
+      subject: `Confirmation signature - Devis N° ${devisNumero}`,
+      html,
+      attachments: [
+        {
+          filename: `devis-${devisNumero}-signe.pdf`,
+          content: pdfBuffer,
+          contentType: 'application/pdf',
+        },
+      ],
+    });
+  }
+
+  /**
+   * Notification au patron quand un client signe un devis
+   */
+  async sendSignatureNotification(
+    patronEmail: string,
+    clientName: string,
+    devisNumero: string,
+    montantTTC: number,
+    signedAt: Date,
+    chantierDescription: string,
+  ): Promise<boolean> {
+    const dateStr = signedAt.toLocaleDateString('fr-FR', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+    });
+
+    const html = `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; }
+    .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+    .header { background: #2d5a27; color: white; padding: 15px 20px; border-radius: 8px 8px 0 0; }
+    .content { padding: 25px; background: #f9f9f9; }
+    .alert-box { background: #d4edda; border-left: 4px solid #28a745; padding: 15px 20px; margin: 15px 0; }
+    .details { background: white; padding: 20px; border-radius: 8px; margin: 15px 0; }
+    .details-row { padding: 8px 0; border-bottom: 1px solid #eee; }
+    .details-row:last-child { border-bottom: none; }
+    .label { color: #666; font-size: 13px; }
+    .value { font-weight: bold; display: block; margin-top: 3px; }
+    .amount { font-size: 24px; color: #2d5a27; }
+    .footer { padding: 15px; text-align: center; font-size: 11px; color: #888; }
+    .cta { text-align: center; margin: 20px 0; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h2 style="margin: 0;">Nouveau devis signe</h2>
+    </div>
+    <div class="content">
+      <div class="alert-box">
+        <strong>${clientName}</strong> vient de signer le devis <strong>${devisNumero}</strong>
+      </div>
+
+      <div class="details">
+        <div class="details-row">
+          <span class="label">Client</span>
+          <span class="value">${clientName}</span>
+        </div>
+        <div class="details-row">
+          <span class="label">Devis</span>
+          <span class="value">${devisNumero}</span>
+        </div>
+        <div class="details-row">
+          <span class="label">Chantier</span>
+          <span class="value">${chantierDescription || 'Non specifie'}</span>
+        </div>
+        <div class="details-row">
+          <span class="label">Montant TTC</span>
+          <span class="value amount">${montantTTC.toFixed(2)} €</span>
+        </div>
+        <div class="details-row">
+          <span class="label">Signe le</span>
+          <span class="value">${dateStr}</span>
+        </div>
+      </div>
+
+      <p>Pensez a contacter le client pour planifier l'intervention.</p>
+    </div>
+    <div class="footer">
+      <p>Notification automatique - Art & Jardin</p>
+    </div>
+  </div>
+</body>
+</html>
+    `;
+
+    return this.sendMail({
+      to: patronEmail,
+      subject: `[SIGNE] Devis ${devisNumero} - ${clientName}`,
+      html,
+    });
+  }
 }
