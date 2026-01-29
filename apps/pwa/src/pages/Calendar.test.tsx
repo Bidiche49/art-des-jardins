@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { render, screen, waitFor, fireEvent } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { Calendar } from './Calendar';
 import { interventionsApi } from '@/api';
@@ -11,6 +11,9 @@ vi.mock('@/api', () => ({
   interventionsApi: {
     getAll: vi.fn(),
     update: vi.fn(),
+  },
+  absencesApi: {
+    getForCalendar: vi.fn().mockResolvedValue([]),
   },
 }));
 
@@ -102,7 +105,7 @@ describe('Calendar', () => {
       renderCalendar();
 
       await waitFor(() => {
-        expect(screen.getByText('Legende:')).toBeInTheDocument();
+        expect(screen.getByText('Employes:')).toBeInTheDocument();
       });
     });
   });

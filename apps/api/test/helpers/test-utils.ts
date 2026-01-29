@@ -161,6 +161,20 @@ export const createMockIntervention = (
   ...overrides,
 });
 
+// Absence fixtures
+export const createMockAbsence = (userId: string, overrides = {}) => ({
+  id: randomUUID(),
+  userId,
+  dateDebut: new Date(),
+  dateFin: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), // +7 days
+  type: 'conge' as const,
+  motif: 'Vacances',
+  validee: false,
+  createdAt: new Date(),
+  updatedAt: new Date(),
+  ...overrides,
+});
+
 // AuditLog fixtures
 export const createMockAuditLog = (overrides = {}) => ({
   id: randomUUID(),

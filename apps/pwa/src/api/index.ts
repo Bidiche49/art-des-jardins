@@ -8,6 +8,7 @@ export { default as interventionsApi } from './interventions';
 export { default as uploadApi } from './upload';
 export { default as statsApi } from './stats';
 export { default as notificationsApi } from './notifications';
+export { default as absencesApi } from './absences';
 
 export type { DevisFilters } from './devis';
 export type { FactureFilters } from './factures';
@@ -24,3 +25,10 @@ export type {
   ChiffreAffairesMensuel,
   InterventionAVenir,
 } from './stats';
+export type {
+  Absence,
+  CreateAbsenceDto,
+  UpdateAbsenceDto,
+  AbsenceFilters,
+  AbsenceType,
+} from './absences';

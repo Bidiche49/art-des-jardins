@@ -11,6 +11,7 @@ import { DevisBuilder } from './pages/DevisBuilder';
 import { Factures } from './pages/Factures';
 import { Interventions } from './pages/Interventions';
 import { Calendar } from './pages/Calendar';
+import { Absences } from './pages/Absences';
 import { Login } from './pages/Login';
 import { SignerDevis } from './pages/SignerDevis';
 import { ProtectedRoute } from './components/auth/ProtectedRoute';
@@ -43,6 +44,7 @@ function App() {
           <Route path="interventions" element={<Interventions />} />
           <Route path="interventions/:id" element={<Interventions />} />
           <Route path="calendar" element={<Calendar />} />
+          <Route path="absences" element={<Absences />} />
         </Route>
       </Routes>
       <Toaster

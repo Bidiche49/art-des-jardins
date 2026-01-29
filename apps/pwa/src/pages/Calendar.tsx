@@ -4,7 +4,7 @@ import withDragAndDrop, { EventInteractionArgs } from 'react-big-calendar/lib/ad
 import { format, parse, startOfWeek, getDay, startOfMonth, endOfMonth, addMonths, subMonths } from 'date-fns';
 import { fr } from 'date-fns/locale';
 import { useNavigate } from 'react-router-dom';
-import { interventionsApi } from '@/api';
+import { interventionsApi, absencesApi, type Absence } from '@/api';
 import { useAuthStore } from '@/stores/auth';
 import { Card, Button, Spinner } from '@/components/ui';
 import { CalendarToolbar } from '@/components/calendar/CalendarToolbar';
@@ -30,9 +30,12 @@ interface CalendarEventData {
   title: string;
   start: Date;
   end: Date;
+  allDay?: boolean;
   resource: {
-    intervention: any;
+    intervention?: any;
+    absence?: Absence;
     color: string;
+    type: 'intervention' | 'absence';
   };
 }
 
@@ -47,15 +50,31 @@ const EMPLOYEE_COLORS = [
   '#4f46e5', // indigo
 ];
 
+const ABSENCE_COLORS: Record<string, string> = {
+  conge: '#f59e0b', // amber
+  maladie: '#ef4444', // red
+  formation: '#8b5cf6', // violet
+  autre: '#6b7280', // gray
+};
+
+const ABSENCE_LABELS: Record<string, string> = {
+  conge: 'Conge',
+  maladie: 'Maladie',
+  formation: 'Formation',
+  autre: 'Autre',
+};
+
 export function Calendar() {
   const navigate = useNavigate();
   const { user } = useAuthStore();
   const [view, setView] = useState<View>('month');
   const [date, setDate] = useState(new Date());
   const [events, setEvents] = useState<CalendarEventData[]>([]);
+  const [absenceEvents, setAbsenceEvents] = useState<CalendarEventData[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [employees, setEmployees] = useState<Array<{ id: string; nom: string; prenom: string }>>([]);
   const [selectedEmployee, setSelectedEmployee] = useState<string>('all');
+  const [showAbsences, setShowAbsences] = useState(true);
 
   const employeeColorMap = useMemo(() => {
     const map = new Map<string, string>();
@@ -72,24 +91,33 @@ export function Calendar() {
       const start = startOfMonth(subMonths(date, 1));
       const end = endOfMonth(addMonths(date, 1));
 
-      const response = await interventionsApi.getAll({
-        dateDebut: start.toISOString(),
-        dateFin: end.toISOString(),
-        limit: 500,
-      } as any);
+      // Load interventions and absences in parallel
+      const [interventionsResponse, absencesData] = await Promise.all([
+        interventionsApi.getAll({
+          dateDebut: start.toISOString(),
+          dateFin: end.toISOString(),
+          limit: 500,
+        } as any),
+        absencesApi.getForCalendar(start.toISOString(), end.toISOString()).catch(() => []),
+      ]);
 
-      const interventions = response.data || [];
+      const interventions = interventionsResponse.data || [];
 
-      // Extract unique employees
+      // Extract unique employees from interventions and absences
       const employeeMap = new Map<string, { id: string; nom: string; prenom: string }>();
       interventions.forEach((intervention: any) => {
         if (intervention.employe) {
           employeeMap.set(intervention.employe.id, intervention.employe);
         }
       });
+      absencesData.forEach((absence) => {
+        if (absence.user) {
+          employeeMap.set(absence.user.id, absence.user);
+        }
+      });
       setEmployees(Array.from(employeeMap.values()));
 
-      // Convert to calendar events
+      // Convert interventions to calendar events
       const calendarEvents: CalendarEventData[] = interventions.map((intervention: any) => {
         const startDate = new Date(intervention.heureDebut || intervention.date);
         const endDate = intervention.heureFin
@@ -111,11 +139,33 @@ export function Calendar() {
           resource: {
             intervention,
             color,
+            type: 'intervention' as const,
+          },
+        };
+      });
+
+      // Convert absences to calendar events
+      const absenceCalendarEvents: CalendarEventData[] = absencesData.map((absence) => {
+        const employeeName = absence.user
+          ? `${absence.user.prenom} ${absence.user.nom.charAt(0)}.`
+          : 'Employe';
+
+        return {
+          id: `absence-${absence.id}`,
+          title: `${ABSENCE_LABELS[absence.type]} - ${employeeName}`,
+          start: new Date(absence.dateDebut),
+          end: new Date(absence.dateFin),
+          allDay: true,
+          resource: {
+            absence,
+            color: ABSENCE_COLORS[absence.type] || '#6b7280',
+            type: 'absence' as const,
           },
         };
       });
 
       setEvents(calendarEvents);
+      setAbsenceEvents(absenceCalendarEvents);
     } catch (error) {
       console.error('Failed to load interventions:', error);
       toast.error('Erreur lors du chargement des interventions');
@@ -129,17 +179,37 @@ export function Calendar() {
   }, [loadInterventions]);
 
   const filteredEvents = useMemo(() => {
-    if (selectedEmployee === 'all') return events;
-    return events.filter(
-      (event) =>
-        event.resource.intervention.employeId === selectedEmployee ||
-        (selectedEmployee === 'unassigned' && !event.resource.intervention.employeId)
-    );
-  }, [events, selectedEmployee]);
+    let filtered = events;
+    if (selectedEmployee !== 'all') {
+      filtered = events.filter(
+        (event) =>
+          event.resource.intervention?.employeId === selectedEmployee ||
+          (selectedEmployee === 'unassigned' && !event.resource.intervention?.employeId)
+      );
+    }
+
+    // Add absences if shown
+    if (showAbsences) {
+      let filteredAbsences = absenceEvents;
+      if (selectedEmployee !== 'all' && selectedEmployee !== 'unassigned') {
+        filteredAbsences = absenceEvents.filter(
+          (event) => event.resource.absence?.userId === selectedEmployee
+        );
+      }
+      return [...filtered, ...filteredAbsences];
+    }
+
+    return filtered;
+  }, [events, absenceEvents, selectedEmployee, showAbsences]);
 
   const handleSelectEvent = useCallback(
     (event: CalendarEventData) => {
-      navigate(`/interventions/${event.id}`);
+      if (event.resource.type === 'absence') {
+        // Navigate to absences page
+        navigate('/absences');
+      } else {
+        navigate(`/interventions/${event.id}`);
+      }
     },
     [navigate]
   );
@@ -161,12 +231,12 @@ export function Calendar() {
   const canDrag = user?.role === 'patron';
 
   const draggableAccessor = useCallback(
-    () => canDrag,
+    (event: CalendarEventData) => canDrag && event.resource.type === 'intervention',
     [canDrag]
   );
 
   const resizableAccessor = useCallback(
-    () => canDrag,
+    (event: CalendarEventData) => canDrag && event.resource.type === 'intervention',
     [canDrag]
   );
 
@@ -336,6 +406,19 @@ export function Calendar() {
   );
 
   const eventStyleGetter = useCallback((event: CalendarEventData) => {
+    if (event.resource.type === 'absence') {
+      return {
+        style: {
+          backgroundColor: event.resource.color,
+          borderRadius: '4px',
+          opacity: 0.6,
+          color: 'white',
+          border: '2px dashed white',
+          display: 'block',
+          fontSize: '0.75rem',
+        },
+      };
+    }
     return {
       style: {
         backgroundColor: event.resource.color,
@@ -368,6 +451,15 @@ export function Calendar() {
       <div className="bg-white border-b px-4 py-3 flex items-center justify-between">
         <h1 className="text-xl font-semibold text-gray-900">Calendrier</h1>
         <div className="flex items-center gap-3">
+          <label className="flex items-center gap-2 text-sm text-gray-600 cursor-pointer">
+            <input
+              type="checkbox"
+              checked={showAbsences}
+              onChange={(e) => setShowAbsences(e.target.checked)}
+              className="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
+            />
+            Absences
+          </label>
           <select
             value={selectedEmployee}
             onChange={(e) => setSelectedEmployee(e.target.value)}
@@ -381,6 +473,9 @@ export function Calendar() {
               </option>
             ))}
           </select>
+          <Button size="sm" variant="outline" onClick={() => navigate('/absences')}>
+            Absences
+          </Button>
           {user?.role === 'patron' && (
             <Button size="sm" onClick={() => navigate('/interventions')}>
               + Intervention
@@ -442,7 +537,7 @@ export function Calendar() {
 
       {/* Legend */}
       <div className="bg-white border-t px-4 py-2 flex items-center gap-4 overflow-x-auto">
-        <span className="text-sm text-gray-500 whitespace-nowrap">Legende:</span>
+        <span className="text-sm text-gray-500 whitespace-nowrap">Employes:</span>
         {employees.map((emp) => (
           <div key={emp.id} className="flex items-center gap-1 whitespace-nowrap">
             <div
@@ -458,6 +553,20 @@ export function Calendar() {
           <div className="w-3 h-3 rounded bg-gray-500" />
           <span className="text-sm text-gray-700">Non assigne</span>
         </div>
+        {showAbsences && (
+          <>
+            <span className="text-sm text-gray-500 whitespace-nowrap ml-4">Absences:</span>
+            {Object.entries(ABSENCE_COLORS).map(([type, color]) => (
+              <div key={type} className="flex items-center gap-1 whitespace-nowrap">
+                <div
+                  className="w-3 h-3 rounded border border-dashed border-white"
+                  style={{ backgroundColor: color, opacity: 0.6 }}
+                />
+                <span className="text-sm text-gray-700">{ABSENCE_LABELS[type]}</span>
+              </div>
+            ))}
+          </>
+        )}
       </div>
     </div>
   );

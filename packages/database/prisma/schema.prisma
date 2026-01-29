@@ -67,6 +67,13 @@ enum ModePaiement {
   carte
 }
 
+enum AbsenceType {
+  conge
+  maladie
+  formation
+  autre
+}
+
 // ============================================
 // MODELS
 // ============================================
@@ -90,6 +97,7 @@ model User {
   interventions        Intervention[]
   auditLogs            AuditLog[]
   pushSubscriptions    PushSubscription[]
+  absences             Absence[]
 
   @@map("users")
 }
@@ -334,6 +342,29 @@ model PushSubscription {
 
   @@index([userId])
   @@map("push_subscriptions")
+}
+
+// ============================================
+// ABSENCES / DISPONIBILITES
+// ============================================
+
+model Absence {
+  id        String      @id @default(uuid())
+  userId    String
+  dateDebut DateTime
+  dateFin   DateTime
+  type      AbsenceType
+  motif     String?
+  validee   Boolean     @default(false)
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([dateDebut, dateFin])
+  @@map("absences")
 }
 
 // ============================================

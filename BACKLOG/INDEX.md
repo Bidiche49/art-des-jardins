@@ -19,9 +19,9 @@
 | Type | Pending | Ready | Done | Total |
 |------|---------|-------|------|-------|
 | Bugs | 0 | 0 | 0 | 0 |
-| Features | 2 | 0 | 34 | 36 |
+| Features | 1 | 0 | 35 | 36 |
 | Improvements | 0 | 0 | 0 | 0 |
-| **Total** | **2** | **0** | **34** | **36** |
+| **Total** | **1** | **0** | **35** | **36** |
 
 ---
 
@@ -95,18 +95,17 @@
 |-------|--------|-------------|--------|
 | 1 | FEAT-033 | Vue calendrier interventions | DONE |
 | 2 | FEAT-034 | Drag & drop planification | DONE |
-| 3 | FEAT-035 | Gestion disponibilites employes | PENDING |
+| 3 | FEAT-035 | Gestion disponibilites employes | DONE |
 | 4 | FEAT-036 | Export calendrier iCal | PENDING |
 
 ---
 
 ## Features
 
-### Pending (2)
+### Pending (1)
 
 | ID | Titre | Priorite | Complexite | Tags |
 |----|-------|----------|------------|------|
-| FEAT-035 | Gestion disponibilites employes | Moyenne | M | calendar, employes |
 | FEAT-036 | Export calendrier iCal | Basse | S | calendar, export |
 
 ### Ready (0)
@@ -114,7 +113,7 @@
 | ID | Titre | Priorite | Complexite | Tags |
 |----|-------|----------|------------|------|
 
-### Done (34)
+### Done (35)
 
 | ID | Titre | Priorite | Date resolution |
 |----|-------|----------|-----------------|
@@ -152,6 +151,7 @@
 | FEAT-032 | Rappels interventions | Haute | 2026-01-29 |
 | FEAT-033 | Vue calendrier interventions | Haute | 2026-01-29 |
 | FEAT-034 | Drag & drop planification | Haute | 2026-01-29 |
+| FEAT-035 | Gestion disponibilites employes | Moyenne | 2026-01-29 |
 
 ---
 

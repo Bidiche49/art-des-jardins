@@ -17,6 +17,7 @@ import { StorageModule } from './modules/storage/storage.module';
 import { PdfModule } from './modules/pdf/pdf.module';
 import { SignatureModule } from './modules/signature/signature.module';
 import { NotificationsModule } from './modules/notifications/notifications.module';
+import { AbsencesModule } from './modules/absences/absences.module';
 import { DatabaseModule } from './database/database.module';
 import { envValidationSchema } from './config/env.validation';
 
@@ -100,6 +101,7 @@ import { envValidationSchema } from './config/env.validation';
     PdfModule,
     SignatureModule,
     NotificationsModule,
+    AbsencesModule,
   ],
   providers: [
     {
