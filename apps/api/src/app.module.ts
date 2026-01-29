@@ -15,6 +15,7 @@ import { ExportModule } from './modules/export/export.module';
 import { StorageModule } from './modules/storage/storage.module';
 import { PdfModule } from './modules/pdf/pdf.module';
 import { SignatureModule } from './modules/signature/signature.module';
+import { NotificationsModule } from './modules/notifications/notifications.module';
 import { DatabaseModule } from './database/database.module';
 import { envValidationSchema } from './config/env.validation';
 
@@ -96,6 +97,7 @@ import { envValidationSchema } from './config/env.validation';
     StorageModule,
     PdfModule,
     SignatureModule,
+    NotificationsModule,
   ],
   providers: [
     {
