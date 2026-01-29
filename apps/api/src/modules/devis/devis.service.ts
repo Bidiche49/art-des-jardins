@@ -270,4 +270,30 @@ export class DevisService {
       where: { id },
     });
   }
+
+  async findOneWithDetails(id: string) {
+    const devis = await this.findOne(id);
+
+    // Map to PDF-compatible format
+    return {
+      numero: devis.numero,
+      dateCreation: devis.dateEmission,
+      dateValidite: devis.dateValidite,
+      notes: devis.notes,
+      totalHT: devis.totalHT,
+      tauxTVA: 20, // Default TVA rate
+      montantTVA: devis.totalTVA,
+      totalTTC: devis.totalTTC,
+      chantier: {
+        client: devis.chantier.client,
+      },
+      lignes: devis.lignes.map((l) => ({
+        designation: l.description,
+        quantite: l.quantite,
+        unite: l.unite,
+        prixUnitaire: l.prixUnitaireHT,
+        montantHT: l.montantHT,
+      })),
+    };
+  }
 }

@@ -1,17 +1,35 @@
 import 'reflect-metadata';
+import { setupTestDb, teardownTestDb, cleanTestDb, seedTestDb } from './helpers/test-db';
 
 // Increase timeout for async operations
 jest.setTimeout(30000);
 
-// Mock console.error to keep test output clean (optional)
-// Uncomment if you want to suppress error logs during tests
-// jest.spyOn(console, 'error').mockImplementation(() => {});
+// Use real database if USE_REAL_DB is set
+const useRealDb = process.env.USE_REAL_DB === 'true';
 
 // Global test utilities
 beforeAll(async () => {
-  // Setup code that runs once before all tests
+  if (useRealDb) {
+    console.log('Setting up test database...');
+    await setupTestDb();
+    await cleanTestDb();
+    await seedTestDb();
+    console.log('Test database ready');
+  }
 });
 
 afterAll(async () => {
-  // Cleanup code that runs once after all tests
+  if (useRealDb) {
+    await cleanTestDb();
+    await teardownTestDb();
+    console.log('Test database cleaned up');
+  }
+});
+
+// Clean between test suites if using real DB
+afterEach(async () => {
+  if (useRealDb && process.env.CLEAN_BETWEEN_TESTS === 'true') {
+    await cleanTestDb();
+    await seedTestDb();
+  }
 });

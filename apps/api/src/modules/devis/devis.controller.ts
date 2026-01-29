@@ -9,8 +9,11 @@ import {
   Param,
   Query,
   UseGuards,
+  Res,
+  StreamableFile,
 } from '@nestjs/common';
-import { ApiTags, ApiOperation, ApiBearerAuth, ApiResponse } from '@nestjs/swagger';
+import { Response } from 'express';
+import { ApiTags, ApiOperation, ApiBearerAuth, ApiResponse, ApiProduces } from '@nestjs/swagger';
 import { DevisService } from './devis.service';
 import { CreateDevisDto } from './dto/create-devis.dto';
 import { UpdateDevisDto } from './dto/update-devis.dto';
@@ -19,13 +22,19 @@ import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { RolesGuard } from '../auth/guards/roles.guard';
 import { Roles } from '../auth/decorators/roles.decorator';
 import { UserRole, DevisStatut } from '@art-et-jardin/database';
+import { PdfService } from '../pdf/pdf.service';
+import { MailService } from '../mail/mail.service';
 
 @ApiTags('Devis')
 @ApiBearerAuth()
 @UseGuards(JwtAuthGuard, RolesGuard)
 @Controller('devis')
 export class DevisController {
-  constructor(private devisService: DevisService) {}
+  constructor(
+    private devisService: DevisService,
+    private pdfService: PdfService,
+    private mailService: MailService,
+  ) {}
 
   @Get()
   @ApiOperation({ summary: 'Lister les devis' })
@@ -40,6 +49,96 @@ export class DevisController {
   @ApiResponse({ status: 404, description: 'Devis non trouve' })
   findOne(@Param('id') id: string) {
     return this.devisService.findOne(id);
+  }
+
+  @Get(':id/pdf')
+  @ApiOperation({ summary: 'Telecharger le PDF du devis' })
+  @ApiProduces('application/pdf')
+  @ApiResponse({ status: 200, description: 'PDF du devis' })
+  @ApiResponse({ status: 404, description: 'Devis non trouve' })
+  async getPdf(@Param('id') id: string, @Res({ passthrough: true }) res: Response) {
+    const devis = await this.devisService.findOneWithDetails(id);
+    const client = devis.chantier.client;
+
+    const pdfBuffer = await this.pdfService.generateDevis({
+      numero: devis.numero,
+      dateCreation: devis.dateCreation,
+      dateValidite: devis.dateValidite,
+      client: {
+        nom: client.nom,
+        prenom: client.prenom || undefined,
+        raisonSociale: client.raisonSociale || undefined,
+        adresse: client.adresse,
+        codePostal: client.codePostal,
+        ville: client.ville,
+        email: client.email,
+      },
+      lignes: devis.lignes.map((l) => ({
+        designation: l.designation,
+        quantite: Number(l.quantite),
+        unite: l.unite,
+        prixUnitaire: Number(l.prixUnitaire),
+        montantHT: Number(l.montantHT),
+      })),
+      totalHT: Number(devis.totalHT),
+      tauxTVA: Number(devis.tauxTVA),
+      montantTVA: Number(devis.montantTVA),
+      totalTTC: Number(devis.totalTTC),
+      notes: devis.notes || undefined,
+    });
+
+    res.set({
+      'Content-Type': 'application/pdf',
+      'Content-Disposition': `attachment; filename="devis-${devis.numero}.pdf"`,
+    });
+
+    return new StreamableFile(pdfBuffer);
+  }
+
+  @Post(':id/send')
+  @ApiOperation({ summary: 'Envoyer le devis par email au client' })
+  @ApiResponse({ status: 200, description: 'Devis envoye' })
+  @ApiResponse({ status: 404, description: 'Devis non trouve' })
+  async sendByEmail(@Param('id') id: string) {
+    const devis = await this.devisService.findOneWithDetails(id);
+    const client = devis.chantier.client;
+    const clientName = client.raisonSociale || `${client.prenom || ''} ${client.nom}`.trim();
+
+    const pdfBuffer = await this.pdfService.generateDevis({
+      numero: devis.numero,
+      dateCreation: devis.dateCreation,
+      dateValidite: devis.dateValidite,
+      client: {
+        nom: client.nom,
+        prenom: client.prenom || undefined,
+        raisonSociale: client.raisonSociale || undefined,
+        adresse: client.adresse,
+        codePostal: client.codePostal,
+        ville: client.ville,
+        email: client.email,
+      },
+      lignes: devis.lignes.map((l) => ({
+        designation: l.designation,
+        quantite: Number(l.quantite),
+        unite: l.unite,
+        prixUnitaire: Number(l.prixUnitaire),
+        montantHT: Number(l.montantHT),
+      })),
+      totalHT: Number(devis.totalHT),
+      tauxTVA: Number(devis.tauxTVA),
+      montantTVA: Number(devis.montantTVA),
+      totalTTC: Number(devis.totalTTC),
+      notes: devis.notes || undefined,
+    });
+
+    const sent = await this.mailService.sendDevis(client.email, devis.numero, clientName, pdfBuffer);
+
+    // Update status to 'envoye' if sent successfully
+    if (sent) {
+      await this.devisService.updateStatut(id, 'envoye' as any);
+    }
+
+    return { success: sent, email: client.email };
   }
 
   @Post()

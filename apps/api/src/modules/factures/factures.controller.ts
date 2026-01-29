@@ -9,8 +9,11 @@ import {
   Param,
   Query,
   UseGuards,
+  Res,
+  StreamableFile,
 } from '@nestjs/common';
-import { ApiTags, ApiOperation, ApiBearerAuth, ApiResponse } from '@nestjs/swagger';
+import { Response } from 'express';
+import { ApiTags, ApiOperation, ApiBearerAuth, ApiResponse, ApiProduces } from '@nestjs/swagger';
 import { FacturesService } from './factures.service';
 import { CreateFactureDto } from './dto/create-facture.dto';
 import { UpdateFactureDto } from './dto/update-facture.dto';
@@ -19,13 +22,19 @@ import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { RolesGuard } from '../auth/guards/roles.guard';
 import { Roles } from '../auth/decorators/roles.decorator';
 import { UserRole, FactureStatut } from '@art-et-jardin/database';
+import { PdfService } from '../pdf/pdf.service';
+import { MailService } from '../mail/mail.service';
 
 @ApiTags('Factures')
 @ApiBearerAuth()
 @UseGuards(JwtAuthGuard, RolesGuard)
 @Controller('factures')
 export class FacturesController {
-  constructor(private facturesService: FacturesService) {}
+  constructor(
+    private facturesService: FacturesService,
+    private pdfService: PdfService,
+    private mailService: MailService,
+  ) {}
 
   @Get()
   @ApiOperation({ summary: 'Lister les factures' })
@@ -40,6 +49,98 @@ export class FacturesController {
   @ApiResponse({ status: 404, description: 'Facture non trouvee' })
   findOne(@Param('id') id: string) {
     return this.facturesService.findOne(id);
+  }
+
+  @Get(':id/pdf')
+  @ApiOperation({ summary: 'Telecharger le PDF de la facture' })
+  @ApiProduces('application/pdf')
+  @ApiResponse({ status: 200, description: 'PDF de la facture' })
+  @ApiResponse({ status: 404, description: 'Facture non trouvee' })
+  async getPdf(@Param('id') id: string, @Res({ passthrough: true }) res: Response) {
+    const facture = await this.facturesService.findOneWithDetails(id);
+    const client = facture.devis.chantier.client;
+
+    const pdfBuffer = await this.pdfService.generateFacture({
+      numero: facture.numero,
+      dateCreation: facture.dateEmission,
+      dateEcheance: facture.dateEcheance,
+      devisNumero: facture.devis.numero,
+      client: {
+        nom: client.nom,
+        prenom: client.prenom || undefined,
+        raisonSociale: client.raisonSociale || undefined,
+        adresse: client.adresse,
+        codePostal: client.codePostal,
+        ville: client.ville,
+        email: client.email,
+      },
+      lignes: facture.lignes.map((l) => ({
+        designation: l.description,
+        quantite: Number(l.quantite),
+        unite: l.unite,
+        prixUnitaire: Number(l.prixUnitaireHT),
+        montantHT: Number(l.montantHT),
+      })),
+      totalHT: Number(facture.totalHT),
+      tauxTVA: 20,
+      montantTVA: Number(facture.totalTVA),
+      totalTTC: Number(facture.totalTTC),
+      notes: facture.notes || undefined,
+    });
+
+    res.set({
+      'Content-Type': 'application/pdf',
+      'Content-Disposition': `attachment; filename="facture-${facture.numero}.pdf"`,
+    });
+
+    return new StreamableFile(pdfBuffer);
+  }
+
+  @Post(':id/send')
+  @ApiOperation({ summary: 'Envoyer la facture par email au client' })
+  @ApiResponse({ status: 200, description: 'Facture envoyee' })
+  @ApiResponse({ status: 404, description: 'Facture non trouvee' })
+  async sendByEmail(@Param('id') id: string) {
+    const facture = await this.facturesService.findOneWithDetails(id);
+    const client = facture.devis.chantier.client;
+    const clientName = client.raisonSociale || `${client.prenom || ''} ${client.nom}`.trim();
+
+    const pdfBuffer = await this.pdfService.generateFacture({
+      numero: facture.numero,
+      dateCreation: facture.dateEmission,
+      dateEcheance: facture.dateEcheance,
+      devisNumero: facture.devis.numero,
+      client: {
+        nom: client.nom,
+        prenom: client.prenom || undefined,
+        raisonSociale: client.raisonSociale || undefined,
+        adresse: client.adresse,
+        codePostal: client.codePostal,
+        ville: client.ville,
+        email: client.email,
+      },
+      lignes: facture.lignes.map((l) => ({
+        designation: l.description,
+        quantite: Number(l.quantite),
+        unite: l.unite,
+        prixUnitaire: Number(l.prixUnitaireHT),
+        montantHT: Number(l.montantHT),
+      })),
+      totalHT: Number(facture.totalHT),
+      tauxTVA: 20,
+      montantTVA: Number(facture.totalTVA),
+      totalTTC: Number(facture.totalTTC),
+      notes: facture.notes || undefined,
+    });
+
+    const sent = await this.mailService.sendFacture(client.email, facture.numero, clientName, pdfBuffer);
+
+    // Update status to 'envoyee' if sent successfully
+    if (sent) {
+      await this.facturesService.updateStatut(id, 'envoyee' as any);
+    }
+
+    return { success: sent, email: client.email };
   }
 
   @Post()

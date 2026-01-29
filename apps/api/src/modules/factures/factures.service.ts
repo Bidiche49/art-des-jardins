@@ -273,4 +273,8 @@ export class FacturesService {
       where: { id },
     });
   }
+
+  async findOneWithDetails(id: string) {
+    return this.findOne(id);
+  }
 }
