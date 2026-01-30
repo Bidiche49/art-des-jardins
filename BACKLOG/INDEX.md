@@ -9,7 +9,7 @@
 | Type | Prochain ID |
 |------|-------------|
 | BUG | BUG-001 |
-| FEAT | FEAT-037 |
+| FEAT | FEAT-046 |
 | IMP | IMP-001 |
 
 ---
@@ -19,9 +19,9 @@
 | Type | Pending | Ready | Done | Total |
 |------|---------|-------|------|-------|
 | Bugs | 0 | 0 | 0 | 0 |
-| Features | 0 | 0 | 36 | 36 |
+| Features | 0 | 0 | 45 | 45 |
 | Improvements | 0 | 0 | 0 | 0 |
-| **Total** | **0** | **0** | **36** | **36** |
+| **Total** | **0** | **0** | **45** | **45** |
 
 ---
 
@@ -102,19 +102,50 @@
 
 ---
 
+## Roadmap Phase 6 - Portail Client
+
+| Ordre | Ticket | Description | Statut |
+|-------|--------|-------------|--------|
+| 1 | FEAT-037 | Authentification client portail | DONE |
+| 2 | FEAT-038 | Dashboard client personnel | PENDING |
+| 3 | FEAT-039 | Consultation devis et factures | PENDING |
+| 4 | FEAT-040 | Suivi chantiers temps reel | PENDING |
+| 5 | FEAT-041 | Messagerie client-entreprise | PENDING |
+
+---
+
+## Roadmap Phase 7 - Reporting/Analytics
+
+| Ordre | Ticket | Description | Statut |
+|-------|--------|-------------|--------|
+| 1 | FEAT-042 | Dashboard analytics KPI | PENDING |
+| 2 | FEAT-043 | Rapports financiers | PENDING |
+| 3 | FEAT-044 | Rapports d'activite | PENDING |
+| 4 | FEAT-045 | Exports statistiques avances | PENDING |
+
+---
+
 ## Features
 
-### Pending (0)
+### Pending (8)
 
 | ID | Titre | Priorite | Complexite | Tags |
 |----|-------|----------|------------|------|
+| FEAT-038 | Dashboard client personnel | Haute | M | ui, api, portail-client |
+| FEAT-039 | Consultation devis et factures | Haute | M | ui, api, portail-client, pdf |
+| FEAT-040 | Suivi chantiers temps reel | Moyenne | M | ui, api, portail-client, realtime |
+| FEAT-041 | Messagerie client-entreprise | Moyenne | L | ui, api, portail-client, messaging |
+| FEAT-042 | Dashboard analytics KPI | Haute | L | ui, api, analytics, dashboard |
+| FEAT-043 | Rapports financiers | Haute | M | api, analytics, finance, export |
+| FEAT-044 | Rapports d'activite | Moyenne | M | api, analytics, activity |
+| FEAT-045 | Exports statistiques avances | Moyenne | S | api, analytics, export |
 
 ### Ready (0)
 
 | ID | Titre | Priorite | Complexite | Tags |
 |----|-------|----------|------------|------|
 
-### Done (36)
+### Done (37)
 
 | ID | Titre | Priorite | Date resolution |
 |----|-------|----------|-----------------|
@@ -154,6 +185,7 @@
 | FEAT-034 | Drag & drop planification | Haute | 2026-01-29 |
 | FEAT-035 | Gestion disponibilites employes | Moyenne | 2026-01-29 |
 | FEAT-036 | Export calendrier iCal | Basse | 2026-01-29 |
+| FEAT-037 | Authentification client portail | Haute | 2026-01-30 |
 
 ---
 
