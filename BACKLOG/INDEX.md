@@ -9,7 +9,7 @@
 | Type | Prochain ID |
 |------|-------------|
 | BUG | BUG-001 |
-| FEAT | FEAT-051 |
+| FEAT | FEAT-056 |
 | IMP | IMP-001 |
 
 ---
@@ -19,9 +19,9 @@
 | Type | Pending | Ready | Done | Total |
 |------|---------|-------|------|-------|
 | Bugs | 0 | 0 | 0 | 0 |
-| Features | 5 | 0 | 45 | 50 |
+| Features | 10 | 0 | 45 | 55 |
 | Improvements | 0 | 0 | 0 | 0 |
-| **Total** | **5** | **0** | **45** | **50** |
+| **Total** | **10** | **0** | **45** | **55** |
 
 ---
 
@@ -141,12 +141,31 @@
 
 ---
 
+## Roadmap Phase 9 - Zero Perte / Resilience (CRITIQUE)
+
+> **REGLE BUSINESS:** Aucune perte de donnees acceptable. Documents toujours accessibles.
+
+| Ordre | Ticket | Description | Statut |
+|-------|--------|-------------|--------|
+| 1 | FEAT-051 | Copie automatique email entreprise (BCC) | PENDING |
+| 2 | FEAT-052 | Envoi automatique documents a chaque etape | PENDING |
+| 3 | FEAT-053 | Backup automatique quotidien BDD | PENDING |
+| 4 | FEAT-054 | Archivage automatique PDFs sur S3 | PENDING |
+| 5 | FEAT-055 | Historique complet des emails envoyes | PENDING |
+
+---
+
 ## Features
 
-### Pending (5)
+### Pending (10)
 
 | ID | Titre | Priorite | Complexite | Tags |
 |----|-------|----------|------------|------|
+| FEAT-051 | Copie automatique email entreprise (BCC) | Critique | S | email, backup, resilience, zero-perte |
+| FEAT-052 | Envoi automatique documents a chaque etape | Critique | M | email, workflow, auto-send, zero-perte |
+| FEAT-053 | Backup automatique quotidien BDD | Critique | M | backup, resilience, database, zero-perte |
+| FEAT-054 | Archivage automatique PDFs sur S3 | Critique | M | s3, archive, pdf, zero-perte |
+| FEAT-055 | Historique complet des emails envoyes | Haute | M | email, audit, historique, zero-perte |
 | FEAT-046 | Service Worker et cache offline | Critique | L | pwa, offline, service-worker, cache |
 | FEAT-047 | IndexedDB pour stockage local | Critique | L | pwa, offline, indexeddb, storage |
 | FEAT-048 | Synchronisation des actions offline | Haute | XL | pwa, offline, sync, queue |
