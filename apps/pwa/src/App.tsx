@@ -12,9 +12,21 @@ import { Factures } from './pages/Factures';
 import { Interventions } from './pages/Interventions';
 import { Calendar } from './pages/Calendar';
 import { Absences } from './pages/Absences';
+import { Analytics } from './pages/Analytics';
+import { FinanceReports } from './pages/FinanceReports';
 import { Login } from './pages/Login';
 import { SignerDevis } from './pages/SignerDevis';
 import { ProtectedRoute } from './components/auth/ProtectedRoute';
+import { ProtectedClientRoute } from './components/auth/ProtectedClientRoute';
+import { ClientLogin } from './pages/client/ClientLogin';
+import { ClientVerify } from './pages/client/ClientVerify';
+import { ClientDashboard } from './pages/client/ClientDashboard';
+import { ClientDevisList } from './pages/client/ClientDevisList';
+import { ClientFacturesList } from './pages/client/ClientFacturesList';
+import { ClientChantiersList } from './pages/client/ClientChantiersList';
+import { ClientChantierDetail } from './pages/client/ClientChantierDetail';
+import { ClientMessages } from './pages/client/ClientMessages';
+import { ClientConversation } from './pages/client/ClientConversation';
 
 function App() {
   return (
@@ -23,6 +35,66 @@ function App() {
         {/* Routes publiques */}
         <Route path="/login" element={<Login />} />
         <Route path="/signer/:token" element={<SignerDevis />} />
+
+        {/* Routes portail client */}
+        <Route path="/client/login" element={<ClientLogin />} />
+        <Route path="/client/verify/:token" element={<ClientVerify />} />
+        <Route
+          path="/client/dashboard"
+          element={
+            <ProtectedClientRoute>
+              <ClientDashboard />
+            </ProtectedClientRoute>
+          }
+        />
+        <Route
+          path="/client/devis"
+          element={
+            <ProtectedClientRoute>
+              <ClientDevisList />
+            </ProtectedClientRoute>
+          }
+        />
+        <Route
+          path="/client/factures"
+          element={
+            <ProtectedClientRoute>
+              <ClientFacturesList />
+            </ProtectedClientRoute>
+          }
+        />
+        <Route
+          path="/client/chantiers"
+          element={
+            <ProtectedClientRoute>
+              <ClientChantiersList />
+            </ProtectedClientRoute>
+          }
+        />
+        <Route
+          path="/client/chantiers/:id"
+          element={
+            <ProtectedClientRoute>
+              <ClientChantierDetail />
+            </ProtectedClientRoute>
+          }
+        />
+        <Route
+          path="/client/messages"
+          element={
+            <ProtectedClientRoute>
+              <ClientMessages />
+            </ProtectedClientRoute>
+          }
+        />
+        <Route
+          path="/client/messages/:id"
+          element={
+            <ProtectedClientRoute>
+              <ClientConversation />
+            </ProtectedClientRoute>
+          }
+        />
         <Route
           path="/"
           element={
@@ -45,6 +117,8 @@ function App() {
           <Route path="interventions/:id" element={<Interventions />} />
           <Route path="calendar" element={<Calendar />} />
           <Route path="absences" element={<Absences />} />
+          <Route path="analytics" element={<Analytics />} />
+          <Route path="analytics/finance" element={<FinanceReports />} />
         </Route>
       </Routes>
       <Toaster

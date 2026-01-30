@@ -19,6 +19,10 @@ import { SignatureModule } from './modules/signature/signature.module';
 import { NotificationsModule } from './modules/notifications/notifications.module';
 import { AbsencesModule } from './modules/absences/absences.module';
 import { CalendarModule } from './modules/calendar/calendar.module';
+import { ClientAuthModule } from './modules/client-auth/client-auth.module';
+import { ClientPortalModule } from './modules/client-portal/client-portal.module';
+import { MessagingModule } from './modules/messaging/messaging.module';
+import { AnalyticsModule } from './modules/analytics/analytics.module';
 import { DatabaseModule } from './database/database.module';
 import { envValidationSchema } from './config/env.validation';
 
@@ -104,6 +108,10 @@ import { envValidationSchema } from './config/env.validation';
     NotificationsModule,
     AbsencesModule,
     CalendarModule,
+    ClientAuthModule,
+    ClientPortalModule,
+    MessagingModule,
+    AnalyticsModule,
   ],
   providers: [
     {
