@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { analyticsApi, DashboardKPIs } from '@/api/analytics';
 
 export function Analytics() {
@@ -49,20 +50,28 @@ export function Analytics() {
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-bold text-gray-900">Tableau de bord</h1>
-        <select
-          value={year}
-          onChange={(e) => setYear(parseInt(e.target.value, 10))}
-          className="px-3 py-2 border rounded-lg focus:ring-2 focus:ring-green-500"
-        >
-          {[...Array(5)].map((_, i) => {
-            const y = new Date().getFullYear() - i;
-            return (
-              <option key={y} value={y}>
-                {y}
-              </option>
-            );
-          })}
-        </select>
+        <div className="flex items-center space-x-3">
+          <Link
+            to="/analytics/finance"
+            className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
+          >
+            Rapports financiers
+          </Link>
+          <select
+            value={year}
+            onChange={(e) => setYear(parseInt(e.target.value, 10))}
+            className="px-3 py-2 border rounded-lg focus:ring-2 focus:ring-green-500"
+          >
+            {[...Array(5)].map((_, i) => {
+              const y = new Date().getFullYear() - i;
+              return (
+                <option key={y} value={y}>
+                  {y}
+                </option>
+              );
+            })}
+          </select>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">

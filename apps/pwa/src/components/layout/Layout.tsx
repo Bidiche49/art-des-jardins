@@ -4,11 +4,12 @@ import { useUIStore } from '@/stores/ui';
 import { NotificationToggle } from '@/components/NotificationToggle';
 
 const navigation = [
-  { name: 'Accueil', href: '/', icon: '📊' },
+  { name: 'Accueil', href: '/', icon: '🏠' },
   { name: 'Clients', href: '/clients', icon: '👥' },
   { name: 'Chantiers', href: '/chantiers', icon: '🏗️' },
   { name: 'Devis', href: '/devis', icon: '📋' },
   { name: 'Calendrier', href: '/calendar', icon: '📅' },
+  { name: 'Analytics', href: '/analytics', icon: '📊' },
 ];
 
 export function Layout() {
