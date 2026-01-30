@@ -19,9 +19,9 @@
 | Type | Pending | Ready | Done | Total |
 |------|---------|-------|------|-------|
 | Bugs | 0 | 0 | 0 | 0 |
-| Features | 10 | 0 | 45 | 55 |
+| Features | 5 | 0 | 50 | 55 |
 | Improvements | 0 | 0 | 0 | 0 |
-| **Total** | **10** | **0** | **45** | **55** |
+| **Total** | **5** | **0** | **50** | **55** |
 
 ---
 
@@ -129,15 +129,17 @@
 
 ---
 
-## Roadmap Phase 8 - Offline-first PWA
+## Roadmap Phase 8 - Offline-first PWA (COMPLETE)
 
 | Ordre | Ticket | Description | Statut |
 |-------|--------|-------------|--------|
-| 1 | FEAT-046 | Service Worker et cache offline | PENDING |
-| 2 | FEAT-047 | IndexedDB pour stockage local | PENDING |
-| 3 | FEAT-048 | Synchronisation des actions offline | PENDING |
-| 4 | FEAT-049 | Tests e2e Portail Client et Analytics | PENDING |
-| 5 | FEAT-050 | Mode sombre PWA | PENDING |
+| 1 | FEAT-046 | Service Worker et cache offline | DONE |
+| 2 | FEAT-047 | IndexedDB pour stockage local | DONE |
+| 3 | FEAT-048 | Synchronisation des actions offline | DONE |
+| 4 | FEAT-049 | Tests e2e Portail Client et Analytics | DONE |
+| 5 | FEAT-050 | Mode sombre PWA | DONE |
+
+> Phase 8 terminee le 2026-01-30.
 
 ---
 
@@ -157,7 +159,7 @@
 
 ## Features
 
-### Pending (10)
+### Pending (5)
 
 | ID | Titre | Priorite | Complexite | Tags |
 |----|-------|----------|------------|------|
@@ -166,18 +168,13 @@
 | FEAT-053 | Backup automatique quotidien BDD | Critique | M | backup, resilience, database, zero-perte |
 | FEAT-054 | Archivage automatique PDFs sur S3 | Critique | M | s3, archive, pdf, zero-perte |
 | FEAT-055 | Historique complet des emails envoyes | Haute | M | email, audit, historique, zero-perte |
-| FEAT-046 | Service Worker et cache offline | Critique | L | pwa, offline, service-worker, cache |
-| FEAT-047 | IndexedDB pour stockage local | Critique | L | pwa, offline, indexeddb, storage |
-| FEAT-048 | Synchronisation des actions offline | Haute | XL | pwa, offline, sync, queue |
-| FEAT-049 | Tests e2e Portail Client et Analytics | Haute | L | tests, e2e, portail-client, analytics |
-| FEAT-050 | Mode sombre PWA | Basse | M | pwa, ui, theme, dark-mode |
 
 ### Ready (0)
 
 | ID | Titre | Priorite | Complexite | Tags |
 |----|-------|----------|------------|------|
 
-### Done (45)
+### Done (50)
 
 | ID | Titre | Priorite | Date resolution |
 |----|-------|----------|-----------------|
@@ -226,6 +223,11 @@
 | FEAT-043 | Rapports financiers | Haute | 2026-01-30 |
 | FEAT-044 | Rapports d'activite | Moyenne | 2026-01-30 |
 | FEAT-045 | Exports statistiques avances | Moyenne | 2026-01-30 |
+| FEAT-046 | Service Worker et cache offline | Critique | 2026-01-30 |
+| FEAT-047 | IndexedDB pour stockage local | Critique | 2026-01-30 |
+| FEAT-048 | Synchronisation des actions offline | Haute | 2026-01-30 |
+| FEAT-049 | Tests e2e Portail Client et Analytics | Haute | 2026-01-30 |
+| FEAT-050 | Mode sombre PWA | Basse | 2026-01-30 |
 
 ---
 

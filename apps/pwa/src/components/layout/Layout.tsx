@@ -1,7 +1,7 @@
-import { Outlet, NavLink, useNavigate } from 'react-router-dom';
+import { Outlet, NavLink, useNavigate, Link } from 'react-router-dom';
 import { useAuthStore } from '@/stores/auth';
-import { useUIStore } from '@/stores/ui';
 import { NotificationToggle } from '@/components/NotificationToggle';
+import { OfflineIndicator } from '@/components/OfflineIndicator';
 
 const navigation = [
   { name: 'Accueil', href: '/', icon: '🏠' },
@@ -15,7 +15,6 @@ const navigation = [
 export function Layout() {
   const navigate = useNavigate();
   const { user, logout } = useAuthStore();
-  const { isOnline, pendingSyncCount } = useUIStore();
 
   const handleLogout = () => {
     logout();
@@ -23,25 +22,23 @@ export function Layout() {
   };
 
   return (
-    <div className="h-full flex flex-col">
-      <header className="bg-primary-600 text-white safe-top">
+    <div className="h-full flex flex-col dark:bg-gray-900">
+      <header className="bg-primary-600 dark:bg-primary-800 text-white safe-top">
         <div className="px-4 py-3 flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <span className="text-xl">🌿</span>
             <span className="font-semibold">Art & Jardin</span>
-            {!isOnline && (
-              <span className="ml-2 px-2 py-0.5 bg-yellow-500 text-yellow-900 text-xs rounded-full">
-                Hors ligne
-              </span>
-            )}
-            {pendingSyncCount > 0 && (
-              <span className="ml-1 px-2 py-0.5 bg-blue-500 text-white text-xs rounded-full">
-                {pendingSyncCount} en attente
-              </span>
-            )}
+            <OfflineIndicator variant="badge" />
           </div>
           <div className="flex items-center space-x-3">
             <NotificationToggle compact />
+            <Link
+              to="/settings"
+              className="text-primary-100 hover:text-white"
+              title="Parametres"
+            >
+              ⚙️
+            </Link>
             <span className="text-sm text-primary-100">
               {user?.prenom} {user?.nom}
             </span>
@@ -55,11 +52,11 @@ export function Layout() {
         </div>
       </header>
 
-      <main className="flex-1 overflow-auto p-4 bg-gray-50">
+      <main className="flex-1 overflow-auto p-4 bg-gray-50 dark:bg-gray-900">
         <Outlet />
       </main>
 
-      <nav className="bg-white border-t safe-bottom shadow-lg">
+      <nav className="bg-white dark:bg-gray-800 border-t dark:border-gray-700 safe-bottom shadow-lg">
         <div className="flex justify-around">
           {navigation.map((item) => (
             <NavLink
@@ -69,8 +66,8 @@ export function Layout() {
               className={({ isActive }) =>
                 `flex flex-col items-center py-2 px-3 text-xs transition-colors ${
                   isActive
-                    ? 'text-primary-600'
-                    : 'text-gray-500 hover:text-gray-700'
+                    ? 'text-primary-600 dark:text-primary-400'
+                    : 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300'
                 }`
               }
             >

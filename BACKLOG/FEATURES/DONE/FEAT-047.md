@@ -1,7 +1,7 @@
 # FEAT-047: IndexedDB pour stockage local
 
 **Type:** Feature
-**Statut:** A faire
+**Statut:** Fait
 **Priorite:** Critique
 **Complexite:** L
 **Tags:** pwa, offline, indexeddb, storage

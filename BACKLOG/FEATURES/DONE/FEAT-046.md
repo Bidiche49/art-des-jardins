@@ -1,7 +1,7 @@
 # FEAT-046: Service Worker et cache offline
 
 **Type:** Feature
-**Statut:** A faire
+**Statut:** Fait
 **Priorite:** Critique
 **Complexite:** L
 **Tags:** pwa, offline, service-worker, cache

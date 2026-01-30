@@ -1,7 +1,7 @@
 # FEAT-050: Mode sombre PWA
 
 **Type:** Feature
-**Statut:** A faire
+**Statut:** Fait
 **Priorite:** Basse
 **Complexite:** M
 **Tags:** pwa, ui, theme, dark-mode

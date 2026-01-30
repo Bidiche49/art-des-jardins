@@ -1,7 +1,7 @@
 # FEAT-048: Synchronisation des actions offline
 
 **Type:** Feature
-**Statut:** A faire
+**Statut:** Fait
 **Priorite:** Haute
 **Complexite:** XL
 **Tags:** pwa, offline, sync, queue

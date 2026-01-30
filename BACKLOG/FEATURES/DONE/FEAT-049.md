@@ -1,7 +1,7 @@
 # FEAT-049: Tests e2e Portail Client et Analytics
 
 **Type:** Feature
-**Statut:** A faire
+**Statut:** Fait
 **Priorite:** Haute
 **Complexite:** L
 **Tags:** tests, e2e, portail-client, analytics

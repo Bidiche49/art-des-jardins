@@ -45,6 +45,14 @@ export const createInvalidToken = (): string => {
   return 'invalid.token.here';
 };
 
+export const createClientToken = (clientId: string, email = 'client@test.com'): string => {
+  return jwtService.sign({
+    sub: clientId,
+    email,
+    type: 'client',
+  });
+};
+
 export const getAuthHeader = (token: string): { Authorization: string } => ({
   Authorization: `Bearer ${token}`,
 });

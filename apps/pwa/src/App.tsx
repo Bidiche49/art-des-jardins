@@ -1,6 +1,8 @@
 import { Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { Layout } from './components/layout/Layout';
+import { OfflineIndicator } from './components/OfflineIndicator';
+import { ThemeProvider } from './components/ThemeProvider';
 import { Dashboard } from './pages/Dashboard';
 import { Clients } from './pages/Clients';
 import { ClientDetail } from './pages/ClientDetail';
@@ -14,6 +16,7 @@ import { Calendar } from './pages/Calendar';
 import { Absences } from './pages/Absences';
 import { Analytics } from './pages/Analytics';
 import { FinanceReports } from './pages/FinanceReports';
+import { Settings } from './pages/Settings';
 import { Login } from './pages/Login';
 import { SignerDevis } from './pages/SignerDevis';
 import { ProtectedRoute } from './components/auth/ProtectedRoute';
@@ -30,7 +33,8 @@ import { ClientConversation } from './pages/client/ClientConversation';
 
 function App() {
   return (
-    <>
+    <ThemeProvider>
+      <OfflineIndicator variant="banner" />
       <Routes>
         {/* Routes publiques */}
         <Route path="/login" element={<Login />} />
@@ -119,6 +123,7 @@ function App() {
           <Route path="absences" element={<Absences />} />
           <Route path="analytics" element={<Analytics />} />
           <Route path="analytics/finance" element={<FinanceReports />} />
+          <Route path="settings" element={<Settings />} />
         </Route>
       </Routes>
       <Toaster
@@ -143,7 +148,7 @@ function App() {
           },
         }}
       />
-    </>
+    </ThemeProvider>
   );
 }
 
