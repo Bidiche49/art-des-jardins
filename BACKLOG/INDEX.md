@@ -9,7 +9,7 @@
 | Type | Prochain ID |
 |------|-------------|
 | BUG | BUG-001 |
-| FEAT | FEAT-046 |
+| FEAT | FEAT-051 |
 | IMP | IMP-001 |
 
 ---
@@ -19,9 +19,9 @@
 | Type | Pending | Ready | Done | Total |
 |------|---------|-------|------|-------|
 | Bugs | 0 | 0 | 0 | 0 |
-| Features | 0 | 0 | 45 | 45 |
+| Features | 5 | 0 | 45 | 50 |
 | Improvements | 0 | 0 | 0 | 0 |
-| **Total** | **0** | **0** | **45** | **45** |
+| **Total** | **5** | **0** | **45** | **50** |
 
 ---
 
@@ -102,50 +102,63 @@
 
 ---
 
-## Roadmap Phase 6 - Portail Client
+## Roadmap Phase 6 - Portail Client (COMPLETE)
 
 | Ordre | Ticket | Description | Statut |
 |-------|--------|-------------|--------|
 | 1 | FEAT-037 | Authentification client portail | DONE |
-| 2 | FEAT-038 | Dashboard client personnel | PENDING |
-| 3 | FEAT-039 | Consultation devis et factures | PENDING |
-| 4 | FEAT-040 | Suivi chantiers temps reel | PENDING |
-| 5 | FEAT-041 | Messagerie client-entreprise | PENDING |
+| 2 | FEAT-038 | Dashboard client personnel | DONE |
+| 3 | FEAT-039 | Consultation devis et factures | DONE |
+| 4 | FEAT-040 | Suivi chantiers temps reel | DONE |
+| 5 | FEAT-041 | Messagerie client-entreprise | DONE |
+
+> Phase 6 terminee le 2026-01-30.
 
 ---
 
-## Roadmap Phase 7 - Reporting/Analytics
+## Roadmap Phase 7 - Reporting/Analytics (COMPLETE)
 
 | Ordre | Ticket | Description | Statut |
 |-------|--------|-------------|--------|
-| 1 | FEAT-042 | Dashboard analytics KPI | PENDING |
-| 2 | FEAT-043 | Rapports financiers | PENDING |
-| 3 | FEAT-044 | Rapports d'activite | PENDING |
-| 4 | FEAT-045 | Exports statistiques avances | PENDING |
+| 1 | FEAT-042 | Dashboard analytics KPI | DONE |
+| 2 | FEAT-043 | Rapports financiers | DONE |
+| 3 | FEAT-044 | Rapports d'activite | DONE |
+| 4 | FEAT-045 | Exports statistiques avances | DONE |
+
+> Phase 7 terminee le 2026-01-30.
+
+---
+
+## Roadmap Phase 8 - Offline-first PWA
+
+| Ordre | Ticket | Description | Statut |
+|-------|--------|-------------|--------|
+| 1 | FEAT-046 | Service Worker et cache offline | PENDING |
+| 2 | FEAT-047 | IndexedDB pour stockage local | PENDING |
+| 3 | FEAT-048 | Synchronisation des actions offline | PENDING |
+| 4 | FEAT-049 | Tests e2e Portail Client et Analytics | PENDING |
+| 5 | FEAT-050 | Mode sombre PWA | PENDING |
 
 ---
 
 ## Features
 
-### Pending (8)
+### Pending (5)
 
 | ID | Titre | Priorite | Complexite | Tags |
 |----|-------|----------|------------|------|
-| FEAT-038 | Dashboard client personnel | Haute | M | ui, api, portail-client |
-| FEAT-039 | Consultation devis et factures | Haute | M | ui, api, portail-client, pdf |
-| FEAT-040 | Suivi chantiers temps reel | Moyenne | M | ui, api, portail-client, realtime |
-| FEAT-041 | Messagerie client-entreprise | Moyenne | L | ui, api, portail-client, messaging |
-| FEAT-042 | Dashboard analytics KPI | Haute | L | ui, api, analytics, dashboard |
-| FEAT-043 | Rapports financiers | Haute | M | api, analytics, finance, export |
-| FEAT-044 | Rapports d'activite | Moyenne | M | api, analytics, activity |
-| FEAT-045 | Exports statistiques avances | Moyenne | S | api, analytics, export |
+| FEAT-046 | Service Worker et cache offline | Critique | L | pwa, offline, service-worker, cache |
+| FEAT-047 | IndexedDB pour stockage local | Critique | L | pwa, offline, indexeddb, storage |
+| FEAT-048 | Synchronisation des actions offline | Haute | XL | pwa, offline, sync, queue |
+| FEAT-049 | Tests e2e Portail Client et Analytics | Haute | L | tests, e2e, portail-client, analytics |
+| FEAT-050 | Mode sombre PWA | Basse | M | pwa, ui, theme, dark-mode |
 
 ### Ready (0)
 
 | ID | Titre | Priorite | Complexite | Tags |
 |----|-------|----------|------------|------|
 
-### Done (37)
+### Done (45)
 
 | ID | Titre | Priorite | Date resolution |
 |----|-------|----------|-----------------|
@@ -186,6 +199,14 @@
 | FEAT-035 | Gestion disponibilites employes | Moyenne | 2026-01-29 |
 | FEAT-036 | Export calendrier iCal | Basse | 2026-01-29 |
 | FEAT-037 | Authentification client portail | Haute | 2026-01-30 |
+| FEAT-038 | Dashboard client personnel | Haute | 2026-01-30 |
+| FEAT-039 | Consultation devis et factures | Haute | 2026-01-30 |
+| FEAT-040 | Suivi chantiers temps reel | Moyenne | 2026-01-30 |
+| FEAT-041 | Messagerie client-entreprise | Moyenne | 2026-01-30 |
+| FEAT-042 | Dashboard analytics KPI | Haute | 2026-01-30 |
+| FEAT-043 | Rapports financiers | Haute | 2026-01-30 |
+| FEAT-044 | Rapports d'activite | Moyenne | 2026-01-30 |
+| FEAT-045 | Exports statistiques avances | Moyenne | 2026-01-30 |
 
 ---
 
