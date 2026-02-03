@@ -7,6 +7,7 @@ import { promisify } from 'util';
 import { pipeline } from 'stream';
 import { PrismaService } from '../../database/prisma.service';
 import { StorageService } from '../storage/storage.service';
+import { BackupCryptoService } from './backup-crypto.service';
 
 const pipelineAsync = promisify(pipeline);
 
@@ -22,6 +23,7 @@ export class BackupService implements OnModuleInit {
     private configService: ConfigService,
     private prisma: PrismaService,
     private storage: StorageService,
+    private backupCrypto: BackupCryptoService,
   ) {
     this.databaseUrl = this.configService.get('DATABASE_URL') || '';
     this.backupBucket = this.configService.get('BACKUP_BUCKET') || 'art-et-jardin-backups';
@@ -31,7 +33,12 @@ export class BackupService implements OnModuleInit {
 
   onModuleInit() {
     if (this.backupEnabled && this.storage.isConfigured()) {
-      this.logger.log(`Backup service enabled - daily at 02:00, retention: ${this.retentionDays} days`);
+      const encryptionStatus = this.backupCrypto.isConfigured()
+        ? 'encrypted (AES-256-GCM)'
+        : 'NOT encrypted';
+      this.logger.log(
+        `Backup service enabled - daily at 02:00, retention: ${this.retentionDays} days, ${encryptionStatus}`,
+      );
     } else {
       this.logger.warn('Backup service disabled - enable with BACKUP_ENABLED=true');
     }
@@ -53,10 +60,17 @@ export class BackupService implements OnModuleInit {
   /**
    * Creer un backup manuellement
    */
-  async createBackup(): Promise<{ fileName: string; s3Key: string; size: number }> {
+  async createBackup(): Promise<{
+    fileName: string;
+    s3Key: string;
+    size: number;
+    encrypted: boolean;
+  }> {
     const startTime = Date.now();
     const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
-    const fileName = `backup-${timestamp}.sql.gz`;
+    const isEncrypted = this.backupCrypto.isConfigured();
+    const extension = isEncrypted ? '.sql.gz.enc' : '.sql.gz';
+    const fileName = `backup-${timestamp}${extension}`;
     const s3Key = `backups/${new Date().getFullYear()}/${String(new Date().getMonth() + 1).padStart(2, '0')}/${fileName}`;
 
     try {
@@ -67,16 +81,27 @@ export class BackupService implements OnModuleInit {
         encoding: 'buffer',
       });
 
-      // Compress with gzip
-      this.logger.debug('Compressing backup...');
-      const compressedBuffer = await this.compressBuffer(dumpOutput);
+      let outputBuffer: Buffer;
+
+      if (isEncrypted) {
+        // Compress and encrypt (BackupCryptoService handles both)
+        this.logger.debug('Compressing and encrypting backup...');
+        outputBuffer = await this.backupCrypto.encryptBuffer(dumpOutput);
+      } else {
+        // Compress only
+        this.logger.debug('Compressing backup...');
+        outputBuffer = await this.compressBuffer(dumpOutput);
+      }
 
       // Upload to S3
       this.logger.debug(`Uploading to S3: ${s3Key}`);
+      const contentType = isEncrypted
+        ? 'application/octet-stream'
+        : 'application/gzip';
       const result = await this.storage.uploadBuffer(
-        compressedBuffer,
+        outputBuffer,
         s3Key,
-        'application/gzip',
+        contentType,
         { bucket: this.backupBucket, acl: 'private' },
       );
 
@@ -94,14 +119,15 @@ export class BackupService implements OnModuleInit {
         },
       });
 
+      const encryptionMsg = isEncrypted ? ' (encrypted)' : '';
       this.logger.log(
-        `Backup completed: ${fileName} (${(result.size / 1024 / 1024).toFixed(2)} MB) in ${durationMs}ms`,
+        `Backup completed: ${fileName} (${(result.size / 1024 / 1024).toFixed(2)} MB)${encryptionMsg} in ${durationMs}ms`,
       );
 
       // Cleanup old backups
       await this.cleanupOldBackups();
 
-      return { fileName, s3Key, size: result.size };
+      return { fileName, s3Key, size: result.size, encrypted: isEncrypted };
     } catch (error) {
       const err = error as Error;
       const durationMs = Date.now() - startTime;
@@ -218,6 +244,26 @@ export class BackupService implements OnModuleInit {
       totalSizeBytes: totalSize._sum.fileSize || 0,
       lastBackupAt: lastBackup?.createdAt || null,
       retentionDays: this.retentionDays,
+      encryptionEnabled: this.backupCrypto.isConfigured(),
     };
+  }
+
+  /**
+   * Dechiffrer un backup chiffre
+   * Retourne le contenu SQL brut
+   */
+  async decryptBackup(encryptedBuffer: Buffer): Promise<Buffer> {
+    if (!this.backupCrypto.isConfigured()) {
+      throw new Error('Backup decryption not available: encryption key not configured');
+    }
+
+    return this.backupCrypto.decryptBuffer(encryptedBuffer);
+  }
+
+  /**
+   * Verifier si le chiffrement est active
+   */
+  isEncryptionEnabled(): boolean {
+    return this.backupCrypto.isConfigured();
   }
 }
