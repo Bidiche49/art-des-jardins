@@ -30,6 +30,7 @@ import { AutoSendModule } from './modules/auto-send/auto-send.module';
 import { RelancesModule } from './modules/relances/relances.module';
 import { AlertsModule } from './modules/alerts/alerts.module';
 import { TrashModule } from './modules/trash/trash.module';
+import { WebsocketModule } from './modules/websocket/websocket.module';
 import { DatabaseModule } from './database/database.module';
 import { envValidationSchema } from './config/env.validation';
 
@@ -125,6 +126,7 @@ import { envValidationSchema } from './config/env.validation';
     RelancesModule,
     AlertsModule,
     TrashModule,
+    WebsocketModule,
   ],
   providers: [
     {
