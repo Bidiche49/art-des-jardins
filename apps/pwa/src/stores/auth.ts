@@ -15,9 +15,11 @@ interface AuthState {
   refreshToken: string | null;
   isAuthenticated: boolean;
   isLoading: boolean;
+  rememberMe: boolean;
   login: (user: User, accessToken: string, refreshToken: string) => void;
   logout: () => void;
   setLoading: (loading: boolean) => void;
+  setRememberMe: (remember: boolean) => void;
 }
 
 export const useAuthStore = create<AuthState>()(
@@ -28,6 +30,7 @@ export const useAuthStore = create<AuthState>()(
       refreshToken: null,
       isAuthenticated: false,
       isLoading: true,
+      rememberMe: false,
 
       login: (user, accessToken, refreshToken) => {
         set({
@@ -46,11 +49,16 @@ export const useAuthStore = create<AuthState>()(
           refreshToken: null,
           isAuthenticated: false,
           isLoading: false,
+          rememberMe: false,
         });
       },
 
       setLoading: (loading) => {
         set({ isLoading: loading });
+      },
+
+      setRememberMe: (remember) => {
+        set({ rememberMe: remember });
       },
     }),
     {
