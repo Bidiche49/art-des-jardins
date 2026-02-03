@@ -1,4 +1,4 @@
-import { Controller, Post, Body, HttpCode, HttpStatus, UseGuards, Req, Get, Param, Delete, Res } from '@nestjs/common';
+import { Controller, Post, Body, HttpCode, HttpStatus, UseGuards, Req, Get, Param, Delete, Res, Query, BadRequestException, NotFoundException } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth, ApiParam } from '@nestjs/swagger';
 import { Throttle } from '@nestjs/throttler';
 import { Response } from 'express';
@@ -8,6 +8,7 @@ import { DeviceTrackingService } from './device-tracking.service';
 import { LoginDto } from './dto/login.dto';
 import { RefreshDto } from './dto/refresh.dto';
 import { Verify2FADto, Disable2FADto, RegenerateRecoveryCodesDto } from './dto/verify-2fa.dto';
+import { DeviceListQueryDto, DeviceDto, DeviceListResponseDto } from './dto/device.dto';
 import { JwtAuthGuard } from './guards/jwt-auth.guard';
 import { Public } from './decorators/public.decorator';
 import { Request } from 'express';
@@ -140,26 +141,107 @@ export class AuthController {
   @Get('devices')
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
-  @ApiOperation({ summary: 'Lister les appareils connus de l\'utilisateur' })
-  @ApiResponse({ status: 200, description: 'Liste des appareils' })
-  async getDevices(@Req() req: AuthenticatedRequest) {
-    return this.deviceTrackingService.getUserDevices(req.user.sub);
+  @ApiOperation({ summary: 'Lister les appareils connus de l\'utilisateur avec pagination' })
+  @ApiResponse({ status: 200, description: 'Liste paginee des appareils', type: DeviceListResponseDto })
+  async getDevices(
+    @Req() req: AuthenticatedRequest & { headers: { 'user-agent'?: string; 'accept-language'?: string } },
+    @Query() query: DeviceListQueryDto,
+  ): Promise<DeviceListResponseDto> {
+    const userId = req.user.sub;
+    const userAgent = req.headers['user-agent'] || '';
+    const acceptLanguage = req.headers['accept-language'];
+
+    // Genere le fingerprint de la requete actuelle
+    const currentFingerprint = this.deviceTrackingService.generateFingerprint(userAgent, acceptLanguage);
+
+    const { devices, total } = await this.deviceTrackingService.getDevicesPaginated(
+      userId,
+      query.limit || 20,
+      query.offset || 0,
+    );
+
+    // Transforme les devices en DeviceDto avec isCurrent
+    const mappedDevices: DeviceDto[] = devices.map((device) => ({
+      id: device.id,
+      name: device.deviceName,
+      lastIp: device.lastIp,
+      lastCountry: device.lastCountry,
+      lastCity: device.lastCity,
+      lastUsedAt: device.lastSeenAt,
+      trustedAt: device.trustedAt,
+      isCurrent: device.fingerprint === currentFingerprint,
+      createdAt: device.createdAt,
+    }));
+
+    return { devices: mappedDevices, total };
+  }
+
+  @Get('devices/:deviceId')
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
+  @ApiOperation({ summary: 'Obtenir les details d\'un appareil specifique' })
+  @ApiParam({ name: 'deviceId', description: 'ID de l\'appareil' })
+  @ApiResponse({ status: 200, description: 'Details de l\'appareil', type: DeviceDto })
+  @ApiResponse({ status: 404, description: 'Appareil non trouve' })
+  async getDevice(
+    @Req() req: AuthenticatedRequest & { headers: { 'user-agent'?: string; 'accept-language'?: string } },
+    @Param('deviceId') deviceId: string,
+  ): Promise<DeviceDto> {
+    const userId = req.user.sub;
+    const userAgent = req.headers['user-agent'] || '';
+    const acceptLanguage = req.headers['accept-language'];
+
+    const device = await this.deviceTrackingService.getDeviceById(userId, deviceId);
+
+    if (!device) {
+      throw new NotFoundException('Appareil non trouve');
+    }
+
+    const currentFingerprint = this.deviceTrackingService.generateFingerprint(userAgent, acceptLanguage);
+
+    return {
+      id: device.id,
+      name: device.deviceName,
+      lastIp: device.lastIp,
+      lastCountry: device.lastCountry,
+      lastCity: device.lastCity,
+      lastUsedAt: device.lastSeenAt,
+      trustedAt: device.trustedAt,
+      isCurrent: device.fingerprint === currentFingerprint,
+      createdAt: device.createdAt,
+    };
   }
 
   @Delete('devices/:deviceId')
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
   @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'Supprimer un appareil' })
-  @ApiParam({ name: 'deviceId', description: 'ID de l\'appareil a supprimer' })
-  @ApiResponse({ status: 200, description: 'Appareil supprime' })
+  @ApiOperation({ summary: 'Revoquer un appareil (supprime aussi les sessions associees)' })
+  @ApiParam({ name: 'deviceId', description: 'ID de l\'appareil a revoquer' })
+  @ApiResponse({ status: 200, description: 'Appareil revoque' })
+  @ApiResponse({ status: 400, description: 'Impossible de revoquer l\'appareil actuel' })
   @ApiResponse({ status: 404, description: 'Appareil non trouve' })
-  async deleteDevice(@Req() req: AuthenticatedRequest, @Param('deviceId') deviceId: string) {
-    const success = await this.deviceTrackingService.deleteDevice(deviceId, req.user.sub);
-    if (!success) {
-      return { success: false, message: 'Appareil non trouve ou non autorise' };
+  async deleteDevice(
+    @Req() req: AuthenticatedRequest & { headers: { 'user-agent'?: string; 'accept-language'?: string } },
+    @Param('deviceId') deviceId: string,
+  ) {
+    const userId = req.user.sub;
+    const userAgent = req.headers['user-agent'] || '';
+    const acceptLanguage = req.headers['accept-language'];
+
+    // Genere le fingerprint de la requete actuelle
+    const currentFingerprint = this.deviceTrackingService.generateFingerprint(userAgent, acceptLanguage);
+
+    const result = await this.deviceTrackingService.revokeDevice(userId, deviceId, currentFingerprint);
+
+    if (!result.success) {
+      if (result.error === 'cannot_revoke_current_device') {
+        throw new BadRequestException('Impossible de revoquer l\'appareil actuel');
+      }
+      throw new NotFoundException('Appareil non trouve');
     }
-    return { success: true, message: 'Appareil supprime' };
+
+    return { success: true, message: 'Appareil revoque' };
   }
 
   // ============================================
