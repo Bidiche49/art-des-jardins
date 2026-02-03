@@ -1,16 +1,40 @@
 # FEAT-069: Photos geolocalisees avant/apres
 
 **Type:** Feature
-**Statut:** Pret
+**Statut:** Split
 **Priorite:** Haute
 **Complexite:** M
 **Tags:** ux, pwa, mobile, data
 **Date creation:** 2026-02-03
+**Date split:** 2026-02-03
 **Phase:** 14
 
 ---
 
-## Description
+## SPLIT EN SOUS-TICKETS
+
+Ce ticket a ete decoupe en 5 sous-tickets de complexite S/XS:
+
+| Sous-ticket | Description | Complexite |
+|-------------|-------------|------------|
+| FEAT-069-A | Modele Prisma Photo et migration | XS |
+| FEAT-069-B | Module API photos NestJS | S |
+| FEAT-069-C | Service photo PWA (compression, offline) | S |
+| FEAT-069-D | Composant PhotoCapture | S |
+| FEAT-069-E | Composant PhotoGallery et comparaison | S |
+
+### Ordre d'execution recommande:
+1. FEAT-069-A (prerequis pour B)
+2. FEAT-069-B et FEAT-069-C (peuvent etre faits en parallele)
+3. FEAT-069-D (necessite C)
+4. FEAT-069-E (necessite B)
+
+### Note
+Le critere "Export pour client (watermark optionnel)" n'a pas ete inclus dans les sous-tickets car il constitue une feature separee qui pourra etre traitee ulterieurement.
+
+---
+
+## Description originale
 
 Permettre aux employes de prendre des photos avant/apres intervention avec geolocalisation et horodatage automatiques.
 
@@ -48,62 +72,3 @@ Les photos avant/apres sont essentielles pour:
 - `apps/pwa/src/components/PhotoCapture.tsx` (nouveau)
 - `apps/pwa/src/components/PhotoGallery.tsx` (nouveau)
 - `apps/pwa/src/services/photo.service.ts` (nouveau)
-
-## Analyse / Approche
-
-```prisma
-model Photo {
-  id              String   @id @default(uuid())
-  interventionId  String
-  intervention    Intervention @relation(fields: [interventionId], references: [id])
-  type            String   // before, during, after
-  filename        String
-  s3Key           String
-  mimeType        String
-  size            Int
-  width           Int
-  height          Int
-  latitude        Float?
-  longitude       Float?
-  takenAt         DateTime
-  uploadedAt      DateTime @default(now())
-  uploadedBy      String
-
-  @@index([interventionId, type])
-}
-```
-
-Compression:
-- Max 1920px cote le plus long
-- Qualite JPEG 80%
-- Conserver EXIF (GPS, date)
-
-```typescript
-// Capture photo avec geoloc
-const capturePhoto = async (type: 'before' | 'during' | 'after') => {
-  const position = await getCurrentPosition();
-  const photo = await camera.capture({
-    quality: 80,
-    maxWidth: 1920,
-    maxHeight: 1920,
-  });
-
-  return {
-    ...photo,
-    type,
-    latitude: position.coords.latitude,
-    longitude: position.coords.longitude,
-    takenAt: new Date(),
-  };
-};
-```
-
-## Tests de validation
-
-- [ ] Capture photo fonctionne
-- [ ] Geolocalisation enregistree
-- [ ] Horodatage correct
-- [ ] Compression effective
-- [ ] Upload offline puis sync
-- [ ] Galerie affiche les photos
-- [ ] Comparaison avant/apres
