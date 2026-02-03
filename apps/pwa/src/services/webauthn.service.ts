@@ -5,6 +5,7 @@ import {
   browserSupportsWebAuthnAutofill,
 } from '@simplewebauthn/browser';
 import apiClient from '@/api/client';
+import type { AuthResponse } from '@art-et-jardin/shared';
 
 const BIOMETRIC_DISMISSED_KEY = 'webauthn_setup_dismissed';
 const HAS_CREDENTIAL_KEY = 'webauthn_has_credential';
@@ -53,11 +54,11 @@ export const webAuthnService = {
     return result.verified;
   },
 
-  async authenticate(email?: string): Promise<{ accessToken: string; refreshToken: string }> {
+  async authenticate(email?: string): Promise<AuthResponse> {
     const params = email ? `?email=${encodeURIComponent(email)}` : '';
     const { data: options } = await apiClient.get(`/auth/webauthn/login/options${params}`);
     const response = await startAuthentication({ optionsJSON: options });
-    const { data: result } = await apiClient.post('/auth/webauthn/login/verify', {
+    const { data: result } = await apiClient.post<AuthResponse>('/auth/webauthn/login/verify', {
       response: JSON.stringify(response),
     });
     return result;

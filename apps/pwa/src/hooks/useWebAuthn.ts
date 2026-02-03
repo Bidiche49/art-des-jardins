@@ -1,5 +1,6 @@
 import { useState, useCallback, useEffect } from 'react';
 import { webAuthnService, BiometricType } from '@/services/webauthn.service';
+import type { AuthResponse } from '@art-et-jardin/shared';
 
 interface UseWebAuthnReturn {
   isSupported: boolean;
@@ -11,7 +12,7 @@ interface UseWebAuthnReturn {
   defaultDeviceName: string;
   shouldShowSetup: boolean;
   register: (deviceName?: string) => Promise<boolean>;
-  authenticate: (email?: string) => Promise<{ accessToken: string; refreshToken: string }>;
+  authenticate: (email?: string) => Promise<AuthResponse>;
   dismissSetup: () => void;
   clearError: () => void;
 }
@@ -53,7 +54,7 @@ export function useWebAuthn(): UseWebAuthnReturn {
     }
   }, []);
 
-  const authenticate = useCallback(async (email?: string): Promise<{ accessToken: string; refreshToken: string }> => {
+  const authenticate = useCallback(async (email?: string): Promise<AuthResponse> => {
     setIsLoading(true);
     setError(null);
     try {
