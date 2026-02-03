@@ -1,7 +1,7 @@
 # FEAT-071-C: API CRUD materiaux utilises (MaterialUsage)
 
 **Type:** Feature
-**Statut:** A faire
+**Statut:** Fait
 **Priorite:** Haute
 **Complexite:** S
 **Tags:** api
@@ -24,14 +24,14 @@ Creer le module API NestJS pour la gestion des MaterialUsage (materiaux utilises
 
 ## Criteres d'acceptation
 
-- [ ] POST /api/v1/chantiers/:id/materials (creer)
-- [ ] GET /api/v1/chantiers/:id/materials (lister par chantier)
-- [ ] GET /api/v1/materials/:id (detail)
-- [ ] PUT /api/v1/materials/:id (modifier)
-- [ ] DELETE /api/v1/materials/:id (supprimer)
-- [ ] Calcul automatique totalCost
-- [ ] Validation des donnees (quantity > 0, unitCost >= 0)
-- [ ] Tests unitaires service
+- [x] POST /api/v1/chantiers/:id/materials (creer)
+- [x] GET /api/v1/chantiers/:id/materials (lister par chantier)
+- [x] GET /api/v1/materials/:id (detail)
+- [x] PUT /api/v1/materials/:id (modifier)
+- [x] DELETE /api/v1/materials/:id (supprimer)
+- [x] Calcul automatique totalCost
+- [x] Validation des donnees (quantity > 0, unitCost >= 0)
+- [x] Tests unitaires service
 
 ## Fichiers concernes
 
@@ -115,15 +115,15 @@ VALIDATION:
 
 ### Criteres de succes automatises
 
-- [ ] Module material-usages cree et enregistre
-- [ ] `pnpm --filter @art-et-jardin/api test material-usages` passe
-- [ ] `pnpm --filter @art-et-jardin/api build` sans erreur
+- [x] Module material-usages cree et enregistre
+- [x] `pnpm --filter @art-et-jardin/api test material-usages` passe
+- [x] `pnpm --filter @art-et-jardin/api build` sans erreur
 
 ## Tests de validation
 
-- [ ] POST cree un materiau avec totalCost calcule
-- [ ] GET liste les materiaux d'un chantier
-- [ ] PUT modifie et recalcule totalCost
-- [ ] DELETE supprime un materiau
-- [ ] Validation rejette quantity <= 0
-- [ ] totalCost = quantity * unitCost toujours vrai
+- [x] POST cree un materiau avec totalCost calcule
+- [x] GET liste les materiaux d'un chantier
+- [x] PUT modifie et recalcule totalCost
+- [x] DELETE supprime un materiau
+- [x] Validation rejette quantity <= 0
+- [x] totalCost = quantity * unitCost toujours vrai
