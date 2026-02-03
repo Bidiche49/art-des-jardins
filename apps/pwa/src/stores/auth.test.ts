@@ -9,6 +9,7 @@ describe('useAuthStore', () => {
       refreshToken: null,
       isAuthenticated: false,
       isLoading: false,
+      rememberMe: false,
     });
   });
 
@@ -61,5 +62,32 @@ describe('useAuthStore', () => {
 
     useAuthStore.getState().setLoading(false);
     expect(useAuthStore.getState().isLoading).toBe(false);
+  });
+
+  it('should set rememberMe state', () => {
+    expect(useAuthStore.getState().rememberMe).toBe(false);
+
+    useAuthStore.getState().setRememberMe(true);
+    expect(useAuthStore.getState().rememberMe).toBe(true);
+
+    useAuthStore.getState().setRememberMe(false);
+    expect(useAuthStore.getState().rememberMe).toBe(false);
+  });
+
+  it('should reset rememberMe on logout', () => {
+    const mockUser = {
+      id: '1',
+      email: 'test@test.com',
+      nom: 'Dupont',
+      prenom: 'Jean',
+      role: 'patron' as const,
+    };
+
+    useAuthStore.getState().login(mockUser, 'access-token', 'refresh-token');
+    useAuthStore.getState().setRememberMe(true);
+    expect(useAuthStore.getState().rememberMe).toBe(true);
+
+    useAuthStore.getState().logout();
+    expect(useAuthStore.getState().rememberMe).toBe(false);
   });
 });
