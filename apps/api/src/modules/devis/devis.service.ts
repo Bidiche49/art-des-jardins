@@ -1,5 +1,7 @@
 import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
 import { PrismaService } from '../../database/prisma.service';
+import { EventsGateway } from '../websocket/events.gateway';
+import { WS_EVENTS } from '../websocket/websocket.events';
 import { CreateDevisDto } from './dto/create-devis.dto';
 import { UpdateDevisDto } from './dto/update-devis.dto';
 import { DevisFiltersDto } from './dto/devis-filters.dto';
@@ -8,7 +10,10 @@ import { DevisStatut } from '@art-et-jardin/database';
 
 @Injectable()
 export class DevisService {
-  constructor(private prisma: PrismaService) {}
+  constructor(
+    private prisma: PrismaService,
+    private eventsGateway: EventsGateway,
+  ) {}
 
   private calculerTotaux(lignes: CreateLigneDevisDto[]) {
     let totalHT = 0;
@@ -176,7 +181,7 @@ export class DevisService {
     const dateValidite = new Date(dateEmission);
     dateValidite.setDate(dateValidite.getDate() + validiteJours);
 
-    return this.prisma.devis.create({
+    const devis = await this.prisma.devis.create({
       data: {
         chantierId,
         numero,
@@ -201,6 +206,16 @@ export class DevisService {
         },
       },
     });
+
+    // Emit WebSocket event
+    this.eventsGateway.broadcast(WS_EVENTS.DEVIS_CREATED, {
+      id: devis.id,
+      numero: devis.numero,
+      clientName: devis.chantier.client.nom,
+      amount: devis.totalTTC,
+    });
+
+    return devis;
   }
 
   async update(id: string, updateDevisDto: UpdateDevisDto) {
@@ -245,7 +260,7 @@ export class DevisService {
   }
 
   async updateStatut(id: string, statut: DevisStatut) {
-    await this.findOne(id); // Verify exists
+    const existingDevis = await this.findOne(id);
 
     const data: Record<string, unknown> = { statut };
 
@@ -253,10 +268,35 @@ export class DevisService {
       data.dateAcceptation = new Date();
     }
 
-    return this.prisma.devis.update({
+    const devis = await this.prisma.devis.update({
       where: { id },
       data,
+      include: {
+        chantier: {
+          select: {
+            client: { select: { nom: true } },
+          },
+        },
+      },
     });
+
+    // Emit WebSocket events based on status change
+    const clientName = devis.chantier.client.nom;
+    if (statut === 'signe' || statut === 'accepte') {
+      this.eventsGateway.broadcast(WS_EVENTS.DEVIS_SIGNED, {
+        id: devis.id,
+        numero: devis.numero,
+        clientName,
+      });
+    } else if (statut === 'refuse') {
+      this.eventsGateway.broadcast(WS_EVENTS.DEVIS_REJECTED, {
+        id: devis.id,
+        numero: devis.numero,
+        clientName,
+      });
+    }
+
+    return devis;
   }
 
   async remove(id: string) {

@@ -2,6 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { NotFoundException, BadRequestException } from '@nestjs/common';
 import { DevisService } from './devis.service';
 import { PrismaService } from '../../database/prisma.service';
+import { EventsGateway } from '../websocket/events.gateway';
 import {
   createMockDevis,
   createMockChantier,
@@ -18,6 +19,7 @@ describe('DevisService', () => {
   let mockChantierFindUnique: jest.Mock;
   let mockLigneDevisDeleteMany: jest.Mock;
   let mockSequenceUpsert: jest.Mock;
+  let mockBroadcast: jest.Mock;
 
   const chantierId = 'chantier-123';
   const mockChantier = createMockChantier('client-123', { id: chantierId });
@@ -36,6 +38,7 @@ describe('DevisService', () => {
     mockChantierFindUnique = jest.fn();
     mockLigneDevisDeleteMany = jest.fn();
     mockSequenceUpsert = jest.fn();
+    mockBroadcast = jest.fn();
 
     const module: TestingModule = await Test.createTestingModule({
       providers: [
@@ -62,6 +65,13 @@ describe('DevisService', () => {
             },
           },
         },
+        {
+          provide: EventsGateway,
+          useValue: {
+            broadcast: mockBroadcast,
+            sendToUser: jest.fn(),
+          },
+        },
       ],
     }).compile();
 
@@ -82,6 +92,7 @@ describe('DevisService', () => {
           ...mockDevisData,
           ...data,
           lignes: data.lignes.create,
+          chantier: { client: { nom: 'Test Client' } },
         });
       });
 
@@ -109,6 +120,7 @@ describe('DevisService', () => {
         ...mockDevisData,
         ...data,
         lignes: data.lignes.create,
+        chantier: { client: { nom: 'Test Client' } },
       }));
 
       const createDto = {
@@ -137,6 +149,7 @@ describe('DevisService', () => {
         ...mockDevisData,
         ...data,
         lignes: data.lignes.create,
+        chantier: { client: { nom: 'Test Client' } },
       }));
 
       const createDto = {
@@ -166,6 +179,7 @@ describe('DevisService', () => {
         ...mockDevisData,
         ...data,
         lignes: data.lignes.create,
+        chantier: { client: { nom: 'Test Client' } },
       }));
 
       const createDto = {
@@ -195,6 +209,7 @@ describe('DevisService', () => {
         ...mockDevisData,
         ...data,
         lignes: data.lignes.create,
+        chantier: { client: { nom: 'Test Client' } },
       }));
 
       const createDto = {
@@ -219,6 +234,7 @@ describe('DevisService', () => {
       mockDevisCreate.mockImplementation(({ data }) => ({
         ...mockDevisData,
         numero: data.numero,
+        chantier: { client: { nom: 'Test Client' } },
       }));
 
       const result = await service.create({
@@ -235,6 +251,7 @@ describe('DevisService', () => {
       mockDevisCreate.mockImplementation(({ data }) => ({
         ...mockDevisData,
         numero: data.numero,
+        chantier: { client: { nom: 'Test Client' } },
       }));
 
       const result = await service.create({
@@ -364,6 +381,7 @@ describe('DevisService', () => {
         id: 'new-devis',
         ...data,
         lignes: data.lignes.create,
+        chantier: { client: { nom: 'Test Client' } },
       }));
 
       const result = await service.create({
@@ -382,6 +400,7 @@ describe('DevisService', () => {
         id: 'new-devis',
         ...data,
         lignes: [],
+        chantier: { client: { nom: 'Test Client' } },
       }));
 
       await service.create({
@@ -478,7 +497,11 @@ describe('DevisService', () => {
     it('should update statut to envoye', async () => {
       const devisWithIncludes = { ...mockDevisData, chantier: mockChantier, lignes: [], factures: [] };
       mockDevisFindUnique.mockResolvedValue(devisWithIncludes);
-      mockDevisUpdate.mockResolvedValue({ ...mockDevisData, statut: 'envoye' });
+      mockDevisUpdate.mockResolvedValue({
+        ...mockDevisData,
+        statut: 'envoye',
+        chantier: { client: { nom: 'Test Client' } },
+      });
 
       const result = await service.updateStatut('devis-123', 'envoye' as any);
 
@@ -492,16 +515,59 @@ describe('DevisService', () => {
         ...mockDevisData,
         statut: 'accepte',
         dateAcceptation: new Date(),
+        chantier: { client: { nom: 'Test Client' } },
       });
 
       await service.updateStatut('devis-123', 'accepte' as any);
 
-      expect(mockDevisUpdate).toHaveBeenCalledWith({
-        where: { id: 'devis-123' },
-        data: {
-          statut: 'accepte',
-          dateAcceptation: expect.any(Date),
-        },
+      expect(mockDevisUpdate).toHaveBeenCalledWith(
+        expect.objectContaining({
+          where: { id: 'devis-123' },
+          data: {
+            statut: 'accepte',
+            dateAcceptation: expect.any(Date),
+          },
+        }),
+      );
+    });
+
+    it('should emit WebSocket event when devis is signed', async () => {
+      const devisWithIncludes = { ...mockDevisData, chantier: mockChantier, lignes: [], factures: [] };
+      mockDevisFindUnique.mockResolvedValue(devisWithIncludes);
+      mockDevisUpdate.mockResolvedValue({
+        ...mockDevisData,
+        id: 'devis-123',
+        numero: 'DEV-202601-001',
+        statut: 'signe',
+        chantier: { client: { nom: 'Test Client' } },
+      });
+
+      await service.updateStatut('devis-123', 'signe' as any);
+
+      expect(mockBroadcast).toHaveBeenCalledWith('devis:signed', {
+        id: 'devis-123',
+        numero: 'DEV-202601-001',
+        clientName: 'Test Client',
+      });
+    });
+
+    it('should emit WebSocket event when devis is rejected', async () => {
+      const devisWithIncludes = { ...mockDevisData, chantier: mockChantier, lignes: [], factures: [] };
+      mockDevisFindUnique.mockResolvedValue(devisWithIncludes);
+      mockDevisUpdate.mockResolvedValue({
+        ...mockDevisData,
+        id: 'devis-123',
+        numero: 'DEV-202601-001',
+        statut: 'refuse',
+        chantier: { client: { nom: 'Test Client' } },
+      });
+
+      await service.updateStatut('devis-123', 'refuse' as any);
+
+      expect(mockBroadcast).toHaveBeenCalledWith('devis:rejected', {
+        id: 'devis-123',
+        numero: 'DEV-202601-001',
+        clientName: 'Test Client',
       });
     });
   });
