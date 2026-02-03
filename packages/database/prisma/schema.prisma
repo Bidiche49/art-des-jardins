@@ -489,13 +489,15 @@ model KnownDevice {
 }
 
 model RefreshToken {
-  id        String   @id @default(uuid())
+  id        String    @id @default(uuid())
   userId    String
-  token     String   @unique
-  deviceId  String?  // Lien vers KnownDevice
+  token     String    @unique
+  deviceId  String?   // Lien vers KnownDevice
+  familyId  String    // Groupe de tokens lies (pour rotation)
+  usedAt    DateTime? // Marque quand le token a ete utilise
   expiresAt DateTime
   revokedAt DateTime?
-  createdAt DateTime @default(now())
+  createdAt DateTime  @default(now())
 
   // Relations
   user   User         @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -504,6 +506,7 @@ model RefreshToken {
   @@index([userId])
   @@index([token])
   @@index([deviceId])
+  @@index([familyId])
   @@map("refresh_tokens")
 }
 
