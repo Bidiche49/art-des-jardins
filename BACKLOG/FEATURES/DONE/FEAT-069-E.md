@@ -1,8 +1,9 @@
 # FEAT-069-E: Composant PhotoGallery et comparaison avant/apres
 
 **Type:** Feature
-**Statut:** A faire
+**Statut:** Fait
 **Priorite:** Haute
+**Date resolution:** 2026-02-03
 **Complexite:** S
 **Tags:** pwa, ux, ui
 **Parent:** FEAT-069
@@ -16,14 +17,14 @@ Creer le composant PhotoGallery pour afficher les photos d'une intervention avec
 
 ## Criteres d'acceptation
 
-- [ ] Composant PhotoGallery cree
-- [ ] Vue grille des photos
-- [ ] Filtres par type (Avant/Pendant/Apres/Tous)
-- [ ] Lightbox pour zoom sur photo
-- [ ] Mode comparaison avant/apres (slider ou cote-a-cote)
-- [ ] Affichage metadonnees (date, GPS)
-- [ ] Suppression photo (avec confirmation)
-- [ ] Tests du composant
+- [x] Composant PhotoGallery cree
+- [x] Vue grille des photos
+- [x] Filtres par type (Avant/Pendant/Apres/Tous)
+- [x] Lightbox pour zoom sur photo
+- [x] Mode comparaison avant/apres (slider ou cote-a-cote)
+- [x] Affichage metadonnees (date, GPS)
+- [x] Suppression photo (avec confirmation)
+- [x] Tests du composant
 
 ## Fichiers concernes
 
@@ -105,8 +106,8 @@ Commit: git add -A && git commit -m 'feat(pwa): add PhotoGallery with compare vi
 
 ## Tests de validation
 
-- [ ] Galerie affiche photos en grille
-- [ ] Filtres changent les photos affichees
-- [ ] Lightbox zoom fonctionne
-- [ ] Comparaison avant/apres visible
-- [ ] Suppression fonctionne
+- [x] Galerie affiche photos en grille
+- [x] Filtres changent les photos affichees
+- [x] Lightbox zoom fonctionne
+- [x] Comparaison avant/apres visible
+- [x] Suppression fonctionne
