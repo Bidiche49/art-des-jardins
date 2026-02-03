@@ -80,6 +80,11 @@ export const envValidationSchema = Joi.object({
   SECURITY_ALERT_THRESHOLD: Joi.number().default(5),
   SECURITY_ALERT_WINDOW_MINUTES: Joi.number().default(10),
   SECURITY_ALERT_EMAIL: Joi.string().email({ tlds: false }).allow('').optional(),
+
+  // Session Idle Timeout (en minutes)
+  SESSION_IDLE_TIMEOUT_PATRON: Joi.number().default(30), // 30 min pour patron
+  SESSION_IDLE_TIMEOUT_EMPLOYE: Joi.number().default(120), // 2h pour employe
+  SESSION_IDLE_TIMEOUT_CLIENT: Joi.number().default(60), // 1h pour client portail
 });
 
 export interface EnvConfig {
@@ -121,4 +126,7 @@ export interface EnvConfig {
   SECURITY_ALERT_THRESHOLD: number;
   SECURITY_ALERT_WINDOW_MINUTES: number;
   SECURITY_ALERT_EMAIL?: string;
+  SESSION_IDLE_TIMEOUT_PATRON: number;
+  SESSION_IDLE_TIMEOUT_EMPLOYE: number;
+  SESSION_IDLE_TIMEOUT_CLIENT: number;
 }
