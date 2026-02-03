@@ -1,0 +1,15 @@
+{
+  "session_id": "20260203_1411",
+  "start_time": "2026-02-03T14:11:09+01:00",
+  "end_time": null,
+  "tickets": [],
+  "groups": [],
+  "totals": {
+    "tickets_executed": 0,
+    "tickets_skipped": 0,
+    "tickets_failed": 0,
+    "groups_executed": 0,
+    "estimated_tokens_saved": 0,
+    "estimated_tokens_used": 0
+  }
+}

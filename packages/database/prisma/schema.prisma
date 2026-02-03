@@ -93,6 +93,13 @@ model User {
   createdAt         DateTime  @default(now())
   updatedAt         DateTime  @updatedAt
 
+  // 2FA
+  twoFactorSecret   String?   // TOTP secret (chiffré AES-256)
+  twoFactorEnabled  Boolean   @default(false)
+  recoveryCodes     String[]  // Codes de récupération (hashés bcrypt)
+  twoFactorAttempts Int       @default(0) // Compteur tentatives échouées
+  twoFactorLockedUntil DateTime? // Verrouillage après 5 tentatives
+
   // Relations
   chantiersResponsable Chantier[]     @relation("ChantierResponsable")
   interventions        Intervention[]
@@ -117,6 +124,8 @@ model Client {
   ville                String
   notes                String?
   tags                 String[]
+  excludeRelance       Boolean    @default(false) // Client VIP, exclure des relances auto
+  deletedAt            DateTime?  // Soft delete
   createdAt            DateTime   @default(now())
   updatedAt            DateTime   @updatedAt
 
@@ -128,6 +137,7 @@ model Client {
   @@index([type])
   @@index([ville])
   @@index([email])
+  @@index([deletedAt])
   @@map("clients")
 }
 
@@ -166,6 +176,7 @@ model Chantier {
   responsableId   String?
   notes           String?
   photos          String[]
+  deletedAt       DateTime?       // Soft delete
   createdAt       DateTime        @default(now())
   updatedAt       DateTime        @updatedAt
 
@@ -180,6 +191,7 @@ model Chantier {
   @@index([statut])
   @@index([responsableId])
   @@index([dateDebut])
+  @@index([deletedAt])
   @@map("chantiers")
 }
 
@@ -198,6 +210,7 @@ model Devis {
   pdfUrl                String?
   conditionsParticulieres String?
   notes                 String?
+  deletedAt             DateTime?   // Soft delete
   createdAt             DateTime    @default(now())
   updatedAt             DateTime    @updatedAt
 
@@ -210,6 +223,7 @@ model Devis {
   @@index([chantierId])
   @@index([statut])
   @@index([numero])
+  @@index([deletedAt])
   @@map("devis")
 }
 
@@ -268,16 +282,21 @@ model Facture {
   pdfUrl            String?
   mentionsLegales   String?
   notes             String?
+  excludeRelance    Boolean       @default(false) // Exclure des relances auto (litige, accord special)
+  deletedAt         DateTime?     // Soft delete
   createdAt         DateTime      @default(now())
   updatedAt         DateTime      @updatedAt
 
   // Relations
-  devis  Devis          @relation(fields: [devisId], references: [id])
-  lignes LigneFacture[]
+  devis    Devis            @relation(fields: [devisId], references: [id])
+  lignes   LigneFacture[]
+  relances RelanceHistory[]
 
   @@index([devisId])
   @@index([statut])
   @@index([numero])
+  @@index([dateEcheance])
+  @@index([deletedAt])
   @@map("factures")
 }
 
@@ -312,6 +331,7 @@ model Intervention {
   photos      String[]
   notes       String?
   valide      Boolean  @default(false)
+  deletedAt   DateTime? // Soft delete
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
@@ -322,6 +342,7 @@ model Intervention {
   @@index([chantierId])
   @@index([employeId])
   @@index([date])
+  @@index([deletedAt])
   @@map("interventions")
 }
 
@@ -449,4 +470,113 @@ model Sequence {
 
   @@unique([prefix, year])
   @@map("sequences")
+}
+
+// ============================================
+// PHASE 9 - ZERO PERTE / RESILIENCE
+// ============================================
+
+enum EmailStatus {
+  pending
+  sent
+  failed
+  bounced
+}
+
+enum DocumentType {
+  devis
+  devis_signe
+  facture
+  relance
+}
+
+enum RelanceLevel {
+  rappel_amical      // J+30 - Premier rappel
+  rappel_ferme       // J+45 - Deuxieme rappel
+  mise_en_demeure    // J+60 - Mise en demeure
+}
+
+model EmailHistory {
+  id            String      @id @default(uuid())
+  to            String
+  cc            String?
+  bcc           String?
+  subject       String
+  templateName  String?
+  status        EmailStatus @default(pending)
+  messageId     String?
+  errorMessage  String?
+  documentType  DocumentType?
+  documentId    String?
+  attachments   String[]
+  metadata      Json?
+  sentAt        DateTime?
+  createdAt     DateTime    @default(now())
+
+  @@index([to])
+  @@index([status])
+  @@index([documentId])
+  @@index([createdAt])
+  @@map("email_history")
+}
+
+model DocumentArchive {
+  id            String       @id @default(uuid())
+  documentType  DocumentType
+  documentId    String
+  documentNumero String
+  s3Key         String
+  s3Bucket      String
+  fileName      String
+  fileSize      Int
+  mimeType      String       @default("application/pdf")
+  checksum      String?
+  archivedAt    DateTime     @default(now())
+  metadata      Json?
+
+  @@index([documentType])
+  @@index([documentId])
+  @@index([documentNumero])
+  @@index([archivedAt])
+  @@map("document_archives")
+}
+
+model BackupHistory {
+  id          String   @id @default(uuid())
+  fileName    String
+  s3Key       String
+  s3Bucket    String
+  fileSize    Int
+  durationMs  Int
+  status      String   @default("success")
+  errorMessage String?
+  createdAt   DateTime @default(now())
+
+  @@index([createdAt])
+  @@map("backup_history")
+}
+
+// ============================================
+// RELANCES AUTOMATIQUES FACTURES IMPAYEES
+// ============================================
+
+model RelanceHistory {
+  id            String       @id @default(uuid())
+  factureId     String
+  level         RelanceLevel
+  sentAt        DateTime     @default(now())
+  emailId       String?      // Lien vers EmailHistory
+  joursRetard   Int          // Nombre de jours de retard au moment de l'envoi
+  montantDu     Float        // Montant restant du au moment de la relance
+  success       Boolean      @default(true)
+  errorMessage  String?
+  createdAt     DateTime     @default(now())
+
+  // Relations
+  facture Facture @relation(fields: [factureId], references: [id], onDelete: Cascade)
+
+  @@index([factureId])
+  @@index([level])
+  @@index([sentAt])
+  @@map("relance_history")
 }

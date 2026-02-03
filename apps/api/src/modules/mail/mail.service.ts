@@ -2,6 +2,8 @@ import { Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import * as nodemailer from 'nodemailer';
 import { Transporter } from 'nodemailer';
+import { EmailHistoryService } from './email-history.service';
+import { DocumentType } from '@art-et-jardin/database';
 
 export interface SendMailOptions {
   to: string;
@@ -12,6 +14,11 @@ export interface SendMailOptions {
     content: Buffer;
     contentType?: string;
   }>;
+  // Phase 9: Options pour historique
+  documentType?: DocumentType;
+  documentId?: string;
+  templateName?: string;
+  skipBcc?: boolean; // Pour les cas exceptionnels
 }
 
 @Injectable()
@@ -19,13 +26,18 @@ export class MailService {
   private readonly logger = new Logger(MailService.name);
   private transporter: Transporter | null = null;
   private readonly from: string;
+  private readonly bccEmail: string | null;
 
-  constructor(private configService: ConfigService) {
+  constructor(
+    private configService: ConfigService,
+    private emailHistory: EmailHistoryService,
+  ) {
     const host = this.configService.get('SMTP_HOST');
     const port = this.configService.get('SMTP_PORT') || 587;
     const user = this.configService.get('SMTP_USER');
     const password = this.configService.get('SMTP_PASSWORD');
     this.from = this.configService.get('SMTP_FROM') || 'noreply@artjardin.fr';
+    this.bccEmail = this.configService.get('COMPANY_BCC_EMAIL') || null;
 
     if (host && user && password) {
       this.transporter = nodemailer.createTransport({
@@ -39,6 +51,9 @@ export class MailService {
       });
 
       this.logger.log(`Mail transporter configured with host: ${host}`);
+      if (this.bccEmail) {
+        this.logger.log(`BCC copy enabled: ${this.bccEmail}`);
+      }
     } else {
       this.logger.warn('Mail service not configured - emails will be logged only');
     }
@@ -48,20 +63,47 @@ export class MailService {
     return this.transporter !== null;
   }
 
+  getBccEmail(): string | null {
+    return this.bccEmail;
+  }
+
   async sendMail(options: SendMailOptions): Promise<boolean> {
-    const { to, subject, html, attachments } = options;
+    const { to, subject, html, attachments, documentType, documentId, templateName, skipBcc } = options;
+
+    // Determine BCC - copie automatique sauf si explicitement desactive
+    const bcc = !skipBcc && this.bccEmail ? this.bccEmail : undefined;
+
+    // Phase 9: Log l'email AVANT envoi
+    const emailId = await this.emailHistory.logEmail({
+      to,
+      bcc,
+      subject,
+      templateName: templateName || 'generic',
+      documentType,
+      documentId,
+      attachments: attachments?.map(a => a.filename) || [],
+    });
 
     if (!this.transporter) {
-      this.logger.warn(`[DEV] Email would be sent to: ${to}`);
+      this.logger.warn(`[DEV] Email would be sent to: ${to}${bcc ? ` (BCC: ${bcc})` : ''}`);
       this.logger.warn(`[DEV] Subject: ${subject}`);
       this.logger.debug(`[DEV] Content: ${html.substring(0, 200)}...`);
-      return true; // Pretend it worked in dev
+
+      // Marquer comme envoye en dev
+      await this.emailHistory.updateStatus(emailId, {
+        status: 'sent',
+        messageId: `dev-${Date.now()}`,
+        sentAt: new Date(),
+      });
+
+      return true;
     }
 
     try {
       const result = await this.transporter.sendMail({
         from: this.from,
         to,
+        bcc, // BCC automatique vers l'entreprise
         subject,
         html,
         attachments: attachments?.map((a) => ({
@@ -71,16 +113,31 @@ export class MailService {
         })),
       });
 
-      this.logger.log(`Email sent to ${to}: ${result.messageId}`);
+      this.logger.log(`Email sent to ${to}${bcc ? ` (BCC: ${bcc})` : ''}: ${result.messageId}`);
+
+      // Phase 9: Mettre a jour le statut
+      await this.emailHistory.updateStatus(emailId, {
+        status: 'sent',
+        messageId: result.messageId,
+        sentAt: new Date(),
+      });
+
       return true;
     } catch (error) {
       const err = error as Error;
       this.logger.error(`Failed to send email to ${to}: ${err.message}`, err.stack);
+
+      // Phase 9: Logger l'echec
+      await this.emailHistory.updateStatus(emailId, {
+        status: 'failed',
+        errorMessage: err.message,
+      });
+
       return false;
     }
   }
 
-  async sendDevis(to: string, devisNumero: string, clientName: string, pdfBuffer: Buffer): Promise<boolean> {
+  async sendDevis(to: string, devisNumero: string, clientName: string, pdfBuffer: Buffer, devisId?: string): Promise<boolean> {
     const html = `
       <h2>Votre devis ${devisNumero}</h2>
       <p>Bonjour ${clientName},</p>
@@ -103,10 +160,13 @@ export class MailService {
           contentType: 'application/pdf',
         },
       ],
+      documentType: 'devis',
+      documentId: devisId,
+      templateName: 'devis',
     });
   }
 
-  async sendFacture(to: string, factureNumero: string, clientName: string, pdfBuffer: Buffer): Promise<boolean> {
+  async sendFacture(to: string, factureNumero: string, clientName: string, pdfBuffer: Buffer, factureId?: string): Promise<boolean> {
     const html = `
       <h2>Votre facture ${factureNumero}</h2>
       <p>Bonjour ${clientName},</p>
@@ -128,10 +188,13 @@ export class MailService {
           contentType: 'application/pdf',
         },
       ],
+      documentType: 'facture',
+      documentId: factureId,
+      templateName: 'facture',
     });
   }
 
-  async sendRelance(to: string, factureNumero: string, clientName: string, montant: number, joursRetard: number): Promise<boolean> {
+  async sendRelance(to: string, factureNumero: string, clientName: string, montant: number, joursRetard: number, factureId?: string): Promise<boolean> {
     const html = `
       <h2>Relance - Facture ${factureNumero}</h2>
       <p>Bonjour ${clientName},</p>
@@ -147,6 +210,9 @@ export class MailService {
       to,
       subject: `Relance facture ${factureNumero} - Art & Jardin`,
       html,
+      documentType: 'relance',
+      documentId: factureId,
+      templateName: 'relance',
     });
   }
 
@@ -160,6 +226,7 @@ export class MailService {
     montantTTC: number,
     signedAt: Date,
     pdfBuffer: Buffer,
+    devisId?: string,
   ): Promise<boolean> {
     const dateStr = signedAt.toLocaleDateString('fr-FR', {
       day: '2-digit',
@@ -251,6 +318,9 @@ export class MailService {
           contentType: 'application/pdf',
         },
       ],
+      documentType: 'devis_signe',
+      documentId: devisId,
+      templateName: 'signature_confirmation',
     });
   }
 
@@ -264,6 +334,7 @@ export class MailService {
     montantTTC: number,
     signedAt: Date,
     chantierDescription: string,
+    devisId?: string,
   ): Promise<boolean> {
     const dateStr = signedAt.toLocaleDateString('fr-FR', {
       day: '2-digit',
@@ -341,6 +412,10 @@ export class MailService {
       to: patronEmail,
       subject: `[SIGNE] Devis ${devisNumero} - ${clientName}`,
       html,
+      documentType: 'devis_signe',
+      documentId: devisId,
+      templateName: 'signature_notification',
+      skipBcc: true, // Pas de BCC pour les notifications internes
     });
   }
 }

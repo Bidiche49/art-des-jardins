@@ -5,6 +5,7 @@ import {
   PutObjectCommand,
   DeleteObjectCommand,
   GetObjectCommand,
+  HeadBucketCommand,
 } from '@aws-sdk/client-s3';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -128,8 +129,103 @@ export class StorageService {
     return `${this.endpoint}/${this.bucket}/${key}`;
   }
 
+  /**
+   * Upload a buffer directly (for backups, PDFs, etc.)
+   */
+  async uploadBuffer(
+    buffer: Buffer,
+    key: string,
+    contentType: string,
+    options?: { bucket?: string; acl?: string },
+  ): Promise<UploadResult> {
+    if (!this.s3Client) {
+      throw new BadRequestException('Storage service not configured');
+    }
+
+    const bucket = options?.bucket || this.bucket;
+    const acl = options?.acl || 'private';
+
+    try {
+      await this.s3Client.send(
+        new PutObjectCommand({
+          Bucket: bucket,
+          Key: key,
+          Body: buffer,
+          ContentType: contentType,
+          ACL: acl as any,
+        }),
+      );
+
+      const url = `${this.endpoint}/${bucket}/${key}`;
+
+      this.logger.log(`Buffer uploaded: ${key} (${buffer.length} bytes) to ${bucket}`);
+
+      return {
+        key,
+        url,
+        bucket,
+        size: buffer.length,
+        mimeType: contentType,
+      };
+    } catch (error) {
+      const err = error as Error;
+      this.logger.error(`Buffer upload failed: ${err.message}`, err.stack);
+      throw new BadRequestException('Failed to upload buffer');
+    }
+  }
+
+  /**
+   * Download a file as buffer
+   */
+  async downloadBuffer(key: string, bucket?: string): Promise<Buffer> {
+    if (!this.s3Client) {
+      throw new BadRequestException('Storage service not configured');
+    }
+
+    try {
+      const response = await this.s3Client.send(
+        new GetObjectCommand({
+          Bucket: bucket || this.bucket,
+          Key: key,
+        }),
+      );
+
+      const chunks: Buffer[] = [];
+      const stream = response.Body as NodeJS.ReadableStream;
+
+      for await (const chunk of stream) {
+        chunks.push(Buffer.from(chunk));
+      }
+
+      return Buffer.concat(chunks);
+    } catch (error) {
+      const err = error as Error;
+      this.logger.error(`Download failed: ${err.message}`, err.stack);
+      throw new BadRequestException('Failed to download file');
+    }
+  }
+
+  getBucket(): string {
+    return this.bucket;
+  }
+
   isConfigured(): boolean {
     return this.s3Client !== null;
+  }
+
+  /**
+   * Check S3 connection by checking if bucket exists
+   */
+  async checkConnection(): Promise<void> {
+    if (!this.s3Client) {
+      throw new Error('Storage service not configured');
+    }
+
+    await this.s3Client.send(
+      new HeadBucketCommand({
+        Bucket: this.bucket,
+      }),
+    );
   }
 
   private validateFile(file: Express.Multer.File): void {

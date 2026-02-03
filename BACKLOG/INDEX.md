@@ -9,8 +9,8 @@
 | Type | Prochain ID |
 |------|-------------|
 | BUG | BUG-001 |
-| FEAT | FEAT-056 |
-| IMP | IMP-001 |
+| FEAT | FEAT-078 |
+| IMP | IMP-009 |
 
 ---
 
@@ -19,9 +19,9 @@
 | Type | Pending | Ready | Done | Total |
 |------|---------|-------|------|-------|
 | Bugs | 0 | 0 | 0 | 0 |
-| Features | 5 | 0 | 50 | 55 |
-| Improvements | 0 | 0 | 0 | 0 |
-| **Total** | **5** | **0** | **50** | **55** |
+| Features | 6 | 11 | 60 | 77 |
+| Improvements | 1 | 7 | 0 | 8 |
+| **Total** | **7** | **18** | **60** | **85** |
 
 ---
 
@@ -143,38 +143,148 @@
 
 ---
 
-## Roadmap Phase 9 - Zero Perte / Resilience (CRITIQUE)
+## Roadmap Phase 9 - Zero Perte / Resilience (COMPLETE)
 
 > **REGLE BUSINESS:** Aucune perte de donnees acceptable. Documents toujours accessibles.
 
 | Ordre | Ticket | Description | Statut |
 |-------|--------|-------------|--------|
-| 1 | FEAT-051 | Copie automatique email entreprise (BCC) | PENDING |
-| 2 | FEAT-052 | Envoi automatique documents a chaque etape | PENDING |
-| 3 | FEAT-053 | Backup automatique quotidien BDD | PENDING |
-| 4 | FEAT-054 | Archivage automatique PDFs sur S3 | PENDING |
-| 5 | FEAT-055 | Historique complet des emails envoyes | PENDING |
+| 1 | FEAT-051 | Copie automatique email entreprise (BCC) | DONE |
+| 2 | FEAT-052 | Envoi automatique documents a chaque etape | DONE |
+| 3 | FEAT-053 | Backup automatique quotidien BDD | DONE |
+| 4 | FEAT-054 | Archivage automatique PDFs sur S3 | DONE |
+| 5 | FEAT-055 | Historique complet des emails envoyes | DONE |
+
+> Phase 9 terminee le 2026-01-30.
+
+---
+
+## Roadmap Phase 10 - v1 Solide (COMPLETE)
+
+> **OBJECTIF:** Application robuste, securisee et automatisee pour production.
+
+| Ordre | Ticket | Description | Statut |
+|-------|--------|-------------|--------|
+| 1 | FEAT-056 | Relances automatiques factures impayees | DONE |
+| 2 | FEAT-057 | Health checks avances et alertes | DONE |
+| 3 | FEAT-058 | Soft delete pour toutes les entites | DONE |
+| 4 | FEAT-059 | Authentification 2FA pour patrons | DONE |
+| 5 | FEAT-060 | Tests e2e Phase 9 (Zero Perte) | DONE |
+
+> Phase 10 terminee le 2026-02-02.
+
+---
+
+## Roadmap Phase 11 - v1.1 Production-ready (MIXTE)
+
+> **OBJECTIF:** Securite de base + quick wins pour mise en production.
+
+| Ordre | Ticket | Description | Statut | Auto |
+|-------|--------|-------------|--------|------|
+| 1 | IMP-001 | Helmet.js + Headers CSP | READY | ✅ |
+| 2 | IMP-002 | Rate limiting global par IP | READY | ✅ |
+| 3 | FEAT-061 | Export FEC comptable | **PENDING** | ❌ Legal |
+| 4 | FEAT-062 | Raccourcis clavier + recherche globale | READY | ✅ |
+| 5 | FEAT-063 | Templates prestations devis | READY | ✅ |
+
+---
+
+## Roadmap Phase 12 - Securite avancee (READY)
+
+> **OBJECTIF:** Renforcement securite pour environnement multi-utilisateurs.
+
+| Ordre | Ticket | Description | Statut | Auto |
+|-------|--------|-------------|--------|------|
+| 1 | IMP-003 | Rotation automatique refresh tokens | READY | ✅ |
+| 2 | IMP-004 | Audit log centralise securite | READY | ✅ |
+| 3 | IMP-005 | Detection anomalies login | READY | ⚠️ Service ext |
+| 4 | IMP-006 | Expiration sessions inactives | READY | ✅ |
+| 5 | FEAT-077 | Authentification biometrique (WebAuthn) | READY | ✅ |
+
+---
+
+## Roadmap Phase 13 - Donnees sensibles & Notifications (MIXTE)
+
+> **OBJECTIF:** Protection donnees et communication in-app.
+
+| Ordre | Ticket | Description | Statut | Auto |
+|-------|--------|-------------|--------|------|
+| 1 | IMP-007 | Chiffrement donnees sensibles en BDD | **PENDING** | 🚨 DANGER |
+| 2 | IMP-008 | Backup chiffre | READY | ✅ |
+| 3 | FEAT-064 | Notifications in-app | READY | ✅ |
+
+---
+
+## Roadmap Phase 14 - UX Terrain (MIXTE)
+
+> **OBJECTIF:** Ameliorer l'experience sur le terrain (mobile, offline, ergonomie).
+
+| Ordre | Ticket | Description | Statut | Auto |
+|-------|--------|-------------|--------|------|
+| 1 | FEAT-065 | Onboarding utilisateur guide | **PENDING** | ❌ Contenu |
+| 2 | FEAT-066 | UI resolution conflits sync offline | READY | ✅ |
+| 3 | FEAT-067 | Mode gros doigts mobile terrain | READY | ✅ |
+| 4 | FEAT-068 | Scan QR code chantier | READY | ✅ |
+| 5 | FEAT-069 | Photos geolocalisees avant/apres | READY | ✅ |
+
+---
+
+## Roadmap Phase 15 - Fonctionnalites metier avancees (MIXTE)
+
+> **OBJECTIF:** Outils metier avances pour optimiser l'activite.
+
+| Ordre | Ticket | Description | Statut | Auto |
+|-------|--------|-------------|--------|------|
+| 1 | FEAT-070 | Dashboard temps reel WebSocket | READY | ✅ |
+| 2 | FEAT-071 | Calcul rentabilite chantier | READY | ✅ |
+| 3 | FEAT-072 | Integration calendrier externe | **PENDING** | ❌ OAuth |
+| 4 | FEAT-073 | Meteo integree | READY | ✅ |
+
+---
+
+## Roadmap Phase 16 - Integrations externes (PENDING)
+
+> **OBJECTIF:** Integrations tierces pour automatisation avancee.
+> **⚠️ AUCUN TICKET AUTOMATISABLE** - Tous necessitent config/contrats externes.
+
+| Ordre | Ticket | Description | Statut | Auto |
+|-------|--------|-------------|--------|------|
+| 1 | FEAT-074 | OCR documents fournisseurs | **PENDING** | ❌ Cloud billing |
+| 2 | FEAT-075 | Geolocalisation equipes temps reel | **PENDING** | 🚨 RGPD |
+| 3 | FEAT-076 | Signature electronique avancee (eIDAS) | **PENDING** | ❌ Contrat |
 
 ---
 
 ## Features
 
-### Pending (5)
+### Pending (6) - NON AUTOMATISABLES
 
-| ID | Titre | Priorite | Complexite | Tags |
-|----|-------|----------|------------|------|
-| FEAT-051 | Copie automatique email entreprise (BCC) | Critique | S | email, backup, resilience, zero-perte |
-| FEAT-052 | Envoi automatique documents a chaque etape | Critique | M | email, workflow, auto-send, zero-perte |
-| FEAT-053 | Backup automatique quotidien BDD | Critique | M | backup, resilience, database, zero-perte |
-| FEAT-054 | Archivage automatique PDFs sur S3 | Critique | M | s3, archive, pdf, zero-perte |
-| FEAT-055 | Historique complet des emails envoyes | Haute | M | email, audit, historique, zero-perte |
+| ID | Titre | Priorite | Phase | Raison |
+|----|-------|----------|-------|--------|
+| FEAT-061 | Export FEC comptable | Haute | 11 | ⚠️ Format legal strict, validation comptable |
+| FEAT-065 | Onboarding utilisateur guide | Moyenne | 14 | ❌ Contenu/parcours a definir |
+| FEAT-072 | Integration calendrier externe | Moyenne | 15 | ❌ OAuth Google/Microsoft manuel |
+| FEAT-074 | OCR documents fournisseurs | Basse | 16 | ❌ Compte cloud + billing |
+| FEAT-075 | Geolocalisation equipes | Basse | 16 | 🚨 RGPD - Validation juridique |
+| FEAT-076 | Signature eIDAS | Basse | 16 | ❌ Contrat commercial Yousign |
 
-### Ready (0)
+### Ready (11) - AUTOMATISABLES
 
-| ID | Titre | Priorite | Complexite | Tags |
-|----|-------|----------|------------|------|
+| ID | Titre | Priorite | Complexite | Tags | Phase |
+|----|-------|----------|------------|------|-------|
+| FEAT-062 | Raccourcis clavier + recherche globale | Haute | S | ux, pwa | 11 |
+| FEAT-063 | Templates prestations devis | Haute | M | ux, api, data | 11 |
+| FEAT-064 | Notifications in-app | Moyenne | S | ux, pwa | 13 |
+| FEAT-066 | UI resolution conflits sync offline | Haute | M | ux, pwa, offline | 14 |
+| FEAT-067 | Mode gros doigts mobile terrain | Moyenne | S | ux, pwa, mobile | 14 |
+| FEAT-068 | Scan QR code chantier | Moyenne | S | ux, pwa, mobile | 14 |
+| FEAT-069 | Photos geolocalisees avant/apres | Haute | M | ux, pwa, mobile, data | 14 |
+| FEAT-070 | Dashboard temps reel WebSocket | Moyenne | L | api, pwa, ux | 15 |
+| FEAT-071 | Calcul rentabilite chantier | Haute | M | api, data, ux | 15 |
+| FEAT-073 | Meteo integree | Basse | S | api, ux, integration | 15 |
+| FEAT-077 | Authentification biometrique (WebAuthn) | Haute | M | security, auth, ux, pwa, mobile | 12 |
 
-### Done (50)
+### Done (60)
 
 | ID | Titre | Priorite | Date resolution |
 |----|-------|----------|-----------------|
@@ -228,6 +338,16 @@
 | FEAT-048 | Synchronisation des actions offline | Haute | 2026-01-30 |
 | FEAT-049 | Tests e2e Portail Client et Analytics | Haute | 2026-01-30 |
 | FEAT-050 | Mode sombre PWA | Basse | 2026-01-30 |
+| FEAT-051 | Copie automatique email entreprise (BCC) | Critique | 2026-01-30 |
+| FEAT-052 | Envoi automatique documents a chaque etape | Critique | 2026-01-30 |
+| FEAT-053 | Backup automatique quotidien BDD | Critique | 2026-01-30 |
+| FEAT-054 | Archivage automatique PDFs sur S3 | Critique | 2026-01-30 |
+| FEAT-055 | Historique complet des emails envoyes | Haute | 2026-01-30 |
+| FEAT-056 | Relances automatiques factures impayees | Critique | 2026-02-02 |
+| FEAT-057 | Health checks avances et alertes | Critique | 2026-02-02 |
+| FEAT-058 | Soft delete pour toutes les entites | Haute | 2026-02-02 |
+| FEAT-059 | Authentification 2FA pour patrons | Haute | 2026-02-02 |
+| FEAT-060 | Tests e2e Phase 9 (Zero Perte) | Haute | 2026-02-02 |
 
 ---
 
@@ -252,15 +372,23 @@
 
 ## Improvements
 
-### Pending (0)
+### Pending (1) - NON AUTOMATISABLE
 
-| ID | Titre | Priorite | Complexite | Tags |
-|----|-------|----------|------------|------|
+| ID | Titre | Priorite | Phase | Raison |
+|----|-------|----------|-------|--------|
+| IMP-007 | Chiffrement donnees sensibles BDD | Moyenne | 13 | 🚨 DANGER - Migration donnees irreversible |
 
-### Ready (0)
+### Ready (7) - AUTOMATISABLES
 
-| ID | Titre | Priorite | Complexite | Tags |
-|----|-------|----------|------------|------|
+| ID | Titre | Priorite | Complexite | Tags | Phase |
+|----|-------|----------|------------|------|-------|
+| IMP-001 | Helmet.js + Headers CSP | Critique | XS | security, api | 11 |
+| IMP-002 | Rate limiting global par IP | Critique | S | security, api | 11 |
+| IMP-003 | Rotation automatique refresh tokens | Haute | S | security, auth | 12 |
+| IMP-004 | Audit log centralise securite | Haute | M | security, api, monitoring | 12 |
+| IMP-005 | Detection anomalies login | Moyenne | M | security, auth | 12 | ⚠️ Service ext |
+| IMP-006 | Expiration sessions inactives | Moyenne | S | security, auth, ux | 12 |
+| IMP-008 | Backup chiffre | Moyenne | S | security, backup | 13 |
 
 ### Done (0)
 

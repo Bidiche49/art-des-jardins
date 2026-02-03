@@ -23,6 +23,12 @@ import { ClientAuthModule } from './modules/client-auth/client-auth.module';
 import { ClientPortalModule } from './modules/client-portal/client-portal.module';
 import { MessagingModule } from './modules/messaging/messaging.module';
 import { AnalyticsModule } from './modules/analytics/analytics.module';
+import { BackupModule } from './modules/backup/backup.module';
+import { DocumentArchiveModule } from './modules/document-archive/document-archive.module';
+import { AutoSendModule } from './modules/auto-send/auto-send.module';
+import { RelancesModule } from './modules/relances/relances.module';
+import { AlertsModule } from './modules/alerts/alerts.module';
+import { TrashModule } from './modules/trash/trash.module';
 import { DatabaseModule } from './database/database.module';
 import { envValidationSchema } from './config/env.validation';
 
@@ -112,6 +118,12 @@ import { envValidationSchema } from './config/env.validation';
     ClientPortalModule,
     MessagingModule,
     AnalyticsModule,
+    BackupModule,
+    DocumentArchiveModule,
+    AutoSendModule,
+    RelancesModule,
+    AlertsModule,
+    TrashModule,
   ],
   providers: [
     {
