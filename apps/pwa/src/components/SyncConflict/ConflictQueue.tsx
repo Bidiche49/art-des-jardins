@@ -1,4 +1,4 @@
-import { useEffect, useCallback } from 'react';
+import { useCallback } from 'react';
 import { useConflictStore } from '../../stores/conflicts';
 import { applyConflictResolution } from '../../services/conflict.service';
 import { syncService } from '../../db/sync';
@@ -98,11 +98,14 @@ async function updateSyncQueueItem(
   const { entityType, entityId } = conflict;
 
   // Trouver l'item en attente pour cette entite
-  const queueItem = await db.syncQueue
-    .where(['entity', 'entityId'])
-    .equals([entityType, entityId])
-    .first();
+  // Note: pas d'index compound, donc on filtre par entity puis entityId
+  const queueItems = await db.syncQueue
+    .where('entity')
+    .equals(entityType)
+    .filter((item) => item.entityId === entityId)
+    .toArray();
 
+  const queueItem = queueItems[0];
   if (queueItem && queueItem.id !== undefined) {
     await db.syncQueue.update(queueItem.id, {
       data: resolvedData,
