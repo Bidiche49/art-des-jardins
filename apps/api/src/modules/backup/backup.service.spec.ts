@@ -18,6 +18,7 @@ jest.mock('@aws-sdk/client-s3', () => ({
 
 import { BackupService } from './backup.service';
 import { StorageService } from '../storage/storage.service';
+import { BackupCryptoService } from './backup-crypto.service';
 
 describe('BackupService', () => {
   let service: BackupService;
@@ -61,6 +62,12 @@ describe('BackupService', () => {
     uploadBuffer: jest.fn().mockResolvedValue({ size: 1024000 }),
   };
 
+  const mockBackupCryptoService = {
+    isConfigured: jest.fn().mockReturnValue(false),
+    encryptBuffer: jest.fn(),
+    decryptBuffer: jest.fn(),
+  };
+
   beforeEach(async () => {
     jest.clearAllMocks();
 
@@ -70,6 +77,7 @@ describe('BackupService', () => {
         { provide: PrismaService, useValue: mockPrismaService },
         { provide: ConfigService, useValue: mockConfigService },
         { provide: StorageService, useValue: mockStorageService },
+        { provide: BackupCryptoService, useValue: mockBackupCryptoService },
       ],
     }).compile();
 
@@ -148,6 +156,7 @@ describe('BackupService', () => {
         totalSizeBytes: 10240000,
         lastBackupAt: mockBackupHistory.createdAt,
         retentionDays: 30,
+        encryptionEnabled: false,
       });
     });
 
@@ -167,6 +176,7 @@ describe('BackupService', () => {
         totalSizeBytes: 0,
         lastBackupAt: null,
         retentionDays: 30,
+        encryptionEnabled: false,
       });
     });
   });
@@ -185,6 +195,43 @@ describe('BackupService', () => {
       await service.handleDailyBackup();
 
       expect(mockStorageService.uploadBuffer).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('isEncryptionEnabled', () => {
+    it('should return false when crypto service is not configured', () => {
+      mockBackupCryptoService.isConfigured.mockReturnValue(false);
+      expect(service.isEncryptionEnabled()).toBe(false);
+    });
+
+    it('should return true when crypto service is configured', () => {
+      mockBackupCryptoService.isConfigured.mockReturnValue(true);
+      expect(service.isEncryptionEnabled()).toBe(true);
+    });
+  });
+
+  describe('decryptBackup', () => {
+    it('should throw error when encryption not configured', async () => {
+      mockBackupCryptoService.isConfigured.mockReturnValue(false);
+      const buffer = Buffer.from('test');
+
+      await expect(service.decryptBackup(buffer)).rejects.toThrow(
+        'Backup decryption not available: encryption key not configured',
+      );
+    });
+
+    it('should decrypt buffer when encryption is configured', async () => {
+      mockBackupCryptoService.isConfigured.mockReturnValue(true);
+      const encryptedBuffer = Buffer.from('encrypted');
+      const decryptedBuffer = Buffer.from('decrypted');
+      mockBackupCryptoService.decryptBuffer.mockResolvedValue(decryptedBuffer);
+
+      const result = await service.decryptBackup(encryptedBuffer);
+
+      expect(result).toBe(decryptedBuffer);
+      expect(mockBackupCryptoService.decryptBuffer).toHaveBeenCalledWith(
+        encryptedBuffer,
+      );
     });
   });
 });
