@@ -44,6 +44,7 @@ describe('DeviceTrackingService', () => {
       create: jest.fn(),
       update: jest.fn(),
       delete: jest.fn(),
+      count: jest.fn(),
     },
     refreshToken: {
       deleteMany: jest.fn(),
@@ -384,6 +385,164 @@ describe('DeviceTrackingService', () => {
       const result = await service.deleteDevice('unknown', 'user-123');
 
       expect(result).toBe(false);
+    });
+  });
+
+  describe('getDevicesPaginated', () => {
+    it('should return paginated devices with total count', async () => {
+      const devices = [
+        { ...mockDevice, id: 'device-1' },
+        { ...mockDevice, id: 'device-2' },
+      ];
+      mockPrismaService.knownDevice.findMany.mockResolvedValue(devices);
+      mockPrismaService.knownDevice.count.mockResolvedValue(5);
+
+      const result = await service.getDevicesPaginated('user-123', 2, 0);
+
+      expect(result.devices).toHaveLength(2);
+      expect(result.total).toBe(5);
+      expect(mockPrismaService.knownDevice.findMany).toHaveBeenCalledWith({
+        where: { userId: 'user-123' },
+        orderBy: { lastSeenAt: 'desc' },
+        skip: 0,
+        take: 2,
+        select: expect.any(Object),
+      });
+    });
+
+    it('should handle offset pagination', async () => {
+      mockPrismaService.knownDevice.findMany.mockResolvedValue([mockDevice]);
+      mockPrismaService.knownDevice.count.mockResolvedValue(3);
+
+      const result = await service.getDevicesPaginated('user-123', 10, 2);
+
+      expect(mockPrismaService.knownDevice.findMany).toHaveBeenCalledWith(
+        expect.objectContaining({
+          skip: 2,
+          take: 10,
+        })
+      );
+    });
+
+    it('should use default values for limit and offset', async () => {
+      mockPrismaService.knownDevice.findMany.mockResolvedValue([]);
+      mockPrismaService.knownDevice.count.mockResolvedValue(0);
+
+      await service.getDevicesPaginated('user-123');
+
+      expect(mockPrismaService.knownDevice.findMany).toHaveBeenCalledWith(
+        expect.objectContaining({
+          skip: 0,
+          take: 20,
+        })
+      );
+    });
+  });
+
+  describe('getDeviceById', () => {
+    it('should return device if found and belongs to user', async () => {
+      mockPrismaService.knownDevice.findFirst.mockResolvedValue(mockDevice);
+
+      const result = await service.getDeviceById('user-123', 'device-123');
+
+      expect(result).toEqual(mockDevice);
+      expect(mockPrismaService.knownDevice.findFirst).toHaveBeenCalledWith({
+        where: { id: 'device-123', userId: 'user-123' },
+        select: expect.any(Object),
+      });
+    });
+
+    it('should return null if device not found', async () => {
+      mockPrismaService.knownDevice.findFirst.mockResolvedValue(null);
+
+      const result = await service.getDeviceById('user-123', 'unknown');
+
+      expect(result).toBeNull();
+    });
+  });
+
+  describe('findDeviceByFingerprint', () => {
+    it('should find device by fingerprint', async () => {
+      mockPrismaService.knownDevice.findUnique.mockResolvedValue({ id: 'device-123' });
+
+      const result = await service.findDeviceByFingerprint('user-123', 'fp-abc');
+
+      expect(result).toEqual({ id: 'device-123' });
+      expect(mockPrismaService.knownDevice.findUnique).toHaveBeenCalledWith({
+        where: {
+          userId_fingerprint: { userId: 'user-123', fingerprint: 'fp-abc' },
+        },
+        select: { id: true },
+      });
+    });
+
+    it('should return null if not found', async () => {
+      mockPrismaService.knownDevice.findUnique.mockResolvedValue(null);
+
+      const result = await service.findDeviceByFingerprint('user-123', 'unknown');
+
+      expect(result).toBeNull();
+    });
+  });
+
+  describe('revokeDevice', () => {
+    it('should revoke device and delete refresh tokens', async () => {
+      mockPrismaService.knownDevice.findFirst.mockResolvedValue({
+        ...mockDevice,
+        fingerprint: 'other-fingerprint',
+      });
+      mockPrismaService.$transaction.mockImplementation(async (callback) => {
+        return callback({
+          refreshToken: { deleteMany: jest.fn() },
+          knownDevice: { delete: jest.fn() },
+        });
+      });
+
+      const result = await service.revokeDevice('user-123', 'device-123', 'current-fp');
+
+      expect(result).toEqual({ success: true });
+      expect(mockPrismaService.$transaction).toHaveBeenCalled();
+      expect(mockAuditService.log).toHaveBeenCalledWith(
+        expect.objectContaining({ action: 'DEVICE_REVOKED' })
+      );
+    });
+
+    it('should return error if device not found', async () => {
+      mockPrismaService.knownDevice.findFirst.mockResolvedValue(null);
+
+      const result = await service.revokeDevice('user-123', 'unknown', 'fp');
+
+      expect(result).toEqual({ success: false, error: 'device_not_found' });
+    });
+
+    it('should refuse to revoke current device', async () => {
+      const currentFingerprint = 'current-device-fingerprint';
+      mockPrismaService.knownDevice.findFirst.mockResolvedValue({
+        ...mockDevice,
+        fingerprint: currentFingerprint,
+      });
+
+      const result = await service.revokeDevice('user-123', 'device-123', currentFingerprint);
+
+      expect(result).toEqual({
+        success: false,
+        error: 'cannot_revoke_current_device',
+      });
+      expect(mockPrismaService.$transaction).not.toHaveBeenCalled();
+    });
+
+    it('should allow revocation without fingerprint check', async () => {
+      mockPrismaService.knownDevice.findFirst.mockResolvedValue(mockDevice);
+      mockPrismaService.$transaction.mockImplementation(async (callback) => {
+        return callback({
+          refreshToken: { deleteMany: jest.fn() },
+          knownDevice: { delete: jest.fn() },
+        });
+      });
+
+      const result = await service.revokeDevice('user-123', 'device-123');
+
+      expect(result).toEqual({ success: true });
     });
   });
 });
