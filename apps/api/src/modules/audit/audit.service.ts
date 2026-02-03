@@ -1,5 +1,6 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Inject, forwardRef } from '@nestjs/common';
 import { PrismaService } from '../../database/prisma.service';
+import { SecurityAlertService } from '../alerts/security-alert.service';
 
 interface AuditLogFilters {
   page?: number;
@@ -23,10 +24,14 @@ interface CreateAuditLogDto {
 
 @Injectable()
 export class AuditService {
-  constructor(private prisma: PrismaService) {}
+  constructor(
+    private prisma: PrismaService,
+    @Inject(forwardRef(() => SecurityAlertService))
+    private securityAlertService: SecurityAlertService,
+  ) {}
 
   async log(data: CreateAuditLogDto): Promise<any> {
-    return this.prisma.auditLog.create({
+    const auditLog = await this.prisma.auditLog.create({
       data: {
         userId: data.userId,
         action: data.action,
@@ -37,6 +42,23 @@ export class AuditService {
         userAgent: data.userAgent,
       },
     });
+
+    // Verifier les patterns de securite suspects (async, ne bloque pas)
+    if (data.entite === 'auth') {
+      this.securityAlertService
+        .checkAndAlert({
+          action: data.action,
+          userId: data.userId,
+          ipAddress: data.ipAddress,
+          userAgent: data.userAgent,
+          details: data.details,
+        })
+        .catch(() => {
+          // Ignore les erreurs de securite alert pour ne pas bloquer l'audit
+        });
+    }
+
+    return auditLog;
   }
 
   async findAll(filters: AuditLogFilters): Promise<any> {

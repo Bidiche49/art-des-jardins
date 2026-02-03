@@ -49,6 +49,37 @@ export const envValidationSchema = Joi.object({
 
   // CORS
   CORS_ORIGINS: Joi.string().default('http://localhost:3001'),
+
+  // Relances automatiques
+  RELANCE_ENABLED: Joi.string().valid('true', 'false').default('false'),
+  RELANCE_J1: Joi.number().default(30),
+  RELANCE_J2: Joi.number().default(45),
+  RELANCE_J3: Joi.number().default(60),
+
+  // BCC email pour copie automatique
+  COMPANY_BCC_EMAIL: Joi.string().email({ tlds: false }).allow('').optional(),
+
+  // Backup
+  BACKUP_ENABLED: Joi.string().valid('true', 'false').default('false'),
+  BACKUP_BUCKET: Joi.string().default('art-et-jardin-backups'),
+  BACKUP_RETENTION_DAYS: Joi.number().default(30),
+
+  // Alertes
+  ALERTS_ENABLED: Joi.string().valid('true', 'false').default('false'),
+  ALERTS_EMAIL: Joi.string().email({ tlds: false }).allow('').optional(),
+  SERVICE_DOWN_THRESHOLD: Joi.number().default(300000), // 5 minutes
+
+  // Soft delete
+  SOFT_DELETE_RETENTION_DAYS: Joi.number().default(90),
+
+  // 2FA
+  TWO_FACTOR_ENCRYPTION_KEY: Joi.string().min(16).allow('').optional(),
+  TWO_FACTOR_REQUIRED_ROLES: Joi.string().default('patron'),
+
+  // Security Alerts
+  SECURITY_ALERT_THRESHOLD: Joi.number().default(5),
+  SECURITY_ALERT_WINDOW_MINUTES: Joi.number().default(10),
+  SECURITY_ALERT_EMAIL: Joi.string().email({ tlds: false }).allow('').optional(),
 });
 
 export interface EnvConfig {
@@ -73,4 +104,21 @@ export interface EnvConfig {
   THROTTLE_TTL: number;
   THROTTLE_LIMIT: number;
   CORS_ORIGINS: string;
+  RELANCE_ENABLED: 'true' | 'false';
+  RELANCE_J1: number;
+  RELANCE_J2: number;
+  RELANCE_J3: number;
+  COMPANY_BCC_EMAIL?: string;
+  BACKUP_ENABLED: 'true' | 'false';
+  BACKUP_BUCKET: string;
+  BACKUP_RETENTION_DAYS: number;
+  ALERTS_ENABLED: 'true' | 'false';
+  ALERTS_EMAIL?: string;
+  SERVICE_DOWN_THRESHOLD: number;
+  SOFT_DELETE_RETENTION_DAYS: number;
+  TWO_FACTOR_ENCRYPTION_KEY?: string;
+  TWO_FACTOR_REQUIRED_ROLES: string;
+  SECURITY_ALERT_THRESHOLD: number;
+  SECURITY_ALERT_WINDOW_MINUTES: number;
+  SECURITY_ALERT_EMAIL?: string;
 }

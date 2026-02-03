@@ -1,6 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { AuditService } from './audit.service';
 import { PrismaService } from '../../database/prisma.service';
+import { SecurityAlertService } from '../alerts/security-alert.service';
 import { createMockAuditLog, createMockUser } from '../../../test/helpers/test-utils';
 
 describe('AuditService', () => {
@@ -8,6 +9,7 @@ describe('AuditService', () => {
   let mockAuditLogCreate: jest.Mock;
   let mockAuditLogFindMany: jest.Mock;
   let mockAuditLogCount: jest.Mock;
+  let mockSecurityAlertCheckAndAlert: jest.Mock;
 
   const mockUser = createMockUser({ id: 'user-123' });
   const mockLog = createMockAuditLog({
@@ -22,6 +24,7 @@ describe('AuditService', () => {
     mockAuditLogCreate = jest.fn();
     mockAuditLogFindMany = jest.fn();
     mockAuditLogCount = jest.fn();
+    mockSecurityAlertCheckAndAlert = jest.fn().mockResolvedValue(undefined);
 
     const module: TestingModule = await Test.createTestingModule({
       providers: [
@@ -34,6 +37,12 @@ describe('AuditService', () => {
               findMany: mockAuditLogFindMany,
               count: mockAuditLogCount,
             },
+          },
+        },
+        {
+          provide: SecurityAlertService,
+          useValue: {
+            checkAndAlert: mockSecurityAlertCheckAndAlert,
           },
         },
       ],
@@ -112,6 +121,43 @@ describe('AuditService', () => {
       expect(mockAuditLogCreate).toHaveBeenCalledWith({
         data: expect.objectContaining({ userId: undefined }),
       });
+    });
+
+    it('should call security alert check for auth events', async () => {
+      const logData = {
+        userId: 'user-123',
+        action: 'LOGIN_FAILED',
+        entite: 'auth',
+        ipAddress: '192.168.1.1',
+        userAgent: 'Mozilla/5.0',
+      };
+      mockAuditLogCreate.mockResolvedValue({ id: 'log-123', ...logData });
+
+      await service.log(logData);
+
+      // Wait for async security check
+      await new Promise((r) => setTimeout(r, 10));
+
+      expect(mockSecurityAlertCheckAndAlert).toHaveBeenCalledWith({
+        action: 'LOGIN_FAILED',
+        userId: 'user-123',
+        ipAddress: '192.168.1.1',
+        userAgent: 'Mozilla/5.0',
+        details: undefined,
+      });
+    });
+
+    it('should not call security alert for non-auth events', async () => {
+      const logData = {
+        userId: 'user-123',
+        action: 'CREATE',
+        entite: 'Client',
+      };
+      mockAuditLogCreate.mockResolvedValue({ id: 'log-123', ...logData });
+
+      await service.log(logData);
+
+      expect(mockSecurityAlertCheckAndAlert).not.toHaveBeenCalled();
     });
   });
 
