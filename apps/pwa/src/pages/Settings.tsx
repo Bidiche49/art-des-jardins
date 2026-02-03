@@ -1,6 +1,8 @@
 import { useUIStore } from '@/stores/ui';
 import { SyncStatus } from '@/components/SyncStatus';
+import { DeviceList } from '@/components/DeviceList';
 import { Card } from '@/components/ui';
+import { useWebAuthn } from '@/hooks';
 
 type ThemeOption = 'light' | 'dark' | 'system';
 
@@ -12,6 +14,7 @@ const themeOptions: { value: ThemeOption; label: string; icon: string }[] = [
 
 export function Settings() {
   const { theme, setTheme } = useUIStore();
+  const { isSupported } = useWebAuthn();
 
   return (
     <div className="space-y-6">
@@ -57,6 +60,18 @@ export function Settings() {
           </p>
         </div>
       </Card>
+
+      {isSupported && (
+        <Card>
+          <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+            Connexion biometrique
+          </h2>
+          <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+            Gerez les appareils autorises a se connecter avec la biometrie.
+          </p>
+          <DeviceList />
+        </Card>
+      )}
 
       <Card>
         <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
