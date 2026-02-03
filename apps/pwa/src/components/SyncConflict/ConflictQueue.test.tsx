@@ -55,7 +55,12 @@ const createMockConflict = (id: string): SyncConflict => ({
 
 describe('ConflictQueue', () => {
   beforeEach(() => {
-    useConflictStore.getState().clearAllConflicts();
+    useConflictStore.setState({
+      conflicts: [],
+      currentIndex: 0,
+      sessionPreference: null,
+      resolutionHistory: [],
+    });
     vi.clearAllMocks();
   });
 
@@ -160,11 +165,102 @@ describe('ConflictQueue', () => {
       expect(history[history.length - 1].conflictId).toBe('1');
     });
   });
+
+  it('shows progress indicator when multiple conflicts', () => {
+    useConflictStore.getState().addConflict(createMockConflict('1'));
+    useConflictStore.getState().addConflict(createMockConflict('2'));
+    useConflictStore.getState().addConflict(createMockConflict('3'));
+
+    render(<ConflictQueue />);
+
+    expect(screen.getByText('Conflit 1 / 3')).toBeInTheDocument();
+  });
+
+  it('does not show progress indicator for single conflict', () => {
+    useConflictStore.getState().addConflict(createMockConflict('1'));
+
+    render(<ConflictQueue />);
+
+    expect(screen.queryByText(/Conflit 1 \/ 1/)).not.toBeInTheDocument();
+  });
+
+  it('shows navigation buttons when multiple conflicts', () => {
+    useConflictStore.getState().addConflict(createMockConflict('1'));
+    useConflictStore.getState().addConflict(createMockConflict('2'));
+
+    render(<ConflictQueue />);
+
+    expect(screen.getByText('Precedent')).toBeInTheDocument();
+    expect(screen.getByText('Suivant')).toBeInTheDocument();
+  });
+
+  it('navigates between conflicts with next/prev buttons', () => {
+    useConflictStore.getState().addConflict(createMockConflict('1'));
+    useConflictStore.getState().addConflict(createMockConflict('2'));
+
+    render(<ConflictQueue />);
+
+    expect(screen.getByText(/Conflit sur Intervention #1/)).toBeInTheDocument();
+
+    fireEvent.click(screen.getByText('Suivant'));
+
+    expect(screen.getByText(/Conflit sur Intervention #2/)).toBeInTheDocument();
+    expect(screen.getByText('Conflit 2 / 2')).toBeInTheDocument();
+
+    fireEvent.click(screen.getByText('Precedent'));
+
+    expect(screen.getByText(/Conflit sur Intervention #1/)).toBeInTheDocument();
+  });
+
+  it('shows apply-to-all checkbox for multiple conflicts', () => {
+    useConflictStore.getState().addConflict(createMockConflict('1'));
+    useConflictStore.getState().addConflict(createMockConflict('2'));
+    useConflictStore.getState().addConflict(createMockConflict('3'));
+
+    render(<ConflictQueue />);
+
+    expect(screen.getByText(/Appliquer ce choix aux 2 conflits restants/)).toBeInTheDocument();
+  });
+
+  it('resolves all remaining conflicts when apply-to-all is checked', async () => {
+    useConflictStore.getState().addConflict(createMockConflict('1'));
+    useConflictStore.getState().addConflict(createMockConflict('2'));
+    useConflictStore.getState().addConflict(createMockConflict('3'));
+
+    render(<ConflictQueue />);
+
+    // Cocher "Appliquer a tous"
+    const checkbox = screen.getByRole('checkbox');
+    fireEvent.click(checkbox);
+
+    // Resoudre
+    fireEvent.click(screen.getByText('Garder la mienne'));
+
+    await waitFor(() => {
+      expect(useConflictStore.getState().conflicts).toHaveLength(0);
+      expect(useConflictStore.getState().resolutionHistory).toHaveLength(3);
+    });
+  });
+
+  it('shows session preference buttons for multiple conflicts', () => {
+    useConflictStore.getState().addConflict(createMockConflict('1'));
+    useConflictStore.getState().addConflict(createMockConflict('2'));
+
+    render(<ConflictQueue />);
+
+    expect(screen.getByText('Toujours garder ma version')).toBeInTheDocument();
+    expect(screen.getByText('Toujours garder serveur')).toBeInTheDocument();
+  });
 });
 
 describe('ConflictQueue E2E Flow', () => {
   beforeEach(() => {
-    useConflictStore.getState().clearAllConflicts();
+    useConflictStore.setState({
+      conflicts: [],
+      currentIndex: 0,
+      sessionPreference: null,
+      resolutionHistory: [],
+    });
     vi.clearAllMocks();
   });
 
