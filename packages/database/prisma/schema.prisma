@@ -108,6 +108,7 @@ model User {
   absences             Absence[]
   knownDevices         KnownDevice[]
   refreshTokens        RefreshToken[]
+  notifications        Notification[]
 
   @@map("users")
 }
@@ -548,6 +549,13 @@ enum RelanceLevel {
   mise_en_demeure    // J+60 - Mise en demeure
 }
 
+enum NotificationType {
+  info
+  warning
+  success
+  action_required
+}
+
 model EmailHistory {
   id            String      @id @default(uuid())
   to            String
@@ -631,4 +639,26 @@ model RelanceHistory {
   @@index([level])
   @@index([sentAt])
   @@map("relance_history")
+}
+
+// ============================================
+// NOTIFICATIONS IN-APP
+// ============================================
+
+model Notification {
+  id        String           @id @default(uuid())
+  userId    String
+  type      NotificationType @default(info)
+  title     String
+  message   String
+  link      String?          // Ex: /devis/123, /factures/456
+  readAt    DateTime?
+  createdAt DateTime         @default(now())
+
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, readAt])
+  @@index([userId, createdAt])
+  @@map("notifications")
 }
