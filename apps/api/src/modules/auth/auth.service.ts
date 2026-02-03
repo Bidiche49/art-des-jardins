@@ -7,6 +7,7 @@ import { AuditService } from '../audit/audit.service';
 import { LoginDto } from './dto/login.dto';
 import { TwoFactorService } from './two-factor.service';
 import { DeviceTrackingService } from './device-tracking.service';
+import { RefreshTokenService } from './refresh-token.service';
 
 @Injectable()
 export class AuthService {
@@ -17,6 +18,7 @@ export class AuthService {
     private twoFactorService: TwoFactorService,
     private auditService: AuditService,
     private deviceTrackingService: DeviceTrackingService,
+    private refreshTokenService: RefreshTokenService,
   ) {}
 
   async login(loginDto: LoginDto & { totpCode?: string; ipAddress?: string; userAgent?: string; acceptLanguage?: string }) {
@@ -102,7 +104,16 @@ export class AuthService {
       data: { derniereConnexion: new Date() },
     });
 
-    const tokens = await this.generateTokens(user.id, user.email, user.role);
+    // Generer access token
+    const accessToken = this.jwtService.sign({ sub: user.id, email: user.email, role: user.role });
+
+    // Generer refresh token avec rotation (stocke en base)
+    const refreshToken = await this.refreshTokenService.createRefreshToken(
+      user.id,
+      user.email,
+      user.role,
+      deviceResult?.deviceId,
+    );
 
     await this.auditService.log({
       userId: user.id,
@@ -126,59 +137,40 @@ export class AuthService {
         role: user.role,
         twoFactorEnabled: user.twoFactorEnabled,
       },
-      ...tokens,
+      accessToken,
+      refreshToken,
     };
   }
 
   async refresh(refreshToken: string, ipAddress?: string, userAgent?: string) {
-    try {
-      const payload = this.jwtService.verify(refreshToken, {
-        secret: this.configService.get<string>('JWT_SECRET') || 'dev-secret-change-in-production',
-      });
-
-      const user = await this.prisma.user.findUnique({
-        where: { id: payload.sub },
-      });
-
-      if (!user || !user.actif) {
-        throw new UnauthorizedException('Token invalide');
-      }
-
-      const tokens = await this.generateTokens(user.id, user.email, user.role);
-
-      await this.auditService.log({
-        userId: user.id,
-        action: 'TOKEN_REFRESH',
-        entite: 'auth',
-        ipAddress,
-        userAgent,
-      });
-
-      return tokens;
-    } catch {
-      throw new UnauthorizedException('Token invalide ou expire');
-    }
+    // Utilise le service de rotation qui:
+    // 1. Verifie le token en base
+    // 2. Detecte les replays (token deja utilise)
+    // 3. Marque l'ancien token comme utilise
+    // 4. Genere un nouveau couple access/refresh token
+    return this.refreshTokenService.rotateRefreshToken(refreshToken, ipAddress, userAgent);
   }
 
-  async logout(userId: string, ipAddress?: string, userAgent?: string) {
+  async logout(userId: string, refreshToken?: string, ipAddress?: string, userAgent?: string) {
+    // Revoquer tous les tokens de l'utilisateur
+    const revokedCount = await this.refreshTokenService.revokeAllUserTokens(userId, 'logout');
+
     await this.auditService.log({
       userId,
       action: 'TOKEN_REVOKED',
       entite: 'auth',
+      details: { revokedCount },
       ipAddress,
       userAgent,
     });
-    return { success: true };
+
+    return { success: true, revokedCount };
   }
 
-  private async generateTokens(userId: string, email: string, role: string) {
-    const payload = { sub: userId, email, role };
-
-    const accessToken = this.jwtService.sign(payload);
-    const refreshToken = this.jwtService.sign(payload, {
-      expiresIn: this.configService.get<string>('JWT_REFRESH_EXPIRES_IN') || '7d',
-    });
-
-    return { accessToken, refreshToken };
+  /**
+   * Nettoie les tokens expires (a appeler via cron)
+   */
+  async cleanupExpiredTokens(): Promise<number> {
+    return this.refreshTokenService.cleanupExpiredTokens();
   }
 }
