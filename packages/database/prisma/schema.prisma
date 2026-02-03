@@ -108,7 +108,7 @@ model User {
   twoFactorLockedUntil DateTime? // Verrouillage après 5 tentatives
 
   // Relations
-  chantiersResponsable Chantier[]         @relation("ChantierResponsable")
+  chantiersResponsable Chantier[]           @relation("ChantierResponsable")
   interventions        Intervention[]
   auditLogs            AuditLog[]
   pushSubscriptions    PushSubscription[]
@@ -118,6 +118,7 @@ model User {
   notifications        Notification[]
   timeEntries          TimeEntry[]
   photosUploaded       Photo[]
+  webAuthnCredentials  WebAuthnCredential[]
 
   @@map("users")
 }
@@ -739,4 +740,27 @@ model Notification {
   @@index([userId, readAt])
   @@index([userId, createdAt])
   @@map("notifications")
+}
+
+// ============================================
+// WEBAUTHN (Authentification biometrique)
+// ============================================
+
+model WebAuthnCredential {
+  id           String    @id @default(uuid())
+  userId       String
+  credentialId String    @unique
+  publicKey    String
+  counter      Int       @default(0)
+  deviceName   String?
+  deviceType   String? // "platform" ou "cross-platform"
+  transports   String[] // ["internal", "usb", "nfc", "ble"]
+  lastUsedAt   DateTime?
+  createdAt    DateTime  @default(now())
+
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("webauthn_credentials")
 }
