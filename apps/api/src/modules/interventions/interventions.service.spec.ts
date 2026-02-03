@@ -2,6 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { NotFoundException, BadRequestException } from '@nestjs/common';
 import { InterventionsService } from './interventions.service';
 import { PrismaService } from '../../database/prisma.service';
+import { EventsGateway } from '../websocket/events.gateway';
 import {
   createMockIntervention,
   createMockChantier,
@@ -17,6 +18,7 @@ describe('InterventionsService', () => {
   let mockInterventionDelete: jest.Mock;
   let mockInterventionCount: jest.Mock;
   let mockChantierFindUnique: jest.Mock;
+  let mockBroadcast: jest.Mock;
 
   const employeId = 'employe-123';
   const chantierId = 'chantier-123';
@@ -34,6 +36,7 @@ describe('InterventionsService', () => {
     mockInterventionDelete = jest.fn();
     mockInterventionCount = jest.fn();
     mockChantierFindUnique = jest.fn();
+    mockBroadcast = jest.fn();
 
     const module: TestingModule = await Test.createTestingModule({
       providers: [
@@ -53,6 +56,13 @@ describe('InterventionsService', () => {
             chantier: {
               findUnique: mockChantierFindUnique,
             },
+          },
+        },
+        {
+          provide: EventsGateway,
+          useValue: {
+            broadcast: mockBroadcast,
+            sendToUser: jest.fn(),
           },
         },
       ],
@@ -187,7 +197,8 @@ describe('InterventionsService', () => {
       const createdIntervention = {
         ...mockIntervention,
         heureFin: null,
-        chantier: {},
+        chantier: { adresse: '123 Rue Test', ville: 'Angers' },
+        employe: { nom: 'Dupont', prenom: 'Jean' },
       };
       mockInterventionCreate.mockResolvedValue(createdIntervention);
 
@@ -218,7 +229,11 @@ describe('InterventionsService', () => {
 
     it('should start with description', async () => {
       mockInterventionFindFirst.mockResolvedValue(null);
-      mockInterventionCreate.mockResolvedValue({ ...mockIntervention, chantier: {} });
+      mockInterventionCreate.mockResolvedValue({
+        ...mockIntervention,
+        chantier: { adresse: '123 Rue Test', ville: 'Angers' },
+        employe: { nom: 'Dupont', prenom: 'Jean' },
+      });
 
       await service.startIntervention(chantierId, employeId, 'Test description');
 
@@ -227,6 +242,24 @@ describe('InterventionsService', () => {
           description: 'Test description',
         }),
         include: expect.any(Object),
+      });
+    });
+
+    it('should emit WebSocket event when intervention starts', async () => {
+      mockInterventionFindFirst.mockResolvedValue(null);
+      mockInterventionCreate.mockResolvedValue({
+        ...mockIntervention,
+        id: 'intervention-123',
+        chantier: { adresse: '123 Rue Test', ville: 'Angers' },
+        employe: { nom: 'Dupont', prenom: 'Jean' },
+      });
+
+      await service.startIntervention(chantierId, employeId);
+
+      expect(mockBroadcast).toHaveBeenCalledWith('intervention:started', {
+        id: 'intervention-123',
+        address: '123 Rue Test, Angers',
+        assignee: 'Jean Dupont',
       });
     });
   });
@@ -294,6 +327,33 @@ describe('InterventionsService', () => {
       await expect(
         service.stopIntervention('intervention-123', employeId),
       ).rejects.toThrow('Cette intervention est deja terminee');
+    });
+
+    it('should emit WebSocket event when intervention stops', async () => {
+      const heureDebut = new Date(Date.now() - 90 * 60 * 1000); // 90 minutes ago
+      const ongoingIntervention = {
+        ...mockIntervention,
+        heureDebut,
+        heureFin: null,
+        chantier: { client: {} },
+        employe: {},
+      };
+      mockInterventionFindUnique.mockResolvedValue(ongoingIntervention);
+      mockInterventionUpdate.mockResolvedValue({
+        ...ongoingIntervention,
+        id: 'intervention-123',
+        heureFin: new Date(),
+        dureeMinutes: 90,
+        chantier: { adresse: '123 Rue Test', ville: 'Angers' },
+      });
+
+      await service.stopIntervention('intervention-123', employeId);
+
+      expect(mockBroadcast).toHaveBeenCalledWith('intervention:completed', {
+        id: 'intervention-123',
+        address: '123 Rue Test, Angers',
+        duration: 90,
+      });
     });
   });
 

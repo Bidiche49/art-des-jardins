@@ -1,12 +1,17 @@
 import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
 import { PrismaService } from '../../database/prisma.service';
+import { EventsGateway } from '../websocket/events.gateway';
+import { WS_EVENTS } from '../websocket/websocket.events';
 import { CreateInterventionDto } from './dto/create-intervention.dto';
 import { UpdateInterventionDto } from './dto/update-intervention.dto';
 import { InterventionFiltersDto } from './dto/intervention-filters.dto';
 
 @Injectable()
 export class InterventionsService {
-  constructor(private prisma: PrismaService) {}
+  constructor(
+    private prisma: PrismaService,
+    private eventsGateway: EventsGateway,
+  ) {}
 
   private calculerDuree(heureDebut: Date, heureFin: Date): number {
     const diffMs = heureFin.getTime() - heureDebut.getTime();
@@ -200,7 +205,7 @@ export class InterventionsService {
 
     const now = new Date();
 
-    return this.prisma.intervention.create({
+    const intervention = await this.prisma.intervention.create({
       data: {
         chantierId,
         employeId,
@@ -212,25 +217,37 @@ export class InterventionsService {
         chantier: {
           select: { id: true, adresse: true, ville: true },
         },
+        employe: {
+          select: { nom: true, prenom: true },
+        },
       },
     });
+
+    // Emit WebSocket event
+    this.eventsGateway.broadcast(WS_EVENTS.INTERVENTION_STARTED, {
+      id: intervention.id,
+      address: `${intervention.chantier.adresse}, ${intervention.chantier.ville}`,
+      assignee: `${intervention.employe.prenom} ${intervention.employe.nom}`,
+    });
+
+    return intervention;
   }
 
   async stopIntervention(id: string, employeId: string) {
-    const intervention = await this.findOne(id);
+    const existingIntervention = await this.findOne(id);
 
-    if (intervention.employeId !== employeId) {
+    if (existingIntervention.employeId !== employeId) {
       throw new BadRequestException('Vous ne pouvez arreter que vos propres interventions');
     }
 
-    if (intervention.heureFin) {
+    if (existingIntervention.heureFin) {
       throw new BadRequestException('Cette intervention est deja terminee');
     }
 
     const heureFin = new Date();
-    const dureeMinutes = this.calculerDuree(intervention.heureDebut, heureFin);
+    const dureeMinutes = this.calculerDuree(existingIntervention.heureDebut, heureFin);
 
-    return this.prisma.intervention.update({
+    const intervention = await this.prisma.intervention.update({
       where: { id },
       data: {
         heureFin,
@@ -238,10 +255,19 @@ export class InterventionsService {
       },
       include: {
         chantier: {
-          select: { id: true, adresse: true },
+          select: { id: true, adresse: true, ville: true },
         },
       },
     });
+
+    // Emit WebSocket event
+    this.eventsGateway.broadcast(WS_EVENTS.INTERVENTION_COMPLETED, {
+      id: intervention.id,
+      address: `${intervention.chantier.adresse}, ${intervention.chantier.ville}`,
+      duration: dureeMinutes,
+    });
+
+    return intervention;
   }
 
   async getInterventionEnCours(employeId: string) {
