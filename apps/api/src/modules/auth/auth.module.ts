@@ -8,6 +8,7 @@ import { TwoFactorService } from './two-factor.service';
 import { DeviceTrackingService } from './device-tracking.service';
 import { RefreshTokenService } from './refresh-token.service';
 import { GeoIpService } from './geo-ip.service';
+import { WebAuthnService } from './webauthn.service';
 import { JwtStrategy } from './strategies/jwt.strategy';
 import { MailModule } from '../mail/mail.module';
 
@@ -27,7 +28,7 @@ import { MailModule } from '../mail/mail.module';
     forwardRef(() => MailModule),
   ],
   controllers: [AuthController],
-  providers: [AuthService, TwoFactorService, DeviceTrackingService, RefreshTokenService, GeoIpService, JwtStrategy],
-  exports: [AuthService, TwoFactorService, DeviceTrackingService, RefreshTokenService, GeoIpService],
+  providers: [AuthService, TwoFactorService, DeviceTrackingService, RefreshTokenService, GeoIpService, WebAuthnService, JwtStrategy],
+  exports: [AuthService, TwoFactorService, DeviceTrackingService, RefreshTokenService, GeoIpService, WebAuthnService],
 })
 export class AuthModule {}
