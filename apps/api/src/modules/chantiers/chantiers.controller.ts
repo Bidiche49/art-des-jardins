@@ -8,10 +8,13 @@ import {
   Body,
   Param,
   Query,
+  Res,
   UseGuards,
 } from '@nestjs/common';
-import { ApiTags, ApiOperation, ApiBearerAuth, ApiResponse } from '@nestjs/swagger';
+import { ApiTags, ApiOperation, ApiBearerAuth, ApiResponse, ApiProduces } from '@nestjs/swagger';
+import { Response } from 'express';
 import { ChantiersService } from './chantiers.service';
+import { QRCodeService } from './qrcode.service';
 import { CreateChantierDto } from './dto/create-chantier.dto';
 import { UpdateChantierDto } from './dto/update-chantier.dto';
 import { ChantierFiltersDto } from './dto/chantier-filters.dto';
@@ -25,7 +28,10 @@ import { UserRole } from '@art-et-jardin/database';
 @UseGuards(JwtAuthGuard, RolesGuard)
 @Controller('chantiers')
 export class ChantiersController {
-  constructor(private chantiersService: ChantiersService) {}
+  constructor(
+    private chantiersService: ChantiersService,
+    private qrcodeService: QRCodeService,
+  ) {}
 
   @Get()
   @ApiOperation({ summary: 'Lister les chantiers' })
@@ -40,6 +46,46 @@ export class ChantiersController {
   @ApiResponse({ status: 404, description: 'Chantier non trouve' })
   findOne(@Param('id') id: string) {
     return this.chantiersService.findOne(id);
+  }
+
+  @Get(':id/qrcode')
+  @ApiOperation({ summary: 'Obtenir le QR code du chantier (PNG)' })
+  @ApiProduces('image/png')
+  @ApiResponse({ status: 200, description: 'QR code PNG' })
+  @ApiResponse({ status: 404, description: 'Chantier non trouve' })
+  async getQRCode(@Param('id') id: string, @Res() res: Response) {
+    await this.chantiersService.findOne(id);
+    const buffer = await this.qrcodeService.generateChantierQR(id);
+    res.set({
+      'Content-Type': 'image/png',
+      'Content-Disposition': `inline; filename="chantier-${id}-qrcode.png"`,
+    });
+    res.send(buffer);
+  }
+
+  @Get(':id/qrcode/svg')
+  @ApiOperation({ summary: 'Obtenir le QR code du chantier (SVG)' })
+  @ApiProduces('image/svg+xml')
+  @ApiResponse({ status: 200, description: 'QR code SVG' })
+  @ApiResponse({ status: 404, description: 'Chantier non trouve' })
+  async getQRCodeSVG(@Param('id') id: string, @Res() res: Response) {
+    await this.chantiersService.findOne(id);
+    const svg = await this.qrcodeService.generateChantierQRSVG(id);
+    res.set({
+      'Content-Type': 'image/svg+xml',
+      'Content-Disposition': `inline; filename="chantier-${id}-qrcode.svg"`,
+    });
+    res.send(svg);
+  }
+
+  @Get(':id/qrcode/dataurl')
+  @ApiOperation({ summary: 'Obtenir le QR code du chantier (Data URL base64)' })
+  @ApiResponse({ status: 200, description: 'QR code Data URL' })
+  @ApiResponse({ status: 404, description: 'Chantier non trouve' })
+  async getQRCodeDataURL(@Param('id') id: string) {
+    await this.chantiersService.findOne(id);
+    const dataUrl = await this.qrcodeService.generateChantierQRDataURL(id);
+    return { dataUrl };
   }
 
   @Post()
