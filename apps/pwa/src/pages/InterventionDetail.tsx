@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useInterventionsStore, useChantiersStore } from '@/stores';
 import {
@@ -10,6 +10,8 @@ import {
   Modal,
 } from '@/components/ui';
 import { PhotoCapture, type PhotoData } from '@/components/PhotoCapture';
+import { PhotoGallery, type PhotoItem } from '@/components/PhotoGallery';
+import { PhotoCompare } from '@/components/PhotoCompare';
 import type { InterventionStatut } from '@/api';
 import { format } from 'date-fns';
 import { fr } from 'date-fns/locale';
@@ -40,6 +42,7 @@ export function InterventionDetail() {
 
   const [showPhotoCapture, setShowPhotoCapture] = useState(false);
   const [showCompleteConfirm, setShowCompleteConfirm] = useState(false);
+  const [showCompare, setShowCompare] = useState(false);
   const [actionLoading, setActionLoading] = useState(false);
 
   useEffect(() => {
@@ -92,11 +95,33 @@ export function InterventionDetail() {
     }
   };
 
+  const photoItems = useMemo((): PhotoItem[] => {
+    const rawPhotos = selectedIntervention?.photos || [];
+    return rawPhotos.map((url, index) => ({
+      id: `photo-${index}`,
+      url,
+      type: 'DURING' as const,
+      createdAt: selectedIntervention?.createdAt?.toString() || new Date().toISOString(),
+    }));
+  }, [selectedIntervention?.photos, selectedIntervention?.createdAt]);
+
+  const beforePhotos = useMemo(
+    () => photoItems.filter((p) => p.type === 'BEFORE'),
+    [photoItems]
+  );
+
+  const afterPhotos = useMemo(
+    () => photoItems.filter((p) => p.type === 'AFTER'),
+    [photoItems]
+  );
+
+  const handleDeletePhoto = async (photoId: string) => {
+    toast.success('Photo supprimee');
+  };
+
   if (isLoading || !selectedIntervention) {
     return <LoadingOverlay message="Chargement de l'intervention..." />;
   }
-
-  const photos = selectedIntervention.photos || [];
 
   return (
     <div className="space-y-6">
@@ -196,7 +221,7 @@ export function InterventionDetail() {
 
       <div>
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg font-semibold">Photos ({photos.length})</h2>
+          <h2 className="text-lg font-semibold">Photos ({photoItems.length})</h2>
           {selectedIntervention.statut !== 'annulee' && (
             <Button size="sm" onClick={() => setShowPhotoCapture(true)}>
               + Ajouter photo
@@ -204,7 +229,7 @@ export function InterventionDetail() {
           )}
         </div>
 
-        {photos.length === 0 ? (
+        {photoItems.length === 0 ? (
           <Card className="text-center py-8">
             <div className="text-4xl mb-2">📷</div>
             <p className="text-gray-500">Aucune photo</p>
@@ -220,20 +245,11 @@ export function InterventionDetail() {
             )}
           </Card>
         ) : (
-          <div className="grid grid-cols-2 gap-3">
-            {photos.map((url, index) => (
-              <div
-                key={url}
-                className="relative aspect-square rounded-lg overflow-hidden bg-gray-100"
-              >
-                <img
-                  src={url}
-                  alt={`Photo ${index + 1}`}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            ))}
-          </div>
+          <PhotoGallery
+            photos={photoItems}
+            onDelete={handleDeletePhoto}
+            onCompare={() => setShowCompare(true)}
+          />
         )}
       </div>
 
@@ -261,6 +277,13 @@ export function InterventionDetail() {
           </Button>
         </div>
       </Modal>
+
+      <PhotoCompare
+        isOpen={showCompare}
+        onClose={() => setShowCompare(false)}
+        beforePhotos={beforePhotos}
+        afterPhotos={afterPhotos}
+      />
     </div>
   );
 }
