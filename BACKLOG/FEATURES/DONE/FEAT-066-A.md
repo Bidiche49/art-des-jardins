@@ -1,11 +1,12 @@
 # FEAT-066-A: Types et store pour conflits de sync
 
 **Type:** Feature
-**Statut:** A faire
+**Statut:** Fait
 **Priorite:** Haute
 **Complexite:** XS
 **Tags:** ux, pwa, offline
 **Date creation:** 2026-02-03
+**Date resolution:** 2026-02-03
 **Parent:** FEAT-066
 
 ---
@@ -23,10 +24,10 @@ Creer les types TypeScript et le store Zustand pour gerer les conflits de synchr
 
 ## Criteres d'acceptation
 
-- [ ] Interface `SyncConflict` definie dans `apps/pwa/src/types/sync.types.ts`
-- [ ] Type `ConflictResolution = 'keep_local' | 'keep_server' | 'merge'`
-- [ ] Store `conflictStore` avec: `conflicts[]`, `addConflict()`, `removeConflict()`, `resolveConflict()`
-- [ ] Export depuis index des types
+- [x] Interface `SyncConflict` definie dans `apps/pwa/src/types/sync.types.ts`
+- [x] Type `ConflictResolution = 'keep_local' | 'keep_server' | 'merge'`
+- [x] Store `useConflictStore` avec: `conflicts[]`, `addConflict()`, `removeConflict()`, `resolveConflict()`
+- [x] Export depuis index des types
 
 ## Fichiers a creer/modifier
 
@@ -79,7 +80,11 @@ export interface ConflictResolutionResult {
 
 ## Tests de validation
 
-- [ ] Types exportes correctement
-- [ ] Store cree et fonctionnel
-- [ ] Actions add/remove/resolve testees
-- [ ] Pas d'erreur TypeScript
+- [x] Types exportes correctement
+- [x] Store cree et fonctionnel (useConflictStore dans conflicts.ts)
+- [x] Actions add/remove/resolve testees (19 tests passent)
+- [x] Pas d'erreur TypeScript
+
+## Note
+
+Ce ticket a ete complete dans le cadre des travaux sur FEAT-066-B/C (session precedente).
