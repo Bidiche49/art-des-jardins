@@ -1,7 +1,8 @@
 # FEAT-070-D: Service WebSocket frontend PWA
 
 **Type:** Feature
-**Statut:** A faire
+**Statut:** Fait
+**Date completion:** 2026-02-03
 **Priorite:** Moyenne
 **Complexite:** S
 **Tags:** pwa, websocket
@@ -25,13 +26,13 @@ Creer le service WebSocket cote frontend PWA avec gestion de la connexion, recon
 
 ## Criteres d'acceptation
 
-- [ ] socket.io-client installe dans apps/pwa
-- [ ] WebSocketService singleton avec methodes connect/disconnect
-- [ ] Authentification par token JWT a la connexion
-- [ ] Reconnexion automatique (backoff: 1s, 2s, 4s, 8s, max 30s)
-- [ ] Fallback polling apres 3 echecs WS consecutifs
-- [ ] Etat de connexion observable (React state)
-- [ ] Tests unitaires du service
+- [x] socket.io-client installe dans apps/pwa
+- [x] WebSocketService singleton avec methodes connect/disconnect
+- [x] Authentification par token JWT a la connexion
+- [x] Reconnexion automatique (backoff: 1s, 2s, 4s, 8s, max 30s)
+- [x] Fallback polling apres 3 echecs WS consecutifs
+- [x] Etat de connexion observable (React state)
+- [x] Tests unitaires du service
 
 ## Fichiers a creer
 

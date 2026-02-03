@@ -1,7 +1,8 @@
 # FEAT-070-E: Hook useRealtimeUpdates et indicateur UI
 
 **Type:** Feature
-**Statut:** A faire
+**Statut:** Fait
+**Date completion:** 2026-02-03
 **Priorite:** Moyenne
 **Complexite:** S
 **Tags:** pwa, ux, websocket
@@ -25,12 +26,12 @@ Creer le hook React useRealtimeUpdates qui ecoute les events WebSocket, affiche 
 
 ## Criteres d'acceptation
 
-- [ ] Hook useRealtimeUpdates cree et fonctionnel
-- [ ] Toast affiche pour devis:signed, facture:paid, etc.
-- [ ] React Query invalide les queries concernees
-- [ ] Indicateur connexion visible dans le header
-- [ ] Multi-onglets: un seul onglet ecoute (leader election)
-- [ ] Tests unitaires du hook
+- [x] Hook useRealtimeUpdates cree et fonctionnel
+- [x] Toast affiche pour devis:signed, facture:paid, etc.
+- [x] React Query invalide les queries concernees
+- [x] Indicateur connexion visible dans le header (Layout)
+- [x] Multi-onglets: un seul onglet ecoute (leader election)
+- [x] Tests unitaires du hook
 
 ## Fichiers a creer
 
@@ -145,7 +146,14 @@ CRITERES DE SUCCES:
 
 ## Tests de validation
 
-- [ ] Toast affiche sur event recu
-- [ ] React Query invalide correctement
-- [ ] Indicateur change de couleur selon etat
-- [ ] Multi-onglets: pas de toast duplique
+- [x] Toast affiche sur event recu
+- [x] React Query invalide correctement
+- [x] Indicateur change de couleur selon etat
+- [x] Multi-onglets: pas de toast duplique (leader election via localStorage)
+
+## Notes d'implementation
+
+- Hook initialise dans Layout.tsx (zone protegee avec authentification)
+- ConnectionIndicator affiche dans le header sans label sur mobile
+- Leader election avec heartbeat toutes les 2s, timeout 5s
+- Tous les 115 tests PWA passent
