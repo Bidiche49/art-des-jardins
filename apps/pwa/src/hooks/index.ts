@@ -7,3 +7,4 @@ export { useRealtimeUpdates } from './useRealtimeUpdates';
 export { useRentabilite } from './useRentabilite';
 export { useKeyboardShortcuts } from './useKeyboardShortcuts';
 export { useWebAuthn } from './useWebAuthn';
+export { useTerrainMode } from './useTerrainMode';

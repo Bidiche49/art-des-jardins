@@ -44,3 +44,151 @@
     padding-bottom: env(safe-area-inset-bottom);
   }
 }
+
+/* =================================
+   TERRAIN MODE - Gros doigts mobile
+   ================================= */
+
+/* CSS Variables for terrain mode */
+:root {
+  --touch-target-min: 44px;
+  --font-size-base: 16px;
+  --spacing-base: 16px;
+  --border-radius-base: 8px;
+}
+
+:root[data-terrain='true'] {
+  --touch-target-min: 64px;
+  --font-size-base: 20px;
+  --spacing-base: 24px;
+  --border-radius-base: 16px;
+}
+
+/* High contrast mode for outdoor use */
+:root[data-high-contrast='true'] {
+  --color-text-primary: #000000;
+  --color-text-secondary: #1f2937;
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f9fafb;
+  --color-border: #374151;
+}
+
+:root[data-high-contrast='true'].dark {
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #e5e7eb;
+  --color-bg-primary: #000000;
+  --color-bg-secondary: #111827;
+  --color-border: #9ca3af;
+}
+
+/* Terrain mode component overrides */
+@layer components {
+  /* Buttons in terrain mode */
+  :root[data-terrain='true'] .btn-primary,
+  :root[data-terrain='true'] .btn-secondary {
+    @apply px-6 py-4 text-lg font-semibold;
+    min-height: var(--touch-target-min);
+    border-radius: var(--border-radius-base);
+  }
+
+  /* Form inputs in terrain mode */
+  :root[data-terrain='true'] .input,
+  :root[data-terrain='true'] input[type='text'],
+  :root[data-terrain='true'] input[type='email'],
+  :root[data-terrain='true'] input[type='password'],
+  :root[data-terrain='true'] input[type='number'],
+  :root[data-terrain='true'] input[type='tel'],
+  :root[data-terrain='true'] select,
+  :root[data-terrain='true'] textarea {
+    @apply text-lg py-4 px-4;
+    min-height: var(--touch-target-min);
+    border-radius: var(--border-radius-base);
+  }
+
+  /* Cards in terrain mode */
+  :root[data-terrain='true'] .card {
+    @apply p-6;
+    border-radius: var(--border-radius-base);
+  }
+
+  /* Links and interactive elements */
+  :root[data-terrain='true'] a,
+  :root[data-terrain='true'] button {
+    min-height: var(--touch-target-min);
+  }
+
+  /* Increased spacing between interactive elements */
+  :root[data-terrain='true'] .space-y-2 {
+    @apply space-y-4;
+  }
+
+  :root[data-terrain='true'] .space-y-4 {
+    @apply space-y-6;
+  }
+
+  :root[data-terrain='true'] .gap-2 {
+    @apply gap-4;
+  }
+
+  :root[data-terrain='true'] .gap-4 {
+    @apply gap-6;
+  }
+}
+
+/* Terrain mode utility classes */
+@layer utilities {
+  /* Touch target class for consistent sizing */
+  .terrain-touch-target {
+    min-height: var(--touch-target-min);
+    min-width: var(--touch-target-min);
+  }
+
+  /* Large text for terrain mode */
+  :root[data-terrain='true'] .text-sm {
+    @apply text-base;
+  }
+
+  :root[data-terrain='true'] .text-base {
+    @apply text-lg;
+  }
+
+  :root[data-terrain='true'] .text-lg {
+    @apply text-xl;
+  }
+
+  :root[data-terrain='true'] .text-xl {
+    @apply text-2xl;
+  }
+
+  :root[data-terrain='true'] .text-2xl {
+    @apply text-3xl;
+  }
+
+  /* Fixed bottom actions for thumb reach */
+  .terrain-bottom-actions {
+    @apply fixed bottom-0 left-0 right-0 p-4 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 safe-bottom;
+    z-index: 40;
+  }
+
+  :root[data-terrain='true'] .terrain-bottom-actions {
+    @apply p-6;
+  }
+
+  /* High contrast text */
+  :root[data-high-contrast='true'] .text-gray-500 {
+    @apply text-gray-700 dark:text-gray-300;
+  }
+
+  :root[data-high-contrast='true'] .text-gray-600 {
+    @apply text-gray-800 dark:text-gray-200;
+  }
+
+  /* High contrast borders */
+  :root[data-high-contrast='true'] .border-gray-200 {
+    @apply border-gray-400 dark:border-gray-500;
+  }
+
+  :root[data-high-contrast='true'] .border-gray-300 {
+    @apply border-gray-500 dark:border-gray-400;
+  }
+}

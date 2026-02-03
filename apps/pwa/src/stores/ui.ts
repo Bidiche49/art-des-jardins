@@ -29,6 +29,13 @@ interface Notification {
   duration?: number;
 }
 
+export interface TerrainModeSettings {
+  enabled: boolean;
+  autoDetect: boolean;
+  hapticFeedback: boolean;
+  highContrast: boolean;
+}
+
 interface UIState {
   sidebarOpen: boolean;
   activeModal: ModalType;
@@ -37,6 +44,7 @@ interface UIState {
   isOnline: boolean;
   pendingSyncCount: number;
   theme: 'light' | 'dark' | 'system';
+  terrainMode: TerrainModeSettings;
 
   toggleSidebar: () => void;
   setSidebarOpen: (open: boolean) => void;
@@ -49,6 +57,8 @@ interface UIState {
   incrementPendingSync: () => void;
   decrementPendingSync: () => void;
   setTheme: (theme: 'light' | 'dark' | 'system') => void;
+  setTerrainMode: (settings: Partial<TerrainModeSettings>) => void;
+  toggleTerrainMode: () => void;
 }
 
 export const useUIStore = create<UIState>()(
@@ -61,6 +71,12 @@ export const useUIStore = create<UIState>()(
       isOnline: typeof navigator !== 'undefined' ? navigator.onLine : true,
       pendingSyncCount: 0,
       theme: 'system',
+      terrainMode: {
+        enabled: false,
+        autoDetect: false,
+        hapticFeedback: true,
+        highContrast: false,
+      },
 
       toggleSidebar: () => {
         set((state) => ({ sidebarOpen: !state.sidebarOpen }));
@@ -120,12 +136,25 @@ export const useUIStore = create<UIState>()(
       setTheme: (theme: 'light' | 'dark' | 'system') => {
         set({ theme });
       },
+
+      setTerrainMode: (settings: Partial<TerrainModeSettings>) => {
+        set((state) => ({
+          terrainMode: { ...state.terrainMode, ...settings },
+        }));
+      },
+
+      toggleTerrainMode: () => {
+        set((state) => ({
+          terrainMode: { ...state.terrainMode, enabled: !state.terrainMode.enabled },
+        }));
+      },
     }),
     {
       name: 'ui-storage',
       partialize: (state) => ({
         theme: state.theme,
         sidebarOpen: state.sidebarOpen,
+        terrainMode: state.terrainMode,
       }),
     }
   )
