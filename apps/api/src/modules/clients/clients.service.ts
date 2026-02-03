@@ -1,12 +1,17 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../../database/prisma.service';
+import { EventsGateway } from '../websocket/events.gateway';
+import { WS_EVENTS } from '../websocket/websocket.events';
 import { CreateClientDto } from './dto/create-client.dto';
 import { UpdateClientDto } from './dto/update-client.dto';
 import { ClientFiltersDto } from './dto/client-filters.dto';
 
 @Injectable()
 export class ClientsService {
-  constructor(private prisma: PrismaService) {}
+  constructor(
+    private prisma: PrismaService,
+    private eventsGateway: EventsGateway,
+  ) {}
 
   async findAll(filters: ClientFiltersDto) {
     const { page = 1, limit = 20, type, ville, search } = filters;
@@ -71,9 +76,19 @@ export class ClientsService {
   }
 
   async create(createClientDto: CreateClientDto) {
-    return this.prisma.client.create({
+    const client = await this.prisma.client.create({
       data: createClientDto,
     });
+
+    // Emit WebSocket event
+    const displayName = client.raisonSociale || `${client.prenom || ''} ${client.nom}`.trim();
+    this.eventsGateway.broadcast(WS_EVENTS.CLIENT_CREATED, {
+      id: client.id,
+      name: displayName,
+      type: client.type,
+    });
+
+    return client;
   }
 
   async update(id: string, updateClientDto: UpdateClientDto) {

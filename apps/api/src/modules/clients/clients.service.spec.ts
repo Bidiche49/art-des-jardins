@@ -2,6 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { NotFoundException } from '@nestjs/common';
 import { ClientsService } from './clients.service';
 import { PrismaService } from '../../database/prisma.service';
+import { EventsGateway } from '../websocket/events.gateway';
 import {
   createMockClient,
   createMockClientPro,
@@ -16,6 +17,7 @@ describe('ClientsService', () => {
   let mockClientUpdate: jest.Mock;
   let mockClientDelete: jest.Mock;
   let mockClientCount: jest.Mock;
+  let mockBroadcast: jest.Mock;
 
   const mockClient = createMockClient({ id: 'client-123' });
   const mockClientPro = createMockClientPro({ id: 'client-pro-123' });
@@ -29,6 +31,7 @@ describe('ClientsService', () => {
     mockClientUpdate = jest.fn();
     mockClientDelete = jest.fn();
     mockClientCount = jest.fn();
+    mockBroadcast = jest.fn();
 
     const module: TestingModule = await Test.createTestingModule({
       providers: [
@@ -44,6 +47,13 @@ describe('ClientsService', () => {
               delete: mockClientDelete,
               count: mockClientCount,
             },
+          },
+        },
+        {
+          provide: EventsGateway,
+          useValue: {
+            broadcast: mockBroadcast,
+            sendToUser: jest.fn(),
           },
         },
       ],
@@ -292,6 +302,52 @@ describe('ClientsService', () => {
       const result = await service.create(createDto);
 
       expect(result.type).toBe('syndic');
+    });
+
+    it('should emit WebSocket event on client creation', async () => {
+      const createDto = {
+        type: 'particulier' as const,
+        nom: 'Dupont',
+        prenom: 'Jean',
+        email: 'jean@example.com',
+        telephone: '0612345678',
+        adresse: '123 Rue Test',
+        codePostal: '49000',
+        ville: 'Angers',
+      };
+      const createdClient = { id: 'new-id', ...createDto };
+      mockClientCreate.mockResolvedValue(createdClient);
+
+      await service.create(createDto);
+
+      expect(mockBroadcast).toHaveBeenCalledWith('client:created', {
+        id: 'new-id',
+        name: 'Jean Dupont',
+        type: 'particulier',
+      });
+    });
+
+    it('should use raisonSociale as name for professional clients in WebSocket event', async () => {
+      const createDto = {
+        type: 'professionnel' as const,
+        nom: 'Contact',
+        raisonSociale: 'Entreprise ABC',
+        email: 'contact@entreprise.com',
+        telephone: '0612345678',
+        adresse: '123 Rue Pro',
+        codePostal: '49000',
+        ville: 'Angers',
+      };
+      const createdClient = { id: 'new-id', ...createDto };
+      mockClientCreate.mockResolvedValue(createdClient);
+
+      await service.create(createDto);
+
+      expect(mockBroadcast).toHaveBeenCalledWith('client:created', {
+        id: 'new-id',
+        name: 'Entreprise ABC',
+        type: 'professionnel',
+      });
     });
   });
 
