@@ -90,6 +90,7 @@ model User {
   avatarUrl         String?
   icalToken         String?   @unique
   derniereConnexion DateTime?
+  hourlyRate        Decimal?  @db.Decimal(10, 2) // Cout horaire entreprise
   createdAt         DateTime  @default(now())
   updatedAt         DateTime  @updatedAt
 
@@ -109,6 +110,7 @@ model User {
   knownDevices         KnownDevice[]
   refreshTokens        RefreshToken[]
   notifications        Notification[]
+  timeEntries          TimeEntry[]
 
   @@map("users")
 }
@@ -184,11 +186,12 @@ model Chantier {
   updatedAt       DateTime        @updatedAt
 
   // Relations
-  client        Client         @relation(fields: [clientId], references: [id], onDelete: Cascade)
-  responsable   User?          @relation("ChantierResponsable", fields: [responsableId], references: [id])
-  devis         Devis[]
-  interventions Intervention[]
-  conversations Conversation[]
+  client         Client          @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  responsable    User?           @relation("ChantierResponsable", fields: [responsableId], references: [id])
+  devis          Devis[]
+  interventions  Intervention[]
+  conversations  Conversation[]
+  materialUsages MaterialUsage[]
 
   @@index([clientId])
   @@index([statut])
@@ -339,8 +342,9 @@ model Intervention {
   updatedAt   DateTime @updatedAt
 
   // Relations
-  chantier Chantier @relation(fields: [chantierId], references: [id], onDelete: Cascade)
-  employe  User     @relation(fields: [employeId], references: [id])
+  chantier    Chantier    @relation(fields: [chantierId], references: [id], onDelete: Cascade)
+  employe     User        @relation(fields: [employeId], references: [id])
+  timeEntries TimeEntry[]
 
   @@index([chantierId])
   @@index([employeId])
@@ -509,6 +513,47 @@ model RefreshToken {
   @@index([deviceId])
   @@index([familyId])
   @@map("refresh_tokens")
+}
+
+// ============================================
+// RENTABILITE - SUIVI HEURES ET MATERIAUX
+// ============================================
+
+model TimeEntry {
+  id              String       @id @default(uuid())
+  interventionId  String
+  userId          String
+  hours           Decimal      @db.Decimal(5, 2)
+  date            DateTime     @db.Date
+  description     String?
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+
+  // Relations
+  intervention Intervention @relation(fields: [interventionId], references: [id], onDelete: Cascade)
+  user         User         @relation(fields: [userId], references: [id])
+
+  @@index([interventionId])
+  @@index([userId])
+  @@index([date])
+  @@map("time_entries")
+}
+
+model MaterialUsage {
+  id          String   @id @default(uuid())
+  chantierId  String
+  name        String
+  quantity    Decimal  @db.Decimal(10, 2)
+  unitCost    Decimal  @db.Decimal(10, 2)
+  totalCost   Decimal  @db.Decimal(10, 2)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  chantier Chantier @relation(fields: [chantierId], references: [id], onDelete: Cascade)
+
+  @@index([chantierId])
+  @@map("material_usages")
 }
 
 // ============================================
