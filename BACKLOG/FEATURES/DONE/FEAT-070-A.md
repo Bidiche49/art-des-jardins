@@ -1,7 +1,7 @@
 # FEAT-070-A: Gateway WebSocket NestJS de base
 
 **Type:** Feature
-**Statut:** A faire
+**Statut:** Fait
 **Priorite:** Moyenne
 **Complexite:** S
 **Tags:** api, websocket
@@ -24,12 +24,12 @@ Creer la structure de base du gateway WebSocket NestJS avec le module @nestjs/we
 
 ## Criteres d'acceptation
 
-- [ ] Dependances @nestjs/websockets et socket.io installees
-- [ ] Module WebsocketModule cree dans apps/api/src/modules/websocket/
-- [ ] EventsGateway avec @WebSocketGateway decorator
-- [ ] Logging des connexions/deconnexions
-- [ ] Tests unitaires du gateway (connexion/deconnexion)
-- [ ] Le serveur WebSocket demarre sur /socket.io
+- [x] Dependances @nestjs/websockets et socket.io installees
+- [x] Module WebsocketModule cree dans apps/api/src/modules/websocket/
+- [x] EventsGateway avec @WebSocketGateway decorator
+- [x] Logging des connexions/deconnexions
+- [x] Tests unitaires du gateway (connexion/deconnexion)
+- [x] Le serveur WebSocket demarre sur /socket.io
 
 ## Fichiers a creer
 
@@ -95,6 +95,6 @@ CRITERES DE SUCCES:
 
 ## Tests de validation
 
-- [ ] `pnpm build:api` sans erreur
-- [ ] Tests unitaires passent
-- [ ] Connexion WS testable manuellement
+- [x] `pnpm build:api` sans erreur
+- [x] Tests unitaires passent (9 tests)
+- [x] Connexion WS testable manuellement
