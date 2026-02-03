@@ -1,6 +1,12 @@
 import { Socket } from 'socket.io';
 
 /**
+ * Default company ID for mono-tenant mode
+ * In future multi-tenant mode, this will come from the JWT token
+ */
+export const DEFAULT_COMPANY_ID = 'art-et-jardin';
+
+/**
  * Authenticated WebSocket client with user info
  */
 export interface AuthenticatedSocket extends Socket {
@@ -8,6 +14,7 @@ export interface AuthenticatedSocket extends Socket {
     id: string;
     email: string;
     role: string;
+    companyId: string;
   };
 }
 
