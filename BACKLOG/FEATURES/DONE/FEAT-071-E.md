@@ -1,8 +1,9 @@
 # FEAT-071-E: Interface PWA rentabilite chantier
 
 **Type:** Feature
-**Statut:** A faire
+**Statut:** Fait
 **Priorite:** Haute
+**Date resolution:** 2026-02-03
 **Complexite:** S
 **Tags:** ui, ux
 **Date creation:** 2026-02-03
@@ -25,14 +26,14 @@ Creer l'interface PWA pour afficher la rentabilite d'un chantier : composant Ren
 
 ## Criteres d'acceptation
 
-- [ ] RentabiliteCard affiche marge et pourcentage
-- [ ] Couleurs: vert (profitable), orange (limite), rouge (perte)
-- [ ] Page detail avec breakdown complet
-- [ ] Affichage prevu vs reel
-- [ ] Liste heures par employe
-- [ ] Liste materiaux avec couts
-- [ ] Responsive mobile
-- [ ] Tests composants
+- [x] RentabiliteCard affiche marge et pourcentage
+- [x] Couleurs: vert (profitable), orange (limite), rouge (perte)
+- [x] Page detail avec breakdown complet
+- [x] Affichage prevu vs reel
+- [x] Liste heures par employe
+- [x] Liste materiaux avec couts
+- [x] Responsive mobile
+- [x] Tests composants
 
 ## Fichiers concernes
 
