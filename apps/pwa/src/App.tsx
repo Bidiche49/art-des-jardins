@@ -30,6 +30,7 @@ import { ClientChantiersList } from './pages/client/ClientChantiersList';
 import { ClientChantierDetail } from './pages/client/ClientChantierDetail';
 import { ClientMessages } from './pages/client/ClientMessages';
 import { ClientConversation } from './pages/client/ClientConversation';
+import ScanPage from './pages/scan';
 
 function App() {
   return (
@@ -124,6 +125,7 @@ function App() {
           <Route path="analytics" element={<Analytics />} />
           <Route path="analytics/finance" element={<FinanceReports />} />
           <Route path="settings" element={<Settings />} />
+          <Route path="scan" element={<ScanPage />} />
         </Route>
       </Routes>
       <Toaster
