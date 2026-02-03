@@ -8,6 +8,7 @@ import { Clients } from './pages/Clients';
 import { ClientDetail } from './pages/ClientDetail';
 import { Chantiers } from './pages/Chantiers';
 import { ChantierDetail } from './pages/ChantierDetail';
+import { ChantierRentabilite } from './pages/ChantierRentabilite';
 import { Devis } from './pages/Devis';
 import { DevisBuilder } from './pages/DevisBuilder';
 import { Factures } from './pages/Factures';
@@ -114,6 +115,7 @@ function App() {
           <Route path="clients/:id" element={<ClientDetail />} />
           <Route path="chantiers" element={<Chantiers />} />
           <Route path="chantiers/:id" element={<ChantierDetail />} />
+          <Route path="chantiers/:id/rentabilite" element={<ChantierRentabilite />} />
           <Route path="devis" element={<Devis />} />
           <Route path="devis/nouveau" element={<DevisBuilder />} />
           <Route path="devis/:id" element={<DevisBuilder />} />
