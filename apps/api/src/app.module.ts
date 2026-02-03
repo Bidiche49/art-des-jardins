@@ -33,6 +33,7 @@ import { TrashModule } from './modules/trash/trash.module';
 import { WebsocketModule } from './modules/websocket/websocket.module';
 import { TimeEntriesModule } from './modules/time-entries/time-entries.module';
 import { MaterialUsagesModule } from './modules/material-usages/material-usages.module';
+import { RentabiliteModule } from './modules/rentabilite/rentabilite.module';
 import { DatabaseModule } from './database/database.module';
 import { envValidationSchema } from './config/env.validation';
 
@@ -131,6 +132,7 @@ import { envValidationSchema } from './config/env.validation';
     WebsocketModule,
     TimeEntriesModule,
     MaterialUsagesModule,
+    RentabiliteModule,
   ],
   providers: [
     {
