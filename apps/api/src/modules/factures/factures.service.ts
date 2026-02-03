@@ -1,5 +1,7 @@
 import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
 import { PrismaService } from '../../database/prisma.service';
+import { EventsGateway } from '../websocket/events.gateway';
+import { WS_EVENTS } from '../websocket/websocket.events';
 import { CreateFactureDto } from './dto/create-facture.dto';
 import { UpdateFactureDto } from './dto/update-facture.dto';
 import { FactureFiltersDto } from './dto/facture-filters.dto';
@@ -7,7 +9,10 @@ import { FactureStatut } from '@art-et-jardin/database';
 
 @Injectable()
 export class FacturesService {
-  constructor(private prisma: PrismaService) {}
+  constructor(
+    private prisma: PrismaService,
+    private eventsGateway: EventsGateway,
+  ) {}
 
   private async genererNumero(): Promise<string> {
     const now = new Date();
@@ -175,7 +180,7 @@ export class FacturesService {
       ordre: ligne.ordre,
     }));
 
-    return this.prisma.facture.create({
+    const facture = await this.prisma.facture.create({
       data: {
         devisId,
         numero,
@@ -205,6 +210,16 @@ export class FacturesService {
         },
       },
     });
+
+    // Emit WebSocket event
+    this.eventsGateway.broadcast(WS_EVENTS.FACTURE_CREATED, {
+      id: facture.id,
+      numero: facture.numero,
+      clientName: facture.devis.chantier.client.nom,
+      amount: facture.totalTTC,
+    });
+
+    return facture;
   }
 
   async create(createFactureDto: CreateFactureDto) {
@@ -249,9 +264,7 @@ export class FacturesService {
   }
 
   async marquerPayee(id: string, modePaiement: string, referencePaiement?: string) {
-    await this.findOne(id);
-
-    return this.prisma.facture.update({
+    const facture = await this.prisma.facture.update({
       where: { id },
       data: {
         statut: 'payee',
@@ -259,7 +272,28 @@ export class FacturesService {
         modePaiement: modePaiement as any,
         referencePaiement,
       },
+      include: {
+        devis: {
+          select: {
+            chantier: {
+              select: {
+                client: { select: { nom: true } },
+              },
+            },
+          },
+        },
+      },
     });
+
+    // Emit WebSocket event
+    this.eventsGateway.broadcast(WS_EVENTS.FACTURE_PAID, {
+      id: facture.id,
+      numero: facture.numero,
+      clientName: facture.devis.chantier.client.nom,
+      amount: facture.totalTTC,
+    });
+
+    return facture;
   }
 
   async remove(id: string) {

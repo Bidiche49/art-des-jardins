@@ -2,6 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { NotFoundException, BadRequestException } from '@nestjs/common';
 import { FacturesService } from './factures.service';
 import { PrismaService } from '../../database/prisma.service';
+import { EventsGateway } from '../websocket/events.gateway';
 import {
   createMockFacture,
   createMockDevis,
@@ -18,6 +19,7 @@ describe('FacturesService', () => {
   let mockFactureCount: jest.Mock;
   let mockDevisFindUnique: jest.Mock;
   let mockSequenceUpsert: jest.Mock;
+  let mockBroadcast: jest.Mock;
 
   const devisId = 'devis-123';
   const mockDevisData = createMockDevis('chantier-123', {
@@ -42,6 +44,7 @@ describe('FacturesService', () => {
     mockFactureCount = jest.fn();
     mockDevisFindUnique = jest.fn();
     mockSequenceUpsert = jest.fn();
+    mockBroadcast = jest.fn();
 
     const module: TestingModule = await Test.createTestingModule({
       providers: [
@@ -63,6 +66,13 @@ describe('FacturesService', () => {
             sequence: {
               upsert: mockSequenceUpsert,
             },
+          },
+        },
+        {
+          provide: EventsGateway,
+          useValue: {
+            broadcast: mockBroadcast,
+            sendToUser: jest.fn(),
           },
         },
       ],
@@ -90,6 +100,7 @@ describe('FacturesService', () => {
         id: 'new-facture',
         ...data,
         lignes: data.lignes.create,
+        devis: { chantier: { client: { nom: 'Test Client' } } },
       }));
 
       const result = await service.createFromDevis(devisId);
@@ -114,6 +125,7 @@ describe('FacturesService', () => {
         id: 'new-facture',
         ...data,
         lignes: data.lignes.create,
+        devis: { chantier: { client: { nom: 'Test Client' } } },
       }));
 
       const result = await service.createFromDevis(devisId);
@@ -190,6 +202,7 @@ describe('FacturesService', () => {
         id: 'new-facture',
         ...data,
         lignes: data.lignes.create,
+        devis: { chantier: { client: { nom: 'Test Client' } } },
       }));
 
       await service.createFromDevis(devisId);
@@ -215,6 +228,7 @@ describe('FacturesService', () => {
       mockFactureCreate.mockImplementation(({ data }) => ({
         id: 'new-facture',
         ...data,
+        devis: { chantier: { client: { nom: 'Test Client' } } },
       }));
 
       await service.createFromDevis(devisId, { delaiPaiement: 45 });
@@ -351,76 +365,90 @@ describe('FacturesService', () => {
 
   describe('marquerPayee', () => {
     it('should mark facture as paid', async () => {
-      const factureWithIncludes = {
-        ...mockFactureData,
-        devis: mockDevisData,
-        lignes: [],
-      };
-      mockFactureFindUnique.mockResolvedValue(factureWithIncludes);
       mockFactureUpdate.mockResolvedValue({
         ...mockFactureData,
+        id: 'facture-123',
+        numero: 'FAC-202601-001',
+        totalTTC: 1200,
         statut: 'payee',
         datePaiement: new Date(),
         modePaiement: 'virement',
+        devis: { chantier: { client: { nom: 'Test Client' } } },
       });
 
       const result = await service.marquerPayee('facture-123', 'virement');
 
       expect(result.statut).toBe('payee');
       expect(result.modePaiement).toBe('virement');
-      expect(mockFactureUpdate).toHaveBeenCalledWith({
-        where: { id: 'facture-123' },
-        data: {
-          statut: 'payee',
-          datePaiement: expect.any(Date),
-          modePaiement: 'virement',
-          referencePaiement: undefined,
-        },
-      });
+      expect(mockFactureUpdate).toHaveBeenCalledWith(
+        expect.objectContaining({
+          where: { id: 'facture-123' },
+          data: {
+            statut: 'payee',
+            datePaiement: expect.any(Date),
+            modePaiement: 'virement',
+            referencePaiement: undefined,
+          },
+        }),
+      );
     });
 
     it('should set payment reference when provided', async () => {
-      const factureWithIncludes = {
-        ...mockFactureData,
-        devis: mockDevisData,
-        lignes: [],
-      };
-      mockFactureFindUnique.mockResolvedValue(factureWithIncludes);
       mockFactureUpdate.mockResolvedValue({
         ...mockFactureData,
         statut: 'payee',
         referencePaiement: 'REF-123',
+        devis: { chantier: { client: { nom: 'Test Client' } } },
       });
 
       await service.marquerPayee('facture-123', 'virement', 'REF-123');
 
-      expect(mockFactureUpdate).toHaveBeenCalledWith({
-        where: { id: 'facture-123' },
-        data: expect.objectContaining({
-          referencePaiement: 'REF-123',
+      expect(mockFactureUpdate).toHaveBeenCalledWith(
+        expect.objectContaining({
+          data: expect.objectContaining({
+            referencePaiement: 'REF-123',
+          }),
         }),
-      });
+      );
     });
 
     it('should set datePaiement to now', async () => {
-      const factureWithIncludes = {
-        ...mockFactureData,
-        devis: mockDevisData,
-        lignes: [],
-      };
-      mockFactureFindUnique.mockResolvedValue(factureWithIncludes);
       mockFactureUpdate.mockResolvedValue({
         ...mockFactureData,
         datePaiement: new Date(),
+        devis: { chantier: { client: { nom: 'Test Client' } } },
       });
 
       await service.marquerPayee('facture-123', 'cheque');
 
-      expect(mockFactureUpdate).toHaveBeenCalledWith({
-        where: { id: 'facture-123' },
-        data: expect.objectContaining({
-          datePaiement: expect.any(Date),
+      expect(mockFactureUpdate).toHaveBeenCalledWith(
+        expect.objectContaining({
+          data: expect.objectContaining({
+            datePaiement: expect.any(Date),
+          }),
         }),
+      );
+    });
+
+    it('should emit WebSocket event when facture is marked as paid', async () => {
+      mockFactureUpdate.mockResolvedValue({
+        ...mockFactureData,
+        id: 'facture-123',
+        numero: 'FAC-202601-001',
+        totalTTC: 1200,
+        statut: 'payee',
+        datePaiement: new Date(),
+        modePaiement: 'virement',
+        devis: { chantier: { client: { nom: 'Test Client' } } },
+      });
+
+      await service.marquerPayee('facture-123', 'virement');
+
+      expect(mockBroadcast).toHaveBeenCalledWith('facture:paid', {
+        id: 'facture-123',
+        numero: 'FAC-202601-001',
+        clientName: 'Test Client',
+        amount: 1200,
       });
     });
   });
@@ -472,6 +500,7 @@ describe('FacturesService', () => {
       mockFactureCreate.mockImplementation(({ data }) => ({
         id: 'new-facture',
         numero: data.numero,
+        devis: { chantier: { client: { nom: 'Test Client' } } },
       }));
 
       const result = await service.createFromDevis(devisId);
@@ -491,6 +520,7 @@ describe('FacturesService', () => {
       mockFactureCreate.mockImplementation(({ data }) => ({
         id: 'new-facture',
         numero: data.numero,
+        devis: { chantier: { client: { nom: 'Test Client' } } },
       }));
 
       const result = await service.createFromDevis(devisId);
