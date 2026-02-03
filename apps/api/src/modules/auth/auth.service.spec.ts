@@ -19,6 +19,8 @@ jest.mock('bcrypt');
 
 import { AuthService } from './auth.service';
 import { TwoFactorService } from './two-factor.service';
+import { DeviceTrackingService } from './device-tracking.service';
+import { RefreshTokenService } from './refresh-token.service';
 
 describe('AuthService', () => {
   let service: AuthService;
@@ -29,6 +31,12 @@ describe('AuthService', () => {
   let mockConfigGet: jest.Mock;
   let mockVerify2FACode: jest.Mock;
   let mockAuditLog: jest.Mock;
+  let mockRegisterDevice: jest.Mock;
+  let mockSendNewDeviceAlert: jest.Mock;
+  let mockCreateRefreshToken: jest.Mock;
+  let mockRotateRefreshToken: jest.Mock;
+  let mockRevokeAllUserTokens: jest.Mock;
+  let mockCleanupExpiredTokens: jest.Mock;
 
   const mockUser = createMockUser({
     id: 'user-123',
@@ -54,6 +62,15 @@ describe('AuthService', () => {
     mockConfigGet = jest.fn();
     mockVerify2FACode = jest.fn();
     mockAuditLog = jest.fn().mockResolvedValue({});
+    mockRegisterDevice = jest.fn().mockResolvedValue(null);
+    mockSendNewDeviceAlert = jest.fn().mockResolvedValue(true);
+    mockCreateRefreshToken = jest.fn().mockResolvedValue('refresh-token');
+    mockRotateRefreshToken = jest.fn().mockResolvedValue({
+      accessToken: 'new-access-token',
+      refreshToken: 'new-refresh-token',
+    });
+    mockRevokeAllUserTokens = jest.fn().mockResolvedValue(1);
+    mockCleanupExpiredTokens = jest.fn().mockResolvedValue(0);
 
     const module: TestingModule = await Test.createTestingModule({
       providers: [
@@ -92,6 +109,22 @@ describe('AuthService', () => {
             log: mockAuditLog,
           },
         },
+        {
+          provide: DeviceTrackingService,
+          useValue: {
+            registerDevice: mockRegisterDevice,
+            sendNewDeviceAlert: mockSendNewDeviceAlert,
+          },
+        },
+        {
+          provide: RefreshTokenService,
+          useValue: {
+            createRefreshToken: mockCreateRefreshToken,
+            rotateRefreshToken: mockRotateRefreshToken,
+            revokeAllUserTokens: mockRevokeAllUserTokens,
+            cleanupExpiredTokens: mockCleanupExpiredTokens,
+          },
+        },
       ],
     }).compile();
 
@@ -112,9 +145,8 @@ describe('AuthService', () => {
       mockUserFindUnique.mockResolvedValue(mockUser);
       mockUserUpdate.mockResolvedValue(mockUser);
       (bcrypt.compare as jest.Mock).mockResolvedValue(true);
-      mockJwtSign
-        .mockReturnValueOnce('access-token')
-        .mockReturnValueOnce('refresh-token');
+      mockJwtSign.mockReturnValue('access-token');
+      mockCreateRefreshToken.mockResolvedValue('refresh-token');
 
       const result = await service.login(loginDto);
 
@@ -137,6 +169,12 @@ describe('AuthService', () => {
         loginDto.password,
         mockUser.passwordHash,
       );
+      expect(mockCreateRefreshToken).toHaveBeenCalledWith(
+        mockUser.id,
+        mockUser.email,
+        mockUser.role,
+        undefined,
+      );
     });
 
     it('should update derniereConnexion on successful login', async () => {
@@ -144,6 +182,7 @@ describe('AuthService', () => {
       mockUserUpdate.mockResolvedValue(mockUser);
       (bcrypt.compare as jest.Mock).mockResolvedValue(true);
       mockJwtSign.mockReturnValue('token');
+      mockCreateRefreshToken.mockResolvedValue('refresh-token');
 
       await service.login(loginDto);
 
@@ -193,6 +232,7 @@ describe('AuthService', () => {
       mockUserUpdate.mockResolvedValue(mockPatron);
       (bcrypt.compare as jest.Mock).mockResolvedValue(true);
       mockJwtSign.mockReturnValue('token');
+      mockCreateRefreshToken.mockResolvedValue('refresh-token');
 
       const result = await service.login({
         email: 'patron@example.com',
@@ -200,7 +240,7 @@ describe('AuthService', () => {
       });
 
       expect('user' in result).toBe(true);
-      if ('user' in result) {
+      if ('user' in result && result.user) {
         expect(result.user.role).toBe('patron');
       }
     });
@@ -228,9 +268,8 @@ describe('AuthService', () => {
       mockUserUpdate.mockResolvedValue(userWith2FA);
       (bcrypt.compare as jest.Mock).mockResolvedValue(true);
       mockVerify2FACode.mockResolvedValue(true);
-      mockJwtSign
-        .mockReturnValueOnce('access-token')
-        .mockReturnValueOnce('refresh-token');
+      mockJwtSign.mockReturnValue('access-token');
+      mockCreateRefreshToken.mockResolvedValue('refresh-token');
 
       const result = await service.login({
         email: 'test@example.com',
@@ -262,13 +301,10 @@ describe('AuthService', () => {
     const refreshToken = 'valid-refresh-token';
 
     it('should return new tokens with valid refresh token', async () => {
-      const payload = { sub: mockUser.id, email: mockUser.email, role: mockUser.role };
-      mockJwtVerify.mockReturnValue(payload);
-      mockUserFindUnique.mockResolvedValue(mockUser);
-      mockConfigGet.mockReturnValue('secret');
-      mockJwtSign
-        .mockReturnValueOnce('new-access-token')
-        .mockReturnValueOnce('new-refresh-token');
+      mockRotateRefreshToken.mockResolvedValue({
+        accessToken: 'new-access-token',
+        refreshToken: 'new-refresh-token',
+      });
 
       const result = await service.refresh(refreshToken);
 
@@ -276,85 +312,55 @@ describe('AuthService', () => {
         accessToken: 'new-access-token',
         refreshToken: 'new-refresh-token',
       });
-      expect(mockJwtVerify).toHaveBeenCalledWith(refreshToken, {
-        secret: 'secret',
-      });
-    });
-
-    it('should throw UnauthorizedException with expired token', async () => {
-      mockJwtVerify.mockImplementation(() => {
-        throw new Error('jwt expired');
-      });
-      mockConfigGet.mockReturnValue('secret');
-
-      await expect(service.refresh(refreshToken)).rejects.toThrow(
-        UnauthorizedException,
-      );
-      await expect(service.refresh(refreshToken)).rejects.toThrow(
-        'Token invalide ou expire',
-      );
+      expect(mockRotateRefreshToken).toHaveBeenCalledWith(refreshToken, undefined, undefined);
     });
 
     it('should throw UnauthorizedException with invalid token', async () => {
-      mockJwtVerify.mockImplementation(() => {
-        throw new Error('invalid signature');
+      mockRotateRefreshToken.mockRejectedValue(new UnauthorizedException('Token invalide ou expire'));
+
+      await expect(service.refresh(refreshToken)).rejects.toThrow(
+        UnauthorizedException,
+      );
+    });
+
+    it('should pass ipAddress and userAgent to rotation service', async () => {
+      mockRotateRefreshToken.mockResolvedValue({
+        accessToken: 'new-access-token',
+        refreshToken: 'new-refresh-token',
       });
-      mockConfigGet.mockReturnValue('secret');
 
-      await expect(service.refresh(refreshToken)).rejects.toThrow(
-        UnauthorizedException,
-      );
-    });
+      await service.refresh(refreshToken, '127.0.0.1', 'TestAgent');
 
-    it('should throw UnauthorizedException if user not found', async () => {
-      const payload = { sub: 'non-existent-id', email: 'test@test.com', role: 'employe' };
-      mockJwtVerify.mockReturnValue(payload);
-      mockUserFindUnique.mockResolvedValue(null);
-      mockConfigGet.mockReturnValue('secret');
-
-      await expect(service.refresh(refreshToken)).rejects.toThrow(
-        UnauthorizedException,
-      );
-      await expect(service.refresh(refreshToken)).rejects.toThrow(
-        'Token invalide',
-      );
-    });
-
-    it('should throw UnauthorizedException if user is inactive', async () => {
-      const inactiveUser = { ...mockUser, actif: false };
-      const payload = { sub: inactiveUser.id, email: inactiveUser.email, role: inactiveUser.role };
-      mockJwtVerify.mockReturnValue(payload);
-      mockUserFindUnique.mockResolvedValue(inactiveUser);
-      mockConfigGet.mockReturnValue('secret');
-
-      await expect(service.refresh(refreshToken)).rejects.toThrow(
-        UnauthorizedException,
-      );
-      await expect(service.refresh(refreshToken)).rejects.toThrow(
-        'Token invalide',
-      );
-    });
-
-    it('should use default secret when JWT_SECRET not configured', async () => {
-      const payload = { sub: mockUser.id, email: mockUser.email, role: mockUser.role };
-      mockJwtVerify.mockReturnValue(payload);
-      mockUserFindUnique.mockResolvedValue(mockUser);
-      mockConfigGet.mockReturnValue(undefined);
-      mockJwtSign.mockReturnValue('token');
-
-      await service.refresh(refreshToken);
-
-      expect(mockJwtVerify).toHaveBeenCalledWith(refreshToken, {
-        secret: 'dev-secret-change-in-production',
-      });
+      expect(mockRotateRefreshToken).toHaveBeenCalledWith(refreshToken, '127.0.0.1', 'TestAgent');
     });
   });
 
   describe('logout', () => {
-    it('should log TOKEN_REVOKED and return success', async () => {
-      const result = await service.logout('user-123', '127.0.0.1', 'TestAgent');
+    it('should revoke all tokens and return success', async () => {
+      mockRevokeAllUserTokens.mockResolvedValue(3);
 
-      expect(result).toEqual({ success: true });
+      const result = await service.logout('user-123', undefined, '127.0.0.1', 'TestAgent');
+
+      expect(result).toEqual({ success: true, revokedCount: 3 });
+      expect(mockRevokeAllUserTokens).toHaveBeenCalledWith('user-123', 'logout');
+      expect(mockAuditLog).toHaveBeenCalledWith(
+        expect.objectContaining({
+          userId: 'user-123',
+          action: 'TOKEN_REVOKED',
+          details: { revokedCount: 3 },
+        }),
+      );
+    });
+  });
+
+  describe('cleanupExpiredTokens', () => {
+    it('should call refresh token service cleanup', async () => {
+      mockCleanupExpiredTokens.mockResolvedValue(10);
+
+      const result = await service.cleanupExpiredTokens();
+
+      expect(result).toBe(10);
+      expect(mockCleanupExpiredTokens).toHaveBeenCalled();
     });
   });
 });
