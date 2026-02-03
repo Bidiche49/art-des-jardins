@@ -74,6 +74,12 @@ enum AbsenceType {
   autre
 }
 
+enum PhotoType {
+  BEFORE
+  DURING
+  AFTER
+}
+
 // ============================================
 // MODELS
 // ============================================
@@ -95,14 +101,14 @@ model User {
   updatedAt         DateTime  @updatedAt
 
   // 2FA
-  twoFactorSecret   String?   // TOTP secret (chiffré AES-256)
-  twoFactorEnabled  Boolean   @default(false)
-  recoveryCodes     String[]  // Codes de récupération (hashés bcrypt)
-  twoFactorAttempts Int       @default(0) // Compteur tentatives échouées
+  twoFactorSecret      String? // TOTP secret (chiffré AES-256)
+  twoFactorEnabled     Boolean   @default(false)
+  recoveryCodes        String[] // Codes de récupération (hashés bcrypt)
+  twoFactorAttempts    Int       @default(0) // Compteur tentatives échouées
   twoFactorLockedUntil DateTime? // Verrouillage après 5 tentatives
 
   // Relations
-  chantiersResponsable Chantier[]     @relation("ChantierResponsable")
+  chantiersResponsable Chantier[]         @relation("ChantierResponsable")
   interventions        Intervention[]
   auditLogs            AuditLog[]
   pushSubscriptions    PushSubscription[]
@@ -111,28 +117,29 @@ model User {
   refreshTokens        RefreshToken[]
   notifications        Notification[]
   timeEntries          TimeEntry[]
+  photosUploaded       Photo[]
 
   @@map("users")
 }
 
 model Client {
-  id                   String     @id @default(uuid())
-  type                 ClientType
-  nom                  String
-  prenom               String?
-  raisonSociale        String?
-  email                String
-  telephone            String
-  telephoneSecondaire  String?
-  adresse              String
-  codePostal           String
-  ville                String
-  notes                String?
-  tags                 String[]
-  excludeRelance       Boolean    @default(false) // Client VIP, exclure des relances auto
-  deletedAt            DateTime?  // Soft delete
-  createdAt            DateTime   @default(now())
-  updatedAt            DateTime   @updatedAt
+  id                  String     @id @default(uuid())
+  type                ClientType
+  nom                 String
+  prenom              String?
+  raisonSociale       String?
+  email               String
+  telephone           String
+  telephoneSecondaire String?
+  adresse             String
+  codePostal          String
+  ville               String
+  notes               String?
+  tags                String[]
+  excludeRelance      Boolean    @default(false) // Client VIP, exclure des relances auto
+  deletedAt           DateTime? // Soft delete
+  createdAt           DateTime   @default(now())
+  updatedAt           DateTime   @updatedAt
 
   // Relations
   chantiers     Chantier[]
@@ -147,12 +154,12 @@ model Client {
 }
 
 model ClientAuthToken {
-  id        String   @id @default(uuid())
+  id        String    @id @default(uuid())
   clientId  String
-  token     String   @unique
+  token     String    @unique
   expiresAt DateTime
   usedAt    DateTime?
-  createdAt DateTime @default(now())
+  createdAt DateTime  @default(now())
 
   // Relations
   client Client @relation(fields: [clientId], references: [id], onDelete: Cascade)
@@ -164,26 +171,26 @@ model ClientAuthToken {
 }
 
 model Chantier {
-  id              String          @id @default(uuid())
-  clientId        String
-  adresse         String
-  codePostal      String
-  ville           String
-  latitude        Float?
-  longitude       Float?
-  typePrestation  TypePrestation[]
-  description     String
-  surface         Float?
-  statut          ChantierStatut  @default(lead)
-  dateVisite      DateTime?
-  dateDebut       DateTime?
-  dateFin         DateTime?
-  responsableId   String?
-  notes           String?
-  photos          String[]
-  deletedAt       DateTime?       // Soft delete
-  createdAt       DateTime        @default(now())
-  updatedAt       DateTime        @updatedAt
+  id             String           @id @default(uuid())
+  clientId       String
+  adresse        String
+  codePostal     String
+  ville          String
+  latitude       Float?
+  longitude      Float?
+  typePrestation TypePrestation[]
+  description    String
+  surface        Float?
+  statut         ChantierStatut   @default(lead)
+  dateVisite     DateTime?
+  dateDebut      DateTime?
+  dateFin        DateTime?
+  responsableId  String?
+  notes          String?
+  photos         String[]
+  deletedAt      DateTime? // Soft delete
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
 
   // Relations
   client         Client          @relation(fields: [clientId], references: [id], onDelete: Cascade)
@@ -202,29 +209,29 @@ model Chantier {
 }
 
 model Devis {
-  id                    String      @id @default(uuid())
-  chantierId            String
-  numero                String      @unique
-  dateEmission          DateTime    @default(now())
-  dateValidite          DateTime
-  totalHT               Float
-  totalTVA              Float
-  totalTTC              Float
-  statut                DevisStatut @default(brouillon)
-  dateAcceptation       DateTime?
-  signatureClient       String?
-  pdfUrl                String?
+  id                      String      @id @default(uuid())
+  chantierId              String
+  numero                  String      @unique
+  dateEmission            DateTime    @default(now())
+  dateValidite            DateTime
+  totalHT                 Float
+  totalTVA                Float
+  totalTTC                Float
+  statut                  DevisStatut @default(brouillon)
+  dateAcceptation         DateTime?
+  signatureClient         String?
+  pdfUrl                  String?
   conditionsParticulieres String?
-  notes                 String?
-  deletedAt             DateTime?   // Soft delete
-  createdAt             DateTime    @default(now())
-  updatedAt             DateTime    @updatedAt
+  notes                   String?
+  deletedAt               DateTime? // Soft delete
+  createdAt               DateTime    @default(now())
+  updatedAt               DateTime    @updatedAt
 
   // Relations
-  chantier   Chantier        @relation(fields: [chantierId], references: [id], onDelete: Cascade)
-  lignes     LigneDevis[]
-  factures   Facture[]
-  signature  SignatureDevis?
+  chantier  Chantier        @relation(fields: [chantierId], references: [id], onDelete: Cascade)
+  lignes    LigneDevis[]
+  factures  Facture[]
+  signature SignatureDevis?
 
   @@index([chantierId])
   @@index([statut])
@@ -234,16 +241,16 @@ model Devis {
 }
 
 model SignatureDevis {
-  id            String   @id @default(uuid())
-  devisId       String   @unique
-  token         String   @unique
-  imageBase64   String   @db.Text
-  signedAt      DateTime @default(now())
-  expiresAt     DateTime
-  ipAddress     String
-  userAgent     String
-  cgvAccepted   Boolean  @default(true)
-  createdAt     DateTime @default(now())
+  id          String   @id @default(uuid())
+  devisId     String   @unique
+  token       String   @unique
+  imageBase64 String   @db.Text
+  signedAt    DateTime @default(now())
+  expiresAt   DateTime
+  ipAddress   String
+  userAgent   String
+  cgvAccepted Boolean  @default(true)
+  createdAt   DateTime @default(now())
 
   // Relations
   devis Devis @relation(fields: [devisId], references: [id], onDelete: Cascade)
@@ -289,7 +296,7 @@ model Facture {
   mentionsLegales   String?
   notes             String?
   excludeRelance    Boolean       @default(false) // Exclure des relances auto (litige, accord special)
-  deletedAt         DateTime?     // Soft delete
+  deletedAt         DateTime? // Soft delete
   createdAt         DateTime      @default(now())
   updatedAt         DateTime      @updatedAt
 
@@ -326,25 +333,26 @@ model LigneFacture {
 }
 
 model Intervention {
-  id          String   @id @default(uuid())
-  chantierId  String
-  employeId   String
-  date        DateTime
-  heureDebut  DateTime
-  heureFin    DateTime?
+  id           String    @id @default(uuid())
+  chantierId   String
+  employeId    String
+  date         DateTime
+  heureDebut   DateTime
+  heureFin     DateTime?
   dureeMinutes Int?
-  description String?
-  photos      String[]
-  notes       String?
-  valide      Boolean  @default(false)
-  deletedAt   DateTime? // Soft delete
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  description  String?
+  photos       String[]
+  notes        String?
+  valide       Boolean   @default(false)
+  deletedAt    DateTime? // Soft delete
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
 
   // Relations
-  chantier    Chantier    @relation(fields: [chantierId], references: [id], onDelete: Cascade)
-  employe     User        @relation(fields: [employeId], references: [id])
-  timeEntries TimeEntry[]
+  chantier      Chantier    @relation(fields: [chantierId], references: [id], onDelete: Cascade)
+  employe       User        @relation(fields: [employeId], references: [id])
+  timeEntries   TimeEntry[]
+  photosDetails Photo[]
 
   @@index([chantierId])
   @@index([employeId])
@@ -353,16 +361,41 @@ model Intervention {
   @@map("interventions")
 }
 
+model Photo {
+  id             String    @id @default(uuid())
+  interventionId String
+  type           PhotoType
+  filename       String
+  s3Key          String
+  mimeType       String
+  size           Int
+  width          Int
+  height         Int
+  latitude       Float?
+  longitude      Float?
+  takenAt        DateTime
+  uploadedAt     DateTime  @default(now())
+  uploadedBy     String
+
+  // Relations
+  intervention Intervention @relation(fields: [interventionId], references: [id], onDelete: Cascade)
+  user         User         @relation(fields: [uploadedBy], references: [id])
+
+  @@index([interventionId, type])
+  @@index([uploadedBy])
+  @@map("photos")
+}
+
 model AuditLog {
-  id         String   @id @default(uuid())
-  userId     String?
-  action     String
-  entite     String
-  entiteId   String?
-  details    Json?
-  ipAddress  String?
-  userAgent  String?
-  createdAt  DateTime @default(now())
+  id        String   @id @default(uuid())
+  userId    String?
+  action    String
+  entite    String
+  entiteId  String?
+  details   Json?
+  ipAddress String?
+  userAgent String?
+  createdAt DateTime @default(now())
 
   // Relations
   user User? @relation(fields: [userId], references: [id])
@@ -381,8 +414,8 @@ model PushSubscription {
   id        String   @id @default(uuid())
   userId    String
   endpoint  String   @unique
-  p256dh    String   // Public key for encryption
-  auth      String   // Auth secret
+  p256dh    String // Public key for encryption
+  auth      String // Auth secret
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -426,20 +459,20 @@ enum SenderType {
 }
 
 model Conversation {
-  id          String    @id @default(uuid())
-  clientId    String
-  chantierId  String?
-  subject     String
-  lastMessageAt DateTime @default(now())
-  unreadByClient Boolean @default(false)
-  unreadByAdmin  Boolean @default(true)
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
+  id             String   @id @default(uuid())
+  clientId       String
+  chantierId     String?
+  subject        String
+  lastMessageAt  DateTime @default(now())
+  unreadByClient Boolean  @default(false)
+  unreadByAdmin  Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 
   // Relations
-  client    Client     @relation(fields: [clientId], references: [id], onDelete: Cascade)
-  chantier  Chantier?  @relation(fields: [chantierId], references: [id])
-  messages  Message[]
+  client   Client    @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  chantier Chantier? @relation(fields: [chantierId], references: [id])
+  messages Message[]
 
   @@index([clientId])
   @@index([chantierId])
@@ -448,14 +481,14 @@ model Conversation {
 }
 
 model Message {
-  id              String     @id @default(uuid())
-  conversationId  String
-  senderType      SenderType
-  senderId        String?
-  content         String
-  attachments     String[]
-  readAt          DateTime?
-  createdAt       DateTime   @default(now())
+  id             String     @id @default(uuid())
+  conversationId String
+  senderType     SenderType
+  senderId       String?
+  content        String
+  attachments    String[]
+  readAt         DateTime?
+  createdAt      DateTime   @default(now())
 
   // Relations
   conversation Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
@@ -470,18 +503,18 @@ model Message {
 // ============================================
 
 model KnownDevice {
-  id            String    @id @default(uuid())
-  userId        String
-  fingerprint   String    // SHA256(User-Agent + Accept-Language)
-  deviceName    String?   // Nom derive du User-Agent (ex: "Chrome sur Windows")
-  lastIp        String?
-  lastCountry   String?
-  lastCity      String?
-  firstSeenAt   DateTime  @default(now())
-  lastSeenAt    DateTime  @default(now())
-  trustedAt     DateTime? // null = pas encore valide par l'utilisateur
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
+  id          String    @id @default(uuid())
+  userId      String
+  fingerprint String // SHA256(User-Agent + Accept-Language)
+  deviceName  String? // Nom derive du User-Agent (ex: "Chrome sur Windows")
+  lastIp      String?
+  lastCountry String?
+  lastCity    String?
+  firstSeenAt DateTime  @default(now())
+  lastSeenAt  DateTime  @default(now())
+  trustedAt   DateTime? // null = pas encore valide par l'utilisateur
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
 
   // Relations
   user          User           @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -497,8 +530,8 @@ model RefreshToken {
   id        String    @id @default(uuid())
   userId    String
   token     String    @unique
-  deviceId  String?   // Lien vers KnownDevice
-  familyId  String    // Groupe de tokens lies (pour rotation)
+  deviceId  String? // Lien vers KnownDevice
+  familyId  String // Groupe de tokens lies (pour rotation)
   usedAt    DateTime? // Marque quand le token a ete utilise
   expiresAt DateTime
   revokedAt DateTime?
@@ -520,14 +553,14 @@ model RefreshToken {
 // ============================================
 
 model TimeEntry {
-  id              String       @id @default(uuid())
-  interventionId  String
-  userId          String
-  hours           Decimal      @db.Decimal(5, 2)
-  date            DateTime     @db.Date
-  description     String?
-  createdAt       DateTime     @default(now())
-  updatedAt       DateTime     @updatedAt
+  id             String   @id @default(uuid())
+  interventionId String
+  userId         String
+  hours          Decimal  @db.Decimal(5, 2)
+  date           DateTime @db.Date
+  description    String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 
   // Relations
   intervention Intervention @relation(fields: [interventionId], references: [id], onDelete: Cascade)
@@ -540,14 +573,14 @@ model TimeEntry {
 }
 
 model MaterialUsage {
-  id          String   @id @default(uuid())
-  chantierId  String
-  name        String
-  quantity    Decimal  @db.Decimal(10, 2)
-  unitCost    Decimal  @db.Decimal(10, 2)
-  totalCost   Decimal  @db.Decimal(10, 2)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id         String   @id @default(uuid())
+  chantierId String
+  name       String
+  quantity   Decimal  @db.Decimal(10, 2)
+  unitCost   Decimal  @db.Decimal(10, 2)
+  totalCost  Decimal  @db.Decimal(10, 2)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
 
   // Relations
   chantier Chantier @relation(fields: [chantierId], references: [id], onDelete: Cascade)
@@ -561,10 +594,10 @@ model MaterialUsage {
 // ============================================
 
 model Sequence {
-  id       String @id
-  prefix   String
-  year     Int
-  lastValue Int   @default(0)
+  id        String @id
+  prefix    String
+  year      Int
+  lastValue Int    @default(0)
 
   @@unique([prefix, year])
   @@map("sequences")
@@ -589,9 +622,9 @@ enum DocumentType {
 }
 
 enum RelanceLevel {
-  rappel_amical      // J+30 - Premier rappel
-  rappel_ferme       // J+45 - Deuxieme rappel
-  mise_en_demeure    // J+60 - Mise en demeure
+  rappel_amical // J+30 - Premier rappel
+  rappel_ferme // J+45 - Deuxieme rappel
+  mise_en_demeure // J+60 - Mise en demeure
 }
 
 enum NotificationType {
@@ -602,21 +635,21 @@ enum NotificationType {
 }
 
 model EmailHistory {
-  id            String      @id @default(uuid())
-  to            String
-  cc            String?
-  bcc           String?
-  subject       String
-  templateName  String?
-  status        EmailStatus @default(pending)
-  messageId     String?
-  errorMessage  String?
-  documentType  DocumentType?
-  documentId    String?
-  attachments   String[]
-  metadata      Json?
-  sentAt        DateTime?
-  createdAt     DateTime    @default(now())
+  id           String        @id @default(uuid())
+  to           String
+  cc           String?
+  bcc          String?
+  subject      String
+  templateName String?
+  status       EmailStatus   @default(pending)
+  messageId    String?
+  errorMessage String?
+  documentType DocumentType?
+  documentId   String?
+  attachments  String[]
+  metadata     Json?
+  sentAt       DateTime?
+  createdAt    DateTime      @default(now())
 
   @@index([to])
   @@index([status])
@@ -626,18 +659,18 @@ model EmailHistory {
 }
 
 model DocumentArchive {
-  id            String       @id @default(uuid())
-  documentType  DocumentType
-  documentId    String
+  id             String       @id @default(uuid())
+  documentType   DocumentType
+  documentId     String
   documentNumero String
-  s3Key         String
-  s3Bucket      String
-  fileName      String
-  fileSize      Int
-  mimeType      String       @default("application/pdf")
-  checksum      String?
-  archivedAt    DateTime     @default(now())
-  metadata      Json?
+  s3Key          String
+  s3Bucket       String
+  fileName       String
+  fileSize       Int
+  mimeType       String       @default("application/pdf")
+  checksum       String?
+  archivedAt     DateTime     @default(now())
+  metadata       Json?
 
   @@index([documentType])
   @@index([documentId])
@@ -647,15 +680,15 @@ model DocumentArchive {
 }
 
 model BackupHistory {
-  id          String   @id @default(uuid())
-  fileName    String
-  s3Key       String
-  s3Bucket    String
-  fileSize    Int
-  durationMs  Int
-  status      String   @default("success")
+  id           String   @id @default(uuid())
+  fileName     String
+  s3Key        String
+  s3Bucket     String
+  fileSize     Int
+  durationMs   Int
+  status       String   @default("success")
   errorMessage String?
-  createdAt   DateTime @default(now())
+  createdAt    DateTime @default(now())
 
   @@index([createdAt])
   @@map("backup_history")
@@ -666,16 +699,16 @@ model BackupHistory {
 // ============================================
 
 model RelanceHistory {
-  id            String       @id @default(uuid())
-  factureId     String
-  level         RelanceLevel
-  sentAt        DateTime     @default(now())
-  emailId       String?      // Lien vers EmailHistory
-  joursRetard   Int          // Nombre de jours de retard au moment de l'envoi
-  montantDu     Float        // Montant restant du au moment de la relance
-  success       Boolean      @default(true)
-  errorMessage  String?
-  createdAt     DateTime     @default(now())
+  id           String       @id @default(uuid())
+  factureId    String
+  level        RelanceLevel
+  sentAt       DateTime     @default(now())
+  emailId      String? // Lien vers EmailHistory
+  joursRetard  Int // Nombre de jours de retard au moment de l'envoi
+  montantDu    Float // Montant restant du au moment de la relance
+  success      Boolean      @default(true)
+  errorMessage String?
+  createdAt    DateTime     @default(now())
 
   // Relations
   facture Facture @relation(fields: [factureId], references: [id], onDelete: Cascade)
@@ -696,7 +729,7 @@ model Notification {
   type      NotificationType @default(info)
   title     String
   message   String
-  link      String?          // Ex: /devis/123, /factures/456
+  link      String? // Ex: /devis/123, /factures/456
   readAt    DateTime?
   createdAt DateTime         @default(now())
 
