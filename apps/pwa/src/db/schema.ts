@@ -88,6 +88,25 @@ export interface SyncMeta {
   lastSyncSuccess: boolean;
 }
 
+export type PhotoType = 'BEFORE' | 'DURING' | 'AFTER';
+
+export interface QueuedPhoto {
+  id?: number;
+  interventionId: string;
+  type: PhotoType;
+  latitude?: number;
+  longitude?: number;
+  takenAt: string;
+  blob: Blob;
+  mimeType: string;
+  originalSize: number;
+  compressedSize: number;
+  attempts: number;
+  lastAttempt?: string;
+  status: 'pending' | 'uploading' | 'failed';
+  lastError?: string;
+}
+
 export class AppDatabase extends Dexie {
   clients!: Table<CachedClient, string>;
   chantiers!: Table<CachedChantier, string>;
@@ -96,6 +115,7 @@ export class AppDatabase extends Dexie {
   factures!: Table<CachedFacture, string>;
   syncQueue!: Table<SyncQueueItem, number>;
   syncMeta!: Table<SyncMeta, string>;
+  photoQueue!: Table<QueuedPhoto, number>;
 
   constructor() {
     super('ArtJardinDB');
@@ -108,6 +128,17 @@ export class AppDatabase extends Dexie {
       factures: 'id, numero, clientId, statut, syncedAt',
       syncQueue: '++id, operation, entity, entityId, status, timestamp',
       syncMeta: 'id, entity, lastSyncAt',
+    });
+
+    this.version(2).stores({
+      clients: 'id, nom, email, type, syncedAt',
+      chantiers: 'id, clientId, nom, statut, syncedAt',
+      interventions: 'id, chantierId, date, statut, syncedAt',
+      devis: 'id, numero, clientId, chantierId, statut, syncedAt',
+      factures: 'id, numero, clientId, statut, syncedAt',
+      syncQueue: '++id, operation, entity, entityId, status, timestamp',
+      syncMeta: 'id, entity, lastSyncAt',
+      photoQueue: '++id, interventionId, type, status, takenAt',
     });
   }
 }
