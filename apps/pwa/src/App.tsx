@@ -3,6 +3,7 @@ import { Toaster } from 'react-hot-toast';
 import { Layout } from './components/layout/Layout';
 import { OfflineIndicator } from './components/OfflineIndicator';
 import { ThemeProvider } from './components/ThemeProvider';
+import { KeyboardShortcutsProvider } from './components/KeyboardShortcutsProvider';
 import { Dashboard } from './pages/Dashboard';
 import { Clients } from './pages/Clients';
 import { ClientDetail } from './pages/ClientDetail';
@@ -37,8 +38,9 @@ import ScanPage from './pages/scan';
 function App() {
   return (
     <ThemeProvider>
-      <OfflineIndicator variant="banner" />
-      <Routes>
+      <KeyboardShortcutsProvider>
+        <OfflineIndicator variant="banner" />
+        <Routes>
         {/* Routes publiques */}
         <Route path="/login" element={<Login />} />
         <Route path="/signer/:token" element={<SignerDevis />} />
@@ -153,6 +155,7 @@ function App() {
           },
         }}
       />
+      </KeyboardShortcutsProvider>
     </ThemeProvider>
   );
 }

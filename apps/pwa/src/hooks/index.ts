@@ -5,3 +5,4 @@ export { usePushPermission } from './usePushPermission.tsx';
 export { useOfflineAction, useOfflineMutation } from './useOfflineAction';
 export { useRealtimeUpdates } from './useRealtimeUpdates';
 export { useRentabilite } from './useRentabilite';
+export { useKeyboardShortcuts } from './useKeyboardShortcuts';
