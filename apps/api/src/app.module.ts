@@ -32,6 +32,7 @@ import { AlertsModule } from './modules/alerts/alerts.module';
 import { TrashModule } from './modules/trash/trash.module';
 import { WebsocketModule } from './modules/websocket/websocket.module';
 import { TimeEntriesModule } from './modules/time-entries/time-entries.module';
+import { MaterialUsagesModule } from './modules/material-usages/material-usages.module';
 import { DatabaseModule } from './database/database.module';
 import { envValidationSchema } from './config/env.validation';
 
@@ -129,6 +130,7 @@ import { envValidationSchema } from './config/env.validation';
     TrashModule,
     WebsocketModule,
     TimeEntriesModule,
+    MaterialUsagesModule,
   ],
   providers: [
     {
