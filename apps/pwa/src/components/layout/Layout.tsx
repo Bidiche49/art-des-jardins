@@ -3,6 +3,8 @@ import { useAuthStore } from '@/stores/auth';
 import { NotificationToggle } from '@/components/NotificationToggle';
 import { NotificationBell } from '@/components/NotificationBell';
 import { OfflineIndicator } from '@/components/OfflineIndicator';
+import { ConnectionIndicator } from '@/components/ui/ConnectionIndicator';
+import { useRealtimeUpdates } from '@/hooks/useRealtimeUpdates';
 
 const navigation = [
   { name: 'Accueil', href: '/', icon: '🏠' },
@@ -17,6 +19,9 @@ export function Layout() {
   const navigate = useNavigate();
   const { user, logout } = useAuthStore();
 
+  // Initialize WebSocket real-time updates
+  useRealtimeUpdates();
+
   const handleLogout = () => {
     logout();
     navigate('/login');
@@ -30,6 +35,7 @@ export function Layout() {
             <span className="text-xl">🌿</span>
             <span className="font-semibold">Art & Jardin</span>
             <OfflineIndicator variant="badge" />
+            <ConnectionIndicator showLabel={false} />
           </div>
           <div className="flex items-center space-x-3">
             <NotificationBell />
