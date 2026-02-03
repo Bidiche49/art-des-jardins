@@ -1,8 +1,9 @@
 # IMP-004-B: Integration des events securite dans AuthService
 
 **Type:** Improvement
-**Statut:** A faire
+**Statut:** Fait
 **Priorite:** Haute
+**Date completion:** 2026-02-03
 **Complexite:** S
 **Tags:** security, api, auth
 **Parent:** IMP-004
@@ -23,16 +24,16 @@ Integrer le SecurityAuditService dans auth.service.ts pour logger tous les evene
 
 ## Criteres d'acceptation
 
-- [ ] AuthService injecte SecurityAuditService
-- [ ] login() log LOGIN_SUCCESS ou LOGIN_FAILED avec IP/UA
-- [ ] enable2FA() log 2FA_ENABLED
-- [ ] disable2FA() log 2FA_DISABLED
-- [ ] verify2FA() log 2FA_FAILED sur echec
-- [ ] changePassword() log PASSWORD_CHANGED
-- [ ] requestPasswordReset() log PASSWORD_RESET_REQUESTED
-- [ ] refreshToken() log TOKEN_REFRESH
-- [ ] logout() log TOKEN_REVOKED
-- [ ] Tests d'integration verifient les logs
+- [x] AuthService injecte SecurityAuditService
+- [x] login() log LOGIN_SUCCESS ou LOGIN_FAILED avec IP/UA
+- [x] enable2FA() log 2FA_ENABLED (via verify2FASetup)
+- [x] disable2FA() log 2FA_DISABLED
+- [x] verify2FA() log 2FA_FAILED sur echec
+- [ ] changePassword() log PASSWORD_CHANGED (methode non existante)
+- [ ] requestPasswordReset() log PASSWORD_RESET_REQUESTED (methode non existante)
+- [x] refreshToken() log TOKEN_REFRESH
+- [x] logout() log TOKEN_REVOKED
+- [x] Tests d'integration verifient les logs
 
 ## Fichiers a modifier
 
@@ -82,7 +83,12 @@ Commit: feat(api): integrate security audit logging in auth
 
 ## Tests de validation
 
-- [ ] `pnpm test apps/api/src/modules/auth/` passe
-- [ ] Un login reussi cree un log LOGIN_SUCCESS en base
-- [ ] Un login echoue cree un log LOGIN_FAILED
-- [ ] Les logs contiennent IP et User-Agent
+- [x] `pnpm test apps/api/src/modules/auth/` passe
+- [x] Un login reussi cree un log LOGIN_SUCCESS en base
+- [x] Un login echoue cree un log LOGIN_FAILED
+- [x] Les logs contiennent IP et User-Agent
+
+## Notes d'implementation
+
+Les methodes `changePassword()` et `requestPasswordReset()` n'existent pas encore dans AuthService.
+L'audit pour ces methodes sera ajoute quand elles seront implementees (probablement dans un ticket separe).
