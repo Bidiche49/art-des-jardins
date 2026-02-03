@@ -446,7 +446,7 @@ export class DeviceTrackingService {
   }
 
   /**
-   * Liste tous les devices d'un utilisateur
+   * Liste tous les devices d'un utilisateur avec pagination
    */
   async getUserDevices(userId: string) {
     return this.prisma.knownDevice.findMany({
@@ -463,6 +463,128 @@ export class DeviceTrackingService {
         trustedAt: true,
       },
     });
+  }
+
+  /**
+   * Liste les devices d'un utilisateur avec pagination
+   */
+  async getDevicesPaginated(
+    userId: string,
+    limit: number = 20,
+    offset: number = 0,
+  ): Promise<{ devices: Array<{
+    id: string;
+    deviceName: string | null;
+    fingerprint: string;
+    lastIp: string | null;
+    lastCity: string | null;
+    lastCountry: string | null;
+    firstSeenAt: Date;
+    lastSeenAt: Date;
+    trustedAt: Date | null;
+    createdAt: Date;
+  }>; total: number }> {
+    const [devices, total] = await Promise.all([
+      this.prisma.knownDevice.findMany({
+        where: { userId },
+        orderBy: { lastSeenAt: 'desc' },
+        skip: offset,
+        take: limit,
+        select: {
+          id: true,
+          deviceName: true,
+          fingerprint: true,
+          lastIp: true,
+          lastCity: true,
+          lastCountry: true,
+          firstSeenAt: true,
+          lastSeenAt: true,
+          trustedAt: true,
+          createdAt: true,
+        },
+      }),
+      this.prisma.knownDevice.count({ where: { userId } }),
+    ]);
+
+    return { devices, total };
+  }
+
+  /**
+   * Recupere un device specifique d'un utilisateur
+   */
+  async getDeviceById(userId: string, deviceId: string) {
+    return this.prisma.knownDevice.findFirst({
+      where: { id: deviceId, userId },
+      select: {
+        id: true,
+        deviceName: true,
+        fingerprint: true,
+        lastIp: true,
+        lastCity: true,
+        lastCountry: true,
+        firstSeenAt: true,
+        lastSeenAt: true,
+        trustedAt: true,
+        createdAt: true,
+      },
+    });
+  }
+
+  /**
+   * Trouve un device par fingerprint pour determiner le device actuel
+   */
+  async findDeviceByFingerprint(userId: string, fingerprint: string) {
+    return this.prisma.knownDevice.findUnique({
+      where: {
+        userId_fingerprint: { userId, fingerprint },
+      },
+      select: { id: true },
+    });
+  }
+
+  /**
+   * Revoque un device specifique (supprime device + refresh tokens lies)
+   * Retourne un objet avec success et error si echec
+   */
+  async revokeDevice(
+    userId: string,
+    deviceId: string,
+    currentFingerprint?: string,
+  ): Promise<{ success: boolean; error?: string }> {
+    const device = await this.prisma.knownDevice.findFirst({
+      where: { id: deviceId, userId },
+    });
+
+    if (!device) {
+      return { success: false, error: 'device_not_found' };
+    }
+
+    // Verifier que ce n'est pas le device actuel
+    if (currentFingerprint && device.fingerprint === currentFingerprint) {
+      this.logger.warn(`Tentative de revocation du device actuel ${deviceId} par user ${userId}`);
+      return { success: false, error: 'cannot_revoke_current_device' };
+    }
+
+    // Transaction: supprimer les refresh tokens lies puis le device
+    await this.prisma.$transaction(async (tx) => {
+      await tx.refreshToken.deleteMany({
+        where: { deviceId },
+      });
+
+      await tx.knownDevice.delete({
+        where: { id: deviceId },
+      });
+    });
+
+    await this.auditService.log({
+      userId,
+      action: 'DEVICE_REVOKED',
+      entite: 'auth',
+      details: { deviceId, deviceName: device.deviceName },
+    });
+
+    this.logger.log(`Device ${deviceId} revoque par user ${userId}`);
+    return { success: true };
   }
 
   /**
