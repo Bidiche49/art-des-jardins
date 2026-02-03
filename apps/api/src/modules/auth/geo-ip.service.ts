@@ -77,7 +77,7 @@ export class GeoIpService {
         return null;
       }
 
-      const data: IpApiResponse = await response.json();
+      const data = (await response.json()) as IpApiResponse;
 
       if (data.status === 'fail') {
         this.logger.warn(`ip-api.com lookup failed for ${ip}: ${data.message}`);
