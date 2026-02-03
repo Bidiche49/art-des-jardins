@@ -1,7 +1,14 @@
 import axios, { AxiosError, InternalAxiosRequestConfig } from 'axios';
 import { useAuthStore } from '@/stores/auth';
+import { webAuthnService } from '@/services/webauthn.service';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+
+// Custom event for session expiry with biometric available
+export const SESSION_EXPIRED_EVENT = 'session:expired:biometric';
+export const dispatchSessionExpired = () => {
+  window.dispatchEvent(new CustomEvent(SESSION_EXPIRED_EVENT));
+};
 
 export const apiClient = axios.create({
   baseURL: `${API_URL}/api/v1`,
@@ -88,7 +95,13 @@ apiClient.interceptors.response.use(
       } catch (refreshError) {
         processQueue(refreshError as Error, null);
         logout();
-        window.location.href = '/login';
+
+        // Check if biometric is available for quick re-login
+        if (webAuthnService.isSupported() && webAuthnService.hasCredential()) {
+          dispatchSessionExpired();
+        } else {
+          window.location.href = '/login';
+        }
         return Promise.reject(refreshError);
       } finally {
         isRefreshing = false;

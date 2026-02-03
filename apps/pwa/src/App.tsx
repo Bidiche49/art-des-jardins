@@ -5,6 +5,7 @@ import { OfflineIndicator } from './components/OfflineIndicator';
 import { ThemeProvider } from './components/ThemeProvider';
 import { KeyboardShortcutsProvider } from './components/KeyboardShortcutsProvider';
 import { ConflictQueue } from './components/SyncConflict';
+import { SessionExpiredModal } from './components/SessionExpiredModal';
 import { Dashboard } from './pages/Dashboard';
 import { Clients } from './pages/Clients';
 import { ClientDetail } from './pages/ClientDetail';
@@ -42,6 +43,7 @@ function App() {
       <KeyboardShortcutsProvider>
         <OfflineIndicator variant="banner" />
         <ConflictQueue />
+        <SessionExpiredModal />
         <Routes>
         {/* Routes publiques */}
         <Route path="/login" element={<Login />} />
