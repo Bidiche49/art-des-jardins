@@ -12,6 +12,7 @@ import { Devis } from './pages/Devis';
 import { DevisBuilder } from './pages/DevisBuilder';
 import { Factures } from './pages/Factures';
 import { Interventions } from './pages/Interventions';
+import { InterventionDetail } from './pages/InterventionDetail';
 import { Calendar } from './pages/Calendar';
 import { Absences } from './pages/Absences';
 import { Analytics } from './pages/Analytics';
@@ -119,7 +120,7 @@ function App() {
           <Route path="factures" element={<Factures />} />
           <Route path="factures/:id" element={<Factures />} />
           <Route path="interventions" element={<Interventions />} />
-          <Route path="interventions/:id" element={<Interventions />} />
+          <Route path="interventions/:id" element={<InterventionDetail />} />
           <Route path="calendar" element={<Calendar />} />
           <Route path="absences" element={<Absences />} />
           <Route path="analytics" element={<Analytics />} />
