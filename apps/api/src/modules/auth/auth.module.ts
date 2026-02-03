@@ -3,6 +3,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { AuthController } from './auth.controller';
+import { WebAuthnController } from './webauthn.controller';
 import { AuthService } from './auth.service';
 import { TwoFactorService } from './two-factor.service';
 import { DeviceTrackingService } from './device-tracking.service';
@@ -27,7 +28,7 @@ import { MailModule } from '../mail/mail.module';
     }),
     forwardRef(() => MailModule),
   ],
-  controllers: [AuthController],
+  controllers: [AuthController, WebAuthnController],
   providers: [AuthService, TwoFactorService, DeviceTrackingService, RefreshTokenService, GeoIpService, WebAuthnService, JwtStrategy],
   exports: [AuthService, TwoFactorService, DeviceTrackingService, RefreshTokenService, GeoIpService, WebAuthnService],
 })

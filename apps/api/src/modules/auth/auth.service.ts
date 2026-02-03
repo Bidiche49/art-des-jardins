@@ -173,4 +173,91 @@ export class AuthService {
   async cleanupExpiredTokens(): Promise<number> {
     return this.refreshTokenService.cleanupExpiredTokens();
   }
+
+  /**
+   * Génère les tokens JWT pour un utilisateur (utilisé par WebAuthn login)
+   */
+  async generateTokensForUser(
+    userId: string,
+    ipAddress?: string,
+    userAgent?: string,
+    acceptLanguage?: string,
+  ): Promise<{
+    user: { id: string; email: string; nom: string; prenom: string; role: string; twoFactorEnabled: boolean };
+    accessToken: string;
+    refreshToken: string;
+  }> {
+    const user = await this.prisma.user.findUnique({
+      where: { id: userId },
+    });
+
+    if (!user || !user.actif) {
+      throw new UnauthorizedException('Utilisateur non trouvé ou inactif');
+    }
+
+    // Device tracking - detect new devices and send alert
+    let deviceResult = null;
+    if (userAgent && ipAddress) {
+      deviceResult = await this.deviceTrackingService.registerDevice(
+        user.id,
+        userAgent,
+        ipAddress,
+        acceptLanguage,
+      );
+
+      // Si nouveau device, envoyer email d'alerte
+      if (deviceResult.isNew) {
+        await this.deviceTrackingService.sendNewDeviceAlert(
+          user.id,
+          deviceResult.deviceId,
+          deviceResult.device.deviceName || 'Appareil inconnu',
+          ipAddress,
+          deviceResult.geoLocation || null,
+        );
+      }
+    }
+
+    // Update last connection
+    await this.prisma.user.update({
+      where: { id: user.id },
+      data: { derniereConnexion: new Date() },
+    });
+
+    // Generer access token
+    const accessToken = this.jwtService.sign({ sub: user.id, email: user.email, role: user.role });
+
+    // Generer refresh token avec rotation (stocke en base)
+    const refreshToken = await this.refreshTokenService.createRefreshToken(
+      user.id,
+      user.email,
+      user.role,
+      deviceResult?.deviceId,
+    );
+
+    await this.auditService.log({
+      userId: user.id,
+      action: 'LOGIN_SUCCESS',
+      entite: 'auth',
+      details: {
+        method: 'webauthn',
+        deviceId: deviceResult?.deviceId,
+        isNewDevice: deviceResult?.isNew,
+      },
+      ipAddress,
+      userAgent,
+    });
+
+    return {
+      user: {
+        id: user.id,
+        email: user.email,
+        nom: user.nom,
+        prenom: user.prenom,
+        role: user.role,
+        twoFactorEnabled: user.twoFactorEnabled,
+      },
+      accessToken,
+      refreshToken,
+    };
+  }
 }
