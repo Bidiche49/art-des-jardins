@@ -1,7 +1,8 @@
 # IMP-005-A: Modele KnownDevice et tracking fingerprint
 
 **Type:** Improvement
-**Statut:** A faire
+**Statut:** Fait
+**Date completion:** 2026-02-03
 **Priorite:** Moyenne
 **Complexite:** S
 **Tags:** security, auth, database

@@ -1,7 +1,8 @@
 # IMP-005-B: Service geolocalisation IP
 
 **Type:** Improvement
-**Statut:** A faire
+**Statut:** Fait
+**Date completion:** 2026-02-03
 **Priorite:** Moyenne
 **Complexite:** S
 **Tags:** security, auth

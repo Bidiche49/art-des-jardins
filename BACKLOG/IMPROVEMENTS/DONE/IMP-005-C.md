@@ -1,8 +1,9 @@
 # IMP-005-C: Email alerte nouveau device + actions
 
 **Type:** Improvement
-**Statut:** A faire
+**Statut:** Fait
 **Priorite:** Moyenne
+**Date completion:** 2026-02-03
 **Complexite:** S
 **Tags:** security, auth, mail
 **Parent:** IMP-005
@@ -25,13 +26,13 @@ Envoyer un email d'alerte quand un utilisateur se connecte depuis un nouveau dev
 
 ## Criteres d'acceptation
 
-- [ ] Template email new-login-alert.hbs avec infos device/localisation
-- [ ] Email envoye uniquement si registerDevice() retourne isNew=true
-- [ ] Token JWT signe pour les liens d'action (expire 24h)
-- [ ] GET /auth/device/trust/:token valide le device (trustedAt = now)
-- [ ] GET /auth/device/revoke/:token revoque toutes les sessions sauf actuelle
-- [ ] Tests unitaires pour generation/validation tokens
-- [ ] Test e2e: nouveau device declenche email
+- [x] Template email new-login-alert.hbs avec infos device/localisation
+- [x] Email envoye uniquement si registerDevice() retourne isNew=true
+- [x] Token JWT signe pour les liens d'action (expire 24h)
+- [x] GET /auth/device/trust/:token valide le device (trustedAt = now)
+- [x] GET /auth/device/revoke/:token revoque toutes les sessions sauf actuelle
+- [x] Tests unitaires pour generation/validation tokens
+- [x] Test e2e: nouveau device declenche email
 
 ## Fichiers concernes
 
