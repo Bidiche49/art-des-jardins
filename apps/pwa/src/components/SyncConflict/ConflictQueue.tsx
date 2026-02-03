@@ -1,26 +1,61 @@
-import { useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useConflictStore } from '../../stores/conflicts';
 import { applyConflictResolution } from '../../services/conflict.service';
 import { syncService } from '../../db/sync';
 import { db } from '../../db/schema';
-import { ConflictModal } from './ConflictModal';
+import { Modal, ModalFooter } from '../ui/Modal';
+import { Button } from '../ui/Button';
+import { ConflictModalContent } from './ConflictModal';
 import type { SyncConflict, ConflictResolution } from '../../types/sync.types';
 
 /**
  * ConflictQueue - Composant global qui gere la file d'attente des conflits de sync.
- * Ecoute le store de conflits et affiche les modals de resolution.
+ * Affiche l'indicateur de progression, la navigation, et les options de resolution en masse.
  * Doit etre monte une seule fois au niveau App.
  */
 export function ConflictQueue() {
   const conflicts = useConflictStore((state) => state.conflicts);
+  const currentIndex = useConflictStore((state) => state.currentIndex);
+  const sessionPreference = useConflictStore((state) => state.sessionPreference);
   const resolveConflict = useConflictStore((state) => state.resolveConflict);
+  const resolveAll = useConflictStore((state) => state.resolveAll);
+  const nextConflict = useConflictStore((state) => state.nextConflict);
+  const prevConflict = useConflictStore((state) => state.prevConflict);
+  const setSessionPreference = useConflictStore((state) => state.setSessionPreference);
 
-  // Le premier conflit dans la queue est affiche
-  const currentConflict = conflicts[0] ?? null;
+  const [applyToAll, setApplyToAll] = useState(false);
+  const [isProcessing, setIsProcessing] = useState(false);
+
+  const currentConflict = conflicts[currentIndex] ?? null;
+  const totalConflicts = conflicts.length;
+  const hasMultipleConflicts = totalConflicts > 1;
+  const canGoNext = currentIndex < totalConflicts - 1;
+  const canGoPrev = currentIndex > 0;
+
+  // Auto-resolution basee sur la preference de session
+  useEffect(() => {
+    if (!currentConflict || !sessionPreference || isProcessing) return;
+
+    const resolution: ConflictResolution =
+      sessionPreference === 'always_local' ? 'keep_local' : 'keep_server';
+
+    setIsProcessing(true);
+    handleResolve(resolution).finally(() => {
+      setIsProcessing(false);
+    });
+  }, [currentConflict?.id, sessionPreference]);
 
   const handleResolve = useCallback(
     async (resolution: ConflictResolution, mergedData?: Record<string, unknown>) => {
       if (!currentConflict) return;
+
+      // Si "Appliquer a tous" est coche, on resout tous les conflits restants
+      if (applyToAll && resolution !== 'merge') {
+        await resolveAllConflicts(resolution);
+        setApplyToAll(false);
+        return;
+      }
 
       // 1. Appliquer la resolution et obtenir les donnees finales
       const resolvedData = applyConflictResolution(
@@ -43,8 +78,32 @@ export function ConflictQueue() {
         syncService.syncAll();
       }, 500);
     },
-    [currentConflict, resolveConflict]
+    [currentConflict, resolveConflict, applyToAll]
   );
+
+  const resolveAllConflicts = async (resolution: ConflictResolution) => {
+    const remainingConflicts = conflicts.slice(currentIndex);
+
+    for (const conflict of remainingConflicts) {
+      const resolvedData = applyConflictResolution(conflict, resolution);
+      await updateLocalEntity(conflict, resolvedData);
+      await updateSyncQueueItem(conflict, resolvedData);
+    }
+
+    resolveAll(resolution);
+
+    setTimeout(() => {
+      syncService.syncAll();
+    }, 500);
+  };
+
+  const handleSetAlwaysLocal = () => {
+    setSessionPreference('always_local');
+  };
+
+  const handleSetAlwaysServer = () => {
+    setSessionPreference('always_server');
+  };
 
   // Pas de conflits, ne rien afficher
   if (!currentConflict) {
@@ -52,14 +111,90 @@ export function ConflictQueue() {
   }
 
   return (
-    <ConflictModal
-      conflict={currentConflict}
-      onResolve={handleResolve}
-      onCancel={() => {
-        // Ne pas annuler - on doit resoudre le conflit
-        // Optionnel: on pourrait reporter le conflit a plus tard
+    <Modal
+      isOpen={true}
+      onClose={() => {
+        // Ne pas permettre de fermer - on doit resoudre le conflit
       }}
-    />
+      showCloseButton={false}
+      size="lg"
+    >
+      {/* Header avec indicateur de progression */}
+      {hasMultipleConflicts && (
+        <div className="flex items-center justify-between mb-4 pb-2 border-b">
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={prevConflict}
+            disabled={!canGoPrev}
+            className="flex items-center gap-1"
+          >
+            <ChevronLeft className="w-4 h-4" />
+            Precedent
+          </Button>
+
+          <span className="text-sm font-medium text-gray-600">
+            Conflit {currentIndex + 1} / {totalConflicts}
+          </span>
+
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={nextConflict}
+            disabled={!canGoNext}
+            className="flex items-center gap-1"
+          >
+            Suivant
+            <ChevronRight className="w-4 h-4" />
+          </Button>
+        </div>
+      )}
+
+      {/* Contenu du conflit */}
+      <ConflictModalContent
+        conflict={currentConflict}
+        onResolve={handleResolve}
+      />
+
+      {/* Options supplementaires pour conflits multiples */}
+      {hasMultipleConflicts && (
+        <div className="mt-4 pt-3 border-t space-y-3">
+          {/* Checkbox Appliquer a tous */}
+          <label className="flex items-center gap-2 text-sm cursor-pointer">
+            <input
+              type="checkbox"
+              checked={applyToAll}
+              onChange={(e) => setApplyToAll(e.target.checked)}
+              className="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
+            />
+            <span className="text-gray-700">
+              Appliquer ce choix aux {totalConflicts - currentIndex - 1} conflits restants
+            </span>
+          </label>
+
+          {/* Preference de session */}
+          <div className="flex items-center gap-2 pt-2 border-t border-gray-200">
+            <span className="text-xs text-gray-500">Pour cette session :</span>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={handleSetAlwaysLocal}
+              className="text-xs"
+            >
+              Toujours garder ma version
+            </Button>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={handleSetAlwaysServer}
+              className="text-xs"
+            >
+              Toujours garder serveur
+            </Button>
+          </div>
+        </div>
+      )}
+    </Modal>
   );
 }
 
@@ -98,7 +233,6 @@ async function updateSyncQueueItem(
   const { entityType, entityId } = conflict;
 
   // Trouver l'item en attente pour cette entite
-  // Note: pas d'index compound, donc on filtre par entity puis entityId
   const queueItems = await db.syncQueue
     .where('entity')
     .equals(entityType)
