@@ -1,8 +1,9 @@
 # FEAT-070-C: Emission des events temps reel depuis les services
 
 **Type:** Feature
-**Statut:** A faire
+**Statut:** Fait
 **Priorite:** Moyenne
+**Date completion:** 2026-02-03
 **Complexite:** S
 **Tags:** api, websocket, events
 **Date creation:** 2026-02-03
@@ -36,11 +37,11 @@ Integrer l'emission d'events WebSocket dans les services metier existants (Devis
 
 ## Criteres d'acceptation
 
-- [ ] Types d'events definis dans websocket.types.ts
-- [ ] EventsGateway injecte dans DevisService, FactureService, InterventionService, ClientService
-- [ ] Events emis correctement apres chaque operation
-- [ ] Tests unitaires verifiant l'emission des events
-- [ ] Payloads minimalistes (pas de donnees sensibles)
+- [x] Types d'events definis dans websocket.types.ts
+- [x] EventsGateway injecte dans DevisService, FactureService, InterventionService, ClientService
+- [x] Events emis correctement apres chaque operation
+- [x] Tests unitaires verifiant l'emission des events
+- [x] Payloads minimalistes (pas de donnees sensibles)
 
 ## Fichiers concernes
 
@@ -114,7 +115,15 @@ CRITERES DE SUCCES:
 
 ## Tests de validation
 
-- [ ] Event devis:signed emis apres signature
-- [ ] Event facture:paid emis apres paiement
-- [ ] Event intervention:completed emis apres cloture
-- [ ] Event client:created emis apres creation
+- [x] Event devis:signed emis apres signature
+- [x] Event facture:paid emis apres paiement
+- [x] Event intervention:completed emis apres cloture
+- [x] Event client:created emis apres creation
+
+## Notes d'implementation
+
+- Le module WebSocket a ete cree de zero (FEAT-070-A et FEAT-070-B etaient des prerequis non completes)
+- WebsocketModule est @Global pour permettre l'injection de EventsGateway partout
+- L'authentification JWT est requise pour les connexions WebSocket
+- Les users rejoignent automatiquement une room `user:{userId}` pour les messages cibles
+- Tous les 638 tests unitaires passent
