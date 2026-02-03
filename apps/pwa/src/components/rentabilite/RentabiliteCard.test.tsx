@@ -100,7 +100,7 @@ describe('RentabiliteCard', () => {
     renderWithRouter(<RentabiliteCard chantierId="123" />);
     expect(screen.getByText('Rentable')).toBeInTheDocument();
     expect(screen.getByText('7 750 €')).toBeInTheDocument();
-    expect(screen.getByText('(+77.5%)')).toBeInTheDocument();
+    expect(screen.getByText('+77.5%')).toBeInTheDocument();
   });
 
   it('displays limite status with orange badge', () => {

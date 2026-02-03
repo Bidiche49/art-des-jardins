@@ -129,7 +129,6 @@ export function RentabiliteDetail({
   }
 
   const statusConfig = STATUS_CONFIG[rentabilite.status];
-  const margePositive = rentabilite.marge.montant >= 0;
 
   return (
     <div className="space-y-6">
