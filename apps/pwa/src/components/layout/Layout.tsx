@@ -1,6 +1,7 @@
 import { Outlet, NavLink, useNavigate, Link } from 'react-router-dom';
 import { useAuthStore } from '@/stores/auth';
 import { NotificationToggle } from '@/components/NotificationToggle';
+import { NotificationBell } from '@/components/NotificationBell';
 import { OfflineIndicator } from '@/components/OfflineIndicator';
 
 const navigation = [
@@ -31,6 +32,7 @@ export function Layout() {
             <OfflineIndicator variant="badge" />
           </div>
           <div className="flex items-center space-x-3">
+            <NotificationBell />
             <NotificationToggle compact />
             <Link
               to="/settings"
