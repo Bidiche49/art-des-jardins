@@ -1,13 +1,17 @@
-import { Controller, Post, Body, HttpCode, HttpStatus, UseGuards, Req } from '@nestjs/common';
-import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
+import { Controller, Post, Body, HttpCode, HttpStatus, UseGuards, Req, Get, Param, Delete, Res } from '@nestjs/common';
+import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth, ApiParam } from '@nestjs/swagger';
 import { Throttle } from '@nestjs/throttler';
+import { Response } from 'express';
 import { AuthService } from './auth.service';
 import { TwoFactorService } from './two-factor.service';
+import { DeviceTrackingService } from './device-tracking.service';
 import { LoginDto } from './dto/login.dto';
 import { RefreshDto } from './dto/refresh.dto';
 import { Verify2FADto, Disable2FADto, RegenerateRecoveryCodesDto } from './dto/verify-2fa.dto';
 import { JwtAuthGuard } from './guards/jwt-auth.guard';
+import { Public } from './decorators/public.decorator';
 import { Request } from 'express';
+import { ConfigService } from '@nestjs/config';
 
 interface AuthenticatedRequest extends Request {
   user: { sub: string; email: string; role: string };
@@ -19,6 +23,8 @@ export class AuthController {
   constructor(
     private authService: AuthService,
     private twoFactorService: TwoFactorService,
+    private deviceTrackingService: DeviceTrackingService,
+    private configService: ConfigService,
   ) {}
 
   @Post('login')
@@ -31,7 +37,8 @@ export class AuthController {
   async login(@Body() loginDto: LoginDto & { totpCode?: string }, @Req() req: Request) {
     const ipAddress = req.ip || req.headers['x-forwarded-for']?.toString();
     const userAgent = req.headers['user-agent'];
-    return this.authService.login({ ...loginDto, ipAddress, userAgent });
+    const acceptLanguage = req.headers['accept-language'];
+    return this.authService.login({ ...loginDto, ipAddress, userAgent, acceptLanguage });
   }
 
   @Post('refresh')
@@ -124,5 +131,86 @@ export class AuthController {
       this.twoFactorService.is2FARequired(req.user.sub),
     ]);
     return { enabled, required };
+  }
+
+  // ============================================
+  // DEVICE MANAGEMENT ENDPOINTS
+  // ============================================
+
+  @Get('devices')
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
+  @ApiOperation({ summary: 'Lister les appareils connus de l\'utilisateur' })
+  @ApiResponse({ status: 200, description: 'Liste des appareils' })
+  async getDevices(@Req() req: AuthenticatedRequest) {
+    return this.deviceTrackingService.getUserDevices(req.user.sub);
+  }
+
+  @Delete('devices/:deviceId')
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Supprimer un appareil' })
+  @ApiParam({ name: 'deviceId', description: 'ID de l\'appareil a supprimer' })
+  @ApiResponse({ status: 200, description: 'Appareil supprime' })
+  @ApiResponse({ status: 404, description: 'Appareil non trouve' })
+  async deleteDevice(@Req() req: AuthenticatedRequest, @Param('deviceId') deviceId: string) {
+    const success = await this.deviceTrackingService.deleteDevice(deviceId, req.user.sub);
+    if (!success) {
+      return { success: false, message: 'Appareil non trouve ou non autorise' };
+    }
+    return { success: true, message: 'Appareil supprime' };
+  }
+
+  // ============================================
+  // DEVICE ACTION ENDPOINTS (from email links)
+  // ============================================
+
+  @Get('device/trust/:token')
+  @Public()
+  @ApiOperation({ summary: 'Valider un appareil (lien email)' })
+  @ApiParam({ name: 'token', description: 'Token JWT d\'action' })
+  @ApiResponse({ status: 302, description: 'Redirection vers page de confirmation' })
+  @ApiResponse({ status: 400, description: 'Token invalide ou expire' })
+  async trustDevice(@Param('token') token: string, @Res() res: Response) {
+    const payload = this.deviceTrackingService.validateActionToken(token);
+
+    if (!payload || payload.action !== 'trust') {
+      const appUrl = this.configService.get<string>('APP_URL') || 'http://localhost:3000';
+      return res.redirect(`${appUrl}/auth/device-action?status=error&message=token_invalid`);
+    }
+
+    const success = await this.deviceTrackingService.trustDevice(payload.deviceId, payload.userId);
+
+    const appUrl = this.configService.get<string>('APP_URL') || 'http://localhost:3000';
+    if (success) {
+      return res.redirect(`${appUrl}/auth/device-action?status=trusted&message=device_trusted`);
+    } else {
+      return res.redirect(`${appUrl}/auth/device-action?status=error&message=device_not_found`);
+    }
+  }
+
+  @Get('device/revoke/:token')
+  @Public()
+  @ApiOperation({ summary: 'Revoquer un appareil et deconnecter toutes les sessions (lien email)' })
+  @ApiParam({ name: 'token', description: 'Token JWT d\'action' })
+  @ApiResponse({ status: 302, description: 'Redirection vers page de login' })
+  @ApiResponse({ status: 400, description: 'Token invalide ou expire' })
+  async revokeDevice(@Param('token') token: string, @Res() res: Response) {
+    const payload = this.deviceTrackingService.validateActionToken(token);
+
+    if (!payload || payload.action !== 'revoke') {
+      const appUrl = this.configService.get<string>('APP_URL') || 'http://localhost:3000';
+      return res.redirect(`${appUrl}/auth/device-action?status=error&message=token_invalid`);
+    }
+
+    const success = await this.deviceTrackingService.revokeDeviceAndSessions(payload.deviceId, payload.userId);
+
+    const appUrl = this.configService.get<string>('APP_URL') || 'http://localhost:3000';
+    if (success) {
+      return res.redirect(`${appUrl}/login?status=revoked&message=sessions_revoked`);
+    } else {
+      return res.redirect(`${appUrl}/auth/device-action?status=error&message=device_not_found`);
+    }
   }
 }

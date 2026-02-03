@@ -6,6 +6,7 @@ import { PrismaService } from '../../database/prisma.service';
 import { AuditService } from '../audit/audit.service';
 import { LoginDto } from './dto/login.dto';
 import { TwoFactorService } from './two-factor.service';
+import { DeviceTrackingService } from './device-tracking.service';
 
 @Injectable()
 export class AuthService {
@@ -15,9 +16,10 @@ export class AuthService {
     private configService: ConfigService,
     private twoFactorService: TwoFactorService,
     private auditService: AuditService,
+    private deviceTrackingService: DeviceTrackingService,
   ) {}
 
-  async login(loginDto: LoginDto & { totpCode?: string; ipAddress?: string; userAgent?: string }) {
+  async login(loginDto: LoginDto & { totpCode?: string; ipAddress?: string; userAgent?: string; acceptLanguage?: string }) {
     const user = await this.prisma.user.findUnique({
       where: { email: loginDto.email },
     });
@@ -72,6 +74,28 @@ export class AuthService {
       }
     }
 
+    // Device tracking - detect new devices and send alert
+    let deviceResult = null;
+    if (loginDto.userAgent && loginDto.ipAddress) {
+      deviceResult = await this.deviceTrackingService.registerDevice(
+        user.id,
+        loginDto.userAgent,
+        loginDto.ipAddress,
+        loginDto.acceptLanguage,
+      );
+
+      // Si nouveau device, envoyer email d'alerte
+      if (deviceResult.isNew) {
+        await this.deviceTrackingService.sendNewDeviceAlert(
+          user.id,
+          deviceResult.deviceId,
+          deviceResult.device.deviceName || 'Appareil inconnu',
+          loginDto.ipAddress,
+          deviceResult.geoLocation || null,
+        );
+      }
+    }
+
     // Update last connection
     await this.prisma.user.update({
       where: { id: user.id },
@@ -84,7 +108,11 @@ export class AuthService {
       userId: user.id,
       action: 'LOGIN_SUCCESS',
       entite: 'auth',
-      details: { twoFactorUsed: user.twoFactorEnabled },
+      details: {
+        twoFactorUsed: user.twoFactorEnabled,
+        deviceId: deviceResult?.deviceId,
+        isNewDevice: deviceResult?.isNew,
+      },
       ipAddress: loginDto.ipAddress,
       userAgent: loginDto.userAgent,
     });

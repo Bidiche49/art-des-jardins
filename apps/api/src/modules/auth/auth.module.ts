@@ -1,11 +1,14 @@
-import { Module } from '@nestjs/common';
+import { Module, forwardRef } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { TwoFactorService } from './two-factor.service';
+import { DeviceTrackingService } from './device-tracking.service';
+import { GeoIpService } from './geo-ip.service';
 import { JwtStrategy } from './strategies/jwt.strategy';
+import { MailModule } from '../mail/mail.module';
 
 @Module({
   imports: [
@@ -20,9 +23,10 @@ import { JwtStrategy } from './strategies/jwt.strategy';
       }),
       inject: [ConfigService],
     }),
+    forwardRef(() => MailModule),
   ],
   controllers: [AuthController],
-  providers: [AuthService, TwoFactorService, JwtStrategy],
-  exports: [AuthService, TwoFactorService],
+  providers: [AuthService, TwoFactorService, DeviceTrackingService, GeoIpService, JwtStrategy],
+  exports: [AuthService, TwoFactorService, DeviceTrackingService, GeoIpService],
 })
 export class AuthModule {}
