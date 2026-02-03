@@ -3,6 +3,7 @@ import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 import { EventsGateway } from './events.gateway';
 import { WS_EVENTS } from './websocket.events';
+import { DEFAULT_COMPANY_ID } from './websocket.types';
 
 describe('EventsGateway', () => {
   let gateway: EventsGateway;
@@ -72,7 +73,7 @@ describe('EventsGateway', () => {
       expect(mockClient.disconnect).toHaveBeenCalled();
     });
 
-    it('should connect client with valid token', async () => {
+    it('should connect client with valid token and join user + company rooms', async () => {
       const mockPayload = { sub: 'user-123', email: 'test@test.com', role: 'patron' };
       mockJwtService.verify.mockReturnValue(mockPayload);
 
@@ -87,11 +88,32 @@ describe('EventsGateway', () => {
 
       expect(mockClient.disconnect).not.toHaveBeenCalled();
       expect(mockClient.join).toHaveBeenCalledWith('user:user-123');
+      expect(mockClient.join).toHaveBeenCalledWith(`company:${DEFAULT_COMPANY_ID}`);
       expect((mockClient as any).user).toEqual({
         id: 'user-123',
         email: 'test@test.com',
         role: 'patron',
+        companyId: DEFAULT_COMPANY_ID,
       });
+    });
+
+    it('should use companyId from token when present (multi-tenant)', async () => {
+      const mockPayload = { sub: 'user-456', email: 'multi@test.com', role: 'patron', companyId: 'company-xyz' };
+      mockJwtService.verify.mockReturnValue(mockPayload);
+
+      const mockClient = {
+        id: 'test-client-multi',
+        handshake: { auth: { token: 'valid-token' }, headers: {} },
+        disconnect: jest.fn(),
+        join: jest.fn(),
+      };
+
+      await gateway.handleConnection(mockClient as any);
+
+      expect(mockClient.disconnect).not.toHaveBeenCalled();
+      expect(mockClient.join).toHaveBeenCalledWith('user:user-456');
+      expect(mockClient.join).toHaveBeenCalledWith('company:company-xyz');
+      expect((mockClient as any).user.companyId).toBe('company-xyz');
     });
 
     it('should accept token from authorization header', async () => {
@@ -134,6 +156,36 @@ describe('EventsGateway', () => {
 
       expect(mockServer.to).toHaveBeenCalledWith('user:user-789');
       expect(mockServer.emit).toHaveBeenCalledWith(WS_EVENTS.FACTURE_PAID, payload);
+    });
+  });
+
+  describe('broadcastToCompany', () => {
+    it('should emit event to specific company room', () => {
+      const companyId = 'company-abc';
+      const payload = { id: 'devis-1', numero: 'DEV-001', clientName: 'Test Client', amount: 1500 };
+
+      gateway.broadcastToCompany(companyId, WS_EVENTS.DEVIS_CREATED, payload);
+
+      expect(mockServer.to).toHaveBeenCalledWith('company:company-abc');
+      expect(mockServer.emit).toHaveBeenCalledWith(WS_EVENTS.DEVIS_CREATED, payload);
+    });
+
+    it('should isolate events between different companies (multi-tenant)', () => {
+      const company1 = 'company-1';
+      const company2 = 'company-2';
+      const payload1 = { id: 'devis-1', numero: 'DEV-001', clientName: 'Client 1', amount: 1000 };
+      const payload2 = { id: 'devis-2', numero: 'DEV-002', clientName: 'Client 2', amount: 2000 };
+
+      // Broadcast to company 1
+      gateway.broadcastToCompany(company1, WS_EVENTS.DEVIS_CREATED, payload1);
+      expect(mockServer.to).toHaveBeenCalledWith('company:company-1');
+
+      jest.clearAllMocks();
+
+      // Broadcast to company 2 - should not affect company 1
+      gateway.broadcastToCompany(company2, WS_EVENTS.DEVIS_CREATED, payload2);
+      expect(mockServer.to).toHaveBeenCalledWith('company:company-2');
+      expect(mockServer.to).not.toHaveBeenCalledWith('company:company-1');
     });
   });
 });
