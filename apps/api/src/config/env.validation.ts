@@ -63,6 +63,9 @@ export const envValidationSchema = Joi.object({
   BACKUP_ENABLED: Joi.string().valid('true', 'false').default('false'),
   BACKUP_BUCKET: Joi.string().default('art-et-jardin-backups'),
   BACKUP_RETENTION_DAYS: Joi.number().default(30),
+  BACKUP_ENCRYPTION_KEY: Joi.string().min(16).allow('').optional().messages({
+    'string.min': 'BACKUP_ENCRYPTION_KEY must be at least 16 characters for security',
+  }),
 
   // Alertes
   ALERTS_ENABLED: Joi.string().valid('true', 'false').default('false'),
@@ -117,6 +120,7 @@ export interface EnvConfig {
   BACKUP_ENABLED: 'true' | 'false';
   BACKUP_BUCKET: string;
   BACKUP_RETENTION_DAYS: number;
+  BACKUP_ENCRYPTION_KEY?: string;
   ALERTS_ENABLED: 'true' | 'false';
   ALERTS_EMAIL?: string;
   SERVICE_DOWN_THRESHOLD: number;
