@@ -29,7 +29,7 @@ export class AuthController {
 
   @Post('login')
   @HttpCode(HttpStatus.OK)
-  @Throttle({ strict: { ttl: 60000, limit: 5 } }) // 5 requests per minute for login
+  @Throttle({ strict: { ttl: 60000, limit: 10 } }) // 10 requests per minute for auth endpoints
   @ApiOperation({ summary: 'Login utilisateur (avec support 2FA)' })
   @ApiResponse({ status: 200, description: 'Login reussi ou requires2FA: true' })
   @ApiResponse({ status: 401, description: 'Identifiants invalides' })
@@ -83,7 +83,7 @@ export class AuthController {
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
   @HttpCode(HttpStatus.OK)
-  @Throttle({ strict: { ttl: 60000, limit: 5 } })
+  @Throttle({ strict: { ttl: 60000, limit: 10 } }) // 10 requests per minute for auth endpoints
   @ApiOperation({ summary: 'Vérifier le code 2FA et activer' })
   @ApiResponse({ status: 200, description: '2FA activé, codes de récupération fournis' })
   @ApiResponse({ status: 400, description: 'Code invalide ou 2FA non configuré' })
