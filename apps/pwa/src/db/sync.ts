@@ -1,5 +1,10 @@
 import { db, SyncQueueItem } from './schema';
 import { useUIStore } from '@/stores/ui';
+import {
+  hasConflict,
+  createSyncConflict,
+  addConflictToStore,
+} from '@/services/conflict.service';
 
 const API_BASE = import.meta.env.VITE_API_URL || '/api/v1';
 
@@ -7,6 +12,7 @@ interface SyncResult {
   success: boolean;
   synced: number;
   failed: number;
+  conflicts: number;
   errors: string[];
 }
 
@@ -64,15 +70,15 @@ class SyncService {
 
   async syncAll(): Promise<SyncResult> {
     if (this.isSyncing) {
-      return { success: false, synced: 0, failed: 0, errors: ['Sync already in progress'] };
+      return { success: false, synced: 0, failed: 0, conflicts: 0, errors: ['Sync already in progress'] };
     }
 
     if (!navigator.onLine) {
-      return { success: false, synced: 0, failed: 0, errors: ['No network connection'] };
+      return { success: false, synced: 0, failed: 0, conflicts: 0, errors: ['No network connection'] };
     }
 
     this.isSyncing = true;
-    const result: SyncResult = { success: true, synced: 0, failed: 0, errors: [] };
+    const result: SyncResult = { success: true, synced: 0, failed: 0, conflicts: 0, errors: [] };
 
     try {
       const pendingItems = await db.syncQueue
@@ -84,6 +90,8 @@ class SyncService {
         const itemResult = await this.syncItem(item);
         if (itemResult.success) {
           result.synced++;
+        } else if (itemResult.conflict) {
+          result.conflicts++;
         } else {
           result.failed++;
           if (itemResult.error) {
@@ -92,7 +100,7 @@ class SyncService {
         }
       }
 
-      result.success = result.failed === 0;
+      result.success = result.failed === 0 && result.conflicts === 0;
     } catch (error) {
       result.success = false;
       result.errors.push(error instanceof Error ? error.message : 'Unknown error');
@@ -104,7 +112,7 @@ class SyncService {
     return result;
   }
 
-  private async syncItem(item: SyncQueueItem): Promise<{ success: boolean; error?: string }> {
+  private async syncItem(item: SyncQueueItem): Promise<{ success: boolean; conflict?: boolean; error?: string }> {
     if (item.id === undefined) {
       return { success: false, error: 'Item has no ID' };
     }
@@ -112,6 +120,16 @@ class SyncService {
     await db.syncQueue.update(item.id, { status: 'syncing' });
 
     try {
+      // Pour les updates, verifier d'abord s'il y a un conflit
+      if (item.operation === 'update' && item.entityId) {
+        const conflictResult = await this.checkForConflict(item);
+        if (conflictResult.hasConflict) {
+          // Marquer comme en attente de resolution de conflit
+          await db.syncQueue.update(item.id, { status: 'pending' });
+          return { success: false, conflict: true };
+        }
+      }
+
       const endpoint = this.getEndpoint(item);
       const method = this.getMethod(item.operation);
 
@@ -123,6 +141,14 @@ class SyncService {
         },
         body: item.operation !== 'delete' ? JSON.stringify(item.data) : undefined,
       });
+
+      // Gerer le conflit retourne par le serveur (HTTP 409)
+      if (response.status === 409) {
+        const serverData = await response.json();
+        await this.handleServerConflict(item, serverData);
+        await db.syncQueue.update(item.id, { status: 'pending' });
+        return { success: false, conflict: true };
+      }
 
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}: ${response.statusText}`);
@@ -182,6 +208,68 @@ class SyncService {
         return 'PUT';
       case 'delete':
         return 'DELETE';
+    }
+  }
+
+  private async checkForConflict(item: SyncQueueItem): Promise<{ hasConflict: boolean }> {
+    if (!item.entityId || item.operation !== 'update') {
+      return { hasConflict: false };
+    }
+
+    try {
+      // Recuperer la version serveur actuelle
+      const endpoint = this.getEndpoint(item);
+      const response = await fetch(`${API_BASE}${endpoint}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      });
+
+      if (!response.ok) {
+        // Si l'entite n'existe pas sur le serveur, pas de conflit
+        if (response.status === 404) {
+          return { hasConflict: false };
+        }
+        // Autre erreur, on continue sans detection de conflit
+        return { hasConflict: false };
+      }
+
+      const serverData = await response.json();
+      const localData = item.data as Record<string, unknown>;
+
+      // Verifier s'il y a un conflit
+      if (hasConflict(localData, serverData)) {
+        const entityType = item.entity as 'client' | 'chantier' | 'intervention' | 'devis';
+        const conflict = createSyncConflict(entityType, item.entityId, localData, serverData);
+        addConflictToStore(conflict);
+        return { hasConflict: true };
+      }
+
+      return { hasConflict: false };
+    } catch {
+      // En cas d'erreur, on continue sans detection de conflit
+      return { hasConflict: false };
+    }
+  }
+
+  private async handleServerConflict(
+    item: SyncQueueItem,
+    serverData: { data?: Record<string, unknown>; current?: Record<string, unknown> }
+  ): Promise<void> {
+    const serverVersion = serverData.data || serverData.current || serverData;
+    const localData = item.data as Record<string, unknown>;
+
+    if (item.entityId) {
+      const entityType = item.entity as 'client' | 'chantier' | 'intervention' | 'devis';
+      const conflict = createSyncConflict(
+        entityType,
+        item.entityId,
+        localData,
+        serverVersion as Record<string, unknown>
+      );
+      addConflictToStore(conflict);
     }
   }
 

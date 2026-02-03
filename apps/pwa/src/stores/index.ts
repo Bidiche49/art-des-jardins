@@ -1,6 +1,7 @@
 export { useAuthStore } from './auth';
 export { useClientsStore } from './clients';
 export { useChantiersStore } from './chantiers';
+export { useConflictStore } from './conflicts';
 export { useDevisStore } from './devis';
 export { useFacturesStore } from './factures';
 export { useInterventionsStore } from './interventions';
