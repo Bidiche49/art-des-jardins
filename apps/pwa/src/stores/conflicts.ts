@@ -2,8 +2,12 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import type { SyncConflict, ConflictResolution, ConflictResolutionResult } from '../types/sync.types';
 
+export type SessionPreference = 'always_local' | 'always_server' | null;
+
 interface ConflictState {
   conflicts: SyncConflict[];
+  currentIndex: number;
+  sessionPreference: SessionPreference;
   resolutionHistory: ConflictResolutionResult[];
 
   addConflict: (conflict: SyncConflict) => void;
@@ -18,12 +22,30 @@ interface ConflictState {
   clearAllConflicts: () => void;
   hasConflicts: () => boolean;
   getConflictCount: () => number;
+
+  // Navigation entre conflits
+  nextConflict: () => void;
+  prevConflict: () => void;
+  getCurrentConflict: () => SyncConflict | null;
+
+  // Session preference (auto-resolve)
+  setSessionPreference: (pref: SessionPreference) => void;
+  clearSessionPreference: () => void;
+
+  // Resoudre tous les conflits restants
+  resolveAll: (resolution: ConflictResolution) => ConflictResolutionResult[];
+
+  // Historique
+  addToHistory: (result: ConflictResolutionResult) => void;
+  clearHistory: () => void;
 }
 
 export const useConflictStore = create<ConflictState>()(
   persist(
     (set, get) => ({
       conflicts: [],
+      currentIndex: 0,
+      sessionPreference: null,
       resolutionHistory: [],
 
       addConflict: (conflict: SyncConflict) => {
@@ -78,7 +100,7 @@ export const useConflictStore = create<ConflictState>()(
       },
 
       clearAllConflicts: () => {
-        set({ conflicts: [] });
+        set({ conflicts: [], currentIndex: 0 });
       },
 
       hasConflicts: () => {
@@ -88,11 +110,79 @@ export const useConflictStore = create<ConflictState>()(
       getConflictCount: () => {
         return get().conflicts.length;
       },
+
+      // Navigation entre conflits
+      nextConflict: () => {
+        set((state) => {
+          const maxIndex = state.conflicts.length - 1;
+          return {
+            currentIndex: Math.min(state.currentIndex + 1, maxIndex),
+          };
+        });
+      },
+
+      prevConflict: () => {
+        set((state) => ({
+          currentIndex: Math.max(state.currentIndex - 1, 0),
+        }));
+      },
+
+      getCurrentConflict: () => {
+        const { conflicts, currentIndex } = get();
+        return conflicts[currentIndex] ?? null;
+      },
+
+      // Session preference
+      setSessionPreference: (pref: SessionPreference) => {
+        set({ sessionPreference: pref });
+      },
+
+      clearSessionPreference: () => {
+        set({ sessionPreference: null });
+      },
+
+      // Resoudre tous les conflits restants
+      resolveAll: (resolution: ConflictResolution) => {
+        const { conflicts, currentIndex } = get();
+        const results: ConflictResolutionResult[] = [];
+
+        // Resoudre tous les conflits a partir de l'index courant
+        const remainingConflicts = conflicts.slice(currentIndex);
+
+        for (const conflict of remainingConflicts) {
+          const result: ConflictResolutionResult = {
+            conflictId: conflict.id,
+            resolution,
+            timestamp: new Date(),
+          };
+          results.push(result);
+        }
+
+        set((state) => ({
+          conflicts: conflicts.slice(0, currentIndex),
+          currentIndex: 0,
+          resolutionHistory: [...state.resolutionHistory, ...results],
+        }));
+
+        return results;
+      },
+
+      // Historique
+      addToHistory: (result: ConflictResolutionResult) => {
+        set((state) => ({
+          resolutionHistory: [...state.resolutionHistory, result],
+        }));
+      },
+
+      clearHistory: () => {
+        set({ resolutionHistory: [] });
+      },
     }),
     {
       name: 'conflict-storage',
       partialize: (state) => ({
         conflicts: state.conflicts,
+        currentIndex: state.currentIndex,
         resolutionHistory: state.resolutionHistory.slice(-50), // Garde les 50 derniers
       }),
     }
