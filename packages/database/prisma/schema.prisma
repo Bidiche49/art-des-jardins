@@ -764,3 +764,23 @@ model WebAuthnCredential {
   @@index([userId])
   @@map("webauthn_credentials")
 }
+
+// ============================================
+// TEMPLATES PRESTATIONS (Devis)
+// ============================================
+
+model PrestationTemplate {
+  id          String   @id @default(uuid())
+  name        String
+  description String?
+  category    String // entretien, creation, elagage, divers
+  unit        String // m2, ml, h, forfait, m3, unite
+  unitPriceHT Decimal  @db.Decimal(10, 2)
+  tvaRate     Decimal  @default(20) @db.Decimal(5, 2)
+  isGlobal    Boolean  @default(false)
+  createdBy   String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("prestation_templates")
+}
