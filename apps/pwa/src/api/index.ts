@@ -10,6 +10,7 @@ export { default as statsApi } from './stats';
 export { default as notificationsApi } from './notifications';
 export { default as absencesApi } from './absences';
 export { default as calendarApi } from './calendar';
+export { weatherApi, type DailyWeather, type WeatherAlert } from './weather';
 
 export type { DevisFilters } from './devis';
 export type { FactureFilters } from './factures';
