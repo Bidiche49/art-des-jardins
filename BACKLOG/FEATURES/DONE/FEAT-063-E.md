@@ -1,7 +1,7 @@
 # FEAT-063-E: Integration Templates dans Formulaire Devis
 
 **Type:** Feature
-**Statut:** A faire
+**Statut:** Fait
 **Priorite:** Haute
 **Complexite:** S
 **Tags:** ui, ux
@@ -25,19 +25,18 @@ Integrer le TemplateSelector dans le formulaire de creation/edition de devis pou
 
 ## Criteres d'acceptation
 
-- [ ] Bouton "Importer templates" dans formulaire devis
-- [ ] Ouverture modal/drawer avec TemplateSelector
-- [ ] Selection et import de templates
-- [ ] Conversion en lignes de devis avec champs editables
-- [ ] Quantite par defaut: 1
-- [ ] Prix modifiable sans affecter le template
-- [ ] Tests integration du flow complet
+- [x] Bouton "Importer templates" dans formulaire devis
+- [x] Ouverture modal/drawer avec TemplateSelector
+- [x] Selection et import de templates
+- [x] Conversion en lignes de devis avec champs editables
+- [x] Quantite par defaut: 1
+- [x] Prix modifiable sans affecter le template
+- [x] Tests integration du flow complet (20 tests unitaires)
 
 ## Fichiers concernes
 
-- `apps/pwa/src/pages/devis/DevisForm.tsx` (ou equivalent)
-- `apps/pwa/src/pages/devis/DevisLigneForm.tsx` (ou equivalent)
-- `apps/pwa/src/types/devis.ts`
+- `apps/pwa/src/pages/DevisBuilder.tsx` (modifie)
+- `apps/pwa/src/pages/DevisBuilder.test.tsx` (cree)
 
 ## Analyse technique
 
