@@ -35,6 +35,7 @@ import { TimeEntriesModule } from './modules/time-entries/time-entries.module';
 import { MaterialUsagesModule } from './modules/material-usages/material-usages.module';
 import { RentabiliteModule } from './modules/rentabilite/rentabilite.module';
 import { PhotosModule } from './modules/photos/photos.module';
+import { TemplatesModule } from './modules/templates/templates.module';
 import { DatabaseModule } from './database/database.module';
 import { envValidationSchema } from './config/env.validation';
 
@@ -135,6 +136,7 @@ import { envValidationSchema } from './config/env.validation';
     MaterialUsagesModule,
     RentabiliteModule,
     PhotosModule,
+    TemplatesModule,
   ],
   providers: [
     {
