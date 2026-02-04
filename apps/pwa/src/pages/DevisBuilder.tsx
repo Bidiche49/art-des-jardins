@@ -10,6 +10,8 @@ import {
   Textarea,
   LoadingOverlay,
 } from '@/components/ui';
+import { TemplateSelector } from '@/components/devis/TemplateSelector';
+import type { PrestationTemplate } from '@/services/template.service';
 import type { CreateDevisDto } from '@art-et-jardin/shared';
 import { format, addMonths } from 'date-fns';
 import toast from 'react-hot-toast';
@@ -40,6 +42,19 @@ function generateTempId() {
   return Math.random().toString(36).substr(2, 9);
 }
 
+function templateToDevisLigne(template: PrestationTemplate): LigneDevisForm {
+  return {
+    id: generateTempId(),
+    description: template.description
+      ? `${template.name} - ${template.description}`
+      : template.name,
+    quantite: 1,
+    unite: template.unit,
+    prixUnitaireHT: template.unitPriceHT,
+    tva: template.tvaRate,
+  };
+}
+
 export function DevisBuilder() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
@@ -66,6 +81,7 @@ export function DevisBuilder() {
   const [conditionsParticulieres, setConditionsParticulieres] = useState('');
   const [notes, setNotes] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showTemplateSelector, setShowTemplateSelector] = useState(false);
 
   useEffect(() => {
     fetchChantiers();
@@ -118,6 +134,13 @@ export function DevisBuilder() {
         tva: 10,
       },
     ]);
+  };
+
+  const handleImportTemplates = (templates: PrestationTemplate[]) => {
+    const newLignes = templates.map(templateToDevisLigne);
+    setLignes([...lignes, ...newLignes]);
+    setShowTemplateSelector(false);
+    toast.success(`${templates.length} prestation(s) importee(s)`);
   };
 
   const handleRemoveLigne = (id: string) => {
@@ -243,9 +266,14 @@ export function DevisBuilder() {
       <Card>
         <div className="flex items-center justify-between mb-4">
           <CardTitle>Lignes du devis</CardTitle>
-          <Button size="sm" variant="outline" onClick={handleAddLigne}>
-            + Ajouter
-          </Button>
+          <div className="flex gap-2">
+            <Button size="sm" variant="outline" onClick={() => setShowTemplateSelector(true)}>
+              Importer templates
+            </Button>
+            <Button size="sm" variant="outline" onClick={handleAddLigne}>
+              + Ajouter
+            </Button>
+          </div>
         </div>
 
         <div className="space-y-4">
@@ -384,6 +412,12 @@ export function DevisBuilder() {
           Creer le devis
         </Button>
       </div>
+
+      <TemplateSelector
+        isOpen={showTemplateSelector}
+        onSelect={handleImportTemplates}
+        onClose={() => setShowTemplateSelector(false)}
+      />
     </div>
   );
 }
