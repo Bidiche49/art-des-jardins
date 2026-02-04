@@ -5,7 +5,7 @@ import { SearchInput } from '@/components/ui/SearchInput';
 import { Select } from '@/components/ui/Select';
 import { Spinner } from '@/components/ui/Spinner';
 import { EmptyState } from '@/components/ui/EmptyState';
-import { useTemplates, useCategories } from '@/hooks';
+import { useTemplates, useCategories } from '@/hooks/useTemplates';
 import { PrestationTemplate } from '@/services/template.service';
 
 interface TemplateSelectorProps {
