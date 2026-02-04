@@ -1,16 +1,38 @@
 # FEAT-063: Templates prestations devis
 
 **Type:** Feature
-**Statut:** Pret
+**Statut:** Split
 **Priorite:** Haute
 **Complexite:** M
 **Tags:** ux, api, data
 **Date creation:** 2026-02-03
+**Date cloture:** 2026-02-04
 **Phase:** 11
 
 ---
 
-## Description
+## Statut: SPLIT EN SOUS-TICKETS
+
+Ce ticket a ete decoupe en 5 sous-tickets pour faciliter l'implementation progressive:
+
+| Sous-ticket | Description | Complexite | Dependances |
+|-------------|-------------|------------|-------------|
+| **FEAT-063-A** | Schema Prisma PrestationTemplate + Migration | XS | - |
+| **FEAT-063-B** | Module API CRUD Templates | S | FEAT-063-A |
+| **FEAT-063-C** | Seed Templates par Defaut | XS | FEAT-063-A |
+| **FEAT-063-D** | Composant TemplateSelector PWA | S | FEAT-063-B |
+| **FEAT-063-E** | Integration dans Formulaire Devis | S | FEAT-063-D |
+
+### Ordre d'execution recommande
+
+1. FEAT-063-A (base de donnees)
+2. FEAT-063-B et FEAT-063-C (peuvent etre paralleles)
+3. FEAT-063-D (UI)
+4. FEAT-063-E (integration finale)
+
+---
+
+## Description originale
 
 Creer un systeme de templates de prestations reutilisables pour accelerer la creation des devis (tonte pelouse, taille haie, elagage...).
 
@@ -66,12 +88,12 @@ model PrestationTemplate {
 ```
 
 Templates par defaut a creer:
-- Tonte pelouse - 0.50€/m² HT
-- Taille haie - 8€/ml HT
-- Elagage leger - 45€/h HT
-- Desherbage manuel - 35€/h HT
-- Evacuation dechets - 80€/m³ HT
-- Plantation arbuste - 25€/unite HT
+- Tonte pelouse - 0.50 euro/m² HT
+- Taille haie - 8 euro/ml HT
+- Elagage leger - 45 euro/h HT
+- Desherbage manuel - 35 euro/h HT
+- Evacuation dechets - 80 euro/m³ HT
+- Plantation arbuste - 25 euro/unite HT
 
 ## Tests de validation
 
