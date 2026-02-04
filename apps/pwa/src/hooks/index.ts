@@ -9,3 +9,4 @@ export { useKeyboardShortcuts } from './useKeyboardShortcuts';
 export { useWebAuthn } from './useWebAuthn';
 export { useTerrainMode } from './useTerrainMode';
 export { useWeather } from './useWeather';
+export { useTemplates, useCategories } from './useTemplates';
