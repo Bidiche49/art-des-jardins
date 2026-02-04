@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
-import { Calendar as BigCalendar, dateFnsLocalizer, View, SlotInfo } from 'react-big-calendar';
+import { Calendar as BigCalendar, dateFnsLocalizer, View, SlotInfo, DateHeaderProps } from 'react-big-calendar';
 import withDragAndDrop, { EventInteractionArgs } from 'react-big-calendar/lib/addons/dragAndDrop';
 import { format, parse, startOfWeek, getDay, startOfMonth, endOfMonth, addMonths, subMonths } from 'date-fns';
 import { fr } from 'date-fns/locale';
@@ -9,6 +9,8 @@ import { useAuthStore } from '@/stores/auth';
 import { Card, Button, Spinner, Modal } from '@/components/ui';
 import { CalendarToolbar } from '@/components/calendar/CalendarToolbar';
 import { CalendarEvent } from '@/components/calendar/CalendarEvent';
+import { useWeather } from '@/hooks';
+import { DailyWeather } from '@/api/weather';
 import toast from 'react-hot-toast';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.css';
@@ -64,6 +66,39 @@ const ABSENCE_LABELS: Record<string, string> = {
   autre: 'Autre',
 };
 
+// Weather DateHeader component for month view
+function WeatherDateHeader({
+  date,
+  label,
+  weatherByDate,
+}: DateHeaderProps & { weatherByDate: Map<string, DailyWeather> }) {
+  const dateKey = format(date, 'yyyy-MM-dd');
+  const weather = weatherByDate.get(dateKey);
+  const hasAlerts = weather && weather.alerts.length > 0;
+  const hasDangerAlert = weather?.alerts.some((a) => a.severity === 'danger');
+
+  return (
+    <div className="flex items-center justify-between w-full">
+      <span>{label}</span>
+      {weather && (
+        <span
+          className="text-sm cursor-help flex items-center"
+          title={`${weather.description}\n${weather.tempMin}°/${weather.tempMax}°C\n${weather.precipitation > 0 ? `Pluie: ${weather.precipitation}mm\n` : ''}Vent: ${Math.round(weather.windSpeed)}km/h${hasAlerts ? `\n\n⚠️ ${weather.alerts.map((a) => a.message).join('\n⚠️ ')}` : ''}`}
+        >
+          {weather.icon}
+          {hasAlerts && (
+            <span
+              className={`ml-0.5 text-xs font-bold ${hasDangerAlert ? 'text-red-600' : 'text-yellow-600'}`}
+            >
+              !
+            </span>
+          )}
+        </span>
+      )}
+    </div>
+  );
+}
+
 export function Calendar() {
   const navigate = useNavigate();
   const { user } = useAuthStore();
@@ -78,6 +113,9 @@ export function Calendar() {
   const [showExportModal, setShowExportModal] = useState(false);
   const [icalToken, setIcalToken] = useState<string | null>(null);
   const [isGeneratingToken, setIsGeneratingToken] = useState(false);
+
+  // Weather data for 7-day forecast
+  const { weatherByDate, isLoading: weatherLoading } = useWeather();
 
   const employeeColorMap = useMemo(() => {
     const map = new Map<string, string>();
@@ -567,6 +605,11 @@ export function Calendar() {
               components={{
                 toolbar: CalendarToolbar,
                 event: CalendarEvent,
+                month: {
+                  dateHeader: (props: DateHeaderProps) => (
+                    <WeatherDateHeader {...props} weatherByDate={weatherByDate} />
+                  ),
+                },
               }}
               formats={{
                 monthHeaderFormat: (date) => format(date, 'MMMM yyyy', { locale: fr }),
@@ -619,6 +662,16 @@ export function Calendar() {
             ))}
           </>
         )}
+        {/* Weather legend */}
+        <span className="text-sm text-gray-500 whitespace-nowrap ml-4">Meteo:</span>
+        <div className="flex items-center gap-1 whitespace-nowrap">
+          <span className="text-yellow-600 font-bold">!</span>
+          <span className="text-sm text-gray-700">Attention</span>
+        </div>
+        <div className="flex items-center gap-1 whitespace-nowrap">
+          <span className="text-red-600 font-bold">!</span>
+          <span className="text-sm text-gray-700">Danger</span>
+        </div>
       </div>
 
       {/* Export Modal */}
