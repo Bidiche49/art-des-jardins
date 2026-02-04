@@ -1,7 +1,8 @@
 # FEAT-063-B: Module API CRUD Templates Prestations
 
 **Type:** Feature
-**Statut:** A faire
+**Statut:** Fait
+**Date completion:** 2026-02-04
 **Priorite:** Haute
 **Complexite:** S
 **Tags:** api
@@ -25,17 +26,17 @@ Creer le module NestJS complet pour la gestion des templates de prestations: con
 
 ## Criteres d'acceptation
 
-- [ ] Module templates cree et enregistre
-- [ ] Endpoints REST fonctionnels:
+- [x] Module templates cree et enregistre
+- [x] Endpoints REST fonctionnels:
   - GET /api/v1/templates (liste avec filtres)
   - GET /api/v1/templates/:id
   - POST /api/v1/templates
   - PUT /api/v1/templates/:id
   - DELETE /api/v1/templates/:id
-- [ ] DTOs avec validation (class-validator)
-- [ ] Filtre par category en query param
-- [ ] Recherche par nom (search=xxx)
-- [ ] Tests unitaires du service
+- [x] DTOs avec validation (class-validator)
+- [x] Filtre par category en query param
+- [x] Recherche par nom (search=xxx)
+- [x] Tests unitaires du service
 
 ## Fichiers concernes
 
@@ -117,6 +118,6 @@ VALIDATION:
 
 ## Tests de validation
 
-- [ ] `pnpm test:api` - tests unitaires passent
-- [ ] `pnpm build:api` - build reussit
-- [ ] Endpoints testables via curl/Swagger
+- [x] `pnpm test:api` - tests unitaires passent (18 tests)
+- [x] `pnpm build:api` - build reussit
+- [ ] Endpoints testables via curl/Swagger (requiert API running)
