@@ -245,6 +245,98 @@ async function main() {
   console.log(`✅ Sequences initialisées pour ${currentYear}`);
 
   // ============================================
+  // TEMPLATES PRESTATIONS (globaux)
+  // ============================================
+  const defaultTemplates = [
+    {
+      name: 'Tonte pelouse',
+      description: 'Tonte de gazon avec ramassage',
+      category: 'entretien',
+      unit: 'm2',
+      unitPriceHT: 0.50,
+      tvaRate: 20,
+      isGlobal: true,
+    },
+    {
+      name: 'Taille haie',
+      description: 'Taille de haie avec évacuation',
+      category: 'entretien',
+      unit: 'ml',
+      unitPriceHT: 8.00,
+      tvaRate: 20,
+      isGlobal: true,
+    },
+    {
+      name: 'Elagage léger',
+      description: 'Elagage branches accessibles depuis le sol',
+      category: 'elagage',
+      unit: 'h',
+      unitPriceHT: 45.00,
+      tvaRate: 20,
+      isGlobal: true,
+    },
+    {
+      name: 'Désherbage manuel',
+      description: 'Désherbage à la main des massifs et allées',
+      category: 'entretien',
+      unit: 'h',
+      unitPriceHT: 35.00,
+      tvaRate: 20,
+      isGlobal: true,
+    },
+    {
+      name: 'Évacuation déchets verts',
+      description: 'Chargement et évacuation en déchetterie',
+      category: 'divers',
+      unit: 'm3',
+      unitPriceHT: 80.00,
+      tvaRate: 20,
+      isGlobal: true,
+    },
+    {
+      name: 'Plantation arbuste',
+      description: 'Fourniture et plantation arbuste (hors végétal)',
+      category: 'creation',
+      unit: 'unite',
+      unitPriceHT: 25.00,
+      tvaRate: 20,
+      isGlobal: true,
+    },
+    {
+      name: 'Création massif',
+      description: 'Création massif floral ou arbustif',
+      category: 'creation',
+      unit: 'm2',
+      unitPriceHT: 45.00,
+      tvaRate: 20,
+      isGlobal: true,
+    },
+    {
+      name: 'Engazonnement',
+      description: 'Préparation sol et semis gazon',
+      category: 'creation',
+      unit: 'm2',
+      unitPriceHT: 8.00,
+      tvaRate: 20,
+      isGlobal: true,
+    },
+  ];
+
+  let templatesCreated = 0;
+  for (const template of defaultTemplates) {
+    const existing = await prisma.prestationTemplate.findFirst({
+      where: { name: template.name },
+    });
+    if (!existing) {
+      await prisma.prestationTemplate.create({
+        data: template,
+      });
+      templatesCreated++;
+    }
+  }
+  console.log(`✅ Templates prestations: ${templatesCreated} créés (${defaultTemplates.length - templatesCreated} existants)`);
+
+  // ============================================
   // RÉSUMÉ
   // ============================================
   console.log('\n========================================');
@@ -255,6 +347,7 @@ async function main() {
   console.log(`   - 5 clients (2 particuliers, 2 pros, 1 syndic)`);
   console.log(`   - 3 chantiers (exemples)`);
   console.log(`   - 2 séquences (devis/factures ${currentYear})`);
+  console.log(`   - ${defaultTemplates.length} templates prestations globaux`);
   console.log('\n🔑 Credentials de test:');
   console.log(`   Patron:  patron@artjardin.fr / password123`);
   console.log(`   Employé: pierre.martin@artjardin.fr / password123`);
