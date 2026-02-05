@@ -12,6 +12,9 @@ export interface User extends BaseEntity {
   derniereConnexion?: Date;
   // Avatar
   avatarUrl?: string;
+  // Onboarding
+  onboardingCompleted: boolean;
+  onboardingStep: number;
 }
 
 export interface CreateUserDto {

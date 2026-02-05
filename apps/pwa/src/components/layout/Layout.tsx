@@ -4,15 +4,16 @@ import { NotificationToggle } from '@/components/NotificationToggle';
 import { NotificationBell } from '@/components/NotificationBell';
 import { OfflineIndicator } from '@/components/OfflineIndicator';
 import { ConnectionIndicator } from '@/components/ui/ConnectionIndicator';
+import { OnboardingTour } from '@/components/Onboarding';
 import { useRealtimeUpdates } from '@/hooks/useRealtimeUpdates';
 
 const navigation = [
-  { name: 'Accueil', href: '/', icon: '🏠' },
-  { name: 'Clients', href: '/clients', icon: '👥' },
-  { name: 'Chantiers', href: '/chantiers', icon: '🏗️' },
-  { name: 'Devis', href: '/devis', icon: '📋' },
-  { name: 'Calendrier', href: '/calendar', icon: '📅' },
-  { name: 'Analytics', href: '/analytics', icon: '📊' },
+  { name: 'Accueil', href: '/', icon: '🏠', dataNav: 'home' },
+  { name: 'Clients', href: '/clients', icon: '👥', dataNav: 'clients' },
+  { name: 'Chantiers', href: '/chantiers', icon: '🏗️', dataNav: 'chantiers' },
+  { name: 'Devis', href: '/devis', icon: '📋', dataNav: 'devis' },
+  { name: 'Calendrier', href: '/calendar', icon: '📅', dataNav: 'calendar' },
+  { name: 'Analytics', href: '/analytics', icon: '📊', dataNav: 'analytics' },
 ];
 
 export function Layout() {
@@ -29,7 +30,10 @@ export function Layout() {
 
   return (
     <div className="h-full flex flex-col dark:bg-gray-900">
-      <header className="bg-primary-600 dark:bg-primary-800 text-white safe-top">
+      {/* Onboarding Tour */}
+      <OnboardingTour />
+
+      <header className="bg-primary-600 dark:bg-primary-800 text-white safe-top dashboard-header">
         <div className="px-4 py-3 flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <span className="text-xl">🌿</span>
@@ -71,6 +75,7 @@ export function Layout() {
               key={item.name}
               to={item.href}
               end={item.href === '/'}
+              data-nav={item.dataNav}
               className={({ isActive }) =>
                 `flex flex-col items-center py-2 px-3 text-xs transition-colors ${
                   isActive

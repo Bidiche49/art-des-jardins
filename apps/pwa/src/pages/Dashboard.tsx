@@ -67,7 +67,7 @@ export function Dashboard() {
         <p className="text-gray-600">Voici un apercu de votre activite</p>
       </div>
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-2 gap-4 dashboard-stats">
         <Card onClick={() => navigate('/clients')} hoverable>
           <div className="text-3xl mb-2">👥</div>
           <div className="text-2xl font-bold">{stats?.clientsTotal || 0}</div>
@@ -147,7 +147,7 @@ export function Dashboard() {
         </Card>
       )}
 
-      <Card>
+      <Card className="dashboard-interventions">
         <div className="flex items-center justify-between mb-4">
           <CardTitle>Prochaines interventions</CardTitle>
           <Button
@@ -185,7 +185,7 @@ export function Dashboard() {
         )}
       </Card>
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-2 gap-4 quick-actions">
         <Button
           variant="outline"
           className="h-auto py-4 flex-col"

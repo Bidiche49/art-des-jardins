@@ -1,4 +1,4 @@
-import { Controller, Post, Body, HttpCode, HttpStatus, UseGuards, Req, Get, Param, Delete, Res, Query, BadRequestException, NotFoundException } from '@nestjs/common';
+import { Controller, Post, Body, HttpCode, HttpStatus, UseGuards, Req, Get, Param, Delete, Res, Query, BadRequestException, NotFoundException, Patch } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth, ApiParam } from '@nestjs/swagger';
 import { Throttle } from '@nestjs/throttler';
 import { Response } from 'express';
@@ -294,5 +294,42 @@ export class AuthController {
     } else {
       return res.redirect(`${appUrl}/auth/device-action?status=error&message=device_not_found`);
     }
+  }
+
+  // ============================================
+  // ONBOARDING ENDPOINTS
+  // ============================================
+
+  @Patch('onboarding/step')
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Mettre à jour l\'étape d\'onboarding' })
+  @ApiResponse({ status: 200, description: 'Étape mise à jour' })
+  async updateOnboardingStep(
+    @Req() req: AuthenticatedRequest,
+    @Body() body: { step: number },
+  ) {
+    return this.authService.updateOnboardingStep(req.user.sub, body.step);
+  }
+
+  @Patch('onboarding/complete')
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Marquer l\'onboarding comme terminé' })
+  @ApiResponse({ status: 200, description: 'Onboarding terminé' })
+  async completeOnboarding(@Req() req: AuthenticatedRequest) {
+    return this.authService.completeOnboarding(req.user.sub);
+  }
+
+  @Post('onboarding/reset')
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Réinitialiser l\'onboarding (refaire le tour)' })
+  @ApiResponse({ status: 200, description: 'Onboarding réinitialisé' })
+  async resetOnboarding(@Req() req: AuthenticatedRequest) {
+    return this.authService.resetOnboarding(req.user.sub);
   }
 }

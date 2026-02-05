@@ -7,6 +7,8 @@ interface User {
   nom: string;
   prenom: string;
   role: 'patron' | 'employe';
+  onboardingCompleted: boolean;
+  onboardingStep: number;
 }
 
 interface AuthState {
@@ -20,6 +22,7 @@ interface AuthState {
   logout: () => void;
   setLoading: (loading: boolean) => void;
   setRememberMe: (remember: boolean) => void;
+  updateOnboarding: (completed: boolean, step: number) => void;
 }
 
 export const useAuthStore = create<AuthState>()(
@@ -59,6 +62,14 @@ export const useAuthStore = create<AuthState>()(
 
       setRememberMe: (remember) => {
         set({ rememberMe: remember });
+      },
+
+      updateOnboarding: (completed, step) => {
+        set((state) => ({
+          user: state.user
+            ? { ...state.user, onboardingCompleted: completed, onboardingStep: step }
+            : null,
+        }));
       },
     }),
     {

@@ -1,8 +1,9 @@
 import { useUIStore } from '@/stores/ui';
 import { SyncStatus } from '@/components/SyncStatus';
 import { DeviceList } from '@/components/DeviceList';
-import { Card } from '@/components/ui';
-import { useWebAuthn, useTerrainMode } from '@/hooks';
+import { IntegrationsSettings } from '@/components/IntegrationsSettings';
+import { Card, Button } from '@/components/ui';
+import { useWebAuthn, useTerrainMode, useOnboarding } from '@/hooks';
 
 type ThemeOption = 'light' | 'dark' | 'system';
 
@@ -16,6 +17,7 @@ export function Settings() {
   const { theme, setTheme } = useUIStore();
   const { isSupported } = useWebAuthn();
   const { isEnabled: terrainModeEnabled, settings: terrainSettings, setSettings: setTerrainSettings, triggerHaptic } = useTerrainMode();
+  const { restartOnboarding, isLoading: onboardingLoading } = useOnboarding();
 
   return (
     <div className="space-y-6">
@@ -60,6 +62,22 @@ export function Settings() {
             Le mode automatique suit les preferences de votre systeme.
           </p>
         </div>
+      </Card>
+
+      <Card>
+        <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+          Aide
+        </h2>
+        <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+          Redecouvrez les fonctionnalites de l'application avec le tour guide.
+        </p>
+        <Button
+          variant="outline"
+          onClick={restartOnboarding}
+          isLoading={onboardingLoading}
+        >
+          Refaire le tour guide
+        </Button>
       </Card>
 
       <Card>
@@ -223,6 +241,8 @@ export function Settings() {
           <DeviceList />
         </Card>
       )}
+
+      <IntegrationsSettings />
 
       <Card>
         <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">

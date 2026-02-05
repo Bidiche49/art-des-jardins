@@ -100,6 +100,10 @@ model User {
   createdAt         DateTime  @default(now())
   updatedAt         DateTime  @updatedAt
 
+  // Onboarding
+  onboardingCompleted Boolean @default(false)
+  onboardingStep      Int     @default(0)
+
   // 2FA
   twoFactorSecret      String? // TOTP secret (chiffré AES-256)
   twoFactorEnabled     Boolean   @default(false)
@@ -119,6 +123,7 @@ model User {
   timeEntries          TimeEntry[]
   photosUploaded       Photo[]
   webAuthnCredentials  WebAuthnCredential[]
+  calendarIntegrations CalendarIntegration[]
 
   @@map("users")
 }
@@ -334,20 +339,21 @@ model LigneFacture {
 }
 
 model Intervention {
-  id           String    @id @default(uuid())
-  chantierId   String
-  employeId    String
-  date         DateTime
-  heureDebut   DateTime
-  heureFin     DateTime?
-  dureeMinutes Int?
-  description  String?
-  photos       String[]
-  notes        String?
-  valide       Boolean   @default(false)
-  deletedAt    DateTime? // Soft delete
-  createdAt    DateTime  @default(now())
-  updatedAt    DateTime  @updatedAt
+  id                      String    @id @default(uuid())
+  chantierId              String
+  employeId               String
+  date                    DateTime
+  heureDebut              DateTime
+  heureFin                DateTime?
+  dureeMinutes            Int?
+  description             String?
+  photos                  String[]
+  notes                   String?
+  valide                  Boolean   @default(false)
+  externalCalendarEventId String?   // ID event Google/Outlook
+  deletedAt               DateTime? // Soft delete
+  createdAt               DateTime  @default(now())
+  updatedAt               DateTime  @updatedAt
 
   // Relations
   chantier      Chantier    @relation(fields: [chantierId], references: [id], onDelete: Cascade)
@@ -763,6 +769,37 @@ model WebAuthnCredential {
 
   @@index([userId])
   @@map("webauthn_credentials")
+}
+
+// ============================================
+// CALENDAR INTEGRATIONS (Google/Outlook)
+// ============================================
+
+enum CalendarProvider {
+  google
+  microsoft
+}
+
+model CalendarIntegration {
+  id               String           @id @default(uuid())
+  userId           String
+  provider         CalendarProvider
+  accessToken      String           @db.Text // Chiffré
+  refreshToken     String           @db.Text // Chiffré
+  tokenExpiresAt   DateTime
+  calendarId       String           @default("primary") // ID du calendrier cible
+  syncEnabled      Boolean          @default(true)
+  lastSyncAt       DateTime?
+  lastSyncError    String?
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, provider])
+  @@index([userId])
+  @@map("calendar_integrations")
 }
 
 // ============================================

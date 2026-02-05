@@ -136,6 +136,8 @@ export class AuthService {
         prenom: user.prenom,
         role: user.role,
         twoFactorEnabled: user.twoFactorEnabled,
+        onboardingCompleted: user.onboardingCompleted,
+        onboardingStep: user.onboardingStep,
       },
       accessToken,
       refreshToken,
@@ -174,6 +176,58 @@ export class AuthService {
     return this.refreshTokenService.cleanupExpiredTokens();
   }
 
+  // ============================================
+  // ONBOARDING METHODS
+  // ============================================
+
+  async updateOnboardingStep(userId: string, step: number): Promise<{ success: boolean; step: number }> {
+    await this.prisma.user.update({
+      where: { id: userId },
+      data: { onboardingStep: step },
+    });
+
+    await this.auditService.log({
+      userId,
+      action: 'ONBOARDING_STEP_UPDATE',
+      entite: 'user',
+      details: { step },
+    });
+
+    return { success: true, step };
+  }
+
+  async completeOnboarding(userId: string): Promise<{ success: boolean }> {
+    await this.prisma.user.update({
+      where: { id: userId },
+      data: { onboardingCompleted: true },
+    });
+
+    await this.auditService.log({
+      userId,
+      action: 'ONBOARDING_COMPLETED',
+      entite: 'user',
+      details: {},
+    });
+
+    return { success: true };
+  }
+
+  async resetOnboarding(userId: string): Promise<{ success: boolean }> {
+    await this.prisma.user.update({
+      where: { id: userId },
+      data: { onboardingCompleted: false, onboardingStep: 0 },
+    });
+
+    await this.auditService.log({
+      userId,
+      action: 'ONBOARDING_RESET',
+      entite: 'user',
+      details: {},
+    });
+
+    return { success: true };
+  }
+
   /**
    * Génère les tokens JWT pour un utilisateur (utilisé par WebAuthn login)
    */
@@ -183,7 +237,7 @@ export class AuthService {
     userAgent?: string,
     acceptLanguage?: string,
   ): Promise<{
-    user: { id: string; email: string; nom: string; prenom: string; role: string; twoFactorEnabled: boolean };
+    user: { id: string; email: string; nom: string; prenom: string; role: string; twoFactorEnabled: boolean; onboardingCompleted: boolean; onboardingStep: number };
     accessToken: string;
     refreshToken: string;
   }> {
@@ -255,6 +309,8 @@ export class AuthService {
         prenom: user.prenom,
         role: user.role,
         twoFactorEnabled: user.twoFactorEnabled,
+        onboardingCompleted: user.onboardingCompleted,
+        onboardingStep: user.onboardingStep,
       },
       accessToken,
       refreshToken,
