@@ -15,24 +15,33 @@ interface CalendarEvent {
 @Injectable()
 export class GoogleCalendarService {
   private readonly logger = new Logger(GoogleCalendarService.name);
-  private oauth2Client: OAuth2Client;
+  private oauth2Client: OAuth2Client | null = null;
 
   constructor(
     private prisma: PrismaService,
     private configService: ConfigService,
-  ) {
-    this.oauth2Client = new google.auth.OAuth2(
-      this.configService.get<string>('GOOGLE_CLIENT_ID'),
-      this.configService.get<string>('GOOGLE_CLIENT_SECRET'),
-      this.configService.get<string>('GOOGLE_REDIRECT_URI'),
-    );
+  ) {}
+
+  private getOAuth2Client(): OAuth2Client {
+    if (!this.oauth2Client) {
+      const clientId = this.configService.get<string>('GOOGLE_CLIENT_ID');
+      const clientSecret = this.configService.get<string>('GOOGLE_CLIENT_SECRET');
+      const redirectUri = this.configService.get<string>('GOOGLE_REDIRECT_URI');
+
+      if (!clientId || !clientSecret || !redirectUri) {
+        throw new Error('Google OAuth credentials not configured');
+      }
+
+      this.oauth2Client = new google.auth.OAuth2(clientId, clientSecret, redirectUri);
+    }
+    return this.oauth2Client;
   }
 
   /**
    * Génère l'URL d'autorisation OAuth2
    */
   getAuthUrl(state: string): string {
-    return this.oauth2Client.generateAuthUrl({
+    return this.getOAuth2Client().generateAuthUrl({
       access_type: 'offline',
       scope: [
         'https://www.googleapis.com/auth/calendar',
@@ -51,7 +60,7 @@ export class GoogleCalendarService {
     refreshToken: string;
     expiresAt: Date;
   }> {
-    const { tokens } = await this.oauth2Client.getToken(code);
+    const { tokens } = await this.getOAuth2Client().getToken(code);
 
     if (!tokens.access_token || !tokens.refresh_token) {
       throw new UnauthorizedException('Tokens manquants dans la réponse Google');
@@ -76,7 +85,7 @@ export class GoogleCalendarService {
       throw new UnauthorizedException('Intégration Google Calendar non configurée');
     }
 
-    this.oauth2Client.setCredentials({
+    this.getOAuth2Client().setCredentials({
       access_token: integration.accessToken,
       refresh_token: integration.refreshToken,
       expiry_date: integration.tokenExpiresAt.getTime(),
@@ -85,7 +94,7 @@ export class GoogleCalendarService {
     // Vérifier si le token a expiré et le rafraîchir si nécessaire
     if (integration.tokenExpiresAt < new Date()) {
       try {
-        const { credentials } = await this.oauth2Client.refreshAccessToken();
+        const { credentials } = await this.getOAuth2Client().refreshAccessToken();
 
         await this.prisma.calendarIntegration.update({
           where: { id: integration.id },
@@ -95,14 +104,14 @@ export class GoogleCalendarService {
           },
         });
 
-        this.oauth2Client.setCredentials(credentials);
+        this.getOAuth2Client().setCredentials(credentials);
       } catch (error) {
         this.logger.error('Erreur refresh token Google:', error);
         throw new UnauthorizedException('Token Google expiré, reconnexion requise');
       }
     }
 
-    return this.oauth2Client;
+    return this.getOAuth2Client();
   }
 
   /**
@@ -202,7 +211,7 @@ export class GoogleCalendarService {
 
     if (integration) {
       try {
-        await this.oauth2Client.revokeToken(integration.accessToken);
+        await this.getOAuth2Client().revokeToken(integration.accessToken);
       } catch (error) {
         this.logger.warn('Erreur révocation token Google:', error);
       }

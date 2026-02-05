@@ -15,19 +15,31 @@ interface CalendarEvent {
 @Injectable()
 export class MicrosoftCalendarService {
   private readonly logger = new Logger(MicrosoftCalendarService.name);
-  private msalClient: ConfidentialClientApplication;
+  private msalClient: ConfidentialClientApplication | null = null;
 
   constructor(
     private prisma: PrismaService,
     private configService: ConfigService,
-  ) {
-    this.msalClient = new ConfidentialClientApplication({
-      auth: {
-        clientId: this.configService.get<string>('MICROSOFT_CLIENT_ID') || '',
-        clientSecret: this.configService.get<string>('MICROSOFT_CLIENT_SECRET') || '',
-        authority: `https://login.microsoftonline.com/common`,
-      },
-    });
+  ) {}
+
+  private getMsalClient(): ConfidentialClientApplication {
+    if (!this.msalClient) {
+      const clientId = this.configService.get<string>('MICROSOFT_CLIENT_ID');
+      const clientSecret = this.configService.get<string>('MICROSOFT_CLIENT_SECRET');
+
+      if (!clientId || !clientSecret) {
+        throw new Error('Microsoft OAuth credentials not configured');
+      }
+
+      this.msalClient = new ConfidentialClientApplication({
+        auth: {
+          clientId,
+          clientSecret,
+          authority: `https://login.microsoftonline.com/common`,
+        },
+      });
+    }
+    return this.msalClient;
   }
 
   /**
@@ -60,7 +72,7 @@ export class MicrosoftCalendarService {
   }> {
     const redirectUri = this.configService.get<string>('MICROSOFT_REDIRECT_URI') || '';
 
-    const result = await this.msalClient.acquireTokenByCode({
+    const result = await this.getMsalClient().acquireTokenByCode({
       code,
       redirectUri,
       scopes: ['offline_access', 'Calendars.ReadWrite', 'User.Read'],

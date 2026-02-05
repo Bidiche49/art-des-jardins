@@ -1,6 +1,6 @@
 import { Injectable, UnauthorizedException, BadRequestException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { generateSecret, generate, verify, generateURI } from 'otplib';
+import { authenticator } from 'otplib';
 import * as QRCode from 'qrcode';
 import * as bcrypt from 'bcrypt';
 import * as crypto from 'crypto';
@@ -43,12 +43,8 @@ export class TwoFactorService {
       throw new BadRequestException('2FA déjà activé. Désactivez-le d\'abord pour le reconfigurer.');
     }
 
-    const secret = generateSecret();
-    const otpauthUrl = generateURI({
-      issuer: 'Art & Jardin',
-      label: user.email,
-      secret,
-    });
+    const secret = authenticator.generateSecret();
+    const otpauthUrl = authenticator.keyuri(user.email, 'Art & Jardin', secret);
     const qrCode = await QRCode.toDataURL(otpauthUrl);
 
     // Store encrypted secret (not yet enabled)
@@ -79,7 +75,7 @@ export class TwoFactorService {
     }
 
     const secret = this.decrypt(user.twoFactorSecret);
-    const isValid = await verify({ token, secret });
+    const isValid = authenticator.verify({ token, secret });
 
     if (!isValid) {
       return { success: false };
@@ -137,7 +133,7 @@ export class TwoFactorService {
     }
 
     const secret = this.decrypt(user.twoFactorSecret);
-    const isValid = await verify({ token, secret });
+    const isValid = authenticator.verify({ token, secret });
 
     if (isValid) {
       // Reset attempts on success
@@ -191,7 +187,7 @@ export class TwoFactorService {
 
     // Verify current 2FA code before disabling
     const secret = this.decrypt(user.twoFactorSecret!);
-    const isValid = await verify({ token, secret });
+    const isValid = authenticator.verify({ token, secret });
 
     if (!isValid) {
       throw new UnauthorizedException('Code 2FA invalide');
@@ -231,7 +227,7 @@ export class TwoFactorService {
 
     // Verify current 2FA code
     const secret = this.decrypt(user.twoFactorSecret);
-    const isValid = await verify({ token, secret });
+    const isValid = authenticator.verify({ token, secret });
 
     if (!isValid) {
       throw new UnauthorizedException('Code 2FA invalide');

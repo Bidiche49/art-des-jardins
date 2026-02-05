@@ -2,7 +2,7 @@ import { Injectable, Logger } from '@nestjs/common';
 import { PrismaService } from '../../database/prisma.service';
 import { GoogleCalendarService } from './google-calendar.service';
 import { MicrosoftCalendarService } from './microsoft-calendar.service';
-import { Intervention, Chantier, Client, CalendarIntegration } from '@prisma/client';
+import { Intervention, Chantier, Client, CalendarIntegration } from '@art-et-jardin/database';
 
 type InterventionWithRelations = Intervention & {
   chantier: Chantier & {
