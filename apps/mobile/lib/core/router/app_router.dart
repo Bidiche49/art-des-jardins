@@ -17,6 +17,10 @@ import '../../features/interventions/presentation/pages/intervention_detail_page
 import '../../features/interventions/presentation/pages/interventions_list_page.dart';
 import '../../features/interventions/presentation/widgets/intervention_form.dart';
 import '../../features/chantiers/presentation/providers/chantiers_providers.dart' show chantiersListNotifierProvider;
+import '../../domain/models/devis.dart';
+import '../../features/devis/presentation/pages/devis_builder_page.dart';
+import '../../features/devis/presentation/pages/devis_detail_page.dart';
+import '../../features/devis/presentation/pages/devis_list_page.dart';
 import '../../features/sync/presentation/pages/conflict_resolution_page.dart';
 import '../../shared/layouts/app_shell.dart';
 import 'route_names.dart';
@@ -162,21 +166,30 @@ final routerProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: RoutePaths.devis,
             name: RouteNames.devis,
-            builder: (context, state) =>
-                const _PlaceholderPage(title: 'Devis'),
+            builder: (context, state) => const DevisListPage(),
             routes: [
               GoRoute(
                 path: 'new',
                 name: RouteNames.devisCreate,
-                builder: (context, state) =>
-                    const _PlaceholderPage(title: 'Nouveau devis'),
+                builder: (context, state) => Consumer(
+                  builder: (context, ref, _) {
+                    final chantiersState =
+                        ref.watch(chantiersListNotifierProvider);
+                    final chantiers = chantiersState.valueOrNull ?? [];
+                    final existingDevis = state.extra as Devis?;
+                    return DevisBuilderPage(
+                      chantiers: chantiers,
+                      existingDevis: existingDevis,
+                    );
+                  },
+                ),
               ),
               GoRoute(
                 path: ':id',
                 name: RouteNames.devisDetail,
                 builder: (context, state) {
                   final id = state.pathParameters['id']!;
-                  return _PlaceholderPage(title: 'Devis $id');
+                  return DevisDetailPage(devisId: id);
                 },
               ),
             ],

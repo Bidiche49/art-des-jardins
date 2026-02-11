@@ -1,7 +1,7 @@
 # FEAT-091: [Flutter] Phase 9A - Devis Builder
 
 **Type:** Feature
-**Statut:** A faire
+**Statut:** Fait
 **Priorite:** Critique
 **Complexite:** L
 **Tags:** mobile, flutter, devis, calcul, templates

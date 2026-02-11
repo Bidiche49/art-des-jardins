@@ -275,7 +275,7 @@
 | 10 | FEAT-088 | Phase 7 | Clients CRUD complet | **DONE** | 51 |
 | 11 | FEAT-089 | Phase 8A | Chantiers + Rentabilite | **DONE** | 55 |
 | 12 | FEAT-090 | Phase 8B | Interventions + Photos | **DONE** | 64 |
-| 13 | FEAT-091 | Phase 9A | Devis Builder | PENDING | ~48 |
+| 13 | FEAT-091 | Phase 9A | Devis Builder | **DONE** | 77 |
 | 14 | FEAT-092 | Phase 9B | Factures + Signature | PENDING | ~36 |
 | 15 | FEAT-093 | Phase 10 | Calendrier + Meteo + Absences | PENDING | ~38 |
 | 16 | FEAT-094 | Phase 11 | Dashboard + Analytics | PENDING | ~38 |

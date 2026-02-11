@@ -22,7 +22,7 @@
 | 7 | Clients CRUD complet | FEAT-088 | FAIT | 51/51 | 2026-02-11 |
 | 8A | Chantiers + Rentabilite | FEAT-089 | FAIT | 55/55 | 2026-02-11 |
 | 8B | Interventions + Photos | FEAT-090 | FAIT | 64/64 | 2026-02-11 |
-| 9A | Devis Builder | FEAT-091 | A faire | - | - |
+| 9A | Devis Builder | FEAT-091 | FAIT | 77/77 | 2026-02-11 |
 | 9B | Factures + Signature | FEAT-092 | A faire | - | - |
 | 10 | Calendrier + Meteo + Absences | FEAT-093 | A faire | - | - |
 | 11 | Dashboard + Analytics | FEAT-094 | A faire | - | - |
@@ -39,10 +39,10 @@
 
 ## Compteurs
 
-- **Phases terminees** : 13/20
-- **Tests totaux** : 620
+- **Phases terminees** : 14/20
+- **Tests totaux** : 697
 - **Tests prevus** : ~1009 (939 features + 40 UX + 30 perf)
-- **Couverture** : Phase 0 a Phase 8B
+- **Couverture** : Phase 0 a Phase 9A
 
 ---
 
@@ -229,3 +229,23 @@
 - `PhotoQueueService` : processQueue, backoff max 3 retries, suppression fichier local apres upload, retryFailed
 - Routes branchees dans `app_router.dart` : /interventions (liste semaine), /interventions/new (form), /interventions/:id (detail)
 - 620 tests passent (64 nouveaux), `flutter analyze` clean (0 issues)
+
+### 2026-02-11 - Phase 9A
+
+- `DevisRepository` : interface abstraite (CRUD + getByChantier + getByStatut + updateStatut + getPdfUrl + getTemplates + getLignes)
+- `DevisRepositoryImpl` : offline-first (API + cache Drift, fallback cache si erreur)
+- IDs temporaires `temp-{timestamp}` en mode offline, addToQueue pour sync
+- Calculs locaux totaux HT/TVA/TTC pour mode offline
+- `DevisListNotifier` (StateNotifier) : load, setFilter(statut), search(query), deleteDevis
+- `DevisDetailNotifier` (StateNotifier.family) : load, updateStatut, deleteDevis
+- `DevisBuilderNotifier` (StateNotifier) : addLigne, removeLigne, updateLigne, importTemplate/importTemplates, saveBrouillon, envoyerDevis, loadExistingDevis, reset
+- `DevisBuilderState` : calculs temps reel totalHT/totalTVA/totalTTC avec arrondi 2 decimales
+- `DevisListPage` : liste avec filtre statut (PopupMenuButton), FAB nouveau, RefreshIndicator, empty state
+- `DevisDetailPage` : header badge statut, sections Informations/Montants/Lignes/Notes/Conditions, actions envoyer/PDF/supprimer
+- `DevisBuilderPage` : dropdown chantier, lignes dynamiques, import template (BottomSheet), notes/conditions, bottom bar totaux + bouton envoyer
+- `DevisCard` : numero, date, montant TTC, badge statut colore, chevron
+- `LigneDevisRow` : description/qte/unite/prix/tva editables, montant HT affiche, bouton supprimer
+- `DevisTotaux` : HT/TVA/TTC avec Divider et style primary
+- `TemplatePicker` : groupes par categorie, ListTile avec prix/unite, tap ajoute ligne
+- Routes branchees dans `app_router.dart` : /devis (liste), /devis/new (builder), /devis/:id (detail)
+- 697 tests passent (77 nouveaux), `flutter analyze` clean (0 issues)
