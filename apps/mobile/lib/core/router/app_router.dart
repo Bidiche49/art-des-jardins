@@ -5,8 +5,13 @@ import 'package:go_router/go_router.dart';
 import '../../features/auth/domain/auth_state.dart';
 import '../../features/auth/presentation/auth_notifier.dart';
 import '../../features/auth/presentation/pages/login_page.dart';
+import '../../features/chantiers/presentation/pages/chantier_detail_page.dart';
+import '../../features/chantiers/presentation/pages/chantiers_list_page.dart';
+import '../../features/chantiers/presentation/pages/rentabilite_page.dart';
+import '../../features/chantiers/presentation/widgets/chantier_form.dart';
 import '../../features/clients/presentation/pages/client_detail_page.dart';
 import '../../features/clients/presentation/pages/clients_list_page.dart';
+import '../../features/clients/presentation/providers/clients_providers.dart';
 import '../../features/clients/presentation/widgets/client_form.dart';
 import '../../features/sync/presentation/pages/conflict_resolution_page.dart';
 import '../../shared/layouts/app_shell.dart';
@@ -107,21 +112,35 @@ final routerProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: RoutePaths.chantiers,
             name: RouteNames.chantiers,
-            builder: (context, state) =>
-                const _PlaceholderPage(title: 'Chantiers'),
+            builder: (context, state) => const ChantiersListPage(),
             routes: [
               GoRoute(
                 path: 'new',
                 name: RouteNames.chantierCreate,
-                builder: (context, state) =>
-                    const _PlaceholderPage(title: 'Nouveau chantier'),
+                builder: (context, state) => Consumer(
+                  builder: (context, ref, _) {
+                    final clientsState =
+                        ref.watch(clientsListNotifierProvider);
+                    final clients = clientsState.valueOrNull ?? [];
+                    return Scaffold(
+                      appBar:
+                          AppBar(title: const Text('Nouveau chantier')),
+                      body: ChantierForm(
+                        clients: clients,
+                        onSubmit: (chantier) {
+                          context.pop(chantier);
+                        },
+                      ),
+                    );
+                  },
+                ),
               ),
               GoRoute(
                 path: ':id',
                 name: RouteNames.chantierDetail,
                 builder: (context, state) {
                   final id = state.pathParameters['id']!;
-                  return _PlaceholderPage(title: 'Chantier $id');
+                  return ChantierDetailPage(chantierId: id);
                 },
                 routes: [
                   GoRoute(
@@ -129,8 +148,7 @@ final routerProvider = Provider<GoRouter>((ref) {
                     name: RouteNames.chantierRentabilite,
                     builder: (context, state) {
                       final id = state.pathParameters['id']!;
-                      return _PlaceholderPage(
-                          title: 'Rentabilite chantier $id');
+                      return RentabilitePage(chantierId: id);
                     },
                   ),
                 ],
