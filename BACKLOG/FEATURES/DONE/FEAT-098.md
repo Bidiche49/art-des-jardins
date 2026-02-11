@@ -1,7 +1,7 @@
 # FEAT-098: [Flutter] Phase 15 - Onboarding tour
 
 **Type:** Feature
-**Statut:** A faire
+**Statut:** Fait
 **Priorite:** Basse
 **Complexite:** M
 **Tags:** mobile, flutter, onboarding, ux

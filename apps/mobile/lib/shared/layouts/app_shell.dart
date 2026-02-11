@@ -7,6 +7,8 @@ import 'package:go_router/go_router.dart';
 import '../../core/router/route_names.dart';
 import '../../features/auth/domain/auth_state.dart';
 import '../../features/auth/presentation/auth_notifier.dart';
+import '../../features/onboarding/presentation/providers/onboarding_providers.dart';
+import '../../features/onboarding/presentation/widgets/onboarding_overlay.dart';
 import '../../services/biometric/biometric_service.dart';
 import '../../services/idle/idle_service.dart';
 import '../../services/idle/idle_warning_dialog.dart';
@@ -89,6 +91,13 @@ class _AppShellState extends ConsumerState<AppShell> with WidgetsBindingObserver
     if (authState is AuthAuthenticated) {
       final idleService = ref.read(idleServiceProvider);
       idleService.start(authState.user.role);
+
+      // Initialize onboarding after first frame (deferred to avoid provider modification during build)
+      final role = authState.user.role;
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (!mounted) return;
+        ref.read(onboardingNotifierProvider.notifier).initialize(role);
+      });
 
       _idleSubscription = idleService.stateStream.listen((state) {
         if (!mounted) return;
@@ -195,41 +204,46 @@ class _AppShellState extends ConsumerState<AppShell> with WidgetsBindingObserver
       behavior: HitTestBehavior.opaque,
       onTap: () => ref.read(idleServiceProvider).resetTimer(),
       onPanDown: (_) => ref.read(idleServiceProvider).resetTimer(),
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(_titleForLocation(location)),
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.search),
-              onPressed: () => context.pushNamed(RouteNames.search),
-              tooltip: 'Rechercher',
+      child: Stack(
+        children: [
+          Scaffold(
+            appBar: AppBar(
+              title: Text(_titleForLocation(location)),
+              actions: [
+                IconButton(
+                  icon: const Icon(Icons.search),
+                  onPressed: () => context.pushNamed(RouteNames.search),
+                  tooltip: 'Rechercher',
+                ),
+                IconButton(
+                  icon: const Icon(Icons.notifications_outlined),
+                  onPressed: () => context.pushNamed(RouteNames.notifications),
+                  tooltip: 'Notifications',
+                ),
+                IconButton(
+                  icon: const Icon(Icons.settings_outlined),
+                  onPressed: () => context.pushNamed(RouteNames.settings),
+                  tooltip: 'Parametres',
+                ),
+              ],
             ),
-            IconButton(
-              icon: const Icon(Icons.notifications_outlined),
-              onPressed: () => context.pushNamed(RouteNames.notifications),
-              tooltip: 'Notifications',
+            body: SafeArea(child: widget.child),
+            bottomNavigationBar: NavigationBar(
+              selectedIndex: currentIndex,
+              onDestinationSelected: (index) {
+                context.go(_navItems[index].path);
+              },
+              destinations: _navItems
+                  .map((item) => NavigationDestination(
+                        icon: Icon(item.icon),
+                        selectedIcon: Icon(item.activeIcon),
+                        label: item.label,
+                      ))
+                  .toList(),
             ),
-            IconButton(
-              icon: const Icon(Icons.settings_outlined),
-              onPressed: () => context.pushNamed(RouteNames.settings),
-              tooltip: 'Parametres',
-            ),
-          ],
-        ),
-        body: SafeArea(child: widget.child),
-        bottomNavigationBar: NavigationBar(
-          selectedIndex: currentIndex,
-          onDestinationSelected: (index) {
-            context.go(_navItems[index].path);
-          },
-          destinations: _navItems
-              .map((item) => NavigationDestination(
-                    icon: Icon(item.icon),
-                    selectedIcon: Icon(item.activeIcon),
-                    label: item.label,
-                  ))
-              .toList(),
-        ),
+          ),
+          const OnboardingOverlay(),
+        ],
       ),
     );
   }

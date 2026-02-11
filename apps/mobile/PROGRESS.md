@@ -29,7 +29,7 @@
 | 12 | Recherche + QR Scanner | FEAT-095 | FAIT | 41/41 | 2026-02-11 |
 | 13 | WebSocket temps reel | FEAT-096 | FAIT | 68/68 | 2026-02-11 |
 | 14 | Settings + Terrain + Idle | FEAT-097 | FAIT | 42/42 | 2026-02-11 |
-| 15 | Onboarding tour | FEAT-098 | A faire | - | - |
+| 15 | Onboarding tour | FEAT-098 | FAIT | 33/33 | 2026-02-11 |
 | 16 | Push Notifications FCM | FEAT-099 | A faire | - | - |
 | 18 | UX Polish Pass | FEAT-101 | A faire | - | - |
 | 19 | Performance + Production | FEAT-102 | A faire | - | - |
@@ -39,10 +39,10 @@
 
 ## Compteurs
 
-- **Phases terminees** : 20/20
-- **Tests totaux** : 981
-- **Tests prevus** : ~1051 (981 features + 40 UX + 30 perf)
-- **Couverture** : Phase 0 a Phase 14
+- **Phases terminees** : 21/21
+- **Tests totaux** : 1014
+- **Tests prevus** : ~1084 (1014 features + 40 UX + 30 perf)
+- **Couverture** : Phase 0 a Phase 15
 
 ---
 
@@ -370,3 +370,23 @@
 - Providers : idleServiceProvider, idleStateProvider (StreamProvider), idleCountdownProvider (StreamProvider), settingsRepositoryProvider, settingsNotifierProvider
 - Route `/settings` : placeholder remplace par vraie SettingsPage
 - 981 tests passent (42 nouveaux), `flutter analyze` clean (0 issues)
+
+### 2026-02-11 - Phase 15
+
+- `OnboardingRepository` : interface abstraite (isCompleted, setCompleted, getStep, setStep, saveStepToApi, completeOnApi, getStepsForRole)
+- `OnboardingRepositoryImpl` : implementation via AppPreferences + Dio API calls (PATCH /auth/onboarding/step et /complete)
+- API calls fire-and-forget (non-bloquant si erreur reseau)
+- Steps par role : patron 8 steps (Bienvenue, Dashboard, Clients, Chantiers, Devis, Calendrier, Analytics, Mode terrain), employe 5 steps (Bienvenue, Interventions, Calendrier, Mode terrain, Mode hors-ligne)
+- `OnboardingNotifier` (StateNotifier) : initialize(role), nextStep, previousStep, skip, complete
+- `OnboardingState` : currentStep, totalSteps, isCompleted, steps, role, currentStepData, isLastStep
+- Resume depuis le dernier step sauvegarde, clamp si out of bounds
+- Onboarding deja complete -> pas de re-affichage
+- `OnboardingOverlay` : overlay sombre plein ecran, tooltip Card centre avec icone, titre, description, barre progression X/N, boutons Passer/Retour/Suivant/Terminer
+- `OnboardingPage` : page plein ecran avec PageView, navigation par boutons, progress bar
+- Icones dynamiques par step (waving_hand, dashboard, people, construction, description, calendar_month, bar_chart, terrain, build, cloud_off)
+- `onboardingStep` ajoute a AppPreferences (getter + setter)
+- Endpoints `onboardingStep` et `onboardingComplete` ajoutes a ApiEndpoints
+- AppShell : Stack(Scaffold + OnboardingOverlay), initialisation deferred via addPostFrameCallback
+- App shell tests mis a jour : mock OnboardingRepository + registerFallbackValue(UserRole.employe)
+- Providers : onboardingRepositoryProvider, onboardingNotifierProvider
+- 1014 tests passent (33 nouveaux), `flutter analyze` clean (0 issues)

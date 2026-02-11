@@ -37,11 +37,16 @@ class AppPreferences {
 
   // Onboarding
   static const _onboardingCompletedKey = 'onboarding_completed';
+  static const _onboardingStepKey = 'onboarding_step';
 
   bool get onboardingCompleted =>
       _prefs.getBool(_onboardingCompletedKey) ?? false;
   Future<bool> setOnboardingCompleted(bool value) =>
       _prefs.setBool(_onboardingCompletedKey, value);
+
+  int get onboardingStep => _prefs.getInt(_onboardingStepKey) ?? 0;
+  Future<bool> setOnboardingStep(int value) =>
+      _prefs.setInt(_onboardingStepKey, value);
 
   // Biometric
   static const _biometricConfiguredKey = 'biometric_configured';

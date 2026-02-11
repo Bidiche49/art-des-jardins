@@ -9,12 +9,16 @@ import 'package:art_et_jardin/domain/models/user.dart';
 import 'package:art_et_jardin/features/auth/domain/auth_state.dart';
 import 'package:art_et_jardin/features/auth/presentation/auth_notifier.dart';
 import 'package:art_et_jardin/features/auth/domain/auth_repository.dart';
+import 'package:art_et_jardin/features/onboarding/data/onboarding_repository_impl.dart';
+import 'package:art_et_jardin/features/onboarding/domain/onboarding_repository.dart';
 import 'package:art_et_jardin/services/biometric/biometric_service.dart';
 import 'package:art_et_jardin/shared/layouts/app_shell.dart';
 
 class MockAuthRepository extends Mock implements AuthRepository {}
 
 class MockBiometricService extends Mock implements BiometricService {}
+
+class MockOnboardingRepository extends Mock implements OnboardingRepository {}
 
 User _testUser() => User(
       id: '1',
@@ -106,9 +110,18 @@ void main() {
   late MockBiometricService mockBio;
   late List<Override> overrides;
 
+  setUpAll(() {
+    registerFallbackValue(UserRole.employe);
+  });
+
   setUp(() {
     mockRepo = MockAuthRepository();
     mockBio = MockBiometricService();
+
+    final mockOnboarding = MockOnboardingRepository();
+    when(() => mockOnboarding.isCompleted()).thenReturn(true);
+    when(() => mockOnboarding.getStep()).thenReturn(0);
+    when(() => mockOnboarding.getStepsForRole(any())).thenReturn([]);
 
     overrides = [
       authNotifierProvider.overrideWith((ref) {
@@ -117,6 +130,7 @@ void main() {
           biometricService: mockBio,
         )..state = AuthAuthenticated(_testUser());
       }),
+      onboardingRepositoryProvider.overrideWithValue(mockOnboarding),
     ];
   });
 

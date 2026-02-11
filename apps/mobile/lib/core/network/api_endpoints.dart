@@ -53,6 +53,10 @@ class ApiEndpoints {
   static String signatureLoad(String token) => '/signature/$token';
   static String signatureSign(String token) => '/signature/$token/sign';
 
+  // Onboarding
+  static const String onboardingStep = '/auth/onboarding/step';
+  static const String onboardingComplete = '/auth/onboarding/complete';
+
   // Templates
   static const String templates = '/templates';
 
