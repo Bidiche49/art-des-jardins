@@ -25,7 +25,7 @@
 | 9A | Devis Builder | FEAT-091 | FAIT | 77/77 | 2026-02-11 |
 | 9B | Factures + Signature | FEAT-092 | FAIT | 44/44 | 2026-02-11 |
 | 10 | Calendrier + Meteo + Absences | FEAT-093 | FAIT | 47/47 | 2026-02-11 |
-| 11 | Dashboard + Analytics | FEAT-094 | A faire | - | - |
+| 11 | Dashboard + Analytics | FEAT-094 | FAIT | 42/42 | 2026-02-11 |
 | 12 | Recherche + QR Scanner | FEAT-095 | A faire | - | - |
 | 13 | WebSocket temps reel | FEAT-096 | A faire | - | - |
 | 14 | Settings + Terrain + Idle | FEAT-097 | A faire | - | - |
@@ -39,10 +39,10 @@
 
 ## Compteurs
 
-- **Phases terminees** : 16/20
-- **Tests totaux** : 788
+- **Phases terminees** : 17/20
+- **Tests totaux** : 830
 - **Tests prevus** : ~1009 (939 features + 40 UX + 30 perf)
-- **Couverture** : Phase 0 a Phase 10
+- **Couverture** : Phase 0 a Phase 11
 
 ---
 
@@ -294,3 +294,23 @@
 - Endpoint ajoute : `absence(id)` dans ApiEndpoints
 - Coordonnees Angers (47.4784, -0.5632) pour meteo
 - 788 tests passent (47 nouveaux), `flutter analyze` clean (0 issues)
+
+### 2026-02-11 - Phase 11
+
+- `DashboardRepository` : interface abstraite (getStats, getUpcomingInterventions, getFacturesImpayees, getRevenueByMonth, getRevenueByClient)
+- `DashboardRepositoryImpl` : offline-first (API + cache multi-DAO, fallback cache si erreur)
+- Agrege donnees depuis ClientsDao, ChantiersDao, DevisDao, FacturesDao, InterventionsDao
+- `DashboardNotifier` (StateNotifier) : 4 KPI (clients, chantiers en cours, devis en attente, CA mois), interventions a venir, factures impayees
+- `AnalyticsNotifier` (StateNotifier) : revenue mensuel, selecteur annee, comparaison N vs N-1, calcul % evolution
+- `FinanceNotifier` (StateNotifier) : 4 tabs (Resume, Par client, Impayes, Previsionnel), totalCA, totalImpayees, revenueByClient, marge brute/nette
+- `DashboardPage` : grille 4 KpiCard, RevenueBarChart (fl_chart), ImpayeesAlert, UpcomingInterventionsList, bouton Analytics
+- `AnalyticsPage` : YearSelector (prev/next), KpiCard grille, RevenueBarChart avec comparaison N-1, legende
+- `FinancePage` : TabBar 4 tabs, Resume (KPI + table mensuelle), Par client (progress bars), Impayes (liste + total), Previsionnel (CA + potentiel)
+- `KpiCard` : titre, valeur, icone, trend indicator (+/-), subtitle, onTap
+- `RevenueBarChart` : BarChart fl_chart 12 mois, donnees N + N-1, tooltip
+- `UpcomingInterventionsList` : ListTile, date FR, badge Valide/En cours
+- `ImpayeesAlert` : banner erreur, nombre factures, total EUR, navigation
+- Routes branchees dans `app_router.dart` : / (dashboard), /analytics, /finance
+- Route names : `finance` dans RouteNames + RoutePaths
+- Placeholders dashboard + analytics remplaces par vraies pages
+- 830 tests passent (42 nouveaux), `flutter analyze` clean (0 issues)

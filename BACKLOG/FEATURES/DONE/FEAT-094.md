@@ -1,7 +1,7 @@
 # FEAT-094: [Flutter] Phase 11 - Dashboard + Analytics + Finance
 
 **Type:** Feature
-**Statut:** A faire
+**Statut:** Fait
 **Priorite:** Haute
 **Complexite:** M
 **Tags:** mobile, flutter, dashboard, analytics, charts
