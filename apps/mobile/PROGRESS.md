@@ -30,7 +30,7 @@
 | 13 | WebSocket temps reel | FEAT-096 | FAIT | 68/68 | 2026-02-11 |
 | 14 | Settings + Terrain + Idle | FEAT-097 | FAIT | 42/42 | 2026-02-11 |
 | 15 | Onboarding tour | FEAT-098 | FAIT | 33/33 | 2026-02-11 |
-| 16 | Push Notifications FCM | FEAT-099 | A faire | - | - |
+| 16 | Push Notifications FCM | FEAT-099 | FAIT | 37/37 | 2026-02-11 |
 | 18 | UX Polish Pass | FEAT-101 | A faire | - | - |
 | 19 | Performance + Production | FEAT-102 | A faire | - | - |
 | 17 | Tests integration (DERNIER) | FEAT-100 | A faire | - | - |
@@ -39,10 +39,10 @@
 
 ## Compteurs
 
-- **Phases terminees** : 21/21
-- **Tests totaux** : 1014
-- **Tests prevus** : ~1084 (1014 features + 40 UX + 30 perf)
-- **Couverture** : Phase 0 a Phase 15
+- **Phases terminees** : 22/22
+- **Tests totaux** : 1051
+- **Tests prevus** : ~1121 (1051 features + 40 UX + 30 perf)
+- **Couverture** : Phase 0 a Phase 16
 
 ---
 
@@ -390,3 +390,24 @@
 - App shell tests mis a jour : mock OnboardingRepository + registerFallbackValue(UserRole.employe)
 - Providers : onboardingRepositoryProvider, onboardingNotifierProvider
 - 1014 tests passent (33 nouveaux), `flutter analyze` clean (0 issues)
+
+### 2026-02-11 - Phase 16
+
+- `NotificationService` : interface abstraite (initialize, requestPermission, getToken, registerToken, unregisterToken, onForegroundMessage, onNotificationTap, showLocalNotification, resolveDeepLink)
+- `NotificationServiceImpl` : implementation avec Dio pour enregistrement token FCM backend
+- Endpoints `notificationsSubscribe` et `notificationsUnsubscribe` ajoutes a ApiEndpoints
+- `PushNotificationPayload` : modele titre + body + deepLink + data
+- `handleForegroundMessage()` / `handleNotificationTap()` : injection messages pour integration
+- Deep link resolution : devis, facture, intervention, client, chantier, absence -> route correspondante
+- Token registration : POST /notifications/subscribe avec fcmToken + platform (ios/android/mobile)
+- Token unregistration : POST /notifications/unsubscribe avec fcmToken
+- API errors silencieux (non-bloquant) pour register/unregister
+- `NotificationNotifier` (StateNotifier) : initialize, onTokenRefresh, onLogout
+- `NotificationState` : isPermissionGranted, fcmToken, lastNotification, isInitialized
+- Initialize idempotent (flag _initialized), permission check avant tout
+- Permission refusee -> pas de token registration, fonctionne sans push
+- Token null -> pas d'envoi au backend
+- Logout -> unregister token + reset state
+- Foreground message -> update lastNotification + showLocalNotification
+- Providers : notificationServiceProvider, notificationNotifierProvider, foregroundNotificationsProvider (StreamProvider), notificationTapProvider (StreamProvider)
+- 1051 tests passent (37 nouveaux), `flutter analyze` clean (0 issues)

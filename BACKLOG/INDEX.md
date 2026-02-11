@@ -283,7 +283,7 @@
 | 18 | FEAT-096 | Phase 13 | WebSocket temps reel | **DONE** | 68 |
 | 19 | FEAT-097 | Phase 14 | Settings + Terrain + Idle | **DONE** | 42 |
 | 20 | FEAT-098 | Phase 15 | Onboarding tour | **DONE** | 33 |
-| 21 | FEAT-099 | Phase 16 | Push Notifications FCM | PENDING | ~22 |
+| 21 | FEAT-099 | Phase 16 | Push Notifications FCM | **DONE** | 37 |
 | 22 | FEAT-100 | Phase 17 | Tests integration + Polish | PENDING | ~59 |
 | 23 | FEAT-101 | Phase 18 | UX Polish Pass | PENDING | ~40 |
 | 24 | FEAT-102 | Phase 19 | Performance + Production | PENDING | ~30 |

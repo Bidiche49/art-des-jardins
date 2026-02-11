@@ -57,6 +57,10 @@ class ApiEndpoints {
   static const String onboardingStep = '/auth/onboarding/step';
   static const String onboardingComplete = '/auth/onboarding/complete';
 
+  // Notifications
+  static const String notificationsSubscribe = '/notifications/subscribe';
+  static const String notificationsUnsubscribe = '/notifications/unsubscribe';
+
   // Templates
   static const String templates = '/templates';
 

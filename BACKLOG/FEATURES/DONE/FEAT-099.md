@@ -1,7 +1,7 @@
 # FEAT-099: [Flutter] Phase 16 - Push Notifications FCM
 
 **Type:** Feature
-**Statut:** A faire
+**Statut:** Fait
 **Priorite:** Moyenne
 **Complexite:** M
 **Tags:** mobile, flutter, notifications, firebase
