@@ -19,9 +19,9 @@
 | Type | Pending | Ready | Done | Total |
 |------|---------|-------|------|-------|
 | Bugs | 0 | 0 | 0 | 0 |
-| Features | 26 | 10 | 66 | 102 |
+| Features | 25 | 10 | 67 | 102 |
 | Improvements | 1 | 7 | 0 | 8 |
-| **Total** | **27** | **17** | **66** | **110** |
+| **Total** | **26** | **17** | **67** | **110** |
 
 ---
 
@@ -280,7 +280,7 @@
 | 15 | FEAT-093 | Phase 10 | Calendrier + Meteo + Absences | **DONE** | 47 |
 | 16 | FEAT-094 | Phase 11 | Dashboard + Analytics | **DONE** | 42 |
 | 17 | FEAT-095 | Phase 12 | Recherche + QR Scanner | **DONE** | 41 |
-| 18 | FEAT-096 | Phase 13 | WebSocket temps reel | PENDING | ~30 |
+| 18 | FEAT-096 | Phase 13 | WebSocket temps reel | **DONE** | 68 |
 | 19 | FEAT-097 | Phase 14 | Settings + Terrain + Idle | PENDING | ~34 |
 | 20 | FEAT-098 | Phase 15 | Onboarding tour | PENDING | ~24 |
 | 21 | FEAT-099 | Phase 16 | Push Notifications FCM | PENDING | ~22 |
@@ -390,6 +390,7 @@
 | FEAT-089 | [Flutter] Phase 8A - Chantiers + Rentabilite | Haute | 2026-02-11 |
 | FEAT-092 | [Flutter] Phase 9B - Factures + Signature | Haute | 2026-02-11 |
 | FEAT-094 | [Flutter] Phase 11 - Dashboard + Analytics | Haute | 2026-02-11 |
+| FEAT-096 | [Flutter] Phase 13 - WebSocket temps reel | Moyenne | 2026-02-11 |
 
 ---
 

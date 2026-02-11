@@ -27,7 +27,7 @@
 | 10 | Calendrier + Meteo + Absences | FEAT-093 | FAIT | 47/47 | 2026-02-11 |
 | 11 | Dashboard + Analytics | FEAT-094 | FAIT | 42/42 | 2026-02-11 |
 | 12 | Recherche + QR Scanner | FEAT-095 | FAIT | 41/41 | 2026-02-11 |
-| 13 | WebSocket temps reel | FEAT-096 | A faire | - | - |
+| 13 | WebSocket temps reel | FEAT-096 | FAIT | 68/68 | 2026-02-11 |
 | 14 | Settings + Terrain + Idle | FEAT-097 | A faire | - | - |
 | 15 | Onboarding tour | FEAT-098 | A faire | - | - |
 | 16 | Push Notifications FCM | FEAT-099 | A faire | - | - |
@@ -39,10 +39,10 @@
 
 ## Compteurs
 
-- **Phases terminees** : 18/20
-- **Tests totaux** : 871
+- **Phases terminees** : 19/20
+- **Tests totaux** : 939
 - **Tests prevus** : ~1009 (939 features + 40 UX + 30 perf)
-- **Couverture** : Phase 0 a Phase 12
+- **Couverture** : Phase 0 a Phase 13
 
 ---
 
@@ -330,3 +330,22 @@
 - Endpoint `ApiEndpoints.search` ajoute
 - Placeholders search + scanner remplaces par vraies pages dans app_router.dart
 - 871 tests passent (41 nouveaux), `flutter analyze` clean (0 issues)
+
+### 2026-02-11 - Phase 13
+
+- `RealtimeService` : service WebSocket socket.io avec auth JWT token
+- `connect()` : recupere token, cree socket.io avec transport websocket + auth, `disableAutoConnect()` + `connect()` explicite
+- `disconnect()` : clearListeners, disconnect, dispose socket, reset state
+- Reconnexion auto : backoff exponentiel 1s/2s/4s, max 3 tentatives (AppConstants.maxRetries)
+- Retour online : ecoute `ConnectivityService.statusStream`, reconnexion auto quand `online` et `disconnected`
+- `RealtimeConnectionState` : enum (disconnected, connecting, connected), stream broadcast
+- `RealtimeEventTypes` : 8 evenements (devis:created/signed/rejected, facture:created/paid, intervention:started/completed, client:created)
+- `RealtimeEvent` : type + payload (Map<String, dynamic>), stream broadcast
+- `_handleEvent()` : parse payload, ignore payloads malformes sans crash
+- URL WebSocket derivee de `EnvConfig.apiUrl` (strip `/api/v1` suffix)
+- `RealtimeNotifier` (StateNotifier) : ecoute events + connectionState, callbacks `onEventReceived` et `onInvalidateProviders`
+- `RealtimeNotifierState` : connectionState, lastEvent, eventCount avec copyWith
+- `RealtimeEventMessages` : messages FR contextualises par type d'evenement (avec payload optionnel), icones par categorie
+- `RealtimeConnectionBadge` : widget ConsumerWidget, dot colore (vert/rouge/ambre), Tooltip FR
+- Providers : `realtimeServiceProvider` (avec `ref.onDispose`), `realtimeConnectionStateProvider` (StreamProvider), `realtimeEventsProvider` (StreamProvider), `realtimeNotifierProvider` (StateNotifierProvider)
+- 939 tests passent (68 nouveaux), `flutter analyze` clean (0 issues)

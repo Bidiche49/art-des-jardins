@@ -1,7 +1,8 @@
 # FEAT-096: [Flutter] Phase 13 - WebSocket temps reel
 
 **Type:** Feature
-**Statut:** A faire
+**Statut:** Fait
+**Date resolution:** 2026-02-11
 **Priorite:** Moyenne
 **Complexite:** M
 **Tags:** mobile, flutter, websocket, realtime
