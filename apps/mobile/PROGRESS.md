@@ -12,7 +12,7 @@
 | 0 | Scaffolding projet | FEAT-078 | FAIT | 2/2 | 2026-02-10 |
 | 1A | Theme + Config + Utils | FEAT-079 | FAIT | 66/66 | 2026-02-11 |
 | 1B | Networking + Secure Storage | FEAT-080 | FAIT | 93/93 | 2026-02-11 |
-| 2 | Domain Models + Enums | FEAT-081 | A faire | - | - |
+| 2 | Domain Models + Enums | FEAT-081 | FAIT | 106/106 | 2026-02-11 |
 | 3 | Database Drift | FEAT-082 | A faire | - | - |
 | 4A | Auth employe | FEAT-083 | A faire | - | - |
 | 4B | Router + App Shell | FEAT-084 | A faire | - | - |
@@ -39,10 +39,10 @@
 
 ## Compteurs
 
-- **Phases terminees** : 3/20
-- **Tests totaux** : 93
+- **Phases terminees** : 4/20
+- **Tests totaux** : 199
 - **Tests prevus** : ~1009 (939 features + 40 UX + 30 perf)
-- **Couverture** : Phase 0 + Phase 1A + Phase 1B
+- **Couverture** : Phase 0 + Phase 1A + Phase 1B + Phase 2
 
 ---
 
@@ -87,3 +87,11 @@
 - `api_response_dto.dart` : ApiResponse<T> generique (data + message + success)
 - `paginated_response_dto.dart` : PaginatedResponse<T> (items + page + total + hasNext)
 - 93 tests passent (27 nouveaux), `flutter analyze` clean
+
+### 2026-02-11 - Phase 2
+
+- 14 enums avec `value` (JSON) et `label` (FR) : ClientType, UserRole, ChantierStatut (9 val), TypePrestation (7 val), DevisStatut (6 val), FactureStatut, ModePaiement, AbsenceType, PhotoType, SenderType, NotificationType, SyncStatus, DocumentType, CalendarProvider
+- 20 modeles freezed : User, Client, Chantier, Devis, LigneDevis, Facture, Intervention, Photo, Absence, Conversation, Message, InAppNotification, PrestationTemplate, DashboardStats, DailyWeather, AuthResponse, SyncQueueItem, SyncConflict, SearchResult, RentabiliteData
+- `build.yaml` avec `explicit_to_json: true` pour serialisation nested models
+- Barrel exports : `enums/enums.dart` et `models/models.dart`
+- 199 tests passent (106 nouveaux), `flutter analyze` clean (0 issues)

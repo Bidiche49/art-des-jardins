@@ -1,7 +1,7 @@
 # FEAT-081: [Flutter] Phase 2 - Domain Models + Enums
 
 **Type:** Feature
-**Statut:** A faire
+**Statut:** Fait
 **Priorite:** Critique
 **Complexite:** M
 **Tags:** mobile, flutter, models, domain
