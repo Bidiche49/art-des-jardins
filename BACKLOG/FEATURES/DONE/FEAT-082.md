@@ -1,7 +1,7 @@
 # FEAT-082: [Flutter] Phase 3 - Base de donnees locale Drift
 
 **Type:** Feature
-**Statut:** A faire
+**Statut:** Fait
 **Priorite:** Critique
 **Complexite:** M
 **Tags:** mobile, flutter, database, offline

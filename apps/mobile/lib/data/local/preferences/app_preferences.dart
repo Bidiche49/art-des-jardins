@@ -43,6 +43,14 @@ class AppPreferences {
   Future<bool> setOnboardingCompleted(bool value) =>
       _prefs.setBool(_onboardingCompletedKey, value);
 
+  // Biometric
+  static const _biometricConfiguredKey = 'biometric_configured';
+
+  bool get biometricConfigured =>
+      _prefs.getBool(_biometricConfiguredKey) ?? false;
+  Future<bool> setBiometricConfigured(bool value) =>
+      _prefs.setBool(_biometricConfiguredKey, value);
+
   // Last sync
   static const _lastSyncKey = 'last_sync';
 

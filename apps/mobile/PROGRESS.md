@@ -13,7 +13,7 @@
 | 1A | Theme + Config + Utils | FEAT-079 | FAIT | 66/66 | 2026-02-11 |
 | 1B | Networking + Secure Storage | FEAT-080 | FAIT | 93/93 | 2026-02-11 |
 | 2 | Domain Models + Enums | FEAT-081 | FAIT | 106/106 | 2026-02-11 |
-| 3 | Database Drift | FEAT-082 | A faire | - | - |
+| 3 | Database Drift | FEAT-082 | FAIT | 71/71 | 2026-02-11 |
 | 4A | Auth employe | FEAT-083 | A faire | - | - |
 | 4B | Router + App Shell | FEAT-084 | A faire | - | - |
 | 5 | Design System Widgets | FEAT-085 | A faire | - | - |
@@ -39,10 +39,10 @@
 
 ## Compteurs
 
-- **Phases terminees** : 4/20
-- **Tests totaux** : 199
+- **Phases terminees** : 5/20
+- **Tests totaux** : 270
 - **Tests prevus** : ~1009 (939 features + 40 UX + 30 perf)
-- **Couverture** : Phase 0 + Phase 1A + Phase 1B + Phase 2
+- **Couverture** : Phase 0 + Phase 1A + Phase 1B + Phase 2 + Phase 3
 
 ---
 
@@ -95,3 +95,13 @@
 - `build.yaml` avec `explicit_to_json: true` pour serialisation nested models
 - Barrel exports : `enums/enums.dart` et `models/models.dart`
 - 199 tests passent (106 nouveaux), `flutter analyze` clean (0 issues)
+
+### 2026-02-11 - Phase 3
+
+- 8 tables Drift : clients, chantiers, interventions, devis, factures, sync_queue, sync_meta, photo_queue
+- 8 DAOs avec CRUD complet + queries specifiques (getByClient, getByStatut, getPending, etc.)
+- `app_database.dart` avec configuration Drift, migrations, providers Riverpod
+- SQLite sans FK constraints (offline-first, pas de cascade)
+- `NativeDatabase.memory()` pour tests rapides
+- `customStatement` pour incrementRetryCount dans SyncQueueDao
+- 270 tests passent (71 nouveaux), `flutter analyze` clean (0 issues)
