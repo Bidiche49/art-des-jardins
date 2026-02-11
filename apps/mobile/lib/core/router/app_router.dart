@@ -21,6 +21,8 @@ import '../../domain/models/devis.dart';
 import '../../features/devis/presentation/pages/devis_builder_page.dart';
 import '../../features/devis/presentation/pages/devis_detail_page.dart';
 import '../../features/devis/presentation/pages/devis_list_page.dart';
+import '../../features/factures/presentation/pages/factures_list_page.dart';
+import '../../features/signature/presentation/pages/signer_devis_page.dart';
 import '../../features/sync/presentation/pages/conflict_resolution_page.dart';
 import '../../shared/layouts/app_shell.dart';
 import 'route_names.dart';
@@ -76,7 +78,7 @@ final routerProvider = Provider<GoRouter>((ref) {
         name: RouteNames.signerDevis,
         builder: (context, state) {
           final token = state.pathParameters['token']!;
-          return _PlaceholderPage(title: 'Signer devis: $token');
+          return SignerDevisPage(token: token);
         },
       ),
 
@@ -244,12 +246,19 @@ final routerProvider = Provider<GoRouter>((ref) {
             ],
           ),
           GoRoute(
-            path: RoutePaths.factureDetail,
-            name: RouteNames.factureDetail,
-            builder: (context, state) {
-              final id = state.pathParameters['id']!;
-              return _PlaceholderPage(title: 'Facture $id');
-            },
+            path: RoutePaths.factures,
+            name: RouteNames.factures,
+            builder: (context, state) => const FacturesListPage(),
+            routes: [
+              GoRoute(
+                path: ':id',
+                name: RouteNames.factureDetail,
+                builder: (context, state) {
+                  final id = state.pathParameters['id']!;
+                  return _PlaceholderPage(title: 'Facture $id');
+                },
+              ),
+            ],
           ),
           GoRoute(
             path: RoutePaths.conflicts,

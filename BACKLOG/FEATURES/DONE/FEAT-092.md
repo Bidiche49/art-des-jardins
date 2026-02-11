@@ -1,7 +1,7 @@
 # FEAT-092: [Flutter] Phase 9B - Factures + Signature publique
 
 **Type:** Feature
-**Statut:** A faire
+**Statut:** Fait
 **Priorite:** Haute
 **Complexite:** M
 **Tags:** mobile, flutter, factures, signature

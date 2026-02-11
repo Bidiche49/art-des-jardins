@@ -26,6 +26,7 @@ class RouteNames {
   static const String interventions = 'interventions';
   static const String interventionDetail = 'intervention-detail';
   static const String interventionCreate = 'intervention-create';
+  static const String factures = 'factures';
   static const String factureDetail = 'facture-detail';
 
   // Sync
@@ -59,6 +60,7 @@ class RoutePaths {
   static const String interventions = '/interventions';
   static const String interventionDetail = '/interventions/:id';
   static const String interventionCreate = '/interventions/new';
+  static const String factures = '/factures';
   static const String factureDetail = '/factures/:id';
   static const String conflicts = '/conflicts';
   static const String settings = '/settings';

@@ -23,7 +23,7 @@
 | 8A | Chantiers + Rentabilite | FEAT-089 | FAIT | 55/55 | 2026-02-11 |
 | 8B | Interventions + Photos | FEAT-090 | FAIT | 64/64 | 2026-02-11 |
 | 9A | Devis Builder | FEAT-091 | FAIT | 77/77 | 2026-02-11 |
-| 9B | Factures + Signature | FEAT-092 | A faire | - | - |
+| 9B | Factures + Signature | FEAT-092 | FAIT | 44/44 | 2026-02-11 |
 | 10 | Calendrier + Meteo + Absences | FEAT-093 | A faire | - | - |
 | 11 | Dashboard + Analytics | FEAT-094 | A faire | - | - |
 | 12 | Recherche + QR Scanner | FEAT-095 | A faire | - | - |
@@ -39,10 +39,10 @@
 
 ## Compteurs
 
-- **Phases terminees** : 14/20
-- **Tests totaux** : 697
+- **Phases terminees** : 15/20
+- **Tests totaux** : 741
 - **Tests prevus** : ~1009 (939 features + 40 UX + 30 perf)
-- **Couverture** : Phase 0 a Phase 9A
+- **Couverture** : Phase 0 a Phase 9B
 
 ---
 
@@ -249,3 +249,23 @@
 - `TemplatePicker` : groupes par categorie, ListTile avec prix/unite, tap ajoute ligne
 - Routes branchees dans `app_router.dart` : /devis (liste), /devis/new (builder), /devis/:id (detail)
 - 697 tests passent (77 nouveaux), `flutter analyze` clean (0 issues)
+
+### 2026-02-11 - Phase 9B
+
+- `FacturesRepository` : interface abstraite read-only (getAll, getById, getByStatut, getEnRetard, getPdfUrl)
+- `FacturesRepositoryImpl` : offline-first (API + cache Drift, fallback cache si erreur)
+- Detection retard : dateEcheance < now + statut != payee/annulee
+- `FacturesListNotifier` (StateNotifier) : load, setFilter(statut), toggleRetardOnly, search
+- `FacturesListPage` : liste avec filtre statut (PopupMenuButton), bouton retard (toggle), empty state
+- `FactureCard` : icone receipt, numero, date, montant TTC, badge statut colore, badge "Retard" rouge conditionnel, date echeance si retard
+- `SignatureService` : interface abstraite (loadDevis, signDevis) avec publicDio
+- `SignatureServiceImpl` : GET /signature/:token, POST /signature/:token/sign, gestion erreurs (expired 403, invalid 404)
+- `SignatureException` : code + message (expired, invalid, cgv_required, empty_signature)
+- `SignerDevisNotifier` (StateNotifier.family) : machine d'etats (loading, ready, signing, success, error, expired, alreadySigned)
+- `SignerDevisPage` : page publique sans auth, affichage devis read-only (lignes, totaux), SignaturePad, checkbox CGV, bouton signer, vues success/error/expired/alreadySigned
+- `SignaturePad` : widget dessin tactile (GestureDetector + CustomPaint), clear, toPngBytes, placeholder, disabled mode, IgnorePointer sur placeholder
+- `SignatureDevisData` : wrapper donnees devis public (numero, clientNom, totaux, lignes)
+- Endpoints ajoutes : `signatureLoad(token)`, `signatureSign(token)` dans ApiEndpoints
+- Routes : /signer/:token (public, placeholder remplace), /factures (liste), /factures/:id (detail)
+- Route names : `factures`, `factureDetail` dans RouteNames + RoutePaths
+- 741 tests passent (44 nouveaux), `flutter analyze` clean (0 issues)

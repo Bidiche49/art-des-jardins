@@ -19,9 +19,9 @@
 | Type | Pending | Ready | Done | Total |
 |------|---------|-------|------|-------|
 | Bugs | 0 | 0 | 0 | 0 |
-| Features | 28 | 10 | 64 | 102 |
+| Features | 27 | 10 | 65 | 102 |
 | Improvements | 1 | 7 | 0 | 8 |
-| **Total** | **29** | **17** | **64** | **110** |
+| **Total** | **28** | **17** | **65** | **110** |
 
 ---
 
@@ -276,7 +276,7 @@
 | 11 | FEAT-089 | Phase 8A | Chantiers + Rentabilite | **DONE** | 55 |
 | 12 | FEAT-090 | Phase 8B | Interventions + Photos | **DONE** | 64 |
 | 13 | FEAT-091 | Phase 9A | Devis Builder | **DONE** | 77 |
-| 14 | FEAT-092 | Phase 9B | Factures + Signature | PENDING | ~36 |
+| 14 | FEAT-092 | Phase 9B | Factures + Signature | **DONE** | 44 |
 | 15 | FEAT-093 | Phase 10 | Calendrier + Meteo + Absences | PENDING | ~38 |
 | 16 | FEAT-094 | Phase 11 | Dashboard + Analytics | PENDING | ~38 |
 | 17 | FEAT-095 | Phase 12 | Recherche + QR Scanner | PENDING | ~26 |
@@ -388,6 +388,7 @@
 | FEAT-078 | [Flutter] Phase 0 - Scaffolding projet | Critique | 2026-02-10 |
 | FEAT-088 | [Flutter] Phase 7 - Clients CRUD complet | Haute | 2026-02-11 |
 | FEAT-089 | [Flutter] Phase 8A - Chantiers + Rentabilite | Haute | 2026-02-11 |
+| FEAT-092 | [Flutter] Phase 9B - Factures + Signature | Haute | 2026-02-11 |
 
 ---
 

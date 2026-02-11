@@ -48,6 +48,10 @@ class ApiEndpoints {
   static const String syncPull = '/sync/pull';
   static const String syncPush = '/sync/push';
 
+  // Signature (public, no auth)
+  static String signatureLoad(String token) => '/signature/$token';
+  static String signatureSign(String token) => '/signature/$token/sign';
+
   // Templates
   static const String templates = '/templates';
 }
