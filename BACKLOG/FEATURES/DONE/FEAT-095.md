@@ -1,7 +1,7 @@
 # FEAT-095: [Flutter] Phase 12 - Recherche globale + QR Scanner
 
 **Type:** Feature
-**Statut:** A faire
+**Statut:** Fait
 **Priorite:** Moyenne
 **Complexite:** M
 **Tags:** mobile, flutter, search, qr, ux

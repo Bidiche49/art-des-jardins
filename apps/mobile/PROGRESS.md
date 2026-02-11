@@ -26,7 +26,7 @@
 | 9B | Factures + Signature | FEAT-092 | FAIT | 44/44 | 2026-02-11 |
 | 10 | Calendrier + Meteo + Absences | FEAT-093 | FAIT | 47/47 | 2026-02-11 |
 | 11 | Dashboard + Analytics | FEAT-094 | FAIT | 42/42 | 2026-02-11 |
-| 12 | Recherche + QR Scanner | FEAT-095 | A faire | - | - |
+| 12 | Recherche + QR Scanner | FEAT-095 | FAIT | 41/41 | 2026-02-11 |
 | 13 | WebSocket temps reel | FEAT-096 | A faire | - | - |
 | 14 | Settings + Terrain + Idle | FEAT-097 | A faire | - | - |
 | 15 | Onboarding tour | FEAT-098 | A faire | - | - |
@@ -39,10 +39,10 @@
 
 ## Compteurs
 
-- **Phases terminees** : 17/20
-- **Tests totaux** : 830
+- **Phases terminees** : 18/20
+- **Tests totaux** : 871
 - **Tests prevus** : ~1009 (939 features + 40 UX + 30 perf)
-- **Couverture** : Phase 0 a Phase 11
+- **Couverture** : Phase 0 a Phase 12
 
 ---
 
@@ -314,3 +314,19 @@
 - Route names : `finance` dans RouteNames + RoutePaths
 - Placeholders dashboard + analytics remplaces par vraies pages
 - 830 tests passent (42 nouveaux), `flutter analyze` clean (0 issues)
+
+### 2026-02-11 - Phase 12
+
+- `SearchRepository` : interface abstraite (search, searchByEntity)
+- `SearchRepositoryImpl` : offline-first (API /search + cache multi-DAO), recherche cross-entites (clients, chantiers, devis, factures)
+- `SearchNotifier` (StateNotifier) : search(query), clear(), min 2 chars, groupedResults par type
+- `SearchPage` : plein ecran, TextField auto-focus, debounce 200ms, resultats groupes par section (Clients/Chantiers/Devis/Factures), icones couleur par type
+- `SearchResultCard` : CircleAvatar icone couleur, titre, subtitle, chevron, onTap navigation
+- `QrParser` : parse protocole `aej://` (chantier, client), validation UUID, exceptions typees
+- `ScanHistoryService` : SharedPreferences JSON, max 10 FIFO, deduplicate par entityId
+- `ScannerNotifier` (StateNotifier) : processScan, loadHistory, clearHistory
+- `ScannerPage` : MobileScannerController camera arriere, ScannerOverlay coins verts (CustomPaint), historique scans, navigation auto vers entite
+- `ScannerOverlay` : CustomPainter, zone scan 70% largeur, overlay sombre, 4 coins verts arrondis
+- Endpoint `ApiEndpoints.search` ajoute
+- Placeholders search + scanner remplaces par vraies pages dans app_router.dart
+- 871 tests passent (41 nouveaux), `flutter analyze` clean (0 issues)

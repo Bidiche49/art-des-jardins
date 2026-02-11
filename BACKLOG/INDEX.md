@@ -279,7 +279,7 @@
 | 14 | FEAT-092 | Phase 9B | Factures + Signature | **DONE** | 44 |
 | 15 | FEAT-093 | Phase 10 | Calendrier + Meteo + Absences | **DONE** | 47 |
 | 16 | FEAT-094 | Phase 11 | Dashboard + Analytics | **DONE** | 42 |
-| 17 | FEAT-095 | Phase 12 | Recherche + QR Scanner | PENDING | ~26 |
+| 17 | FEAT-095 | Phase 12 | Recherche + QR Scanner | **DONE** | 41 |
 | 18 | FEAT-096 | Phase 13 | WebSocket temps reel | PENDING | ~30 |
 | 19 | FEAT-097 | Phase 14 | Settings + Terrain + Idle | PENDING | ~34 |
 | 20 | FEAT-098 | Phase 15 | Onboarding tour | PENDING | ~24 |
