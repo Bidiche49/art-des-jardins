@@ -15,7 +15,7 @@
 | 2 | Domain Models + Enums | FEAT-081 | FAIT | 106/106 | 2026-02-11 |
 | 3 | Database Drift | FEAT-082 | FAIT | 71/71 | 2026-02-11 |
 | 4A | Auth employe | FEAT-083 | FAIT | 43/43 | 2026-02-11 |
-| 4B | Router + App Shell | FEAT-084 | A faire | - | - |
+| 4B | Router + App Shell | FEAT-084 | FAIT | 24/24 | 2026-02-11 |
 | 5 | Design System Widgets | FEAT-085 | A faire | - | - |
 | 6A | Sync Engine Queue + Retry | FEAT-086 | A faire | - | - |
 | 6B | Conflits Detection + UI | FEAT-087 | A faire | - | - |
@@ -39,10 +39,10 @@
 
 ## Compteurs
 
-- **Phases terminees** : 6/20
-- **Tests totaux** : 313
+- **Phases terminees** : 7/20
+- **Tests totaux** : 337
 - **Tests prevus** : ~1009 (939 features + 40 UX + 30 perf)
-- **Couverture** : Phase 0 + Phase 1A + Phase 1B + Phase 2 + Phase 3 + Phase 4A
+- **Couverture** : Phase 0 + Phase 1A + Phase 1B + Phase 2 + Phase 3 + Phase 4A + Phase 4B
 
 ---
 
@@ -119,3 +119,12 @@
 - `BiometricLoginButton` : bouton adaptatif (Face ID, Empreinte, Iris)
 - `biometricConfigured` ajoute a AppPreferences
 - 313 tests passent (43 nouveaux), `flutter analyze` clean (0 issues)
+
+### 2026-02-11 - Phase 4B
+
+- `RouteNames` + `RoutePaths` : constantes pour 22 routes (login, signer, dashboard, clients, chantiers, devis, calendar, analytics, detail, create, settings, search, scanner, notifications)
+- `authGuard` : redirect /login si non authentifie, redirect / si authentifie sur /login, routes publiques (/login, /signer/:token)
+- `GoRouter` avec ShellRoute (AppShell), 20+ routes, deep links, error page
+- `AppShell` : AppBar dynamique (titre selon route), NavigationBar 6 items (Dashboard, Clients, Chantiers, Devis, Calendrier, Analytics), actions (Search, Notifications, Settings), SafeArea
+- Placeholder pages pour toutes les routes non implementees
+- 337 tests passent (24 nouveaux), `flutter analyze` clean (0 issues)
