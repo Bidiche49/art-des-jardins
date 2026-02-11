@@ -20,8 +20,8 @@
 | 6A | Sync Engine Queue + Retry | FEAT-086 | FAIT | 30/30 | 2026-02-11 |
 | 6B | Conflits Detection + UI | FEAT-087 | FAIT | 29/29 | 2026-02-11 |
 | 7 | Clients CRUD complet | FEAT-088 | FAIT | 51/51 | 2026-02-11 |
-| 8A | Chantiers + Rentabilite | FEAT-089 | A faire | - | - |
-| 8B | Interventions + Photos | FEAT-090 | A faire | - | - |
+| 8A | Chantiers + Rentabilite | FEAT-089 | FAIT | 55/55 | 2026-02-11 |
+| 8B | Interventions + Photos | FEAT-090 | FAIT | 64/64 | 2026-02-11 |
 | 9A | Devis Builder | FEAT-091 | A faire | - | - |
 | 9B | Factures + Signature | FEAT-092 | A faire | - | - |
 | 10 | Calendrier + Meteo + Absences | FEAT-093 | A faire | - | - |
@@ -39,10 +39,10 @@
 
 ## Compteurs
 
-- **Phases terminees** : 11/20
-- **Tests totaux** : 501
+- **Phases terminees** : 13/20
+- **Tests totaux** : 620
 - **Tests prevus** : ~1009 (939 features + 40 UX + 30 perf)
-- **Couverture** : Phase 0 a Phase 7
+- **Couverture** : Phase 0 a Phase 8B
 
 ---
 
@@ -191,3 +191,41 @@
 - `ClientFilters` : FilterChip horizontal scrollable, "Tous" + 3 types
 - Routes branchees dans `app_router.dart` : /clients (liste), /clients/new (form), /clients/:id (detail)
 - 501 tests passent (51 nouveaux), `flutter analyze` clean (0 issues)
+
+### 2026-02-11 - Phase 8A
+
+- `ChantiersRepository` : interface abstraite (8 methodes CRUD + search + getByStatut + getByClient)
+- `ChantiersRepositoryImpl` : offline-first (API + cache Drift, fallback cache si erreur)
+- IDs temporaires `temp-{timestamp}` en mode offline, addToQueue pour sync
+- `ChantiersListNotifier` (StateNotifier) : loadChantiers, filterByStatut, search, _applyFilters
+- `ChantierDetailNotifier` (StateNotifier.family) : load, updateChantier, deleteChantier
+- `ChantiersListPage` : AejSearchInput (debounce), ChantierFilters (9 statuts), ListView + RefreshIndicator, FAB
+- `ChantierDetailPage` : header avec icone/badge, sections Adresse/Infos/Dates/Notes, changement statut inline (ChoiceChip), mode edition, confirmation suppression, bouton rentabilite
+- `RentabilitePage` : taux de marge, 4 metric cards (CA/Couts/Marge/Heures), PieChart repartition, BarChart CA vs Couts (fl_chart)
+- `RentabiliteCalculator` : computeCA, computeCouts, computeMarge, computeMargePercent, arrondi 2 decimales
+- `ChantierCard` : icone construction, description, badge statut couleur, adresse/ville, chevron
+- `ChantierForm` : dropdown client, multi-select TypePrestation (FilterChip), DatePicker debut/fin (validation fin >= debut), dropdown statut (edit only), surface m², validation (adresse, postalCode)
+- `ChantierFilters` : FilterChip horizontal scrollable, "Tous" + 9 statuts
+- Routes branchees dans `app_router.dart` : /chantiers (liste), /chantiers/new (form), /chantiers/:id (detail), /chantiers/:id/rentabilite
+- `rentabiliteProvider` : FutureProvider.family, query DevisDao + InterventionsDao par chantierId
+- 556 tests passent (55 nouveaux), `flutter analyze` clean (0 issues)
+
+### 2026-02-11 - Phase 8B
+
+- `InterventionsRepository` : interface abstraite (8 methodes CRUD + getByChantier + getByDate + getByDateRange)
+- `InterventionsRepositoryImpl` : offline-first (API + cache Drift, fallback cache si erreur)
+- IDs temporaires `temp-{timestamp}` en mode offline, addToQueue pour sync
+- `InterventionsWeekNotifier` (StateNotifier) : vue semaine lundi-dimanche, nextWeek/previousWeek/goToCurrentWeek, interventionsForDay
+- `InterventionDetailNotifier` (StateNotifier.family) : load, updateIntervention, deleteIntervention
+- `InterventionsListPage` : WeekNavigator (navigation semaine), 7 DaySection (lundi-dimanche), jour courant surligné, tap jour vide -> creation, RefreshIndicator, FAB
+- `InterventionDetailPage` : header avec icone/badge, sections Informations/Description/Notes/Photos, mode edition inline, confirmation suppression
+- `InterventionCard` : icone build, description, badge valide/en cours, plage horaire, badge nombre photos, chevron
+- `InterventionForm` : dropdown chantier, DatePicker, TimePicker debut/fin, duree minutes, description, notes, validation
+- `WeekNavigator` : navigation prev/next semaine, affichage plage dates, tap centre -> semaine courante
+- `PhotoCapture` : 3 boutons type (Avant bleu, Pendant orange, Apres vert) avec icone camera
+- `PhotoGallery` : GridView CachedNetworkImage, FilterChip par type (Toutes/Avant/Pendant/Apres), empty state
+- `PhotoCompare` : side-by-side avant/apres avec labels couleur
+- `PhotoService` : capturePhoto (ImagePicker), getGpsCoordinates (Geolocator), compressPhoto (Isolate), uploadPhoto (multipart online / queue offline)
+- `PhotoQueueService` : processQueue, backoff max 3 retries, suppression fichier local apres upload, retryFailed
+- Routes branchees dans `app_router.dart` : /interventions (liste semaine), /interventions/new (form), /interventions/:id (detail)
+- 620 tests passent (64 nouveaux), `flutter analyze` clean (0 issues)

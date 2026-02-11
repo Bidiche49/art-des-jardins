@@ -273,8 +273,8 @@
 | 8 | FEAT-086 | Phase 6A | Sync Engine Queue + Retry | PENDING | ~39 |
 | 9 | FEAT-087 | Phase 6B | Conflits Detection + UI | DONE | 29 |
 | 10 | FEAT-088 | Phase 7 | Clients CRUD complet | **DONE** | 51 |
-| 11 | FEAT-089 | Phase 8A | Chantiers + Rentabilite | PENDING | ~42 |
-| 12 | FEAT-090 | Phase 8B | Interventions + Photos | PENDING | ~44 |
+| 11 | FEAT-089 | Phase 8A | Chantiers + Rentabilite | **DONE** | 55 |
+| 12 | FEAT-090 | Phase 8B | Interventions + Photos | **DONE** | 64 |
 | 13 | FEAT-091 | Phase 9A | Devis Builder | PENDING | ~48 |
 | 14 | FEAT-092 | Phase 9B | Factures + Signature | PENDING | ~36 |
 | 15 | FEAT-093 | Phase 10 | Calendrier + Meteo + Absences | PENDING | ~38 |
@@ -387,6 +387,7 @@
 | FEAT-060 | Tests e2e Phase 9 (Zero Perte) | Haute | 2026-02-02 |
 | FEAT-078 | [Flutter] Phase 0 - Scaffolding projet | Critique | 2026-02-10 |
 | FEAT-088 | [Flutter] Phase 7 - Clients CRUD complet | Haute | 2026-02-11 |
+| FEAT-089 | [Flutter] Phase 8A - Chantiers + Rentabilite | Haute | 2026-02-11 |
 
 ---
 

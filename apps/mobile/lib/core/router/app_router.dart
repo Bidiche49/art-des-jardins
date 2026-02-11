@@ -13,6 +13,10 @@ import '../../features/clients/presentation/pages/client_detail_page.dart';
 import '../../features/clients/presentation/pages/clients_list_page.dart';
 import '../../features/clients/presentation/providers/clients_providers.dart';
 import '../../features/clients/presentation/widgets/client_form.dart';
+import '../../features/interventions/presentation/pages/intervention_detail_page.dart';
+import '../../features/interventions/presentation/pages/interventions_list_page.dart';
+import '../../features/interventions/presentation/widgets/intervention_form.dart';
+import '../../features/chantiers/presentation/providers/chantiers_providers.dart' show chantiersListNotifierProvider;
 import '../../features/sync/presentation/pages/conflict_resolution_page.dart';
 import '../../shared/layouts/app_shell.dart';
 import 'route_names.dart';
@@ -190,18 +194,41 @@ final routerProvider = Provider<GoRouter>((ref) {
                 const _PlaceholderPage(title: 'Analytics'),
           ),
           GoRoute(
-            path: RoutePaths.interventionDetail,
-            name: RouteNames.interventionDetail,
-            builder: (context, state) {
-              final id = state.pathParameters['id']!;
-              return _PlaceholderPage(title: 'Intervention $id');
-            },
-          ),
-          GoRoute(
-            path: '/interventions/new',
-            name: RouteNames.interventionCreate,
+            path: RoutePaths.interventions,
+            name: RouteNames.interventions,
             builder: (context, state) =>
-                const _PlaceholderPage(title: 'Nouvelle intervention'),
+                const InterventionsListPage(),
+            routes: [
+              GoRoute(
+                path: 'new',
+                name: RouteNames.interventionCreate,
+                builder: (context, state) => Consumer(
+                  builder: (context, ref, _) {
+                    final chantiersState =
+                        ref.watch(chantiersListNotifierProvider);
+                    final chantiers = chantiersState.valueOrNull ?? [];
+                    return Scaffold(
+                      appBar: AppBar(
+                          title: const Text('Nouvelle intervention')),
+                      body: InterventionForm(
+                        chantiers: chantiers,
+                        onSubmit: (intervention) {
+                          context.pop(intervention);
+                        },
+                      ),
+                    );
+                  },
+                ),
+              ),
+              GoRoute(
+                path: ':id',
+                name: RouteNames.interventionDetail,
+                builder: (context, state) {
+                  final id = state.pathParameters['id']!;
+                  return InterventionDetailPage(interventionId: id);
+                },
+              ),
+            ],
           ),
           GoRoute(
             path: RoutePaths.factureDetail,

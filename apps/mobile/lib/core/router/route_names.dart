@@ -23,6 +23,7 @@ class RouteNames {
   static const String chantierRentabilite = 'chantier-rentabilite';
   static const String devisDetail = 'devis-detail';
   static const String devisCreate = 'devis-create';
+  static const String interventions = 'interventions';
   static const String interventionDetail = 'intervention-detail';
   static const String interventionCreate = 'intervention-create';
   static const String factureDetail = 'facture-detail';
@@ -55,6 +56,7 @@ class RoutePaths {
   static const String devisCreate = '/devis/new';
   static const String calendar = '/calendar';
   static const String analytics = '/analytics';
+  static const String interventions = '/interventions';
   static const String interventionDetail = '/interventions/:id';
   static const String interventionCreate = '/interventions/new';
   static const String factureDetail = '/factures/:id';
