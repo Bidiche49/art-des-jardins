@@ -11,7 +11,7 @@
 |---|-------|--------|--------|-------|------|
 | 0 | Scaffolding projet | FEAT-078 | FAIT | 2/2 | 2026-02-10 |
 | 1A | Theme + Config + Utils | FEAT-079 | FAIT | 66/66 | 2026-02-11 |
-| 1B | Networking + Secure Storage | FEAT-080 | A faire | - | - |
+| 1B | Networking + Secure Storage | FEAT-080 | FAIT | 93/93 | 2026-02-11 |
 | 2 | Domain Models + Enums | FEAT-081 | A faire | - | - |
 | 3 | Database Drift | FEAT-082 | A faire | - | - |
 | 4A | Auth employe | FEAT-083 | A faire | - | - |
@@ -39,10 +39,10 @@
 
 ## Compteurs
 
-- **Phases terminees** : 2/20
-- **Tests totaux** : 66
+- **Phases terminees** : 3/20
+- **Tests totaux** : 93
 - **Tests prevus** : ~1009 (939 features + 40 UX + 30 perf)
-- **Couverture** : Phase 0 + Phase 1A
+- **Couverture** : Phase 0 + Phase 1A + Phase 1B
 
 ---
 

@@ -1,7 +1,7 @@
 # FEAT-080: [Flutter] Phase 1B - Networking + Secure Storage
 
 **Type:** Feature
-**Statut:** A faire
+**Statut:** Fait
 **Priorite:** Critique
 **Complexite:** M
 **Tags:** mobile, flutter, network, auth, security
