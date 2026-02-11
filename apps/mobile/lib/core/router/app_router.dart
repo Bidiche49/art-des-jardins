@@ -5,6 +5,9 @@ import 'package:go_router/go_router.dart';
 import '../../features/auth/domain/auth_state.dart';
 import '../../features/auth/presentation/auth_notifier.dart';
 import '../../features/auth/presentation/pages/login_page.dart';
+import '../../features/clients/presentation/pages/client_detail_page.dart';
+import '../../features/clients/presentation/pages/clients_list_page.dart';
+import '../../features/clients/presentation/widgets/client_form.dart';
 import '../../features/sync/presentation/pages/conflict_resolution_page.dart';
 import '../../shared/layouts/app_shell.dart';
 import 'route_names.dart';
@@ -77,21 +80,26 @@ final routerProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: RoutePaths.clients,
             name: RouteNames.clients,
-            builder: (context, state) =>
-                const _PlaceholderPage(title: 'Clients'),
+            builder: (context, state) => const ClientsListPage(),
             routes: [
               GoRoute(
                 path: 'new',
                 name: RouteNames.clientCreate,
-                builder: (context, state) =>
-                    const _PlaceholderPage(title: 'Nouveau client'),
+                builder: (context, state) => Scaffold(
+                  appBar: AppBar(title: const Text('Nouveau client')),
+                  body: ClientForm(
+                    onSubmit: (client) {
+                      context.pop(client);
+                    },
+                  ),
+                ),
               ),
               GoRoute(
                 path: ':id',
                 name: RouteNames.clientDetail,
                 builder: (context, state) {
                   final id = state.pathParameters['id']!;
-                  return _PlaceholderPage(title: 'Client $id');
+                  return ClientDetailPage(clientId: id);
                 },
               ),
             ],

@@ -1,7 +1,7 @@
 # FEAT-088: [Flutter] Phase 7 - Clients CRUD complet
 
 **Type:** Feature
-**Statut:** A faire
+**Statut:** Fait
 **Priorite:** Haute
 **Complexite:** L
 **Tags:** mobile, flutter, crud, clients, offline

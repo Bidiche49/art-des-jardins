@@ -9,7 +9,7 @@
 | Type | Prochain ID |
 |------|-------------|
 | BUG | BUG-001 |
-| FEAT | FEAT-078 |
+| FEAT | FEAT-103 |
 | IMP | IMP-009 |
 
 ---
@@ -19,9 +19,9 @@
 | Type | Pending | Ready | Done | Total |
 |------|---------|-------|------|-------|
 | Bugs | 0 | 0 | 0 | 0 |
-| Features | 6 | 10 | 61 | 77 |
+| Features | 28 | 10 | 64 | 102 |
 | Improvements | 1 | 7 | 0 | 8 |
-| **Total** | **7** | **17** | **61** | **85** |
+| **Total** | **29** | **17** | **64** | **110** |
 
 ---
 
@@ -255,9 +255,46 @@
 
 ---
 
+## Roadmap Flutter - App Mobile Employe (EN COURS)
+
+> **OBJECTIF:** App mobile native Flutter pour employes terrain, en remplacement progressif de la PWA mobile.
+> Suivi detaille : `apps/mobile/PROGRESS.md`
+
+| Ordre | Ticket | Phase | Description | Statut | Tests |
+|:---:|--------|-------|-------------|--------|:---:|
+| 0 | FEAT-078 | Phase 0 | Scaffolding projet | **DONE** | 2 |
+| 1 | FEAT-079 | Phase 1A | Theme + Config + Utils | PENDING | ~45 |
+| 2 | FEAT-080 | Phase 1B | Networking + Secure Storage | PENDING | ~30 |
+| 3 | FEAT-081 | Phase 2 | Domain Models + Enums | PENDING | ~100 |
+| 4 | FEAT-082 | Phase 3 | Database Drift | PENDING | ~78 |
+| 5 | FEAT-083 | Phase 4A | Auth employe | PENDING | ~42 |
+| 6 | FEAT-084 | Phase 4B | Router + App Shell | PENDING | ~25 |
+| 7 | FEAT-085 | Phase 5 | Design System Widgets | PENDING | ~55 |
+| 8 | FEAT-086 | Phase 6A | Sync Engine Queue + Retry | PENDING | ~39 |
+| 9 | FEAT-087 | Phase 6B | Conflits Detection + UI | DONE | 29 |
+| 10 | FEAT-088 | Phase 7 | Clients CRUD complet | **DONE** | 51 |
+| 11 | FEAT-089 | Phase 8A | Chantiers + Rentabilite | PENDING | ~42 |
+| 12 | FEAT-090 | Phase 8B | Interventions + Photos | PENDING | ~44 |
+| 13 | FEAT-091 | Phase 9A | Devis Builder | PENDING | ~48 |
+| 14 | FEAT-092 | Phase 9B | Factures + Signature | PENDING | ~36 |
+| 15 | FEAT-093 | Phase 10 | Calendrier + Meteo + Absences | PENDING | ~38 |
+| 16 | FEAT-094 | Phase 11 | Dashboard + Analytics | PENDING | ~38 |
+| 17 | FEAT-095 | Phase 12 | Recherche + QR Scanner | PENDING | ~26 |
+| 18 | FEAT-096 | Phase 13 | WebSocket temps reel | PENDING | ~30 |
+| 19 | FEAT-097 | Phase 14 | Settings + Terrain + Idle | PENDING | ~34 |
+| 20 | FEAT-098 | Phase 15 | Onboarding tour | PENDING | ~24 |
+| 21 | FEAT-099 | Phase 16 | Push Notifications FCM | PENDING | ~22 |
+| 22 | FEAT-100 | Phase 17 | Tests integration + Polish | PENDING | ~59 |
+| 23 | FEAT-101 | Phase 18 | UX Polish Pass | PENDING | ~40 |
+| 24 | FEAT-102 | Phase 19 | Performance + Production | PENDING | ~30 |
+| 25 | FEAT-100 | Phase 17 | Tests integration (DERNIER) | PENDING | ~59 |
+| | | | **TOTAL TESTS PREVUS** | | **~1009** |
+
+---
+
 ## Features
 
-### Pending (6) - NON AUTOMATISABLES
+### Pending (28) - dont 22 Flutter + 6 NON AUTOMATISABLES
 
 | ID | Titre | Priorite | Phase | Raison |
 |----|-------|----------|-------|--------|
@@ -284,7 +321,7 @@
 | FEAT-073 | Meteo integree | Basse | S | api, ux, integration | 15 |
 | FEAT-077 | Authentification biometrique (WebAuthn) | Haute | M | security, auth, ux, pwa, mobile | 12 |
 
-### Done (60)
+### Done (62)
 
 | ID | Titre | Priorite | Date resolution |
 |----|-------|----------|-----------------|
@@ -348,6 +385,8 @@
 | FEAT-058 | Soft delete pour toutes les entites | Haute | 2026-02-02 |
 | FEAT-059 | Authentification 2FA pour patrons | Haute | 2026-02-02 |
 | FEAT-060 | Tests e2e Phase 9 (Zero Perte) | Haute | 2026-02-02 |
+| FEAT-078 | [Flutter] Phase 0 - Scaffolding projet | Critique | 2026-02-10 |
+| FEAT-088 | [Flutter] Phase 7 - Clients CRUD complet | Haute | 2026-02-11 |
 
 ---
 

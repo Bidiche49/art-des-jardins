@@ -17,9 +17,9 @@
 | 4A | Auth employe | FEAT-083 | FAIT | 43/43 | 2026-02-11 |
 | 4B | Router + App Shell | FEAT-084 | FAIT | 24/24 | 2026-02-11 |
 | 5 | Design System Widgets | FEAT-085 | FAIT | 54/54 | 2026-02-11 |
-| 6A | Sync Engine Queue + Retry | FEAT-086 | A faire | - | - |
-| 6B | Conflits Detection + UI | FEAT-087 | A faire | - | - |
-| 7 | Clients CRUD complet | FEAT-088 | A faire | - | - |
+| 6A | Sync Engine Queue + Retry | FEAT-086 | FAIT | 30/30 | 2026-02-11 |
+| 6B | Conflits Detection + UI | FEAT-087 | FAIT | 29/29 | 2026-02-11 |
+| 7 | Clients CRUD complet | FEAT-088 | FAIT | 51/51 | 2026-02-11 |
 | 8A | Chantiers + Rentabilite | FEAT-089 | A faire | - | - |
 | 8B | Interventions + Photos | FEAT-090 | A faire | - | - |
 | 9A | Devis Builder | FEAT-091 | A faire | - | - |
@@ -39,10 +39,10 @@
 
 ## Compteurs
 
-- **Phases terminees** : 8/20
-- **Tests totaux** : 391
+- **Phases terminees** : 11/20
+- **Tests totaux** : 501
 - **Tests prevus** : ~1009 (939 features + 40 UX + 30 perf)
-- **Couverture** : Phase 0 a Phase 5
+- **Couverture** : Phase 0 a Phase 7
 
 ---
 
@@ -147,3 +147,47 @@
 - `AejOfflineBanner` : banner conditionnel offline/online
 - `AejConnectionIndicator` : dot vert/rouge/jaune (online/offline/syncing)
 - 391 tests passent (54 nouveaux), `flutter analyze` clean (0 issues)
+
+### 2026-02-11 - Phase 6A
+
+- `SyncService` : moteur de synchronisation offline-first
+- `addToQueue()` : insere operations (create/update/delete) dans sync_queue Drift avec timestamp
+- `syncAll()` : traite les items pending sequentiellement, verrouillage anti-doublon (_isSyncing)
+- Backoff exponentiel : 1s, 2s, 4s (max 3 retries), statut 'failed' apres max
+- HTTP 409 -> detection conflit, item reste 'pending' avec lastError='conflict'
+- `retryFailed()` : reset failed->pending, retryCount=0, relance syncAll
+- `AutoSyncController` : auto-sync au retour online (debounce 1s), sync initial si online
+- `syncServiceProvider` + `pendingSyncCountProvider` (stream reactif)
+- `appDatabaseProvider` + `syncQueueDaoProvider` pour injection
+- 421 tests passent (30 nouveaux), `flutter analyze` clean (0 issues)
+
+### 2026-02-11 - Phase 6B
+
+- `ConflictService` : detection et resolution de conflits sync
+- `hasConflict(local, server)` : compare version + updatedAt
+- `detectConflictingFields(local, server)` : diff champ par champ, exclut id/version/timestamps
+- 3 strategies de resolution : local (garder ma version), server (garder serveur), merge (fusion)
+- `mergeData(local, server, overrides)` : base serveur + overrides utilisateur
+- `ConflictNotifier` (StateNotifier) : gestion etat liste conflits, add/resolve
+- `ConflictResolutionPage` : page complete avec comparaison side-by-side (Table)
+- Champs en conflit surlignes en ambre, 3 boutons d'action par conflit
+- Editeur merge : BottomSheet avec RadioGroup par champ, validation avant save
+- `ConflictQueueBanner` : banner non-dismissible, visible quand conflits > 0, tap -> navigation
+- Route `/conflicts` ajoutee au GoRouter (dans ShellRoute)
+- Providers : conflictServiceProvider, conflictNotifierProvider, conflictCountProvider
+- 450 tests passent (29 nouveaux), `flutter analyze` clean (0 issues)
+
+### 2026-02-11 - Phase 7
+
+- `ClientsRepository` : interface abstraite (7 methodes CRUD + search + getByType)
+- `ClientsRepositoryImpl` : offline-first (API + cache Drift, fallback cache si erreur)
+- IDs temporaires `temp-{timestamp}` en mode offline, addToQueue pour sync
+- `ClientsListNotifier` (StateNotifier) : loadClients, filterByType, search, _applyFilters
+- `ClientDetailNotifier` (StateNotifier.family) : load, updateClient, deleteClient
+- `ClientsListPage` : AejSearchInput (debounce), ClientFilters (FilterChip), ListView + RefreshIndicator, FAB
+- `ClientDetailPage` : header avec avatar/badge, sections Contact/Adresse/Notes, mode edition inline, confirmation suppression
+- `ClientCard` : avatar, nom, badge type, chevron, tap -> detail
+- `ClientForm` : 3 ChoiceChip type, champs conditionnels (prenom/raisonSociale), validation (email, phoneFR, postalCode)
+- `ClientFilters` : FilterChip horizontal scrollable, "Tous" + 3 types
+- Routes branchees dans `app_router.dart` : /clients (liste), /clients/new (form), /clients/:id (detail)
+- 501 tests passent (51 nouveaux), `flutter analyze` clean (0 issues)
