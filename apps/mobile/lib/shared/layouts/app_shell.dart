@@ -1,8 +1,15 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../core/router/route_names.dart';
+import '../../features/auth/domain/auth_state.dart';
+import '../../features/auth/presentation/auth_notifier.dart';
+import '../../services/biometric/biometric_service.dart';
+import '../../services/idle/idle_service.dart';
+import '../../services/idle/idle_warning_dialog.dart';
 
 class _NavItem {
   const _NavItem({
@@ -57,10 +64,99 @@ const _navItems = [
   ),
 ];
 
-class AppShell extends ConsumerWidget {
+class AppShell extends ConsumerStatefulWidget {
   const AppShell({super.key, required this.child});
 
   final Widget child;
+
+  @override
+  ConsumerState<AppShell> createState() => _AppShellState();
+}
+
+class _AppShellState extends ConsumerState<AppShell> with WidgetsBindingObserver {
+  StreamSubscription<IdleState>? _idleSubscription;
+  bool _warningDialogShown = false;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+    _startIdleService();
+  }
+
+  void _startIdleService() {
+    final authState = ref.read(authNotifierProvider);
+    if (authState is AuthAuthenticated) {
+      final idleService = ref.read(idleServiceProvider);
+      idleService.start(authState.user.role);
+
+      _idleSubscription = idleService.stateStream.listen((state) {
+        if (!mounted) return;
+        switch (state) {
+          case IdleState.active:
+            if (_warningDialogShown) {
+              Navigator.of(context, rootNavigator: true).pop();
+              _warningDialogShown = false;
+            }
+          case IdleState.warning:
+            if (!_warningDialogShown) {
+              _warningDialogShown = true;
+              showDialog(
+                context: context,
+                barrierDismissible: false,
+                builder: (_) => const IdleWarningDialog(),
+              ).then((_) {
+                _warningDialogShown = false;
+              });
+            }
+          case IdleState.expired:
+            if (_warningDialogShown) {
+              Navigator.of(context, rootNavigator: true).pop();
+              _warningDialogShown = false;
+            }
+            _handleExpiration();
+        }
+      });
+    }
+  }
+
+  Future<void> _handleExpiration() async {
+    final biometricService = ref.read(biometricServiceProvider);
+    final isAvailable = await biometricService.isAvailable();
+    final isConfigured = biometricService.isConfigured;
+
+    if (isAvailable && isConfigured) {
+      final authenticated = await biometricService.authenticate();
+      if (authenticated) {
+        ref.read(idleServiceProvider).resetTimer();
+        return;
+      }
+    }
+
+    // Biometric not available/configured or failed -> logout
+    await ref.read(authNotifierProvider.notifier).logout();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    final idleService = ref.read(idleServiceProvider);
+    switch (state) {
+      case AppLifecycleState.paused:
+      case AppLifecycleState.inactive:
+        idleService.onBackground();
+      case AppLifecycleState.resumed:
+        idleService.onForeground();
+      default:
+        break;
+    }
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    _idleSubscription?.cancel();
+    super.dispose();
+  }
 
   int _currentIndex(String location) {
     for (int i = 0; i < _navItems.length; i++) {
@@ -88,45 +184,52 @@ class AppShell extends ConsumerWidget {
   }
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final location =
-        GoRouterState.of(context).matchedLocation;
+  Widget build(BuildContext context) {
+    final location = GoRouterState.of(context).matchedLocation;
     final currentIndex = _currentIndex(location);
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(_titleForLocation(location)),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.search),
-            onPressed: () => context.pushNamed(RouteNames.search),
-            tooltip: 'Rechercher',
-          ),
-          IconButton(
-            icon: const Icon(Icons.notifications_outlined),
-            onPressed: () => context.pushNamed(RouteNames.notifications),
-            tooltip: 'Notifications',
-          ),
-          IconButton(
-            icon: const Icon(Icons.settings_outlined),
-            onPressed: () => context.pushNamed(RouteNames.settings),
-            tooltip: 'Parametres',
-          ),
-        ],
-      ),
-      body: SafeArea(child: child),
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: currentIndex,
-        onDestinationSelected: (index) {
-          context.go(_navItems[index].path);
-        },
-        destinations: _navItems
-            .map((item) => NavigationDestination(
-                  icon: Icon(item.icon),
-                  selectedIcon: Icon(item.activeIcon),
-                  label: item.label,
-                ))
-            .toList(),
+    // Reset idle timer on any navigation/interaction
+    ref.read(idleServiceProvider).resetTimer();
+
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTap: () => ref.read(idleServiceProvider).resetTimer(),
+      onPanDown: (_) => ref.read(idleServiceProvider).resetTimer(),
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(_titleForLocation(location)),
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.search),
+              onPressed: () => context.pushNamed(RouteNames.search),
+              tooltip: 'Rechercher',
+            ),
+            IconButton(
+              icon: const Icon(Icons.notifications_outlined),
+              onPressed: () => context.pushNamed(RouteNames.notifications),
+              tooltip: 'Notifications',
+            ),
+            IconButton(
+              icon: const Icon(Icons.settings_outlined),
+              onPressed: () => context.pushNamed(RouteNames.settings),
+              tooltip: 'Parametres',
+            ),
+          ],
+        ),
+        body: SafeArea(child: widget.child),
+        bottomNavigationBar: NavigationBar(
+          selectedIndex: currentIndex,
+          onDestinationSelected: (index) {
+            context.go(_navItems[index].path);
+          },
+          destinations: _navItems
+              .map((item) => NavigationDestination(
+                    icon: Icon(item.icon),
+                    selectedIcon: Icon(item.activeIcon),
+                    label: item.label,
+                  ))
+              .toList(),
+        ),
       ),
     );
   }

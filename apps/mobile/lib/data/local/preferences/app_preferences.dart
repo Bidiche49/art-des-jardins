@@ -51,6 +51,14 @@ class AppPreferences {
   Future<bool> setBiometricConfigured(bool value) =>
       _prefs.setBool(_biometricConfiguredKey, value);
 
+  // Notifications
+  static const _notificationsEnabledKey = 'notifications_enabled';
+
+  bool get notificationsEnabled =>
+      _prefs.getBool(_notificationsEnabledKey) ?? true;
+  Future<bool> setNotificationsEnabled(bool value) =>
+      _prefs.setBool(_notificationsEnabledKey, value);
+
   // Last sync
   static const _lastSyncKey = 'last_sync';
 

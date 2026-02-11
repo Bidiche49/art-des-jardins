@@ -29,6 +29,7 @@ import '../../features/calendar/presentation/pages/calendar_page.dart';
 import '../../features/dashboard/presentation/pages/analytics_page.dart';
 import '../../features/dashboard/presentation/pages/dashboard_page.dart';
 import '../../features/dashboard/presentation/pages/finance_page.dart';
+import '../../features/settings/presentation/pages/settings_page.dart';
 import '../../features/sync/presentation/pages/conflict_resolution_page.dart';
 import '../../features/scanner/presentation/pages/scanner_page.dart';
 import '../../features/search/presentation/pages/search_page.dart';
@@ -294,8 +295,7 @@ final routerProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: RoutePaths.settings,
             name: RouteNames.settings,
-            builder: (context, state) =>
-                const _PlaceholderPage(title: 'Parametres'),
+            builder: (context, state) => const SettingsPage(),
           ),
           GoRoute(
             path: RoutePaths.search,
