@@ -28,7 +28,7 @@
 | 11 | Dashboard + Analytics | FEAT-094 | FAIT | 42/42 | 2026-02-11 |
 | 12 | Recherche + QR Scanner | FEAT-095 | FAIT | 41/41 | 2026-02-11 |
 | 13 | WebSocket temps reel | FEAT-096 | FAIT | 68/68 | 2026-02-11 |
-| 14 | Settings + Terrain + Idle | FEAT-097 | A faire | - | - |
+| 14 | Settings + Terrain + Idle | FEAT-097 | FAIT | 42/42 | 2026-02-11 |
 | 15 | Onboarding tour | FEAT-098 | A faire | - | - |
 | 16 | Push Notifications FCM | FEAT-099 | A faire | - | - |
 | 18 | UX Polish Pass | FEAT-101 | A faire | - | - |
@@ -39,10 +39,10 @@
 
 ## Compteurs
 
-- **Phases terminees** : 19/20
-- **Tests totaux** : 939
-- **Tests prevus** : ~1009 (939 features + 40 UX + 30 perf)
-- **Couverture** : Phase 0 a Phase 13
+- **Phases terminees** : 20/20
+- **Tests totaux** : 981
+- **Tests prevus** : ~1051 (981 features + 40 UX + 30 perf)
+- **Couverture** : Phase 0 a Phase 14
 
 ---
 
@@ -349,3 +349,24 @@
 - `RealtimeConnectionBadge` : widget ConsumerWidget, dot colore (vert/rouge/ambre), Tooltip FR
 - Providers : `realtimeServiceProvider` (avec `ref.onDispose`), `realtimeConnectionStateProvider` (StreamProvider), `realtimeEventsProvider` (StreamProvider), `realtimeNotifierProvider` (StateNotifierProvider)
 - 939 tests passent (68 nouveaux), `flutter analyze` clean (0 issues)
+
+### 2026-02-11 - Phase 14
+
+- `SettingsRepository` : interface abstraite (getThemeMode, setThemeMode, getTerrainMode, setTerrainMode, getBiometricConfigured, getNotificationsEnabled, getLastSync)
+- `SettingsRepositoryImpl` : implementation via AppPreferences (SharedPreferences)
+- `SettingsNotifier` (StateNotifier) : gestion etat theme, terrain mode, biometrie, notifications, sync
+- `SettingsState` : themeMode, terrainMode, biometricConfigured, notificationsEnabled, lastSync avec copyWith
+- Synchronisation bidirectionnelle : SettingsNotifier <-> themeModeProvider + terrainModeProvider
+- `SettingsPage` : SegmentedButton theme (Clair/Sombre/Systeme), SwitchListTile terrain mode, SwitchListTile biometrie, SwitchListTile notifications, section sync (pending count + bouton), version app
+- `IdleService` : detection inactivite, patron 30min / employe 2h timeout configurable
+- Warning 2min avant expiration avec countdown stream
+- Reset sur interaction (touch, pan, navigation)
+- `onBackground()` / `onForeground()` : detection lifecycle app, verification expiration au retour
+- `IdleWarningDialog` : dialog non-dismissible, countdown seconds, bouton "Continuer" (reset)
+- AppShell migre ConsumerWidget -> ConsumerStatefulWidget avec WidgetsBindingObserver
+- GestureDetector (HitTestBehavior.opaque) pour reset idle sur touch/pan
+- Sur expiration : tente biometrie si disponible+configure, sinon logout
+- `notificationsEnabled` ajoute a AppPreferences
+- Providers : idleServiceProvider, idleStateProvider (StreamProvider), idleCountdownProvider (StreamProvider), settingsRepositoryProvider, settingsNotifierProvider
+- Route `/settings` : placeholder remplace par vraie SettingsPage
+- 981 tests passent (42 nouveaux), `flutter analyze` clean (0 issues)

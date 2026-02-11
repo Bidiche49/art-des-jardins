@@ -1,7 +1,7 @@
 # FEAT-097: [Flutter] Phase 14 - Settings + Terrain Mode + Idle Timer
 
 **Type:** Feature
-**Statut:** A faire
+**Statut:** Fait
 **Priorite:** Moyenne
 **Complexite:** M
 **Tags:** mobile, flutter, settings, terrain, security
