@@ -14,7 +14,7 @@
 | 1B | Networking + Secure Storage | FEAT-080 | FAIT | 93/93 | 2026-02-11 |
 | 2 | Domain Models + Enums | FEAT-081 | FAIT | 106/106 | 2026-02-11 |
 | 3 | Database Drift | FEAT-082 | FAIT | 71/71 | 2026-02-11 |
-| 4A | Auth employe | FEAT-083 | A faire | - | - |
+| 4A | Auth employe | FEAT-083 | FAIT | 43/43 | 2026-02-11 |
 | 4B | Router + App Shell | FEAT-084 | A faire | - | - |
 | 5 | Design System Widgets | FEAT-085 | A faire | - | - |
 | 6A | Sync Engine Queue + Retry | FEAT-086 | A faire | - | - |
@@ -39,10 +39,10 @@
 
 ## Compteurs
 
-- **Phases terminees** : 5/20
-- **Tests totaux** : 270
+- **Phases terminees** : 6/20
+- **Tests totaux** : 313
 - **Tests prevus** : ~1009 (939 features + 40 UX + 30 perf)
-- **Couverture** : Phase 0 + Phase 1A + Phase 1B + Phase 2 + Phase 3
+- **Couverture** : Phase 0 + Phase 1A + Phase 1B + Phase 2 + Phase 3 + Phase 4A
 
 ---
 
@@ -105,3 +105,17 @@
 - `NativeDatabase.memory()` pour tests rapides
 - `customStatement` pour incrementRetryCount dans SyncQueueDao
 - 270 tests passent (71 nouveaux), `flutter analyze` clean (0 issues)
+
+### 2026-02-11 - Phase 4A
+
+- `BiometricService` : wrapper local_auth (isAvailable, authenticate, getBiometricType, isConfigured)
+- `AuthRepository` (abstract) + `AuthRepositoryImpl` : login, refresh, logout, getCurrentUser
+- `AuthNotifier` (StateNotifier) : machine d'etats (Initial, Loading, Authenticated, Unauthenticated, Error)
+- Login password : email/mdp -> POST /auth/login -> stockage tokens
+- Login biometrique : local_auth -> refresh token -> authenticated
+- Protection double login simultane (_isLoginInProgress)
+- `LoginPage` : formulaire, validation, biometrie conditionnelle, branding
+- `SessionExpiredDialog` : dialog modale non-dismissible
+- `BiometricLoginButton` : bouton adaptatif (Face ID, Empreinte, Iris)
+- `biometricConfigured` ajoute a AppPreferences
+- 313 tests passent (43 nouveaux), `flutter analyze` clean (0 issues)
