@@ -30,6 +30,8 @@ import '../../features/dashboard/presentation/pages/analytics_page.dart';
 import '../../features/dashboard/presentation/pages/dashboard_page.dart';
 import '../../features/dashboard/presentation/pages/finance_page.dart';
 import '../../features/sync/presentation/pages/conflict_resolution_page.dart';
+import '../../features/scanner/presentation/pages/scanner_page.dart';
+import '../../features/search/presentation/pages/search_page.dart';
 import '../../shared/layouts/app_shell.dart';
 import 'route_names.dart';
 
@@ -298,14 +300,12 @@ final routerProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: RoutePaths.search,
             name: RouteNames.search,
-            builder: (context, state) =>
-                const _PlaceholderPage(title: 'Recherche'),
+            builder: (context, state) => const SearchPage(),
           ),
           GoRoute(
             path: RoutePaths.scanner,
             name: RouteNames.scanner,
-            builder: (context, state) =>
-                const _PlaceholderPage(title: 'Scanner QR'),
+            builder: (context, state) => const ScannerPage(),
           ),
           GoRoute(
             path: RoutePaths.notifications,

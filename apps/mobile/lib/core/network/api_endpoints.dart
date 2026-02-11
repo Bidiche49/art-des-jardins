@@ -55,4 +55,7 @@ class ApiEndpoints {
 
   // Templates
   static const String templates = '/templates';
+
+  // Search
+  static const String search = '/search';
 }
