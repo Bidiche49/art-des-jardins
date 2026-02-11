@@ -75,3 +75,15 @@
 - Extensions : BuildContext, String, DateTime
 - `main.dart` mis a jour : ConsumerWidget avec theme light/dark + terrain mode
 - 66 tests passent, `flutter analyze` clean (0 issues)
+
+### 2026-02-11 - Phase 1B
+
+- `api_endpoints.dart` : constantes pour tous les endpoints REST
+- `token_storage.dart` : wrapper FlutterSecureStorage (access + refresh token)
+- `auth_interceptor.dart` : JWT inject, refresh auto avec queue, session-expired
+- `dio_client.dart` : 2 instances Dio (public + auth) via Riverpod providers
+- `connectivity_service.dart` : stream online/offline, detection wifi/mobile
+- `app_preferences.dart` : wrapper SharedPreferences type (theme, onboarding, sync)
+- `api_response_dto.dart` : ApiResponse<T> generique (data + message + success)
+- `paginated_response_dto.dart` : PaginatedResponse<T> (items + page + total + hasNext)
+- 93 tests passent (27 nouveaux), `flutter analyze` clean
