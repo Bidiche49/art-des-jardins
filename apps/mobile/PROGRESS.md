@@ -24,7 +24,7 @@
 | 8B | Interventions + Photos | FEAT-090 | FAIT | 64/64 | 2026-02-11 |
 | 9A | Devis Builder | FEAT-091 | FAIT | 77/77 | 2026-02-11 |
 | 9B | Factures + Signature | FEAT-092 | FAIT | 44/44 | 2026-02-11 |
-| 10 | Calendrier + Meteo + Absences | FEAT-093 | A faire | - | - |
+| 10 | Calendrier + Meteo + Absences | FEAT-093 | FAIT | 47/47 | 2026-02-11 |
 | 11 | Dashboard + Analytics | FEAT-094 | A faire | - | - |
 | 12 | Recherche + QR Scanner | FEAT-095 | A faire | - | - |
 | 13 | WebSocket temps reel | FEAT-096 | A faire | - | - |
@@ -39,10 +39,10 @@
 
 ## Compteurs
 
-- **Phases terminees** : 15/20
-- **Tests totaux** : 741
+- **Phases terminees** : 16/20
+- **Tests totaux** : 788
 - **Tests prevus** : ~1009 (939 features + 40 UX + 30 perf)
-- **Couverture** : Phase 0 a Phase 9B
+- **Couverture** : Phase 0 a Phase 10
 
 ---
 
@@ -269,3 +269,28 @@
 - Routes : /signer/:token (public, placeholder remplace), /factures (liste), /factures/:id (detail)
 - Route names : `factures`, `factureDetail` dans RouteNames + RoutePaths
 - 741 tests passent (44 nouveaux), `flutter analyze` clean (0 issues)
+
+### 2026-02-11 - Phase 10
+
+- `AbsencesRepository` : interface abstraite (getAll, getMyAbsences, getPendingAbsences, create, validate, refuse, delete)
+- `AbsencesRepositoryImpl` : offline-first (API + cache Drift, fallback cache si erreur)
+- IDs temporaires `temp-{timestamp}` en mode offline, addToQueue pour sync
+- `AbsencesTable` + `AbsencesDao` : table Drift 10 colonnes, CRUD + getByUserId + getPending
+- `WeatherService` : interface abstraite (get7DayForecast)
+- `WeatherServiceImpl` : Open-Meteo API, cache 3h en memoire, fallback cache si erreur
+- Icones meteo + descriptions FR par weather_code (0=soleil, 61=pluie, 95=orage, etc.)
+- `CalendarNotifier` (StateNotifier) : loadMonth, selectDay, changeFocusedDay, interventionsForDay, absencesForDay, eventsForDay
+- `WeatherNotifier` (StateNotifier) : loadWeather, weatherForDate, refresh
+- `AbsencesNotifier` (StateNotifier) : loadAbsences, createAbsence, validateAbsence, refuseAbsence, calculateDays
+- 3 listes absences : mes absences (employe), en attente (patron), toutes (patron)
+- `CalendarPage` : table_calendar mois/semaine/jour, dots couleur interventions/absences, WeatherBanner, section evenements du jour selectionne, navigation detail intervention
+- `AbsencesPage` : 3 tabs patron (Mes absences, En attente, Toutes) / 1 tab employe, RefreshIndicator, FAB creation
+- `AbsenceFormPage` : ChoiceChip type (4 types), DatePicker debut/fin, validation fin >= debut, motif optionnel, calcul jours
+- `WeatherBanner` : bandeau horizontal 7 jours, WeatherDayCard (jour FR, icone, tempMax/tempMin), bordure bleue si precipitation > 5mm
+- `WeatherAlertBadge` : badge precipitation visible si > 5mm
+- `AbsenceCard` : icone par type, badge Validee/En attente, plage dates, nombre jours, motif, boutons Valider/Refuser pour patron
+- Routes branchees dans `app_router.dart` : /calendar (page), /calendar/absences (liste), /calendar/absences/new (formulaire)
+- Route names : `absences`, `absenceCreate` dans RouteNames + RoutePaths
+- Endpoint ajoute : `absence(id)` dans ApiEndpoints
+- Coordonnees Angers (47.4784, -0.5632) pour meteo
+- 788 tests passent (47 nouveaux), `flutter analyze` clean (0 issues)

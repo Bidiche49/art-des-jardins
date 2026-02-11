@@ -277,7 +277,7 @@
 | 12 | FEAT-090 | Phase 8B | Interventions + Photos | **DONE** | 64 |
 | 13 | FEAT-091 | Phase 9A | Devis Builder | **DONE** | 77 |
 | 14 | FEAT-092 | Phase 9B | Factures + Signature | **DONE** | 44 |
-| 15 | FEAT-093 | Phase 10 | Calendrier + Meteo + Absences | PENDING | ~38 |
+| 15 | FEAT-093 | Phase 10 | Calendrier + Meteo + Absences | **DONE** | 47 |
 | 16 | FEAT-094 | Phase 11 | Dashboard + Analytics | PENDING | ~38 |
 | 17 | FEAT-095 | Phase 12 | Recherche + QR Scanner | PENDING | ~26 |
 | 18 | FEAT-096 | Phase 13 | WebSocket temps reel | PENDING | ~30 |

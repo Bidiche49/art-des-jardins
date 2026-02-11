@@ -29,6 +29,10 @@ class RouteNames {
   static const String factures = 'factures';
   static const String factureDetail = 'facture-detail';
 
+  // Absences
+  static const String absences = 'absences';
+  static const String absenceCreate = 'absence-create';
+
   // Sync
   static const String conflicts = 'conflicts';
 
@@ -62,6 +66,8 @@ class RoutePaths {
   static const String interventionCreate = '/interventions/new';
   static const String factures = '/factures';
   static const String factureDetail = '/factures/:id';
+  static const String absences = '/calendar/absences';
+  static const String absenceCreate = '/calendar/absences/new';
   static const String conflicts = '/conflicts';
   static const String settings = '/settings';
   static const String search = '/search';

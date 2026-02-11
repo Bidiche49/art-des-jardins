@@ -23,6 +23,9 @@ import '../../features/devis/presentation/pages/devis_detail_page.dart';
 import '../../features/devis/presentation/pages/devis_list_page.dart';
 import '../../features/factures/presentation/pages/factures_list_page.dart';
 import '../../features/signature/presentation/pages/signer_devis_page.dart';
+import '../../features/calendar/presentation/pages/absence_form_page.dart';
+import '../../features/calendar/presentation/pages/absences_page.dart';
+import '../../features/calendar/presentation/pages/calendar_page.dart';
 import '../../features/sync/presentation/pages/conflict_resolution_page.dart';
 import '../../shared/layouts/app_shell.dart';
 import 'route_names.dart';
@@ -199,8 +202,22 @@ final routerProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: RoutePaths.calendar,
             name: RouteNames.calendar,
-            builder: (context, state) =>
-                const _PlaceholderPage(title: 'Calendrier'),
+            builder: (context, state) => const CalendarPage(),
+            routes: [
+              GoRoute(
+                path: 'absences',
+                name: RouteNames.absences,
+                builder: (context, state) => const AbsencesPage(),
+                routes: [
+                  GoRoute(
+                    path: 'new',
+                    name: RouteNames.absenceCreate,
+                    builder: (context, state) =>
+                        const AbsenceFormPage(),
+                  ),
+                ],
+              ),
+            ],
           ),
           GoRoute(
             path: RoutePaths.analytics,

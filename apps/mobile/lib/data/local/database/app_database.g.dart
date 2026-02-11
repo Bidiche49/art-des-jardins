@@ -4403,6 +4403,612 @@ class FacturesTableCompanion extends UpdateCompanion<FacturesTableData> {
   }
 }
 
+class $AbsencesTableTable extends AbsencesTable
+    with TableInfo<$AbsencesTableTable, AbsencesTableData> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $AbsencesTableTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _userIdMeta = const VerificationMeta('userId');
+  @override
+  late final GeneratedColumn<String> userId = GeneratedColumn<String>(
+    'user_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _dateDebutMeta = const VerificationMeta(
+    'dateDebut',
+  );
+  @override
+  late final GeneratedColumn<DateTime> dateDebut = GeneratedColumn<DateTime>(
+    'date_debut',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _dateFinMeta = const VerificationMeta(
+    'dateFin',
+  );
+  @override
+  late final GeneratedColumn<DateTime> dateFin = GeneratedColumn<DateTime>(
+    'date_fin',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _typeMeta = const VerificationMeta('type');
+  @override
+  late final GeneratedColumn<String> type = GeneratedColumn<String>(
+    'type',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _motifMeta = const VerificationMeta('motif');
+  @override
+  late final GeneratedColumn<String> motif = GeneratedColumn<String>(
+    'motif',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _valideeMeta = const VerificationMeta(
+    'validee',
+  );
+  @override
+  late final GeneratedColumn<bool> validee = GeneratedColumn<bool>(
+    'validee',
+    aliasedName,
+    false,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("validee" IN (0, 1))',
+    ),
+    defaultValue: const Constant(false),
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> updatedAt = GeneratedColumn<DateTime>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _syncedAtMeta = const VerificationMeta(
+    'syncedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> syncedAt = GeneratedColumn<DateTime>(
+    'synced_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    userId,
+    dateDebut,
+    dateFin,
+    type,
+    motif,
+    validee,
+    createdAt,
+    updatedAt,
+    syncedAt,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'absences';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<AbsencesTableData> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('user_id')) {
+      context.handle(
+        _userIdMeta,
+        userId.isAcceptableOrUnknown(data['user_id']!, _userIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_userIdMeta);
+    }
+    if (data.containsKey('date_debut')) {
+      context.handle(
+        _dateDebutMeta,
+        dateDebut.isAcceptableOrUnknown(data['date_debut']!, _dateDebutMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_dateDebutMeta);
+    }
+    if (data.containsKey('date_fin')) {
+      context.handle(
+        _dateFinMeta,
+        dateFin.isAcceptableOrUnknown(data['date_fin']!, _dateFinMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_dateFinMeta);
+    }
+    if (data.containsKey('type')) {
+      context.handle(
+        _typeMeta,
+        type.isAcceptableOrUnknown(data['type']!, _typeMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_typeMeta);
+    }
+    if (data.containsKey('motif')) {
+      context.handle(
+        _motifMeta,
+        motif.isAcceptableOrUnknown(data['motif']!, _motifMeta),
+      );
+    }
+    if (data.containsKey('validee')) {
+      context.handle(
+        _valideeMeta,
+        validee.isAcceptableOrUnknown(data['validee']!, _valideeMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_createdAtMeta);
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_updatedAtMeta);
+    }
+    if (data.containsKey('synced_at')) {
+      context.handle(
+        _syncedAtMeta,
+        syncedAt.isAcceptableOrUnknown(data['synced_at']!, _syncedAtMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  AbsencesTableData map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return AbsencesTableData(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      userId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}user_id'],
+      )!,
+      dateDebut: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}date_debut'],
+      )!,
+      dateFin: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}date_fin'],
+      )!,
+      type: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}type'],
+      )!,
+      motif: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}motif'],
+      ),
+      validee: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}validee'],
+      )!,
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}created_at'],
+      )!,
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}updated_at'],
+      )!,
+      syncedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}synced_at'],
+      ),
+    );
+  }
+
+  @override
+  $AbsencesTableTable createAlias(String alias) {
+    return $AbsencesTableTable(attachedDatabase, alias);
+  }
+}
+
+class AbsencesTableData extends DataClass
+    implements Insertable<AbsencesTableData> {
+  final String id;
+  final String userId;
+  final DateTime dateDebut;
+  final DateTime dateFin;
+  final String type;
+  final String? motif;
+  final bool validee;
+  final DateTime createdAt;
+  final DateTime updatedAt;
+  final DateTime? syncedAt;
+  const AbsencesTableData({
+    required this.id,
+    required this.userId,
+    required this.dateDebut,
+    required this.dateFin,
+    required this.type,
+    this.motif,
+    required this.validee,
+    required this.createdAt,
+    required this.updatedAt,
+    this.syncedAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['user_id'] = Variable<String>(userId);
+    map['date_debut'] = Variable<DateTime>(dateDebut);
+    map['date_fin'] = Variable<DateTime>(dateFin);
+    map['type'] = Variable<String>(type);
+    if (!nullToAbsent || motif != null) {
+      map['motif'] = Variable<String>(motif);
+    }
+    map['validee'] = Variable<bool>(validee);
+    map['created_at'] = Variable<DateTime>(createdAt);
+    map['updated_at'] = Variable<DateTime>(updatedAt);
+    if (!nullToAbsent || syncedAt != null) {
+      map['synced_at'] = Variable<DateTime>(syncedAt);
+    }
+    return map;
+  }
+
+  AbsencesTableCompanion toCompanion(bool nullToAbsent) {
+    return AbsencesTableCompanion(
+      id: Value(id),
+      userId: Value(userId),
+      dateDebut: Value(dateDebut),
+      dateFin: Value(dateFin),
+      type: Value(type),
+      motif: motif == null && nullToAbsent
+          ? const Value.absent()
+          : Value(motif),
+      validee: Value(validee),
+      createdAt: Value(createdAt),
+      updatedAt: Value(updatedAt),
+      syncedAt: syncedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(syncedAt),
+    );
+  }
+
+  factory AbsencesTableData.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return AbsencesTableData(
+      id: serializer.fromJson<String>(json['id']),
+      userId: serializer.fromJson<String>(json['userId']),
+      dateDebut: serializer.fromJson<DateTime>(json['dateDebut']),
+      dateFin: serializer.fromJson<DateTime>(json['dateFin']),
+      type: serializer.fromJson<String>(json['type']),
+      motif: serializer.fromJson<String?>(json['motif']),
+      validee: serializer.fromJson<bool>(json['validee']),
+      createdAt: serializer.fromJson<DateTime>(json['createdAt']),
+      updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
+      syncedAt: serializer.fromJson<DateTime?>(json['syncedAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'userId': serializer.toJson<String>(userId),
+      'dateDebut': serializer.toJson<DateTime>(dateDebut),
+      'dateFin': serializer.toJson<DateTime>(dateFin),
+      'type': serializer.toJson<String>(type),
+      'motif': serializer.toJson<String?>(motif),
+      'validee': serializer.toJson<bool>(validee),
+      'createdAt': serializer.toJson<DateTime>(createdAt),
+      'updatedAt': serializer.toJson<DateTime>(updatedAt),
+      'syncedAt': serializer.toJson<DateTime?>(syncedAt),
+    };
+  }
+
+  AbsencesTableData copyWith({
+    String? id,
+    String? userId,
+    DateTime? dateDebut,
+    DateTime? dateFin,
+    String? type,
+    Value<String?> motif = const Value.absent(),
+    bool? validee,
+    DateTime? createdAt,
+    DateTime? updatedAt,
+    Value<DateTime?> syncedAt = const Value.absent(),
+  }) => AbsencesTableData(
+    id: id ?? this.id,
+    userId: userId ?? this.userId,
+    dateDebut: dateDebut ?? this.dateDebut,
+    dateFin: dateFin ?? this.dateFin,
+    type: type ?? this.type,
+    motif: motif.present ? motif.value : this.motif,
+    validee: validee ?? this.validee,
+    createdAt: createdAt ?? this.createdAt,
+    updatedAt: updatedAt ?? this.updatedAt,
+    syncedAt: syncedAt.present ? syncedAt.value : this.syncedAt,
+  );
+  AbsencesTableData copyWithCompanion(AbsencesTableCompanion data) {
+    return AbsencesTableData(
+      id: data.id.present ? data.id.value : this.id,
+      userId: data.userId.present ? data.userId.value : this.userId,
+      dateDebut: data.dateDebut.present ? data.dateDebut.value : this.dateDebut,
+      dateFin: data.dateFin.present ? data.dateFin.value : this.dateFin,
+      type: data.type.present ? data.type.value : this.type,
+      motif: data.motif.present ? data.motif.value : this.motif,
+      validee: data.validee.present ? data.validee.value : this.validee,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+      syncedAt: data.syncedAt.present ? data.syncedAt.value : this.syncedAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('AbsencesTableData(')
+          ..write('id: $id, ')
+          ..write('userId: $userId, ')
+          ..write('dateDebut: $dateDebut, ')
+          ..write('dateFin: $dateFin, ')
+          ..write('type: $type, ')
+          ..write('motif: $motif, ')
+          ..write('validee: $validee, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('syncedAt: $syncedAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    userId,
+    dateDebut,
+    dateFin,
+    type,
+    motif,
+    validee,
+    createdAt,
+    updatedAt,
+    syncedAt,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is AbsencesTableData &&
+          other.id == this.id &&
+          other.userId == this.userId &&
+          other.dateDebut == this.dateDebut &&
+          other.dateFin == this.dateFin &&
+          other.type == this.type &&
+          other.motif == this.motif &&
+          other.validee == this.validee &&
+          other.createdAt == this.createdAt &&
+          other.updatedAt == this.updatedAt &&
+          other.syncedAt == this.syncedAt);
+}
+
+class AbsencesTableCompanion extends UpdateCompanion<AbsencesTableData> {
+  final Value<String> id;
+  final Value<String> userId;
+  final Value<DateTime> dateDebut;
+  final Value<DateTime> dateFin;
+  final Value<String> type;
+  final Value<String?> motif;
+  final Value<bool> validee;
+  final Value<DateTime> createdAt;
+  final Value<DateTime> updatedAt;
+  final Value<DateTime?> syncedAt;
+  final Value<int> rowid;
+  const AbsencesTableCompanion({
+    this.id = const Value.absent(),
+    this.userId = const Value.absent(),
+    this.dateDebut = const Value.absent(),
+    this.dateFin = const Value.absent(),
+    this.type = const Value.absent(),
+    this.motif = const Value.absent(),
+    this.validee = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.syncedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  AbsencesTableCompanion.insert({
+    required String id,
+    required String userId,
+    required DateTime dateDebut,
+    required DateTime dateFin,
+    required String type,
+    this.motif = const Value.absent(),
+    this.validee = const Value.absent(),
+    required DateTime createdAt,
+    required DateTime updatedAt,
+    this.syncedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       userId = Value(userId),
+       dateDebut = Value(dateDebut),
+       dateFin = Value(dateFin),
+       type = Value(type),
+       createdAt = Value(createdAt),
+       updatedAt = Value(updatedAt);
+  static Insertable<AbsencesTableData> custom({
+    Expression<String>? id,
+    Expression<String>? userId,
+    Expression<DateTime>? dateDebut,
+    Expression<DateTime>? dateFin,
+    Expression<String>? type,
+    Expression<String>? motif,
+    Expression<bool>? validee,
+    Expression<DateTime>? createdAt,
+    Expression<DateTime>? updatedAt,
+    Expression<DateTime>? syncedAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (userId != null) 'user_id': userId,
+      if (dateDebut != null) 'date_debut': dateDebut,
+      if (dateFin != null) 'date_fin': dateFin,
+      if (type != null) 'type': type,
+      if (motif != null) 'motif': motif,
+      if (validee != null) 'validee': validee,
+      if (createdAt != null) 'created_at': createdAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (syncedAt != null) 'synced_at': syncedAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  AbsencesTableCompanion copyWith({
+    Value<String>? id,
+    Value<String>? userId,
+    Value<DateTime>? dateDebut,
+    Value<DateTime>? dateFin,
+    Value<String>? type,
+    Value<String?>? motif,
+    Value<bool>? validee,
+    Value<DateTime>? createdAt,
+    Value<DateTime>? updatedAt,
+    Value<DateTime?>? syncedAt,
+    Value<int>? rowid,
+  }) {
+    return AbsencesTableCompanion(
+      id: id ?? this.id,
+      userId: userId ?? this.userId,
+      dateDebut: dateDebut ?? this.dateDebut,
+      dateFin: dateFin ?? this.dateFin,
+      type: type ?? this.type,
+      motif: motif ?? this.motif,
+      validee: validee ?? this.validee,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      syncedAt: syncedAt ?? this.syncedAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (userId.present) {
+      map['user_id'] = Variable<String>(userId.value);
+    }
+    if (dateDebut.present) {
+      map['date_debut'] = Variable<DateTime>(dateDebut.value);
+    }
+    if (dateFin.present) {
+      map['date_fin'] = Variable<DateTime>(dateFin.value);
+    }
+    if (type.present) {
+      map['type'] = Variable<String>(type.value);
+    }
+    if (motif.present) {
+      map['motif'] = Variable<String>(motif.value);
+    }
+    if (validee.present) {
+      map['validee'] = Variable<bool>(validee.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<DateTime>(updatedAt.value);
+    }
+    if (syncedAt.present) {
+      map['synced_at'] = Variable<DateTime>(syncedAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('AbsencesTableCompanion(')
+          ..write('id: $id, ')
+          ..write('userId: $userId, ')
+          ..write('dateDebut: $dateDebut, ')
+          ..write('dateFin: $dateFin, ')
+          ..write('type: $type, ')
+          ..write('motif: $motif, ')
+          ..write('validee: $validee, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('syncedAt: $syncedAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 class $SyncQueueTableTable extends SyncQueueTable
     with TableInfo<$SyncQueueTableTable, SyncQueueTableData> {
   @override
@@ -5989,6 +6595,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
       $InterventionsTableTable(this);
   late final $DevisTableTable devisTable = $DevisTableTable(this);
   late final $FacturesTableTable facturesTable = $FacturesTableTable(this);
+  late final $AbsencesTableTable absencesTable = $AbsencesTableTable(this);
   late final $SyncQueueTableTable syncQueueTable = $SyncQueueTableTable(this);
   late final $SyncMetaTableTable syncMetaTable = $SyncMetaTableTable(this);
   late final $PhotoQueueTableTable photoQueueTable = $PhotoQueueTableTable(
@@ -6001,6 +6608,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   );
   late final DevisDao devisDao = DevisDao(this as AppDatabase);
   late final FacturesDao facturesDao = FacturesDao(this as AppDatabase);
+  late final AbsencesDao absencesDao = AbsencesDao(this as AppDatabase);
   late final SyncQueueDao syncQueueDao = SyncQueueDao(this as AppDatabase);
   late final SyncMetaDao syncMetaDao = SyncMetaDao(this as AppDatabase);
   late final PhotoQueueDao photoQueueDao = PhotoQueueDao(this as AppDatabase);
@@ -6014,6 +6622,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     interventionsTable,
     devisTable,
     facturesTable,
+    absencesTable,
     syncQueueTable,
     syncMetaTable,
     photoQueueTable,
@@ -8067,6 +8676,305 @@ typedef $$FacturesTableTableProcessedTableManager =
       FacturesTableData,
       PrefetchHooks Function()
     >;
+typedef $$AbsencesTableTableCreateCompanionBuilder =
+    AbsencesTableCompanion Function({
+      required String id,
+      required String userId,
+      required DateTime dateDebut,
+      required DateTime dateFin,
+      required String type,
+      Value<String?> motif,
+      Value<bool> validee,
+      required DateTime createdAt,
+      required DateTime updatedAt,
+      Value<DateTime?> syncedAt,
+      Value<int> rowid,
+    });
+typedef $$AbsencesTableTableUpdateCompanionBuilder =
+    AbsencesTableCompanion Function({
+      Value<String> id,
+      Value<String> userId,
+      Value<DateTime> dateDebut,
+      Value<DateTime> dateFin,
+      Value<String> type,
+      Value<String?> motif,
+      Value<bool> validee,
+      Value<DateTime> createdAt,
+      Value<DateTime> updatedAt,
+      Value<DateTime?> syncedAt,
+      Value<int> rowid,
+    });
+
+class $$AbsencesTableTableFilterComposer
+    extends Composer<_$AppDatabase, $AbsencesTableTable> {
+  $$AbsencesTableTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get userId => $composableBuilder(
+    column: $table.userId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get dateDebut => $composableBuilder(
+    column: $table.dateDebut,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get dateFin => $composableBuilder(
+    column: $table.dateFin,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get type => $composableBuilder(
+    column: $table.type,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get motif => $composableBuilder(
+    column: $table.motif,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<bool> get validee => $composableBuilder(
+    column: $table.validee,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get syncedAt => $composableBuilder(
+    column: $table.syncedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$AbsencesTableTableOrderingComposer
+    extends Composer<_$AppDatabase, $AbsencesTableTable> {
+  $$AbsencesTableTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get userId => $composableBuilder(
+    column: $table.userId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get dateDebut => $composableBuilder(
+    column: $table.dateDebut,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get dateFin => $composableBuilder(
+    column: $table.dateFin,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get type => $composableBuilder(
+    column: $table.type,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get motif => $composableBuilder(
+    column: $table.motif,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<bool> get validee => $composableBuilder(
+    column: $table.validee,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get syncedAt => $composableBuilder(
+    column: $table.syncedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$AbsencesTableTableAnnotationComposer
+    extends Composer<_$AppDatabase, $AbsencesTableTable> {
+  $$AbsencesTableTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get userId =>
+      $composableBuilder(column: $table.userId, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get dateDebut =>
+      $composableBuilder(column: $table.dateDebut, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get dateFin =>
+      $composableBuilder(column: $table.dateFin, builder: (column) => column);
+
+  GeneratedColumn<String> get type =>
+      $composableBuilder(column: $table.type, builder: (column) => column);
+
+  GeneratedColumn<String> get motif =>
+      $composableBuilder(column: $table.motif, builder: (column) => column);
+
+  GeneratedColumn<bool> get validee =>
+      $composableBuilder(column: $table.validee, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get syncedAt =>
+      $composableBuilder(column: $table.syncedAt, builder: (column) => column);
+}
+
+class $$AbsencesTableTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $AbsencesTableTable,
+          AbsencesTableData,
+          $$AbsencesTableTableFilterComposer,
+          $$AbsencesTableTableOrderingComposer,
+          $$AbsencesTableTableAnnotationComposer,
+          $$AbsencesTableTableCreateCompanionBuilder,
+          $$AbsencesTableTableUpdateCompanionBuilder,
+          (
+            AbsencesTableData,
+            BaseReferences<
+              _$AppDatabase,
+              $AbsencesTableTable,
+              AbsencesTableData
+            >,
+          ),
+          AbsencesTableData,
+          PrefetchHooks Function()
+        > {
+  $$AbsencesTableTableTableManager(_$AppDatabase db, $AbsencesTableTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$AbsencesTableTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$AbsencesTableTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$AbsencesTableTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> userId = const Value.absent(),
+                Value<DateTime> dateDebut = const Value.absent(),
+                Value<DateTime> dateFin = const Value.absent(),
+                Value<String> type = const Value.absent(),
+                Value<String?> motif = const Value.absent(),
+                Value<bool> validee = const Value.absent(),
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                Value<DateTime?> syncedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => AbsencesTableCompanion(
+                id: id,
+                userId: userId,
+                dateDebut: dateDebut,
+                dateFin: dateFin,
+                type: type,
+                motif: motif,
+                validee: validee,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                syncedAt: syncedAt,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String id,
+                required String userId,
+                required DateTime dateDebut,
+                required DateTime dateFin,
+                required String type,
+                Value<String?> motif = const Value.absent(),
+                Value<bool> validee = const Value.absent(),
+                required DateTime createdAt,
+                required DateTime updatedAt,
+                Value<DateTime?> syncedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => AbsencesTableCompanion.insert(
+                id: id,
+                userId: userId,
+                dateDebut: dateDebut,
+                dateFin: dateFin,
+                type: type,
+                motif: motif,
+                validee: validee,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                syncedAt: syncedAt,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$AbsencesTableTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $AbsencesTableTable,
+      AbsencesTableData,
+      $$AbsencesTableTableFilterComposer,
+      $$AbsencesTableTableOrderingComposer,
+      $$AbsencesTableTableAnnotationComposer,
+      $$AbsencesTableTableCreateCompanionBuilder,
+      $$AbsencesTableTableUpdateCompanionBuilder,
+      (
+        AbsencesTableData,
+        BaseReferences<_$AppDatabase, $AbsencesTableTable, AbsencesTableData>,
+      ),
+      AbsencesTableData,
+      PrefetchHooks Function()
+    >;
 typedef $$SyncQueueTableTableCreateCompanionBuilder =
     SyncQueueTableCompanion Function({
       Value<int> id,
@@ -8889,6 +9797,8 @@ class $AppDatabaseManager {
       $$DevisTableTableTableManager(_db, _db.devisTable);
   $$FacturesTableTableTableManager get facturesTable =>
       $$FacturesTableTableTableManager(_db, _db.facturesTable);
+  $$AbsencesTableTableTableManager get absencesTable =>
+      $$AbsencesTableTableTableManager(_db, _db.absencesTable);
   $$SyncQueueTableTableTableManager get syncQueueTable =>
       $$SyncQueueTableTableTableManager(_db, _db.syncQueueTable);
   $$SyncMetaTableTableTableManager get syncMetaTable =>

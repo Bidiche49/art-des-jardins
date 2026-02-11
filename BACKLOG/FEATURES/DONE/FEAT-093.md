@@ -1,7 +1,7 @@
 # FEAT-093: [Flutter] Phase 10 - Calendrier + Meteo + Absences
 
 **Type:** Feature
-**Statut:** A faire
+**Statut:** Fait
 **Priorite:** Haute
 **Complexite:** L
 **Tags:** mobile, flutter, calendar, meteo, absences

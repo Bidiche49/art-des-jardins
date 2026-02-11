@@ -1,5 +1,6 @@
 import 'package:drift/drift.dart';
 
+import 'daos/absences_dao.dart';
 import 'daos/chantiers_dao.dart';
 import 'daos/clients_dao.dart';
 import 'daos/devis_dao.dart';
@@ -8,6 +9,7 @@ import 'daos/interventions_dao.dart';
 import 'daos/photo_queue_dao.dart';
 import 'daos/sync_meta_dao.dart';
 import 'daos/sync_queue_dao.dart';
+import 'tables/absences_table.dart';
 import 'tables/chantiers_table.dart';
 import 'tables/clients_table.dart';
 import 'tables/devis_table.dart';
@@ -26,6 +28,7 @@ part 'app_database.g.dart';
     InterventionsTable,
     DevisTable,
     FacturesTable,
+    AbsencesTable,
     SyncQueueTable,
     SyncMetaTable,
     PhotoQueueTable,
@@ -36,6 +39,7 @@ part 'app_database.g.dart';
     InterventionsDao,
     DevisDao,
     FacturesDao,
+    AbsencesDao,
     SyncQueueDao,
     SyncMetaDao,
     PhotoQueueDao,

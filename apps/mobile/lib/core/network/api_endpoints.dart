@@ -36,6 +36,7 @@ class ApiEndpoints {
   // Calendar
   static const String calendar = '/calendar';
   static const String absences = '/calendar/absences';
+  static String absence(String id) => '/calendar/absences/$id';
 
   // Users
   static const String users = '/users';
