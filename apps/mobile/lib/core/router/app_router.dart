@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../../features/auth/domain/auth_state.dart';
 import '../../features/auth/presentation/auth_notifier.dart';
 import '../../features/auth/presentation/pages/login_page.dart';
+import '../../features/sync/presentation/pages/conflict_resolution_page.dart';
 import '../../shared/layouts/app_shell.dart';
 import 'route_names.dart';
 
@@ -183,6 +184,12 @@ final routerProvider = Provider<GoRouter>((ref) {
               final id = state.pathParameters['id']!;
               return _PlaceholderPage(title: 'Facture $id');
             },
+          ),
+          GoRoute(
+            path: RoutePaths.conflicts,
+            name: RouteNames.conflicts,
+            builder: (context, state) =>
+                const ConflictResolutionPage(),
           ),
           GoRoute(
             path: RoutePaths.settings,

@@ -6,6 +6,8 @@ import '../../core/network/connectivity_service.dart';
 import '../../core/network/dio_client.dart';
 import '../../data/local/database/app_database.dart';
 import '../../data/local/database/daos/sync_queue_dao.dart';
+import '../../domain/models/sync_conflict.dart';
+import 'conflict_service.dart';
 import 'sync_service.dart';
 
 final appDatabaseProvider = Provider<AppDatabase>((ref) {
@@ -38,6 +40,54 @@ final autoSyncProvider = Provider<AutoSyncController>((ref) {
   ref.onDispose(controller.dispose);
   return controller;
 });
+
+// ============== Conflict providers ==============
+
+final conflictServiceProvider = Provider<ConflictService>((ref) {
+  return ConflictService();
+});
+
+final conflictNotifierProvider =
+    StateNotifierProvider<ConflictNotifier, List<SyncConflict>>((ref) {
+  return ConflictNotifier(
+    conflictService: ref.read(conflictServiceProvider),
+  );
+});
+
+final conflictCountProvider = Provider<int>((ref) {
+  return ref.watch(conflictNotifierProvider).length;
+});
+
+class ConflictNotifier extends StateNotifier<List<SyncConflict>> {
+  ConflictNotifier({required ConflictService conflictService})
+      : _conflictService = conflictService,
+        super([]);
+
+  final ConflictService _conflictService;
+
+  int get conflictCount => state.length;
+
+  void addConflict(SyncConflict conflict) {
+    state = [...state, conflict];
+  }
+
+  Map<String, dynamic> resolveConflict({
+    required String conflictId,
+    required String strategy,
+    Map<String, dynamic>? mergeOverrides,
+  }) {
+    final conflict = state.firstWhere((c) => c.id == conflictId);
+    final resolved = _conflictService.resolveConflict(
+      conflict: conflict,
+      strategy: strategy,
+      mergeOverrides: mergeOverrides,
+    );
+    state = state.where((c) => c.id != conflictId).toList();
+    return resolved;
+  }
+}
+
+// ============== Auto-sync ==============
 
 class AutoSyncController {
   AutoSyncController({

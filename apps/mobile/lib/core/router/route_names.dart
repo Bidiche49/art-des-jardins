@@ -27,6 +27,9 @@ class RouteNames {
   static const String interventionCreate = 'intervention-create';
   static const String factureDetail = 'facture-detail';
 
+  // Sync
+  static const String conflicts = 'conflicts';
+
   // Utility
   static const String settings = 'settings';
   static const String search = 'search';
@@ -55,6 +58,7 @@ class RoutePaths {
   static const String interventionDetail = '/interventions/:id';
   static const String interventionCreate = '/interventions/new';
   static const String factureDetail = '/factures/:id';
+  static const String conflicts = '/conflicts';
   static const String settings = '/settings';
   static const String search = '/search';
   static const String scanner = '/scanner';
