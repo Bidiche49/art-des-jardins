@@ -36,6 +36,9 @@ class RouteNames {
   // Sync
   static const String conflicts = 'conflicts';
 
+  // Finance
+  static const String finance = 'finance';
+
   // Utility
   static const String settings = 'settings';
   static const String search = 'search';
@@ -69,6 +72,7 @@ class RoutePaths {
   static const String absences = '/calendar/absences';
   static const String absenceCreate = '/calendar/absences/new';
   static const String conflicts = '/conflicts';
+  static const String finance = '/finance';
   static const String settings = '/settings';
   static const String search = '/search';
   static const String scanner = '/scanner';

@@ -26,6 +26,9 @@ import '../../features/signature/presentation/pages/signer_devis_page.dart';
 import '../../features/calendar/presentation/pages/absence_form_page.dart';
 import '../../features/calendar/presentation/pages/absences_page.dart';
 import '../../features/calendar/presentation/pages/calendar_page.dart';
+import '../../features/dashboard/presentation/pages/analytics_page.dart';
+import '../../features/dashboard/presentation/pages/dashboard_page.dart';
+import '../../features/dashboard/presentation/pages/finance_page.dart';
 import '../../features/sync/presentation/pages/conflict_resolution_page.dart';
 import '../../shared/layouts/app_shell.dart';
 import 'route_names.dart';
@@ -92,8 +95,7 @@ final routerProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: RoutePaths.dashboard,
             name: RouteNames.dashboard,
-            builder: (context, state) =>
-                const _PlaceholderPage(title: 'Dashboard'),
+            builder: (context, state) => const DashboardPage(),
           ),
           GoRoute(
             path: RoutePaths.clients,
@@ -222,8 +224,12 @@ final routerProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: RoutePaths.analytics,
             name: RouteNames.analytics,
-            builder: (context, state) =>
-                const _PlaceholderPage(title: 'Analytics'),
+            builder: (context, state) => const AnalyticsPage(),
+          ),
+          GoRoute(
+            path: RoutePaths.finance,
+            name: RouteNames.finance,
+            builder: (context, state) => const FinancePage(),
           ),
           GoRoute(
             path: RoutePaths.interventions,
