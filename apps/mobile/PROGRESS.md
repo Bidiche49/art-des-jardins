@@ -16,7 +16,7 @@
 | 3 | Database Drift | FEAT-082 | FAIT | 71/71 | 2026-02-11 |
 | 4A | Auth employe | FEAT-083 | FAIT | 43/43 | 2026-02-11 |
 | 4B | Router + App Shell | FEAT-084 | FAIT | 24/24 | 2026-02-11 |
-| 5 | Design System Widgets | FEAT-085 | A faire | - | - |
+| 5 | Design System Widgets | FEAT-085 | FAIT | 54/54 | 2026-02-11 |
 | 6A | Sync Engine Queue + Retry | FEAT-086 | A faire | - | - |
 | 6B | Conflits Detection + UI | FEAT-087 | A faire | - | - |
 | 7 | Clients CRUD complet | FEAT-088 | A faire | - | - |
@@ -39,10 +39,10 @@
 
 ## Compteurs
 
-- **Phases terminees** : 7/20
-- **Tests totaux** : 337
+- **Phases terminees** : 8/20
+- **Tests totaux** : 391
 - **Tests prevus** : ~1009 (939 features + 40 UX + 30 perf)
-- **Couverture** : Phase 0 + Phase 1A + Phase 1B + Phase 2 + Phase 3 + Phase 4A + Phase 4B
+- **Couverture** : Phase 0 a Phase 5
 
 ---
 
@@ -128,3 +128,22 @@
 - `AppShell` : AppBar dynamique (titre selon route), NavigationBar 6 items (Dashboard, Clients, Chantiers, Devis, Calendrier, Analytics), actions (Search, Notifications, Settings), SafeArea
 - Placeholder pages pour toutes les routes non implementees
 - 337 tests passent (24 nouveaux), `flutter analyze` clean (0 issues)
+
+### 2026-02-11 - Phase 5
+
+- 14 widgets design system crees dans `lib/shared/widgets/`
+- `AejButton` : 5 variants (primary, secondary, outline, ghost, danger), 3 tailles, loading, scale(0.98), icones left/right, full-width
+- `AejCard` : child, header, footer, onTap, padding (sm/md/lg), elevation
+- `AejModal` : BottomSheet mobile (< 600px) / Dialog desktop, 4 tailles, close button, scrollable, actions footer
+- `AejInput` : label, hint, error, prefix/suffix icon, validation, focus
+- `AejSearchInput` : debounce 300ms, icone search, bouton clear
+- `AejSelect` : dropdown via DropdownButtonFormField, generique T
+- `AejTextarea` : multi-ligne, 3 rows par defaut, maxLines 6
+- `AejBadge` : 6 variants couleur, 2 tailles (sm/md)
+- `AejTable` : headers + rows, rows clickables, flex columns
+- `AejPagination` : prev/next + page numbers
+- `AejSpinner` : 3 tailles (sm/md/lg), `AejLoadingOverlay`
+- `AejEmptyState` : icone, titre, description, CTA
+- `AejOfflineBanner` : banner conditionnel offline/online
+- `AejConnectionIndicator` : dot vert/rouge/jaune (online/offline/syncing)
+- 391 tests passent (54 nouveaux), `flutter analyze` clean (0 issues)
