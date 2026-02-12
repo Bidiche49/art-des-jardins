@@ -271,13 +271,13 @@ void main() {
   // ============================================================
   group('AnalyticsEvent', () {
     test('stores name and parameters', () {
-      final event = AnalyticsEvent('test', {'key': 'value'});
+      const event = AnalyticsEvent('test', {'key': 'value'});
       expect(event.name, 'test');
       expect(event.parameters?['key'], 'value');
     });
 
     test('parameters can be null', () {
-      final event = AnalyticsEvent('test');
+      const event = AnalyticsEvent('test');
       expect(event.name, 'test');
       expect(event.parameters, isNull);
     });

@@ -33,16 +33,16 @@
 | 16 | Push Notifications FCM | FEAT-099 | FAIT | 37/37 | 2026-02-11 |
 | 18 | UX Polish Pass | FEAT-101 | FAIT | 45/45 | 2026-02-12 |
 | 19 | Performance + Production | FEAT-102 | FAIT | 37/37 | 2026-02-12 |
-| 17 | Tests integration (DERNIER) | FEAT-100 | A faire | - | - |
+| 17 | Tests integration (DERNIER) | FEAT-100 | FAIT | 55/55 | 2026-02-12 |
 
 ---
 
 ## Compteurs
 
-- **Phases terminees** : 24/24
-- **Tests totaux** : 1133
-- **Tests prevus** : ~1192 (1133 + ~59 integration)
-- **Couverture** : Phase 0 a Phase 19
+- **Phases terminees** : 25/25 (COMPLETE)
+- **Tests totaux** : 1188
+- **Tests prevus** : 1188 (ATTEINT)
+- **Couverture** : Phase 0 a Phase 19 + Integration
 
 ---
 
@@ -444,3 +444,20 @@
 - `bootstrap.dart` enrichi : FlutterError.onError -> CrashReporting, PlatformDispatcher.onError -> fatal, Future.wait init parallele
 - Providers : crashReportingServiceProvider, analyticsServiceProvider
 - 1133 tests passent (37 nouveaux), `flutter analyze` clean (0 issues)
+
+### 2026-02-12 - Phase 17 (DERNIER)
+
+- 6 fichiers de tests d'integration : auth_flow, offline_sync, devis_builder, crud_flow, calendar_flow, settings_flow
+- `auth_flow_test` (9) : login email/password, credentials invalides, logout, biometric, session expired, checkAuth, network error, double login prevention
+- `offline_sync_test` (12) : ConflictNotifier (empty, add, multiple, resolve local/server/merge, targeted removal) + ConflictService (hasConflict, detectConflictingFields, createSyncConflict, mergeData)
+- `devis_builder_test` (9) : initial state, addLigne, totaux (HT/TVA/TTC), removeLigne, setChantier, reset, setNotes, setConditions, saveBrouillon sans chantier
+- `crud_flow_test` (8) : load clients, filter by type, search by name, clear filter, refresh, error state, detail by ID, combined filter+search
+- `calendar_flow_test` (7) : loadMonth, selectDay, interventionsForDay by date, changeFocusedDay, error state, eventsForDay counts
+- `settings_flow_test` (10) : initial state, copyWith (theme/terrain/biometric/lastSync/notifications), repository getThemeMode/setThemeMode/getTerrainMode/setTerrainMode, multiple changes
+- Fix tearDown lifecycle ConflictNotifier (scope dispose dans group)
+- Fix email collision dans search tests (email unique par client)
+- Fix AsyncValue error check (state.error au lieu de hasError)
+- Fix unused import devis.dart dans devis_builder_test
+- Fix prefer_const_constructors dans performance_production_test
+- **1188 tests passent (55 nouveaux), `flutter analyze` clean (0 issues)**
+- **MIGRATION FLUTTER COMPLETE : 25/25 phases, 1188 tests, 0 issues**
