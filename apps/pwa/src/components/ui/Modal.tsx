@@ -11,11 +11,11 @@ interface ModalProps {
 }
 
 const sizeStyles = {
-  sm: 'max-w-sm',
-  md: 'max-w-md',
-  lg: 'max-w-lg',
-  xl: 'max-w-xl',
-  full: 'max-w-full mx-4',
+  sm: 'max-w-[calc(100vw-2rem)] sm:max-w-sm',
+  md: 'max-w-[calc(100vw-2rem)] sm:max-w-md',
+  lg: 'max-w-[calc(100vw-2rem)] sm:max-w-lg',
+  xl: 'max-w-[calc(100vw-2rem)] sm:max-w-xl',
+  full: 'max-w-full mx-2 sm:mx-4',
 };
 
 export function Modal({
@@ -58,13 +58,15 @@ export function Modal({
     <div
       ref={overlayRef}
       onClick={handleOverlayClick}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
+      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/50 p-0 sm:p-4"
     >
       <div
         className={`
-          bg-white rounded-lg shadow-xl w-full ${sizeStyles[size]}
-          max-h-[90vh] flex flex-col
+          bg-white shadow-xl w-full ${sizeStyles[size]}
+          rounded-t-2xl sm:rounded-2xl
+          max-h-[90vh] sm:max-h-[85vh] flex flex-col
           animate-in fade-in zoom-in-95 duration-200
+          safe-bottom
         `}
       >
         {(title || showCloseButton) && (

@@ -26,10 +26,10 @@ export function Card({
     <Component
       onClick={onClick}
       className={`
-        bg-white rounded-lg border border-gray-200 shadow-sm
+        bg-white rounded-2xl border border-gray-100 shadow-sm
         ${paddingStyles[padding]}
-        ${hoverable || onClick ? 'hover:shadow-md hover:border-gray-300 transition-shadow cursor-pointer' : ''}
-        ${onClick ? 'w-full text-left' : ''}
+        ${hoverable || onClick ? 'hover:shadow-md active:scale-[0.98] transition-all duration-150 cursor-pointer' : ''}
+        ${onClick ? 'w-full text-left touch-manipulation select-none' : ''}
         ${className}
       `}
     >

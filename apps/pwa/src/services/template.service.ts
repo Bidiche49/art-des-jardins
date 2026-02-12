@@ -21,10 +21,12 @@ export interface TemplateFilters {
 
 export const templateService = {
   getAll: async (filters?: TemplateFilters): Promise<PrestationTemplate[]> => {
-    const response = await apiClient.get<PrestationTemplate[]>('/templates', {
+    const response = await apiClient.get('/templates', {
       params: filters,
     });
-    return response.data;
+    // API returns paginated { data: [...], meta: {...} } or flat array
+    const result = response.data;
+    return Array.isArray(result) ? result : result.data || [];
   },
 
   getById: async (id: string): Promise<PrestationTemplate> => {

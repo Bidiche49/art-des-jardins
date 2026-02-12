@@ -82,12 +82,54 @@ export const interventionsApi = {
   },
 
   create: async (data: CreateInterventionDto): Promise<Intervention> => {
-    const response = await apiClient.post<Intervention>('/interventions', data);
+    // Combine date + HH:MM times into full ISO datetime strings for the API
+    const d = data.date instanceof Date ? data.date : new Date(data.date);
+    const dateOnly = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+
+    const apiData: Record<string, unknown> = {
+      chantierId: data.chantierId,
+      date: d.toISOString(),
+      heureDebut: data.heureDebut.includes('T')
+        ? data.heureDebut
+        : new Date(`${dateOnly}T${data.heureDebut}:00`).toISOString(),
+      description: data.description,
+    };
+    if (data.heureFin) {
+      apiData.heureFin = data.heureFin.includes('T')
+        ? data.heureFin
+        : new Date(`${dateOnly}T${data.heureFin}:00`).toISOString();
+    }
+    if (data.notes) {
+      apiData.notes = data.notes;
+    }
+    const response = await apiClient.post<Intervention>('/interventions', apiData);
     return response.data;
   },
 
   update: async (id: string, data: UpdateInterventionDto): Promise<Intervention> => {
-    const response = await apiClient.put<Intervention>(`/interventions/${id}`, data);
+    // Only send fields accepted by the API DTO
+    const apiData: Record<string, unknown> = {};
+
+    if (data.date) {
+      const d = data.date instanceof Date ? data.date : new Date(data.date);
+      const dateOnly = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+      apiData.date = d.toISOString();
+
+      if (data.heureDebut) {
+        apiData.heureDebut = data.heureDebut.includes('T')
+          ? data.heureDebut
+          : new Date(`${dateOnly}T${data.heureDebut}:00`).toISOString();
+      }
+      if (data.heureFin) {
+        apiData.heureFin = data.heureFin.includes('T')
+          ? data.heureFin
+          : new Date(`${dateOnly}T${data.heureFin}:00`).toISOString();
+      }
+    }
+    if (data.description !== undefined) apiData.description = data.description;
+    if (data.notes !== undefined) apiData.notes = data.notes;
+
+    const response = await apiClient.put<Intervention>(`/interventions/${id}`, apiData);
     return response.data;
   },
 

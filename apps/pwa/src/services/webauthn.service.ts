@@ -14,7 +14,11 @@ export type BiometricType = 'face' | 'fingerprint' | 'unknown';
 
 export const webAuthnService = {
   isSupported(): boolean {
-    return browserSupportsWebAuthn();
+    if (!browserSupportsWebAuthn()) return false;
+    // WebAuthn requires a proper domain, not an IP address
+    const hostname = window.location.hostname;
+    if (/^\d+\.\d+\.\d+\.\d+$/.test(hostname)) return false;
+    return true;
   },
 
   async supportsAutofill(): Promise<boolean> {
@@ -69,16 +73,16 @@ export const webAuthnService = {
 
     // iOS devices
     if (/iphone|ipad/.test(ua)) {
-      // iPhone X (2017) and later models have Face ID
-      // iPhone X started with iPhone10,3 and iPhone10,6
-      // Check for newer models that have Face ID
       const isIPad = /ipad/.test(ua);
       if (isIPad) {
-        // iPad Pro 11" and 12.9" (2018+) have Face ID
         return 'face';
       }
-      // For iPhones, default to fingerprint (Touch ID) as we can't reliably detect Face ID from UA
-      // The actual biometric will be whichever the device supports
+      // iPhone with Face ID: screen height >= 812 (iPhone X+)
+      // iPhone SE (Touch ID): screen height < 812
+      const screenHeight = Math.max(window.screen.height, window.screen.width);
+      if (screenHeight >= 812) {
+        return 'face';
+      }
       return 'fingerprint';
     }
 

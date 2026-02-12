@@ -38,12 +38,35 @@ export const devisApi = {
   },
 
   create: async (data: CreateDevisDto): Promise<Devis> => {
-    const response = await apiClient.post<Devis>('/devis', data);
+    // Transform shared DTO to API DTO format
+    const now = new Date();
+    const validite = data.dateValidite ? new Date(data.dateValidite) : null;
+    const validiteJours = validite
+      ? Math.max(1, Math.ceil((validite.getTime() - now.getTime()) / (1000 * 60 * 60 * 24)))
+      : 30;
+
+    const apiData: Record<string, unknown> = {
+      chantierId: data.chantierId,
+      validiteJours,
+      lignes: data.lignes,
+    };
+    if (data.conditionsParticulieres) apiData.conditionsParticulieres = data.conditionsParticulieres;
+    if (data.notes) apiData.notes = data.notes;
+
+    const response = await apiClient.post<Devis>('/devis', apiData);
     return response.data;
   },
 
   update: async (id: string, data: UpdateDevisDto): Promise<Devis> => {
-    const response = await apiClient.put<Devis>(`/devis/${id}`, data);
+    // Transform dateValidite to validiteJours like create does
+    const apiData: Record<string, unknown> = { ...data };
+    if (data.dateValidite) {
+      const now = new Date();
+      const validite = new Date(data.dateValidite);
+      apiData.validiteJours = Math.max(1, Math.ceil((validite.getTime() - now.getTime()) / (1000 * 60 * 60 * 24)));
+      delete apiData.dateValidite;
+    }
+    const response = await apiClient.put<Devis>(`/devis/${id}`, apiData);
     return response.data;
   },
 
