@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useClientAuthStore } from '@/stores/clientAuth';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+const API_URL = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? '' : `${window.location.origin}`);
 
 const messagingApi = axios.create({
   baseURL: `${API_URL}/api/v1/client-messaging`,

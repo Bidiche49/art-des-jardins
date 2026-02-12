@@ -20,12 +20,12 @@ export const calendarApi = {
   },
 
   getIcalSubscriptionUrl: (token: string): string => {
-    const baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+    const baseUrl = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? '' : `${window.location.origin}`);
     return `${baseUrl}/calendar/ical?token=${token}`;
   },
 
   getIcalDownloadUrl: (): string => {
-    const baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+    const baseUrl = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? '' : `${window.location.origin}`);
     return `${baseUrl}/calendar/ical/download`;
   },
 };

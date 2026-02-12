@@ -1,7 +1,7 @@
 import { db, CachedClient, CachedChantier, CachedIntervention } from './schema';
 import { syncService } from './sync';
 
-const API_BASE = import.meta.env.VITE_API_URL || '/api/v1';
+const API_BASE = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? '' : `${window.location.origin}`);
 
 interface FetchOptions extends RequestInit {
   cacheKey?: string;

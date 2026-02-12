@@ -2,7 +2,8 @@ import axios, { AxiosError, InternalAxiosRequestConfig } from 'axios';
 import { useAuthStore } from '@/stores/auth';
 import { webAuthnService } from '@/services/webauthn.service';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+// In dev: use Vite proxy (empty string = same origin), in prod: use env var or auto-detect
+const API_URL = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? '' : `${window.location.origin}`);
 
 // Custom event for session expiry with biometric available
 export const SESSION_EXPIRED_EVENT = 'session:expired:biometric';
