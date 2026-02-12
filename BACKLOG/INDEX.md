@@ -8,9 +8,9 @@
 
 | Type | Prochain ID |
 |------|-------------|
-| BUG | BUG-001 |
-| FEAT | FEAT-106 |
-| IMP | IMP-010 |
+| BUG | BUG-008 |
+| FEAT | FEAT-111 |
+| IMP | IMP-028 |
 
 ---
 
@@ -18,10 +18,10 @@
 
 | Type | Pending | Ready | Done | Total |
 |------|---------|-------|------|-------|
-| Bugs | 0 | 0 | 0 | 0 |
-| Features | 28 | 10 | 67 | 105 |
-| Improvements | 2 | 7 | 0 | 9 |
-| **Total** | **30** | **17** | **67** | **114** |
+| Bugs | 7 | 0 | 0 | 7 |
+| Features | 33 | 10 | 67 | 110 |
+| Improvements | 20 | 7 | 0 | 27 |
+| **Total** | **60** | **17** | **67** | **144** |
 
 ---
 
@@ -303,9 +303,60 @@
 
 ---
 
+## Roadmap Audit Qualite (NOUVEAU)
+
+> **OBJECTIF:** Corriger les problemes identifies par l'audit complet (securite, code quality, SEO, infra).
+
+### Bugs securite (CRITIQUE - avant production)
+
+| Ordre | Ticket | Description | Priorite |
+|-------|--------|-------------|----------|
+| 1 | BUG-001 | JwtAuthGuard non global (APP_GUARD) | Critique |
+| 2 | BUG-002 | Secret JWT fallback hardcode | Critique |
+| 3 | BUG-003 | /health/detailed expose publiquement | Critique |
+| 4 | BUG-004 | .env.production commite dans git | Critique |
+| 5 | BUG-005 | Tokens JWT dans localStorage (PWA) | Critique |
+| 6 | BUG-006 | Memory leak timeout Calendar | Haute |
+| 7 | BUG-007 | CORS dev autorise toutes origines | Moyenne |
+
+### Improvements code quality + SEO
+
+| Ordre | Ticket | Description | Priorite |
+|-------|--------|-------------|----------|
+| 1 | IMP-010 | Supprimer console.log en production | Haute |
+| 2 | IMP-011 | Remplacer types `any` par interfaces | Haute |
+| 3 | IMP-012 | Centraliser business data vitrine | Haute |
+| 4 | IMP-013 | Canonical URLs pages vitrine | Critique |
+| 5 | IMP-014 | Schema.org ServiceSchema incomplet | Haute |
+| 6 | IMP-015 | useOfflineSync → Dexie | Haute |
+| 7 | IMP-016 | Chiffrer backups BDD | Haute |
+| 8 | IMP-017 | Lazy loading routes PWA | Haute |
+| 9 | IMP-018 | Decouper Calendar monolithique | Moyenne |
+| 10 | IMP-019 | Accessibilite PWA (aria labels) | Moyenne |
+| 11 | IMP-020 | Google Fonts optimisation | Moyenne |
+| 12 | IMP-021 | Skip to main content vitrine | Basse |
+| 13 | IMP-022 | Validation DTO statut API | Moyenne |
+| 14 | IMP-023 | process.env → ConfigService | Moyenne |
+| 15 | IMP-024 | Endpoints mockes stats/categories | Moyenne |
+| 16 | IMP-025 | BreadcrumbList Schema.org | Basse |
+| 17 | IMP-026 | Service Worker skipWaiting | Moyenne |
+| 18 | IMP-027 | Gestion erreurs PWA (toasts) | Moyenne |
+
+### Features infra + CI
+
+| Ordre | Ticket | Description | Priorite |
+|-------|--------|-------------|----------|
+| 1 | FEAT-106 | Monitoring erreurs Sentry | Haute |
+| 2 | FEAT-107 | Audit securite dependances CI | Haute |
+| 3 | FEAT-108 | Automatiser backups BDD | Critique |
+| 4 | FEAT-109 | Tests vitrine Next.js | Moyenne |
+| 5 | FEAT-110 | Valider migrations Prisma CI | Moyenne |
+
+---
+
 ## Features
 
-### Pending (31) - dont 22 Flutter + 6 NON AUTOMATISABLES + 3 Deploiement
+### Pending (36) - dont 22 Flutter + 6 NON AUTOMATISABLES + 3 Deploy + 5 Audit
 
 | ID | Titre | Priorite | Phase | Raison |
 |----|-------|----------|-------|--------|
@@ -318,6 +369,11 @@
 | FEAT-103 | Favicon et og-image vitrine | Haute | Deploy | ❌ Assets visuels |
 | FEAT-104 | Formulaire contact Web3Forms | Haute | Deploy | ❌ Compte externe |
 | FEAT-105 | Deployer sur VPS | Critique | Deploy | ❌ VPS + DNS |
+| FEAT-106 | Monitoring erreurs Sentry | Haute | Audit | ❌ Compte Sentry |
+| FEAT-107 | Audit securite dependances CI | Haute | Audit | ✅ |
+| FEAT-108 | Automatiser backups BDD | Critique | Audit | ✅ |
+| FEAT-109 | Tests vitrine Next.js | Moyenne | Audit | ✅ |
+| FEAT-110 | Valider migrations Prisma CI | Moyenne | Audit | ✅ |
 
 ### Ready (11) - AUTOMATISABLES
 
@@ -410,15 +466,17 @@
 
 ## Bugs
 
-### Pending (0)
+### Pending (7) - Audit securite
 
 | ID | Titre | Priorite | Complexite | Tags |
 |----|-------|----------|------------|------|
-
-### Ready (0)
-
-| ID | Titre | Priorite | Complexite | Tags |
-|----|-------|----------|------------|------|
+| BUG-001 | JwtAuthGuard non global (APP_GUARD) | Critique | S | security, api, auth |
+| BUG-002 | Secret JWT fallback hardcode | Critique | XS | security, api, auth |
+| BUG-003 | /health/detailed expose publiquement | Critique | XS | security, api |
+| BUG-004 | .env.production commite dans git | Critique | XS | security, infra |
+| BUG-005 | Tokens JWT dans localStorage (PWA) | Critique | S | security, pwa, auth |
+| BUG-006 | Memory leak timeout Calendar | Haute | XS | pwa, perf |
+| BUG-007 | CORS dev autorise toutes origines | Moyenne | XS | security, api |
 
 ### Done (0)
 
@@ -429,11 +487,30 @@
 
 ## Improvements
 
-### Pending (1) - NON AUTOMATISABLE
+### Pending (20) - dont 1 NON AUTOMATISABLE + 19 Audit
 
 | ID | Titre | Priorite | Phase | Raison |
 |----|-------|----------|-------|--------|
 | IMP-007 | Chiffrement donnees sensibles BDD | Moyenne | 13 | 🚨 DANGER - Migration donnees irreversible |
+| IMP-009 | Finaliser mentions legales vitrine | Haute | Deploy | ❌ En attente choix VPS |
+| IMP-010 | Supprimer console.log en production | Haute | Audit | ✅ |
+| IMP-011 | Remplacer types any par interfaces | Haute | Audit | ✅ |
+| IMP-012 | Centraliser business data vitrine | Haute | Audit | ✅ |
+| IMP-013 | Canonical URLs pages vitrine | Critique | Audit | ✅ |
+| IMP-014 | Schema.org ServiceSchema incomplet | Haute | Audit | ✅ |
+| IMP-015 | useOfflineSync → Dexie | Haute | Audit | ✅ |
+| IMP-016 | Chiffrer backups BDD | Haute | Audit | ✅ |
+| IMP-017 | Lazy loading routes PWA | Haute | Audit | ✅ |
+| IMP-018 | Decouper Calendar monolithique | Moyenne | Audit | ✅ |
+| IMP-019 | Accessibilite PWA (aria labels) | Moyenne | Audit | ✅ |
+| IMP-020 | Google Fonts optimisation vitrine | Moyenne | Audit | ✅ |
+| IMP-021 | Skip to main content vitrine | Basse | Audit | ✅ |
+| IMP-022 | Validation DTO statut API | Moyenne | Audit | ✅ |
+| IMP-023 | process.env → ConfigService API | Moyenne | Audit | ✅ |
+| IMP-024 | Endpoints mockes stats/categories | Moyenne | Audit | ✅ |
+| IMP-025 | BreadcrumbList Schema.org vitrine | Basse | Audit | ✅ |
+| IMP-026 | Service Worker skipWaiting PWA | Moyenne | Audit | ✅ |
+| IMP-027 | Gestion erreurs PWA (toasts) | Moyenne | Audit | ✅ |
 
 ### Ready (7) - AUTOMATISABLES
 
