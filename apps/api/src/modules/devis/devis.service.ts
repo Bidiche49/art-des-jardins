@@ -51,9 +51,8 @@ export class DevisService {
   private async genererNumero(): Promise<string> {
     const now = new Date();
     const year = now.getFullYear();
-    const month = String(now.getMonth() + 1).padStart(2, '0');
     const prefix = 'DEV';
-    const key = `${prefix}-${year}${month}`;
+    const key = `${prefix}-${year}`;
 
     const sequence = await this.prisma.sequence.upsert({
       where: { id: key },
@@ -68,7 +67,7 @@ export class DevisService {
       },
     });
 
-    return `${prefix}-${year}${month}-${String(sequence.lastValue).padStart(3, '0')}`;
+    return `${prefix}-${year}-${String(sequence.lastValue).padStart(3, '0')}`;
   }
 
   async findAll(filters: DevisFiltersDto) {
@@ -225,7 +224,15 @@ export class DevisService {
       throw new BadRequestException('Seul un devis en brouillon peut etre modifie');
     }
 
-    const { lignes, ...rest } = updateDevisDto;
+    const { lignes, validiteJours, ...rest } = updateDevisDto;
+
+    // Transform validiteJours to dateValidite
+    const data: Record<string, unknown> = { ...rest };
+    if (validiteJours) {
+      const dateValidite = new Date();
+      dateValidite.setDate(dateValidite.getDate() + validiteJours);
+      data.dateValidite = dateValidite;
+    }
 
     if (lignes) {
       const { lignes: lignesCalculees, totalHT, totalTVA, totalTTC } = this.calculerTotaux(lignes);
@@ -236,7 +243,7 @@ export class DevisService {
       return this.prisma.devis.update({
         where: { id },
         data: {
-          ...rest,
+          ...data,
           totalHT,
           totalTVA,
           totalTTC,
@@ -252,7 +259,7 @@ export class DevisService {
 
     return this.prisma.devis.update({
       where: { id },
-      data: rest,
+      data,
       include: {
         lignes: { orderBy: { ordre: 'asc' } },
       },
