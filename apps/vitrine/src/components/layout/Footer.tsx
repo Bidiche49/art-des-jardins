@@ -11,17 +11,17 @@ export function Footer() {
           <div className="md:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
               <span className="text-2xl">🌿</span>
-              <span className="text-xl font-bold text-white">Art & Jardin</span>
+              <span className="text-xl font-bold text-white">Art des Jardins</span>
             </div>
             <p className="text-gray-400 mb-4">
-              Votre paysagiste de confiance a Angers. Amenagement, entretien, elagage et abattage.
+              Paysagiste professionnel a Angers et environs. Creation de jardins, entretien, elagage et abattage. Approche sur mesure, qualite artisanale.
             </p>
             <p className="text-gray-400">
-              📍 Angers et communes environnantes
+              📍 9 bis rue Rouget de l'Isle, 49130 Les Ponts-de-Ce
               <br />
-              📞 06 XX XX XX XX
+              📞 <a href="tel:+33781160737" className="hover:text-white transition-colors">07 81 16 07 37</a>
               <br />
-              ✉️ contact@art-et-jardin.fr
+              ✉️ <a href="mailto:artdesjardins49@gmail.com" className="hover:text-white transition-colors">artdesjardins49@gmail.com</a>
             </p>
           </div>
 
@@ -76,7 +76,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500">
-          <p>&copy; {currentYear} Art & Jardin. Tous droits reserves.</p>
+          <p>&copy; {currentYear} SARL Art des Jardins. Tous droits reserves.</p>
         </div>
       </div>
     </footer>

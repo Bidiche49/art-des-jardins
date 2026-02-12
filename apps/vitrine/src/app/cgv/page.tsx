@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Conditions Generales de Vente',
-  description: 'Conditions generales de vente des prestations Art & Jardin - Paysagiste a Angers.',
+  description: 'Conditions generales de vente des prestations Art des Jardins - Paysagiste a Angers.',
   robots: {
     index: false,
     follow: true,
@@ -18,14 +18,14 @@ export default function CGVPage() {
         <div className="prose prose-lg max-w-none">
           <p className="text-gray-600 mb-8">
             Les presentes conditions generales de vente regissent les relations contractuelles entre
-            Art & Jardin et ses clients pour toutes les prestations de services en espaces verts.
+            Art des Jardins et ses clients pour toutes les prestations de services en espaces verts.
           </p>
 
           <h2>Article 1 - Objet</h2>
           <p>
             Les presentes conditions generales de vente (CGV) ont pour objet de definir les droits
             et obligations des parties dans le cadre des prestations de services proposees par
-            Art & Jardin : amenagement paysager, entretien de jardins, elagage et abattage d'arbres.
+            Art des Jardins : amenagement paysager, entretien de jardins, elagage et abattage d'arbres.
           </p>
 
           <h2>Article 2 - Devis et commande</h2>
@@ -37,7 +37,7 @@ export default function CGVPage() {
           </p>
           <h3>2.2 Acceptation du devis</h3>
           <p>
-            La commande est reputee ferme et definitive des reception par Art & Jardin du devis
+            La commande est reputee ferme et definitive des reception par Art des Jardins du devis
             signe par le client avec la mention "Bon pour accord" et accompagne d'un acompte de 30%
             du montant total TTC.
           </p>
@@ -69,7 +69,7 @@ export default function CGVPage() {
           <p>
             Les delais d'intervention sont donnes a titre indicatif. Ils peuvent etre modifies en
             fonction des conditions meteorologiques ou de contraintes techniques imprevues.
-            Art & Jardin informera le client de tout retard significatif.
+            Art des Jardins informera le client de tout retard significatif.
           </p>
           <h3>4.2 Acces au chantier</h3>
           <p>
@@ -85,7 +85,7 @@ export default function CGVPage() {
           <h2>Article 5 - Responsabilite et garanties</h2>
           <h3>5.1 Assurance</h3>
           <p>
-            Art & Jardin est assure en responsabilite civile professionnelle. Une attestation
+            Art des Jardins est assure en responsabilite civile professionnelle. Une attestation
             d'assurance peut etre fournie sur demande.
           </p>
           <h3>5.2 Garantie de reprise</h3>
@@ -95,7 +95,7 @@ export default function CGVPage() {
           </p>
           <h3>5.3 Limitation de responsabilite</h3>
           <p>
-            Art & Jardin ne pourra etre tenu responsable des dommages resultant d'un mauvais
+            Art des Jardins ne pourra etre tenu responsable des dommages resultant d'un mauvais
             entretien par le client apres l'intervention, de conditions climatiques exceptionnelles,
             ou d'informations erronees fournies par le client.
           </p>
@@ -110,7 +110,7 @@ export default function CGVPage() {
             <li>Entre 8 et 15 jours : 50% de l'acompte conserve</li>
             <li>Moins de 8 jours : acompte integralement conserve</li>
           </ul>
-          <h3>6.2 Par Art & Jardin</h3>
+          <h3>6.2 Par Art des Jardins</h3>
           <p>
             En cas d'annulation de notre fait (hors cas de force majeure), l'acompte sera
             integralement rembourse.
@@ -118,7 +118,7 @@ export default function CGVPage() {
 
           <h2>Article 7 - Propriete intellectuelle</h2>
           <p>
-            Les plans et etudes realises par Art & Jardin restent sa propriete intellectuelle.
+            Les plans et etudes realises par Art des Jardins restent sa propriete intellectuelle.
             Ils ne peuvent etre utilises ou reproduits sans accord prealable ecrit.
           </p>
 
@@ -131,7 +131,7 @@ export default function CGVPage() {
           <h2>Article 9 - Litiges</h2>
           <p>
             En cas de litige, une solution amiable sera recherchee en priorite. A defaut, le
-            tribunal competent sera celui du siege social d'Art & Jardin (Angers).
+            tribunal competent sera celui du siege social d'Art des Jardins (Angers).
           </p>
           <p>
             Le client peut egalement recourir a un mediateur de la consommation :{' '}

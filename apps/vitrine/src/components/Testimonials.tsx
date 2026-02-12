@@ -12,7 +12,7 @@ const testimonials: Testimonial[] = [
     name: 'Marie D.',
     location: 'Angers',
     rating: 5,
-    text: 'Excellent travail pour l\'amenagement de notre jardin. L\'equipe a su comprendre nos attentes et proposer des solutions creatives. Le resultat depasse nos esperances. Je recommande vivement Art & Jardin !',
+    text: 'Excellent travail pour l\'amenagement de notre jardin. L\'equipe a su comprendre nos attentes et proposer des solutions creatives. Le resultat depasse nos esperances. Je recommande vivement Art des Jardins !',
     service: 'Amenagement de jardin',
     date: '2025-11-15',
   },
@@ -103,7 +103,7 @@ function ReviewSchema() {
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
-    name: 'Art & Jardin',
+    name: 'Art des Jardins',
     aggregateRating,
     review: reviews,
   };
@@ -168,7 +168,7 @@ export function Testimonials() {
         {/* CTA */}
         <div className="text-center mt-12">
           <p className="text-gray-600 mb-4">
-            Vous aussi, faites confiance a Art & Jardin pour vos espaces verts.
+            Vous aussi, faites confiance a Art des Jardins pour vos espaces verts.
           </p>
           <a href="/contact/" className="btn-primary">
             Demander un devis gratuit

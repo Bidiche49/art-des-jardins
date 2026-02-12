@@ -7,7 +7,7 @@ const service = serviceTypes.find((s) => s.service === 'elagage')!;
 const city = cities.find((c) => c.slug === 'angers')!;
 
 export const metadata: Metadata = {
-  title: 'Elagage Angers - Taille d\'Arbres Professionnel | Art & Jardin',
+  title: 'Elagage Angers - Taille d\'Arbres Professionnel | Art des Jardins',
   description:
     'Elagueur professionnel a Angers. Taille d\'arbres, eclaircissage, taille de securisation, haubanage. Elagueurs certifies. Devis gratuit.',
   keywords: [
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     'elagueur maine-et-loire',
   ],
   openGraph: {
-    title: 'Elagage Angers - Art & Jardin',
+    title: 'Elagage Angers - Art des Jardins',
     description: 'Service d\'elagage professionnel a Angers par des elagueurs certifies.',
     type: 'website',
   },
@@ -42,7 +42,7 @@ export default function ElagageAngersPage() {
             Elagage a Angers
           </h1>
           <p className="text-xl md:text-2xl text-primary-100 mb-8 max-w-3xl">
-            Art & Jardin, elagueurs professionnels certifies a Angers. Taille d'arbres,
+            Art des Jardins, elagueurs professionnels certifies a Angers. Taille d'arbres,
             eclaircissage, securisation. Intervention rapide et devis gratuit.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
@@ -50,10 +50,10 @@ export default function ElagageAngersPage() {
               Demander un devis gratuit
             </Link>
             <a
-              href="tel:+33600000000"
+              href="tel:+33781160737"
               className="btn-secondary border-white text-white hover:bg-white/10"
             >
-              Urgence : 06 XX XX XX XX
+              Urgence : 07 81 16 07 37
             </a>
           </div>
         </div>
@@ -70,7 +70,7 @@ export default function ElagageAngersPage() {
               <div className="prose prose-lg max-w-none text-gray-600">
                 <p>
                   L'<strong>elagage a Angers</strong> est un metier qui demande expertise et savoir-faire.
-                  Chez Art & Jardin, nos elagueurs certifies interviennent sur tous types d'arbres pour
+                  Chez Art des Jardins, nos elagueurs certifies interviennent sur tous types d'arbres pour
                   assurer leur bonne sante, leur securite et leur esthetique.
                 </p>
                 <p>
@@ -138,7 +138,7 @@ export default function ElagageAngersPage() {
                     Nous intervenons rapidement pour securiser les lieux.
                   </p>
                   <a
-                    href="tel:+33600000000"
+                    href="tel:+33781160737"
                     className="block w-full text-center bg-red-600 text-white font-medium py-3 rounded-lg hover:bg-red-700 transition-colors"
                   >
                     Appeler l'urgence

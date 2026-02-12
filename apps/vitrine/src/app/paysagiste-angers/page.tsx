@@ -7,7 +7,7 @@ const service = serviceTypes.find((s) => s.service === 'paysagiste')!;
 const city = cities.find((c) => c.slug === 'angers')!;
 
 export const metadata: Metadata = {
-  title: 'Paysagiste Angers - Amenagement Jardin | Art & Jardin',
+  title: 'Paysagiste Angers - Amenagement Jardin | Art des Jardins',
   description:
     'Paysagiste professionnel a Angers. Amenagement de jardin, terrasse, plantation, engazonnement. Plus de 10 ans d\'experience. Devis gratuit sous 48h.',
   keywords: [
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     'paysagiste 49',
   ],
   openGraph: {
-    title: 'Paysagiste Angers - Art & Jardin',
+    title: 'Paysagiste Angers - Art des Jardins',
     description: 'Votre paysagiste de confiance a Angers pour tous vos projets de jardin.',
     type: 'website',
   },
@@ -42,7 +42,7 @@ export default function PaysagisteAngersPage() {
             Paysagiste a Angers
           </h1>
           <p className="text-xl md:text-2xl text-primary-100 mb-8 max-w-3xl">
-            Art & Jardin, votre partenaire de confiance pour l'amenagement et la creation de
+            Art des Jardins, votre partenaire de confiance pour l'amenagement et la creation de
             jardins a Angers et dans tout le Maine-et-Loire. Devis gratuit sous 48h.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
@@ -50,10 +50,10 @@ export default function PaysagisteAngersPage() {
               Demander un devis gratuit
             </Link>
             <a
-              href="tel:+33600000000"
+              href="tel:+33781160737"
               className="btn-secondary border-white text-white hover:bg-white/10"
             >
-              Appeler : 06 XX XX XX XX
+              Appeler : 07 81 16 07 37
             </a>
           </div>
         </div>
@@ -69,7 +69,7 @@ export default function PaysagisteAngersPage() {
               </h2>
               <div className="prose prose-lg max-w-none text-gray-600">
                 <p>
-                  Bienvenue chez Art & Jardin, votre <strong>paysagiste a Angers</strong> depuis
+                  Bienvenue chez Art des Jardins, votre <strong>paysagiste a Angers</strong> depuis
                   plus de 10 ans. Notre equipe de professionnels passionnes met son expertise
                   au service de vos projets d'amenagement exterieur, qu'il s'agisse de creer
                   un jardin de A a Z ou de transformer un espace existant.
@@ -151,7 +151,7 @@ export default function PaysagisteAngersPage() {
       <section className="py-16 lg:py-24 bg-gray-50">
         <div className="container-custom">
           <h2 className="text-3xl font-bold text-center mb-12">
-            Pourquoi choisir Art & Jardin ?
+            Pourquoi choisir Art des Jardins ?
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
@@ -222,10 +222,10 @@ export default function PaysagisteAngersPage() {
               Demander un devis
             </Link>
             <a
-              href="tel:+33600000000"
+              href="tel:+33781160737"
               className="btn-secondary border-white text-white hover:bg-white/10"
             >
-              06 XX XX XX XX
+              07 81 16 07 37
             </a>
           </div>
         </div>

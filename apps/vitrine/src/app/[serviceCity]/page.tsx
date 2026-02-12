@@ -97,7 +97,7 @@ export default function ServiceCityPage({ params }: PageProps) {
           </nav>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">{pageTitle}</h1>
           <p className="text-xl md:text-2xl text-primary-100 mb-8 max-w-3xl">
-            Art & Jardin, votre specialiste {service.serviceDescription} a {city.name}.
+            Art des Jardins, votre specialiste {service.serviceDescription} a {city.name}.
             {city.distance && ` A seulement ${city.distance} d'Angers.`} Devis gratuit.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
@@ -105,10 +105,10 @@ export default function ServiceCityPage({ params }: PageProps) {
               Demander un devis gratuit
             </Link>
             <a
-              href="tel:+33600000000"
+              href="tel:+33781160737"
               className="btn-secondary border-white text-white hover:bg-white/10"
             >
-              Appeler : 06 XX XX XX XX
+              Appeler : 07 81 16 07 37
             </a>
           </div>
         </div>
@@ -125,7 +125,7 @@ export default function ServiceCityPage({ params }: PageProps) {
               <div className="prose prose-lg max-w-none text-gray-600">
                 <p>
                   Vous recherchez un <strong>{service.serviceTitle.toLowerCase()} a {city.name}</strong> ?
-                  Art & Jardin intervient regulierement dans votre commune pour tous vos besoins en
+                  Art des Jardins intervient regulierement dans votre commune pour tous vos besoins en
                   {' '}{service.serviceDescription}.
                 </p>
                 <p>{city.description}</p>
@@ -157,7 +157,7 @@ export default function ServiceCityPage({ params }: PageProps) {
                 ))}
               </div>
 
-              <h3 className="text-2xl font-bold mt-12 mb-6">Pourquoi choisir Art & Jardin ?</h3>
+              <h3 className="text-2xl font-bold mt-12 mb-6">Pourquoi choisir Art des Jardins ?</h3>
               <div className="grid sm:grid-cols-2 gap-6">
                 {[
                   {
@@ -273,7 +273,7 @@ export default function ServiceCityPage({ params }: PageProps) {
         <div className="container-custom text-center">
           <h2 className="text-3xl font-bold mb-4">{pageTitle}</h2>
           <p className="text-primary-100 mb-8 max-w-xl mx-auto">
-            Contactez Art & Jardin pour un devis gratuit et sans engagement.
+            Contactez Art des Jardins pour un devis gratuit et sans engagement.
             Intervention rapide a {city.name}.
           </p>
           <Link href="/contact/" className="btn-primary bg-white text-primary-700 hover:bg-gray-100">

@@ -18,11 +18,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'Art & Jardin - Paysagiste Angers | Amenagement, Entretien, Elagage',
-    template: '%s | Art & Jardin',
+    default: 'Art des Jardins - Paysagiste Angers | Amenagement, Entretien, Elagage',
+    template: '%s | Art des Jardins',
   },
   description:
-    'Paysagiste professionnel a Angers et Maine-et-Loire. Amenagement de jardins, entretien, elagage, abattage. Plus de 10 ans d\'experience. Devis gratuit sous 48h.',
+    'Paysagiste professionnel a Angers et Maine-et-Loire. Amenagement de jardins, entretien, elagage, abattage. 16 ans d\'experience cumulee. Devis gratuit sous 48h.',
   keywords: [
     'paysagiste angers',
     'jardinier angers',
@@ -33,9 +33,9 @@ export const metadata: Metadata = {
     'paysagiste 49',
     'jardinier maine-et-loire',
   ],
-  authors: [{ name: 'Art & Jardin' }],
-  creator: 'Art & Jardin',
-  publisher: 'Art & Jardin',
+  authors: [{ name: 'Art des Jardins' }],
+  creator: 'Art des Jardins',
+  publisher: 'Art des Jardins',
   formatDetection: {
     email: false,
     address: false,
@@ -48,8 +48,8 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'fr_FR',
     url: siteUrl,
-    siteName: 'Art & Jardin',
-    title: 'Art & Jardin - Paysagiste Angers',
+    siteName: 'Art des Jardins',
+    title: 'Art des Jardins - Paysagiste Angers',
     description:
       'Paysagiste professionnel a Angers. Amenagement, entretien, elagage, abattage. Devis gratuit.',
     images: [
@@ -57,13 +57,13 @@ export const metadata: Metadata = {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Art & Jardin - Paysagiste Angers',
+        alt: 'Art des Jardins - Paysagiste Angers',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Art & Jardin - Paysagiste Angers',
+    title: 'Art des Jardins - Paysagiste Angers',
     description: 'Paysagiste professionnel a Angers. Devis gratuit.',
     images: ['/og-image.jpg'],
   },

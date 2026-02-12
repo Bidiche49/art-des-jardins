@@ -7,7 +7,7 @@ const service = serviceTypes.find((s) => s.service === 'entretien-jardin')!;
 const city = cities.find((c) => c.slug === 'angers')!;
 
 export const metadata: Metadata = {
-  title: 'Entretien de Jardin Angers - Tonte, Taille | Art & Jardin',
+  title: 'Entretien de Jardin Angers - Tonte, Taille | Art des Jardins',
   description:
     'Service d\'entretien de jardin a Angers. Tonte pelouse, taille haies, desherbage, ramassage feuilles. Contrat annuel ou ponctuel. Devis gratuit.',
   keywords: [
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     'entretien jardin 49',
   ],
   openGraph: {
-    title: 'Entretien Jardin Angers - Art & Jardin',
+    title: 'Entretien Jardin Angers - Art des Jardins',
     description: 'Service d\'entretien de jardin professionnel a Angers.',
     type: 'website',
   },
@@ -42,7 +42,7 @@ export default function EntretienJardinAngersPage() {
             Entretien de Jardin a Angers
           </h1>
           <p className="text-xl md:text-2xl text-primary-100 mb-8 max-w-3xl">
-            Art & Jardin assure l'entretien regulier de votre jardin a Angers.
+            Art des Jardins assure l'entretien regulier de votre jardin a Angers.
             Tonte, taille, desherbage... Profitez d'un exterieur impeccable sans effort.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
@@ -50,10 +50,10 @@ export default function EntretienJardinAngersPage() {
               Demander un devis gratuit
             </Link>
             <a
-              href="tel:+33600000000"
+              href="tel:+33781160737"
               className="btn-secondary border-white text-white hover:bg-white/10"
             >
-              Appeler : 06 XX XX XX XX
+              Appeler : 07 81 16 07 37
             </a>
           </div>
         </div>
@@ -70,7 +70,7 @@ export default function EntretienJardinAngersPage() {
               <div className="prose prose-lg max-w-none text-gray-600">
                 <p>
                   L'<strong>entretien de jardin a Angers</strong> demande une attention reguliere
-                  et des gestes adaptes a chaque saison. Chez Art & Jardin, nous proposons des
+                  et des gestes adaptes a chaque saison. Chez Art des Jardins, nous proposons des
                   contrats d'entretien sur mesure pour que vous puissiez profiter de votre
                   exterieur sans contrainte.
                 </p>

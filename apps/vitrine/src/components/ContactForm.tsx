@@ -79,7 +79,7 @@ export function ContactForm() {
         },
         body: JSON.stringify({
           access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY || 'YOUR_ACCESS_KEY',
-          subject: `Nouveau contact Art & Jardin - ${formData.service || 'Demande generale'}`,
+          subject: `Nouveau contact Art des Jardins - ${formData.service || 'Demande generale'}`,
           from_name: formData.name,
           email: formData.email,
           phone: formData.phone || 'Non renseigne',

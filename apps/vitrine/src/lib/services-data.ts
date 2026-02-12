@@ -26,14 +26,14 @@ export const services: ServiceData[] = [
     title: 'Paysagisme et Amenagement de Jardin',
     shortTitle: 'Paysagisme',
     icon: '🌳',
-    metaTitle: 'Paysagiste Angers - Amenagement de Jardin | Art & Jardin',
+    metaTitle: 'Paysagiste Angers - Amenagement de Jardin | Art des Jardins',
     metaDescription:
       'Paysagiste professionnel a Angers. Conception et realisation de jardins sur mesure : terrasses, massifs, engazonnement, arrosage automatique. Devis gratuit.',
     heroTitle: 'Amenagement de Jardin a Angers',
     heroSubtitle:
       'Transformez votre exterieur en un espace de vie unique avec notre equipe de paysagistes professionnels.',
     description: `
-      Art & Jardin est votre partenaire de confiance pour tous vos projets d'amenagement paysager dans la region d'Angers.
+      Art des Jardins est votre partenaire de confiance pour tous vos projets d'amenagement paysager dans la region d'Angers.
       Forts de notre experience et de notre passion pour les espaces verts, nous concevons et realisons des jardins qui
       refletent votre personnalite et s'adaptent parfaitement a votre mode de vie.
 
@@ -112,14 +112,14 @@ export const services: ServiceData[] = [
     title: 'Entretien de Jardin',
     shortTitle: 'Entretien',
     icon: '✂️',
-    metaTitle: 'Entretien de Jardin Angers - Tonte, Taille, Desherbage | Art & Jardin',
+    metaTitle: 'Entretien de Jardin Angers - Tonte, Taille, Desherbage | Art des Jardins',
     metaDescription:
       'Service d\'entretien de jardin a Angers. Tonte de pelouse, taille de haies, desherbage, nettoyage. Contrats annuels ou interventions ponctuelles. Devis gratuit.',
     heroTitle: 'Entretien de Jardin a Angers',
     heroSubtitle:
       'Un jardin impeccable toute l\'annee sans effort grace a notre service d\'entretien professionnel.',
     description: `
-      Un beau jardin demande un entretien regulier et adapte a chaque saison. Art & Jardin vous propose un service
+      Un beau jardin demande un entretien regulier et adapte a chaque saison. Art des Jardins vous propose un service
       d'entretien complet pour que vous puissiez profiter de votre exterieur sans contrainte.
 
       Notre equipe de jardiniers professionnels intervient regulierement selon un calendrier adapte a votre jardin
@@ -192,14 +192,14 @@ export const services: ServiceData[] = [
     title: 'Elagage et Taille d\'Arbres',
     shortTitle: 'Elagage',
     icon: '🪓',
-    metaTitle: 'Elagage Angers - Taille d\'Arbres Professionnel | Art & Jardin',
+    metaTitle: 'Elagage Angers - Taille d\'Arbres Professionnel | Art des Jardins',
     metaDescription:
       'Service d\'elagage professionnel a Angers. Taille d\'arbres, eclaircissage, haubanage, soin des arbres. Elagueurs certifies. Devis gratuit.',
     heroTitle: 'Elagage Professionnel a Angers',
     heroSubtitle:
       'Des arbres sains et esthetiques grace a l\'expertise de nos elagueurs certifies.',
     description: `
-      L'elagage est un art qui necessite savoir-faire et precision. Chez Art & Jardin, nos elagueurs certifies
+      L'elagage est un art qui necessite savoir-faire et precision. Chez Art des Jardins, nos elagueurs certifies
       interviennent sur tous types d'arbres pour assurer leur bonne sante, leur securite et leur esthetique.
 
       Un elagage bien realise permet de controler la croissance de l'arbre, d'ameliorer sa structure, de prevenir
@@ -272,7 +272,7 @@ export const services: ServiceData[] = [
     title: 'Abattage d\'Arbres',
     shortTitle: 'Abattage',
     icon: '🌲',
-    metaTitle: 'Abattage d\'Arbres Angers - Dessouchage | Art & Jardin',
+    metaTitle: 'Abattage d\'Arbres Angers - Dessouchage | Art des Jardins',
     metaDescription:
       'Service d\'abattage d\'arbres securise a Angers. Abattage, demontage, dessouchage, evacuation. Intervention rapide. Devis gratuit.',
     heroTitle: 'Abattage d\'Arbres Securise a Angers',
@@ -280,7 +280,7 @@ export const services: ServiceData[] = [
       'Elimination sure et efficace des arbres dangereux, malades ou genants par des professionnels.',
     description: `
       L'abattage d'un arbre est une operation delicate qui ne s'improvise pas. Qu'il s'agisse d'un arbre malade,
-      dangereux, mort ou simplement mal place, Art & Jardin realise l'abattage en toute securite avec les
+      dangereux, mort ou simplement mal place, Art des Jardins realise l'abattage en toute securite avec les
       techniques adaptees a chaque situation.
 
       Nos equipes evaluent systematiquement les risques avant intervention : proximite de batiments, lignes

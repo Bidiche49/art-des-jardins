@@ -7,7 +7,7 @@ const service = serviceTypes.find((s) => s.service === 'abattage')!;
 const city = cities.find((c) => c.slug === 'angers')!;
 
 export const metadata: Metadata = {
-  title: 'Abattage d\'Arbres Angers - Dessouchage | Art & Jardin',
+  title: 'Abattage d\'Arbres Angers - Dessouchage | Art des Jardins',
   description:
     'Abattage d\'arbres securise a Angers. Demontage technique, dessouchage, evacuation. Intervention urgence tempete. Devis gratuit.',
   keywords: [
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     'abattage urgence angers',
   ],
   openGraph: {
-    title: 'Abattage Arbres Angers - Art & Jardin',
+    title: 'Abattage Arbres Angers - Art des Jardins',
     description: 'Service d\'abattage d\'arbres professionnel et securise a Angers.',
     type: 'website',
   },
@@ -42,7 +42,7 @@ export default function AbattageAngersPage() {
             Abattage d'Arbres a Angers
           </h1>
           <p className="text-xl md:text-2xl text-primary-100 mb-8 max-w-3xl">
-            Art & Jardin realise l'abattage securise d'arbres a Angers.
+            Art des Jardins realise l'abattage securise d'arbres a Angers.
             Arbres dangereux, malades ou genants : intervention professionnelle garantie.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
@@ -50,10 +50,10 @@ export default function AbattageAngersPage() {
               Demander un devis gratuit
             </Link>
             <a
-              href="tel:+33600000000"
+              href="tel:+33781160737"
               className="btn-secondary border-white text-white hover:bg-white/10"
             >
-              Urgence : 06 XX XX XX XX
+              Urgence : 07 81 16 07 37
             </a>
           </div>
         </div>
@@ -70,7 +70,7 @@ export default function AbattageAngersPage() {
               <div className="prose prose-lg max-w-none text-gray-600">
                 <p>
                   L'<strong>abattage d'arbres a Angers</strong> est une operation delicate qui
-                  necessite un savoir-faire professionnel. Chez Art & Jardin, nous realisons
+                  necessite un savoir-faire professionnel. Chez Art des Jardins, nous realisons
                   l'abattage d'arbres dangereux, malades, morts ou genants dans le respect des
                   normes de securite les plus strictes.
                 </p>
@@ -157,7 +157,7 @@ export default function AbattageAngersPage() {
                     Intervention rapide pour securiser les lieux.
                   </p>
                   <a
-                    href="tel:+33600000000"
+                    href="tel:+33781160737"
                     className="block w-full text-center bg-red-600 text-white font-medium py-3 rounded-lg hover:bg-red-700 transition-colors"
                   >
                     Appeler l'urgence

@@ -1,0 +1,104 @@
+{
+	"company": {
+	  "legal_name": "SARL Art des Jardins",
+	  "legal_structure": "SARL",
+	  "year_created": 2026,
+	  "main_activity": "Paysagiste - aménagement et entretien de jardins",
+	  "siren": "999636806",
+	  "siret": "99963680600013",
+	  "tva_intracommunautaire": "FR36999636806",
+	  "greffe": "RCS Angers",
+	  "code_naf": "8130Z",
+	  "code_naf_label": "Services d'aménagement paysager",
+	  "date_immatriculation": "2026-01-09",
+	  "capital_social": 5000,
+	  "duree_societe_ans": 99,
+	  "objet_social": "Paysagiste, création et entretien de jardins et toutes activités s'y rapportant directement et indirectement",
+	  "expert_comptable": "SAS GEO CONSEILS - 140 avenue Victor-Chatenay, 49100 Angers",
+	  "gerants": [
+		{
+		  "nom": "Coussière",
+		  "prenom": "Louis",
+		  "adresse": "7 avenue du 11-Novembre 1918, 49240 Avrillé"
+		},
+		{
+		  "nom": "Rondeau",
+		  "prenom": "Jocelyn",
+		  "adresse": "9 bis rue Rouget-de-l'Isle, 49130 Les Ponts-de-Cé"
+		}
+	  ],
+	  "founders": {
+		"count": 2,
+		"experience_years_each": 8
+	  }
+	},
+	"contact": {
+	  "address": {
+		"street": "9 bis rue Rouget de l'Isle",
+		"postal_code": "49130",
+		"city": "Les Ponts-de-Cé",
+		"country": "France"
+	  },
+	  "email": "artdesjardins49@gmail.com",
+	  "phone_numbers": [
+		"0781160737",
+		"0659684916"
+	  ],
+	  "primary_activity_area": {
+		"main_department": "Maine-et-Loire",
+		"main_department_code": "49",
+		"can_operate_outside_department": true
+	  }
+	},
+	"services": {
+	  "conception_creation_jardins": [
+		"Création de jardins sur mesure",
+		"Rénovation de jardins existants",
+		"Conception paysagère"
+	  ],
+	  "plantations_vegetalisation": [
+		"Plantation d’arbres",
+		"Haies",
+		"Massifs",
+		"Gazon"
+	  ],
+	  "amenagements_exterieurs": [
+		"Terrasses",
+		"Allées",
+		"Maçonnerie paysagère",
+		"Ouvrages bois",
+		"Clôtures",
+		"Pergolas"
+	  ],
+	  "eau_eclairage": [
+		"Arrosage automatique",
+		"Éclairage extérieur"
+	  ],
+	  "entretien_jardins": [
+		"Tonte",
+		"Taille",
+		"Entretien annuel",
+		"Nettoyage",
+		"Soins des végétaux"
+	  ],
+	  "elagage": [
+		"Taille d’arbres",
+		"Abattages délicats",
+		"Défrichage",
+		"Nettoyage de terrains"
+	  ]
+	},
+	"business_constraints": {
+	  "online_quotes": false,
+	  "public_pricing": false,
+	  "contact_via_form_only": true,
+	  "local_activity_priority": true,
+	  "company_stage": "creation_year"
+	},
+	"positioning": {
+	  "type": "Entreprise artisanale locale",
+	  "approach": "Sur mesure",
+	  "strength": "Expérience terrain solide",
+	  "focus": "Qualité et accompagnement personnalisé"
+	}
+  }

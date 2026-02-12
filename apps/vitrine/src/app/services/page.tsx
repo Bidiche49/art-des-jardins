@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description:
     'Decouvrez tous nos services de paysagisme a Angers : amenagement de jardin, entretien, elagage, abattage. Professionnels qualifies, devis gratuit.',
   openGraph: {
-    title: 'Services Paysagiste Angers | Art & Jardin',
+    title: 'Services Paysagiste Angers | Art des Jardins',
     description: 'Amenagement, entretien, elagage, abattage - Tous nos services de paysagisme',
   },
 };
@@ -17,7 +17,7 @@ export default function ServicesPage() {
   return (
     <>
       <ServiceSchema
-        name="Services de paysagisme Art & Jardin"
+        name="Services de paysagisme Art des Jardins"
         description="Entreprise de paysagisme proposant amenagement de jardin, entretien, elagage et abattage a Angers et environs."
         url="https://art-et-jardin.fr/services/"
       />
@@ -27,7 +27,7 @@ export default function ServicesPage() {
         <div className="container-custom">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Nos Services</h1>
           <p className="text-xl text-primary-100 max-w-2xl">
-            Art & Jardin vous accompagne dans tous vos projets d'espaces verts. De la conception a
+            Art des Jardins vous accompagne dans tous vos projets d'espaces verts. De la conception a
             l'entretien, decouvrez nos prestations professionnelles.
           </p>
         </div>

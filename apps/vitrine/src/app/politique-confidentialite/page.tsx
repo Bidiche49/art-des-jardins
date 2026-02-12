@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Politique de Confidentialite',
-  description: 'Politique de confidentialite et protection des donnees personnelles - Art & Jardin.',
+  description: 'Politique de confidentialite et protection des donnees personnelles - Art des Jardins.',
   robots: {
     index: false,
     follow: true,
@@ -17,7 +17,7 @@ export default function PolitiqueConfidentialitePage() {
 
         <div className="prose prose-lg max-w-none">
           <p className="text-gray-600 mb-8">
-            Art & Jardin accorde une grande importance a la protection de vos donnees personnelles.
+            Art des Jardins accorde une grande importance a la protection de vos donnees personnelles.
             Cette politique de confidentialite vous informe sur la maniere dont vos donnees sont
             collectees, utilisees et protegees.
           </p>
@@ -27,10 +27,10 @@ export default function PolitiqueConfidentialitePage() {
             Le responsable du traitement des donnees personnelles est :
           </p>
           <ul>
-            <li><strong>Art & Jardin</strong></li>
+            <li><strong>Art des Jardins</strong></li>
             <li>[Adresse complete], 49000 Angers</li>
-            <li>Email : contact@art-et-jardin.fr</li>
-            <li>Telephone : 06 XX XX XX XX</li>
+            <li>Email : artdesjardins49@gmail.com</li>
+            <li>Telephone : 07 81 16 07 37</li>
           </ul>
 
           <h2>2. Donnees collectees</h2>
@@ -60,7 +60,7 @@ export default function PolitiqueConfidentialitePage() {
 
           <h2>5. Destinataires des donnees</h2>
           <p>
-            Vos donnees sont destinees uniquement aux equipes internes d'Art & Jardin.
+            Vos donnees sont destinees uniquement aux equipes internes d'Art des Jardins.
             Elles ne sont jamais vendues ni transmises a des tiers a des fins commerciales.
           </p>
           <p>
@@ -90,7 +90,7 @@ export default function PolitiqueConfidentialitePage() {
             <li><strong>Droit d'opposition :</strong> vous opposer au traitement de vos donnees</li>
           </ul>
           <p>
-            Pour exercer ces droits, contactez-nous a : <strong>contact@art-et-jardin.fr</strong>
+            Pour exercer ces droits, contactez-nous a : <strong>artdesjardins49@gmail.com</strong>
           </p>
           <p>
             Vous pouvez egalement introduire une reclamation aupres de la CNIL :{' '}
@@ -133,8 +133,8 @@ export default function PolitiqueConfidentialitePage() {
             Pour toute question concernant cette politique ou vos donnees personnelles :
           </p>
           <ul>
-            <li>Email : contact@art-et-jardin.fr</li>
-            <li>Telephone : 06 XX XX XX XX</li>
+            <li>Email : artdesjardins49@gmail.com</li>
+            <li>Telephone : 07 81 16 07 37</li>
             <li>Adresse : [Adresse], 49000 Angers</li>
           </ul>
 

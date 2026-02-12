@@ -10,7 +10,7 @@ interface ServiceSchemaProps {
 export function ServiceSchema({
   name,
   description,
-  provider = 'Art & Jardin',
+  provider = 'Art des Jardins',
   areaServed = 'Angers, Maine-et-Loire',
   image,
   url,

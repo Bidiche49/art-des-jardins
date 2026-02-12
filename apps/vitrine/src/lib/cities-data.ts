@@ -26,7 +26,7 @@ export const serviceTypes: ServiceCityData[] = [
     serviceTitle: 'Paysagiste',
     serviceTitlePlural: 'Paysagistes',
     serviceDescription: 'amenagement et creation de jardins',
-    metaTitleTemplate: 'Paysagiste {city} - Amenagement Jardin | Art & Jardin',
+    metaTitleTemplate: 'Paysagiste {city} - Amenagement Jardin | Art des Jardins',
     metaDescriptionTemplate:
       'Paysagiste professionnel a {city}. Amenagement de jardin, terrasse, engazonnement, plantation. Devis gratuit sous 48h.',
     features: [
@@ -43,7 +43,7 @@ export const serviceTypes: ServiceCityData[] = [
     serviceTitle: 'Elagage',
     serviceTitlePlural: 'Services d\'elagage',
     serviceDescription: 'taille et soins des arbres',
-    metaTitleTemplate: 'Elagage {city} - Taille d\'Arbres | Art & Jardin',
+    metaTitleTemplate: 'Elagage {city} - Taille d\'Arbres | Art des Jardins',
     metaDescriptionTemplate:
       'Elagueur professionnel a {city}. Taille d\'arbres, eclaircissage, taille de securisation. Elagueurs certifies. Devis gratuit.',
     features: [
@@ -60,7 +60,7 @@ export const serviceTypes: ServiceCityData[] = [
     serviceTitle: 'Entretien de jardin',
     serviceTitlePlural: 'Services d\'entretien',
     serviceDescription: 'entretien regulier de jardins',
-    metaTitleTemplate: 'Entretien Jardin {city} - Tonte, Taille | Art & Jardin',
+    metaTitleTemplate: 'Entretien Jardin {city} - Tonte, Taille | Art des Jardins',
     metaDescriptionTemplate:
       'Entretien de jardin a {city}. Tonte pelouse, taille haies, desherbage. Contrat annuel ou ponctuel. Devis gratuit.',
     features: [
@@ -77,7 +77,7 @@ export const serviceTypes: ServiceCityData[] = [
     serviceTitle: 'Abattage',
     serviceTitlePlural: 'Services d\'abattage',
     serviceDescription: 'abattage et dessouchage d\'arbres',
-    metaTitleTemplate: 'Abattage Arbres {city} - Dessouchage | Art & Jardin',
+    metaTitleTemplate: 'Abattage Arbres {city} - Dessouchage | Art des Jardins',
     metaDescriptionTemplate:
       'Abattage d\'arbres securise a {city}. Demontage technique, dessouchage, evacuation. Intervention urgence. Devis gratuit.',
     features: [
@@ -104,7 +104,7 @@ export const cities: CityData[] = [
       Angers, ville d'art et d'histoire, possede un patrimoine vegetal remarquable avec plus de 600 hectares d'espaces verts.
       Du jardin des Plantes au parc de la Garenne, les Angevins sont particulierement attaches a leur cadre de vie verdoyant.
 
-      Art & Jardin intervient dans tous les quartiers d'Angers : La Doutre, Saint-Serge, Belle-Beille, Monplaisir, Roseraie,
+      Art des Jardins intervient dans tous les quartiers d'Angers : La Doutre, Saint-Serge, Belle-Beille, Monplaisir, Roseraie,
       Les Hauts de Saint-Aubin, et dans le centre historique. Nous connaissons parfaitement les reglementations locales,
       notamment en ce qui concerne les arbres classes et les zones protegees du secteur sauvegarde.
 
@@ -139,7 +139,7 @@ export const cities: CityData[] = [
       et son caractere residentiel. Les habitants y possedent souvent des jardins de belle superficie qui necessitent
       un entretien adapte.
 
-      Art & Jardin connait parfaitement Avrille et ses quartiers : la Perriere, l'Adeziere, le bourg historique...
+      Art des Jardins connait parfaitement Avrille et ses quartiers : la Perriere, l'Adeziere, le bourg historique...
       Nous intervenons regulierement dans cette commune ou les jardins sont generalement bien exposes et propices
       a de belles realisations paysageres.
 
@@ -186,7 +186,7 @@ export const cities: CityData[] = [
       tres prisee. Les jardins y sont souvent remarquables, avec des vues sur l'eau et une vegetation luxuriante
       favorisee par la proximite des cours d'eau.
 
-      Art & Jardin connait bien les specificites des jardins de Bouchemaine : sols souvent humides, risque d'inondation
+      Art des Jardins connait bien les specificites des jardins de Bouchemaine : sols souvent humides, risque d'inondation
       dans certaines zones, vegetation de bord de riviere... Nous selectionnons des vegetaux adaptes a ces conditions
       particulieres : saules, aulnes, iris d'eau...
 
@@ -208,7 +208,7 @@ export const cities: CityData[] = [
       Saint-Barthelemy-d'Anjou, a l'est d'Angers, connait un fort developpement avec de nombreux programmes immobiliers.
       Les jardins y sont souvent recents et necessitent des amenagements pour creer de veritables espaces de vie.
 
-      Art & Jardin accompagne de nombreux proprietaires barthelomeens dans la creation de leur jardin : conception,
+      Art des Jardins accompagne de nombreux proprietaires barthelomeens dans la creation de leur jardin : conception,
       plantation, engazonnement... Nous realisons des jardins cles en main qui correspondent a vos envies et a votre
       mode de vie.
 
@@ -232,7 +232,7 @@ export const cities: CityData[] = [
       carrieres transformees en espaces naturels. Les jardins y ont une histoire particuliere, avec une tradition
       de jardins ouvriers qui perdure.
 
-      Art & Jardin intervient dans tous les quartiers de Trelaze : le centre, les Music'Halles, Petit Trelaze...
+      Art des Jardins intervient dans tous les quartiers de Trelaze : le centre, les Music'Halles, Petit Trelaze...
       Nous connaissons les particularites du sol trelazeen, souvent schisteux, et selectionnons des vegetaux adaptes.
 
       Les espaces residuels des anciennes carrieres offrent des opportunites d'amenagement originales. Nous savons
@@ -254,7 +254,7 @@ export const cities: CityData[] = [
       et son patrimoine architectural. Les jardins y ont un caractere ligerien prononce, avec une vegetation adaptee
       aux sols sablonneux et aux crues.
 
-      Art & Jardin connait parfaitement les contraintes des jardins ponts-de-ceais : sols filtrants, exposition au vent,
+      Art des Jardins connait parfaitement les contraintes des jardins ponts-de-ceais : sols filtrants, exposition au vent,
       risque d'inondation... Nous concevons des amenagements adaptes a ces conditions specifiques, avec des vegetaux
       resistants et des solutions techniques appropriees.
 
@@ -277,7 +277,7 @@ export const cities: CityData[] = [
       exceptionnel. Les jardins y sont souvent genereux et permettent de belles realisations paysageres dans un
       cadre champetre.
 
-      Art & Jardin intervient regulierement a Ecouflant, ou les proprietes offrent souvent des surfaces importantes.
+      Art des Jardins intervient regulierement a Ecouflant, ou les proprietes offrent souvent des surfaces importantes.
       Nous realisons des amenagements qui s'integrent harmonieusement dans ce paysage de bords de Sarthe, en utilisant
       des vegetaux locaux et des materiaux naturels.
 
@@ -299,7 +299,7 @@ export const cities: CityData[] = [
       Cantenay-Epinard, commune rurale au nord d'Angers, a su conserver son caractere authentique. Les anciennes
       fermes renovees y possedent souvent de grands terrains qui offrent de belles opportunites d'amenagement.
 
-      Art & Jardin intervient a Cantenay-Epinard pour des projets varies : creation de jardins pour les nouvelles
+      Art des Jardins intervient a Cantenay-Epinard pour des projets varies : creation de jardins pour les nouvelles
       constructions, renovation de parcs autour des demeures anciennes, entretien de grands espaces...
 
       Le caractere rural de la commune nous inspire des amenagements naturels qui s'integrent dans le paysage :
@@ -322,7 +322,7 @@ export const cities: CityData[] = [
       Les jardins y beneficient d'une exposition favorable et d'un microclimat propice a de nombreuses especes
       mediterraneennes.
 
-      Art & Jardin connait bien les particularites des terrains de Murs-Erigne : coteaux schisteux, exposition sud,
+      Art des Jardins connait bien les particularites des terrains de Murs-Erigne : coteaux schisteux, exposition sud,
       sols parfois calcaires... Nous selectionnons des vegetaux adaptes a ces conditions : lavandes, romarins,
       oliviers... qui s'epanouissent dans ce terroir viticole.
 

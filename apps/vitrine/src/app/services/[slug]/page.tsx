@@ -151,8 +151,8 @@ export default function ServicePage({ params }: PageProps) {
                   </Link>
                   <p className="text-center text-sm text-gray-500 mt-3">
                     Ou appelez-nous au{' '}
-                    <a href="tel:+33600000000" className="text-primary-600 font-medium">
-                      06 XX XX XX XX
+                    <a href="tel:+33781160737" className="text-primary-600 font-medium">
+                      07 81 16 07 37
                     </a>
                   </p>
                 </div>
@@ -221,7 +221,7 @@ export default function ServicePage({ params }: PageProps) {
               Demander un devis
             </Link>
             <a
-              href="tel:+33600000000"
+              href="tel:+33781160737"
               className="btn-secondary border-white text-white hover:bg-white/10"
             >
               Appeler maintenant

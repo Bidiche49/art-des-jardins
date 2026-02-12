@@ -4,9 +4,9 @@ import { ContactForm } from '@/components/ContactForm';
 export const metadata: Metadata = {
   title: 'Contact - Devis Gratuit',
   description:
-    'Contactez Art & Jardin pour un devis gratuit. Paysagiste, entretien de jardin, elagage, abattage a Angers et environs. Reponse sous 48h.',
+    'Contactez Art des Jardins pour un devis gratuit. Paysagiste, entretien de jardin, elagage, abattage a Angers et environs. Reponse sous 48h.',
   openGraph: {
-    title: 'Contact Art & Jardin - Devis Gratuit',
+    title: 'Contact Art des Jardins - Devis Gratuit',
     description: 'Demandez un devis gratuit pour vos travaux de jardinage a Angers.',
     type: 'website',
   },
@@ -25,8 +25,8 @@ const contactInfo = [
       </svg>
     ),
     title: 'Telephone',
-    content: '06 XX XX XX XX',
-    link: 'tel:+33600000000',
+    content: '07 81 16 07 37',
+    link: 'tel:+33781160737',
     description: 'Du lundi au vendredi, 8h-18h',
   },
   {
@@ -41,8 +41,8 @@ const contactInfo = [
       </svg>
     ),
     title: 'Email',
-    content: 'contact@art-et-jardin.fr',
-    link: 'mailto:contact@art-et-jardin.fr',
+    content: 'artdesjardins49@gmail.com',
+    link: 'mailto:artdesjardins49@gmail.com',
     description: 'Reponse sous 48h',
   },
   {
@@ -146,7 +146,7 @@ export default function ContactPage() {
                     Arbre dangereux, degats de tempete ? Appelez-nous directement.
                   </p>
                   <a
-                    href="tel:+33600000000"
+                    href="tel:+33781160737"
                     className="block w-full text-center bg-red-600 text-white font-medium py-3 rounded-lg hover:bg-red-700 transition-colors"
                   >
                     Appeler l'urgence
