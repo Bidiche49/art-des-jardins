@@ -20,5 +20,16 @@ class EnvConfig {
   );
 
   static bool get isDevelopment => environment == 'development';
+  static bool get isStaging => environment == 'staging';
   static bool get isProduction => environment == 'production';
+
+  /// Validates that the environment is a known value.
+  static bool get isValidEnvironment =>
+      isDevelopment || isStaging || isProduction;
+
+  /// Bundle identifier for the app.
+  static const String bundleId = 'com.artetjardin.mobile';
+
+  /// App display name.
+  static const String appName = 'Art & Jardin';
 }

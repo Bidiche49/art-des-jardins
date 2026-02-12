@@ -32,17 +32,17 @@
 | 15 | Onboarding tour | FEAT-098 | FAIT | 33/33 | 2026-02-11 |
 | 16 | Push Notifications FCM | FEAT-099 | FAIT | 37/37 | 2026-02-11 |
 | 18 | UX Polish Pass | FEAT-101 | FAIT | 45/45 | 2026-02-12 |
-| 19 | Performance + Production | FEAT-102 | A faire | - | - |
+| 19 | Performance + Production | FEAT-102 | FAIT | 37/37 | 2026-02-12 |
 | 17 | Tests integration (DERNIER) | FEAT-100 | A faire | - | - |
 
 ---
 
 ## Compteurs
 
-- **Phases terminees** : 23/23
-- **Tests totaux** : 1096
-- **Tests prevus** : ~1126 (1096 features + 30 perf)
-- **Couverture** : Phase 0 a Phase 18
+- **Phases terminees** : 24/24
+- **Tests totaux** : 1133
+- **Tests prevus** : ~1192 (1133 + ~59 integration)
+- **Couverture** : Phase 0 a Phase 19
 
 ---
 
@@ -430,3 +430,17 @@
 - Tests a11y (4) : text labels, semantic info, button sizes, close icon
 - Fix `unnecessary_underscores` lint dans AejShimmerList
 - 1096 tests passent (45 nouveaux), `flutter analyze` clean (0 issues)
+
+### 2026-02-12 - Phase 19
+
+- `CrashReportingService` : interface abstraite (initialize, recordError, setUserId, clearUserId, log, setEnabled)
+- `CrashReportingServiceImpl` : impl debug (console), breadcrumbs max 100, init idempotent, enabled flag
+- `AnalyticsService` : interface abstraite (initialize, logScreenView, logEvent, setUserId, clearUser)
+- `AnalyticsServiceImpl` : impl debug, filtrage automatique donnees personnelles (email/phone/name/address)
+- `AnalyticsEvents` : constantes 10 events standard (login, create_client, sign_devis, sync_complete, etc.)
+- `AnalyticsEvent` : classe donnee name + parameters nullable
+- `PerformanceConfig` : constantes timeouts par type (listing 10s, upload 30s, PDF 60s), cache image 100MB, thumbnails 300px, compression photo, page size 20, startup max 2s
+- `EnvConfig` enrichi : isStaging, isValidEnvironment, bundleId (com.artetjardin.mobile), appName
+- `bootstrap.dart` enrichi : FlutterError.onError -> CrashReporting, PlatformDispatcher.onError -> fatal, Future.wait init parallele
+- Providers : crashReportingServiceProvider, analyticsServiceProvider
+- 1133 tests passent (37 nouveaux), `flutter analyze` clean (0 issues)
