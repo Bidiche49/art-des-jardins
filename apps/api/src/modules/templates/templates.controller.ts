@@ -37,6 +37,14 @@ interface PaginatedResult<T> {
 export class TemplatesController {
   constructor(private templatesService: TemplatesService) {}
 
+  @Get('categories')
+  @ApiOperation({ summary: 'Lister les categories disponibles' })
+  @ApiResponse({ status: 200, description: 'Liste des categories' })
+  getCategories() {
+    // TODO: implémenter la vraie logique
+    return ['general', 'entretien', 'creation', 'elagage'];
+  }
+
   @Get()
   @ApiOperation({ summary: 'Lister les templates de prestations' })
   @ApiResponse({ status: 200, description: 'Liste paginee des templates' })

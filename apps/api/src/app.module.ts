@@ -37,6 +37,7 @@ import { RentabiliteModule } from './modules/rentabilite/rentabilite.module';
 import { PhotosModule } from './modules/photos/photos.module';
 import { TemplatesModule } from './modules/templates/templates.module';
 import { IntegrationsModule } from './modules/integrations/integrations.module';
+import { StatsModule } from './modules/stats/stats.module';
 import { DatabaseModule } from './database/database.module';
 import { envValidationSchema } from './config/env.validation';
 
@@ -138,6 +139,7 @@ import { envValidationSchema } from './config/env.validation';
     RentabiliteModule,
     PhotosModule,
     TemplatesModule,
+    StatsModule,
     IntegrationsModule,
   ],
   providers: [
