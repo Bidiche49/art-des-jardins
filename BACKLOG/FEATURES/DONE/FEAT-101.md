@@ -1,7 +1,8 @@
 # FEAT-101: [Flutter] Phase 18 - UX Polish Pass
 
 **Type:** Feature
-**Statut:** A faire
+**Statut:** Fait
+**Date resolution:** 2026-02-12
 **Priorite:** Haute
 **Complexite:** L
 **Tags:** mobile, flutter, ux, ui, a11y, polish

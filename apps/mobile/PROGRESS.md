@@ -31,7 +31,7 @@
 | 14 | Settings + Terrain + Idle | FEAT-097 | FAIT | 42/42 | 2026-02-11 |
 | 15 | Onboarding tour | FEAT-098 | FAIT | 33/33 | 2026-02-11 |
 | 16 | Push Notifications FCM | FEAT-099 | FAIT | 37/37 | 2026-02-11 |
-| 18 | UX Polish Pass | FEAT-101 | A faire | - | - |
+| 18 | UX Polish Pass | FEAT-101 | FAIT | 45/45 | 2026-02-12 |
 | 19 | Performance + Production | FEAT-102 | A faire | - | - |
 | 17 | Tests integration (DERNIER) | FEAT-100 | A faire | - | - |
 
@@ -39,10 +39,10 @@
 
 ## Compteurs
 
-- **Phases terminees** : 22/22
-- **Tests totaux** : 1051
-- **Tests prevus** : ~1121 (1051 features + 40 UX + 30 perf)
-- **Couverture** : Phase 0 a Phase 16
+- **Phases terminees** : 23/23
+- **Tests totaux** : 1096
+- **Tests prevus** : ~1126 (1096 features + 30 perf)
+- **Couverture** : Phase 0 a Phase 18
 
 ---
 
@@ -411,3 +411,22 @@
 - Foreground message -> update lastNotification + showLocalNotification
 - Providers : notificationServiceProvider, notificationNotifierProvider, foregroundNotificationsProvider (StreamProvider), notificationTapProvider (StreamProvider)
 - 1051 tests passent (37 nouveaux), `flutter analyze` clean (0 issues)
+
+### 2026-02-12 - Phase 18
+
+- `AejShimmerCard` : shimmer loading skeleton individuel, dark/light adaptive (grey[800]/grey[300])
+- `AejShimmerList` : liste de shimmer cards, itemCount + itemHeight configurables
+- `AejShimmerKpiGrid` : grille 2x2 shimmer pour dashboard KPI cards
+- `AejErrorRetry` : error display + retry button, 3 factories (network, server, timeout)
+- `AejAsyncValueWidget<T>` : wrapper generique AsyncValue (loading->shimmer, error->retry, data->widget)
+- Detection automatique type erreur (network/timeout/generic) pour messages contextualises FR
+- Custom loading/error widgets optionnels via callbacks
+- `AejStaggeredList` : animation cascade fade-in + slide-up, staggerDelay 50ms, duration 300ms
+- TickerProviderStateMixin, Future.delayed pour echelonnement, mounted check
+- Scale feedback 0.98 sur AejButton via ScaleTransition + AnimationController
+- Tests dark mode (6) : smoke tests tous widgets en dark theme, shimmer dark/light
+- Tests terrain mode (6) : constantes 64px/+4px, font sizes bodyMedium/titleLarge, widget rendering
+- Tests responsive (3) : AejModal BottomSheet@400px / Dialog@800px, GridView 2 colonnes
+- Tests a11y (4) : text labels, semantic info, button sizes, close icon
+- Fix `unnecessary_underscores` lint dans AejShimmerList
+- 1096 tests passent (45 nouveaux), `flutter analyze` clean (0 issues)
