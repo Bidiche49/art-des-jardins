@@ -1,7 +1,7 @@
 # FEAT-089: [Flutter] Phase 8A - Chantiers + Rentabilite
 
 **Type:** Feature
-**Statut:** A faire
+**Statut:** Fait
 **Priorite:** Haute
 **Complexite:** L
 **Tags:** mobile, flutter, crud, chantiers, charts
@@ -21,12 +21,12 @@ Chantiers CRUD offline-first (meme pattern que Clients) + page de rentabilite av
 
 ## Criteres d'acceptation
 
-- [ ] CRUD chantiers offline-first (meme pattern que Clients)
-- [ ] Multi-select TypePrestation (checkboxes)
-- [ ] Status badge couleur (9 statuts)
-- [ ] Changement statut inline dans le detail
-- [ ] Page rentabilite avec graphiques fl_chart
-- [ ] `flutter test` passe, `flutter analyze` propre
+- [x] CRUD chantiers offline-first (meme pattern que Clients)
+- [x] Multi-select TypePrestation (checkboxes)
+- [x] Status badge couleur (9 statuts)
+- [x] Changement statut inline dans le detail
+- [x] Page rentabilite avec graphiques fl_chart
+- [x] `flutter test` passe, `flutter analyze` propre
 
 ## Tests obligatoires
 
