@@ -44,9 +44,9 @@ export default function MentionsLegalesPage() {
           <h2>2. Hebergement</h2>
           <p>Le site est heberge par :</p>
           <ul>
-            <li><strong>Nom :</strong> Cloudflare, Inc. (Cloudflare Pages)</li>
-            <li><strong>Adresse :</strong> 101 Townsend St, San Francisco, CA 94107, USA</li>
-            <li><strong>Contact :</strong> https://www.cloudflare.com</li>
+            <li><strong>Nom :</strong> A definir</li>
+            <li><strong>Adresse :</strong> A definir</li>
+            <li><strong>Contact :</strong> A definir</li>
           </ul>
 
           <h2>3. Propriete intellectuelle</h2>

@@ -9,7 +9,7 @@
 | Type | Prochain ID |
 |------|-------------|
 | BUG | BUG-001 |
-| FEAT | FEAT-103 |
+| FEAT | FEAT-106 |
 | IMP | IMP-010 |
 
 ---
@@ -19,9 +19,9 @@
 | Type | Pending | Ready | Done | Total |
 |------|---------|-------|------|-------|
 | Bugs | 0 | 0 | 0 | 0 |
-| Features | 25 | 10 | 67 | 102 |
-| Improvements | 1 | 7 | 0 | 8 |
-| **Total** | **26** | **17** | **67** | **110** |
+| Features | 28 | 10 | 67 | 105 |
+| Improvements | 2 | 7 | 0 | 9 |
+| **Total** | **30** | **17** | **67** | **114** |
 
 ---
 
@@ -291,9 +291,21 @@
 
 ---
 
+## Roadmap Deploiement Vitrine (EN COURS)
+
+> **OBJECTIF:** Mettre en ligne la vitrine Art des Jardins ASAP pour demarrer le SEO local.
+
+| Ordre | Ticket | Description | Statut | Auto |
+|-------|--------|-------------|--------|------|
+| 1 | FEAT-103 | Favicon et og-image vitrine | **PENDING** | ❌ Assets visuels |
+| 2 | FEAT-104 | Formulaire contact Web3Forms | **PENDING** | ❌ Compte externe |
+| 3 | FEAT-105 | Deployer sur VPS | **PENDING** | ❌ VPS + DNS |
+
+---
+
 ## Features
 
-### Pending (28) - dont 22 Flutter + 6 NON AUTOMATISABLES
+### Pending (31) - dont 22 Flutter + 6 NON AUTOMATISABLES + 3 Deploiement
 
 | ID | Titre | Priorite | Phase | Raison |
 |----|-------|----------|-------|--------|
@@ -303,6 +315,9 @@
 | FEAT-074 | OCR documents fournisseurs | Basse | 16 | ❌ Compte cloud + billing |
 | FEAT-075 | Geolocalisation equipes | Basse | 16 | 🚨 RGPD - Validation juridique |
 | FEAT-076 | Signature eIDAS | Basse | 16 | ❌ Contrat commercial Yousign |
+| FEAT-103 | Favicon et og-image vitrine | Haute | Deploy | ❌ Assets visuels |
+| FEAT-104 | Formulaire contact Web3Forms | Haute | Deploy | ❌ Compte externe |
+| FEAT-105 | Deployer sur VPS | Critique | Deploy | ❌ VPS + DNS |
 
 ### Ready (11) - AUTOMATISABLES
 
