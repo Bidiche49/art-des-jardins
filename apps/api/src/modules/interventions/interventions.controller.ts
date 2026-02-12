@@ -39,7 +39,7 @@ export class InterventionsController {
   @ApiOperation({ summary: 'Obtenir l\'intervention en cours de l\'utilisateur' })
   @ApiResponse({ status: 200, description: 'Intervention en cours ou null' })
   getEnCours(@Request() req: any) {
-    return this.interventionsService.getInterventionEnCours(req.user.sub);
+    return this.interventionsService.getInterventionEnCours(req.user.id);
   }
 
   @Get(':id')
@@ -54,7 +54,7 @@ export class InterventionsController {
   @ApiOperation({ summary: 'Creer une intervention' })
   @ApiResponse({ status: 201, description: 'Intervention creee' })
   create(@Body() createInterventionDto: CreateInterventionDto, @Request() req: any) {
-    return this.interventionsService.create(createInterventionDto, req.user.sub);
+    return this.interventionsService.create(createInterventionDto, req.user.id);
   }
 
   @Post('start/:chantierId')
@@ -66,7 +66,7 @@ export class InterventionsController {
     @Body('description') description: string,
     @Request() req: any,
   ) {
-    return this.interventionsService.startIntervention(chantierId, req.user.sub, description);
+    return this.interventionsService.startIntervention(chantierId, req.user.id, description);
   }
 
   @Post(':id/stop')
@@ -74,7 +74,7 @@ export class InterventionsController {
   @ApiResponse({ status: 200, description: 'Pointage arrete, duree calculee' })
   @ApiResponse({ status: 400, description: 'Intervention deja terminee' })
   stopIntervention(@Param('id') id: string, @Request() req: any) {
-    return this.interventionsService.stopIntervention(id, req.user.sub);
+    return this.interventionsService.stopIntervention(id, req.user.id);
   }
 
   @Put(':id')
