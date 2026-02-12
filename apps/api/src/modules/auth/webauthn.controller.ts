@@ -55,7 +55,8 @@ export class WebAuthnController {
   @ApiResponse({ status: 200, description: 'Options d\'enregistrement générées' })
   @ApiResponse({ status: 401, description: 'Non authentifié' })
   async getRegisterOptions(@Req() req: AuthenticatedRequest) {
-    return this.webAuthnService.startRegistration(req.user.sub);
+    const origin = (req.headers.origin || req.headers.referer) as string | undefined;
+    return this.webAuthnService.startRegistration(req.user.sub, origin);
   }
 
   @Post('register/verify')
@@ -89,8 +90,9 @@ export class WebAuthnController {
   @ApiResponse({ status: 200, description: 'Options d\'authentification générées' })
   @ApiResponse({ status: 400, description: 'Aucun appareil enregistré pour cet email' })
   @ApiResponse({ status: 429, description: 'Trop de requêtes' })
-  async getLoginOptions(@Query() dto: WebAuthnLoginOptionsDto) {
-    return this.webAuthnService.startAuthentication(dto.email);
+  async getLoginOptions(@Query() dto: WebAuthnLoginOptionsDto, @Req() req: Request) {
+    const origin = (req.headers.origin || req.headers.referer) as string | undefined;
+    return this.webAuthnService.startAuthentication(dto.email, origin);
   }
 
   @Post('login/verify')

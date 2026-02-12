@@ -21,6 +21,8 @@ interface ChallengeData {
   challenge: string;
   expiresAt: number;
   userId?: string;
+  rpID: string;
+  origin: string;
 }
 
 @Injectable()
@@ -28,6 +30,7 @@ export class WebAuthnService {
   private rpName: string;
   private rpID: string;
   private origin: string;
+  private isDev: boolean;
 
   // In-memory cache for challenges (in production, use Redis)
   private challengeCache: Map<string, ChallengeData> = new Map();
@@ -39,12 +42,33 @@ export class WebAuthnService {
     this.rpName = this.config.get('WEBAUTHN_RP_NAME', 'Art & Jardin');
     this.rpID = this.config.get('WEBAUTHN_RP_ID', 'localhost');
     this.origin = this.config.get('WEBAUTHN_ORIGIN', 'http://localhost:3000');
+    this.isDev = this.config.get('NODE_ENV', 'development') !== 'production';
+  }
+
+  /**
+   * Resolve rpID and origin from the request Origin/Referer header in dev mode.
+   * In production, use the configured values.
+   */
+  private resolveRpConfig(requestOrigin?: string): { rpID: string; origin: string } {
+    if (!this.isDev || !requestOrigin) {
+      return { rpID: this.rpID, origin: this.origin };
+    }
+    try {
+      const url = new URL(requestOrigin);
+      // Extract just the origin (protocol + host + port), strip any path
+      const cleanOrigin = url.origin;
+      return { rpID: url.hostname, origin: cleanOrigin };
+    } catch {
+      return { rpID: this.rpID, origin: this.origin };
+    }
   }
 
   /**
    * Start WebAuthn registration - generates options for the client
    */
-  async startRegistration(userId: string): Promise<ReturnType<typeof generateRegistrationOptions>> {
+  async startRegistration(userId: string, requestOrigin?: string): Promise<ReturnType<typeof generateRegistrationOptions>> {
+    const { rpID, origin } = this.resolveRpConfig(requestOrigin);
+
     const user = await this.prisma.user.findUnique({
       where: { id: userId },
       select: { id: true, email: true, nom: true, prenom: true, webAuthnCredentials: true },
@@ -62,7 +86,7 @@ export class WebAuthnService {
 
     const options = await generateRegistrationOptions({
       rpName: this.rpName,
-      rpID: this.rpID,
+      rpID,
       userName: user.email,
       userDisplayName: `${user.prenom} ${user.nom}`,
       attestationType: 'none',
@@ -73,8 +97,8 @@ export class WebAuthnService {
       },
     });
 
-    // Store challenge in cache
-    this.setChallenge(`reg:${userId}`, options.challenge, userId);
+    // Store challenge in cache with rpID/origin for verification
+    this.setChallenge(`reg:${userId}`, options.challenge, userId, rpID, origin);
 
     return options;
   }
@@ -107,8 +131,8 @@ export class WebAuthnService {
       verification = await verifyRegistrationResponse({
         response,
         expectedChallenge: challengeData.challenge,
-        expectedOrigin: this.origin,
-        expectedRPID: this.rpID,
+        expectedOrigin: challengeData.origin,
+        expectedRPID: challengeData.rpID,
       });
     } catch (error) {
       throw new BadRequestException(`Vérification échouée: ${error instanceof Error ? error.message : 'Erreur inconnue'}`);
@@ -143,7 +167,9 @@ export class WebAuthnService {
    * Start WebAuthn authentication - generates options for the client
    * If email is provided, only allow credentials for that user
    */
-  async startAuthentication(email?: string): Promise<ReturnType<typeof generateAuthenticationOptions>> {
+  async startAuthentication(email?: string, requestOrigin?: string): Promise<ReturnType<typeof generateAuthenticationOptions>> {
+    const { rpID, origin } = this.resolveRpConfig(requestOrigin);
+
     let allowCredentials: { id: string; transports?: AuthenticatorTransportFuture[] }[] | undefined;
     let userId: string | undefined;
 
@@ -165,13 +191,13 @@ export class WebAuthnService {
     }
 
     const options = await generateAuthenticationOptions({
-      rpID: this.rpID,
+      rpID,
       allowCredentials,
       userVerification: 'preferred',
     });
 
-    // Store challenge in cache
-    this.setChallenge(`auth:${options.challenge}`, options.challenge, userId);
+    // Store challenge in cache with rpID/origin for verification
+    this.setChallenge(`auth:${options.challenge}`, options.challenge, userId, rpID, origin);
 
     return options;
   }
@@ -221,8 +247,8 @@ export class WebAuthnService {
       verification = await verifyAuthenticationResponse({
         response,
         expectedChallenge: foundChallenge.challenge,
-        expectedOrigin: this.origin,
-        expectedRPID: this.rpID,
+        expectedOrigin: foundChallenge.origin,
+        expectedRPID: foundChallenge.rpID,
         credential: {
           id: credential.credentialId,
           publicKey: Buffer.from(credential.publicKey, 'base64'),
@@ -318,11 +344,13 @@ export class WebAuthnService {
   // In production, replace with Redis
   // ============================================
 
-  private setChallenge(key: string, challenge: string, userId?: string): void {
+  private setChallenge(key: string, challenge: string, userId?: string, rpID?: string, origin?: string): void {
     this.challengeCache.set(key, {
       challenge,
       expiresAt: Date.now() + CHALLENGE_TTL_MS,
       userId,
+      rpID: rpID || this.rpID,
+      origin: origin || this.origin,
     });
   }
 
