@@ -3,6 +3,18 @@ import * as bcrypt from 'bcrypt';
 
 const prisma = new PrismaClient();
 
+// Fixed UUIDs for seed data (proper UUID v4 format)
+const SEED_IDS = {
+  clientParticulier1: 'a0a0a0a0-1111-4000-a000-000000000001',
+  clientParticulier2: 'a0a0a0a0-1111-4000-a000-000000000002',
+  clientPro1:         'a0a0a0a0-2222-4000-a000-000000000001',
+  clientPro2:         'a0a0a0a0-2222-4000-a000-000000000002',
+  clientSyndic1:      'a0a0a0a0-3333-4000-a000-000000000001',
+  chantier1:          'b0b0b0b0-4444-4000-a000-000000000001',
+  chantier2:          'b0b0b0b0-4444-4000-a000-000000000002',
+  chantier3:          'b0b0b0b0-4444-4000-a000-000000000003',
+};
+
 async function main() {
   console.log('🌱 Seeding database...\n');
 
@@ -60,10 +72,10 @@ async function main() {
   // CLIENTS (5 clients variés)
   // ============================================
   const client1 = await prisma.client.upsert({
-    where: { id: 'client-particulier-1' },
+    where: { id: SEED_IDS.clientParticulier1 },
     update: {},
     create: {
-      id: 'client-particulier-1',
+      id: SEED_IDS.clientParticulier1,
       type: ClientType.particulier,
       nom: 'Durand',
       prenom: 'Marie',
@@ -79,10 +91,10 @@ async function main() {
   console.log(`✅ Client particulier: ${client1.nom} ${client1.prenom}`);
 
   const client2 = await prisma.client.upsert({
-    where: { id: 'client-particulier-2' },
+    where: { id: SEED_IDS.clientParticulier2 },
     update: {},
     create: {
-      id: 'client-particulier-2',
+      id: SEED_IDS.clientParticulier2,
       type: ClientType.particulier,
       nom: 'Moreau',
       prenom: 'Philippe',
@@ -98,10 +110,10 @@ async function main() {
   console.log(`✅ Client particulier: ${client2.nom} ${client2.prenom}`);
 
   const client3 = await prisma.client.upsert({
-    where: { id: 'client-pro-1' },
+    where: { id: SEED_IDS.clientPro1 },
     update: {},
     create: {
-      id: 'client-pro-1',
+      id: SEED_IDS.clientPro1,
       type: ClientType.professionnel,
       nom: 'Lefebvre',
       raisonSociale: 'Lefebvre SARL',
@@ -118,10 +130,10 @@ async function main() {
   console.log(`✅ Client pro: ${client3.raisonSociale}`);
 
   const client4 = await prisma.client.upsert({
-    where: { id: 'client-pro-2' },
+    where: { id: SEED_IDS.clientPro2 },
     update: {},
     create: {
-      id: 'client-pro-2',
+      id: SEED_IDS.clientPro2,
       type: ClientType.professionnel,
       nom: 'Petit',
       raisonSociale: 'Restaurant Le Petit Jardin',
@@ -137,10 +149,10 @@ async function main() {
   console.log(`✅ Client pro: ${client4.raisonSociale}`);
 
   const client5 = await prisma.client.upsert({
-    where: { id: 'client-syndic-1' },
+    where: { id: SEED_IDS.clientSyndic1 },
     update: {},
     create: {
-      id: 'client-syndic-1',
+      id: SEED_IDS.clientSyndic1,
       type: ClientType.syndic,
       nom: 'Gestion Immobilière de l\'Anjou',
       raisonSociale: 'GIA - Syndic',
@@ -159,10 +171,10 @@ async function main() {
   // CHANTIERS (exemples)
   // ============================================
   const chantier1 = await prisma.chantier.upsert({
-    where: { id: 'chantier-1' },
+    where: { id: SEED_IDS.chantier1 },
     update: {},
     create: {
-      id: 'chantier-1',
+      id: SEED_IDS.chantier1,
       clientId: client1.id,
       adresse: '15 rue des Fleurs',
       codePostal: '49000',
@@ -178,10 +190,10 @@ async function main() {
   console.log(`✅ Chantier: ${chantier1.description.substring(0, 40)}...`);
 
   const chantier2 = await prisma.chantier.upsert({
-    where: { id: 'chantier-2' },
+    where: { id: SEED_IDS.chantier2 },
     update: {},
     create: {
-      id: 'chantier-2',
+      id: SEED_IDS.chantier2,
       clientId: client2.id,
       adresse: '8 impasse du Parc',
       codePostal: '49100',
@@ -197,10 +209,10 @@ async function main() {
   console.log(`✅ Chantier: ${chantier2.description.substring(0, 40)}...`);
 
   const chantier3 = await prisma.chantier.upsert({
-    where: { id: 'chantier-3' },
+    where: { id: SEED_IDS.chantier3 },
     update: {},
     create: {
-      id: 'chantier-3',
+      id: SEED_IDS.chantier3,
       clientId: client3.id,
       adresse: '42 avenue de la République',
       codePostal: '49100',

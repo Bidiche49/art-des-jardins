@@ -156,7 +156,15 @@ export function Calendar() {
           employeeMap.set(absence.user.id, absence.user);
         }
       });
-      setEmployees(Array.from(employeeMap.values()));
+      const newEmployees = Array.from(employeeMap.values());
+      setEmployees(newEmployees);
+
+      // Build color map locally to avoid dependency cycle
+      const colorMap = new Map<string, string>();
+      newEmployees.forEach((emp, index) => {
+        colorMap.set(emp.id, EMPLOYEE_COLORS[index % EMPLOYEE_COLORS.length]);
+      });
+      colorMap.set('unassigned', '#6b7280');
 
       // Convert interventions to calendar events
       const calendarEvents: CalendarEventData[] = interventions.map((intervention: any) => {
@@ -166,7 +174,7 @@ export function Calendar() {
           : new Date(startDate.getTime() + 2 * 60 * 60 * 1000); // Default 2h
 
         const employeeId = intervention.employeId || 'unassigned';
-        const color = employeeColorMap.get(employeeId) || '#6b7280';
+        const color = colorMap.get(employeeId) || '#6b7280';
 
         const clientName = intervention.chantier?.client
           ? `${intervention.chantier.client.nom}`
@@ -213,7 +221,7 @@ export function Calendar() {
     } finally {
       setIsLoading(false);
     }
-  }, [date, employeeColorMap]);
+  }, [date]);
 
   useEffect(() => {
     loadInterventions();
@@ -691,7 +699,7 @@ export function Calendar() {
               Telecharge un fichier .ics avec vos interventions des 6 prochains mois.
             </p>
             <a
-              href={`${import.meta.env.VITE_API_URL || 'http://localhost:3001'}/calendar/ical/download`}
+              href={`${import.meta.env.VITE_API_URL || (import.meta.env.DEV ? '' : window.location.origin)}/api/v1/calendar/ical/download`}
               className="inline-flex items-center px-4 py-2 bg-primary-600 text-white text-sm font-medium rounded-md hover:bg-primary-700"
               download
             >

@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { DevisReadOnly, type DevisPublic } from '../components/signature/DevisReadOnly';
 import { SignatureCanvas } from '../components/signature/SignatureCanvas';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+const API_URL = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? '' : `${window.location.origin}`);
 
 interface DevisResponse {
   alreadySigned: boolean;

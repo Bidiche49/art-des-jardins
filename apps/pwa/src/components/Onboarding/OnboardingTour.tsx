@@ -39,6 +39,10 @@ export function OnboardingTour() {
 
     const updatePositions = () => {
       const target = document.querySelector(currentStepData.target);
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
+      const isMobile = vw < 640;
+      const tooltipWidth = isMobile ? vw - 32 : 320;
 
       if (target) {
         const rect = target.getBoundingClientRect();
@@ -51,47 +55,60 @@ export function OnboardingTour() {
           height: rect.height + padding * 2,
         });
 
-        // Calculer la position du tooltip
-        const tooltipWidth = 320;
-        const tooltipHeight = 200; // Approximatif
         let tooltipTop = 0;
         let tooltipLeft = 0;
 
-        switch (currentStepData.placement) {
-          case 'bottom':
+        if (isMobile) {
+          // Sur mobile, toujours centrer horizontalement et placer au milieu de l'ecran
+          tooltipLeft = 16;
+          // Placer au-dessus ou en-dessous du target selon sa position
+          if (rect.top > vh / 2) {
+            // Target en bas (nav bar) -> tooltip en haut
+            tooltipTop = Math.max(16, rect.top + window.scrollY - 220);
+          } else {
+            // Target en haut -> tooltip en dessous
             tooltipTop = rect.bottom + window.scrollY + 16;
-            tooltipLeft = rect.left + rect.width / 2 - tooltipWidth / 2;
-            break;
-          case 'top':
-            tooltipTop = rect.top + window.scrollY - tooltipHeight - 16;
-            tooltipLeft = rect.left + rect.width / 2 - tooltipWidth / 2;
-            break;
-          case 'left':
-            tooltipTop = rect.top + window.scrollY + rect.height / 2 - tooltipHeight / 2;
-            tooltipLeft = rect.left - tooltipWidth - 16;
-            break;
-          case 'right':
-            tooltipTop = rect.top + window.scrollY + rect.height / 2 - tooltipHeight / 2;
-            tooltipLeft = rect.right + 16;
-            break;
-        }
+          }
+          // S'assurer que le tooltip reste visible
+          tooltipTop = Math.max(16, Math.min(tooltipTop, vh - 280 + window.scrollY));
+        } else {
+          const tooltipHeight = 200;
 
-        // S'assurer que le tooltip reste dans la viewport
-        tooltipLeft = Math.max(16, Math.min(tooltipLeft, window.innerWidth - tooltipWidth - 16));
-        tooltipTop = Math.max(16, tooltipTop);
+          switch (currentStepData.placement) {
+            case 'bottom':
+              tooltipTop = rect.bottom + window.scrollY + 16;
+              tooltipLeft = rect.left + rect.width / 2 - tooltipWidth / 2;
+              break;
+            case 'top':
+              tooltipTop = rect.top + window.scrollY - tooltipHeight - 16;
+              tooltipLeft = rect.left + rect.width / 2 - tooltipWidth / 2;
+              break;
+            case 'left':
+              tooltipTop = rect.top + window.scrollY + rect.height / 2 - tooltipHeight / 2;
+              tooltipLeft = rect.left - tooltipWidth - 16;
+              break;
+            case 'right':
+              tooltipTop = rect.top + window.scrollY + rect.height / 2 - tooltipHeight / 2;
+              tooltipLeft = rect.right + 16;
+              break;
+          }
+
+          tooltipLeft = Math.max(16, Math.min(tooltipLeft, vw - tooltipWidth - 16));
+          tooltipTop = Math.max(16, tooltipTop);
+        }
 
         setTooltipPosition({ top: tooltipTop, left: tooltipLeft });
 
         // Scroller vers l'élément si nécessaire
-        if (rect.top < 100 || rect.bottom > window.innerHeight - 100) {
+        if (rect.top < 100 || rect.bottom > vh - 100) {
           target.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
       } else {
         // Élément non trouvé, centrer le tooltip
         setSpotlightRect(null);
         setTooltipPosition({
-          top: window.innerHeight / 2 - 100,
-          left: window.innerWidth / 2 - 160,
+          top: vh / 2 - 100,
+          left: isMobile ? 16 : vw / 2 - 160,
         });
       }
     };
@@ -153,14 +170,17 @@ export function OnboardingTour() {
       {/* Tooltip */}
       <div
         ref={tooltipRef}
-        className="absolute bg-white rounded-xl shadow-2xl p-6 w-80 z-[9999] animate-fade-in"
+        className="absolute bg-white rounded-2xl shadow-2xl p-5 z-[9999] animate-fade-in"
         style={{
           top: tooltipPosition.top,
           left: tooltipPosition.left,
+          width: window.innerWidth < 640 ? `calc(100vw - 2rem)` : '320px',
+          maxHeight: 'calc(100vh - 4rem)',
+          overflow: 'auto',
         }}
       >
         {/* Indicateur de progression */}
-        <div className="flex items-center gap-1 mb-4">
+        <div className="flex items-center gap-1 mb-3">
           {Array.from({ length: totalSteps }).map((_, i) => (
             <div
               key={i}
@@ -172,10 +192,10 @@ export function OnboardingTour() {
         </div>
 
         {/* Contenu */}
-        <h3 className="text-lg font-semibold text-gray-900 mb-2">
+        <h3 className="text-base font-semibold text-gray-900 mb-1.5">
           {currentStepData.title}
         </h3>
-        <p className="text-gray-600 text-sm mb-6">
+        <p className="text-gray-600 text-sm mb-4 leading-relaxed">
           {currentStepData.content}
         </p>
 
@@ -183,7 +203,7 @@ export function OnboardingTour() {
         <div className="flex items-center justify-between">
           <button
             onClick={skipOnboarding}
-            className="text-sm text-gray-500 hover:text-gray-700 transition-colors"
+            className="text-sm text-gray-500 hover:text-gray-700 active:text-gray-900 transition-colors py-2"
             disabled={isLoading}
           >
             Passer
@@ -197,7 +217,7 @@ export function OnboardingTour() {
                 onClick={prevStep}
                 disabled={isLoading}
               >
-                Précédent
+                Retour
               </Button>
             )}
             <Button
@@ -212,7 +232,7 @@ export function OnboardingTour() {
         </div>
 
         {/* Indicateur d'étape */}
-        <div className="text-center text-xs text-gray-400 mt-4">
+        <div className="text-center text-xs text-gray-400 mt-3">
           {currentStep + 1} / {totalSteps}
         </div>
       </div>

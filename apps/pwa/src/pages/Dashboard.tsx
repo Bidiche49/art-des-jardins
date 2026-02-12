@@ -67,28 +67,28 @@ export function Dashboard() {
         <p className="text-gray-600">Voici un apercu de votre activite</p>
       </div>
 
-      <div className="grid grid-cols-2 gap-4 dashboard-stats">
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 dashboard-stats">
         <Card onClick={() => navigate('/clients')} hoverable>
-          <div className="text-3xl mb-2">👥</div>
-          <div className="text-2xl font-bold">{stats?.clientsTotal || 0}</div>
-          <div className="text-sm text-gray-600">Clients</div>
+          <div className="text-2xl sm:text-3xl mb-1">👥</div>
+          <div className="text-xl sm:text-2xl font-bold">{stats?.clientsTotal || 0}</div>
+          <div className="text-xs sm:text-sm text-gray-600">Clients</div>
         </Card>
         <Card onClick={() => navigate('/chantiers')} hoverable>
-          <div className="text-3xl mb-2">🏗️</div>
-          <div className="text-2xl font-bold">{stats?.chantiersEnCours || 0}</div>
-          <div className="text-sm text-gray-600">Chantiers en cours</div>
+          <div className="text-2xl sm:text-3xl mb-1">🏗️</div>
+          <div className="text-xl sm:text-2xl font-bold">{stats?.chantiersEnCours || 0}</div>
+          <div className="text-xs sm:text-sm text-gray-600">Chantiers en cours</div>
         </Card>
         <Card onClick={() => navigate('/devis')} hoverable>
-          <div className="text-3xl mb-2">📋</div>
-          <div className="text-2xl font-bold">{stats?.devisEnAttente || 0}</div>
-          <div className="text-sm text-gray-600">Devis en attente</div>
+          <div className="text-2xl sm:text-3xl mb-1">📋</div>
+          <div className="text-xl sm:text-2xl font-bold">{stats?.devisEnAttente || 0}</div>
+          <div className="text-xs sm:text-sm text-gray-600">Devis en attente</div>
         </Card>
         <Card onClick={() => navigate('/factures')} hoverable>
-          <div className="text-3xl mb-2">💶</div>
-          <div className="text-2xl font-bold">
+          <div className="text-2xl sm:text-3xl mb-1">💶</div>
+          <div className="text-xl sm:text-2xl font-bold">
             {formatCurrency(stats?.caMois || 0)} €
           </div>
-          <div className="text-sm text-gray-600">CA du mois</div>
+          <div className="text-xs sm:text-sm text-gray-600">CA du mois</div>
         </Card>
       </div>
 
@@ -185,22 +185,22 @@ export function Dashboard() {
         )}
       </Card>
 
-      <div className="grid grid-cols-2 gap-4 quick-actions">
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 quick-actions">
         <Button
           variant="outline"
-          className="h-auto py-4 flex-col"
+          className="h-auto py-4 flex-col !rounded-2xl"
           onClick={() => navigate('/devis/nouveau')}
         >
           <span className="text-2xl mb-1">📝</span>
-          <span>Nouveau devis</span>
+          <span className="text-xs sm:text-sm">Nouveau devis</span>
         </Button>
         <Button
           variant="outline"
-          className="h-auto py-4 flex-col"
+          className="h-auto py-4 flex-col !rounded-2xl"
           onClick={() => navigate('/clients')}
         >
           <span className="text-2xl mb-1">➕</span>
-          <span>Nouveau client</span>
+          <span className="text-xs sm:text-sm">Nouveau client</span>
         </Button>
       </div>
     </div>
