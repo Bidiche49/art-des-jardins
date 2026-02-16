@@ -8,9 +8,9 @@
 
 | Type | Prochain ID |
 |------|-------------|
-| BUG | BUG-008 |
-| FEAT | FEAT-111 |
-| IMP | IMP-028 |
+| BUG | BUG-011 |
+| FEAT | FEAT-121 |
+| IMP | IMP-045 |
 
 ---
 
@@ -18,10 +18,10 @@
 
 | Type | Pending | Ready | Done | Total |
 |------|---------|-------|------|-------|
-| Bugs | 7 | 0 | 0 | 7 |
-| Features | 33 | 10 | 67 | 110 |
-| Improvements | 20 | 7 | 0 | 27 |
-| **Total** | **60** | **17** | **67** | **144** |
+| Bugs | 9 | 0 | 1 | 10 |
+| Features | 43 | 10 | 67 | 120 |
+| Improvements | 29 | 7 | 8 | 44 |
+| **Total** | **81** | **17** | **76** | **174** |
 
 ---
 
@@ -303,7 +303,64 @@
 
 ---
 
-## Roadmap Audit Qualite (NOUVEAU)
+## Roadmap Audit SEO Vitrine (NOUVEAU - 2026-02-13)
+
+> **OBJECTIF:** Porter la note SEO de 72/100 a 90+/100. Maximiser le trafic local et les conversions.
+> **SOURCE:** Audit SEO complet par equipe 4 agents (on-page, technique, local, UX/conversion).
+
+### Phase 1 - Quick wins CRITIQUES (Semaine 1)
+
+| Ordre | Ticket | Description | Priorite | Complexite |
+|-------|--------|-------------|----------|------------|
+| 1 | BUG-008 | Accents manquants dans meta/contenus | Critique | S | **DONE** |
+| 2 | BUG-009 | Formulaire contact WEB3FORMS non configure | Critique | XS | |
+| 3 | BUG-010 | Google Search Console non activee | Critique | XS | |
+| 4 | IMP-029 | Remplir sameAs LocalBusinessSchema | Haute | XS | **DONE** |
+| 5 | IMP-034 | Raccourcir meta title homepage (< 60 chars) | Moyenne | XS | **DONE** |
+
+### Phase 2 - Conversion et confiance (Semaine 2-3)
+
+| Ordre | Ticket | Description | Priorite | Complexite | Statut |
+|-------|--------|-------------|----------|------------|--------|
+| 6 | IMP-028 | Telephone visible dans header desktop | Haute | XS | **DONE** |
+| 7 | IMP-031 | Bouton flottant "Appeler" mobile | Haute | S | **DONE** (via IMP-041) |
+| 8 | IMP-032 | Certifications, assurances, SIRET visibles | Haute | S | **DONE** |
+| 9 | IMP-030 | Google Maps page contact (remplacer placeholder) | Haute | S | **DONE** |
+| 10 | IMP-040 | Champ ville dans formulaire contact | Moyenne | XS | **DONE** |
+| 11 | IMP-041 | Sticky CTA mobile en bas d'ecran | Moyenne | S | **DONE** |
+| 12 | FEAT-118 | Tracking GA4 + events conversion | Haute | S | |
+
+### Phase 3 - SEO On-Page approfondi (Semaine 3-4)
+
+| Ordre | Ticket | Description | Priorite | Complexite |
+|-------|--------|-------------|----------|------------|
+| 13 | IMP-035 | Enrichir contenu texte homepage | Haute | M |
+| 14 | IMP-033 | Alt text descriptifs images | Moyenne | S |
+| 15 | IMP-036 | Images OG specifiques pages manquantes | Moyenne | S |
+| 16 | IMP-038 | loading="lazy" systematique | Moyenne | XS |
+| 17 | IMP-044 | Background images CSS -> img lazy | Moyenne | M |
+| 18 | IMP-039 | Enrichir Organization + LocalBusiness schema | Moyenne | S |
+| 19 | IMP-037 | Accessibilite menu mobile aria-expanded | Moyenne | S |
+| 20 | IMP-042 | Security + cache headers | Moyenne | S |
+| 21 | IMP-043 | SVG accessibles footer (aria-hidden) | Basse | XS |
+
+### Phase 4 - Contenu et expansion (Mois 2+)
+
+| Ordre | Ticket | Description | Priorite | Complexite |
+|-------|--------|-------------|----------|------------|
+| 22 | FEAT-111 | Page "A propos" equipe et histoire | Haute | M |
+| 23 | FEAT-112 | Ajouter 7+ communes peripheriques | Haute | M |
+| 24 | FEAT-117 | Section credit d'impot / CESU | Haute | S |
+| 25 | FEAT-113 | Blog/Conseils SEO longue traine | Haute | L |
+| 26 | FEAT-114 | Upload photo formulaire devis | Haute | M |
+| 27 | FEAT-115 | Section avant/apres avec slider | Haute | M |
+| 28 | FEAT-116 | Bouton WhatsApp Business | Moyenne | XS |
+| 29 | FEAT-119 | Mega-menu services header | Basse | S |
+| 30 | FEAT-120 | Schema AggregateOffer prix | Basse | S |
+
+---
+
+## Roadmap Audit Qualite
 
 > **OBJECTIF:** Corriger les problemes identifies par l'audit complet (securite, code quality, SEO, infra).
 
@@ -356,7 +413,7 @@
 
 ## Features
 
-### Pending (36) - dont 22 Flutter + 6 NON AUTOMATISABLES + 3 Deploy + 5 Audit
+### Pending (46) - dont 22 Flutter + 6 NON AUTOMATISABLES + 3 Deploy + 5 Audit + 10 SEO
 
 | ID | Titre | Priorite | Phase | Raison |
 |----|-------|----------|-------|--------|
@@ -374,6 +431,16 @@
 | FEAT-108 | Automatiser backups BDD | Critique | Audit | ✅ |
 | FEAT-109 | Tests vitrine Next.js | Moyenne | Audit | ✅ |
 | FEAT-110 | Valider migrations Prisma CI | Moyenne | Audit | ✅ |
+| FEAT-111 | Page "A propos" equipe et histoire | Haute | SEO | ❌ Photos equipe |
+| FEAT-112 | Ajouter 7+ communes peripheriques | Haute | SEO | ✅ |
+| FEAT-113 | Blog/Conseils SEO longue traine | Haute | SEO | ✅ |
+| FEAT-114 | Upload photo formulaire devis | Haute | SEO | ✅ |
+| FEAT-115 | Section avant/apres avec slider | Haute | SEO | ❌ Photos avant/apres |
+| FEAT-116 | Bouton WhatsApp Business | Moyenne | SEO | ✅ |
+| FEAT-117 | Section credit d'impot / CESU | Haute | SEO | ✅ |
+| FEAT-118 | Tracking GA4 + events conversion | Haute | SEO | ❌ Compte GA4 |
+| FEAT-119 | Mega-menu services header | Basse | SEO | ✅ |
+| FEAT-120 | Schema AggregateOffer prix | Basse | SEO | ✅ |
 
 ### Ready (11) - AUTOMATISABLES
 
@@ -466,7 +533,7 @@
 
 ## Bugs
 
-### Pending (7) - Audit securite
+### Pending (9) - Audit securite + SEO
 
 | ID | Titre | Priorite | Complexite | Tags |
 |----|-------|----------|------------|------|
@@ -477,17 +544,20 @@
 | BUG-005 | Tokens JWT dans localStorage (PWA) | Critique | S | security, pwa, auth |
 | BUG-006 | Memory leak timeout Calendar | Haute | XS | pwa, perf |
 | BUG-007 | CORS dev autorise toutes origines | Moyenne | XS | security, api |
+| BUG-009 | Formulaire contact WEB3FORMS non configure | Critique | XS | vitrine, conversion |
+| BUG-010 | Google Search Console non activee | Critique | XS | seo, vitrine, infra |
 
-### Done (0)
+### Done (1)
 
 | ID | Titre | Priorite | Date resolution |
 |----|-------|----------|-----------------|
+| BUG-008 | Accents manquants meta/contenus vitrine | Critique | 2026-02-16 |
 
 ---
 
 ## Improvements
 
-### Pending (20) - dont 1 NON AUTOMATISABLE + 19 Audit
+### Pending (29) - dont 1 NON AUTOMATISABLE + 19 Audit + 9 SEO
 
 | ID | Titre | Priorite | Phase | Raison |
 |----|-------|----------|-------|--------|
@@ -511,6 +581,15 @@
 | IMP-025 | BreadcrumbList Schema.org vitrine | Basse | Audit | ✅ |
 | IMP-026 | Service Worker skipWaiting PWA | Moyenne | Audit | ✅ |
 | IMP-027 | Gestion erreurs PWA (toasts) | Moyenne | Audit | ✅ |
+| IMP-033 | Alt text descriptifs images | Moyenne | SEO | ✅ |
+| IMP-035 | Enrichir contenu texte homepage | Haute | SEO | ✅ |
+| IMP-036 | Images OG pages manquantes | Moyenne | SEO | ✅ |
+| IMP-037 | Accessibilite menu mobile aria | Moyenne | SEO | ✅ |
+| IMP-038 | loading="lazy" systematique images | Moyenne | SEO | ✅ |
+| IMP-039 | Organization schema + enrichir LocalBusiness | Moyenne | SEO | ✅ |
+| IMP-042 | Security + cache headers | Moyenne | SEO | ✅ |
+| IMP-043 | SVG accessibles footer aria-hidden | Basse | SEO | ✅ |
+| IMP-044 | Background images CSS -> img lazy | Moyenne | SEO | ✅ |
 
 ### Ready (7) - AUTOMATISABLES
 
@@ -524,10 +603,18 @@
 | IMP-006 | Expiration sessions inactives | Moyenne | S | security, auth, ux | 12 |
 | IMP-008 | Backup chiffre | Moyenne | S | security, backup | 13 |
 
-### Done (0)
+### Done (8)
 
 | ID | Titre | Priorite | Date resolution |
 |----|-------|----------|-----------------|
+| IMP-028 | Telephone visible header desktop | Haute | 2026-02-16 |
+| IMP-029 | Remplir sameAs LocalBusinessSchema | Haute | 2026-02-16 |
+| IMP-030 | Google Maps page contact | Haute | 2026-02-16 |
+| IMP-031 | Bouton flottant Appeler mobile (via IMP-041) | Haute | 2026-02-16 |
+| IMP-032 | Certifications, assurances, SIRET | Haute | 2026-02-16 |
+| IMP-034 | Raccourcir meta title homepage | Moyenne | 2026-02-16 |
+| IMP-040 | Champ ville formulaire contact | Moyenne | 2026-02-16 |
+| IMP-041 | Sticky CTA mobile bas d'ecran | Moyenne | 2026-02-16 |
 
 ---
 

@@ -6,6 +6,7 @@ interface FormData {
   name: string;
   email: string;
   phone: string;
+  city: string;
   service: string;
   message: string;
   website: string; // honeypot
@@ -15,16 +16,17 @@ const initialFormData: FormData = {
   name: '',
   email: '',
   phone: '',
+  city: '',
   service: '',
   message: '',
   website: '', // honeypot - should remain empty
 };
 
 const services = [
-  { value: '', label: 'Selectionnez un service' },
-  { value: 'paysagisme', label: 'Amenagement de jardin / Paysagisme' },
+  { value: '', label: 'Sélectionnez un service' },
+  { value: 'paysagisme', label: 'Aménagement paysager / Création de jardin' },
   { value: 'entretien', label: 'Entretien de jardin' },
-  { value: 'elagage', label: 'Elagage / Taille d\'arbres' },
+  { value: 'elagage', label: 'Élagage / Taille d\'arbres' },
   { value: 'abattage', label: 'Abattage / Dessouchage' },
   { value: 'autre', label: 'Autre demande' },
 ];
@@ -79,11 +81,12 @@ export function ContactForm() {
         },
         body: JSON.stringify({
           access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY || 'YOUR_ACCESS_KEY',
-          subject: `Nouveau contact Art des Jardins - ${formData.service || 'Demande generale'}`,
+          subject: `Nouveau contact Art des Jardins - ${formData.service || 'Demande générale'}`,
           from_name: formData.name,
           email: formData.email,
-          phone: formData.phone || 'Non renseigne',
-          service: formData.service || 'Non precise',
+          phone: formData.phone || 'Non renseigné',
+          city: formData.city || 'Non renseigné',
+          service: formData.service || 'Non précisé',
           message: formData.message,
         }),
       });
@@ -99,7 +102,7 @@ export function ContactForm() {
     } catch (error) {
       console.error('Form submission error:', error);
       setErrorMessage(
-        'Une erreur est survenue lors de l\'envoi. Veuillez reessayer ou nous contacter par telephone.'
+        'Une erreur est survenue lors de l\'envoi. Veuillez réessayer ou nous contacter par téléphone.'
       );
       setStatus('error');
     }
@@ -109,9 +112,9 @@ export function ContactForm() {
     return (
       <div className="bg-green-50 border border-green-200 rounded-xl p-8 text-center">
         <div className="text-4xl mb-4">✅</div>
-        <h3 className="text-xl font-bold text-green-800 mb-2">Message envoye !</h3>
+        <h3 className="text-xl font-bold text-green-800 mb-2">Message envoyé !</h3>
         <p className="text-green-700">
-          Merci pour votre message. Nous vous repondrons sous 48h.
+          Merci pour votre message. Nous vous répondrons sous 48h.
         </p>
         <button
           onClick={() => setStatus('idle')}
@@ -182,7 +185,7 @@ export function ContactForm() {
       <div className="grid md:grid-cols-2 gap-6">
         <div>
           <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-            Telephone
+            Téléphone
           </label>
           <input
             type="tel"
@@ -196,23 +199,38 @@ export function ContactForm() {
         </div>
 
         <div>
-          <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">
-            Service souhaite
+          <label htmlFor="city" className="block text-sm font-medium text-gray-700 mb-2">
+            Ville ou code postal
           </label>
-          <select
-            id="service"
-            name="service"
-            value={formData.service}
+          <input
+            type="text"
+            id="city"
+            name="city"
+            value={formData.city}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors bg-white"
-          >
-            {services.map((service) => (
-              <option key={service.value} value={service.value}>
-                {service.label}
-              </option>
-            ))}
-          </select>
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors"
+            placeholder="Angers, 49000"
+          />
         </div>
+      </div>
+
+      <div>
+        <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">
+          Service souhaité
+        </label>
+        <select
+          id="service"
+          name="service"
+          value={formData.service}
+          onChange={handleChange}
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors bg-white"
+        >
+          {services.map((service) => (
+            <option key={service.value} value={service.value}>
+              {service.label}
+            </option>
+          ))}
+        </select>
       </div>
 
       <div>
@@ -227,7 +245,7 @@ export function ContactForm() {
           required
           rows={5}
           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors resize-none"
-          placeholder="Decrivez votre projet ou votre demande..."
+          placeholder="Décrivez votre projet ou votre demande..."
         />
       </div>
 
@@ -239,9 +257,9 @@ export function ContactForm() {
           className="mt-1 w-4 h-4 text-primary-600 border-gray-300 rounded focus:ring-primary-500"
         />
         <label htmlFor="privacy" className="text-sm text-gray-600">
-          J'accepte que mes donnees soient traitees pour repondre a ma demande.{' '}
+          J'accepte que mes données soient traitées pour répondre à ma demande.{' '}
           <a href="/politique-confidentialite/" className="text-primary-600 hover:underline">
-            Politique de confidentialite
+            Politique de confidentialité
           </a>
         </label>
       </div>

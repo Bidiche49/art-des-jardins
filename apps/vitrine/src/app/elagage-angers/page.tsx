@@ -2,25 +2,29 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { LocalBusinessCitySchema } from '@/components/seo/LocalBusinessCitySchema';
 import { cities, serviceTypes } from '@/lib/cities-data';
+import { HeroSection } from '@/components/ui/HeroSection';
+import { InlineGallery } from '@/components/ui/InlineGallery';
+import { ogImages } from '@/lib/images-manifest';
 
 const service = serviceTypes.find((s) => s.service === 'elagage')!;
 const city = cities.find((c) => c.slug === 'angers')!;
 
 export const metadata: Metadata = {
-  title: 'Elagage Angers - Taille d\'Arbres Professionnel | Art des Jardins',
+  title: 'Élagage Angers - Taille d\'Arbres Professionnel | Art des Jardins',
   description:
-    'Elagueur professionnel a Angers. Taille d\'arbres, eclaircissage, taille de securisation, haubanage. Elagueurs certifies. Devis gratuit.',
+    'Élagueur professionnel à Angers. Taille d\'arbres, éclaircissage, taille de sécurisation, haubanage. Élagueurs certifiés. Devis gratuit.',
   keywords: [
-    'elagage angers',
-    'elagueur angers',
+    'élagage angers',
+    'élagueur angers',
     'taille arbre angers',
-    'elagage 49',
-    'elagueur maine-et-loire',
+    'élagage 49',
+    'élagueur maine-et-loire',
   ],
   openGraph: {
-    title: 'Elagage Angers - Art des Jardins',
-    description: 'Service d\'elagage professionnel a Angers par des elagueurs certifies.',
+    title: 'Élagage Angers - Art des Jardins',
+    description: 'Service d\'élagage professionnel à Angers par des élagueurs certifiés.',
     type: 'website',
+    images: [{ url: ogImages.elagage, width: 1200, height: 630 }],
   },
 };
 
@@ -30,34 +34,29 @@ export default function ElagageAngersPage() {
       <LocalBusinessCitySchema
         city="Angers"
         postalCode="49000"
-        service="Elagage"
-        serviceDescription="Taille et soins des arbres par des elagueurs certifies a Angers."
+        service="Élagage"
+        serviceDescription="Taille et soins des arbres par des élagueurs certifiés à Angers."
         url="https://art-et-jardin.fr/elagage-angers/"
       />
 
       {/* Hero */}
-      <section className="bg-gradient-to-br from-primary-600 to-primary-800 text-white py-16 lg:py-24">
-        <div className="container-custom">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Elagage a Angers
-          </h1>
-          <p className="text-xl md:text-2xl text-primary-100 mb-8 max-w-3xl">
-            Art des Jardins, elagueurs professionnels certifies a Angers. Taille d'arbres,
-            eclaircissage, securisation. Intervention rapide et devis gratuit.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Link href="/contact/" className="btn-primary bg-white text-primary-700 hover:bg-gray-100">
-              Demander un devis gratuit
-            </Link>
-            <a
-              href="tel:+33781160737"
-              className="btn-secondary border-white text-white hover:bg-white/10"
-            >
-              Urgence : 07 81 16 07 37
-            </a>
-          </div>
+      <HeroSection
+        imageSlug="elagage-3"
+        title="Élagage à Angers"
+        subtitle="Art des Jardins, élagueurs professionnels certifiés à Angers. Taille d'arbres, éclaircissage, sécurisation. Intervention rapide et devis gratuit."
+      >
+        <div className="flex flex-col sm:flex-row gap-4">
+          <Link href="/contact/" className="btn-primary bg-white text-primary-700 hover:bg-gray-100">
+            Demander un devis gratuit
+          </Link>
+          <a
+            href="tel:+33781160737"
+            className="btn-secondary bg-transparent border-2 border-white text-white hover:bg-white/10"
+          >
+            Urgence : 07 81 16 07 37
+          </a>
         </div>
-      </section>
+      </HeroSection>
 
       {/* Content */}
       <section className="py-16 lg:py-24">
@@ -65,32 +64,34 @@ export default function ElagageAngersPage() {
           <div className="grid lg:grid-cols-3 gap-12">
             <div className="lg:col-span-2">
               <h2 className="text-3xl font-bold mb-6">
-                Service d'elagage professionnel a Angers
+                Service d'élagage professionnel à Angers
               </h2>
               <div className="prose prose-lg max-w-none text-gray-600">
                 <p>
-                  L'<strong>elagage a Angers</strong> est un metier qui demande expertise et savoir-faire.
-                  Chez Art des Jardins, nos elagueurs certifies interviennent sur tous types d'arbres pour
-                  assurer leur bonne sante, leur securite et leur esthetique.
+                  L'<strong>élagage à Angers</strong> est un métier qui demande expertise et savoir-faire.
+                  Chez Art des Jardins, nos élagueurs certifiés interviennent sur tous types d'arbres pour
+                  assurer leur bonne santé, leur sécurité et leur esthétique.
                 </p>
                 <p>
-                  Angers et ses nombreux parcs et jardins abritent un patrimoine arbore remarquable.
-                  Des platanes centenaires aux chenes majestueux, en passant par les arbres fruitiers
-                  des jardins particuliers, chaque arbre merite une attention particuliere.
+                  Angers et ses nombreux parcs et jardins abritent un patrimoine arboré remarquable.
+                  Des platanes centenaires aux chênes majestueux, en passant par les arbres fruitiers
+                  des jardins particuliers, chaque arbre mérite une attention particulière.
                 </p>
                 <p>
-                  Notre equipe intervient dans tous les quartiers d'Angers : {city.neighborhoods?.join(', ')}.
-                  Nous connaissons les reglementations locales concernant les arbres classes et les
-                  zones protegees du secteur sauvegarde.
+                  Notre équipe intervient dans tous les quartiers d'Angers : {city.neighborhoods?.join(', ')}.
+                  Nous connaissons les réglementations locales concernant les arbres classés et les
+                  zones protégées du secteur sauvegardé.
                 </p>
                 <p>
-                  Nous disposons d'un parc materiel complet : nacelles jusqu'a 25m, broyeurs, tronconneuses
-                  professionnelles... Notre equipement nous permet d'intervenir sur les arbres les plus
-                  imposants en toute securite.
+                  Nous disposons d'un parc matériel complet : nacelles jusqu'à 25m, broyeurs, tronçonneuses
+                  professionnelles... Notre équipement nous permet d'intervenir sur les arbres les plus
+                  imposants en toute sécurité.
                 </p>
               </div>
 
-              <h3 className="text-2xl font-bold mt-12 mb-6">Nos services d'elagage</h3>
+              <InlineGallery slugs={['elagage-2', 'elagage-4', 'elagage-5']} />
+
+              <h3 className="text-2xl font-bold mt-12 mb-6">Nos services d'élagage</h3>
               <div className="grid sm:grid-cols-2 gap-4">
                 {service.features.map((feature, i) => (
                   <div key={i} className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg">
@@ -110,20 +111,20 @@ export default function ElagageAngersPage() {
                 ))}
               </div>
 
-              <h3 className="text-2xl font-bold mt-12 mb-6">Quand faire elaguer vos arbres ?</h3>
+              <h3 className="text-2xl font-bold mt-12 mb-6">Quand faire élaguer vos arbres ?</h3>
               <div className="prose prose-lg max-w-none text-gray-600">
                 <p>
-                  La periode ideale d'elagage varie selon les especes. En regle generale, nous
+                  La période idéale d'élagage varie selon les espèces. En règle générale, nous
                   recommandons :
                 </p>
                 <ul>
-                  <li><strong>Hiver (hors gel)</strong> : periode ideale pour la plupart des feuillus</li>
-                  <li><strong>Apres floraison</strong> : pour les arbres a fleurs (cerisiers, pruniers...)</li>
-                  <li><strong>Toute l'annee</strong> : pour les urgences et la securisation</li>
+                  <li><strong>Hiver (hors gel)</strong> : période idéale pour la plupart des feuillus</li>
+                  <li><strong>Après floraison</strong> : pour les arbres à fleurs (cerisiers, pruniers...)</li>
+                  <li><strong>Toute l'année</strong> : pour les urgences et la sécurisation</li>
                 </ul>
                 <p>
-                  Nous vous conseillons sur la meilleure periode pour intervenir sur vos arbres
-                  en fonction de leur espece et de leur etat sanitaire.
+                  Nous vous conseillons sur la meilleure période pour intervenir sur vos arbres
+                  en fonction de leur espèce et de leur état sanitaire.
                 </p>
               </div>
             </div>
@@ -132,10 +133,10 @@ export default function ElagageAngersPage() {
             <div className="lg:col-span-1">
               <div className="sticky top-24 space-y-6">
                 <div className="bg-red-50 rounded-xl p-6 border border-red-100">
-                  <h3 className="text-lg font-bold text-red-800 mb-4">Urgence elagage</h3>
+                  <h3 className="text-lg font-bold text-red-800 mb-4">Urgence élagage</h3>
                   <p className="text-red-700 mb-4">
-                    Arbre dangereux, branche cassee, degats de tempete ?
-                    Nous intervenons rapidement pour securiser les lieux.
+                    Arbre dangereux, branche cassée, dégâts de tempête ?
+                    Nous intervenons rapidement pour sécuriser les lieux.
                   </p>
                   <a
                     href="tel:+33781160737"
@@ -148,7 +149,7 @@ export default function ElagageAngersPage() {
                 <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
                   <h3 className="text-lg font-bold mb-2">Devis gratuit</h3>
                   <p className="text-gray-600 text-sm mb-4">
-                    Evaluation sur place et devis detaille sans engagement.
+                    Évaluation sur place et devis détaillé sans engagement.
                   </p>
                   <Link href="/contact/" className="btn-primary w-full text-center block">
                     Demander un devis
@@ -159,7 +160,7 @@ export default function ElagageAngersPage() {
                   <h3 className="text-lg font-bold text-primary-800 mb-4">Zone d'intervention</h3>
                   <ul className="space-y-2 text-primary-700 text-sm">
                     {cities.slice(0, 6).map((c) => (
-                      <li key={c.slug}>Elagage {c.name}</li>
+                      <li key={c.slug}>Élagage {c.name}</li>
                     ))}
                   </ul>
                 </div>
@@ -173,7 +174,7 @@ export default function ElagageAngersPage() {
       <section className="py-16 bg-gray-50">
         <div className="container-custom">
           <h2 className="text-3xl font-bold text-center mb-12">
-            Elagage dans les communes voisines
+            Élagage dans les communes voisines
           </h2>
           <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-4">
             {cities.slice(1).map((c) => (
@@ -182,7 +183,7 @@ export default function ElagageAngersPage() {
                 href={`/elagage-${c.slug}/`}
                 className="block p-4 bg-white rounded-lg hover:bg-primary-50 transition-colors text-center shadow-sm"
               >
-                <span className="font-medium text-gray-900">Elagage {c.name}</span>
+                <span className="font-medium text-gray-900">Élagage {c.name}</span>
               </Link>
             ))}
           </div>
@@ -190,11 +191,13 @@ export default function ElagageAngersPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-primary-700 text-white">
-        <div className="container-custom text-center">
-          <h2 className="text-3xl font-bold mb-4">Besoin d'un elagueur a Angers ?</h2>
-          <p className="text-primary-100 mb-8 max-w-xl mx-auto">
-            Contactez-nous pour un diagnostic gratuit de vos arbres et un devis detaille.
+      <section className="relative py-16 overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/images/realisations/elagage-1-1200w.webp')] bg-cover bg-center" />
+        <div className="absolute inset-0 hero-overlay-strong" />
+        <div className="container-custom text-center relative z-10">
+          <h2 className="text-3xl font-bold mb-4 text-white">Besoin d'un élagueur à Angers ?</h2>
+          <p className="text-white/80 mb-8 max-w-xl mx-auto">
+            Contactez-nous pour un diagnostic gratuit de vos arbres et un devis détaillé.
           </p>
           <Link href="/contact/" className="btn-primary bg-white text-primary-700 hover:bg-gray-100">
             Demander un devis gratuit

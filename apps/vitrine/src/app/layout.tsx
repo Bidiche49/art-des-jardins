@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { MobileStickyBar } from '@/components/ui/MobileStickyBar';
 import { Analytics } from '@/components/Analytics';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
@@ -18,18 +19,18 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'Art des Jardins - Paysagiste Angers | Amenagement, Entretien, Elagage',
+    default: 'Paysagiste Angers - Art des Jardins | Devis Gratuit',
     template: '%s | Art des Jardins',
   },
   description:
-    'Paysagiste professionnel a Angers et Maine-et-Loire. Amenagement de jardins, entretien, elagage, abattage. 16 ans d\'experience cumulee. Devis gratuit sous 48h.',
+    'Paysagiste professionnel à Angers et Maine-et-Loire. Aménagement de jardins, entretien, élagage, abattage. 16 ans d\'expérience cumulée. Devis gratuit sous 48h.',
   keywords: [
     'paysagiste angers',
     'jardinier angers',
     'entretien jardin angers',
-    'elagage angers',
+    'élagage angers',
     'abattage arbre angers',
-    'amenagement jardin angers',
+    'aménagement jardin angers',
     'paysagiste 49',
     'jardinier maine-et-loire',
   ],
@@ -44,6 +45,13 @@ export const metadata: Metadata = {
   alternates: {
     canonical: siteUrl,
   },
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico', sizes: '32x32' },
+    ],
+    apple: '/apple-touch-icon.png',
+  },
   openGraph: {
     type: 'website',
     locale: 'fr_FR',
@@ -51,10 +59,10 @@ export const metadata: Metadata = {
     siteName: 'Art des Jardins',
     title: 'Art des Jardins - Paysagiste Angers',
     description:
-      'Paysagiste professionnel a Angers. Amenagement, entretien, elagage, abattage. Devis gratuit.',
+      'Paysagiste professionnel à Angers. Aménagement, entretien, élagage, abattage. Devis gratuit.',
     images: [
       {
-        url: '/og-image.jpg',
+        url: '/images/og-image.jpg',
         width: 1200,
         height: 630,
         alt: 'Art des Jardins - Paysagiste Angers',
@@ -64,8 +72,8 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Art des Jardins - Paysagiste Angers',
-    description: 'Paysagiste professionnel a Angers. Devis gratuit.',
-    images: ['/og-image.jpg'],
+    description: 'Paysagiste professionnel à Angers. Devis gratuit.',
+    images: ['/images/og-image.jpg'],
   },
   robots: {
     index: true,
@@ -87,11 +95,20 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fr" className={inter.variable}>
+      <head>
+        <link
+          rel="preload"
+          as="image"
+          type="image/webp"
+          href="/images/realisations/entretien-2-1920w.webp"
+        />
+      </head>
       <body className="min-h-screen flex flex-col">
         <Analytics />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        <MobileStickyBar />
       </body>
     </html>
   );

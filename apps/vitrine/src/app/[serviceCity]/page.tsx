@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { LocalBusinessCitySchema } from '@/components/seo/LocalBusinessCitySchema';
 import { cities, serviceTypes, getCityBySlug, getServiceBySlugSeo } from '@/lib/cities-data';
+import { HeroSection } from '@/components/ui/HeroSection';
+import { serviceHeroImages } from '@/lib/images-manifest';
 
 interface PageProps {
   params: { serviceCity: string };
@@ -68,7 +70,7 @@ export default function ServiceCityPage({ params }: PageProps) {
   const city = getCityBySlug(parsed.city);
   if (!service || !city) notFound();
 
-  const pageTitle = `${service.serviceTitle} a ${city.name}`;
+  const pageTitle = `${service.serviceTitle} à ${city.name}`;
   const mainAngersPage = `/${service.service}-angers/`;
 
   return (
@@ -82,37 +84,28 @@ export default function ServiceCityPage({ params }: PageProps) {
       />
 
       {/* Hero */}
-      <section className="bg-gradient-to-br from-primary-600 to-primary-800 text-white py-16 lg:py-24">
-        <div className="container-custom">
-          <nav className="text-primary-200 text-sm mb-4">
-            <Link href="/" className="hover:text-white">
-              Accueil
-            </Link>
-            <span className="mx-2">/</span>
-            <Link href={mainAngersPage} className="hover:text-white">
-              {service.serviceTitle} Angers
-            </Link>
-            <span className="mx-2">/</span>
-            <span className="text-white">{city.name}</span>
-          </nav>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">{pageTitle}</h1>
-          <p className="text-xl md:text-2xl text-primary-100 mb-8 max-w-3xl">
-            Art des Jardins, votre specialiste {service.serviceDescription} a {city.name}.
-            {city.distance && ` A seulement ${city.distance} d'Angers.`} Devis gratuit.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Link href="/contact/" className="btn-primary bg-white text-primary-700 hover:bg-gray-100">
-              Demander un devis gratuit
-            </Link>
-            <a
-              href="tel:+33781160737"
-              className="btn-secondary border-white text-white hover:bg-white/10"
-            >
-              Appeler : 07 81 16 07 37
-            </a>
-          </div>
+      <HeroSection
+        imageSlug={serviceHeroImages[service.service] || 'creation-2'}
+        title={pageTitle}
+        subtitle={`Art des Jardins, votre spécialiste ${service.serviceDescription} à ${city.name}.${city.distance ? ` À seulement ${city.distance} d'Angers.` : ''} Devis gratuit.`}
+        breadcrumbs={[
+          { label: 'Accueil', href: '/' },
+          { label: `${service.serviceTitle} Angers`, href: mainAngersPage },
+          { label: city.name },
+        ]}
+      >
+        <div className="flex flex-col sm:flex-row gap-4">
+          <Link href="/contact/" className="btn-primary bg-white text-primary-700 hover:bg-gray-100">
+            Demander un devis gratuit
+          </Link>
+          <a
+            href="tel:+33781160737"
+            className="btn-secondary bg-transparent border-2 border-white text-white hover:bg-white/10"
+          >
+            Appeler : 07 81 16 07 37
+          </a>
         </div>
-      </section>
+      </HeroSection>
 
       {/* Content */}
       <section className="py-16 lg:py-24">
@@ -120,12 +113,12 @@ export default function ServiceCityPage({ params }: PageProps) {
           <div className="grid lg:grid-cols-3 gap-12">
             <div className="lg:col-span-2">
               <h2 className="text-3xl font-bold mb-6">
-                {service.serviceTitle} professionnel a {city.name}
+                {service.serviceTitle} professionnel à {city.name}
               </h2>
               <div className="prose prose-lg max-w-none text-gray-600">
                 <p>
-                  Vous recherchez un <strong>{service.serviceTitle.toLowerCase()} a {city.name}</strong> ?
-                  Art des Jardins intervient regulierement dans votre commune pour tous vos besoins en
+                  Vous recherchez un <strong>{service.serviceTitle.toLowerCase()} à {city.name}</strong> ?
+                  Art des Jardins intervient régulièrement dans votre commune pour tous vos besoins en
                   {' '}{service.serviceDescription}.
                 </p>
                 <p>{city.description}</p>
@@ -137,7 +130,7 @@ export default function ServiceCityPage({ params }: PageProps) {
                 )}
               </div>
 
-              <h3 className="text-2xl font-bold mt-12 mb-6">Nos prestations a {city.name}</h3>
+              <h3 className="text-2xl font-bold mt-12 mb-6">Nos prestations à {city.name}</h3>
               <div className="grid sm:grid-cols-2 gap-4">
                 {service.features.map((feature, i) => (
                   <div key={i} className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg">
@@ -161,20 +154,20 @@ export default function ServiceCityPage({ params }: PageProps) {
               <div className="grid sm:grid-cols-2 gap-6">
                 {[
                   {
-                    title: 'Proximite',
-                    description: `Bases a Angers, nous intervenons rapidement a ${city.name}.`,
+                    title: 'Proximité',
+                    description: `Basés à Angers, nous intervenons rapidement à ${city.name}.`,
                   },
                   {
-                    title: 'Experience',
-                    description: 'Plus de 10 ans d\'experience dans le Maine-et-Loire.',
+                    title: 'Expérience',
+                    description: 'Plus de 10 ans d\'expérience dans le Maine-et-Loire.',
                   },
                   {
-                    title: 'Qualite',
-                    description: 'Equipements professionnels et techniques respectueuses.',
+                    title: 'Qualité',
+                    description: 'Équipements professionnels et techniques respectueuses.',
                   },
                   {
                     title: 'Garantie',
-                    description: 'Entreprise assuree, devis gratuit et sans engagement.',
+                    description: 'Entreprise assurée, devis gratuit et sans engagement.',
                   },
                 ].map((item, i) => (
                   <div key={i} className="bg-white border border-gray-200 rounded-xl p-5">
@@ -195,7 +188,7 @@ export default function ServiceCityPage({ params }: PageProps) {
                       <strong>Code postal :</strong> {city.postalCode}
                     </li>
                     <li>
-                      <strong>Departement :</strong> {city.department}
+                      <strong>Département :</strong> {city.department}
                     </li>
                     {city.population && (
                       <li>
@@ -213,7 +206,7 @@ export default function ServiceCityPage({ params }: PageProps) {
                 <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
                   <h3 className="text-lg font-bold mb-2">Devis gratuit</h3>
                   <p className="text-gray-600 text-sm mb-4">
-                    Intervention a {city.name} et environs.
+                    Intervention à {city.name} et environs.
                   </p>
                   <Link href="/contact/" className="btn-primary w-full text-center block">
                     Demander un devis
@@ -269,12 +262,14 @@ export default function ServiceCityPage({ params }: PageProps) {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-primary-700 text-white">
-        <div className="container-custom text-center">
-          <h2 className="text-3xl font-bold mb-4">{pageTitle}</h2>
-          <p className="text-primary-100 mb-8 max-w-xl mx-auto">
+      <section className="relative py-16 overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/images/realisations/creation-2-1200w.webp')] bg-cover bg-center" />
+        <div className="absolute inset-0 hero-overlay-strong" />
+        <div className="container-custom text-center relative z-10">
+          <h2 className="text-3xl font-bold mb-4 text-white">{pageTitle}</h2>
+          <p className="text-white/80 mb-8 max-w-xl mx-auto">
             Contactez Art des Jardins pour un devis gratuit et sans engagement.
-            Intervention rapide a {city.name}.
+            Intervention rapide à {city.name}.
           </p>
           <Link href="/contact/" className="btn-primary bg-white text-primary-700 hover:bg-gray-100">
             Demander un devis gratuit

@@ -25,32 +25,32 @@ export const serviceTypes: ServiceCityData[] = [
     service: 'paysagiste',
     serviceTitle: 'Paysagiste',
     serviceTitlePlural: 'Paysagistes',
-    serviceDescription: 'amenagement et creation de jardins',
-    metaTitleTemplate: 'Paysagiste {city} - Amenagement Jardin | Art des Jardins',
+    serviceDescription: 'aménagement et création de jardins',
+    metaTitleTemplate: 'Paysagiste {city} - Aménagement Jardin | Art des Jardins',
     metaDescriptionTemplate:
-      'Paysagiste professionnel a {city}. Amenagement de jardin, terrasse, engazonnement, plantation. Devis gratuit sous 48h.',
+      'Paysagiste professionnel à {city}. Aménagement de jardin, terrasse, engazonnement, plantation. Devis gratuit sous 48h.',
     features: [
       'Conception de jardins sur mesure',
-      'Creation de terrasses et allees',
+      'Création de terrasses et allées',
       'Plantation d\'arbres et arbustes',
       'Engazonnement et pelouse',
       'Arrosage automatique',
-      'Eclairage de jardin',
+      'Éclairage de jardin',
     ],
   },
   {
     service: 'elagage',
-    serviceTitle: 'Elagage',
-    serviceTitlePlural: 'Services d\'elagage',
+    serviceTitle: 'Élagage',
+    serviceTitlePlural: 'Services d\'élagage',
     serviceDescription: 'taille et soins des arbres',
-    metaTitleTemplate: 'Elagage {city} - Taille d\'Arbres | Art des Jardins',
+    metaTitleTemplate: 'Élagage {city} - Taille d\'Arbres | Art des Jardins',
     metaDescriptionTemplate:
-      'Elagueur professionnel a {city}. Taille d\'arbres, eclaircissage, taille de securisation. Elagueurs certifies. Devis gratuit.',
+      'Élagueur professionnel à {city}. Taille d\'arbres, éclaircissage, taille de sécurisation. Élagueurs certifiés. Devis gratuit.',
     features: [
       'Taille de formation et d\'entretien',
-      'Eclaircissage de couronne',
-      'Taille de reduction',
-      'Taille de securisation',
+      'Éclaircissage de couronne',
+      'Taille de réduction',
+      'Taille de sécurisation',
       'Haubanage',
       'Diagnostic phytosanitaire',
     ],
@@ -59,17 +59,17 @@ export const serviceTypes: ServiceCityData[] = [
     service: 'entretien-jardin',
     serviceTitle: 'Entretien de jardin',
     serviceTitlePlural: 'Services d\'entretien',
-    serviceDescription: 'entretien regulier de jardins',
+    serviceDescription: 'entretien régulier de jardins',
     metaTitleTemplate: 'Entretien Jardin {city} - Tonte, Taille | Art des Jardins',
     metaDescriptionTemplate:
-      'Entretien de jardin a {city}. Tonte pelouse, taille haies, desherbage. Contrat annuel ou ponctuel. Devis gratuit.',
+      'Entretien de jardin à {city}. Tonte pelouse, taille haies, désherbage. Contrat annuel ou ponctuel. Devis gratuit.',
     features: [
       'Tonte de pelouse',
       'Taille de haies et arbustes',
-      'Desherbage ecologique',
+      'Désherbage écologique',
       'Ramassage des feuilles',
       'Traitement phytosanitaire',
-      'Evacuation des dechets verts',
+      'Évacuation des déchets verts',
     ],
   },
   {
@@ -79,14 +79,14 @@ export const serviceTypes: ServiceCityData[] = [
     serviceDescription: 'abattage et dessouchage d\'arbres',
     metaTitleTemplate: 'Abattage Arbres {city} - Dessouchage | Art des Jardins',
     metaDescriptionTemplate:
-      'Abattage d\'arbres securise a {city}. Demontage technique, dessouchage, evacuation. Intervention urgence. Devis gratuit.',
+      'Abattage d\'arbres sécurisé à {city}. Démontage technique, dessouchage, évacuation. Intervention urgence. Devis gratuit.',
     features: [
       'Abattage direct',
-      'Demontage technique',
-      'Dessouchage a la rogneuse',
-      'Evacuation du bois',
+      'Démontage technique',
+      'Dessouchage à la rogneuse',
+      'Évacuation du bois',
       'Intervention d\'urgence',
-      'Securisation apres tempete',
+      'Sécurisation après tempête',
     ],
   },
 ];
@@ -99,20 +99,20 @@ export const cities: CityData[] = [
     postalCode: '49000',
     population: '155 000',
     description:
-      'Capitale du Maine-et-Loire, Angers est une ville verte aux nombreux parcs et jardins. Connue pour son chateau et ses ardoises, elle offre un cadre de vie agreable avec un patrimoine vegetal exceptionnel.',
+      'Capitale du Maine-et-Loire, Angers est une ville verte aux nombreux parcs et jardins. Connue pour son château et ses ardoises, elle offre un cadre de vie agréable avec un patrimoine végétal exceptionnel.',
     specificContent: `
-      Angers, ville d'art et d'histoire, possede un patrimoine vegetal remarquable avec plus de 600 hectares d'espaces verts.
-      Du jardin des Plantes au parc de la Garenne, les Angevins sont particulierement attaches a leur cadre de vie verdoyant.
+      Angers, ville d'art et d'histoire, possède un patrimoine végétal remarquable avec plus de 600 hectares d'espaces verts.
+      Du jardin des Plantes au parc de la Garenne, les Angevins sont particulièrement attachés à leur cadre de vie verdoyant.
 
       Art des Jardins intervient dans tous les quartiers d'Angers : La Doutre, Saint-Serge, Belle-Beille, Monplaisir, Roseraie,
-      Les Hauts de Saint-Aubin, et dans le centre historique. Nous connaissons parfaitement les reglementations locales,
-      notamment en ce qui concerne les arbres classes et les zones protegees du secteur sauvegarde.
+      Les Hauts de Saint-Aubin, et dans le centre historique. Nous connaissons parfaitement les réglementations locales,
+      notamment en ce qui concerne les arbres classés et les zones protégées du secteur sauvegardé.
 
-      Le climat angevin, doux et humide, est propice a une grande variete de vegetaux. Nous selectionnons des especes
-      adaptees a ce terroir particulier : hortensias, camellias, magnolias... qui font la reputation des jardins angevins.
+      Le climat angevin, doux et humide, est propice à une grande variété de végétaux. Nous sélectionnons des espèces
+      adaptées à ce terroir particulier : hortensias, camellias, magnolias... qui font la réputation des jardins angevins.
 
-      Notre equipe intervient aussi bien pour les jardins de maisons de maitre que pour les petits espaces des quartiers
-      plus denses. Nous adaptons nos prestations a chaque projet, avec le meme souci de qualite et de durabilite.
+      Notre équipe intervient aussi bien pour les jardins de maisons de maître que pour les petits espaces des quartiers
+      plus denses. Nous adaptons nos prestations à chaque projet, avec le même souci de qualité et de durabilité.
     `,
     neighborhoods: [
       'La Doutre',
@@ -127,47 +127,47 @@ export const cities: CityData[] = [
   },
   {
     slug: 'avrille',
-    name: 'Avrille',
+    name: 'Avrillé',
     department: 'Maine-et-Loire',
     postalCode: '49240',
     population: '14 000',
     distance: '5 km',
     description:
-      'Commune residentielle au nord d\'Angers, Avrille est appreciee pour son cadre de vie verdoyant et ses nombreux espaces naturels.',
+      'Commune résidentielle au nord d\'Angers, Avrillé est appréciée pour son cadre de vie verdoyant et ses nombreux espaces naturels.',
     specificContent: `
-      Avrille, commune limitrophe d'Angers, offre un cadre de vie particulierement agreable avec ses nombreux espaces verts
-      et son caractere residentiel. Les habitants y possedent souvent des jardins de belle superficie qui necessitent
-      un entretien adapte.
+      Avrillé, commune limitrophe d'Angers, offre un cadre de vie particulièrement agréable avec ses nombreux espaces verts
+      et son caractère résidentiel. Les habitants y possèdent souvent des jardins de belle superficie qui nécessitent
+      un entretien adapté.
 
-      Art des Jardins connait parfaitement Avrille et ses quartiers : la Perriere, l'Adeziere, le bourg historique...
-      Nous intervenons regulierement dans cette commune ou les jardins sont generalement bien exposes et propices
-      a de belles realisations paysageres.
+      Art des Jardins connaît parfaitement Avrillé et ses quartiers : la Perrière, l'Adezière, le bourg historique...
+      Nous intervenons régulièrement dans cette commune où les jardins sont généralement bien exposés et propices
+      à de belles réalisations paysagères.
 
-      La proximite d'Angers nous permet d'intervenir rapidement et frequemment, que ce soit pour un entretien regulier
-      ou des travaux ponctuels d'amenagement ou d'elagage. Nous proposons des contrats d'entretien adaptes aux
-      specificites des jardins avrillais.
+      La proximité d'Angers nous permet d'intervenir rapidement et fréquemment, que ce soit pour un entretien régulier
+      ou des travaux ponctuels d'aménagement ou d'élagage. Nous proposons des contrats d'entretien adaptés aux
+      spécificités des jardins avrillais.
     `,
-    neighborhoods: ['Centre-bourg', 'La Perriere', 'L\'Adeziere'],
+    neighborhoods: ['Centre-bourg', 'La Perrière', 'L\'Adezière'],
   },
   {
     slug: 'beaucouze',
-    name: 'Beaucouze',
+    name: 'Beaucouzé',
     department: 'Maine-et-Loire',
     postalCode: '49070',
     population: '5 500',
     distance: '7 km',
     description:
-      'Commune de l\'ouest angevin, Beaucouze allie zones residentielles et commerciales avec de nombreux espaces verts a entretenir.',
+      'Commune de l\'ouest angevin, Beaucouzé allie zones résidentielles et commerciales avec de nombreux espaces verts à entretenir.',
     specificContent: `
-      Beaucouze, situee a l'ouest d'Angers, est une commune dynamique qui melange zones residentielles et commerciales.
-      Les quartiers residentiels offrent des jardins souvent spacieux qui beneficient d'un bon ensoleillement.
+      Beaucouzé, située à l'ouest d'Angers, est une commune dynamique qui mélange zones résidentielles et commerciales.
+      Les quartiers résidentiels offrent des jardins souvent spacieux qui bénéficient d'un bon ensoleillement.
 
-      Notre equipe intervient regulierement a Beaucouze, aussi bien pour les particuliers que pour les entreprises
-      de la zone commerciale Atoll. Nous proposons des solutions adaptees a chaque type de client : contrats d'entretien
-      pour les particuliers, interventions ponctuelles ou regulieres pour les professionnels.
+      Notre équipe intervient régulièrement à Beaucouzé, aussi bien pour les particuliers que pour les entreprises
+      de la zone commerciale Atoll. Nous proposons des solutions adaptées à chaque type de client : contrats d'entretien
+      pour les particuliers, interventions ponctuelles ou régulières pour les professionnels.
 
-      Les jardins de Beaucouze presentent souvent des arbres de belle taille qui necessitent un elagage regulier.
-      Nos elagueurs certifies interviennent dans le respect des regles de l'art pour garantir la sante et l'esthetique
+      Les jardins de Beaucouzé présentent souvent des arbres de belle taille qui nécessitent un élagage régulier.
+      Nos élagueurs certifiés interviennent dans le respect des règles de l'art pour garantir la santé et l'esthétique
       de vos arbres.
     `,
     neighborhoods: ['Centre-bourg', 'Zone Atoll'],
@@ -180,157 +180,157 @@ export const cities: CityData[] = [
     population: '6 800',
     distance: '8 km',
     description:
-      'Au confluent de la Maine et de la Loire, Bouchemaine offre des paysages exceptionnels et des jardins souvent en bord de riviere.',
+      'Au confluent de la Maine et de la Loire, Bouchemaine offre des paysages exceptionnels et des jardins souvent en bord de rivière.',
     specificContent: `
-      Bouchemaine, au confluent de la Maine et de la Loire, jouit d'une situation privilegiee qui en fait une commune
-      tres prisee. Les jardins y sont souvent remarquables, avec des vues sur l'eau et une vegetation luxuriante
-      favorisee par la proximite des cours d'eau.
+      Bouchemaine, au confluent de la Maine et de la Loire, jouit d'une situation privilégiée qui en fait une commune
+      très prisée. Les jardins y sont souvent remarquables, avec des vues sur l'eau et une végétation luxuriante
+      favorisée par la proximité des cours d'eau.
 
-      Art des Jardins connait bien les specificites des jardins de Bouchemaine : sols souvent humides, risque d'inondation
-      dans certaines zones, vegetation de bord de riviere... Nous selectionnons des vegetaux adaptes a ces conditions
-      particulieres : saules, aulnes, iris d'eau...
+      Art des Jardins connaît bien les spécificités des jardins de Bouchemaine : sols souvent humides, risque d'inondation
+      dans certaines zones, végétation de bord de rivière... Nous sélectionnons des végétaux adaptés à ces conditions
+      particulières : saules, aulnes, iris d'eau...
 
-      L'entretien des jardins en zone inondable demande une expertise particuliere. Nous intervenons en respectant
-      les cycles naturels et en privilegiant des amenagements resiliants qui supportent les crues occasionnelles.
+      L'entretien des jardins en zone inondable demande une expertise particulière. Nous intervenons en respectant
+      les cycles naturels et en privilégiant des aménagements résilients qui supportent les crues occasionnelles.
     `,
     neighborhoods: ['Bourg', 'La Pointe', 'Pruneaux'],
   },
   {
     slug: 'saint-barthelemy-anjou',
-    name: 'Saint-Barthelemy-d\'Anjou',
+    name: 'Saint-Barthélemy-d\'Anjou',
     department: 'Maine-et-Loire',
     postalCode: '49124',
     population: '9 500',
     distance: '4 km',
     description:
-      'Commune de l\'est angevin en plein developpement, Saint-Barthelemy offre un mix de quartiers residentiels et de zones d\'activites.',
+      'Commune de l\'est angevin en plein développement, Saint-Barthélemy offre un mix de quartiers résidentiels et de zones d\'activités.',
     specificContent: `
-      Saint-Barthelemy-d'Anjou, a l'est d'Angers, connait un fort developpement avec de nombreux programmes immobiliers.
-      Les jardins y sont souvent recents et necessitent des amenagements pour creer de veritables espaces de vie.
+      Saint-Barthélemy-d'Anjou, à l'est d'Angers, connaît un fort développement avec de nombreux programmes immobiliers.
+      Les jardins y sont souvent récents et nécessitent des aménagements pour créer de véritables espaces de vie.
 
-      Art des Jardins accompagne de nombreux proprietaires barthelomeens dans la creation de leur jardin : conception,
-      plantation, engazonnement... Nous realisons des jardins cles en main qui correspondent a vos envies et a votre
+      Art des Jardins accompagne de nombreux propriétaires barthéloméens dans la création de leur jardin : conception,
+      plantation, engazonnement... Nous réalisons des jardins clés en main qui correspondent à vos envies et à votre
       mode de vie.
 
-      Pour les jardins deja etablis, nous proposons des contrats d'entretien adaptes. La commune presentant de nombreux
-      lotissements avec des jardins de taille moyenne, nous avons developpe des offres specifiques pour ce type de
-      proprietes.
+      Pour les jardins déjà établis, nous proposons des contrats d'entretien adaptés. La commune présentant de nombreux
+      lotissements avec des jardins de taille moyenne, nous avons développé des offres spécifiques pour ce type de
+      propriétés.
     `,
     neighborhoods: ['Bourg', 'Les Music\'Halles', 'Zone des Music\'Halles'],
   },
   {
     slug: 'trelaze',
-    name: 'Trelaze',
+    name: 'Trélazé',
     department: 'Maine-et-Loire',
     postalCode: '49800',
     population: '14 000',
     distance: '5 km',
     description:
-      'Ancienne cite ardoisiere, Trelaze est une commune populaire avec un riche patrimoine industriel et de nombreux jardins ouvriers.',
+      'Ancienne cité ardoisière, Trélazé est une commune populaire avec un riche patrimoine industriel et de nombreux jardins ouvriers.',
     specificContent: `
-      Trelaze, ancienne capitale de l'ardoise, possede un patrimoine unique avec ses buttes d'ardoise et ses anciennes
-      carrieres transformees en espaces naturels. Les jardins y ont une histoire particuliere, avec une tradition
+      Trélazé, ancienne capitale de l'ardoise, possède un patrimoine unique avec ses buttes d'ardoise et ses anciennes
+      carrières transformées en espaces naturels. Les jardins y ont une histoire particulière, avec une tradition
       de jardins ouvriers qui perdure.
 
-      Art des Jardins intervient dans tous les quartiers de Trelaze : le centre, les Music'Halles, Petit Trelaze...
-      Nous connaissons les particularites du sol trelazeen, souvent schisteux, et selectionnons des vegetaux adaptes.
+      Art des Jardins intervient dans tous les quartiers de Trélazé : le centre, les Music'Halles, Petit Trélazé...
+      Nous connaissons les particularités du sol trélazéen, souvent schisteux, et sélectionnons des végétaux adaptés.
 
-      Les espaces residuels des anciennes carrieres offrent des opportunites d'amenagement originales. Nous savons
-      tirer parti de ces terrains atypiques pour creer des jardins uniques qui respectent l'identite de la commune.
+      Les espaces résiduels des anciennes carrières offrent des opportunités d'aménagement originales. Nous savons
+      tirer parti de ces terrains atypiques pour créer des jardins uniques qui respectent l'identité de la commune.
     `,
-    neighborhoods: ['Centre-ville', 'Les Music\'Halles', 'Petit Trelaze'],
+    neighborhoods: ['Centre-ville', 'Les Music\'Halles', 'Petit Trélazé'],
   },
   {
     slug: 'les-ponts-de-ce',
-    name: 'Les Ponts-de-Ce',
+    name: 'Les Ponts-de-Cé',
     department: 'Maine-et-Loire',
     postalCode: '49130',
     population: '12 500',
     distance: '7 km',
     description:
-      'Ville insulaire sur la Loire, Les Ponts-de-Ce possede un patrimoine remarquable et des jardins au caractere ligérien prononce.',
+      'Ville insulaire sur la Loire, Les Ponts-de-Cé possède un patrimoine remarquable et des jardins au caractère ligérien prononcé.',
     specificContent: `
-      Les Ponts-de-Ce, cite insulaire sur la Loire, offre un cadre de vie exceptionnel avec ses iles, ses bras de Loire
-      et son patrimoine architectural. Les jardins y ont un caractere ligerien prononce, avec une vegetation adaptee
+      Les Ponts-de-Cé, cité insulaire sur la Loire, offre un cadre de vie exceptionnel avec ses îles, ses bras de Loire
+      et son patrimoine architectural. Les jardins y ont un caractère ligérien prononcé, avec une végétation adaptée
       aux sols sablonneux et aux crues.
 
-      Art des Jardins connait parfaitement les contraintes des jardins ponts-de-ceais : sols filtrants, exposition au vent,
-      risque d'inondation... Nous concevons des amenagements adaptes a ces conditions specifiques, avec des vegetaux
-      resistants et des solutions techniques appropriees.
+      Art des Jardins connaît parfaitement les contraintes des jardins ponts-de-céais : sols filtrants, exposition au vent,
+      risque d'inondation... Nous concevons des aménagements adaptés à ces conditions spécifiques, avec des végétaux
+      résistants et des solutions techniques appropriées.
 
-      L'elagage des nombreux arbres de bord de Loire necessite une expertise particuliere. Nos elagueurs interviennent
-      regulierement pour securiser les arbres tout en preservant leur caractere naturel qui fait le charme de la ville.
+      L'élagage des nombreux arbres de bord de Loire nécessite une expertise particulière. Nos élagueurs interviennent
+      régulièrement pour sécuriser les arbres tout en préservant leur caractère naturel qui fait le charme de la ville.
     `,
     neighborhoods: ['Centre', 'Saint-Aubin', 'Saint-Maurille', 'Sorges'],
   },
   {
     slug: 'ecouflant',
-    name: 'Ecouflant',
+    name: 'Écouflant',
     department: 'Maine-et-Loire',
     postalCode: '49000',
     population: '4 500',
     distance: '6 km',
     description:
-      'Commune au nord d\'Angers entre Sarthe et basses vallees angevines, Ecouflant offre un cadre naturel preserve avec de nombreux jardins.',
+      'Commune au nord d\'Angers entre Sarthe et basses vallées angevines, Écouflant offre un cadre naturel préservé avec de nombreux jardins.',
     specificContent: `
-      Ecouflant, nichee entre la Sarthe et les basses vallees angevines, beneficie d'un environnement naturel
-      exceptionnel. Les jardins y sont souvent genereux et permettent de belles realisations paysageres dans un
-      cadre champetre.
+      Écouflant, nichée entre la Sarthe et les basses vallées angevines, bénéficie d'un environnement naturel
+      exceptionnel. Les jardins y sont souvent généreux et permettent de belles réalisations paysagères dans un
+      cadre champêtre.
 
-      Art des Jardins intervient regulierement a Ecouflant, ou les proprietes offrent souvent des surfaces importantes.
-      Nous realisons des amenagements qui s'integrent harmonieusement dans ce paysage de bords de Sarthe, en utilisant
-      des vegetaux locaux et des materiaux naturels.
+      Art des Jardins intervient régulièrement à Écouflant, où les propriétés offrent souvent des surfaces importantes.
+      Nous réalisons des aménagements qui s'intègrent harmonieusement dans ce paysage de bords de Sarthe, en utilisant
+      des végétaux locaux et des matériaux naturels.
 
-      L'entretien des grands jardins ecouflantais necessite une organisation rigoureuse. Nous proposons des contrats
-      adaptes qui permettent de maintenir ces espaces en parfait etat tout au long de l'annee.
+      L'entretien des grands jardins écouflantais nécessite une organisation rigoureuse. Nous proposons des contrats
+      adaptés qui permettent de maintenir ces espaces en parfait état tout au long de l'année.
     `,
-    neighborhoods: ['Bourg', 'Basse-Ile', 'Eventard'],
+    neighborhoods: ['Bourg', 'Basse-Île', 'Éventard'],
   },
   {
     slug: 'cantenay-epinard',
-    name: 'Cantenay-Epinard',
+    name: 'Cantenay-Épinard',
     department: 'Maine-et-Loire',
     postalCode: '49460',
     population: '2 400',
     distance: '10 km',
     description:
-      'Village rural au nord d\'Angers, Cantenay-Epinard conserve un caractere authentique avec ses fermes renovees et leurs grands jardins.',
+      'Village rural au nord d\'Angers, Cantenay-Épinard conserve un caractère authentique avec ses fermes rénovées et leurs grands jardins.',
     specificContent: `
-      Cantenay-Epinard, commune rurale au nord d'Angers, a su conserver son caractere authentique. Les anciennes
-      fermes renovees y possedent souvent de grands terrains qui offrent de belles opportunites d'amenagement.
+      Cantenay-Épinard, commune rurale au nord d'Angers, a su conserver son caractère authentique. Les anciennes
+      fermes rénovées y possèdent souvent de grands terrains qui offrent de belles opportunités d'aménagement.
 
-      Art des Jardins intervient a Cantenay-Epinard pour des projets varies : creation de jardins pour les nouvelles
-      constructions, renovation de parcs autour des demeures anciennes, entretien de grands espaces...
+      Art des Jardins intervient à Cantenay-Épinard pour des projets variés : création de jardins pour les nouvelles
+      constructions, rénovation de parcs autour des demeures anciennes, entretien de grands espaces...
 
-      Le caractere rural de la commune nous inspire des amenagements naturels qui s'integrent dans le paysage :
-      haies champetres, vergers, prairies fleuries... Nous privilegions des solutions ecologiques adaptees a
+      Le caractère rural de la commune nous inspire des aménagements naturels qui s'intègrent dans le paysage :
+      haies champêtres, vergers, prairies fleuries... Nous privilégions des solutions écologiques adaptées à
       l'esprit du lieu.
     `,
-    neighborhoods: ['Bourg', 'Cantenay', 'Epinard'],
+    neighborhoods: ['Bourg', 'Cantenay', 'Épinard'],
   },
   {
     slug: 'murs-erigne',
-    name: 'Murs-Erigne',
+    name: 'Mûrs-Érigné',
     department: 'Maine-et-Loire',
     postalCode: '49610',
     population: '5 500',
     distance: '10 km',
     description:
-      'Commune viticole au sud-ouest d\'Angers, Murs-Erigne est appreciee pour son cadre de vie entre vignes et Loire.',
+      'Commune viticole au sud-ouest d\'Angers, Mûrs-Érigné est appréciée pour son cadre de vie entre vignes et Loire.',
     specificContent: `
-      Murs-Erigne, commune viticole des coteaux de Loire, offre un cadre de vie privilegie entre vignobles et fleuve.
-      Les jardins y beneficient d'une exposition favorable et d'un microclimat propice a de nombreuses especes
-      mediterraneennes.
+      Mûrs-Érigné, commune viticole des coteaux de Loire, offre un cadre de vie privilégié entre vignobles et fleuve.
+      Les jardins y bénéficient d'une exposition favorable et d'un microclimat propice à de nombreuses espèces
+      méditerranéennes.
 
-      Art des Jardins connait bien les particularites des terrains de Murs-Erigne : coteaux schisteux, exposition sud,
-      sols parfois calcaires... Nous selectionnons des vegetaux adaptes a ces conditions : lavandes, romarins,
-      oliviers... qui s'epanouissent dans ce terroir viticole.
+      Art des Jardins connaît bien les particularités des terrains de Mûrs-Érigné : coteaux schisteux, exposition sud,
+      sols parfois calcaires... Nous sélectionnons des végétaux adaptés à ces conditions : lavandes, romarins,
+      oliviers... qui s'épanouissent dans ce terroir viticole.
 
-      Les proprietes avec vue sur Loire sont nombreuses et meritent des amenagements a la hauteur du paysage.
-      Nous concevons des jardins qui tirent parti de ces panoramas exceptionnels tout en respectant l'intimite
-      des proprietaires.
+      Les propriétés avec vue sur Loire sont nombreuses et méritent des aménagements à la hauteur du paysage.
+      Nous concevons des jardins qui tirent parti de ces panoramas exceptionnels tout en respectant l'intimité
+      des propriétaires.
     `,
-    neighborhoods: ['Murs', 'Erigne'],
+    neighborhoods: ['Mûrs', 'Érigné'],
   },
 ];
 

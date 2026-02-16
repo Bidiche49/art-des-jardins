@@ -12,16 +12,16 @@ const testimonials: Testimonial[] = [
     name: 'Marie D.',
     location: 'Angers',
     rating: 5,
-    text: 'Excellent travail pour l\'amenagement de notre jardin. L\'equipe a su comprendre nos attentes et proposer des solutions creatives. Le resultat depasse nos esperances. Je recommande vivement Art des Jardins !',
-    service: 'Amenagement de jardin',
+    text: 'Excellent travail pour l\'aménagement de notre jardin. L\'équipe a su comprendre nos attentes et proposer des solutions créatives. Le résultat dépasse nos espérances. Je recommande vivement Art des Jardins !',
+    service: 'Aménagement de jardin',
     date: '2025-11-15',
   },
   {
     name: 'Pierre L.',
-    location: 'Avrille',
+    location: 'Avrillé',
     rating: 5,
-    text: 'Intervention rapide et professionnelle pour l\'elagage de nos vieux chenes. Les elagueurs sont competents et soigneux. Le chantier a ete laisse propre. Tres satisfait du resultat.',
-    service: 'Elagage',
+    text: 'Intervention rapide et professionnelle pour l\'élagage de nos vieux chênes. Les élagueurs sont compétents et soigneux. Le chantier a été laissé propre. Très satisfait du résultat.',
+    service: 'Élagage',
     date: '2025-10-28',
   },
   {
@@ -34,25 +34,25 @@ const testimonials: Testimonial[] = [
   },
   {
     name: 'Jean-Claude R.',
-    location: 'Les Ponts-de-Ce',
+    location: 'Les Ponts-de-Cé',
     rating: 5,
-    text: 'Abattage d\'un grand sapin devenu dangereux. Travail effectue avec beaucoup de professionnalisme malgre la difficulte (proximite de la maison). Prix correct et equipe sympathique.',
+    text: 'Abattage d\'un grand sapin devenu dangereux. Travail effectué avec beaucoup de professionnalisme malgré la difficulté (proximité de la maison). Prix correct et équipe sympathique.',
     service: 'Abattage',
     date: '2025-08-05',
   },
   {
     name: 'Isabelle B.',
-    location: 'Saint-Barthelemy-d\'Anjou',
+    location: 'Saint-Barthélemy-d\'Anjou',
     rating: 5,
-    text: 'Creation d\'une terrasse en bois et amenagement des massifs autour. Le paysagiste a ete de bon conseil sur le choix des plantes. Tres belle realisation, on profite enfin de notre jardin !',
-    service: 'Amenagement de jardin',
+    text: 'Création d\'une terrasse en bois et aménagement des massifs autour. Le paysagiste a été de bon conseil sur le choix des plantes. Très belle réalisation, on profite enfin de notre jardin !',
+    service: 'Aménagement de jardin',
     date: '2025-07-20',
   },
   {
     name: 'Michel G.',
-    location: 'Trelaze',
+    location: 'Trélazé',
     rating: 4,
-    text: 'Bonne prestation pour la taille de ma haie de thuyas et l\'entretien general du jardin. Equipe ponctuelle et travail soigne. Je ferai appel a eux a nouveau.',
+    text: 'Bonne prestation pour la taille de ma haie de thuyas et l\'entretien général du jardin. Équipe ponctuelle et travail soigné. Je ferai appel à eux à nouveau.',
     service: 'Entretien de jardin',
     date: '2025-06-30',
   },
@@ -132,8 +132,8 @@ export function Testimonials() {
             <span className="text-gray-500">({testimonials.length} avis)</span>
           </div>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            La satisfaction de nos clients est notre priorite. Decouvrez leurs temoignages sur nos
-            prestations de paysagisme, entretien, elagage et abattage.
+            La satisfaction de nos clients est notre priorité. Découvrez leurs témoignages sur nos
+            prestations d'aménagement paysager, entretien, élagage et abattage.
           </p>
         </div>
 
@@ -168,7 +168,7 @@ export function Testimonials() {
         {/* CTA */}
         <div className="text-center mt-12">
           <p className="text-gray-600 mb-4">
-            Vous aussi, faites confiance a Art des Jardins pour vos espaces verts.
+            Vous aussi, faites confiance à Art des Jardins pour vos espaces verts.
           </p>
           <a href="/contact/" className="btn-primary">
             Demander un devis gratuit

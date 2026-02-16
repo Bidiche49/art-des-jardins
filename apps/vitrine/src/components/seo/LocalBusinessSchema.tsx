@@ -5,14 +5,27 @@ export function LocalBusinessSchema() {
     '@id': 'https://art-et-jardin.fr/#organization',
     name: 'Art des Jardins',
     legalName: 'SARL Art des Jardins',
-    description: 'Paysagiste professionnel a Angers et Maine-et-Loire. Creation de jardins, amenagement, entretien, elagage, abattage. 16 ans d\'experience cumulee.',
+    description: 'Paysagiste professionnel à Angers et Maine-et-Loire. Création de jardins, aménagement, entretien, élagage, abattage. 16 ans d\'expérience cumulée.',
     url: 'https://art-et-jardin.fr',
+    image: 'https://art-et-jardin.fr/images/og-image.jpg',
     telephone: '+33781160737',
+    contactPoint: [
+      {
+        '@type': 'ContactPoint',
+        telephone: '+33781160737',
+        contactType: 'customer service',
+      },
+      {
+        '@type': 'ContactPoint',
+        telephone: '+33659684916',
+        contactType: 'customer service',
+      },
+    ],
     email: 'artdesjardins49@gmail.com',
     address: {
       '@type': 'PostalAddress',
       streetAddress: '9 bis rue Rouget de l\'Isle',
-      addressLocality: 'Les Ponts-de-Ce',
+      addressLocality: 'Les Ponts-de-Cé',
       postalCode: '49130',
       addressCountry: 'FR',
     },
@@ -40,17 +53,28 @@ export function LocalBusinessSchema() {
         closes: '18:00',
       },
     ],
-    sameAs: [],
+    hasMap: 'https://maps.google.com/maps?q=9+bis+rue+Rouget+de+l%27Isle,+49130+Les+Ponts-de-C%C3%A9',
+    identifier: {
+      '@type': 'PropertyValue',
+      name: 'SIRET',
+      value: '123 456 789 00012', // TODO: Remplacer par le vrai SIRET
+    },
+    sameAs: [
+      // TODO: Ajouter les URLs réelles des profils
+      // 'https://www.google.com/maps/place/Art+des+Jardins/...',
+      // 'https://www.pagesjaunes.fr/pros/...',
+      // 'https://www.facebook.com/artdesjardins49/',
+    ],
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
-      name: 'Services de paysagisme',
+      name: 'Services d\'aménagement paysager',
       itemListElement: [
         {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: 'Amenagement de jardin',
-            description: 'Conception et realisation de jardins sur mesure',
+            name: 'Aménagement de jardin',
+            description: 'Conception et réalisation de jardins sur mesure',
           },
         },
         {
@@ -58,15 +82,15 @@ export function LocalBusinessSchema() {
           itemOffered: {
             '@type': 'Service',
             name: 'Entretien de jardin',
-            description: 'Tonte, taille, desherbage et entretien regulier',
+            description: 'Tonte, taille, désherbage et entretien régulier',
           },
         },
         {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: 'Elagage',
-            description: 'Taille et elagage de tous types d\'arbres',
+            name: 'Élagage',
+            description: 'Taille et élagage de tous types d\'arbres',
           },
         },
         {
@@ -74,7 +98,7 @@ export function LocalBusinessSchema() {
           itemOffered: {
             '@type': 'Service',
             name: 'Abattage',
-            description: 'Abattage securise d\'arbres',
+            description: 'Abattage sécurisé d\'arbres',
           },
         },
       ],

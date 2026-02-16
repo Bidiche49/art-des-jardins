@@ -1,13 +1,14 @@
 import { Metadata } from 'next';
 import { ContactForm } from '@/components/ContactForm';
+import { HeroSection } from '@/components/ui/HeroSection';
 
 export const metadata: Metadata = {
   title: 'Contact - Devis Gratuit',
   description:
-    'Contactez Art des Jardins pour un devis gratuit. Paysagiste, entretien de jardin, elagage, abattage a Angers et environs. Reponse sous 48h.',
+    'Contactez Art des Jardins pour un devis gratuit. Paysagiste, entretien de jardin, élagage, abattage à Angers et environs. Réponse sous 48h.',
   openGraph: {
     title: 'Contact Art des Jardins - Devis Gratuit',
-    description: 'Demandez un devis gratuit pour vos travaux de jardinage a Angers.',
+    description: 'Demandez un devis gratuit pour vos travaux de jardinage à Angers.',
     type: 'website',
   },
 };
@@ -24,9 +25,11 @@ const contactInfo = [
         />
       </svg>
     ),
-    title: 'Telephone',
+    title: 'Téléphone',
     content: '07 81 16 07 37',
+    secondaryContent: '06 59 68 49 16',
     link: 'tel:+33781160737',
+    secondaryLink: 'tel:+33659684916',
     description: 'Du lundi au vendredi, 8h-18h',
   },
   {
@@ -43,7 +46,7 @@ const contactInfo = [
     title: 'Email',
     content: 'artdesjardins49@gmail.com',
     link: 'mailto:artdesjardins49@gmail.com',
-    description: 'Reponse sous 48h',
+    description: 'Réponse sous 48h',
   },
   {
     icon: (
@@ -87,15 +90,12 @@ export default function ContactPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-primary-600 to-primary-800 text-white py-16 lg:py-24">
-        <div className="container-custom">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Contactez-nous</h1>
-          <p className="text-xl text-primary-100 max-w-2xl">
-            Besoin d'un devis ou d'un conseil ? Remplissez le formulaire ci-dessous ou contactez-nous
-            directement. Reponse garantie sous 48h.
-          </p>
-        </div>
-      </section>
+      <HeroSection
+        imageSlug="terrasse-2"
+        title="Contactez-nous"
+        subtitle="Besoin d'un devis ou d'un conseil ? Remplissez le formulaire ci-dessous ou contactez-nous directement. Réponse garantie sous 48h."
+        overlay="strong"
+      />
 
       {/* Contact Section */}
       <section className="py-16 lg:py-24">
@@ -123,12 +123,25 @@ export default function ContactPage() {
                         <div>
                           <h3 className="font-semibold text-gray-900">{info.title}</h3>
                           {info.link ? (
-                            <a
-                              href={info.link}
-                              className="text-primary-600 hover:text-primary-800 font-medium"
-                            >
-                              {info.content}
-                            </a>
+                            <div className="flex flex-wrap items-center gap-x-2">
+                              <a
+                                href={info.link}
+                                className="text-primary-600 hover:text-primary-800 font-medium"
+                              >
+                                {info.content}
+                              </a>
+                              {info.secondaryLink && (
+                                <>
+                                  <span className="text-gray-400">|</span>
+                                  <a
+                                    href={info.secondaryLink}
+                                    className="text-primary-600 hover:text-primary-800 font-medium"
+                                  >
+                                    {info.secondaryContent}
+                                  </a>
+                                </>
+                              )}
+                            </div>
                           ) : (
                             <p className="text-gray-900 font-medium">{info.content}</p>
                           )}
@@ -143,7 +156,7 @@ export default function ContactPage() {
                 <div className="bg-red-50 rounded-xl p-6 border border-red-100">
                   <h3 className="font-bold text-red-800 mb-2">Urgence ?</h3>
                   <p className="text-red-700 text-sm mb-4">
-                    Arbre dangereux, degats de tempete ? Appelez-nous directement.
+                    Arbre dangereux, dégâts de tempête ? Appelez-nous directement.
                   </p>
                   <a
                     href="tel:+33781160737"
@@ -175,7 +188,7 @@ export default function ContactPage() {
                           clipRule="evenodd"
                         />
                       </svg>
-                      Reponse sous 48h
+                      Réponse sous 48h
                     </li>
                     <li className="flex items-center gap-2">
                       <svg className="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -195,7 +208,7 @@ export default function ContactPage() {
                           clipRule="evenodd"
                         />
                       </svg>
-                      Entreprise assuree
+                      Entreprise assurée
                     </li>
                   </ul>
                 </div>
@@ -208,33 +221,22 @@ export default function ContactPage() {
       {/* Map Section */}
       <section className="bg-gray-100">
         <div className="container-custom py-8">
-          <h2 className="text-2xl font-bold mb-6 text-center">Notre zone d'intervention</h2>
-          <div className="bg-gray-300 rounded-xl h-80 flex items-center justify-center">
-            {/* Placeholder for map - can be replaced with actual map integration */}
-            <div className="text-center text-gray-600">
-              <svg
-                className="w-16 h-16 mx-auto mb-4 text-gray-400"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={1.5}
-                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                />
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={1.5}
-                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                />
-              </svg>
-              <p className="font-medium">Angers et environs (30 km)</p>
-              <p className="text-sm mt-1">Maine-et-Loire (49)</p>
-            </div>
+          <h2 className="text-2xl font-bold mb-6 text-center">Notre zone d&apos;intervention</h2>
+          <div className="rounded-xl overflow-hidden h-80">
+            <iframe
+              src="https://maps.google.com/maps?q=9+bis+rue+Rouget+de+l%27Isle,+49130+Les+Ponts-de-C%C3%A9&t=&z=14&ie=UTF8&iwloc=&output=embed"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Art des Jardins - Les Ponts-de-Cé, Angers"
+            />
           </div>
+          <p className="text-center text-gray-600 mt-4 text-sm">
+            Angers et environs (30 km) - Maine-et-Loire (49)
+          </p>
         </div>
       </section>
     </>

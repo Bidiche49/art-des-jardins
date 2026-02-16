@@ -18,7 +18,7 @@ export function LocalBusinessCitySchema({
     '@type': 'LocalBusiness',
     '@id': `${url}#localbusiness`,
     name: 'Art des Jardins',
-    description: `${service} a ${city}. ${serviceDescription}`,
+    description: `${service} à ${city}. ${serviceDescription}`,
     url,
     telephone: '+33781160737',
     email: 'artdesjardins49@gmail.com',

@@ -2,25 +2,29 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { LocalBusinessCitySchema } from '@/components/seo/LocalBusinessCitySchema';
 import { cities, serviceTypes } from '@/lib/cities-data';
+import { HeroSection } from '@/components/ui/HeroSection';
+import { InlineGallery } from '@/components/ui/InlineGallery';
+import { ogImages } from '@/lib/images-manifest';
 
 const service = serviceTypes.find((s) => s.service === 'paysagiste')!;
 const city = cities.find((c) => c.slug === 'angers')!;
 
 export const metadata: Metadata = {
-  title: 'Paysagiste Angers - Amenagement Jardin | Art des Jardins',
+  title: 'Paysagiste Angers - Aménagement Jardin | Art des Jardins',
   description:
-    'Paysagiste professionnel a Angers. Amenagement de jardin, terrasse, plantation, engazonnement. Plus de 10 ans d\'experience. Devis gratuit sous 48h.',
+    'Paysagiste professionnel à Angers. Aménagement de jardin, terrasse, plantation, engazonnement. Plus de 10 ans d\'expérience. Devis gratuit sous 48h.',
   keywords: [
     'paysagiste angers',
     'jardinier angers',
-    'amenagement jardin angers',
-    'creation jardin angers',
+    'aménagement jardin angers',
+    'création jardin angers',
     'paysagiste 49',
   ],
   openGraph: {
     title: 'Paysagiste Angers - Art des Jardins',
-    description: 'Votre paysagiste de confiance a Angers pour tous vos projets de jardin.',
+    description: 'Votre paysagiste de confiance à Angers pour tous vos projets de jardin.',
     type: 'website',
+    images: [{ url: ogImages.paysagisme, width: 1200, height: 630 }],
   },
 };
 
@@ -31,33 +35,28 @@ export default function PaysagisteAngersPage() {
         city="Angers"
         postalCode="49000"
         service="Paysagiste"
-        serviceDescription="Amenagement et creation de jardins sur mesure a Angers et ses environs."
+        serviceDescription="Aménagement et création de jardins sur mesure à Angers et ses environs."
         url="https://art-et-jardin.fr/paysagiste-angers/"
       />
 
       {/* Hero */}
-      <section className="bg-gradient-to-br from-primary-600 to-primary-800 text-white py-16 lg:py-24">
-        <div className="container-custom">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Paysagiste a Angers
-          </h1>
-          <p className="text-xl md:text-2xl text-primary-100 mb-8 max-w-3xl">
-            Art des Jardins, votre partenaire de confiance pour l'amenagement et la creation de
-            jardins a Angers et dans tout le Maine-et-Loire. Devis gratuit sous 48h.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Link href="/contact/" className="btn-primary bg-white text-primary-700 hover:bg-gray-100">
-              Demander un devis gratuit
-            </Link>
-            <a
-              href="tel:+33781160737"
-              className="btn-secondary border-white text-white hover:bg-white/10"
-            >
-              Appeler : 07 81 16 07 37
-            </a>
-          </div>
+      <HeroSection
+        imageSlug="creation-2"
+        title="Paysagiste à Angers"
+        subtitle="Art des Jardins, votre partenaire de confiance pour l'aménagement et la création de jardins à Angers et dans tout le Maine-et-Loire. Devis gratuit sous 48h."
+      >
+        <div className="flex flex-col sm:flex-row gap-4">
+          <Link href="/contact/" className="btn-primary bg-white text-primary-700 hover:bg-gray-100">
+            Demander un devis gratuit
+          </Link>
+          <a
+            href="tel:+33781160737"
+            className="btn-secondary bg-transparent border-2 border-white text-white hover:bg-white/10"
+          >
+            Appeler : 07 81 16 07 37
+          </a>
         </div>
-      </section>
+      </HeroSection>
 
       {/* Introduction */}
       <section className="py-16 lg:py-24">
@@ -65,14 +64,14 @@ export default function PaysagisteAngersPage() {
           <div className="grid lg:grid-cols-3 gap-12">
             <div className="lg:col-span-2">
               <h2 className="text-3xl font-bold mb-6">
-                Votre paysagiste de confiance a Angers
+                Votre paysagiste de confiance à Angers
               </h2>
               <div className="prose prose-lg max-w-none text-gray-600">
                 <p>
-                  Bienvenue chez Art des Jardins, votre <strong>paysagiste a Angers</strong> depuis
-                  plus de 10 ans. Notre equipe de professionnels passionnes met son expertise
-                  au service de vos projets d'amenagement exterieur, qu'il s'agisse de creer
-                  un jardin de A a Z ou de transformer un espace existant.
+                  Bienvenue chez Art des Jardins, votre <strong>paysagiste à Angers</strong> depuis
+                  plus de 10 ans. Notre équipe de professionnels passionnés met son expertise
+                  au service de vos projets d'aménagement extérieur, qu'il s'agisse de créer
+                  un jardin de A à Z ou de transformer un espace existant.
                 </p>
                 <p>
                   {city.description}
@@ -82,12 +81,14 @@ export default function PaysagisteAngersPage() {
                 </p>
                 <p>
                   Nous intervenons dans tous les quartiers d'Angers : {city.neighborhoods?.join(', ')}.
-                  Notre connaissance du terrain et des reglementations locales nous permet de vous
-                  proposer des solutions adaptees a votre environnement.
+                  Notre connaissance du terrain et des réglementations locales nous permet de vous
+                  proposer des solutions adaptées à votre environnement.
                 </p>
               </div>
 
-              <h3 className="text-2xl font-bold mt-12 mb-6">Nos services de paysagisme a Angers</h3>
+              <InlineGallery slugs={['creation-1', 'creation-3', 'arrosage-1']} />
+
+              <h3 className="text-2xl font-bold mt-12 mb-6">Nos services d'aménagement paysager à Angers</h3>
               <div className="grid sm:grid-cols-2 gap-4">
                 {service.features.map((feature, i) => (
                   <div key={i} className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg">
@@ -114,7 +115,7 @@ export default function PaysagisteAngersPage() {
                 <div className="bg-primary-50 rounded-xl p-6">
                   <h3 className="text-lg font-bold text-primary-800 mb-4">Zone d'intervention</h3>
                   <p className="text-primary-700 mb-4">
-                    Nous intervenons a Angers et dans un rayon de 30 km :
+                    Nous intervenons à Angers et dans un rayon de 30 km :
                   </p>
                   <ul className="space-y-2 text-primary-700 text-sm">
                     {cities.slice(0, 8).map((c) => (
@@ -135,7 +136,7 @@ export default function PaysagisteAngersPage() {
                 <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
                   <h3 className="text-lg font-bold mb-2">Devis gratuit</h3>
                   <p className="text-gray-600 text-sm mb-4">
-                    Recevez une estimation personnalisee pour votre projet de jardin.
+                    Recevez une estimation personnalisée pour votre projet de jardin.
                   </p>
                   <Link href="/contact/" className="btn-primary w-full text-center block">
                     Demander un devis
@@ -156,28 +157,28 @@ export default function PaysagisteAngersPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
-                icon: '🎯',
                 title: 'Expertise locale',
-                description: 'Plus de 10 ans d\'experience a Angers et ses environs.',
+                description: 'Plus de 10 ans d\'expérience à Angers et ses environs.',
               },
               {
-                icon: '🌱',
-                title: 'Conseil personnalise',
-                description: 'Vegetaux adaptes au climat angevin et a votre terrain.',
+                title: 'Conseil personnalisé',
+                description: 'Végétaux adaptés au climat angevin et à votre terrain.',
               },
               {
-                icon: '💰',
                 title: 'Devis gratuit',
-                description: 'Estimation detaillee et transparente sous 48h.',
+                description: 'Estimation détaillée et transparente sous 48h.',
               },
               {
-                icon: '✅',
                 title: 'Garantie satisfaction',
-                description: 'Suivi apres travaux et conseils d\'entretien inclus.',
+                description: 'Suivi après travaux et conseils d\'entretien inclus.',
               },
             ].map((item, i) => (
               <div key={i} className="bg-white rounded-xl p-6 text-center shadow-sm">
-                <div className="text-4xl mb-4">{item.icon}</div>
+                <div className="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-6 h-6 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                </div>
                 <h3 className="font-bold text-gray-900 mb-2">{item.title}</h3>
                 <p className="text-gray-600 text-sm">{item.description}</p>
               </div>
@@ -190,7 +191,7 @@ export default function PaysagisteAngersPage() {
       <section className="py-16 lg:py-24">
         <div className="container-custom">
           <h2 className="text-3xl font-bold text-center mb-12">
-            Nous intervenons aussi a proximite d'Angers
+            Nous intervenons aussi à proximité d'Angers
           </h2>
           <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-4">
             {cities.slice(1).map((c) => (
@@ -201,7 +202,7 @@ export default function PaysagisteAngersPage() {
               >
                 <span className="font-medium text-gray-900">Paysagiste {c.name}</span>
                 {c.distance && (
-                  <span className="block text-sm text-gray-500 mt-1">a {c.distance}</span>
+                  <span className="block text-sm text-gray-500 mt-1">à {c.distance}</span>
                 )}
               </Link>
             ))}
@@ -210,12 +211,14 @@ export default function PaysagisteAngersPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-primary-700 text-white">
-        <div className="container-custom text-center">
-          <h2 className="text-3xl font-bold mb-4">Pret a embellir votre jardin ?</h2>
-          <p className="text-primary-100 mb-8 max-w-xl mx-auto">
-            Contactez-nous pour une visite gratuite et un devis personnalise.
-            Notre equipe vous repond sous 48h.
+      <section className="relative py-16 overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/images/realisations/creation-3-1200w.webp')] bg-cover bg-center" />
+        <div className="absolute inset-0 hero-overlay-strong" />
+        <div className="container-custom text-center relative z-10">
+          <h2 className="text-3xl font-bold mb-4 text-white">Prêt à embellir votre jardin ?</h2>
+          <p className="text-white/80 mb-8 max-w-xl mx-auto">
+            Contactez-nous pour une visite gratuite et un devis personnalisé.
+            Notre équipe vous répond sous 48h.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/contact/" className="btn-primary bg-white text-primary-700 hover:bg-gray-100">
@@ -223,7 +226,7 @@ export default function PaysagisteAngersPage() {
             </Link>
             <a
               href="tel:+33781160737"
-              className="btn-secondary border-white text-white hover:bg-white/10"
+              className="btn-secondary bg-transparent border-2 border-white text-white hover:bg-white/10"
             >
               07 81 16 07 37
             </a>
