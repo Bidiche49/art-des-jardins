@@ -10,7 +10,7 @@
 |------|-------------|
 | BUG | BUG-011 |
 | FEAT | FEAT-122 |
-| IMP | IMP-048 |
+| IMP | IMP-049 |
 
 ---
 
@@ -594,7 +594,7 @@
 | IMP-006 | Expiration sessions inactives | Moyenne | S | security, auth, ux | 12 |
 | IMP-008 | Backup chiffre | Moyenne | S | security, backup | 13 |
 
-### Done (18)
+### Done (19)
 
 | ID | Titre | Priorite | Date resolution |
 |----|-------|----------|-----------------|
@@ -616,6 +616,7 @@
 | IMP-043 | SVG accessibles footer aria-hidden | Basse | 2026-02-16 |
 | IMP-044 | Background images CSS -> img lazy | Moyenne | 2026-02-16 |
 | IMP-045 | Egaliser hauteur ServiceCard + responsive mobile | Basse | 2026-02-16 |
+| IMP-048 | Responsive mobile footer | Basse | 2026-02-16 |
 
 ---
 
