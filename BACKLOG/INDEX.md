@@ -10,7 +10,7 @@
 |------|-------------|
 | BUG | BUG-011 |
 | FEAT | FEAT-122 |
-| IMP | IMP-045 |
+| IMP | IMP-048 |
 
 ---
 
@@ -19,9 +19,9 @@
 | Type | Pending | Ready | Done | Total |
 |------|---------|-------|------|-------|
 | Bugs | 9 | 0 | 1 | 10 |
-| Features | 43 | 10 | 67 | 120 |
-| Improvements | 20 | 7 | 17 | 44 |
-| **Total** | **72** | **17** | **85** | **174** |
+| Features | 34 | 10 | 76 | 120 |
+| Improvements | 23 | 7 | 17 | 47 |
+| **Total** | **66** | **17** | **94** | **177** |
 
 ---
 
@@ -344,19 +344,19 @@
 | 20 | IMP-042 | Security + cache headers | Moyenne | S | **DONE** |
 | 21 | IMP-043 | SVG accessibles footer (aria-hidden) | Basse | XS | **DONE** |
 
-### Phase 4 - Contenu et expansion (Mois 2+)
+### Phase 4 - Contenu et expansion (COMPLETE)
 
-| Ordre | Ticket | Description | Priorite | Complexite |
-|-------|--------|-------------|----------|------------|
-| 22 | FEAT-111 | Page "A propos" equipe et histoire | Haute | M |
-| 23 | FEAT-112 | Ajouter 7+ communes peripheriques | Haute | M |
-| 24 | FEAT-117 | Section credit d'impot / CESU | Haute | S |
-| 25 | FEAT-113 | Blog/Conseils SEO longue traine | Haute | L |
-| 26 | FEAT-114 | Upload photo formulaire devis | Haute | M |
-| 27 | FEAT-115 | Section avant/apres avec slider | Haute | M |
-| 28 | FEAT-116 | Bouton WhatsApp Business | Moyenne | XS |
-| 29 | FEAT-119 | Mega-menu services header | Basse | S |
-| 30 | FEAT-120 | Schema AggregateOffer prix | Basse | S |
+| Ordre | Ticket | Description | Priorite | Complexite | Statut |
+|-------|--------|-------------|----------|------------|--------|
+| 22 | FEAT-111 | Page "A propos" equipe et histoire | Haute | M | **DONE** |
+| 23 | FEAT-112 | Ajouter 7+ communes peripheriques | Haute | M | **DONE** |
+| 24 | FEAT-117 | Section credit d'impot / CESU | Haute | S | **DONE** |
+| 25 | FEAT-113 | Blog/Conseils SEO longue traine | Haute | L | **DONE** |
+| 26 | FEAT-114 | Upload photo formulaire devis | Haute | M | **DONE** |
+| 27 | FEAT-115 | Section avant/apres avec slider | Haute | M | **DONE** |
+| 28 | FEAT-116 | Bouton WhatsApp Business | Moyenne | XS | **DONE** |
+| 29 | FEAT-119 | Mega-menu services header | Basse | S | **DONE** |
+| 30 | FEAT-120 | Schema AggregateOffer prix | Basse | S | **DONE** |
 
 ---
 
@@ -413,7 +413,7 @@
 
 ## Features
 
-### Pending (46) - dont 22 Flutter + 6 NON AUTOMATISABLES + 3 Deploy + 5 Audit + 10 SEO
+### Pending (37) - dont 22 Flutter + 6 NON AUTOMATISABLES + 3 Deploy + 5 Audit + 1 SEO
 
 | ID | Titre | Priorite | Phase | Raison |
 |----|-------|----------|-------|--------|
@@ -431,16 +431,7 @@
 | FEAT-108 | Automatiser backups BDD | Critique | Audit | ✅ |
 | FEAT-109 | Tests vitrine Next.js | Moyenne | Audit | ✅ |
 | FEAT-110 | Valider migrations Prisma CI | Moyenne | Audit | ✅ |
-| FEAT-111 | Page "A propos" equipe et histoire | Haute | SEO | ❌ Photos equipe |
-| FEAT-112 | Ajouter 7+ communes peripheriques | Haute | SEO | ✅ |
-| FEAT-113 | Blog/Conseils SEO longue traine | Haute | SEO | ✅ |
-| FEAT-114 | Upload photo formulaire devis | Haute | SEO | ✅ |
-| FEAT-115 | Section avant/apres avec slider | Haute | SEO | ❌ Photos avant/apres |
-| FEAT-116 | Bouton WhatsApp Business | Moyenne | SEO | ✅ |
-| FEAT-117 | Section credit d'impot / CESU | Haute | SEO | ✅ |
 | FEAT-118 | Tracking GA4 + events conversion | Haute | SEO | ❌ Compte GA4 |
-| FEAT-119 | Mega-menu services header | Basse | SEO | ✅ |
-| FEAT-120 | Schema AggregateOffer prix | Basse | SEO | ✅ |
 
 ### Ready (11) - AUTOMATISABLES
 
@@ -458,7 +449,7 @@
 | FEAT-073 | Meteo integree | Basse | S | api, ux, integration | 15 |
 | FEAT-077 | Authentification biometrique (WebAuthn) | Haute | M | security, auth, ux, pwa, mobile | 12 |
 
-### Done (62)
+### Done (71)
 
 | ID | Titre | Priorite | Date resolution |
 |----|-------|----------|-----------------|
@@ -528,6 +519,15 @@
 | FEAT-092 | [Flutter] Phase 9B - Factures + Signature | Haute | 2026-02-11 |
 | FEAT-094 | [Flutter] Phase 11 - Dashboard + Analytics | Haute | 2026-02-11 |
 | FEAT-096 | [Flutter] Phase 13 - WebSocket temps reel | Moyenne | 2026-02-11 |
+| FEAT-111 | Page "A propos" equipe et histoire | Haute | 2026-02-16 |
+| FEAT-112 | Ajouter 7+ communes peripheriques | Haute | 2026-02-16 |
+| FEAT-113 | Blog/Conseils SEO longue traine | Haute | 2026-02-16 |
+| FEAT-114 | Upload photo formulaire devis | Haute | 2026-02-16 |
+| FEAT-115 | Section avant/apres avec slider | Haute | 2026-02-16 |
+| FEAT-116 | Bouton WhatsApp Business | Moyenne | 2026-02-16 |
+| FEAT-117 | Section credit d'impot / CESU | Haute | 2026-02-16 |
+| FEAT-119 | Mega-menu services header | Basse | 2026-02-16 |
+| FEAT-120 | Schema AggregateOffer prix | Basse | 2026-02-16 |
 
 ---
 
@@ -594,7 +594,7 @@
 | IMP-006 | Expiration sessions inactives | Moyenne | S | security, auth, ux | 12 |
 | IMP-008 | Backup chiffre | Moyenne | S | security, backup | 13 |
 
-### Done (17)
+### Done (18)
 
 | ID | Titre | Priorite | Date resolution |
 |----|-------|----------|-----------------|
@@ -615,6 +615,7 @@
 | IMP-042 | Security + cache headers | Moyenne | 2026-02-16 |
 | IMP-043 | SVG accessibles footer aria-hidden | Basse | 2026-02-16 |
 | IMP-044 | Background images CSS -> img lazy | Moyenne | 2026-02-16 |
+| IMP-045 | Egaliser hauteur ServiceCard + responsive mobile | Basse | 2026-02-16 |
 
 ---
 

@@ -6,6 +6,7 @@ import { ServiceCard } from '@/components/ui/ServiceCard';
 import { StatsCounter } from '@/components/ui/StatsCounter';
 import { PhotoGallery } from '@/components/ui/PhotoGallery';
 import { AnimateOnScroll } from '@/components/ui/AnimateOnScroll';
+import { BeforeAfterSection } from '@/components/BeforeAfterSection';
 import { serviceCardImages } from '@/lib/images-manifest';
 
 export default function HomePage() {
@@ -68,9 +69,9 @@ export default function HomePage() {
           <AnimateOnScroll>
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Nos services de paysagiste à Angers</h2>
           </AnimateOnScroll>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
             {services.map((service, i) => (
-              <AnimateOnScroll key={service.title} delay={i * 100}>
+              <AnimateOnScroll key={service.title} delay={i * 100} className="h-full">
                 <ServiceCard
                   title={service.title}
                   description={service.description}
@@ -138,6 +139,9 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Avant / Après */}
+      <BeforeAfterSection />
+
       {/* FAQ */}
       <HomeFAQ />
 
@@ -167,6 +171,14 @@ export default function HomePage() {
                 { name: 'Saint-Barthélemy-d\'Anjou', href: '/paysagiste-saint-barthelemy-anjou/' },
                 { name: 'Écouflant', href: '/paysagiste-ecouflant/' },
                 { name: 'Mûrs-Érigné', href: '/paysagiste-murs-erigne/' },
+                { name: 'Sainte-Gemmes-sur-Loire', href: '/paysagiste-sainte-gemmes-sur-loire/' },
+                { name: 'Montreuil-Juigné', href: '/paysagiste-montreuil-juigne/' },
+                { name: 'Saint-Jean-de-Linières', href: '/paysagiste-saint-jean-de-linieres/' },
+                { name: 'Briollay', href: '/paysagiste-briollay/' },
+                { name: 'Savennières', href: '/paysagiste-savennieres/' },
+                { name: 'Saint-Sylvain-d\'Anjou', href: '/paysagiste-saint-sylvain-anjou/' },
+                { name: 'Loire-Authion', href: '/paysagiste-loire-authion/' },
+                { name: 'Longuenée-en-Anjou', href: '/paysagiste-longuenee-en-anjou/' },
               ].map((city) => (
                 <Link
                   key={city.name}

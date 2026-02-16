@@ -12,14 +12,14 @@ export function ServiceCard({ title, description, href, imageSlug }: ServiceCard
   const image = getImage(imageSlug);
 
   return (
-    <Link href={href} className="service-card group block bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all">
-      <div className="aspect-[4/3] overflow-hidden relative">
+    <Link href={href} className="service-card group flex flex-row md:flex-col h-full bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all">
+      <div className="w-1/3 md:w-full aspect-square md:aspect-[4/3] overflow-hidden relative shrink-0">
         {image ? (
           <picture>
             <source
               type="image/webp"
               srcSet={getSrcSet(image)}
-              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+              sizes="(max-width: 768px) 33vw, (max-width: 1024px) 50vw, 25vw"
             />
             <img
               src={getDefaultSrc(image, 480)}
@@ -36,14 +36,14 @@ export function ServiceCard({ title, description, href, imageSlug }: ServiceCard
         )}
         <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/40 to-transparent" />
       </div>
-      <div className="p-5">
-        <h3 className="text-xl font-semibold mb-2 group-hover:text-primary-600 transition-colors">
+      <div className="p-3 md:p-5 flex flex-col flex-1 justify-center md:justify-start">
+        <h3 className="text-base md:text-xl font-semibold mb-1 md:mb-2 group-hover:text-primary-600 transition-colors">
           {title}
         </h3>
-        <p className="text-gray-600 text-sm">{description}</p>
-        <span className="inline-flex items-center mt-3 text-primary-600 font-medium text-sm group-hover:gap-2 transition-all">
+        <p className="text-gray-600 text-xs md:text-sm md:flex-grow">{description}</p>
+        <span className="inline-flex items-center mt-2 md:mt-3 text-primary-600 font-medium text-xs md:text-sm group-hover:gap-2 transition-all">
           En savoir plus
-          <svg className="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg className="w-3 h-3 md:w-4 md:h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
         </span>
