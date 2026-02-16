@@ -77,7 +77,7 @@ export function StatsCounter() {
     <section ref={ref} className="relative py-16 lg:py-20 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-primary-800" />
-      <div className="absolute inset-0 bg-[url('/images/realisations/entretien-2-1200w.webp')] bg-cover bg-center opacity-20" />
+      <img src="/images/realisations/entretien-2-1200w.webp" alt="" loading="lazy" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover opacity-20" />
       <div className="absolute inset-0 bg-primary-900/60" />
 
       {/* Content */}

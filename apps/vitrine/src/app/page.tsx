@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { LocalBusinessSchema } from '@/components/seo/LocalBusinessSchema';
-import { Testimonials } from '@/components/Testimonials';
+import { HomeFAQ } from '@/components/HomeFAQ';
 import { HeroSection } from '@/components/ui/HeroSection';
 import { ServiceCard } from '@/components/ui/ServiceCard';
 import { StatsCounter } from '@/components/ui/StatsCounter';
@@ -52,10 +52,11 @@ export default function HomePage() {
               <span className="font-medium">Devis gratuit sous 48h</span>
             </div>
             <div className="flex items-center gap-2">
-              <svg className="w-5 h-5 text-primary-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              <svg className="w-5 h-5 text-primary-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>
-              <span className="font-medium">4.8/5 satisfaction client</span>
+              <span className="font-medium">Angers et 30 km</span>
             </div>
           </div>
         </div>
@@ -65,7 +66,7 @@ export default function HomePage() {
       <section className="py-16 lg:py-24 bg-gray-50">
         <div className="container-custom">
           <AnimateOnScroll>
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Nos services</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Nos services de paysagiste à Angers</h2>
           </AnimateOnScroll>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((service, i) => (
@@ -87,6 +88,36 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* About Section */}
+      <section className="py-16 lg:py-24">
+        <div className="container-custom max-w-4xl">
+          <AnimateOnScroll>
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
+              Art des Jardins, votre paysagiste de confiance à Angers
+            </h2>
+          </AnimateOnScroll>
+          <AnimateOnScroll>
+            <div className="prose prose-lg text-gray-600 mx-auto">
+              <p>
+                Fondée par deux associés passionnés cumulant plus de <strong>16 ans d&apos;expérience</strong> dans
+                l&apos;aménagement paysager, Art des Jardins est une entreprise de paysage basée aux Ponts-de-Cé,
+                à proximité immédiate d&apos;Angers. Nous accompagnons particuliers, professionnels et syndics dans
+                tous leurs projets d&apos;espaces verts : <Link href="/services/paysagisme/" className="text-primary-600 hover:text-primary-700">création de jardins</Link>,{' '}
+                <Link href="/services/entretien-jardin/" className="text-primary-600 hover:text-primary-700">entretien régulier</Link>,{' '}
+                <Link href="/services/elagage/" className="text-primary-600 hover:text-primary-700">élagage</Link> et{' '}
+                <Link href="/services/abattage/" className="text-primary-600 hover:text-primary-700">abattage d&apos;arbres</Link>.
+              </p>
+              <p>
+                Notre approche sur mesure garantit un résultat à la hauteur de vos attentes, que ce soit pour
+                un petit jardin de ville ou un grand espace paysager. Chaque projet commence par une visite
+                gratuite pour comprendre vos besoins, votre terrain et votre budget. Nous vous proposons ensuite
+                un devis détaillé et transparent, sans mauvaise surprise.
+              </p>
+            </div>
+          </AnimateOnScroll>
+        </div>
+      </section>
+
       {/* Stats Counter */}
       <AnimateOnScroll>
         <StatsCounter />
@@ -96,7 +127,7 @@ export default function HomePage() {
       <section className="py-16 lg:py-24">
         <div className="container-custom">
           <AnimateOnScroll>
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Nos réalisations</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Nos réalisations d&apos;aménagement paysager</h2>
             <p className="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
               Découvrez quelques-unes de nos réalisations à Angers et dans le Maine-et-Loire.
             </p>
@@ -107,12 +138,59 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <Testimonials />
+      {/* FAQ */}
+      <HomeFAQ />
+
+      {/* Zone d'intervention */}
+      <section className="py-16 lg:py-24 bg-gray-50">
+        <div className="container-custom max-w-4xl">
+          <AnimateOnScroll>
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
+              Paysagiste à Angers et dans le Maine-et-Loire
+            </h2>
+          </AnimateOnScroll>
+          <AnimateOnScroll>
+            <div className="prose prose-lg text-gray-600 mx-auto">
+              <p>
+                Nous intervenons dans un rayon de 30 km autour d&apos;Angers pour tous vos travaux de jardinage
+                et d&apos;aménagement paysager. Notre zone d&apos;intervention couvre notamment :
+              </p>
+            </div>
+            <div className="flex flex-wrap justify-center gap-3 mt-6">
+              {[
+                { name: 'Angers', href: '/paysagiste-angers/' },
+                { name: 'Avrillé', href: '/paysagiste-avrille/' },
+                { name: 'Beaucouzé', href: '/paysagiste-beaucouze/' },
+                { name: 'Bouchemaine', href: '/paysagiste-bouchemaine/' },
+                { name: 'Les Ponts-de-Cé', href: '/paysagiste-les-ponts-de-ce/' },
+                { name: 'Trélazé', href: '/paysagiste-trelaze/' },
+                { name: 'Saint-Barthélemy-d\'Anjou', href: '/paysagiste-saint-barthelemy-anjou/' },
+                { name: 'Écouflant', href: '/paysagiste-ecouflant/' },
+                { name: 'Mûrs-Érigné', href: '/paysagiste-murs-erigne/' },
+              ].map((city) => (
+                <Link
+                  key={city.name}
+                  href={city.href}
+                  className="px-4 py-2 bg-white rounded-full text-sm font-medium text-gray-700 hover:text-primary-600 hover:shadow-md transition-all border border-gray-200"
+                >
+                  {city.name}
+                </Link>
+              ))}
+            </div>
+            <div className="prose prose-lg text-gray-600 mx-auto mt-6">
+              <p>
+                Quel que soit votre projet — entretien de jardin, création d&apos;espace vert, élagage
+                ou abattage — nous nous déplaçons gratuitement pour établir un diagnostic et un devis
+                personnalisé.
+              </p>
+            </div>
+          </AnimateOnScroll>
+        </div>
+      </section>
 
       {/* CTA Section */}
       <section className="relative py-16 lg:py-24 overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/images/realisations/creation-2-1200w.webp')] bg-cover bg-center" />
+        <img src="/images/realisations/creation-2-1200w.webp" alt="" loading="lazy" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 hero-overlay-strong" />
         <div className="container-custom text-center relative z-10">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Prêt à transformer votre jardin ?</h2>

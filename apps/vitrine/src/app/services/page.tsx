@@ -4,7 +4,7 @@ import { services } from '@/lib/services-data';
 import { ServiceSchema } from '@/components/seo/ServiceSchema';
 import { ServiceCard } from '@/components/ui/ServiceCard';
 import { AnimateOnScroll } from '@/components/ui/AnimateOnScroll';
-import { serviceCardImages } from '@/lib/images-manifest';
+import { serviceCardImages, images } from '@/lib/images-manifest';
 
 export const metadata: Metadata = {
   title: 'Nos Services d\'Aménagement Paysager',
@@ -52,7 +52,7 @@ export default function ServicesPage() {
                       <div className="aspect-[16/9] overflow-hidden relative">
                         <img
                           src={`/images/realisations/${imageSlug}-800w.webp`}
-                          alt={service.title}
+                          alt={images[imageSlug]?.alt || service.title}
                           loading="lazy"
                           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                         />

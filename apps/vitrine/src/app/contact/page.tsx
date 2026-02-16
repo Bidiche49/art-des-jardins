@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     title: 'Contact Art des Jardins - Devis Gratuit',
     description: 'Demandez un devis gratuit pour vos travaux de jardinage à Angers.',
     type: 'website',
+    images: [{ url: '/images/og-image.jpg', width: 1200, height: 630, alt: 'Art des Jardins - Paysagiste Angers' }],
   },
 };
 

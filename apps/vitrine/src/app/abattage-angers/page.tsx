@@ -194,7 +194,7 @@ export default function AbattageAngersPage() {
 
       {/* CTA */}
       <section className="relative py-16 overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/images/realisations/elagage-5-1200w.webp')] bg-cover bg-center" />
+        <img src="/images/realisations/elagage-5-1200w.webp" alt="" loading="lazy" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 hero-overlay-strong" />
         <div className="container-custom text-center relative z-10">
           <h2 className="text-3xl font-bold mb-4 text-white">Besoin d'abattre un arbre ?</h2>

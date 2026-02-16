@@ -9,7 +9,7 @@
 | Type | Prochain ID |
 |------|-------------|
 | BUG | BUG-011 |
-| FEAT | FEAT-121 |
+| FEAT | FEAT-122 |
 | IMP | IMP-045 |
 
 ---
@@ -20,8 +20,8 @@
 |------|---------|-------|------|-------|
 | Bugs | 9 | 0 | 1 | 10 |
 | Features | 43 | 10 | 67 | 120 |
-| Improvements | 29 | 7 | 8 | 44 |
-| **Total** | **81** | **17** | **76** | **174** |
+| Improvements | 20 | 7 | 17 | 44 |
+| **Total** | **72** | **17** | **85** | **174** |
 
 ---
 
@@ -330,19 +330,19 @@
 | 11 | IMP-041 | Sticky CTA mobile en bas d'ecran | Moyenne | S | **DONE** |
 | 12 | FEAT-118 | Tracking GA4 + events conversion | Haute | S | |
 
-### Phase 3 - SEO On-Page approfondi (Semaine 3-4)
+### Phase 3 - SEO On-Page approfondi (COMPLETE)
 
-| Ordre | Ticket | Description | Priorite | Complexite |
-|-------|--------|-------------|----------|------------|
-| 13 | IMP-035 | Enrichir contenu texte homepage | Haute | M |
-| 14 | IMP-033 | Alt text descriptifs images | Moyenne | S |
-| 15 | IMP-036 | Images OG specifiques pages manquantes | Moyenne | S |
-| 16 | IMP-038 | loading="lazy" systematique | Moyenne | XS |
-| 17 | IMP-044 | Background images CSS -> img lazy | Moyenne | M |
-| 18 | IMP-039 | Enrichir Organization + LocalBusiness schema | Moyenne | S |
-| 19 | IMP-037 | Accessibilite menu mobile aria-expanded | Moyenne | S |
-| 20 | IMP-042 | Security + cache headers | Moyenne | S |
-| 21 | IMP-043 | SVG accessibles footer (aria-hidden) | Basse | XS |
+| Ordre | Ticket | Description | Priorite | Complexite | Statut |
+|-------|--------|-------------|----------|------------|--------|
+| 13 | IMP-035 | Enrichir contenu texte homepage | Haute | M | **DONE** |
+| 14 | IMP-033 | Alt text descriptifs images | Moyenne | S | **DONE** |
+| 15 | IMP-036 | Images OG specifiques pages manquantes | Moyenne | S | **DONE** |
+| 16 | IMP-038 | loading="lazy" systematique | Moyenne | XS | **DONE** |
+| 17 | IMP-044 | Background images CSS -> img lazy | Moyenne | M | **DONE** |
+| 18 | IMP-039 | Enrichir Organization + LocalBusiness schema | Moyenne | S | **DONE** |
+| 19 | IMP-037 | Accessibilite menu mobile aria-expanded | Moyenne | S | **DONE** |
+| 20 | IMP-042 | Security + cache headers | Moyenne | S | **DONE** |
+| 21 | IMP-043 | SVG accessibles footer (aria-hidden) | Basse | XS | **DONE** |
 
 ### Phase 4 - Contenu et expansion (Mois 2+)
 
@@ -557,7 +557,7 @@
 
 ## Improvements
 
-### Pending (29) - dont 1 NON AUTOMATISABLE + 19 Audit + 9 SEO
+### Pending (20) - dont 1 NON AUTOMATISABLE + 19 Audit
 
 | ID | Titre | Priorite | Phase | Raison |
 |----|-------|----------|-------|--------|
@@ -581,15 +581,6 @@
 | IMP-025 | BreadcrumbList Schema.org vitrine | Basse | Audit | ✅ |
 | IMP-026 | Service Worker skipWaiting PWA | Moyenne | Audit | ✅ |
 | IMP-027 | Gestion erreurs PWA (toasts) | Moyenne | Audit | ✅ |
-| IMP-033 | Alt text descriptifs images | Moyenne | SEO | ✅ |
-| IMP-035 | Enrichir contenu texte homepage | Haute | SEO | ✅ |
-| IMP-036 | Images OG pages manquantes | Moyenne | SEO | ✅ |
-| IMP-037 | Accessibilite menu mobile aria | Moyenne | SEO | ✅ |
-| IMP-038 | loading="lazy" systematique images | Moyenne | SEO | ✅ |
-| IMP-039 | Organization schema + enrichir LocalBusiness | Moyenne | SEO | ✅ |
-| IMP-042 | Security + cache headers | Moyenne | SEO | ✅ |
-| IMP-043 | SVG accessibles footer aria-hidden | Basse | SEO | ✅ |
-| IMP-044 | Background images CSS -> img lazy | Moyenne | SEO | ✅ |
 
 ### Ready (7) - AUTOMATISABLES
 
@@ -603,7 +594,7 @@
 | IMP-006 | Expiration sessions inactives | Moyenne | S | security, auth, ux | 12 |
 | IMP-008 | Backup chiffre | Moyenne | S | security, backup | 13 |
 
-### Done (8)
+### Done (17)
 
 | ID | Titre | Priorite | Date resolution |
 |----|-------|----------|-----------------|
@@ -612,9 +603,18 @@
 | IMP-030 | Google Maps page contact | Haute | 2026-02-16 |
 | IMP-031 | Bouton flottant Appeler mobile (via IMP-041) | Haute | 2026-02-16 |
 | IMP-032 | Certifications, assurances, SIRET | Haute | 2026-02-16 |
+| IMP-033 | Alt text descriptifs images | Moyenne | 2026-02-16 |
 | IMP-034 | Raccourcir meta title homepage | Moyenne | 2026-02-16 |
+| IMP-035 | Enrichir contenu texte homepage | Haute | 2026-02-16 |
+| IMP-036 | Images OG pages manquantes | Moyenne | 2026-02-16 |
+| IMP-037 | Accessibilite menu mobile aria | Moyenne | 2026-02-16 |
+| IMP-038 | loading="lazy" systematique images | Moyenne | 2026-02-16 |
+| IMP-039 | Organization schema + enrichir LocalBusiness | Moyenne | 2026-02-16 |
 | IMP-040 | Champ ville formulaire contact | Moyenne | 2026-02-16 |
 | IMP-041 | Sticky CTA mobile bas d'ecran | Moyenne | 2026-02-16 |
+| IMP-042 | Security + cache headers | Moyenne | 2026-02-16 |
+| IMP-043 | SVG accessibles footer aria-hidden | Basse | 2026-02-16 |
+| IMP-044 | Background images CSS -> img lazy | Moyenne | 2026-02-16 |
 
 ---
 

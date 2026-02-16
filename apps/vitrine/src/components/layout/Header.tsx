@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const navigation = [
   { name: 'Accueil', href: '/' },
@@ -36,6 +36,14 @@ function LeafIcon({ className = 'w-7 h-7' }: { className?: string }) {
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setMobileMenuOpen(false);
+    };
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, []);
 
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50">
@@ -77,8 +85,10 @@ export function Header() {
             type="button"
             className="md:hidden p-2 rounded-md text-gray-700"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-menu"
+            aria-label={mobileMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
           >
-            <span className="sr-only">Ouvrir le menu</span>
             {mobileMenuOpen ? (
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -93,6 +103,9 @@ export function Header() {
 
         {/* Mobile Navigation */}
         <div
+          id="mobile-menu"
+          role="navigation"
+          aria-label="Menu principal"
           className={`md:hidden grid transition-[grid-template-rows] duration-300 ease-in-out ${
             mobileMenuOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
           }`}

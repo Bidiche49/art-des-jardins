@@ -7,6 +7,11 @@ export const metadata: Metadata = {
     index: false,
     follow: true,
   },
+  openGraph: {
+    title: 'Mentions Légales - Art des Jardins',
+    description: 'Mentions légales du site Art des Jardins - Paysagiste à Angers.',
+    images: [{ url: '/images/og-image.jpg', width: 1200, height: 630, alt: 'Art des Jardins - Paysagiste Angers' }],
+  },
 };
 
 export default function MentionsLegalesPage() {

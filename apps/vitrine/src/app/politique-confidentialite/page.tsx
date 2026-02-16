@@ -7,6 +7,11 @@ export const metadata: Metadata = {
     index: false,
     follow: true,
   },
+  openGraph: {
+    title: 'Politique de Confidentialité - Art des Jardins',
+    description: 'Politique de confidentialité et protection des données personnelles - Art des Jardins.',
+    images: [{ url: '/images/og-image.jpg', width: 1200, height: 630, alt: 'Art des Jardins - Paysagiste Angers' }],
+  },
 };
 
 export default function PolitiqueConfidentialitePage() {

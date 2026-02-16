@@ -8,6 +8,15 @@ export function LocalBusinessSchema() {
     description: 'Paysagiste professionnel à Angers et Maine-et-Loire. Création de jardins, aménagement, entretien, élagage, abattage. 16 ans d\'expérience cumulée.',
     url: 'https://art-et-jardin.fr',
     image: 'https://art-et-jardin.fr/images/og-image.jpg',
+    logo: 'https://art-et-jardin.fr/favicon.svg',
+    foundingDate: '2024',
+    numberOfEmployees: {
+      '@type': 'QuantitativeValue',
+      value: 2,
+    },
+    knowsLanguage: 'French',
+    paymentAccepted: ['Cash', 'Check', 'Bank Transfer'],
+    currenciesAccepted: 'EUR',
     telephone: '+33781160737',
     contactPoint: [
       {

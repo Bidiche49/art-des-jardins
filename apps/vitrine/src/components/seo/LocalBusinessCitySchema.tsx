@@ -22,12 +22,20 @@ export function LocalBusinessCitySchema({
     url,
     telephone: '+33781160737',
     email: 'artdesjardins49@gmail.com',
+    image: 'https://art-et-jardin.fr/images/og-image.jpg',
+    logo: 'https://art-et-jardin.fr/favicon.svg',
     address: {
       '@type': 'PostalAddress',
+      streetAddress: '9 bis rue Rouget de l\'Isle',
       addressLocality: city,
       postalCode,
       addressRegion: 'Maine-et-Loire',
       addressCountry: 'FR',
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: 47.4264,
+      longitude: -0.5256,
     },
     areaServed: {
       '@type': 'City',
