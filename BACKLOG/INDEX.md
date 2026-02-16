@@ -20,8 +20,8 @@
 |------|---------|-------|------|-------|
 | Bugs | 9 | 0 | 1 | 10 |
 | Features | 34 | 10 | 76 | 120 |
-| Improvements | 23 | 7 | 17 | 47 |
-| **Total** | **66** | **17** | **94** | **177** |
+| Improvements | 21 | 7 | 21 | 49 |
+| **Total** | **64** | **17** | **98** | **179** |
 
 ---
 
@@ -594,7 +594,7 @@
 | IMP-006 | Expiration sessions inactives | Moyenne | S | security, auth, ux | 12 |
 | IMP-008 | Backup chiffre | Moyenne | S | security, backup | 13 |
 
-### Done (19)
+### Done (21)
 
 | ID | Titre | Priorite | Date resolution |
 |----|-------|----------|-----------------|
@@ -616,6 +616,8 @@
 | IMP-043 | SVG accessibles footer aria-hidden | Basse | 2026-02-16 |
 | IMP-044 | Background images CSS -> img lazy | Moyenne | 2026-02-16 |
 | IMP-045 | Egaliser hauteur ServiceCard + responsive mobile | Basse | 2026-02-16 |
+| IMP-046 | Harmoniser affichage numeros telephone | Haute | 2026-02-16 |
+| IMP-047 | Conversion HEIC apercu + thumbnails Canvas | Moyenne | 2026-02-16 |
 | IMP-048 | Responsive mobile footer | Basse | 2026-02-16 |
 
 ---

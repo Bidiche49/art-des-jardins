@@ -354,6 +354,9 @@ importers:
       '@art-et-jardin/shared':
         specifier: workspace:*
         version: link:../../packages/shared
+      heic-to:
+        specifier: ^1.4.2
+        version: 1.4.2
       next:
         specifier: ^14.1.0
         version: 14.2.35(@babel/core@7.28.6)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -4484,6 +4487,9 @@ packages:
   he@1.2.0:
     resolution: {integrity: sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==}
     hasBin: true
+
+  heic-to@1.4.2:
+    resolution: {integrity: sha512-y69thwxfNcEm2Vk8lbOD/cMabnvMJyOREfJYiCHcXCDqlfcPyJoBhyRc8+iDe1B95LRfpbTOpzxzY1xbRkdwBA==}
 
   helmet@8.1.0:
     resolution: {integrity: sha512-jOiHyAZsmnr8LqoPGmCjYAaiuWwjAPLgY8ZX2XrmHawt99/u1y6RgrZMTeoPfpUbV96HOalYgz1qzkRbw54Pmg==}
@@ -12556,6 +12562,8 @@ snapshots:
 
   he@1.2.0:
     optional: true
+
+  heic-to@1.4.2: {}
 
   helmet@8.1.0: {}
 
