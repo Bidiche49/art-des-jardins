@@ -55,3 +55,10 @@ temp/
 # Database
 *.sqlite
 *.db
+
+# Source images (originals, optimized versions in public/)
+Images/
+Logo.png
+
+# Test/exploration assets
+test_landscaping_icons/

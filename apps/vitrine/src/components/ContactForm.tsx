@@ -1,6 +1,8 @@
 'use client';
 
 import { useState, FormEvent } from 'react';
+import { PhotoUpload } from './PhotoUpload';
+import { IconSpinner } from '@/lib/icons';
 
 interface FormData {
   name: string;
@@ -33,6 +35,7 @@ const services = [
 
 export function ContactForm() {
   const [formData, setFormData] = useState<FormData>(initialFormData);
+  const [photos, setPhotos] = useState<File[]>([]);
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -72,23 +75,21 @@ export function ContactForm() {
     setErrorMessage('');
 
     try {
-      // Using Web3Forms free service (replace with your access key)
-      // Or use Formspree, Getform, etc.
+      // Using Web3Forms free service
+      const body = new globalThis.FormData();
+      body.append('access_key', process.env.NEXT_PUBLIC_WEB3FORMS_KEY || 'YOUR_ACCESS_KEY');
+      body.append('subject', `Nouveau contact Art des Jardins - ${formData.service || 'Demande générale'}`);
+      body.append('from_name', formData.name);
+      body.append('email', formData.email);
+      body.append('phone', formData.phone || 'Non renseigné');
+      body.append('city', formData.city || 'Non renseigné');
+      body.append('service', formData.service || 'Non précisé');
+      body.append('message', formData.message);
+      photos.forEach((photo) => body.append('attachment', photo));
+
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY || 'YOUR_ACCESS_KEY',
-          subject: `Nouveau contact Art des Jardins - ${formData.service || 'Demande générale'}`,
-          from_name: formData.name,
-          email: formData.email,
-          phone: formData.phone || 'Non renseigné',
-          city: formData.city || 'Non renseigné',
-          service: formData.service || 'Non précisé',
-          message: formData.message,
-        }),
+        body,
       });
 
       const data = await response.json();
@@ -96,6 +97,7 @@ export function ContactForm() {
       if (data.success) {
         setStatus('success');
         setFormData(initialFormData);
+        setPhotos([]);
       } else {
         throw new Error(data.message || 'Erreur lors de l\'envoi');
       }
@@ -249,6 +251,8 @@ export function ContactForm() {
         />
       </div>
 
+      <PhotoUpload files={photos} onChange={setPhotos} />
+
       <div className="flex items-start gap-3">
         <input
           type="checkbox"
@@ -271,22 +275,7 @@ export function ContactForm() {
       >
         {status === 'loading' ? (
           <span className="flex items-center justify-center gap-2">
-            <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
-              <circle
-                className="opacity-25"
-                cx="12"
-                cy="12"
-                r="10"
-                stroke="currentColor"
-                strokeWidth="4"
-                fill="none"
-              />
-              <path
-                className="opacity-75"
-                fill="currentColor"
-                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
-              />
-            </svg>
+            <IconSpinner className="animate-spin h-5 w-5" />
             Envoi en cours...
           </span>
         ) : (

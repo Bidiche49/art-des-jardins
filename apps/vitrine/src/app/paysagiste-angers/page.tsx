@@ -5,6 +5,7 @@ import { cities, serviceTypes } from '@/lib/cities-data';
 import { HeroSection } from '@/components/ui/HeroSection';
 import { InlineGallery } from '@/components/ui/InlineGallery';
 import { ogImages } from '@/lib/images-manifest';
+import { IconCheck, IconPin } from '@/lib/icons';
 
 const service = serviceTypes.find((s) => s.service === 'paysagiste')!;
 const city = cities.find((c) => c.slug === 'angers')!;
@@ -92,17 +93,7 @@ export default function PaysagisteAngersPage() {
               <div className="grid sm:grid-cols-2 gap-4">
                 {service.features.map((feature, i) => (
                   <div key={i} className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg">
-                    <svg
-                      className="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
+                    <IconCheck className="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" />
                     <span className="text-gray-700">{feature}</span>
                   </div>
                 ))}
@@ -120,13 +111,7 @@ export default function PaysagisteAngersPage() {
                   <ul className="space-y-2 text-primary-700 text-sm">
                     {cities.slice(0, 8).map((c) => (
                       <li key={c.slug} className="flex items-center gap-2">
-                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                          <path
-                            fillRule="evenodd"
-                            d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
+                        <IconPin className="w-4 h-4" />
                         {c.name}
                       </li>
                     ))}
@@ -175,9 +160,7 @@ export default function PaysagisteAngersPage() {
             ].map((item, i) => (
               <div key={i} className="bg-white rounded-xl p-6 text-center shadow-sm">
                 <div className="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-6 h-6 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
+                  <IconCheck className="w-6 h-6 text-primary-600" />
                 </div>
                 <h3 className="font-bold text-gray-900 mb-2">{item.title}</h3>
                 <p className="text-gray-600 text-sm">{item.description}</p>

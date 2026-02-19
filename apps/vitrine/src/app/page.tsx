@@ -8,6 +8,7 @@ import { PhotoGallery } from '@/components/ui/PhotoGallery';
 import { AnimateOnScroll } from '@/components/ui/AnimateOnScroll';
 import { BeforeAfterSection } from '@/components/BeforeAfterSection';
 import { serviceCardImages } from '@/lib/images-manifest';
+import { IconRcPro, IconExperience, IconDevis48h, IconZone30km } from '@/lib/icons';
 
 export default function HomePage() {
   return (
@@ -35,28 +36,19 @@ export default function HomePage() {
         <div className="container-custom">
           <div className="flex flex-wrap justify-center items-center gap-6 md:gap-10 text-gray-600 text-sm">
             <div className="flex items-center gap-2">
-              <svg className="w-5 h-5 text-primary-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-              </svg>
+              <IconRcPro className="w-5 h-5 text-primary-600 flex-shrink-0" />
               <span className="font-medium">Assurance RC Pro</span>
             </div>
             <div className="flex items-center gap-2">
-              <svg className="w-5 h-5 text-primary-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-              </svg>
+              <IconExperience className="w-5 h-5 text-primary-600 flex-shrink-0" />
               <span className="font-medium">16 ans d&apos;expérience</span>
             </div>
             <div className="flex items-center gap-2">
-              <svg className="w-5 h-5 text-primary-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
+              <IconDevis48h className="w-5 h-5 text-primary-600 flex-shrink-0" />
               <span className="font-medium">Devis gratuit sous 48h</span>
             </div>
             <div className="flex items-center gap-2">
-              <svg className="w-5 h-5 text-primary-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
+              <IconZone30km className="w-5 h-5 text-primary-600 flex-shrink-0" />
               <span className="font-medium">Angers et 30 km</span>
             </div>
           </div>

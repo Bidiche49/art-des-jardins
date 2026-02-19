@@ -23,7 +23,7 @@ export function LocalBusinessCitySchema({
     telephone: '+33781160737',
     email: 'artdesjardins49@gmail.com',
     image: 'https://art-et-jardin.fr/images/og-image.jpg',
-    logo: 'https://art-et-jardin.fr/favicon.svg',
+    logo: 'https://art-et-jardin.fr/images/logo.png',
     address: {
       '@type': 'PostalAddress',
       streetAddress: '9 bis rue Rouget de l\'Isle',

@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
 import { services } from '@/lib/services-data';
 import { cities, serviceTypes } from '@/lib/cities-data';
+import { articles } from '@/lib/blog-data';
 
 const baseUrl = 'https://art-et-jardin.fr';
 
@@ -59,6 +60,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
+  // Blog / Conseils pages
+  const blogPages: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/conseils/`,
+      lastModified: now,
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/a-propos/`,
+      lastModified: now,
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    },
+    ...articles.map((article) => ({
+      url: `${baseUrl}/conseils/${article.slug}/`,
+      lastModified: article.publishDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    })),
+  ];
+
   // Legal pages (low priority)
   const legalPages: MetadataRoute.Sitemap = [
     {
@@ -81,5 +104,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  return [...mainPages, ...servicePages, ...mainSeoPages, ...citySeoPages, ...legalPages];
+  return [...mainPages, ...servicePages, ...mainSeoPages, ...citySeoPages, ...blogPages, ...legalPages];
 }

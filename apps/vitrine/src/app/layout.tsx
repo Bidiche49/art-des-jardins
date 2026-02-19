@@ -1,19 +1,25 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, Cormorant_Garamond } from 'next/font/google';
 import './globals.css';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { MobileStickyBar } from '@/components/ui/MobileStickyBar';
+import { WhatsAppButton } from '@/components/ui/WhatsAppButton';
 import { Analytics } from '@/components/Analytics';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
+const cormorant = Cormorant_Garamond({
+  subsets: ['latin'],
+  weight: ['400', '600', '700'],
+  variable: '--font-cormorant',
+});
 
 const siteUrl = 'https://art-et-jardin.fr';
 
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#16a34a',
+  themeColor: '#576b3b',
 };
 
 export const metadata: Metadata = {
@@ -47,7 +53,8 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/icon-32.png', type: 'image/png', sizes: '32x32' },
+      { url: '/icon-192.png', type: 'image/png', sizes: '192x192' },
       { url: '/favicon.ico', sizes: '32x32' },
     ],
     apple: '/apple-touch-icon.png',
@@ -94,7 +101,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr" className={inter.variable}>
+    <html lang="fr" className={`${inter.variable} ${cormorant.variable}`}>
       <head>
         <link
           rel="preload"
@@ -108,6 +115,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        <WhatsAppButton />
         <MobileStickyBar />
       </body>
     </html>

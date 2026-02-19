@@ -3,8 +3,10 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { services, getServiceBySlug } from '@/lib/services-data';
 import { ServiceSchema } from '@/components/seo/ServiceSchema';
+import { TaxCreditSection } from '@/components/TaxCreditSection';
 import { HeroSection } from '@/components/ui/HeroSection';
 import { serviceCardImages, ogImages } from '@/lib/images-manifest';
+import { IconCheck, IconChevronRight } from '@/lib/icons';
 
 interface PageProps {
   params: { slug: string };
@@ -93,17 +95,7 @@ export default function ServicePage({ params }: PageProps) {
               <div className="grid sm:grid-cols-2 gap-4">
                 {service.features.map((feature, i) => (
                   <div key={i} className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg">
-                    <svg
-                      className="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
+                    <IconCheck className="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" />
                     <span className="text-gray-700">{feature}</span>
                   </div>
                 ))}
@@ -119,21 +111,21 @@ export default function ServicePage({ params }: PageProps) {
                   <ul className="space-y-3">
                     {service.benefits.map((benefit, i) => (
                       <li key={i} className="flex items-start gap-2 text-primary-700">
-                        <svg
-                          className="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
+                        <IconCheck className="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" />
                         <span>{benefit}</span>
                       </li>
                     ))}
                   </ul>
+                </div>
+
+                {/* Tarif indicatif */}
+                <div className="bg-amber-50 rounded-xl p-6 border border-amber-100">
+                  <h3 className="text-lg font-bold text-amber-900 mb-2">Tarif indicatif</h3>
+                  <p className="text-2xl font-bold text-amber-800 mb-2">{service.priceRange.label}</p>
+                  <p className="text-xs text-amber-700">
+                    Prix indicatif selon la complexité du chantier. Un devis précis et gratuit est
+                    systématiquement établi avant intervention.
+                  </p>
                 </div>
 
                 {/* CTA Card */}
@@ -162,6 +154,9 @@ export default function ServicePage({ params }: PageProps) {
         </div>
       </section>
 
+      {/* Credit d'impot (entretien only) */}
+      {service.slug === 'entretien-jardin' && <TaxCreditSection />}
+
       {/* Process */}
       <section className="py-16 lg:py-24 bg-gray-50">
         <div className="container-custom">
@@ -178,13 +173,7 @@ export default function ServicePage({ params }: PageProps) {
                 </div>
                 {i < service.process.length - 1 && (
                   <div className="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2">
-                    <svg className="w-6 h-6 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
-                      <path
-                        fillRule="evenodd"
-                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
+                    <IconChevronRight className="w-6 h-6 text-gray-300" />
                   </div>
                 )}
               </div>

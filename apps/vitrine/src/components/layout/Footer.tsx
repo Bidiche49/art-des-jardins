@@ -1,21 +1,6 @@
 import Link from 'next/link';
-
-function LeafIcon({ className = 'w-7 h-7' }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="leaf-footer" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#22c55e" />
-          <stop offset="100%" stopColor="#15803d" />
-        </linearGradient>
-      </defs>
-      <path
-        d="M16 2C10 2 4 8 4 16c0 2 .5 4 1.5 5.5C7 18 10 14 16 12c-4 4-6 8-6.5 12.5C11 27 13.5 28 16 28c8 0 12-8 12-16C28 6 22 2 16 2z"
-        fill="url(#leaf-footer)"
-      />
-    </svg>
-  );
-}
+import Image from 'next/image';
+import { IconPin, IconPhone, IconEmail } from '@/lib/icons';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -27,23 +12,25 @@ export function Footer() {
           {/* Logo & Description */}
           <div className="md:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
-              <LeafIcon />
-              <span className="text-xl font-bold text-white">Art des Jardins</span>
+              <Image
+                src="/images/logo-leaf.png"
+                alt=""
+                width={40}
+                height={26}
+                className="h-7 w-auto brightness-110"
+              />
+              <span className="text-xl font-bold text-white font-serif">Art des Jardins</span>
             </div>
             <p className="text-gray-400 mb-4">
               Paysagiste professionnel à Angers et environs. Création de jardins, entretien, élagage et abattage. Approche sur mesure, qualité artisanale.
             </p>
             <div className="text-gray-400 space-y-2">
               <p className="flex items-center gap-2">
-                <svg className="w-4 h-4 text-primary-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                  <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-                </svg>
+                <IconPin className="w-4 h-4 text-primary-500 flex-shrink-0" />
                 9 bis rue Rouget de l'Isle, 49130 Les Ponts-de-Ce
               </p>
               <div className="flex items-start gap-2">
-                <svg className="w-4 h-4 text-primary-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                  <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-                </svg>
+                <IconPhone className="w-4 h-4 text-primary-500 flex-shrink-0 mt-0.5" />
                 <div className="flex items-center">
                   <a href="tel:+33781160737" className="hover:text-white transition-colors">07 81 16 07 37</a>
                   <span className="mx-1.5 text-gray-600">|</span>
@@ -51,10 +38,7 @@ export function Footer() {
                 </div>
               </div>
               <p className="flex items-center gap-2">
-                <svg className="w-4 h-4 text-primary-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                  <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                  <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-                </svg>
+                <IconEmail className="w-4 h-4 text-primary-500 flex-shrink-0" />
                 <a href="mailto:artdesjardins49@gmail.com" className="hover:text-white transition-colors">artdesjardins49@gmail.com</a>
               </p>
             </div>

@@ -332,6 +332,222 @@ export const cities: CityData[] = [
     `,
     neighborhoods: ['Mûrs', 'Érigné'],
   },
+  {
+    slug: 'sainte-gemmes-sur-loire',
+    name: 'Sainte-Gemmes-sur-Loire',
+    department: 'Maine-et-Loire',
+    postalCode: '49130',
+    population: '4 200',
+    distance: '8 km',
+    description:
+      'Commune paisible au sud d\'Angers en bord de Loire, Sainte-Gemmes-sur-Loire offre un cadre de vie verdoyant entre fleuve et coteaux.',
+    specificContent: `
+      Sainte-Gemmes-sur-Loire, nichée entre la Loire et les coteaux, bénéficie d'un environnement naturel
+      remarquable. Les jardins y sont souvent exposés plein sud et profitent d'un microclimat favorable
+      grâce à la proximité du fleuve.
+
+      Art des Jardins intervient régulièrement à Sainte-Gemmes-sur-Loire, où les propriétés offrent des
+      terrains variés : des petits jardins du bourg aux vastes parcelles en bordure de Loire. Nous adaptons
+      nos prestations à chaque configuration, en tenant compte des spécificités du sol ligérien.
+
+      La commune abrite de belles propriétés avec vue sur Loire qui méritent des aménagements paysagers
+      à la hauteur de ce cadre exceptionnel. Nous concevons des jardins qui s'intègrent harmonieusement
+      dans le paysage fluvial.
+    `,
+    neighborhoods: ['Bourg', 'Les Jubeaux', 'La Roche'],
+  },
+  {
+    slug: 'montreuil-juigne',
+    name: 'Montreuil-Juigné',
+    department: 'Maine-et-Loire',
+    postalCode: '49460',
+    population: '8 500',
+    distance: '9 km',
+    description:
+      'Commune dynamique au nord-ouest d\'Angers, Montreuil-Juigné allie quartiers résidentiels récents et espaces naturels préservés.',
+    specificContent: `
+      Montreuil-Juigné, en plein développement, accueille de nombreuses familles qui souhaitent bénéficier
+      d'un cadre de vie agréable tout en restant proches d'Angers. Les lotissements récents offrent
+      des jardins neufs à aménager entièrement.
+
+      Art des Jardins accompagne les propriétaires de Montreuil-Juigné dans la création et l'entretien
+      de leurs espaces verts. De la conception de jardin pour maison neuve à l'entretien régulier des
+      propriétés plus anciennes, nous proposons des solutions adaptées à chaque besoin.
+
+      Le sol de la commune, souvent argileux, nécessite une connaissance particulière pour le choix des
+      végétaux et les techniques de plantation. Notre expérience locale nous permet de vous conseiller
+      les espèces les mieux adaptées.
+    `,
+    neighborhoods: ['Bourg', 'Juigné-Bené', 'La Foresterie'],
+  },
+  {
+    slug: 'saint-jean-de-linieres',
+    name: 'Saint-Jean-de-Linières',
+    department: 'Maine-et-Loire',
+    postalCode: '49070',
+    population: '2 200',
+    distance: '12 km',
+    description:
+      'Village rural à l\'ouest d\'Angers, Saint-Jean-de-Linières conserve un caractère champêtre avec de grandes propriétés et des espaces boisés.',
+    specificContent: `
+      Saint-Jean-de-Linières, commune rurale à l'ouest d'Angers, offre un cadre de vie champêtre
+      apprécié des amoureux de la nature. Les propriétés y sont souvent spacieuses avec de grands
+      terrains qui se prêtent à des aménagements paysagers ambitieux.
+
+      Art des Jardins intervient à Saint-Jean-de-Linières pour des projets variés : création de jardins
+      naturels, entretien de parcs, élagage des nombreux arbres de grande taille qui caractérisent
+      la commune. Nous privilégions des aménagements en harmonie avec le paysage rural environnant.
+
+      Le bocage angevin qui entoure la commune inspire nos créations : haies mixtes, prairies fleuries,
+      vergers... des aménagements durables et écologiques qui s'intègrent dans leur environnement.
+    `,
+    neighborhoods: ['Bourg', 'Les Linières'],
+  },
+  {
+    slug: 'briollay',
+    name: 'Briollay',
+    department: 'Maine-et-Loire',
+    postalCode: '49125',
+    population: '2 800',
+    distance: '12 km',
+    description:
+      'Au confluent de la Sarthe et du Loir, Briollay est une commune prisée pour son cadre naturel exceptionnel et ses belles propriétés en bord de rivière.',
+    specificContent: `
+      Briollay, au confluent de la Sarthe et du Loir, offre un cadre de vie exceptionnel avec ses bords
+      de rivière et ses prairies inondables. Les propriétés y sont souvent remarquables, avec des jardins
+      en bord d'eau qui nécessitent une expertise spécifique.
+
+      Art des Jardins connaît les particularités des jardins de Briollay : sols alluviaux, risque de crue,
+      végétation de zone humide. Nous sélectionnons des végétaux adaptés à ces conditions et concevons
+      des aménagements résilients face aux aléas climatiques.
+
+      L'élagage des arbres de bord de rivière est une spécialité de notre équipe. Saules, aulnes,
+      peupliers : nous intervenons en toute sécurité pour entretenir ces essences spécifiques qui
+      font le charme de la commune.
+    `,
+    neighborhoods: ['Bourg', 'Vaux', 'La Basse-Rivière'],
+  },
+  {
+    slug: 'savennieres',
+    name: 'Savennières',
+    department: 'Maine-et-Loire',
+    postalCode: '49170',
+    population: '1 500',
+    distance: '14 km',
+    description:
+      'Célèbre pour son vignoble d\'exception, Savennières est une commune de caractère sur les bords de Loire, entre coteaux viticoles et jardins de charme.',
+    specificContent: `
+      Savennières, village viticole réputé sur les coteaux de Loire, offre un terroir exceptionnel
+      qui bénéficie aussi aux jardins d'agrément. L'exposition sud des coteaux et la protection
+      de la Loire créent un microclimat propice à de nombreuses espèces méditerranéennes.
+
+      Art des Jardins intervient à Savennières pour des projets qui s'intègrent dans ce paysage
+      viticole d'exception. Nous concevons des jardins inspirés du terroir local : murets de schiste,
+      plantes aromatiques, oliviers et lavandes qui rappellent les paysages du sud.
+
+      Les propriétés de Savennières, souvent des maisons de maître ou des corps de ferme rénovés,
+      méritent des aménagements à la hauteur de leur caractère. Nous créons des jardins qui
+      complètent et valorisent l'architecture locale.
+    `,
+    neighborhoods: ['Bourg', 'Épiré', 'La Roche-aux-Moines'],
+  },
+  {
+    slug: 'saint-sylvain-anjou',
+    name: 'Saint-Sylvain-d\'Anjou',
+    department: 'Maine-et-Loire',
+    postalCode: '49480',
+    population: '5 500',
+    distance: '8 km',
+    description:
+      'Commune résidentielle au nord-est d\'Angers, Saint-Sylvain-d\'Anjou offre un cadre de vie familial avec des quartiers pavillonnaires bien établis.',
+    specificContent: `
+      Saint-Sylvain-d'Anjou, à quelques minutes d'Angers, est une commune résidentielle prisée des
+      familles. Les quartiers pavillonnaires y offrent des jardins de taille moyenne, idéaux pour
+      créer de véritables espaces de vie en extérieur.
+
+      Art des Jardins intervient régulièrement à Saint-Sylvain-d'Anjou pour l'entretien et
+      l'aménagement des jardins. Tonte, taille de haies, création de terrasses, plantation d'arbres
+      fruitiers : nous répondons à tous les besoins des propriétaires saint-sylvainois.
+
+      La commune étant en zone périurbaine, de nombreux jardins combinent espace détente et potager.
+      Nous vous aidons à optimiser votre terrain pour profiter au maximum de votre extérieur,
+      quelle que soit sa superficie.
+    `,
+    neighborhoods: ['Bourg', 'Le Plessis-Grammoire', 'Les Music\'Halles'],
+  },
+  {
+    slug: 'soulaines-sur-aubance',
+    name: 'Soulaines-sur-Aubance',
+    department: 'Maine-et-Loire',
+    postalCode: '49610',
+    population: '3 200',
+    distance: '15 km',
+    description:
+      'Commune rurale au sud d\'Angers traversée par l\'Aubance, appréciée pour son calme et ses paysages de bocage préservés.',
+    specificContent: `
+      Soulaines-sur-Aubance, commune tranquille au sud d'Angers, offre un cadre rural préservé
+      le long de la rivière Aubance. Les propriétés y sont souvent généreuses, avec de grands
+      terrains qui permettent des réalisations paysagères ambitieuses.
+
+      Art des Jardins intervient à Soulaines-sur-Aubance pour des projets allant de l'entretien
+      courant à la création complète de jardins. Nous connaissons les spécificités du terroir :
+      sols argilo-calcaires, exposition variable selon les coteaux, proximité de l'eau.
+
+      Le caractère bocager de la commune nous inspire des aménagements naturels : haies champêtres
+      mêlant arbustes à baies et essences locales, prairies fleuries pour favoriser la
+      biodiversité, vergers traditionnels de variétés anciennes.
+    `,
+    neighborhoods: ['Bourg', 'Saint-Melaine'],
+  },
+  {
+    slug: 'loire-authion',
+    name: 'Loire-Authion',
+    department: 'Maine-et-Loire',
+    postalCode: '49800',
+    population: '16 000',
+    distance: '15 km',
+    description:
+      'Commune nouvelle regroupant six bourgs à l\'est d\'Angers, Loire-Authion est le berceau de l\'horticulture angevine.',
+    specificContent: `
+      Loire-Authion, née de la fusion de six communes historiques, est intimement liée à l'histoire
+      de l'horticulture en Anjou. Ce terroir exceptionnel entre Loire et Authion a vu naître
+      de nombreuses pépinières et exploitations horticoles renommées.
+
+      Art des Jardins puise dans cette tradition horticole locale pour proposer des aménagements
+      de qualité aux habitants de Loire-Authion. Nous travaillons avec des végétaux
+      sélectionnés auprès de pépinières locales, garantissant des plants robustes et adaptés
+      au terroir.
+
+      La diversité des paysages de la commune — plaine alluviale, coteaux, bocage — offre
+      des conditions variées pour les jardins. Notre équipe adapte ses choix de végétaux et
+      ses techniques à chaque situation particulière.
+    `,
+    neighborhoods: ['Brain-sur-l\'Authion', 'Andard', 'La Bohalle', 'La Daguenière', 'Corné', 'Saint-Mathurin-sur-Loire'],
+  },
+  {
+    slug: 'longuenee-en-anjou',
+    name: 'Longuenée-en-Anjou',
+    department: 'Maine-et-Loire',
+    postalCode: '49770',
+    population: '7 500',
+    distance: '15 km',
+    description:
+      'Commune nouvelle au nord d\'Angers, Longuenée-en-Anjou allie patrimoine rural et développement résidentiel dans un cadre naturel préservé.',
+    specificContent: `
+      Longuenée-en-Anjou, au nord d'Angers, est une commune nouvelle qui a su préserver son
+      caractère rural tout en accueillant de nouvelles populations. Les bourgs historiques et
+      les lotissements récents coexistent dans un paysage de bocage verdoyant.
+
+      Art des Jardins accompagne les propriétaires de Longuenée-en-Anjou dans tous leurs projets :
+      création de jardin pour maison neuve, rénovation de parcs autour des demeures anciennes,
+      élagage des arbres centenaires, entretien régulier.
+
+      Les grandes propriétés de la commune présentent souvent des arbres remarquables qui
+      nécessitent un entretien adapté. Nos élagueurs certifiés interviennent pour préserver
+      ces patrimoine végétal tout en garantissant la sécurité des biens et des personnes.
+    `,
+    neighborhoods: ['La Meignanne', 'Le Plessis-Macé', 'La Membrolle-sur-Longuenée'],
+  },
 ];
 
 export function getCityBySlug(slug: string): CityData | undefined {

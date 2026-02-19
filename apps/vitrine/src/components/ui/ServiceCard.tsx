@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { getImage, getSrcSet, getDefaultSrc, type ImageEntry } from '@/lib/images-manifest';
+import { IconChevronRight } from '@/lib/icons';
 
 interface ServiceCardProps {
   title: string;
@@ -43,9 +44,7 @@ export function ServiceCard({ title, description, href, imageSlug }: ServiceCard
         <p className="text-gray-600 text-xs md:text-sm md:flex-grow">{description}</p>
         <span className="inline-flex items-center mt-2 md:mt-3 text-primary-600 font-medium text-xs md:text-sm group-hover:gap-2 transition-all">
           En savoir plus
-          <svg className="w-3 h-3 md:w-4 md:h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          <IconChevronRight className="w-3 h-3 md:w-4 md:h-4 ml-1" />
         </span>
       </div>
     </Link>

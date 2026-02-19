@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { IconChevronDown } from '@/lib/icons';
 
 interface FAQItem {
   question: string;
@@ -21,7 +22,7 @@ const faqs: FAQItem[] = [
   {
     question: 'Comment obtenir un devis ?',
     answer:
-      'Appelez-nous au 07 81 16 07 37 ou remplissez le formulaire sur notre page contact. Nous vous recontactons sous 48h et planifions une visite gratuite sur place pour évaluer votre projet. Le devis est détaillé, transparent et sans engagement.',
+      'Appelez-nous au 07 81 16 07 37 ou au 06 59 68 49 16, écrivez-nous sur WhatsApp, ou remplissez le formulaire sur notre page contact. Nous vous recontactons sous 48h et planifions une visite gratuite sur place pour évaluer votre projet. Le devis est détaillé, transparent et sans engagement.',
   },
   {
     question: 'Êtes-vous assurés ?',
@@ -72,14 +73,7 @@ function AccordionItem({ item, isOpen, onToggle }: { item: FAQItem; isOpen: bool
         aria-expanded={isOpen}
       >
         <span className="text-lg font-medium text-gray-900 pr-4">{item.question}</span>
-        <svg
-          className={`w-5 h-5 text-gray-500 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-        </svg>
+        <IconChevronDown className={`w-5 h-5 text-gray-500 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
       </button>
       <div
         className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${

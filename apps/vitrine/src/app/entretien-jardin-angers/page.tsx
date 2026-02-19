@@ -4,7 +4,9 @@ import { LocalBusinessCitySchema } from '@/components/seo/LocalBusinessCitySchem
 import { cities, serviceTypes } from '@/lib/cities-data';
 import { HeroSection } from '@/components/ui/HeroSection';
 import { InlineGallery } from '@/components/ui/InlineGallery';
+import { TaxCreditSection } from '@/components/TaxCreditSection';
 import { ogImages } from '@/lib/images-manifest';
+import { IconCheck } from '@/lib/icons';
 
 const service = serviceTypes.find((s) => s.service === 'entretien-jardin')!;
 const city = cities.find((c) => c.slug === 'angers')!;
@@ -96,17 +98,7 @@ export default function EntretienJardinAngersPage() {
               <div className="grid sm:grid-cols-2 gap-4">
                 {service.features.map((feature, i) => (
                   <div key={i} className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg">
-                    <svg
-                      className="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
+                    <IconCheck className="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" />
                     <span className="text-gray-700">{feature}</span>
                   </div>
                 ))}
@@ -149,27 +141,19 @@ export default function EntretienJardinAngersPage() {
                   <h3 className="text-lg font-bold text-primary-800 mb-4">Avantages contrat</h3>
                   <ul className="space-y-3 text-primary-700">
                     <li className="flex items-start gap-2">
-                      <svg className="w-5 h-5 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                      </svg>
+                      <IconCheck className="w-5 h-5 mt-0.5 flex-shrink-0" />
                       <span>Tarif préférentiel (-15%)</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <svg className="w-5 h-5 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                      </svg>
+                      <IconCheck className="w-5 h-5 mt-0.5 flex-shrink-0" />
                       <span>Priorité d'intervention</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <svg className="w-5 h-5 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                      </svg>
+                      <IconCheck className="w-5 h-5 mt-0.5 flex-shrink-0" />
                       <span>Planning fixe</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <svg className="w-5 h-5 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                      </svg>
+                      <IconCheck className="w-5 h-5 mt-0.5 flex-shrink-0" />
                       <span>Suivi personnalisé</span>
                     </li>
                   </ul>
@@ -189,6 +173,9 @@ export default function EntretienJardinAngersPage() {
           </div>
         </div>
       </section>
+
+      {/* Credit d'impot */}
+      <TaxCreditSection />
 
       {/* CTA */}
       <section className="relative py-16 overflow-hidden">

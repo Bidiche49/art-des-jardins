@@ -8,7 +8,7 @@ export function LocalBusinessSchema() {
     description: 'Paysagiste professionnel à Angers et Maine-et-Loire. Création de jardins, aménagement, entretien, élagage, abattage. 16 ans d\'expérience cumulée.',
     url: 'https://art-et-jardin.fr',
     image: 'https://art-et-jardin.fr/images/og-image.jpg',
-    logo: 'https://art-et-jardin.fr/favicon.svg',
+    logo: 'https://art-et-jardin.fr/images/logo.png',
     foundingDate: '2024',
     numberOfEmployees: {
       '@type': 'QuantitativeValue',
@@ -79,35 +79,63 @@ export function LocalBusinessSchema() {
       name: 'Services d\'aménagement paysager',
       itemListElement: [
         {
-          '@type': 'Offer',
+          '@type': 'AggregateOffer',
           itemOffered: {
             '@type': 'Service',
             name: 'Aménagement de jardin',
             description: 'Conception et réalisation de jardins sur mesure',
           },
+          lowPrice: 50,
+          highPrice: 150,
+          priceCurrency: 'EUR',
+          priceSpecification: {
+            '@type': 'UnitPriceSpecification',
+            unitText: 'm²',
+          },
         },
         {
-          '@type': 'Offer',
+          '@type': 'AggregateOffer',
           itemOffered: {
             '@type': 'Service',
             name: 'Entretien de jardin',
             description: 'Tonte, taille, désherbage et entretien régulier',
           },
+          lowPrice: 30,
+          highPrice: 60,
+          priceCurrency: 'EUR',
+          priceSpecification: {
+            '@type': 'UnitPriceSpecification',
+            unitText: 'heure',
+          },
         },
         {
-          '@type': 'Offer',
+          '@type': 'AggregateOffer',
           itemOffered: {
             '@type': 'Service',
             name: 'Élagage',
             description: 'Taille et élagage de tous types d\'arbres',
           },
+          lowPrice: 100,
+          highPrice: 800,
+          priceCurrency: 'EUR',
+          priceSpecification: {
+            '@type': 'UnitPriceSpecification',
+            unitText: 'arbre',
+          },
         },
         {
-          '@type': 'Offer',
+          '@type': 'AggregateOffer',
           itemOffered: {
             '@type': 'Service',
             name: 'Abattage',
             description: 'Abattage sécurisé d\'arbres',
+          },
+          lowPrice: 300,
+          highPrice: 2000,
+          priceCurrency: 'EUR',
+          priceSpecification: {
+            '@type': 'UnitPriceSpecification',
+            unitText: 'arbre',
           },
         },
       ],

@@ -10,6 +10,10 @@
   body {
     @apply antialiased text-gray-900 bg-white;
   }
+
+  h1, h2 {
+    font-family: var(--font-cormorant), Georgia, serif;
+  }
 }
 
 @layer components {
@@ -48,17 +52,17 @@
 /* Hero overlays */
 .hero-overlay {
   background:
-    linear-gradient(to top, rgba(15, 60, 30, 0.85) 0%, rgba(15, 60, 30, 0.4) 40%, rgba(0, 0, 0, 0.2) 100%);
+    linear-gradient(to top, rgba(35, 50, 25, 0.85) 0%, rgba(35, 50, 25, 0.4) 40%, rgba(0, 0, 0, 0.2) 100%);
 }
 
 .hero-overlay-strong {
   background:
-    linear-gradient(to top, rgba(15, 60, 30, 0.9) 0%, rgba(15, 60, 30, 0.5) 45%, rgba(0, 0, 0, 0.3) 100%);
+    linear-gradient(to top, rgba(35, 50, 25, 0.9) 0%, rgba(35, 50, 25, 0.5) 45%, rgba(0, 0, 0, 0.3) 100%);
 }
 
 .hero-overlay-light {
   background:
-    linear-gradient(to top, rgba(15, 60, 30, 0.7) 0%, rgba(15, 60, 30, 0.3) 35%, rgba(0, 0, 0, 0.1) 100%);
+    linear-gradient(to top, rgba(35, 50, 25, 0.7) 0%, rgba(35, 50, 25, 0.3) 35%, rgba(0, 0, 0, 0.1) 100%);
 }
 
 /* Refined text shadows for hero headings */

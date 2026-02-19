@@ -10,6 +10,12 @@ export interface ServiceData {
   description: string;
   features: string[];
   benefits: string[];
+  priceRange: {
+    lowPrice: number;
+    highPrice: number;
+    unit: string;
+    label: string;
+  };
   process: {
     title: string;
     description: string;
@@ -62,6 +68,12 @@ export const services: ServiceData[] = [
       'Végétaux adaptés au climat local',
       'Respect de votre budget',
     ],
+    priceRange: {
+      lowPrice: 50,
+      highPrice: 150,
+      unit: '/m²',
+      label: '50 € – 150 € / m²',
+    },
     process: [
       {
         title: 'Visite et analyse',
@@ -147,6 +159,12 @@ export const services: ServiceData[] = [
       'Conseils de jardinage inclus',
       'Tarifs dégressifs en contrat annuel',
     ],
+    priceRange: {
+      lowPrice: 30,
+      highPrice: 60,
+      unit: '/heure',
+      label: '30 € – 60 € / heure',
+    },
     process: [
       {
         title: 'Évaluation des besoins',
@@ -227,6 +245,12 @@ export const services: ServiceData[] = [
       'Respect de la législation (distances, hauteurs)',
       'Intervention sécurisée et assurée',
     ],
+    priceRange: {
+      lowPrice: 100,
+      highPrice: 800,
+      unit: '/arbre',
+      label: '100 € – 800 € / arbre',
+    },
     process: [
       {
         title: 'Diagnostic sur place',
@@ -307,6 +331,12 @@ export const services: ServiceData[] = [
       'Entreprise assurée',
       'Terrain nettoyé et prêt à l\'emploi',
     ],
+    priceRange: {
+      lowPrice: 300,
+      highPrice: 2000,
+      unit: '/arbre',
+      label: '300 € – 2 000 € / arbre',
+    },
     process: [
       {
         title: 'Évaluation du chantier',

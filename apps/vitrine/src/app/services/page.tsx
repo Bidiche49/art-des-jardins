@@ -5,6 +5,7 @@ import { ServiceSchema } from '@/components/seo/ServiceSchema';
 import { ServiceCard } from '@/components/ui/ServiceCard';
 import { AnimateOnScroll } from '@/components/ui/AnimateOnScroll';
 import { serviceCardImages, images } from '@/lib/images-manifest';
+import { IconCheck, IconChevronRight } from '@/lib/icons';
 
 export const metadata: Metadata = {
   title: 'Nos Services d\'Aménagement Paysager',
@@ -67,18 +68,14 @@ export default function ServicesPage() {
                       <ul className="space-y-2 text-sm text-gray-500">
                         {service.features.slice(0, 4).map((feature, fi) => (
                           <li key={fi} className="flex items-center gap-2">
-                            <svg className="w-4 h-4 text-primary-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                            </svg>
+                            <IconCheck className="w-4 h-4 text-primary-500 flex-shrink-0" />
                             {feature}
                           </li>
                         ))}
                       </ul>
                       <span className="inline-flex items-center mt-4 text-primary-600 font-medium group-hover:gap-2 transition-all">
                         En savoir plus
-                        <svg className="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
+                        <IconChevronRight className="w-4 h-4 ml-1" />
                       </span>
                     </div>
                   </Link>

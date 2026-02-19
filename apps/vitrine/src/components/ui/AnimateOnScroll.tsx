@@ -21,6 +21,17 @@ export function AnimateOnScroll({
     const el = ref.current;
     if (!el) return;
 
+    // Fallback: ensure visibility after max delay + buffer
+    const fallbackTimer = setTimeout(() => {
+      el.classList.add('is-visible');
+    }, delay + 1500);
+
+    if (!('IntersectionObserver' in window)) {
+      el.classList.add('is-visible');
+      clearTimeout(fallbackTimer);
+      return () => {};
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -28,13 +39,17 @@ export function AnimateOnScroll({
             el.classList.add('is-visible');
           }, delay);
           observer.unobserve(el);
+          clearTimeout(fallbackTimer);
         }
       },
       { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
     );
 
     observer.observe(el);
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      clearTimeout(fallbackTimer);
+    };
   }, [delay]);
 
   return (

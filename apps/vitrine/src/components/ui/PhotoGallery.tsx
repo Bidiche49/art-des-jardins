@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useEffect, useRef } from 'react';
 import { type ImageEntry, images, categories, getSrcSet, getDefaultSrc } from '@/lib/images-manifest';
+import { IconClose, IconChevronLeft, IconChevronRight } from '@/lib/icons';
 
 interface PhotoGalleryProps {
   maxItems?: number;
@@ -147,27 +148,21 @@ export function PhotoGallery({ maxItems, showFilters = true, initialCategory }: 
               className="absolute top-4 right-4 z-10 text-white/80 hover:text-white bg-black/50 rounded-full p-2"
               aria-label="Fermer"
             >
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
+              <IconClose className="w-6 h-6" />
             </button>
             <button
               onClick={() => navigate(-1)}
               className="absolute left-4 top-1/2 -translate-y-1/2 z-10 text-white/80 hover:text-white bg-black/50 rounded-full p-2"
               aria-label="Photo precedente"
             >
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
+              <IconChevronLeft className="w-6 h-6" />
             </button>
             <button
               onClick={() => navigate(1)}
               className="absolute right-4 top-1/2 -translate-y-1/2 z-10 text-white/80 hover:text-white bg-black/50 rounded-full p-2"
               aria-label="Photo suivante"
             >
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
+              <IconChevronRight className="w-6 h-6" />
             </button>
             <picture>
               <source
