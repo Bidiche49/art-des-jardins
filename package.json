@@ -23,7 +23,8 @@
     "db:seed": "pnpm --filter database seed",
     "db:reset": "pnpm --filter database reset",
     "db:studio": "pnpm --filter database studio",
-    "db:init": "pnpm db:generate && pnpm db:migrate && pnpm db:seed"
+    "db:init": "pnpm db:generate && pnpm db:migrate && pnpm db:seed",
+    "preview:vitrine": "pnpm --filter vitrine build && npx serve apps/vitrine/out -p 3001"
   },
   "engines": {
     "node": ">=20.0.0",
@@ -38,5 +39,9 @@
       "esbuild",
       "prisma"
     ]
+  },
+  "devDependencies": {
+    "png-to-ico": "^3.0.1",
+    "sharp": "^0.34.5"
   }
 }
