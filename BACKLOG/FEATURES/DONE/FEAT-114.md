@@ -1,7 +1,7 @@
 # FEAT-114: Upload photo dans le formulaire de devis
 
 **Type:** Feature
-**Statut:** A faire
+**Statut:** Fait
 **Priorite:** Haute
 **Complexite:** M
 **Tags:** vitrine, ui, conversion

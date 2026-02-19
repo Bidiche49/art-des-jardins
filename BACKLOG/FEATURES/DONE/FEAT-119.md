@@ -1,7 +1,7 @@
 # FEAT-119: Mega-menu services dans le header navigation
 
 **Type:** Feature
-**Statut:** A faire
+**Statut:** Fait
 **Priorite:** Basse
 **Complexite:** S
 **Tags:** vitrine, ui, ux, seo

@@ -10,7 +10,7 @@
 |------|-------------|
 | BUG | BUG-011 |
 | FEAT | FEAT-122 |
-| IMP | IMP-049 |
+| IMP | IMP-050 |
 
 ---
 
@@ -20,7 +20,7 @@
 |------|---------|-------|------|-------|
 | Bugs | 9 | 0 | 1 | 10 |
 | Features | 34 | 10 | 76 | 120 |
-| Improvements | 21 | 7 | 21 | 49 |
+| Improvements | 20 | 7 | 22 | 49 |
 | **Total** | **64** | **17** | **98** | **179** |
 
 ---
@@ -619,6 +619,7 @@
 | IMP-046 | Harmoniser affichage numeros telephone | Haute | 2026-02-16 |
 | IMP-047 | Conversion HEIC apercu + thumbnails Canvas | Moyenne | 2026-02-16 |
 | IMP-048 | Responsive mobile footer | Basse | 2026-02-16 |
+| IMP-049 | Alignement visuel identite site / logo | Haute | 2026-02-19 |
 
 ---
 

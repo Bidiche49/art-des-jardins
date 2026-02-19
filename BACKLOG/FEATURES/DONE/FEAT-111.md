@@ -1,7 +1,7 @@
 # FEAT-111: Page "A propos" avec photos equipe et histoire
 
 **Type:** Feature
-**Statut:** A faire
+**Statut:** Fait
 **Priorite:** Haute
 **Complexite:** M
 **Tags:** vitrine, seo, ui, conversion

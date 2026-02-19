@@ -1,7 +1,7 @@
 # FEAT-115: Section avant/apres par service avec slider
 
 **Type:** Feature
-**Statut:** A faire
+**Statut:** Fait
 **Priorite:** Haute
 **Complexite:** M
 **Tags:** vitrine, ui, conversion, seo

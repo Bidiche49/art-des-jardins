@@ -1,7 +1,7 @@
 # FEAT-117: Section credit d'impot / CESU sur pages entretien
 
 **Type:** Feature
-**Statut:** A faire
+**Statut:** Fait
 **Priorite:** Haute
 **Complexite:** S
 **Tags:** vitrine, seo, contenu, conversion

@@ -1,7 +1,7 @@
 # FEAT-116: Bouton WhatsApp Business flottant
 
 **Type:** Feature
-**Statut:** A faire
+**Statut:** Fait
 **Priorite:** Moyenne
 **Complexite:** XS
 **Tags:** vitrine, ui, conversion

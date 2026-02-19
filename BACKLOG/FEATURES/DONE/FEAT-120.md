@@ -1,7 +1,7 @@
 # FEAT-120: Schema AggregateOffer avec fourchettes de prix
 
 **Type:** Feature
-**Statut:** A faire
+**Statut:** Fait
 **Priorite:** Basse
 **Complexite:** S
 **Tags:** seo, vitrine, schema

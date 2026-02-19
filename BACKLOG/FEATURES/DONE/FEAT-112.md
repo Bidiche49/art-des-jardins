@@ -1,7 +1,7 @@
 # FEAT-112: Ajouter 7+ communes peripheriques manquantes
 
 **Type:** Feature
-**Statut:** A faire
+**Statut:** Fait
 **Priorite:** Haute
 **Complexite:** M
 **Tags:** seo, vitrine, contenu

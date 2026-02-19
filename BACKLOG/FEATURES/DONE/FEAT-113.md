@@ -1,7 +1,7 @@
 # FEAT-113: Blog / Conseils SEO pour capturer la longue traine
 
 **Type:** Feature
-**Statut:** A faire
+**Statut:** Fait
 **Priorite:** Haute
 **Complexite:** L
 **Tags:** seo, vitrine, contenu
