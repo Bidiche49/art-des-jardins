@@ -23,6 +23,7 @@ apps/*/test/**/*.map
 .env.local
 .env.*.local
 .env.production
+.env.development
 
 # Logs
 logs/
@@ -33,12 +34,14 @@ pnpm-debug.log*
 # OS
 .DS_Store
 Thumbs.db
+*.DS_Store
 
 # IDE
 .idea/
 .vscode/
 *.swp
 *.swo
+*.code-workspace
 
 # Test
 coverage/
@@ -46,6 +49,7 @@ coverage/
 
 # Docker
 docker/volumes/
+docker/data/
 
 # Temp
 tmp/
@@ -56,9 +60,30 @@ temp/
 *.sqlite
 *.db
 
+# Flutter / Mobile
+apps/mobile/.dart_tool/
+apps/mobile/build/
+apps/mobile/.flutter-plugins
+apps/mobile/.flutter-plugins-dependencies
+apps/mobile/ios/Pods/
+apps/mobile/ios/.symlinks/
+apps/mobile/android/.gradle/
+apps/mobile/android/app/build/
+*.apk
+*.aab
+*.ipa
+
 # Source images (originals, optimized versions in public/)
 Images/
 Logo.png
 
 # Test/exploration assets
 test_landscaping_icons/
+
+# Next.js
+.vercel/
+.wrangler/
+
+# Prisma
+apps/api/prisma/*.db
+apps/api/prisma/migrations/*.sql.bak
