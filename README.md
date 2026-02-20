@@ -1,6 +1,6 @@
 # Art des Jardins
 
-Digitalisation d'une entreprise de paysage (Angers) — Site vitrine SEO, app metier PWA, API REST.
+Digitalisation d'une entreprise de paysage (Angers) — Site vitrine SEO, app mobile Flutter, API REST.
 
 ---
 
@@ -69,7 +69,9 @@ Ferme la fenetre du Terminal, ou appuie sur `Ctrl + C`.
 ```bash
 pnpm install          # Installer les dependances
 pnpm dev:vitrine      # Site vitrine (localhost:3001)
-pnpm dev:pwa          # App metier PWA
 pnpm dev:api          # Backend API
 pnpm build            # Build production
+
+# App mobile (Flutter)
+cd apps/mobile && flutter run
 ```
