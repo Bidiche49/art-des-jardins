@@ -31,7 +31,10 @@ echo ""
     while ! curl -s http://localhost:3001 >/dev/null 2>&1; do
         sleep 1
     done
-    open http://localhost:3001
+    if open -a "Google Chrome" http://localhost:3001 2>/dev/null; then true
+    elif open -a "Safari" http://localhost:3001 2>/dev/null; then true
+    else open http://localhost:3001
+    fi
 ) &
 
 pnpm dev:vitrine
