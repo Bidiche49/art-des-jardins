@@ -267,19 +267,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         // Kill old server THEN clean cache
         log("> Nettoyage...\n")
-        shell("lsof -ti:3001 | xargs kill 2>/dev/null")
+        shell("lsof -ti:3000 | xargs kill 2>/dev/null")
         Thread.sleep(forTimeInterval: 1)
         shell("rm -rf '\(projectPath)/apps/vitrine/.next'")
         log("  OK\n\n")
 
-        // Start Next.js
+        // Start Next.js — exactement comme en manuel : pnpm next dev -H 0.0.0.0
         setStatus("Demarrage du serveur...", color: .systemOrange)
-        log("> Demarrage de Next.js sur le port 3001...\n\n")
+        log("> Demarrage de Next.js...\n\n")
 
         let process = Process()
         process.executableURL = URL(fileURLWithPath: "/bin/bash")
-        // Lancer next directement depuis apps/vitrine (pnpm --filter cause des erreurs webpack)
-        process.arguments = ["-c", "cd '\(projectPath)/apps/vitrine' && exec pnpm next dev -p 3001"]
+        process.arguments = ["-c", "cd '\(projectPath)/apps/vitrine' && exec pnpm next dev -H 0.0.0.0"]
         process.environment = shellEnv
 
         let pipe = Pipe()
@@ -304,9 +303,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         // Poll for readiness
         for i in 0..<180 {
-            if shell("curl -s -o /dev/null -m 2 http://localhost:3001").status == 0 {
+            if shell("curl -s -o /dev/null -m 2 http://localhost:3000").status == 0 {
                 log("\n  Serveur pret !\n")
-                setStatus("En ligne — http://localhost:3001", color: .systemGreen)
+                setStatus("En ligne — http://localhost:3000", color: .systemGreen)
                 setButtons(open: true, restart: true)
                 openBrowser()
                 return
@@ -461,11 +460,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private func killServer() {
         serverProcess?.terminate()
         serverProcess = nil
-        shell("lsof -ti:3001 | xargs kill 2>/dev/null")
+        shell("lsof -ti:3000 | xargs kill 2>/dev/null")
     }
 
     private func openBrowser() {
-        guard let url = URL(string: "http://localhost:3001") else { return }
+        guard let url = URL(string: "http://localhost:3000") else { return }
         DispatchQueue.main.async {
             // Chrome en priorite, puis Safari, puis navigateur par defaut
             let browsers = ["com.google.Chrome", "com.apple.Safari"]
