@@ -7,7 +7,7 @@ on run
 	try
 		do shell script "/usr/bin/xcode-select -p"
 	on error
-		display dialog "Etape 1/4 : Installation des outils de base." & return & return & "Une fenetre va s'ouvrir." & return & "Cliquez 'Installer', attendez la fin, puis relancez cette app." buttons {"OK"} default button 1 with icon note
+		display dialog "Des outils doivent etre installes." & return & return & "Une fenetre va s'ouvrir : cliquez 'Installer'." & return & "Quand c'est fini, relancez cette app." buttons {"Annuler", "OK"} default button "OK" cancel button "Annuler" with icon note
 		do shell script "/usr/bin/xcode-select --install"
 		return
 	end try
@@ -16,12 +16,13 @@ on run
 	try
 		do shell script "/usr/local/bin/node --version"
 	on error
-		tell me to activate
-		display dialog "Etape 2/4 : Installation de Node.js." & return & "Votre mot de passe Mac va etre demande." buttons {"Continuer"} default button 1 with icon note
+		display notification "Installation de Node.js..." with title "Art des Jardins"
 		try
 			do shell script "curl -sL https://nodejs.org/dist/v22.14.0/node-v22.14.0.pkg -o /tmp/node-install.pkg && installer -pkg /tmp/node-install.pkg -target / && rm -f /tmp/node-install.pkg" with administrator privileges
 		on error errMsg
-			display dialog "Erreur installation Node.js :" & return & errMsg buttons {"OK"} default button 1 with icon stop
+			if errMsg contains "User canceled" then return
+			tell me to activate
+			display dialog "Erreur Node.js : " & errMsg buttons {"OK"} with icon stop
 			return
 		end try
 	end try
@@ -30,11 +31,13 @@ on run
 	try
 		do shell script "export PATH=/usr/local/bin:$PATH && pnpm --version"
 	on error
+		display notification "Installation de pnpm..." with title "Art des Jardins"
 		try
 			do shell script "export PATH=/usr/local/bin:$PATH && npm install -g pnpm" with administrator privileges
 		on error errMsg
+			if errMsg contains "User canceled" then return
 			tell me to activate
-			display dialog "Erreur installation pnpm :" & return & errMsg buttons {"OK"} default button 1 with icon stop
+			display dialog "Erreur pnpm : " & errMsg buttons {"OK"} with icon stop
 			return
 		end try
 	end try
@@ -43,13 +46,12 @@ on run
 	try
 		do shell script "test -d " & quoted form of projectDir
 	on error
-		tell me to activate
-		display dialog "Etape 4/4 : Telechargement du site..." & return & "(1-2 minutes)" buttons {"Telecharger"} default button 1 with icon note
+		display notification "Telechargement du site..." with title "Art des Jardins"
 		try
 			do shell script "export PATH=/usr/local/bin:$PATH && git clone --quiet https://github.com/Bidiche49/art-des-jardins.git " & quoted form of projectDir
 		on error errMsg
 			tell me to activate
-			display dialog "Erreur telechargement :" & return & errMsg buttons {"OK"} default button 1 with icon stop
+			display dialog "Erreur telechargement : " & errMsg buttons {"OK"} with icon stop
 			return
 		end try
 	end try
@@ -60,12 +62,10 @@ on run
 	-- Boucle de controle
 	repeat
 		tell me to activate
-		set userChoice to button returned of (display dialog "Le site Art des Jardins est en ligne !" & return & return & "Adresse : http://localhost:3001" & return & return & "Cliquez Arreter quand vous avez fini." buttons {"Relancer", "Arreter"} default button "Arreter" with icon note)
+		set userChoice to button returned of (display dialog "Le site Art des Jardins est en ligne !" & return & return & "http://localhost:3001" buttons {"Relancer", "Arreter"} default button "Arreter" with icon note)
 
 		if userChoice is "Arreter" then
 			my stopServer()
-			tell me to activate
-			display dialog "Site arrete. A bientot !" buttons {"OK"} default button 1 giving up after 3 with icon note
 			exit repeat
 		else
 			my stopServer()
@@ -76,18 +76,16 @@ on run
 end run
 
 on startAndShow(projectDir)
-	tell me to activate
-	display dialog "Demarrage du site..." & return & "(30 secondes environ)" buttons {"OK"} default button 1 giving up after 2 with icon note
+	display notification "Demarrage du site..." with title "Art des Jardins"
 
 	try
 		do shell script "bash " & quoted form of (projectDir & "scripts/start-server.sh")
 	on error errMsg
 		tell me to activate
-		display dialog "Erreur demarrage :" & return & errMsg buttons {"OK"} default button 1 with icon stop
+		display dialog "Erreur : " & errMsg buttons {"OK"} with icon stop
 		return
 	end try
 
-	-- Attendre que le serveur reponde
 	repeat 60 times
 		try
 			do shell script "curl -s -o /dev/null http://localhost:3001"
