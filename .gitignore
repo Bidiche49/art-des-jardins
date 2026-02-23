@@ -73,9 +73,9 @@ apps/mobile/android/app/build/
 *.aab
 *.ipa
 
-# Source images (originals, optimized versions in public/)
-Images/
-Logo.png
+# Source images (originals, not the optimized public/ versions)
+/Images/
+/Logo.png
 
 # Test/exploration assets
 test_landscaping_icons/

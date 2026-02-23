@@ -27,6 +27,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private var shareButton: NSButton!
 
     private var serverProcess: Process?
+    private var serverReady = false
 
     // ~/art-des-jardins (PAS ~/Desktop — evite les popups de permission TCC)
     private let projectPath = NSHomeDirectory() + "/art-des-jardins"
@@ -125,28 +126,32 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         scroll.documentView = logTextView
         v.addSubview(scroll)
 
-        // -- Buttons (standard NSButton — fiable sur toutes versions macOS) --
+        // -- Buttons --
+        // Tous en .rounded (visible sur toutes versions macOS)
+        // Pas de isEnabled=false (rend invisible avec contentTintColor)
+        // Les actions verifient serverReady avant d'agir
+
         openButton = NSButton(frame: NSRect(x: m, y: 16, width: 140, height: 32))
         openButton.title = "Ouvrir le site"
         openButton.bezelStyle = .rounded
-        openButton.bezelColor = Theme.primary
-        openButton.contentTintColor = .white
+        openButton.contentTintColor = Theme.primary
         openButton.target = self
         openButton.action = #selector(openSite)
-        openButton.isEnabled = false
+        openButton.alphaValue = 0.4
         v.addSubview(openButton)
 
         restartButton = NSButton(frame: NSRect(x: m + 152, y: 16, width: 100, height: 32))
         restartButton.title = "Relancer"
         restartButton.bezelStyle = .rounded
+        restartButton.contentTintColor = Theme.primary
         restartButton.target = self
         restartButton.action = #selector(restart)
-        restartButton.isEnabled = false
+        restartButton.alphaValue = 0.4
         v.addSubview(restartButton)
 
         shareButton = NSButton(frame: NSRect(x: m + 264, y: 16, width: 80, height: 32))
         shareButton.title = "Partager"
-        shareButton.bezelStyle = .recessed
+        shareButton.bezelStyle = .rounded
         shareButton.font = .systemFont(ofSize: 11)
         shareButton.contentTintColor = .secondaryLabelColor
         shareButton.target = self
@@ -305,6 +310,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         for i in 0..<180 {
             if shell("curl -s -o /dev/null -m 2 http://localhost:3000").status == 0 {
                 log("\n  Serveur pret !\n")
+                serverReady = true
                 setStatus("En ligne — http://localhost:3000", color: .systemGreen)
                 setButtons(open: true, restart: true)
                 openBrowser()
@@ -395,9 +401,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     // MARK: Actions
 
-    @objc private func openSite() { openBrowser() }
+    @objc private func openSite() {
+        guard serverReady else { return }
+        openBrowser()
+    }
 
     @objc private func restart() {
+        serverReady = false
         setButtons(open: false, restart: false)
         DispatchQueue.global(qos: .userInitiated).async {
             self.log("\n=== Relancement ===\n\n")
@@ -513,7 +523,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private func setButtons(open: Bool, restart: Bool) {
         DispatchQueue.main.async {
             self.openButton.isEnabled = open
+            self.openButton.alphaValue = open ? 1.0 : 0.4
             self.restartButton.isEnabled = restart
+            self.restartButton.alphaValue = restart ? 1.0 : 0.4
         }
     }
 }
