@@ -128,33 +128,36 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         scroll.documentView = logTextView
         v.addSubview(scroll)
 
-        // -- Buttons (style vert olive du site vitrine) --
-        openButton = NSButton(title: "Ouvrir le site", target: self, action: #selector(openSite))
-        openButton.frame = NSRect(x: m, y: 16, width: 140, height: 32)
+        // -- Buttons (style vert olive — attributedTitle pour forcer la couleur) --
+        openButton = NSButton(frame: NSRect(x: m, y: 16, width: 140, height: 32))
         openButton.bezelStyle = .rounded
         openButton.bezelColor = Theme.primary
-        openButton.contentTintColor = .white
+        openButton.attributedTitle = styledTitle("Ouvrir le site", color: .white)
+        openButton.target = self
+        openButton.action = #selector(openSite)
         openButton.isEnabled = false
         v.addSubview(openButton)
 
-        restartButton = NSButton(title: "Relancer", target: self, action: #selector(restart))
-        restartButton.frame = NSRect(x: m + 152, y: 16, width: 100, height: 32)
+        restartButton = NSButton(frame: NSRect(x: m + 152, y: 16, width: 100, height: 32))
         restartButton.bezelStyle = .rounded
-        restartButton.contentTintColor = Theme.primary
+        restartButton.attributedTitle = styledTitle("Relancer", color: Theme.primary)
+        restartButton.target = self
+        restartButton.action = #selector(restart)
         restartButton.isEnabled = false
         v.addSubview(restartButton)
 
-        shareButton = NSButton(title: "Partager", target: self, action: #selector(shareLogs))
-        shareButton.frame = NSRect(x: m + 264, y: 16, width: 80, height: 32)
+        shareButton = NSButton(frame: NSRect(x: m + 264, y: 16, width: 80, height: 32))
         shareButton.bezelStyle = .rounded
-        shareButton.font = .systemFont(ofSize: 11)
-        shareButton.contentTintColor = Theme.primaryDark
+        shareButton.attributedTitle = styledTitle("Partager", color: Theme.primaryDark, size: 11)
+        shareButton.target = self
+        shareButton.action = #selector(shareLogs)
         v.addSubview(shareButton)
 
-        stopButton = NSButton(title: "Arreter", target: self, action: #selector(stop))
-        stopButton.frame = NSRect(x: W - m - 90, y: 16, width: 90, height: 32)
+        stopButton = NSButton(frame: NSRect(x: W - m - 90, y: 16, width: 90, height: 32))
         stopButton.bezelStyle = .rounded
-        stopButton.contentTintColor = Theme.primaryDark
+        stopButton.attributedTitle = styledTitle("Arreter", color: Theme.primaryDark)
+        stopButton.target = self
+        stopButton.action = #selector(stop)
         v.addSubview(stopButton)
 
         window.makeKeyAndOrderFront(nil)
@@ -484,6 +487,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let path = projectPath + "/apps/vitrine/public/images/logo-leaf.png"
         guard let img = NSImage(contentsOfFile: path) else { return }
         DispatchQueue.main.async { self.logoView.image = img }
+    }
+
+    private func styledTitle(_ text: String, color: NSColor, size: CGFloat = 13) -> NSAttributedString {
+        NSAttributedString(string: text, attributes: [
+            .foregroundColor: color,
+            .font: NSFont.systemFont(ofSize: size, weight: .medium)
+        ])
     }
 
     private func cleanAnsi(_ text: String) -> String {
