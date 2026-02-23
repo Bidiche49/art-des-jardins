@@ -62,6 +62,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.title = "Art des Jardins"
         window.center()
         window.isReleasedWhenClosed = false
+        // Forcer le mode clair (le site est clair, les boutons doivent etre visibles)
+        window.appearance = NSAppearance(named: .aqua)
         window.backgroundColor = .white
 
         let v = window.contentView!
