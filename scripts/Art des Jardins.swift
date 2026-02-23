@@ -432,39 +432,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSPasteboard.general.clearContents()
         NSPasteboard.general.setString(logs, forType: .string)
 
-        // Tronquer pour l'URL (les logs complets sont dans le presse-papier)
-        let maxLen = 3000
-        let logsForUrl = logs.count > maxLen
-            ? "...(tronque, logs complets dans le presse-papier)\n" + String(logs.suffix(maxLen))
-            : logs
-        let encoded = logsForUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-
-        // 1. Mail (prioritaire pour tester)
-        if let mailService = NSSharingService(named: .composeEmail) {
-            mailService.recipients = ["nicolazictardy@gmail.com"]
-            mailService.subject = "Art des Jardins — Logs"
-            mailService.perform(withItems: [logs])
-            return
-        }
-
-        // 2. Messages
-        if NSWorkspace.shared.urlForApplication(withBundleIdentifier: "com.apple.MobileSMS") != nil,
-           let url = URL(string: "sms:+33783000713&body=" + encoded) {
-            NSWorkspace.shared.open(url)
-            return
-        }
-
-        // 3. WhatsApp
-        if NSWorkspace.shared.urlForApplication(withBundleIdentifier: "net.whatsapp.WhatsApp") != nil,
-           let url = URL(string: "whatsapp://send?phone=33783000713&text=" + encoded) {
-            NSWorkspace.shared.open(url)
-            return
-        }
-
-        // 4. Fallback
+        // Copie dans le presse-papier + alerte avec coordonnees
         let alert = NSAlert()
         alert.messageText = "Logs copies !"
-        alert.informativeText = "Envoyez-les a :\n• WhatsApp : +33 7 83 00 07 13\n• Mail : nicolazictardy@gmail.com"
+        alert.informativeText = "Envoie-moi ca par mail ou WhatsApp si t'as un bug :\n\n• WhatsApp : +33 7 83 00 07 13\n• Mail : nicolazictardy@gmail.com\n\n(Les logs sont dans le presse-papier, il suffit de coller)"
         alert.alertStyle = .informational
         alert.addButton(withTitle: "OK")
         alert.runModal()
