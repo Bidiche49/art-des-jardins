@@ -3,9 +3,22 @@
 <plist version="1.0">
 <dict>
 	<key>files</key>
-	<dict/>
+	<dict>
+		<key>Resources/CormorantGaramond-Bold.ttf</key>
+		<data>
+		TThsSO7rtxSGGE2PHAFJjZdPtD0=
+		</data>
+	</dict>
 	<key>files2</key>
-	<dict/>
+	<dict>
+		<key>Resources/CormorantGaramond-Bold.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			RA2vA2o1q9bSvfqSsUqw8VDM5pD+bXZ+5cqxWhoQqH8=
+			</data>
+		</dict>
+	</dict>
 	<key>rules</key>
 	<dict>
 		<key>^Resources/</key>

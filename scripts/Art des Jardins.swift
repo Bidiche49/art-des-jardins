@@ -1,4 +1,5 @@
 import Cocoa
+import CoreText
 
 // MARK: - Theme (palette olive Art des Jardins)
 
@@ -8,8 +9,19 @@ private enum Theme {
     static let logBg       = NSColor(srgbRed: 0.976, green: 0.980, blue: 0.969, alpha: 1) // #f9faf7
     static let text        = NSColor(srgbRed: 0.20, green: 0.20, blue: 0.20, alpha: 1)
 
-    static let serifFont = NSFont(name: "Georgia-Bold", size: 22) ?? NSFont.boldSystemFont(ofSize: 22)
     static let monoFont  = NSFont.monospacedSystemFont(ofSize: 11, weight: .regular)
+
+    // Cormorant Garamond (meme police que le header du site vitrine)
+    static let serifFont: NSFont = {
+        // Charger depuis le bundle Resources
+        if let bundlePath = Bundle.main.url(forResource: "CormorantGaramond-Bold", withExtension: "ttf") {
+            CTFontManagerRegisterFontsForURL(bundlePath as CFURL, .process, nil)
+        }
+        return NSFont(name: "Cormorant Garamond Bold", size: 24)
+            ?? NSFont(name: "CormorantGaramond-Bold", size: 24)
+            ?? NSFont(name: "Georgia-Bold", size: 22)
+            ?? NSFont.boldSystemFont(ofSize: 22)
+    }()
 }
 
 // MARK: - App Delegate
@@ -427,16 +439,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             : logs
         let encoded = logsForUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
 
-        // 1. WhatsApp — ouvrir directement l'app avec le message
-        if NSWorkspace.shared.urlForApplication(withBundleIdentifier: "net.whatsapp.WhatsApp") != nil,
-           let url = URL(string: "whatsapp://send?phone=33783000713&text=" + encoded) {
+        // 1. Messages (prioritaire pour tester)
+        if NSWorkspace.shared.urlForApplication(withBundleIdentifier: "com.apple.MobileSMS") != nil,
+           let url = URL(string: "sms:+33783000713&body=" + encoded) {
             NSWorkspace.shared.open(url)
             return
         }
 
-        // 2. Messages
-        if NSWorkspace.shared.urlForApplication(withBundleIdentifier: "com.apple.MobileSMS") != nil,
-           let url = URL(string: "sms:+33783000713&body=" + encoded) {
+        // 2. WhatsApp
+        if NSWorkspace.shared.urlForApplication(withBundleIdentifier: "net.whatsapp.WhatsApp") != nil,
+           let url = URL(string: "whatsapp://send?phone=33783000713&text=" + encoded) {
             NSWorkspace.shared.open(url)
             return
         }
