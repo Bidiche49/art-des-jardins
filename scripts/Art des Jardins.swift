@@ -427,9 +427,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             : logs
         let encoded = logsForUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
 
-        // 1. WhatsApp — pre-remplir le message
+        // 1. WhatsApp — ouvrir directement l'app avec le message
         if NSWorkspace.shared.urlForApplication(withBundleIdentifier: "net.whatsapp.WhatsApp") != nil,
-           let url = URL(string: "https://wa.me/33783000713?text=" + encoded) {
+           let url = URL(string: "whatsapp://send?phone=33783000713&text=" + encoded) {
             NSWorkspace.shared.open(url)
             return
         }
