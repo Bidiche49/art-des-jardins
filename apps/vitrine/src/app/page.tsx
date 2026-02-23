@@ -41,7 +41,7 @@ export default function HomePage() {
             </div>
             <div className="flex items-center gap-2">
               <IconDecennale className="w-5 h-5 text-primary-600 flex-shrink-0" />
-              <span className="font-medium">Garantie décennale</span>
+              <span className="font-medium">Assurance décennale</span>
             </div>
             <div className="flex items-center gap-2">
               <IconExperience className="w-5 h-5 text-primary-600 flex-shrink-0" />

@@ -10,7 +10,7 @@
 |------|-------------|
 | BUG | BUG-011 |
 | FEAT | FEAT-122 |
-| IMP | IMP-050 |
+| IMP | IMP-051 |
 
 ---
 
@@ -20,8 +20,8 @@
 |------|---------|-------|------|-------|
 | Bugs | 9 | 0 | 1 | 10 |
 | Features | 34 | 10 | 76 | 120 |
-| Improvements | 20 | 7 | 22 | 49 |
-| **Total** | **64** | **17** | **98** | **179** |
+| Improvements | 21 | 7 | 22 | 50 |
+| **Total** | **65** | **17** | **98** | **180** |
 
 ---
 
@@ -581,6 +581,7 @@
 | IMP-025 | BreadcrumbList Schema.org vitrine | Basse | Audit | ✅ |
 | IMP-026 | Service Worker skipWaiting PWA | Moyenne | Audit | ✅ |
 | IMP-027 | Gestion erreurs PWA (toasts) | Moyenne | Audit | ✅ |
+| IMP-050 | Ajouter assurance décennale (accueil + FAQ) | Haute | Retour client | ✅ |
 
 ### Ready (7) - AUTOMATISABLES
 

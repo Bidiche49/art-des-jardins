@@ -27,12 +27,12 @@ const faqs: FAQItem[] = [
   {
     question: 'Êtes-vous assurés ?',
     answer:
-      'Oui, Art des Jardins est couvert par une assurance responsabilité civile professionnelle et par une garantie décennale. Tous nos intervenants sont formés et équipés pour travailler en sécurité, y compris pour les travaux en hauteur (élagage, abattage).',
+      'Oui, Art des Jardins est couvert par une assurance responsabilité civile professionnelle (RC Pro) et par une assurance décennale. Tous nos intervenants sont formés et équipés pour travailler en sécurité, y compris pour les travaux en hauteur (élagage, abattage).',
   },
   {
-    question: 'Qu\'est-ce que la garantie décennale ?',
+    question: 'Qu\'est-ce que l\'assurance décennale ?',
     answer:
-      'La garantie décennale couvre tous les ouvrages que nous réalisons pendant 10 ans après la fin des travaux. Cela signifie que si un défaut affecte la solidité ou rend l\'ouvrage impropre à sa destination, nous intervenons à nos frais pour le réparer. C\'est une protection importante pour tous vos projets d\'aménagement paysager : murets, terrasses, clôtures, allées…',
+      'L\'assurance décennale protège tous les aménagements que nous réalisons pendant 10 ans après la fin des travaux. Concrètement, si un ouvrage présente un défaut de solidité, un expert indépendant intervient pour vérifier que les travaux ont été réalisés dans les règles de l\'art, puis les réparations sont prises en charge. Cela couvre vos murets, terrasses, clôtures, allées… C\'est une vraie garantie de tranquillité pour vos projets paysagers.',
   },
   {
     question: 'Proposez-vous des contrats d\'entretien annuel ?',
