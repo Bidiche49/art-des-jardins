@@ -77,6 +77,9 @@ apps/mobile/android/app/build/
 /Images/
 /Logo.png
 
+# Build artifacts
+*.zip
+
 # Test/exploration assets
 test_landscaping_icons/
 
