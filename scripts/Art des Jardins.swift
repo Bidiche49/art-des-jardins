@@ -126,43 +126,28 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         scroll.documentView = logTextView
         v.addSubview(scroll)
 
-        // -- Buttons --
-        // Tous en .rounded (visible sur toutes versions macOS)
-        // Pas de isEnabled=false (rend invisible avec contentTintColor)
-        // Les actions verifient serverReady avant d'agir
-
-        openButton = NSButton(frame: NSRect(x: m, y: 16, width: 140, height: 32))
-        openButton.title = "Ouvrir le site"
+        // -- Buttons (100% standard macOS, zero custom color) --
+        openButton = NSButton(title: "Ouvrir le site", target: self, action: #selector(openSite))
+        openButton.frame = NSRect(x: m, y: 16, width: 140, height: 32)
         openButton.bezelStyle = .rounded
-        openButton.contentTintColor = Theme.primary
-        openButton.target = self
-        openButton.action = #selector(openSite)
-        openButton.alphaValue = 0.4
+        openButton.isEnabled = false
         v.addSubview(openButton)
 
-        restartButton = NSButton(frame: NSRect(x: m + 152, y: 16, width: 100, height: 32))
-        restartButton.title = "Relancer"
+        restartButton = NSButton(title: "Relancer", target: self, action: #selector(restart))
+        restartButton.frame = NSRect(x: m + 152, y: 16, width: 100, height: 32)
         restartButton.bezelStyle = .rounded
-        restartButton.contentTintColor = Theme.primary
-        restartButton.target = self
-        restartButton.action = #selector(restart)
-        restartButton.alphaValue = 0.4
+        restartButton.isEnabled = false
         v.addSubview(restartButton)
 
-        shareButton = NSButton(frame: NSRect(x: m + 264, y: 16, width: 80, height: 32))
-        shareButton.title = "Partager"
+        shareButton = NSButton(title: "Partager", target: self, action: #selector(shareLogs))
+        shareButton.frame = NSRect(x: m + 264, y: 16, width: 80, height: 32)
         shareButton.bezelStyle = .rounded
         shareButton.font = .systemFont(ofSize: 11)
-        shareButton.contentTintColor = .secondaryLabelColor
-        shareButton.target = self
-        shareButton.action = #selector(shareLogs)
         v.addSubview(shareButton)
 
-        stopButton = NSButton(frame: NSRect(x: W - m - 90, y: 16, width: 90, height: 32))
-        stopButton.title = "Arreter"
+        stopButton = NSButton(title: "Arreter", target: self, action: #selector(stop))
+        stopButton.frame = NSRect(x: W - m - 90, y: 16, width: 90, height: 32)
         stopButton.bezelStyle = .rounded
-        stopButton.target = self
-        stopButton.action = #selector(stop)
         v.addSubview(stopButton)
 
         window.makeKeyAndOrderFront(nil)
@@ -523,9 +508,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private func setButtons(open: Bool, restart: Bool) {
         DispatchQueue.main.async {
             self.openButton.isEnabled = open
-            self.openButton.alphaValue = open ? 1.0 : 0.4
             self.restartButton.isEnabled = restart
-            self.restartButton.alphaValue = restart ? 1.0 : 0.4
         }
     }
 }
