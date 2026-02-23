@@ -104,7 +104,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusDot.layer?.backgroundColor = NSColor.systemOrange.cgColor
         v.addSubview(statusDot)
 
-        statusLabel = NSTextField(labelWithString: "Demarrage...")
+        statusLabel = NSTextField(labelWithString: "Démarrage...")
         statusLabel.frame = NSRect(x: m + 18, y: H - 95, width: W - 2*m - 18, height: 20)
         statusLabel.font = .systemFont(ofSize: 13, weight: .medium)
         statusLabel.textColor = .secondaryLabelColor
@@ -167,7 +167,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         stopButton = NSButton(frame: NSRect(x: W - m - 90, y: 16, width: 90, height: 32))
         stopButton.bezelStyle = .rounded
-        stopButton.attributedTitle = styledTitle("Arreter", color: Theme.primaryDark)
+        stopButton.attributedTitle = styledTitle("Arrêter", color: Theme.primaryDark)
         stopButton.target = self
         stopButton.action = #selector(stop)
         v.addSubview(stopButton)
@@ -185,12 +185,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         migrateFromDesktop()
 
         // 1. Git (Xcode CLI Tools)
-        setStatus("Verification de Git...", color: .systemOrange)
-        log("> Verification de Git...\n")
+        setStatus("Vérification de Git...", color: .systemOrange)
+        log("> Vérification de Git...\n")
         if shell("which git").status != 0 {
-            log("  Xcode Command Line Tools requis.\n")
-            log("  Une fenetre va apparaitre — cliquez Installer.\n")
-            log("  Relancez l'app une fois termine.\n")
+            log("  Xcode Command Line Tools sont requis.\n")
+            log("  Une fenêtre va apparaître — cliquez Installer.\n")
+            log("  Relancez l'app une fois terminé.\n")
             shell("/usr/bin/xcode-select --install")
             setStatus("Installez Xcode CLT puis relancez", color: .systemOrange)
             return
@@ -198,8 +198,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         log("  OK\n\n")
 
         // 2. Node.js
-        setStatus("Verification de Node.js...", color: .systemOrange)
-        log("> Verification de Node.js...\n")
+        setStatus("Vérification de Node.js...", color: .systemOrange)
+        log("> Vérification de Node.js...\n")
         if shell("which node").status != 0 {
             log("  Installation de Node.js (mot de passe admin requis)...\n")
             if !runWithAdmin("curl -sL https://nodejs.org/dist/v22.14.0/node-v22.14.0.pkg -o /tmp/node-install.pkg && installer -pkg /tmp/node-install.pkg -target / && rm -f /tmp/node-install.pkg") {
@@ -213,8 +213,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         log("  Node.js \(nodeVer)\n\n")
 
         // 3. pnpm
-        setStatus("Verification de pnpm...", color: .systemOrange)
-        log("> Verification de pnpm...\n")
+        setStatus("Vérification de pnpm...", color: .systemOrange)
+        log("> Vérification de pnpm...\n")
         if shell("which pnpm").status != 0 {
             log("  Installation de pnpm...\n")
             if !runWithAdmin("export PATH=/usr/local/bin:/opt/homebrew/bin:$PATH && npm install -g pnpm") {
@@ -229,11 +229,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         // 4. Clone
         if !FileManager.default.fileExists(atPath: projectPath) {
-            setStatus("Telechargement du site...", color: .systemOrange)
+            setStatus("Téléchargement du site...", color: .systemOrange)
             log("> Clonage du projet...\n")
             let r = shellStream("git clone https://github.com/Bidiche49/art-des-jardins.git '\(projectPath)'")
             if r != 0 {
-                setStatus("Erreur telechargement", color: .systemRed)
+                setStatus("Erreur téléchargement", color: .systemRed)
                 log("  ECHEC\n")
                 setButtons(open: false, restart: true)
                 return
@@ -252,7 +252,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         log("> Migration depuis ~/Desktop/art-des-jardins...\n")
         do {
             try fm.moveItem(atPath: oldPath, toPath: projectPath)
-            log("  Deplace vers ~/art-des-jardins\n\n")
+            log("  Déplacé vers ~/art-des-jardins\n\n")
         } catch {
             log("  Migration impossible, un nouveau clone sera fait.\n\n")
         }
@@ -260,18 +260,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     private func startServer() {
         // git pull
-        setStatus("Mise a jour...", color: .systemOrange)
-        log("> Mise a jour (git pull)...\n")
+        setStatus("Mise à jour...", color: .systemOrange)
+        log("> Mise à jour (git pull)...\n")
         shell("cd '\(projectPath)' && git pull --quiet")
         log("  OK\n\n")
 
         // pnpm install (streaming pour voir la progression)
-        setStatus("Installation des dependances...", color: .systemOrange)
-        log("> Installation des dependances...\n")
+        setStatus("Installation des dépendances...", color: .systemOrange)
+        log("> Installation des dépendances...\n")
         let installSt = shellStream("cd '\(projectPath)' && pnpm install")
         if installSt != 0 {
-            setStatus("Erreur installation dependances", color: .systemRed)
-            log("\n  ECHEC — pnpm install a echoue\n")
+            setStatus("Erreur installation dépendances", color: .systemRed)
+            log("\n  ECHEC — pnpm install a échoué\n")
             setButtons(open: false, restart: true)
             return
         }
@@ -285,8 +285,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         log("  OK\n\n")
 
         // Start Next.js — exactement comme en manuel : pnpm next dev -H 0.0.0.0
-        setStatus("Demarrage du serveur...", color: .systemOrange)
-        log("> Demarrage de Next.js...\n\n")
+        setStatus("Démarrage du serveur...", color: .systemOrange)
+        log("> Démarrage de Next.js...\n\n")
 
         let process = Process()
         process.executableURL = URL(fileURLWithPath: "/bin/bash")
@@ -308,7 +308,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             serverProcess = process
         } catch {
             log("  ERREUR: \(error.localizedDescription)\n")
-            setStatus("Erreur demarrage serveur", color: .systemRed)
+            setStatus("Erreur démarrage serveur", color: .systemRed)
             setButtons(open: false, restart: true)
             return
         }
@@ -316,7 +316,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Poll for readiness
         for i in 0..<180 {
             if shell("curl -s -o /dev/null -m 2 http://localhost:3000").status == 0 {
-                log("\n  Serveur pret !\n")
+                log("\n  Serveur prêt !\n")
                 serverReady = true
                 setStatus("En ligne — http://localhost:3000", color: .systemGreen)
                 setButtons(open: true, restart: true)
@@ -324,13 +324,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 return
             }
             if !process.isRunning {
-                log("\n  Le serveur s'est arrete de facon inattendue.\n")
-                setStatus("Le serveur s'est arrete", color: .systemRed)
+                log("\n  Le serveur s'est arrêté de façon inattendue.\n")
+                setStatus("Le serveur s'est arrêté", color: .systemRed)
                 setButtons(open: false, restart: true)
                 return
             }
             if i == 30 {
-                log("  (premiere compilation, ca peut prendre 1-2 min...)\n")
+                log("  (première compilation, ça peut prendre 1-2 min...)\n")
             }
             Thread.sleep(forTimeInterval: 1)
         }
@@ -417,7 +417,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         serverReady = false
         setButtons(open: false, restart: false)
         DispatchQueue.global(qos: .userInitiated).async {
-            self.log("\n=== Relancement ===\n\n")
+            self.log("\n=== Relancé ===\n\n")
             self.killServer()
             Thread.sleep(forTimeInterval: 1)
             self.startServer()
@@ -432,10 +432,39 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSPasteboard.general.clearContents()
         NSPasteboard.general.setString(logs, forType: .string)
 
-        // Copie dans le presse-papier + alerte avec coordonnees
+        // Tronquer pour l'URL (les logs complets sont dans le presse-papier)
+        let maxLen = 3000
+        let logsForUrl = logs.count > maxLen
+            ? "...(tronqué, logs complets dans le presse-papier)\n" + String(logs.suffix(maxLen))
+            : logs
+        let encoded = logsForUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+
+        // 1. WhatsApp
+        if NSWorkspace.shared.urlForApplication(withBundleIdentifier: "net.whatsapp.WhatsApp") != nil,
+           let url = URL(string: "whatsapp://send?phone=33783000713&text=" + encoded) {
+            NSWorkspace.shared.open(url)
+            return
+        }
+
+        // 2. Messages
+        if NSWorkspace.shared.urlForApplication(withBundleIdentifier: "com.apple.MobileSMS") != nil,
+           let url = URL(string: "sms:+33783000713&body=" + encoded) {
+            NSWorkspace.shared.open(url)
+            return
+        }
+
+        // 3. Mail
+        if let mailService = NSSharingService(named: .composeEmail) {
+            mailService.recipients = ["nicolazictardy@gmail.com"]
+            mailService.subject = "Art des Jardins — Logs"
+            mailService.perform(withItems: [logs])
+            return
+        }
+
+        // 4. Presse-papier + alerte
         let alert = NSAlert()
-        alert.messageText = "Logs copies !"
-        alert.informativeText = "Envoie-moi ca par mail ou WhatsApp si t'as un bug :\n\n• WhatsApp : +33 7 83 00 07 13\n• Mail : nicolazictardy@gmail.com\n\n(Les logs sont dans le presse-papier, il suffit de coller)"
+        alert.messageText = "Logs copiés !"
+        alert.informativeText = "Envoie-moi ça par mail ou WhatsApp si t'as un bug :\n\n• WhatsApp : +33 7 83 00 07 13\n• Mail : nicolazictardy@gmail.com\n\n(Les logs sont dans le presse-papier, il suffit de coller)"
         alert.alertStyle = .informational
         alert.addButton(withTitle: "OK")
         alert.runModal()
@@ -443,8 +472,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @objc private func stop() {
         killServer()
-        log("\n=== Arrete ===\n")
-        setStatus("Arrete", color: .systemGray)
+        log("\n=== Arrêté ===\n")
+        setStatus("Arrêté", color: .systemGray)
         NSApp.terminate(nil)
     }
 
