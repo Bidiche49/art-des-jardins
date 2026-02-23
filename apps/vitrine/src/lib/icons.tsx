@@ -125,6 +125,15 @@ export function IconRcPro({ className }: IconProps) {
   );
 }
 
+export function IconDecennale({ className }: IconProps) {
+  return (
+    <svg className={className} {...svgBase}>
+      <path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z" />
+      <text x="12" y="14" textAnchor="middle" fontSize="8" fontWeight="bold" fill="currentColor" stroke="none">10</text>
+    </svg>
+  );
+}
+
 export function IconExperience({ className }: IconProps) {
   return (
     <svg className={className} {...svgBase}>

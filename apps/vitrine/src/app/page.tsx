@@ -8,7 +8,7 @@ import { PhotoGallery } from '@/components/ui/PhotoGallery';
 import { AnimateOnScroll } from '@/components/ui/AnimateOnScroll';
 import { BeforeAfterSection } from '@/components/BeforeAfterSection';
 import { serviceCardImages } from '@/lib/images-manifest';
-import { IconRcPro, IconExperience, IconDevis48h, IconZone30km } from '@/lib/icons';
+import { IconRcPro, IconDecennale, IconExperience, IconDevis48h, IconZone30km } from '@/lib/icons';
 
 export default function HomePage() {
   return (
@@ -38,6 +38,10 @@ export default function HomePage() {
             <div className="flex items-center gap-2">
               <IconRcPro className="w-5 h-5 text-primary-600 flex-shrink-0" />
               <span className="font-medium">Assurance RC Pro</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <IconDecennale className="w-5 h-5 text-primary-600 flex-shrink-0" />
+              <span className="font-medium">Garantie décennale</span>
             </div>
             <div className="flex items-center gap-2">
               <IconExperience className="w-5 h-5 text-primary-600 flex-shrink-0" />
