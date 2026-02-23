@@ -7,14 +7,18 @@ DOSSIER="$HOME/Desktop/art-des-jardins"
 
 cd "$DOSSIER" || exit 1
 
-# Mise a jour silencieuse
+# Mise a jour
 git pull --quiet 2>/dev/null
 pnpm install --silent 2>/dev/null
+
+# Nettoyer le cache Next.js (evite les erreurs webpack)
+rm -rf apps/vitrine/.next
 
 # Tuer un ancien serveur sur le port 3001
 lsof -ti:3001 | xargs kill 2>/dev/null
 sleep 1
 
 # Lancer le serveur en arriere-plan
-nohup pnpm dev:vitrine > /tmp/art-des-jardins.log 2>&1 &
+cd apps/vitrine
+nohup pnpm dev > /tmp/art-des-jardins.log 2>&1 &
 echo $! > /tmp/art-des-jardins.pid
