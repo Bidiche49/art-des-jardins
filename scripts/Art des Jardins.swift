@@ -128,16 +128,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         scroll.documentView = logTextView
         v.addSubview(scroll)
 
-        // -- Buttons (100% standard macOS, zero custom color) --
+        // -- Buttons (style vert olive du site vitrine) --
         openButton = NSButton(title: "Ouvrir le site", target: self, action: #selector(openSite))
         openButton.frame = NSRect(x: m, y: 16, width: 140, height: 32)
         openButton.bezelStyle = .rounded
+        openButton.bezelColor = Theme.primary
+        openButton.contentTintColor = .white
         openButton.isEnabled = false
         v.addSubview(openButton)
 
         restartButton = NSButton(title: "Relancer", target: self, action: #selector(restart))
         restartButton.frame = NSRect(x: m + 152, y: 16, width: 100, height: 32)
         restartButton.bezelStyle = .rounded
+        restartButton.contentTintColor = Theme.primary
         restartButton.isEnabled = false
         v.addSubview(restartButton)
 
@@ -145,11 +148,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         shareButton.frame = NSRect(x: m + 264, y: 16, width: 80, height: 32)
         shareButton.bezelStyle = .rounded
         shareButton.font = .systemFont(ofSize: 11)
+        shareButton.contentTintColor = Theme.primaryDark
         v.addSubview(shareButton)
 
         stopButton = NSButton(title: "Arreter", target: self, action: #selector(stop))
         stopButton.frame = NSRect(x: W - m - 90, y: 16, width: 90, height: 32)
         stopButton.bezelStyle = .rounded
+        stopButton.contentTintColor = Theme.primaryDark
         v.addSubview(stopButton)
 
         window.makeKeyAndOrderFront(nil)
