@@ -158,9 +158,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         restartButton.isEnabled = false
         v.addSubview(restartButton)
 
-        shareButton = NSButton(frame: NSRect(x: m + 264, y: 16, width: 80, height: 32))
+        shareButton = NSButton(frame: NSRect(x: m + 264, y: 16, width: 150, height: 32))
         shareButton.bezelStyle = .rounded
-        shareButton.attributedTitle = styledTitle("Partager", color: Theme.primaryDark, size: 11)
+        shareButton.attributedTitle = styledTitle("Si t'as un bug, clique là", color: Theme.primaryDark, size: 11)
         shareButton.target = self
         shareButton.action = #selector(shareLogs)
         v.addSubview(shareButton)
