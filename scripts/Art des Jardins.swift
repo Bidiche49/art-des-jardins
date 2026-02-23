@@ -416,27 +416,32 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let logs = logTextView.string
         guard !logs.isEmpty else { return }
 
-        // Always copy to clipboard
+        // Toujours copier dans le presse-papier
         NSPasteboard.general.clearContents()
         NSPasteboard.general.setString(logs, forType: .string)
 
-        // 1. Try WhatsApp
+        // Tronquer pour l'URL (les logs complets sont dans le presse-papier)
+        let maxLen = 3000
+        let logsForUrl = logs.count > maxLen
+            ? "...(tronque, logs complets dans le presse-papier)\n" + String(logs.suffix(maxLen))
+            : logs
+        let encoded = logsForUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+
+        // 1. WhatsApp — pre-remplir le message
         if NSWorkspace.shared.urlForApplication(withBundleIdentifier: "net.whatsapp.WhatsApp") != nil,
-           let url = URL(string: "whatsapp://send?phone=33783000713") {
+           let url = URL(string: "https://wa.me/33783000713?text=" + encoded) {
             NSWorkspace.shared.open(url)
-            appendLog("\n> Logs copies — collez-les dans WhatsApp\n")
             return
         }
 
-        // 2. Try Messages
+        // 2. Messages
         if NSWorkspace.shared.urlForApplication(withBundleIdentifier: "com.apple.MobileSMS") != nil,
-           let url = URL(string: "sms:+33783000713") {
+           let url = URL(string: "sms:+33783000713&body=" + encoded) {
             NSWorkspace.shared.open(url)
-            appendLog("\n> Logs copies — collez-les dans Messages\n")
             return
         }
 
-        // 3. Try Mail
+        // 3. Mail
         if let mailService = NSSharingService(named: .composeEmail) {
             mailService.recipients = ["nicolazictardy@gmail.com"]
             mailService.subject = "Art des Jardins — Logs"
@@ -444,7 +449,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             return
         }
 
-        // 4. Fallback: already in clipboard
+        // 4. Fallback
         let alert = NSAlert()
         alert.messageText = "Logs copies !"
         alert.informativeText = "Envoyez-les a :\n• WhatsApp : +33 7 83 00 07 13\n• Mail : nicolazictardy@gmail.com"
