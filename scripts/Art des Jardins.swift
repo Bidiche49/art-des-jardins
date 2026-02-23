@@ -439,25 +439,25 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             : logs
         let encoded = logsForUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
 
-        // 1. Messages (prioritaire pour tester)
+        // 1. Mail (prioritaire pour tester)
+        if let mailService = NSSharingService(named: .composeEmail) {
+            mailService.recipients = ["nicolazictardy@gmail.com"]
+            mailService.subject = "Art des Jardins — Logs"
+            mailService.perform(withItems: [logs])
+            return
+        }
+
+        // 2. Messages
         if NSWorkspace.shared.urlForApplication(withBundleIdentifier: "com.apple.MobileSMS") != nil,
            let url = URL(string: "sms:+33783000713&body=" + encoded) {
             NSWorkspace.shared.open(url)
             return
         }
 
-        // 2. WhatsApp
+        // 3. WhatsApp
         if NSWorkspace.shared.urlForApplication(withBundleIdentifier: "net.whatsapp.WhatsApp") != nil,
            let url = URL(string: "whatsapp://send?phone=33783000713&text=" + encoded) {
             NSWorkspace.shared.open(url)
-            return
-        }
-
-        // 3. Mail
-        if let mailService = NSSharingService(named: .composeEmail) {
-            mailService.recipients = ["nicolazictardy@gmail.com"]
-            mailService.subject = "Art des Jardins — Logs"
-            mailService.perform(withItems: [logs])
             return
         }
 
