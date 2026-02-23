@@ -76,19 +76,27 @@ on run
 end run
 
 on startAndShow(projectDir)
-	display notification "Demarrage du site..." with title "Art des Jardins"
+	display notification "Preparation du site (peut prendre 1-2 min)..." with title "Art des Jardins"
 
-	try
-		do shell script "bash " & quoted form of (projectDir & "scripts/start-server.sh")
-	on error errMsg
-		tell me to activate
-		display dialog "Erreur : " & errMsg buttons {"OK"} with icon stop
-		return
-	end try
+	-- Lancer le script entierement en arriere-plan (ne bloque pas l'app)
+	do shell script "bash " & quoted form of (projectDir & "scripts/start-server.sh") & " >/dev/null 2>&1 &"
 
-	repeat 60 times
+	-- Attendre que le serveur soit pret (max 3 min pour premier install)
+	repeat 180 times
+		-- Verifier les erreurs de setup
 		try
-			do shell script "curl -s -o /dev/null http://localhost:3001"
+			set statusContent to do shell script "cat /tmp/art-des-jardins.status 2>/dev/null"
+			if statusContent starts with "error:" then
+				set errDetail to text 7 thru -1 of statusContent
+				tell me to activate
+				display dialog "Erreur : " & errDetail & return & return & "Details dans /tmp/art-des-jardins.log" buttons {"OK"} with icon stop
+				return
+			end if
+		end try
+
+		-- Verifier si le serveur repond
+		try
+			do shell script "curl -s -o /dev/null -m 2 http://localhost:3001"
 			exit repeat
 		end try
 		delay 1
@@ -99,7 +107,7 @@ end startAndShow
 
 on stopServer()
 	try
-		do shell script "lsof -ti:3001 | xargs kill 2>/dev/null; rm -f /tmp/art-des-jardins.pid"
+		do shell script "lsof -ti:3001 | xargs kill 2>/dev/null; rm -f /tmp/art-des-jardins.pid /tmp/art-des-jardins.status"
 	end try
 	delay 1
 end stopServer

@@ -14,6 +14,10 @@ const securityHeaders = [
 const nextConfig = {
   // 'standalone' for Docker, 'export' for static hosting (Cloudflare)
   output: isDocker ? 'standalone' : 'export',
+  // Fix barrel exports causing webpack "Cannot read properties of undefined (reading 'call')"
+  experimental: {
+    optimizePackageImports: ['@heroicons/react'],
+  },
   trailingSlash: true,
   images: {
     // Disable optimization for static export, enable for standalone
