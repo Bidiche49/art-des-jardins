@@ -123,18 +123,21 @@ export function ContactForm() {
       }
     }
 
-    // 2. Fallback Web3Forms
+    // 2. Fallback Web3Forms (plan gratuit : pas de pièces jointes)
     try {
       const body = new globalThis.FormData();
       body.append('access_key', process.env.NEXT_PUBLIC_WEB3FORMS_KEY || '');
       body.append('subject', `Nouveau contact Art des Jardins - ${formData.service || 'Demande générale'}`);
       body.append('from_name', formData.name);
-      body.append('email', formData.email);
-      body.append('phone', formData.phone || 'Non renseigné');
-      body.append('city', formData.city || 'Non renseigné');
-      body.append('service', formData.service || 'Non précisé');
-      body.append('message', formData.message);
-      photos.forEach((photo) => body.append('attachment', photo));
+      body.append('Nom', formData.name);
+      body.append('Email', formData.email);
+      body.append('Téléphone', formData.phone || 'Non renseigné');
+      body.append('Ville', formData.city || 'Non renseigné');
+      body.append('Service', formData.service || 'Non précisé');
+      body.append('Message', formData.message);
+      if (photos.length > 0) {
+        body.append('Photos', `${photos.length} photo(s) jointe(s) — non transmises via le formulaire de secours`);
+      }
 
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
