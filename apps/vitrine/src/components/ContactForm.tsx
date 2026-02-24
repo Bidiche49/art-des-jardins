@@ -260,7 +260,6 @@ export function ContactForm() {
             name="name"
             value={formData.name}
             onChange={handleChange}
-            required
             className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors ${fieldErrors.name ? 'border-red-400' : 'border-gray-300'}`}
             placeholder="Jean Dupont"
           />
@@ -279,7 +278,6 @@ export function ContactForm() {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            required
             className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors ${fieldErrors.email ? 'border-red-400' : 'border-gray-300'}`}
             placeholder="jean.dupont@email.fr"
           />
@@ -350,7 +348,6 @@ export function ContactForm() {
           name="message"
           value={formData.message}
           onChange={handleChange}
-          required
           rows={5}
           className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors resize-none ${fieldErrors.message ? 'border-red-400' : 'border-gray-300'}`}
           placeholder="Décrivez votre projet ou votre demande..."
