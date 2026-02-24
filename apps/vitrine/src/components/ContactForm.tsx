@@ -36,7 +36,7 @@ const services = [
 export function ContactForm() {
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const [photos, setPhotos] = useState<File[]>([]);
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'success_no_photos' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleChange = (
@@ -123,20 +123,22 @@ export function ContactForm() {
       }
     }
 
-    // 2. Fallback Web3Forms (plan gratuit : pas de pièces jointes)
+    // 2. Fallback Web3Forms (plan gratuit : pas de pieces jointes)
+    const hadPhotos = photos.length > 0;
     try {
       const body = new globalThis.FormData();
       body.append('access_key', process.env.NEXT_PUBLIC_WEB3FORMS_KEY || '');
-      body.append('subject', `Nouveau contact Art des Jardins - ${formData.service || 'Demande générale'}`);
+      body.append('subject', `Nouveau contact Art des Jardins - ${formData.service || 'Demande generale'}`);
       body.append('from_name', formData.name);
+      body.append('replyto', formData.email);
       body.append('Nom', formData.name);
       body.append('Email', formData.email);
-      body.append('Téléphone', formData.phone || 'Non renseigné');
-      body.append('Ville', formData.city || 'Non renseigné');
-      body.append('Service', formData.service || 'Non précisé');
+      body.append('Telephone', formData.phone || 'Non renseigne');
+      body.append('Ville', formData.city || 'Non renseigne');
+      body.append('Service', formData.service || 'Non precise');
       body.append('Message', formData.message);
-      if (photos.length > 0) {
-        body.append('Photos', `${photos.length} photo(s) jointe(s) — non transmises via le formulaire de secours`);
+      if (hadPhotos) {
+        body.append('Photos', `${photos.length} photo(s) jointe(s) - merci de les demander au client`);
       }
 
       const response = await fetch('https://api.web3forms.com/submit', {
@@ -147,7 +149,7 @@ export function ContactForm() {
       const data = await response.json();
 
       if (data.success) {
-        setStatus('success');
+        setStatus(hadPhotos ? 'success_no_photos' : 'success');
         setFormData(initialFormData);
         setPhotos([]);
       } else {
@@ -155,13 +157,13 @@ export function ContactForm() {
       }
     } catch {
       setErrorMessage(
-        'Une erreur est survenue lors de l\'envoi. Veuillez nous contacter par téléphone.'
+        'Une erreur est survenue lors de l\'envoi. Veuillez nous contacter par telephone.'
       );
       setStatus('error');
     }
   };
 
-  if (status === 'success') {
+  if (status === 'success' || status === 'success_no_photos') {
     return (
       <div className="bg-green-50 border border-green-200 rounded-xl p-8 text-center">
         <div className="text-4xl mb-4">✅</div>
@@ -169,6 +171,11 @@ export function ContactForm() {
         <p className="text-green-700">
           Merci pour votre message. Nous vous répondrons sous 48h.
         </p>
+        {status === 'success_no_photos' && (
+          <p className="text-green-600 text-sm mt-2">
+            Vos photos n'ont pas pu être jointes. Nous vous recontacterons pour les récupérer si nécessaire.
+          </p>
+        )}
         <button
           onClick={() => setStatus('idle')}
           className="mt-4 text-green-600 hover:text-green-800 underline"
