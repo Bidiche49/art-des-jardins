@@ -62,7 +62,11 @@ export function ContactForm() {
   // Auto-scroll vers le message de succès après re-render
   useEffect(() => {
     if (status === 'success' || status === 'success_no_photos') {
-      formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const el = formRef.current;
+      if (el) {
+        const top = el.getBoundingClientRect().top + window.scrollY - 40;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
     }
   }, [status]);
 
