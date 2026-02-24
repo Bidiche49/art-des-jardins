@@ -58,6 +58,7 @@ export function ContactForm() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'success_no_photos' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
+  const [privacy, setPrivacy] = useState(false);
 
   // Auto-scroll vers le message de succès après re-render
   useEffect(() => {
@@ -106,9 +107,17 @@ export function ContactForm() {
       }
     }
     if (!formData.message.trim()) errors.message = 'Le message est obligatoire.';
+    if (!privacy) errors.privacy = 'Vous devez accepter la politique de confidentialité.';
 
     if (Object.keys(errors).length > 0) {
       setFieldErrors(errors);
+      // Scroll vers le premier champ en erreur
+      const firstErrorKey = Object.keys(errors)[0];
+      const el = document.getElementById(firstErrorKey);
+      if (el) {
+        const top = el.getBoundingClientRect().top + window.scrollY - 40;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
       return;
     }
 
@@ -145,6 +154,7 @@ export function ContactForm() {
           setStatus('success');
           setFormData(initialFormData);
           setPhotos([]);
+          setPrivacy(false);
           return;
         }
 
@@ -195,6 +205,7 @@ export function ContactForm() {
         setStatus(hadPhotos ? 'success_no_photos' : 'success');
         setFormData(initialFormData);
         setPhotos([]);
+        setPrivacy(false);
       } else {
         throw new Error(data.message || 'Erreur lors de l\'envoi');
       }
@@ -363,19 +374,34 @@ export function ContactForm() {
 
       <PhotoUpload files={photos} onChange={setPhotos} />
 
-      <div className="flex items-start gap-3">
-        <input
-          type="checkbox"
-          id="privacy"
-          required
-          className="mt-1 w-4 h-4 text-primary-600 border-gray-300 rounded focus:ring-primary-500"
-        />
-        <label htmlFor="privacy" className="text-sm text-gray-600">
-          J'accepte que mes données soient traitées pour répondre à ma demande.{' '}
-          <a href="/politique-confidentialite/" className="text-primary-600 hover:underline">
-            Politique de confidentialité
-          </a>
-        </label>
+      <div>
+        <div className="flex items-start gap-3">
+          <input
+            type="checkbox"
+            id="privacy"
+            checked={privacy}
+            onChange={(e) => {
+              setPrivacy(e.target.checked);
+              if (fieldErrors.privacy) {
+                setFieldErrors((prev) => {
+                  const next = { ...prev };
+                  delete next.privacy;
+                  return next;
+                });
+              }
+            }}
+            className={`mt-1 w-4 h-4 text-primary-600 rounded focus:ring-primary-500 ${fieldErrors.privacy ? 'border-red-400' : 'border-gray-300'}`}
+          />
+          <label htmlFor="privacy" className="text-sm text-gray-600">
+            J'accepte que mes données soient traitées pour répondre à ma demande.{' '}
+            <a href="/politique-confidentialite/" className="text-primary-600 hover:underline">
+              Politique de confidentialité
+            </a>
+          </label>
+        </div>
+        {fieldErrors.privacy && (
+          <p className="text-red-500 text-sm mt-1">{fieldErrors.privacy}</p>
+        )}
       </div>
 
       <button
