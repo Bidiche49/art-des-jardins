@@ -106,11 +106,11 @@ export function ContactForm() {
         }
 
         // Erreur client (400, 429) → afficher l'erreur, pas de fallback
-        if (response.status < 500) {
+        if (response.status === 400 || response.status === 429) {
           const data = await response.json().catch(() => null);
           throw new Error(data?.message || 'Erreur lors de l\'envoi');
         }
-        // Erreur serveur (5xx) → on tombe dans le fallback Web3Forms
+        // Toute autre erreur (404, 5xx) → API absente ou down → fallback Web3Forms
       } catch (err) {
         // Erreur applicative (400, 429) → ne pas fallback
         if (err instanceof Error && err.name !== 'AbortError' && !(err instanceof TypeError)) {
