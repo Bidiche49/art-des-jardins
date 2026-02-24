@@ -243,7 +243,7 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit} noValidate className="space-y-6">
       {status === 'error' && errorMessage && (
         <div ref={formRef} className="bg-red-50 border border-red-200 rounded-lg p-4 text-red-700">
           {errorMessage}
