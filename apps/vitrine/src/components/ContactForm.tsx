@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect, FormEvent } from 'react';
 import { PhotoUpload } from './PhotoUpload';
-import { IconSpinner } from '@/lib/icons';
+import { IconSpinner, IconCheck } from '@/lib/icons';
 
 interface FormData {
   name: string;
@@ -204,20 +204,22 @@ export function ContactForm() {
 
   if (status === 'success' || status === 'success_no_photos') {
     return (
-      <div ref={formRef} className="bg-green-50 border border-green-200 rounded-xl p-8 text-center">
-        <div className="text-4xl mb-4">✅</div>
-        <h3 className="text-xl font-bold text-green-800 mb-2">Message envoyé !</h3>
-        <p className="text-green-700">
+      <div ref={formRef} className="bg-primary-50 border border-primary-200 rounded-xl p-8 text-center">
+        <div className="mx-auto mb-4 w-14 h-14 rounded-full bg-primary-100 flex items-center justify-center">
+          <IconCheck className="w-8 h-8 text-primary-600" />
+        </div>
+        <h3 className="text-xl font-bold text-primary-800 mb-2">Message envoyé !</h3>
+        <p className="text-primary-700">
           Merci pour votre message. Nous vous répondrons sous 48h.
         </p>
         {status === 'success_no_photos' && (
-          <p className="text-green-600 text-sm mt-2">
+          <p className="text-primary-600 text-sm mt-2">
             Vos photos n'ont pas pu être jointes. Nous vous recontacterons pour les récupérer si nécessaire.
           </p>
         )}
         <button
           onClick={() => setStatus('idle')}
-          className="mt-4 text-green-600 hover:text-green-800 underline"
+          className="mt-4 text-primary-600 hover:text-primary-800 underline"
         >
           Envoyer un autre message
         </button>
