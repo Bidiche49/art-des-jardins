@@ -24,6 +24,24 @@ const initialFormData: FormData = {
   website: '', // honeypot - should remain empty
 };
 
+/** Normalise un numero de telephone en format E.164 (+33...) */
+function normalizePhone(raw: string): string {
+  // Garder uniquement chiffres et +
+  const digits = raw.replace(/[^\d+]/g, '');
+  if (!digits) return '';
+  // 0612345678 → +33612345678
+  if (digits.startsWith('0') && digits.length === 10) {
+    return '+33' + digits.slice(1);
+  }
+  // +33612345678 → tel quel
+  if (digits.startsWith('+')) return digits;
+  // 33612345678 (sans +) → +33612345678
+  if (digits.startsWith('33') && digits.length === 11) {
+    return '+' + digits;
+  }
+  return digits;
+}
+
 const services = [
   { value: '', label: 'Sélectionnez un service' },
   { value: 'paysagisme', label: 'Aménagement paysager / Création de jardin' },
@@ -74,6 +92,8 @@ export function ContactForm() {
     setStatus('loading');
     setErrorMessage('');
 
+    const phone = normalizePhone(formData.phone);
+
     // 1. Tenter l'API NestJS d'abord
     const apiUrl = process.env.NEXT_PUBLIC_API_URL;
     if (apiUrl) {
@@ -81,7 +101,7 @@ export function ContactForm() {
         const body = new globalThis.FormData();
         body.append('name', formData.name);
         body.append('email', formData.email);
-        if (formData.phone) body.append('phone', formData.phone);
+        if (phone) body.append('phone', phone);
         if (formData.city) body.append('city', formData.city);
         if (formData.service) body.append('service', formData.service);
         body.append('message', formData.message);
@@ -133,7 +153,7 @@ export function ContactForm() {
       body.append('replyto', formData.email);
       body.append('Nom', formData.name);
       body.append('Email', formData.email);
-      body.append('Telephone', formData.phone || 'Non renseigne');
+      body.append('Telephone', phone || 'Non renseigne');
       body.append('Ville', formData.city || 'Non renseigne');
       body.append('Service', formData.service || 'Non precise');
       body.append('Message', formData.message);
@@ -249,6 +269,7 @@ export function ContactForm() {
           </label>
           <input
             type="tel"
+            inputMode="tel"
             id="phone"
             name="phone"
             value={formData.phone}
