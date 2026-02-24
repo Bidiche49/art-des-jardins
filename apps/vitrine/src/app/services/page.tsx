@@ -44,10 +44,10 @@ export default function ServicesPage() {
             {services.map((service, i) => {
               const imageSlug = serviceCardImages[service.slug as keyof typeof serviceCardImages];
               return (
-                <AnimateOnScroll key={service.slug} delay={i * 100}>
+                <AnimateOnScroll key={service.slug} delay={i * 100} className="h-full">
                   <Link
                     href={`/services/${service.slug}/`}
-                    className="service-card group block bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all"
+                    className="service-card group flex flex-col h-full bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all"
                   >
                     {imageSlug && (
                       <div className="aspect-[16/9] overflow-hidden relative">
@@ -60,7 +60,7 @@ export default function ServicesPage() {
                         <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/40 to-transparent" />
                       </div>
                     )}
-                    <div className="p-8">
+                    <div className="p-8 flex flex-col flex-1">
                       <h2 className="text-2xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors mb-3">
                         {service.title}
                       </h2>
@@ -73,7 +73,7 @@ export default function ServicesPage() {
                           </li>
                         ))}
                       </ul>
-                      <span className="inline-flex items-center mt-4 text-primary-600 font-medium group-hover:gap-2 transition-all">
+                      <span className="inline-flex items-center mt-auto pt-4 text-primary-600 font-medium group-hover:gap-2 transition-all">
                         En savoir plus
                         <IconChevronRight className="w-4 h-4 ml-1" />
                       </span>
