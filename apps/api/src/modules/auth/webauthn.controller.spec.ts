@@ -75,7 +75,7 @@ describe('WebAuthnController', () => {
       const result = await controller.getRegisterOptions(mockRequest as any);
 
       expect(result).toEqual(options);
-      expect(mockWebAuthnService.startRegistration).toHaveBeenCalledWith('user-123');
+      expect(mockWebAuthnService.startRegistration).toHaveBeenCalledWith('user-123', undefined);
     });
   });
 
@@ -144,10 +144,10 @@ describe('WebAuthnController', () => {
       };
       mockWebAuthnService.startAuthentication.mockResolvedValue(options);
 
-      const result = await controller.getLoginOptions({});
+      const result = await controller.getLoginOptions({}, mockRequest as any);
 
       expect(result).toEqual(options);
-      expect(mockWebAuthnService.startAuthentication).toHaveBeenCalledWith(undefined);
+      expect(mockWebAuthnService.startAuthentication).toHaveBeenCalledWith(undefined, undefined);
     });
 
     it('should return authentication options with email', async () => {
@@ -158,10 +158,10 @@ describe('WebAuthnController', () => {
       };
       mockWebAuthnService.startAuthentication.mockResolvedValue(options);
 
-      const result = await controller.getLoginOptions({ email: 'patron@artjardin.fr' });
+      const result = await controller.getLoginOptions({ email: 'patron@artjardin.fr' }, mockRequest as any);
 
       expect(result).toEqual(options);
-      expect(mockWebAuthnService.startAuthentication).toHaveBeenCalledWith('patron@artjardin.fr');
+      expect(mockWebAuthnService.startAuthentication).toHaveBeenCalledWith('patron@artjardin.fr', undefined);
     });
 
     it('should propagate service exceptions', async () => {
@@ -169,7 +169,7 @@ describe('WebAuthnController', () => {
         new BadRequestException('Aucun appareil biométrique enregistré'),
       );
 
-      await expect(controller.getLoginOptions({ email: 'unknown@email.com' })).rejects.toThrow(
+      await expect(controller.getLoginOptions({ email: 'unknown@email.com' }, mockRequest as any)).rejects.toThrow(
         BadRequestException,
       );
     });

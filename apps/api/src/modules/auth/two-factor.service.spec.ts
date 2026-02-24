@@ -6,21 +6,19 @@ import { TwoFactorService } from './two-factor.service';
 import { PrismaService } from '../../database/prisma.service';
 import { AuditService } from '../audit/audit.service';
 
-// Mock otplib
+// Mock otplib — service uses `authenticator` object, not top-level exports
 jest.mock('otplib', () => ({
-  generateSecret: jest.fn(() => 'JBSWY3DPEHPK3PXP'.repeat(2)), // 32 chars base32
-  generate: jest.fn(async () => '123456'),
-  verify: jest.fn(async ({ token }: { token: string; secret: string }) => token === '123456'),
-  generateURI: jest.fn(({ issuer, label, secret }: { issuer: string; label: string; secret: string }) =>
-    `otpauth://totp/${encodeURIComponent(issuer)}:${encodeURIComponent(label)}?secret=${secret}&issuer=${encodeURIComponent(issuer)}`
-  ),
+  authenticator: {
+    generateSecret: jest.fn(() => 'JBSWY3DPEHPK3PXP'.repeat(2)), // 32 chars base32
+    generate: jest.fn(() => '123456'),
+    verify: jest.fn(({ token }: { token: string; secret: string }) => token === '123456'),
+    keyuri: jest.fn((email: string, issuer: string, secret: string) =>
+      `otpauth://totp/${encodeURIComponent(issuer)}:${encodeURIComponent(email)}?secret=${secret}&issuer=${encodeURIComponent(issuer)}`
+    ),
+  },
 }));
 
-// Get mocked functions
-import { generateSecret, generate, verify } from 'otplib';
-const mockedGenerateSecret = generateSecret as jest.MockedFunction<typeof generateSecret>;
-const mockedGenerate = generate as jest.MockedFunction<typeof generate>;
-const mockedVerify = verify as jest.MockedFunction<typeof verify>;
+import { authenticator } from 'otplib';
 
 describe('TwoFactorService', () => {
   let service: TwoFactorService;
@@ -127,7 +125,7 @@ describe('TwoFactorService', () => {
 
   describe('verify2FASetup', () => {
     it('should activate 2FA with valid code and return recovery codes', async () => {
-      const secret = generateSecret();
+      const secret = authenticator.generateSecret();
 
       // Mock encrypted secret
       mockPrismaService.user.findUnique.mockResolvedValue({
@@ -137,7 +135,7 @@ describe('TwoFactorService', () => {
       });
       mockPrismaService.user.update.mockResolvedValue(mockUser);
 
-      const validToken = await generate({ secret });
+      const validToken = authenticator.generate(secret);
       const result = await service.verify2FASetup('user-123', validToken);
 
       expect(result.success).toBe(true);
@@ -146,7 +144,7 @@ describe('TwoFactorService', () => {
     });
 
     it('should reject invalid code', async () => {
-      const secret = generateSecret();
+      const secret = authenticator.generateSecret();
 
       mockPrismaService.user.findUnique.mockResolvedValue({
         ...mockUser,
@@ -182,7 +180,7 @@ describe('TwoFactorService', () => {
 
   describe('verify2FACode', () => {
     it('should verify valid TOTP code', async () => {
-      const secret = generateSecret();
+      const secret = authenticator.generateSecret();
 
       mockPrismaService.user.findUnique.mockResolvedValue({
         ...mockUser,
@@ -194,14 +192,14 @@ describe('TwoFactorService', () => {
       });
       mockPrismaService.user.update.mockResolvedValue(mockUser);
 
-      const validToken = await generate({ secret });
+      const validToken = authenticator.generate(secret);
       const result = await service.verify2FACode('user-123', validToken);
 
       expect(result).toBe(true);
     });
 
     it('should reject invalid code and increment attempts', async () => {
-      const secret = generateSecret();
+      const secret = authenticator.generateSecret();
 
       mockPrismaService.user.findUnique.mockResolvedValue({
         ...mockUser,
@@ -223,7 +221,7 @@ describe('TwoFactorService', () => {
     });
 
     it('should lock account after 5 failed attempts', async () => {
-      const secret = generateSecret();
+      const secret = authenticator.generateSecret();
 
       mockPrismaService.user.findUnique.mockResolvedValue({
         ...mockUser,
@@ -249,7 +247,7 @@ describe('TwoFactorService', () => {
     });
 
     it('should reject if account is locked', async () => {
-      const secret = generateSecret();
+      const secret = authenticator.generateSecret();
       const lockUntil = new Date(Date.now() + 10 * 60 * 1000); // 10 minutes from now
 
       mockPrismaService.user.findUnique.mockResolvedValue({
@@ -267,7 +265,7 @@ describe('TwoFactorService', () => {
     });
 
     it('should accept recovery code and remove it', async () => {
-      const secret = generateSecret();
+      const secret = authenticator.generateSecret();
       const recoveryCode = 'ABCD1234';
       const hashedCode = await bcrypt.hash(recoveryCode, 10);
 
@@ -306,7 +304,7 @@ describe('TwoFactorService', () => {
 
   describe('disable2FA', () => {
     it('should disable 2FA with valid code', async () => {
-      const secret = generateSecret();
+      const secret = authenticator.generateSecret();
 
       mockPrismaService.user.findUnique.mockResolvedValue({
         ...mockUser,
@@ -316,7 +314,7 @@ describe('TwoFactorService', () => {
       });
       mockPrismaService.user.update.mockResolvedValue(mockUser);
 
-      const validToken = await generate({ secret });
+      const validToken = authenticator.generate(secret);
       const result = await service.disable2FA('user-123', validToken);
 
       expect(result.success).toBe(true);
@@ -333,7 +331,7 @@ describe('TwoFactorService', () => {
     });
 
     it('should reject invalid code when disabling', async () => {
-      const secret = generateSecret();
+      const secret = authenticator.generateSecret();
 
       mockPrismaService.user.findUnique.mockResolvedValue({
         ...mockUser,
@@ -356,7 +354,7 @@ describe('TwoFactorService', () => {
 
   describe('regenerateRecoveryCodes', () => {
     it('should generate new recovery codes with valid 2FA code', async () => {
-      const secret = generateSecret();
+      const secret = authenticator.generateSecret();
 
       mockPrismaService.user.findUnique.mockResolvedValue({
         ...mockUser,
@@ -365,7 +363,7 @@ describe('TwoFactorService', () => {
       });
       mockPrismaService.user.update.mockResolvedValue(mockUser);
 
-      const validToken = await generate({ secret });
+      const validToken = authenticator.generate(secret);
       const result = await service.regenerateRecoveryCodes('user-123', validToken);
 
       expect(result.recoveryCodes).toHaveLength(10);
@@ -376,7 +374,7 @@ describe('TwoFactorService', () => {
     });
 
     it('should reject invalid code', async () => {
-      const secret = generateSecret();
+      const secret = authenticator.generateSecret();
 
       mockPrismaService.user.findUnique.mockResolvedValue({
         ...mockUser,
