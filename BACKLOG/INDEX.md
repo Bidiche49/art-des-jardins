@@ -9,8 +9,8 @@
 | Type | Prochain ID |
 |------|-------------|
 | BUG | BUG-011 |
-| FEAT | FEAT-122 |
-| IMP | IMP-051 |
+| FEAT | FEAT-124 |
+| IMP | IMP-054 |
 
 ---
 
@@ -19,9 +19,9 @@
 | Type | Pending | Ready | Done | Total |
 |------|---------|-------|------|-------|
 | Bugs | 9 | 0 | 1 | 10 |
-| Features | 34 | 10 | 76 | 120 |
-| Improvements | 21 | 7 | 22 | 50 |
-| **Total** | **65** | **17** | **98** | **180** |
+| Features | 36 | 10 | 76 | 122 |
+| Improvements | 24 | 7 | 22 | 53 |
+| **Total** | **70** | **17** | **98** | **185** |
 
 ---
 
@@ -303,6 +303,21 @@
 
 ---
 
+## Roadmap Production Backend API (NOUVEAU - 2026-02-24)
+
+> **OBJECTIF:** Rendre l'API NestJS deployable en production. Stack Docker complete, SMTP, S3, HTTPS.
+> **PRE-REQUIS:** Bugs securite (BUG-001 a BUG-007) doivent etre corriges avant mise en prod.
+
+| Ordre | Ticket | Description | Priorite | Complexite | Auto |
+|-------|--------|-------------|----------|------------|------|
+| 1 | FEAT-122 | Service API dans docker-compose | Critique | S | ✅ |
+| 2 | IMP-053 | .env.production securise + checklist deploy | Critique | S | ⚠️ Secrets manuels |
+| 3 | IMP-051 | Configurer SMTP Brevo (emails) | Critique | S | ❌ Compte Brevo + DNS |
+| 4 | IMP-052 | Configurer Scaleway S3 (stockage) | Haute | S | ❌ Compte Scaleway |
+| 5 | FEAT-123 | docker-compose.prod.yml + Caddy HTTPS | Critique | M | ✅ |
+
+---
+
 ## Roadmap Audit SEO Vitrine (NOUVEAU - 2026-02-13)
 
 > **OBJECTIF:** Porter la note SEO de 72/100 a 90+/100. Maximiser le trafic local et les conversions.
@@ -432,6 +447,8 @@
 | FEAT-109 | Tests vitrine Next.js | Moyenne | Audit | ✅ |
 | FEAT-110 | Valider migrations Prisma CI | Moyenne | Audit | ✅ |
 | FEAT-118 | Tracking GA4 + events conversion | Haute | SEO | ❌ Compte GA4 |
+| FEAT-122 | Service API dans docker-compose | Critique | Prod API | ✅ |
+| FEAT-123 | docker-compose.prod.yml + Caddy HTTPS | Critique | Prod API | ✅ |
 
 ### Ready (11) - AUTOMATISABLES
 
@@ -582,6 +599,9 @@
 | IMP-026 | Service Worker skipWaiting PWA | Moyenne | Audit | ✅ |
 | IMP-027 | Gestion erreurs PWA (toasts) | Moyenne | Audit | ✅ |
 | IMP-050 | Ajouter assurance décennale (accueil + FAQ) | Haute | Retour client | ✅ |
+| IMP-051 | Configurer SMTP Brevo (emails prod) | Critique | Prod API | ❌ Compte Brevo |
+| IMP-052 | Configurer Scaleway S3 (stockage prod) | Haute | Prod API | ❌ Compte Scaleway |
+| IMP-053 | .env.production securise + checklist | Critique | Prod API | ⚠️ Secrets manuels |
 
 ### Ready (7) - AUTOMATISABLES
 
