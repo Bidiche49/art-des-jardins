@@ -1,4 +1,8 @@
 /** @type {import('next').NextConfig} */
+const { resolve } = require('path');
+
+// Charger le .env racine du monorepo (comme l'API fait avec ../../.env)
+require('dotenv').config({ path: resolve(__dirname, '../../.env') });
 
 // Use standalone for Docker, export for Cloudflare Pages
 const isDocker = process.env.DOCKER_BUILD === 'true';
