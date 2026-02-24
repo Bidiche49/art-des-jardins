@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, FormEvent } from 'react';
+import { useState, useRef, useEffect, FormEvent } from 'react';
 import { PhotoUpload } from './PhotoUpload';
 import { IconSpinner } from '@/lib/icons';
 
@@ -57,19 +57,26 @@ export function ContactForm() {
   const [photos, setPhotos] = useState<File[]>([]);
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'success_no_photos' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
-  const [emailError, setEmailError] = useState('');
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
 
-  const scrollToForm = () => {
-    formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
+  // Auto-scroll vers le message de succès après re-render
+  useEffect(() => {
+    if (status === 'success' || status === 'success_no_photos') {
+      formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, [status]);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-    if (name === 'email' && emailError) {
-      setEmailError('');
+    if (fieldErrors[name]) {
+      setFieldErrors((prev) => {
+        const next = { ...prev };
+        delete next[name];
+        return next;
+      });
     }
   };
 
@@ -83,17 +90,21 @@ export function ContactForm() {
       return;
     }
 
-    // Basic validation
-    if (!formData.name || !formData.email || !formData.message) {
-      setErrorMessage('Veuillez remplir tous les champs obligatoires.');
-      setStatus('error');
-      return;
+    // Validation par champ
+    const errors: Record<string, string> = {};
+    if (!formData.name.trim()) errors.name = 'Le nom est obligatoire.';
+    if (!formData.email.trim()) {
+      errors.email = 'L\'email est obligatoire.';
+    } else {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(formData.email)) {
+        errors.email = 'Veuillez entrer une adresse email valide.';
+      }
     }
+    if (!formData.message.trim()) errors.message = 'Le message est obligatoire.';
 
-    // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.email)) {
-      setEmailError('Veuillez entrer une adresse email valide.');
+    if (Object.keys(errors).length > 0) {
+      setFieldErrors(errors);
       return;
     }
 
@@ -130,7 +141,6 @@ export function ContactForm() {
           setStatus('success');
           setFormData(initialFormData);
           setPhotos([]);
-          scrollToForm();
           return;
         }
 
@@ -181,7 +191,6 @@ export function ContactForm() {
         setStatus(hadPhotos ? 'success_no_photos' : 'success');
         setFormData(initialFormData);
         setPhotos([]);
-        scrollToForm();
       } else {
         throw new Error(data.message || 'Erreur lors de l\'envoi');
       }
@@ -219,7 +228,7 @@ export function ContactForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       {status === 'error' && errorMessage && (
-        <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-red-700">
+        <div ref={formRef} className="bg-red-50 border border-red-200 rounded-lg p-4 text-red-700">
           {errorMessage}
         </div>
       )}
@@ -250,9 +259,12 @@ export function ContactForm() {
             value={formData.name}
             onChange={handleChange}
             required
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors"
+            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors ${fieldErrors.name ? 'border-red-400' : 'border-gray-300'}`}
             placeholder="Jean Dupont"
           />
+          {fieldErrors.name && (
+            <p className="text-red-500 text-sm mt-1">{fieldErrors.name}</p>
+          )}
         </div>
 
         <div>
@@ -266,11 +278,11 @@ export function ContactForm() {
             value={formData.email}
             onChange={handleChange}
             required
-            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors ${emailError ? 'border-red-400' : 'border-gray-300'}`}
+            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors ${fieldErrors.email ? 'border-red-400' : 'border-gray-300'}`}
             placeholder="jean.dupont@email.fr"
           />
-          {emailError && (
-            <p className="text-red-500 text-sm mt-1">{emailError}</p>
+          {fieldErrors.email && (
+            <p className="text-red-500 text-sm mt-1">{fieldErrors.email}</p>
           )}
         </div>
       </div>
@@ -338,9 +350,12 @@ export function ContactForm() {
           onChange={handleChange}
           required
           rows={5}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors resize-none"
+          className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors resize-none ${fieldErrors.message ? 'border-red-400' : 'border-gray-300'}`}
           placeholder="Décrivez votre projet ou votre demande..."
         />
+        {fieldErrors.message && (
+          <p className="text-red-500 text-sm mt-1">{fieldErrors.message}</p>
+        )}
       </div>
 
       <PhotoUpload files={photos} onChange={setPhotos} />
