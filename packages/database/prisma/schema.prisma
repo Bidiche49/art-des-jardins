@@ -626,6 +626,7 @@ enum DocumentType {
   devis_signe
   facture
   relance
+  contact
 }
 
 enum RelanceLevel {
@@ -820,4 +821,30 @@ model PrestationTemplate {
   updatedAt   DateTime @updatedAt
 
   @@map("prestation_templates")
+}
+
+// ============================================
+// DEMANDES DE CONTACT (Formulaire vitrine)
+// ============================================
+
+model ContactRequest {
+  id        String   @id @default(uuid())
+  name      String
+  email     String
+  phone     String?
+  city      String?
+  service   String?
+  message   String
+  photoKeys String[] // S3 keys des photos uploadees
+  source    String   @default("website") // "website", "web3forms_fallback"
+  status    String   @default("new") // "new", "read", "replied", "archived"
+  ipAddress String?
+  userAgent String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([email])
+  @@index([status])
+  @@index([createdAt])
+  @@map("contact_requests")
 }

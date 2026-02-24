@@ -88,6 +88,9 @@ export const envValidationSchema = Joi.object({
   SESSION_IDLE_TIMEOUT_PATRON: Joi.number().default(30), // 30 min pour patron
   SESSION_IDLE_TIMEOUT_EMPLOYE: Joi.number().default(120), // 2h pour employe
   SESSION_IDLE_TIMEOUT_CLIENT: Joi.number().default(60), // 1h pour client portail
+
+  // Contact form
+  CONTACT_RECIPIENT_EMAIL: Joi.string().email({ tlds: false }).default('artdesjardins49@gmail.com'),
 });
 
 export interface EnvConfig {
@@ -133,4 +136,5 @@ export interface EnvConfig {
   SESSION_IDLE_TIMEOUT_PATRON: number;
   SESSION_IDLE_TIMEOUT_EMPLOYE: number;
   SESSION_IDLE_TIMEOUT_CLIENT: number;
+  CONTACT_RECIPIENT_EMAIL: string;
 }

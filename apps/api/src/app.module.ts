@@ -38,6 +38,7 @@ import { PhotosModule } from './modules/photos/photos.module';
 import { TemplatesModule } from './modules/templates/templates.module';
 import { IntegrationsModule } from './modules/integrations/integrations.module';
 import { StatsModule } from './modules/stats/stats.module';
+import { ContactModule } from './modules/contact/contact.module';
 import { DatabaseModule } from './database/database.module';
 import { envValidationSchema } from './config/env.validation';
 
@@ -141,6 +142,7 @@ import { envValidationSchema } from './config/env.validation';
     TemplatesModule,
     StatsModule,
     IntegrationsModule,
+    ContactModule,
   ],
   providers: [
     {

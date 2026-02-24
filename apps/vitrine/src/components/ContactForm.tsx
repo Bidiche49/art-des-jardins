@@ -74,10 +74,59 @@ export function ContactForm() {
     setStatus('loading');
     setErrorMessage('');
 
+    // 1. Tenter l'API NestJS d'abord
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+    if (apiUrl) {
+      try {
+        const body = new globalThis.FormData();
+        body.append('name', formData.name);
+        body.append('email', formData.email);
+        if (formData.phone) body.append('phone', formData.phone);
+        if (formData.city) body.append('city', formData.city);
+        if (formData.service) body.append('service', formData.service);
+        body.append('message', formData.message);
+        if (formData.website) body.append('honeypot', formData.website);
+        photos.forEach((photo) => body.append('photos', photo));
+
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 8000);
+
+        const response = await fetch(`${apiUrl}/api/v1/contact`, {
+          method: 'POST',
+          body,
+          signal: controller.signal,
+        });
+        clearTimeout(timeout);
+
+        if (response.ok) {
+          setStatus('success');
+          setFormData(initialFormData);
+          setPhotos([]);
+          return;
+        }
+
+        // Erreur client (400, 429) → afficher l'erreur, pas de fallback
+        if (response.status < 500) {
+          const data = await response.json().catch(() => null);
+          throw new Error(data?.message || 'Erreur lors de l\'envoi');
+        }
+        // Erreur serveur (5xx) → on tombe dans le fallback Web3Forms
+      } catch (err) {
+        // Erreur applicative (400, 429) → ne pas fallback
+        if (err instanceof Error && err.name !== 'AbortError' && !(err instanceof TypeError)) {
+          setErrorMessage(err.message);
+          setStatus('error');
+          return;
+        }
+        // AbortError (timeout) ou TypeError (network) → fallback Web3Forms
+        console.warn('API unreachable, falling back to Web3Forms');
+      }
+    }
+
+    // 2. Fallback Web3Forms
     try {
-      // Using Web3Forms free service
       const body = new globalThis.FormData();
-      body.append('access_key', process.env.NEXT_PUBLIC_WEB3FORMS_KEY || 'YOUR_ACCESS_KEY');
+      body.append('access_key', process.env.NEXT_PUBLIC_WEB3FORMS_KEY || '');
       body.append('subject', `Nouveau contact Art des Jardins - ${formData.service || 'Demande générale'}`);
       body.append('from_name', formData.name);
       body.append('email', formData.email);
@@ -101,10 +150,9 @@ export function ContactForm() {
       } else {
         throw new Error(data.message || 'Erreur lors de l\'envoi');
       }
-    } catch (error) {
-      console.error('Form submission error:', error);
+    } catch {
       setErrorMessage(
-        'Une erreur est survenue lors de l\'envoi. Veuillez réessayer ou nous contacter par téléphone.'
+        'Une erreur est survenue lors de l\'envoi. Veuillez nous contacter par téléphone.'
       );
       setStatus('error');
     }

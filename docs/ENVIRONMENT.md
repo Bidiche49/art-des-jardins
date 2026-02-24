@@ -87,6 +87,12 @@ L'API charge les fichiers dans cet ordre (le premier trouvé gagne) :
 |----------|-------------|---------|
 | `CORS_ORIGINS` | Origines autorisees | `http://localhost:3001` |
 
+### Formulaire de contact
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `CONTACT_RECIPIENT_EMAIL` | Email destinataire des demandes de contact | `artdesjardins49@gmail.com` |
+
 ---
 
 ## Validation

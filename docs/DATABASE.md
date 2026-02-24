@@ -78,6 +78,7 @@ Le schema Prisma est dans `packages/database/prisma/schema.prisma`.
 | `interventions` | Interventions terrain |
 | `audit_logs` | Journal des actions |
 | `sequences` | Numerotation devis/factures |
+| `contact_requests` | Demandes de contact (formulaire vitrine) |
 
 ### Enums
 
@@ -88,6 +89,7 @@ Le schema Prisma est dans `packages/database/prisma/schema.prisma`.
 - `FactureStatut` : brouillon, envoyee, payee, annulee
 - `TypePrestation` : paysagisme, entretien, elagage, abattage, tonte, taille, autre
 - `ModePaiement` : virement, cheque, especes, carte
+- `DocumentType` : devis, devis_signe, facture, relance, contact
 
 ---
 

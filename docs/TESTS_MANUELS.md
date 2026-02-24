@@ -59,6 +59,16 @@
 - [ ] Meta tags et Schema.org presents
 - [ ] Responsive mobile
 
+### Formulaire de contact (hybride API + Web3Forms)
+- [ ] Soumission via API fonctionne (verifier en BDD `SELECT * FROM contact_requests`)
+- [ ] Email de notification recu par le paysagiste
+- [ ] Honeypot : soumettre avec champ `website` rempli → success silencieux, rien en BDD
+- [ ] Rate limiting : 6e soumission en 1 min → erreur 429 (pas de fallback)
+- [ ] Fallback Web3Forms : couper l'API → soumission → passe par Web3Forms
+- [ ] Erreur 400 (champ manquant) → message d'erreur affiche, PAS de fallback
+- [ ] Upload photos (max 3) → stockees en S3, keys en BDD
+- [ ] Timeout API (8s) → fallback automatique vers Web3Forms
+
 ---
 
 ## Phase 4 - PWA React
@@ -193,7 +203,7 @@
 
 ## Tests Automatises Existants
 
-### Tests Unitaires API (48 tests)
+### Tests Unitaires API (59 tests)
 ```bash
 cd apps/api && pnpm test
 ```
