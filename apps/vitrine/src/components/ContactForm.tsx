@@ -65,7 +65,7 @@ export function ContactForm() {
     if (status === 'success' || status === 'success_no_photos') {
       const el = formRef.current;
       if (el) {
-        const top = el.getBoundingClientRect().top + window.scrollY - 40;
+        const top = el.getBoundingClientRect().top + window.scrollY - 100;
         window.scrollTo({ top, behavior: 'smooth' });
       }
     }
