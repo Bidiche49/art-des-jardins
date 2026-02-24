@@ -63,7 +63,7 @@ export default function ContactPage() {
           <div className="grid lg:grid-cols-3 gap-12">
             {/* Contact Form */}
             <div className="lg:col-span-2">
-              <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
+              <div id="contact-form-container" className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
                 <h2 className="text-2xl font-bold mb-6">Demande de devis gratuit</h2>
                 <ContactForm />
               </div>

@@ -60,10 +60,10 @@ export function ContactForm() {
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [privacy, setPrivacy] = useState(false);
 
-  // Auto-scroll vers le message de succès après re-render
+  // Auto-scroll vers le conteneur "Demande de devis gratuit" après succès
   useEffect(() => {
     if (status === 'success' || status === 'success_no_photos') {
-      const el = formRef.current;
+      const el = document.getElementById('contact-form-container');
       if (el) {
         const top = el.getBoundingClientRect().top + window.scrollY - 100;
         window.scrollTo({ top, behavior: 'smooth' });
