@@ -115,7 +115,7 @@ export function ContactForm() {
       const firstErrorKey = Object.keys(errors)[0];
       const el = document.getElementById(firstErrorKey);
       if (el) {
-        const top = el.getBoundingClientRect().top + window.scrollY - 40;
+        const top = el.getBoundingClientRect().top + window.scrollY - 100;
         window.scrollTo({ top, behavior: 'smooth' });
       }
       return;
