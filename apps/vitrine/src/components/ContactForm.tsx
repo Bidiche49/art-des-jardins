@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, FormEvent } from 'react';
+import { useState, useRef, FormEvent } from 'react';
 import { PhotoUpload } from './PhotoUpload';
 import { IconSpinner } from '@/lib/icons';
 
@@ -52,16 +52,25 @@ const services = [
 ];
 
 export function ContactForm() {
+  const formRef = useRef<HTMLDivElement>(null);
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const [photos, setPhotos] = useState<File[]>([]);
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'success_no_photos' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
+  const [emailError, setEmailError] = useState('');
+
+  const scrollToForm = () => {
+    formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    if (name === 'email' && emailError) {
+      setEmailError('');
+    }
   };
 
   const handleSubmit = async (e: FormEvent) => {
@@ -84,8 +93,7 @@ export function ContactForm() {
     // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) {
-      setErrorMessage('Veuillez entrer une adresse email valide.');
-      setStatus('error');
+      setEmailError('Veuillez entrer une adresse email valide.');
       return;
     }
 
@@ -122,6 +130,7 @@ export function ContactForm() {
           setStatus('success');
           setFormData(initialFormData);
           setPhotos([]);
+          scrollToForm();
           return;
         }
 
@@ -172,6 +181,7 @@ export function ContactForm() {
         setStatus(hadPhotos ? 'success_no_photos' : 'success');
         setFormData(initialFormData);
         setPhotos([]);
+        scrollToForm();
       } else {
         throw new Error(data.message || 'Erreur lors de l\'envoi');
       }
@@ -185,7 +195,7 @@ export function ContactForm() {
 
   if (status === 'success' || status === 'success_no_photos') {
     return (
-      <div className="bg-green-50 border border-green-200 rounded-xl p-8 text-center">
+      <div ref={formRef} className="bg-green-50 border border-green-200 rounded-xl p-8 text-center">
         <div className="text-4xl mb-4">✅</div>
         <h3 className="text-xl font-bold text-green-800 mb-2">Message envoyé !</h3>
         <p className="text-green-700">
@@ -256,9 +266,12 @@ export function ContactForm() {
             value={formData.email}
             onChange={handleChange}
             required
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors"
+            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors ${emailError ? 'border-red-400' : 'border-gray-300'}`}
             placeholder="jean.dupont@email.fr"
           />
+          {emailError && (
+            <p className="text-red-500 text-sm mt-1">{emailError}</p>
+          )}
         </div>
       </div>
 
