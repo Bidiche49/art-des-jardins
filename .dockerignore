@@ -1,0 +1,74 @@
+# Dependencies (reinstalled in Docker)
+node_modules/
+.pnpm-store/
+
+# Build outputs (rebuilt in Docker)
+dist/
+build/
+.next/
+.turbo/
+out/
+*.tsbuildinfo
+
+# Environment (secrets, never in image)
+.env
+.env.*
+!.env.production.example
+
+# Flutter / Mobile (not needed for web Docker builds)
+apps/mobile/
+
+# Source images (large files)
+Images/
+Logo.png
+test_landscaping_icons/
+
+# Git
+.git/
+.gitignore
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*.code-workspace
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Test artifacts
+coverage/
+.nyc_output/
+
+# Docker (avoid recursive context)
+docker/volumes/
+docker/data/
+
+# Docs and backlog (not needed in image)
+docs/
+BACKLOG/
+*.md
+!packages/*/README.md
+
+# Temp
+tmp/
+temp/
+*.tmp
+*.zip
+
+# Claude sessions
+.claude-sessions/
+.claude/
+
+# Wrangler / Vercel
+.vercel/
+.wrangler/
+
+# Scripts (not needed in image)
+scripts/
