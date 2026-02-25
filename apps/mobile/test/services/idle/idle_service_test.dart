@@ -1,3 +1,4 @@
+import 'package:fake_async/fake_async.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:art_et_jardin/domain/enums/user_role.dart';
@@ -30,35 +31,39 @@ void main() {
       expect(service.timeout, const Duration(minutes: 30));
     });
 
-    test('patron triggers warning before timeout', () async {
-      service = createService(
-        patronTimeout: const Duration(milliseconds: 300),
-        warningBefore: const Duration(milliseconds: 100),
-      );
+    test('patron triggers warning before timeout', () {
+      fakeAsync((fake) {
+        service = createService(
+          patronTimeout: const Duration(milliseconds: 300),
+          warningBefore: const Duration(milliseconds: 100),
+        );
 
-      final states = <IdleState>[];
-      service.stateStream.listen(states.add);
+        final states = <IdleState>[];
+        service.stateStream.listen(states.add);
 
-      service.start(UserRole.patron);
+        service.start(UserRole.patron);
 
-      // Wait for warning (300 - 100 = 200ms)
-      await Future.delayed(const Duration(milliseconds: 250));
-      expect(states, contains(IdleState.warning));
+        // Warning at 300 - 100 = 200ms
+        fake.elapse(const Duration(milliseconds: 250));
+        expect(states, contains(IdleState.warning));
+      });
     });
 
-    test('patron triggers expired after timeout', () async {
-      service = createService(
-        patronTimeout: const Duration(milliseconds: 200),
-        warningBefore: const Duration(milliseconds: 50),
-      );
+    test('patron triggers expired after timeout', () {
+      fakeAsync((fake) {
+        service = createService(
+          patronTimeout: const Duration(milliseconds: 200),
+          warningBefore: const Duration(milliseconds: 50),
+        );
 
-      final states = <IdleState>[];
-      service.stateStream.listen(states.add);
+        final states = <IdleState>[];
+        service.stateStream.listen(states.add);
 
-      service.start(UserRole.patron);
+        service.start(UserRole.patron);
 
-      await Future.delayed(const Duration(milliseconds: 300));
-      expect(states, contains(IdleState.expired));
+        fake.elapse(const Duration(milliseconds: 300));
+        expect(states, contains(IdleState.expired));
+      });
     });
   });
 
@@ -69,128 +74,140 @@ void main() {
       expect(service.timeout, const Duration(hours: 2));
     });
 
-    test('employe triggers warning before timeout', () async {
-      service = createService(
-        employeTimeout: const Duration(milliseconds: 300),
-        warningBefore: const Duration(milliseconds: 100),
-      );
+    test('employe triggers warning before timeout', () {
+      fakeAsync((fake) {
+        service = createService(
+          employeTimeout: const Duration(milliseconds: 300),
+          warningBefore: const Duration(milliseconds: 100),
+        );
 
-      final states = <IdleState>[];
-      service.stateStream.listen(states.add);
+        final states = <IdleState>[];
+        service.stateStream.listen(states.add);
 
-      service.start(UserRole.employe);
+        service.start(UserRole.employe);
 
-      await Future.delayed(const Duration(milliseconds: 250));
-      expect(states, contains(IdleState.warning));
+        fake.elapse(const Duration(milliseconds: 250));
+        expect(states, contains(IdleState.warning));
+      });
     });
   });
 
   group('IdleService - reset', () {
-    test('reset on interaction resets timer', () async {
-      service = createService(
-        patronTimeout: const Duration(milliseconds: 200),
-        warningBefore: const Duration(milliseconds: 50),
-      );
+    test('reset on interaction resets timer', () {
+      fakeAsync((fake) {
+        service = createService(
+          patronTimeout: const Duration(milliseconds: 200),
+          warningBefore: const Duration(milliseconds: 50),
+        );
 
-      final states = <IdleState>[];
-      service.stateStream.listen(states.add);
+        final states = <IdleState>[];
+        service.stateStream.listen(states.add);
 
-      service.start(UserRole.patron);
+        service.start(UserRole.patron);
 
-      // Wait 100ms then reset
-      await Future.delayed(const Duration(milliseconds: 100));
-      service.resetTimer();
+        // Wait 100ms then reset
+        fake.elapse(const Duration(milliseconds: 100));
+        service.resetTimer();
 
-      // Allow stream event to be delivered
-      await Future.delayed(Duration.zero);
+        // Flush microtasks to deliver stream event
+        fake.flushMicrotasks();
 
-      // Should emit active
-      expect(states, contains(IdleState.active));
+        // Should emit active
+        expect(states, contains(IdleState.active));
+      });
     });
 
-    test('reset on navigation prevents expiration', () async {
-      service = createService(
-        patronTimeout: const Duration(milliseconds: 200),
-        warningBefore: const Duration(milliseconds: 50),
-      );
+    test('reset on navigation prevents expiration', () {
+      fakeAsync((fake) {
+        service = createService(
+          patronTimeout: const Duration(milliseconds: 200),
+          warningBefore: const Duration(milliseconds: 50),
+        );
 
-      final states = <IdleState>[];
-      service.stateStream.listen(states.add);
+        final states = <IdleState>[];
+        service.stateStream.listen(states.add);
 
-      service.start(UserRole.patron);
+        service.start(UserRole.patron);
 
-      // Reset at 100ms
-      await Future.delayed(const Duration(milliseconds: 100));
-      service.resetTimer();
+        // Reset at 100ms
+        fake.elapse(const Duration(milliseconds: 100));
+        service.resetTimer();
 
-      // Wait past original timeout (200ms from start, but we reset at 100ms)
-      await Future.delayed(const Duration(milliseconds: 150));
+        // Wait past original timeout (200ms from start, but we reset at 100ms)
+        fake.elapse(const Duration(milliseconds: 150));
 
-      // Should NOT have expired yet (timer was reset)
-      expect(states.where((s) => s == IdleState.expired), isEmpty);
+        // Should NOT have expired yet (timer was reset)
+        expect(states.where((s) => s == IdleState.expired), isEmpty);
+      });
     });
 
-    test('continue in warning dialog resets timer', () async {
-      service = createService(
-        patronTimeout: const Duration(milliseconds: 300),
-        warningBefore: const Duration(milliseconds: 100),
-      );
+    test('continue in warning dialog resets timer', () {
+      fakeAsync((fake) {
+        service = createService(
+          patronTimeout: const Duration(milliseconds: 300),
+          warningBefore: const Duration(milliseconds: 100),
+        );
 
-      final states = <IdleState>[];
-      service.stateStream.listen(states.add);
+        final states = <IdleState>[];
+        service.stateStream.listen(states.add);
 
-      service.start(UserRole.patron);
+        service.start(UserRole.patron);
 
-      // Wait for warning
-      await Future.delayed(const Duration(milliseconds: 250));
-      expect(states, contains(IdleState.warning));
+        // Wait for warning
+        fake.elapse(const Duration(milliseconds: 250));
+        expect(states, contains(IdleState.warning));
 
-      // Simulate "continue" button press
-      service.resetTimer();
+        // Simulate "continue" button press
+        service.resetTimer();
 
-      // Allow stream event to be delivered
-      await Future.delayed(Duration.zero);
+        // Flush microtasks to deliver stream event
+        fake.flushMicrotasks();
 
-      // Should emit active after reset
-      expect(states.last, IdleState.active);
+        // Should emit active after reset
+        expect(states.last, IdleState.active);
+      });
     });
   });
 
   group('IdleService - countdown', () {
-    test('warning emits countdown seconds', () async {
-      service = createService(
-        patronTimeout: const Duration(milliseconds: 400),
-        warningBefore: const Duration(milliseconds: 200),
-      );
+    test('warning emits countdown seconds', () {
+      fakeAsync((fake) {
+        service = createService(
+          patronTimeout: const Duration(milliseconds: 400),
+          warningBefore: const Duration(milliseconds: 200),
+        );
 
-      final countdowns = <int>[];
-      service.countdownStream.listen(countdowns.add);
+        final countdowns = <int>[];
+        service.countdownStream.listen(countdowns.add);
 
-      service.start(UserRole.patron);
+        service.start(UserRole.patron);
 
-      // Wait for warning + some countdown ticks (warning duration is very short in test)
-      await Future.delayed(const Duration(milliseconds: 300));
-      // Should have received at least one countdown value
-      expect(countdowns, isNotEmpty);
+        // Wait for warning + some countdown ticks
+        fake.elapse(const Duration(milliseconds: 300));
+        // Should have received at least one countdown value
+        expect(countdowns, isNotEmpty);
+      });
     });
   });
 
   group('IdleService - lifecycle', () {
-    test('app in background continues timer', () async {
-      service = createService(
-        patronTimeout: const Duration(milliseconds: 200),
-        warningBefore: const Duration(milliseconds: 50),
-      );
+    test('app in background continues timer', () {
+      fakeAsync((fake) {
+        service = createService(
+          patronTimeout: const Duration(milliseconds: 200),
+          warningBefore: const Duration(milliseconds: 50),
+        );
 
-      final states = <IdleState>[];
-      service.stateStream.listen(states.add);
+        final states = <IdleState>[];
+        service.stateStream.listen(states.add);
 
-      service.start(UserRole.patron);
-      service.onBackground();
+        service.start(UserRole.patron);
+        service.onBackground();
 
-      // Timer should still be running
-      await Future.delayed(const Duration(milliseconds: 300));
-      expect(states, contains(IdleState.expired));
+        // Timer should still be running
+        fake.elapse(const Duration(milliseconds: 300));
+        expect(states, contains(IdleState.expired));
+      });
     });
 
     test('app in foreground checks if expired', () async {
@@ -204,8 +221,8 @@ void main() {
 
       service.start(UserRole.patron);
 
-      // Wait for expiration
-      await Future.delayed(const Duration(milliseconds: 200));
+      // Wait for expiration (generous margin for real-time tests)
+      await Future.delayed(const Duration(milliseconds: 300));
 
       // Clear states list
       states.clear();
