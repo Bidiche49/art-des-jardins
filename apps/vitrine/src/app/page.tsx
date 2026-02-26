@@ -8,7 +8,7 @@ import { PhotoGallery } from '@/components/ui/PhotoGallery';
 import { AnimateOnScroll } from '@/components/ui/AnimateOnScroll';
 import { BeforeAfterSection } from '@/components/BeforeAfterSection';
 import { serviceCardImages, getSrcSet, getDefaultSrc, getImage } from '@/lib/images-manifest';
-import { IconRcPro, IconDecennale, IconExperience, IconDevis48h, IconZone30km, IconInstagram } from '@/lib/icons';
+import { IconRcPro, IconDecennale, IconExperience, IconDevis48h, IconZone30km, IconInstagram, IconEuro } from '@/lib/icons';
 
 export default function HomePage() {
   return (
@@ -55,6 +55,10 @@ export default function HomePage() {
               <IconZone30km className="w-5 h-5 text-primary-600 flex-shrink-0" />
               <span className="font-medium">Angers et 30 km</span>
             </div>
+            <div className="flex items-center gap-2">
+              <IconEuro className="w-5 h-5 text-green-600 flex-shrink-0" />
+              <span className="font-medium text-green-700">Crédit d&apos;impôt 50 %</span>
+            </div>
           </div>
         </div>
       </section>
@@ -73,6 +77,7 @@ export default function HomePage() {
                   description={service.description}
                   href={service.href}
                   imageSlug={service.imageSlug}
+                  badge={service.badge}
                 />
               </AnimateOnScroll>
             ))}
@@ -82,6 +87,20 @@ export default function HomePage() {
               Voir tous nos services
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* Tax Credit Accent */}
+      <section className="py-3 bg-green-50 border-y border-green-100">
+        <div className="container-custom">
+          <Link
+            href="/services/entretien-jardin/"
+            className="flex items-center justify-center gap-2 text-sm text-green-800 hover:text-green-900 transition-colors"
+          >
+            <IconEuro className="w-4 h-4 text-green-600 hidden sm:block" />
+            <span>Entretien de jardin — Bénéficiez de <strong>50 % de crédit d&apos;impôt</strong></span>
+            <span className="text-green-600" aria-hidden="true">&rarr;</span>
+          </Link>
         </div>
       </section>
 
@@ -256,7 +275,7 @@ export default function HomePage() {
   );
 }
 
-const services = [
+const services: { title: string; description: string; href: string; imageSlug: string; badge?: string }[] = [
   {
     title: 'Aménagement paysager',
     description: 'Conception et aménagement de jardins sur mesure.',
@@ -268,6 +287,7 @@ const services = [
     description: 'Tonte, taille, désherbage et entretien régulier.',
     href: '/services/entretien-jardin/',
     imageSlug: serviceCardImages['entretien-jardin'],
+    badge: 'Crédit d\'impôt 50 %',
   },
   {
     title: 'Élagage',
