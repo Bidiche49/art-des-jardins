@@ -90,20 +90,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Tax Credit Accent */}
-      <section className="py-3 bg-primary-50 border-y border-primary-100">
-        <div className="container-custom">
-          <Link
-            href="/services/entretien-jardin/"
-            className="flex items-center justify-center gap-2 text-sm text-primary-800 hover:text-primary-900 transition-colors"
-          >
-            <IconEuro className="w-4 h-4 text-primary-600 hidden sm:block" />
-            <span>Entretien de jardin — Bénéficiez de <strong>50 % de crédit d&apos;impôt</strong></span>
-            <span className="text-primary-600" aria-hidden="true">&rarr;</span>
-          </Link>
-        </div>
-      </section>
-
       {/* About Section */}
       <section className="py-16 lg:py-24">
         <div className="container-custom max-w-4xl">
@@ -264,7 +250,7 @@ export default function HomePage() {
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Prêt à transformer votre jardin ?</h2>
           <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
             Contactez-nous pour un devis gratuit et sans engagement. Intervention rapide dans tout
-            Angers et ses environs.
+            Angers et ses environs. Crédit d&apos;impôt 50 % sur l&apos;entretien de jardin.
           </p>
           <Link href="/contact" className="btn-primary bg-white text-primary-700 hover:bg-gray-100">
             Contactez-nous
