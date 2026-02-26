@@ -8,7 +8,7 @@ import { PhotoGallery } from '@/components/ui/PhotoGallery';
 import { AnimateOnScroll } from '@/components/ui/AnimateOnScroll';
 import { BeforeAfterSection } from '@/components/BeforeAfterSection';
 import { serviceCardImages } from '@/lib/images-manifest';
-import { IconRcPro, IconDecennale, IconExperience, IconDevis48h, IconZone30km } from '@/lib/icons';
+import { IconRcPro, IconDecennale, IconExperience, IconDevis48h, IconZone30km, IconInstagram } from '@/lib/icons';
 
 export default function HomePage() {
   return (
@@ -19,7 +19,7 @@ export default function HomePage() {
       <HeroSection
         imageSlug="entretien-2"
         title="Votre paysagiste à Angers"
-        subtitle="Aménagement de jardins, entretien, élagage et abattage. Devis gratuit sous 48h."
+        subtitle="Aménagement de jardins, entretien, élagage et abattage. Devis gratuit sous 48h suite au rendez-vous."
       >
         <div className="flex flex-col sm:flex-row gap-4">
           <Link href="/contact" className="btn-primary bg-white text-primary-700 hover:bg-gray-100">
@@ -49,7 +49,7 @@ export default function HomePage() {
             </div>
             <div className="flex items-center gap-2">
               <IconDevis48h className="w-5 h-5 text-primary-600 flex-shrink-0" />
-              <span className="font-medium">Devis gratuit sous 48h</span>
+              <span className="font-medium">Devis gratuit sous 48h suite au rendez-vous</span>
             </div>
             <div className="flex items-center gap-2">
               <IconZone30km className="w-5 h-5 text-primary-600 flex-shrink-0" />
@@ -132,6 +132,20 @@ export default function HomePage() {
           <AnimateOnScroll>
             <PhotoGallery maxItems={8} showFilters={false} />
           </AnimateOnScroll>
+          <AnimateOnScroll>
+            <div className="text-center mt-8">
+              <a
+                href="https://www.instagram.com/artdesjardins_49"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-primary-600 hover:text-primary-700 font-medium transition-colors"
+              >
+                <IconInstagram className="w-5 h-5" />
+                Découvrez plus de réalisations sur Instagram
+                <span aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
+          </AnimateOnScroll>
         </div>
       </section>
 
@@ -154,6 +168,9 @@ export default function HomePage() {
               <p>
                 Nous intervenons dans un rayon de 30 km autour d&apos;Angers pour tous vos travaux de jardinage
                 et d&apos;aménagement paysager. Notre zone d&apos;intervention couvre notamment :
+              </p>
+              <p>
+                Intervention possible hors département pour les projets d&apos;envergure.
               </p>
             </div>
             <div className="flex flex-wrap justify-center gap-3 mt-6">

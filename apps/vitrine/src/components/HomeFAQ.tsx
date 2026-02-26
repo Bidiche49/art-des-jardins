@@ -17,12 +17,12 @@ const faqs: FAQItem[] = [
   {
     question: 'Dans quelle zone intervenez-vous ?',
     answer:
-      'Nous intervenons dans un rayon de 30 km autour d\'Angers : Les Ponts-de-Cé, Avrillé, Beaucouzé, Bouchemaine, Trélazé, Saint-Barthélemy-d\'Anjou, Écouflant, Mûrs-Érigné et toutes les communes du Maine-et-Loire (49). Le déplacement et le devis sont gratuits.',
+      'Nous intervenons dans un rayon de 30 km autour d\'Angers : Les Ponts-de-Cé, Avrillé, Beaucouzé, Bouchemaine, Trélazé, Saint-Barthélemy-d\'Anjou, Écouflant, Mûrs-Érigné et toutes les communes du Maine-et-Loire (49). Le déplacement et le devis sont gratuits. Nous pouvons également intervenir hors département pour des chantiers plus conséquents.',
   },
   {
     question: 'Comment obtenir un devis ?',
     answer:
-      'Appelez-nous au 07 81 16 07 37 ou au 06 59 68 49 16, écrivez-nous sur WhatsApp, ou remplissez le formulaire sur notre page contact. Nous vous recontactons sous 48h et planifions une visite gratuite sur place pour évaluer votre projet. Le devis est détaillé, transparent et sans engagement.',
+      'Appelez-nous au 07 81 16 07 37 ou au 06 59 68 49 16, écrivez-nous sur WhatsApp, ou remplissez le formulaire sur notre page contact. Nous vous recontactons sous 48h et planifions une visite gratuite sur place pour évaluer votre projet. Le devis est gratuit sous 48h suite au rendez-vous, détaillé, transparent et sans engagement.',
   },
   {
     question: 'Êtes-vous assurés ?',
@@ -42,7 +42,7 @@ const faqs: FAQItem[] = [
   {
     question: 'Quels sont vos délais d\'intervention ?',
     answer:
-      'Pour un devis, nous vous recontactons sous 48h. Pour une intervention classique, comptez 1 à 2 semaines selon la saison. En cas d\'urgence (arbre dangereux, dégâts de tempête), nous pouvons intervenir sous 24 à 48h. Appelez-nous directement au 07 81 16 07 37.',
+      'Pour un devis, nous vous recontactons sous 48h suite au rendez-vous. Pour une intervention classique, comptez 2 semaines à 1 mois selon la saison. En cas d\'urgence (arbre dangereux, dégâts de tempête), nous pouvons intervenir sous 24 à 48h. Appelez-nous directement au 07 81 16 07 37.',
   },
 ];
 
