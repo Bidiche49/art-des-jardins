@@ -87,7 +87,7 @@ export default function PaysagisteAngersPage() {
                 </p>
               </div>
 
-              <InlineGallery slugs={['creation-4', 'creation-7', 'creation-5', 'creation-8']} />
+              <InlineGallery slugs={['creation-4', 'creation-7', 'creation-5', 'creation-8', 'creation-3', 'terrasse-2']} />
 
               <h3 className="text-2xl font-bold mt-12 mb-6">Nos services d'aménagement paysager à Angers</h3>
               <div className="grid sm:grid-cols-2 gap-4">
