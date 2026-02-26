@@ -13,7 +13,7 @@ const city = cities.find((c) => c.slug === 'angers')!;
 export const metadata: Metadata = {
   title: 'Élagage Angers - Taille d\'Arbres Professionnel | Art des Jardins',
   description:
-    'Élagueur professionnel à Angers. Taille d\'arbres, éclaircissage, taille de sécurisation, haubanage. Élagueurs certifiés. Devis gratuit.',
+    'Élagueur professionnel à Angers. Taille d\'arbres, éclaircissage, taille de sécurisation, diagnostic phytosanitaire. Élagueurs certifiés. Devis gratuit.',
   keywords: [
     'élagage angers',
     'élagueur angers',
@@ -42,7 +42,7 @@ export default function ElagageAngersPage() {
 
       {/* Hero */}
       <HeroSection
-        imageSlug="elagage-3"
+        imageSlug="elagage-1"
         title="Élagage à Angers"
         subtitle="Art des Jardins, élagueurs professionnels certifiés à Angers. Taille d'arbres, éclaircissage, sécurisation. Intervention rapide et devis gratuit."
       >
@@ -82,11 +82,6 @@ export default function ElagageAngersPage() {
                   Notre équipe intervient dans tous les quartiers d'Angers : {city.neighborhoods?.join(', ')}.
                   Nous connaissons les réglementations locales concernant les arbres classés et les
                   zones protégées du secteur sauvegardé.
-                </p>
-                <p>
-                  Nous disposons d'un parc matériel complet : nacelles jusqu'à 25m, broyeurs, tronçonneuses
-                  professionnelles... Notre équipement nous permet d'intervenir sur les arbres les plus
-                  imposants en toute sécurité.
                 </p>
               </div>
 
