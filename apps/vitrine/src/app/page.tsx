@@ -60,7 +60,7 @@ export default function HomePage() {
       </section>
 
       {/* Services Section */}
-      <section className="py-16 lg:py-24 bg-gray-50">
+      <section className="pt-10 pb-16 lg:pt-14 lg:pb-24 bg-gray-50">
         <div className="container-custom">
           <AnimateOnScroll>
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Nos services de paysagiste à Angers</h2>
