@@ -69,7 +69,8 @@ export function LocalBusinessSchema() {
       value: '123 456 789 00012', // TODO: Remplacer par le vrai SIRET
     },
     sameAs: [
-      // TODO: Ajouter les URLs réelles des profils
+      'https://www.instagram.com/artdesjardins_49',
+      // TODO: Ajouter les autres URLs réelles des profils
       // 'https://www.google.com/maps/place/Art+des+Jardins/...',
       // 'https://www.pagesjaunes.fr/pros/...',
       // 'https://www.facebook.com/artdesjardins49/',
@@ -79,64 +80,40 @@ export function LocalBusinessSchema() {
       name: 'Services d\'aménagement paysager',
       itemListElement: [
         {
-          '@type': 'AggregateOffer',
+          '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
             name: 'Aménagement de jardin',
             description: 'Conception et réalisation de jardins sur mesure',
           },
-          lowPrice: 50,
-          highPrice: 150,
-          priceCurrency: 'EUR',
-          priceSpecification: {
-            '@type': 'UnitPriceSpecification',
-            unitText: 'm²',
-          },
+          priceRange: 'Sur devis',
         },
         {
-          '@type': 'AggregateOffer',
+          '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
             name: 'Entretien de jardin',
             description: 'Tonte, taille, désherbage et entretien régulier',
           },
-          lowPrice: 30,
-          highPrice: 60,
-          priceCurrency: 'EUR',
-          priceSpecification: {
-            '@type': 'UnitPriceSpecification',
-            unitText: 'heure',
-          },
+          priceRange: 'Sur devis',
         },
         {
-          '@type': 'AggregateOffer',
+          '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
             name: 'Élagage',
             description: 'Taille et élagage de tous types d\'arbres',
           },
-          lowPrice: 100,
-          highPrice: 800,
-          priceCurrency: 'EUR',
-          priceSpecification: {
-            '@type': 'UnitPriceSpecification',
-            unitText: 'arbre',
-          },
+          priceRange: 'Sur devis',
         },
         {
-          '@type': 'AggregateOffer',
+          '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
             name: 'Abattage',
             description: 'Abattage sécurisé d\'arbres',
           },
-          lowPrice: 300,
-          highPrice: 2000,
-          priceCurrency: 'EUR',
-          priceSpecification: {
-            '@type': 'UnitPriceSpecification',
-            unitText: 'arbre',
-          },
+          priceRange: 'Sur devis',
         },
       ],
     },

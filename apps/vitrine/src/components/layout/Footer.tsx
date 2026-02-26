@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { IconPin, IconPhone, IconEmail } from '@/lib/icons';
+import { IconPin, IconPhone, IconEmail, IconInstagram } from '@/lib/icons';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -40,6 +40,18 @@ export function Footer() {
               <p className="flex items-center gap-2">
                 <IconEmail className="w-4 h-4 text-primary-500 flex-shrink-0" />
                 <a href="mailto:artdesjardins49@gmail.com" className="hover:text-white transition-colors">artdesjardins49@gmail.com</a>
+              </p>
+              <p className="flex items-center gap-2">
+                <IconInstagram className="w-4 h-4 text-primary-500 flex-shrink-0" />
+                <a
+                  href="https://www.instagram.com/artdesjardins_49"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Suivez-nous sur Instagram"
+                  className="hover:text-white transition-colors"
+                >
+                  @artdesjardins_49
+                </a>
               </p>
             </div>
           </div>
