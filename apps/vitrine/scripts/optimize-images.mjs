@@ -17,32 +17,38 @@ const WEBP_QUALITY = 80;
 const BLUR_SIZE = 20;
 
 // Image catalog with SEO alt texts and categories
+// Order matters: first 8 images = homepage gallery (maxItems=8, no filter)
+// Curated for variety and visual impact
 const IMAGE_CATALOG = [
-  { file: 'Arrosage_1.jpg', slug: 'arrosage-1', category: 'arrosage', alt: 'Systeme d\'arrosage automatique installe dans un jardin paysager a Angers', tags: ['arrosage', 'automatique', 'jardin'] },
+  { file: 'Creation_6.jpg', slug: 'creation-6', category: 'creation', alt: 'Allee paysagere en gravier dans un parc arbore - paysagiste Angers', tags: ['creation', 'allee', 'gravier', 'parc'] },
+  { file: 'Entretien_2.JPG', slug: 'entretien-2', category: 'entretien', alt: 'Jardin paysager avec piscine et topiaires parfaitement entretenus', tags: ['entretien', 'piscine', 'topiaires', 'jardin'] },
+  { file: 'Creation_7.jpg', slug: 'creation-7', category: 'creation', alt: 'Terrasse en gravier stabilise avec muret en acier corten et massifs fleuris - paysagiste Angers', tags: ['creation', 'terrasse', 'corten', 'massifs'] },
+  { file: 'Elagage_2.jpg', slug: 'elagage-2', category: 'elagage', alt: 'Elagueur professionnel en action dans un arbre a Angers', tags: ['elagage', 'professionnel', 'intervention'] },
+  { file: 'Terrasse_2.jpeg', slug: 'terrasse-2', category: 'terrasse', alt: 'Terrasse en pierre naturelle avec amenagement paysager complet', tags: ['terrasse', 'pierre', 'amenagement'] },
+  { file: 'Creation_4.jpg', slug: 'creation-4', category: 'creation', alt: 'Escalier en ardoise et pas japonais avec paillage bois - amenagement jardin Angers', tags: ['creation', 'escalier', 'ardoise', 'pas-japonais'] },
   { file: 'Cloture_1.jpeg', slug: 'cloture-1', category: 'cloture', alt: 'Pose de cloture en bois pour delimitation de jardin pres d\'Angers', tags: ['cloture', 'bois', 'delimitation'] },
-  { file: 'Cloture_2.jpeg', slug: 'cloture-2', category: 'cloture', alt: 'Cloture decorative en panneaux rigides installee par Art des Jardins', tags: ['cloture', 'panneaux', 'rigides'] },
-  { file: 'Cloture_3.jpeg', slug: 'cloture-3', category: 'cloture', alt: 'Amenagement de cloture et portillon pour entree de propriete', tags: ['cloture', 'portillon', 'entree'] },
-  { file: 'Cloture_4.jpeg', slug: 'cloture-4', category: 'cloture', alt: 'Installation de cloture composite moderne dans le Maine-et-Loire', tags: ['cloture', 'composite', 'moderne'] },
+  { file: 'Arrosage_1.jpg', slug: 'arrosage-1', category: 'arrosage', alt: 'Systeme d\'arrosage automatique installe dans un jardin paysager a Angers', tags: ['arrosage', 'automatique', 'jardin'] },
+  // Rest of catalog
+  { file: 'Creation_9.jpg', slug: 'creation-9', category: 'creation', alt: 'Parc paysager amenage avec allee en gravier et espace reception - creation paysagere Angers', tags: ['creation', 'parc', 'allee', 'reception'] },
+  { file: 'Creation_8.jpg', slug: 'creation-8', category: 'creation', alt: 'Muret en acier corten avec escalier et plantations paysageres pres d\'Angers', tags: ['creation', 'corten', 'escalier', 'plantations'] },
+  { file: 'Creation_5.jpg', slug: 'creation-5', category: 'creation', alt: 'Pergola en bois et allee en pas japonais dans un jardin paysager a Angers', tags: ['creation', 'pergola', 'bois', 'allee'] },
   { file: 'Creation_1.JPG', slug: 'creation-1', category: 'creation', alt: 'Creation de massifs floraux et allee paysagere a Angers', tags: ['creation', 'massifs', 'allee'], extraRotation: -90 },
   { file: 'Creation_2.jpeg', slug: 'creation-2', category: 'creation', alt: 'Amenagement paysager complet avec allee en gravillon et massifs vegetaux', tags: ['creation', 'allee', 'gravillon', 'massifs'] },
   { file: 'Creation_3.jpeg', slug: 'creation-3', category: 'creation', alt: 'Realisation d\'un jardin contemporain avec plantations variees', tags: ['creation', 'contemporain', 'plantations'] },
+  { file: 'Entretien_1.jpeg', slug: 'entretien-1', category: 'entretien', alt: 'Haie taillee impeccablement par les jardiniers d\'Art des Jardins', tags: ['entretien', 'haie', 'taille'] },
+  { file: 'Entretien_3.jpg', slug: 'entretien-3', category: 'entretien', alt: 'Pelouse parfaitement entretenue au coucher de soleil - entretien jardin Angers', tags: ['entretien', 'pelouse', 'coucher-soleil'] },
   { file: 'Elagage_1.JPG', slug: 'elagage-1', category: 'elagage', alt: 'Grands arbres vus en contre-plongee avant intervention d\'elagage', tags: ['elagage', 'grands-arbres', 'hauteur'] },
-  { file: 'Elagage_2.jpg', slug: 'elagage-2', category: 'elagage', alt: 'Elagueur professionnel en action dans un arbre a Angers', tags: ['elagage', 'professionnel', 'intervention'] },
   { file: 'Elagage_3.jpeg', slug: 'elagage-3', category: 'elagage', alt: 'Resultat de taille d\'arbres soignee par Art des Jardins', tags: ['elagage', 'taille', 'resultat'] },
   { file: 'Elagage_4.jpeg', slug: 'elagage-4', category: 'elagage', alt: 'Taille de formation sur arbre ornemental dans le Maine-et-Loire', tags: ['elagage', 'formation', 'ornemental'] },
   { file: 'Elagage_5.jpeg', slug: 'elagage-5', category: 'elagage', alt: 'Elagage de securisation sur un arbre mature pres d\'habitation', tags: ['elagage', 'securisation', 'arbre-mature'] },
-  { file: 'Entretien_1.jpeg', slug: 'entretien-1', category: 'entretien', alt: 'Haie taillee impeccablement par les jardiniers d\'Art des Jardins', tags: ['entretien', 'haie', 'taille'] },
-  { file: 'Entretien_2.JPG', slug: 'entretien-2', category: 'entretien', alt: 'Jardin paysager avec piscine et topiaires parfaitement entretenus', tags: ['entretien', 'piscine', 'topiaires', 'jardin'] },
-  { file: 'Terasse_1.jpeg', slug: 'terrasse-1', category: 'terrasse', alt: 'Terrasse en bois composite amenagee dans un jardin paysager', tags: ['terrasse', 'bois', 'composite'] },
-  { file: 'Terrasse_2.jpeg', slug: 'terrasse-2', category: 'terrasse', alt: 'Terrasse en pierre naturelle avec amenagement paysager complet', tags: ['terrasse', 'pierre', 'amenagement'] },
   { file: 'Terrasse_3.jpeg', slug: 'terrasse-3', category: 'terrasse', alt: 'Creation de terrasse et espace de vie exterieur a Angers', tags: ['terrasse', 'espace-vie', 'exterieur'] },
-  { file: 'Creation_4.jpg', slug: 'creation-4', category: 'creation', alt: 'Escalier en ardoise et pas japonais avec paillage bois - amenagement jardin Angers', tags: ['creation', 'escalier', 'ardoise', 'pas-japonais'] },
-  { file: 'Creation_5.jpg', slug: 'creation-5', category: 'creation', alt: 'Pergola en bois et allee en pas japonais dans un jardin paysager a Angers', tags: ['creation', 'pergola', 'bois', 'allee'] },
-  { file: 'Creation_6.jpg', slug: 'creation-6', category: 'creation', alt: 'Allee paysagere en gravier dans un parc arbore - paysagiste Angers', tags: ['creation', 'allee', 'gravier', 'parc'] },
-  { file: 'Creation_7.jpg', slug: 'creation-7', category: 'creation', alt: 'Terrasse en gravier stabilise avec muret en acier corten et massifs fleuris - paysagiste Angers', tags: ['creation', 'terrasse', 'corten', 'massifs'] },
-  { file: 'Creation_8.jpg', slug: 'creation-8', category: 'creation', alt: 'Muret en acier corten avec escalier et plantations paysageres pres d\'Angers', tags: ['creation', 'corten', 'escalier', 'plantations'] },
-  { file: 'Creation_9.jpg', slug: 'creation-9', category: 'creation', alt: 'Parc paysager amenage avec allee en gravier et espace reception - creation paysagere Angers', tags: ['creation', 'parc', 'allee', 'reception'] },
-  { file: 'Entretien_3.jpg', slug: 'entretien-3', category: 'entretien', alt: 'Pelouse parfaitement entretenue au coucher de soleil - entretien jardin Angers', tags: ['entretien', 'pelouse', 'coucher-soleil'] },
+  { file: 'Terasse_1.jpeg', slug: 'terrasse-1', category: 'terrasse', alt: 'Terrasse en bois composite amenagee dans un jardin paysager', tags: ['terrasse', 'bois', 'composite'] },
+  { file: 'Cloture_2.jpeg', slug: 'cloture-2', category: 'cloture', alt: 'Cloture decorative en panneaux rigides installee par Art des Jardins', tags: ['cloture', 'panneaux', 'rigides'] },
+  { file: 'Cloture_3.jpeg', slug: 'cloture-3', category: 'cloture', alt: 'Amenagement de cloture et portillon pour entree de propriete', tags: ['cloture', 'portillon', 'entree'] },
+  { file: 'Cloture_4.jpeg', slug: 'cloture-4', category: 'cloture', alt: 'Installation de cloture composite moderne dans le Maine-et-Loire', tags: ['cloture', 'composite', 'moderne'] },
+  // Before/After pair - debroussaillage
+  { file: 'Chantier_avant_1.jpg', slug: 'chantier-avant-1', category: 'entretien', alt: 'Jardin envahi par la vegetation avant intervention de debroussaillage a Angers', tags: ['entretien', 'debroussaillage', 'avant'] },
+  { file: 'Chantier_avant_3.jpg', slug: 'chantier-apres-1', category: 'entretien', alt: 'Jardin defriche et remis au propre apres debroussaillage par Art des Jardins', tags: ['entretien', 'debroussaillage', 'apres'] },
 ];
 
 // OG image mappings

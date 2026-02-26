@@ -46,7 +46,7 @@ export default function EntretienJardinAngersPage() {
 
       {/* Hero */}
       <HeroSection
-        imageSlug="entretien-1"
+        imageSlug="entretien-3"
         title="Entretien de Jardin à Angers"
         subtitle="Entretien de jardin à Angers — Bénéficiez de 50 % de crédit d'impôt. Tonte, taille, désherbage par un professionnel agréé."
       >

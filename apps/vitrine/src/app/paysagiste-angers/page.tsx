@@ -42,7 +42,7 @@ export default function PaysagisteAngersPage() {
 
       {/* Hero */}
       <HeroSection
-        imageSlug="creation-2"
+        imageSlug="creation-6"
         title="Paysagiste à Angers"
         subtitle="Art des Jardins, votre partenaire de confiance pour l'aménagement et la création de jardins à Angers et dans tout le Maine-et-Loire. Devis gratuit sous 48h."
       >

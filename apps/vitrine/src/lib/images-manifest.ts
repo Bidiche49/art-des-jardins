@@ -17,19 +17,93 @@ export interface ImageEntry {
 }
 
 export const images: Record<string, ImageEntry> = {
-  'arrosage-1': {
-    slug: 'arrosage-1',
-    category: 'arrosage',
-    alt: 'Systeme d\'arrosage automatique installe dans un jardin paysager a Angers',
-    tags: ['arrosage', 'automatique', 'jardin'],
-    originalWidth: 3840,
-    originalHeight: 2160,
-    blurDataURI: 'data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAABQBACdASoUABQAPzmUwFovKaakKAgB4CcJQBkTAeyR4hfrOEAQe6aIMx5oAPi9y9cklCz+ryePjhqHHlYym5HMExFkB98XWuVwgJKRseuzrg+6XkhuE1R+wgzM+AAA',
+  'creation-6': {
+    slug: 'creation-6',
+    category: 'creation',
+    alt: 'Allee paysagere en gravier dans un parc arbore - paysagiste Angers',
+    tags: ['creation', 'allee', 'gravier', 'parc'],
+    originalWidth: 4284,
+    originalHeight: 5712,
+    blurDataURI: 'data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAADwAwCdASoUABQAPzmKulWvKSWjKA1R4CcJQBbZAfj+R+46c71sIeEAAP5JhqyIgV4loNmfM+90iPbuxr4c6rhMSciclminy2ZcZ/FptTkqvu95gyTQKtP+eW4016fT9jBtgAAA',
     sizes: {
-    480: { path: '/images/realisations/arrosage-1-480w.webp', width: 480, height: 270 },
-    800: { path: '/images/realisations/arrosage-1-800w.webp', width: 800, height: 450 },
-    1200: { path: '/images/realisations/arrosage-1-1200w.webp', width: 1200, height: 675 },
-    1920: { path: '/images/realisations/arrosage-1-1920w.webp', width: 1920, height: 1080 }
+    480: { path: '/images/realisations/creation-6-480w.webp', width: 480, height: 640 },
+    800: { path: '/images/realisations/creation-6-800w.webp', width: 800, height: 1067 },
+    1200: { path: '/images/realisations/creation-6-1200w.webp', width: 1200, height: 1600 },
+    1920: { path: '/images/realisations/creation-6-1920w.webp', width: 1920, height: 2560 }
+    },
+  },
+  'entretien-2': {
+    slug: 'entretien-2',
+    category: 'entretien',
+    alt: 'Jardin paysager avec piscine et topiaires parfaitement entretenus',
+    tags: ['entretien', 'piscine', 'topiaires', 'jardin'],
+    originalWidth: 2208,
+    originalHeight: 1656,
+    blurDataURI: 'data:image/webp;base64,UklGRp4AAABXRUJQVlA4IJIAAADQBACdASoUABQAPzmUwFmvKiajqAgB4CcJQBbZAiM9JN84XVp7nTrrJWlVR2gIAAD+ZZacilhSe6Xpe8Y4Nf2moLKZtvdknrnNkd7QaZ7jzxYoMHWDauRqGl2VwJNH1vJmoezruDl/NV2HlXvgF0ARzGAiwpCeh99FdpuA8JuNEVfgLHRn9Tde3nnaujZvvYAAAA==',
+    sizes: {
+    480: { path: '/images/realisations/entretien-2-480w.webp', width: 480, height: 360 },
+    800: { path: '/images/realisations/entretien-2-800w.webp', width: 800, height: 600 },
+    1200: { path: '/images/realisations/entretien-2-1200w.webp', width: 1200, height: 900 },
+    1920: { path: '/images/realisations/entretien-2-1920w.webp', width: 1920, height: 1440 }
+    },
+  },
+  'creation-7': {
+    slug: 'creation-7',
+    category: 'creation',
+    alt: 'Terrasse en gravier stabilise avec muret en acier corten et massifs fleuris - paysagiste Angers',
+    tags: ['creation', 'terrasse', 'corten', 'massifs'],
+    originalWidth: 5712,
+    originalHeight: 4284,
+    blurDataURI: 'data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAABwBACdASoUABQAPzmUwVmvKicjqAgB4CcJYwDA3AVTnshDa/IsAX2fFy+MgAD5NFqINHmn7iuloniXPPp+ZyHSVr81EsLoCfCvvn2b+JSiiS7nZaPb+n7nOFuqhf57qBhawklYaUKiVy7fG4bZMOkwAcErCvBv3MwJP4AA',
+    sizes: {
+    480: { path: '/images/realisations/creation-7-480w.webp', width: 480, height: 360 },
+    800: { path: '/images/realisations/creation-7-800w.webp', width: 800, height: 600 },
+    1200: { path: '/images/realisations/creation-7-1200w.webp', width: 1200, height: 900 },
+    1920: { path: '/images/realisations/creation-7-1920w.webp', width: 1920, height: 1440 }
+    },
+  },
+  'elagage-2': {
+    slug: 'elagage-2',
+    category: 'elagage',
+    alt: 'Elagueur professionnel en action dans un arbre a Angers',
+    tags: ['elagage', 'professionnel', 'intervention'],
+    originalWidth: 1200,
+    originalHeight: 1600,
+    blurDataURI: 'data:image/webp;base64,UklGRoYAAABXRUJQVlA4IHoAAADQBACdASoUABQAPzmOuVavKaUjqA1R4CcJYgC90BF+2bx5pJzSINDcJaq1XtqdcAD+dYqTV+yHIvYrkhfNiG6jIilmMWDbvyaFYIQiX2FdLE0QodJt77fuUTgD2QUMYzDy9Xpvmki/OLMcmcE7qCQQp7Y6HAa3OmAAAA==',
+    sizes: {
+    480: { path: '/images/realisations/elagage-2-480w.webp', width: 480, height: 640 },
+    800: { path: '/images/realisations/elagage-2-800w.webp', width: 800, height: 1067 },
+    1200: { path: '/images/realisations/elagage-2-1200w.webp', width: 1200, height: 1600 }
+    },
+  },
+  'terrasse-2': {
+    slug: 'terrasse-2',
+    category: 'terrasse',
+    alt: 'Terrasse en pierre naturelle avec amenagement paysager complet',
+    tags: ['terrasse', 'pierre', 'amenagement'],
+    originalWidth: 4032,
+    originalHeight: 3024,
+    blurDataURI: 'data:image/webp;base64,UklGRowAAABXRUJQVlA4IIAAAACQBACdASoUABQAPzmUwFmvKiajqAgB4CcJZwDCgAzquIOF84TZCkTxfMikwgAAzfkki1zconyY9AJM/0Wf2ttGAstzIz3Li1LUBLjX5Mr/VEbAiYSHIKWZsDuMNiIlSgmDK4/gM6Rq3vF8MB+RvRgGsk0VOVHa81oVoMN9slgAAA==',
+    sizes: {
+    480: { path: '/images/realisations/terrasse-2-480w.webp', width: 480, height: 360 },
+    800: { path: '/images/realisations/terrasse-2-800w.webp', width: 800, height: 600 },
+    1200: { path: '/images/realisations/terrasse-2-1200w.webp', width: 1200, height: 900 },
+    1920: { path: '/images/realisations/terrasse-2-1920w.webp', width: 1920, height: 1440 }
+    },
+  },
+  'creation-4': {
+    slug: 'creation-4',
+    category: 'creation',
+    alt: 'Escalier en ardoise et pas japonais avec paillage bois - amenagement jardin Angers',
+    tags: ['creation', 'escalier', 'ardoise', 'pas-japonais'],
+    originalWidth: 4032,
+    originalHeight: 3024,
+    blurDataURI: 'data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAABwBACdASoUABQAPzmMuVavKSUjqA1R4CcJYwC4MAzjXjw9ohestMpms0TGwAD6iVOxJzu3USbRC0hpb8+biKGgkveFqwj7ioOtVIv0JWg11GH1Tp8E+pTY9XRDhMxnwZYWyK5m5VWYib3/bHLS/UD9UcQuVVpNZMKb8HlEj4HTv+SHBj1QMKptMAA=',
+    sizes: {
+    480: { path: '/images/realisations/creation-4-480w.webp', width: 480, height: 360 },
+    800: { path: '/images/realisations/creation-4-800w.webp', width: 800, height: 600 },
+    1200: { path: '/images/realisations/creation-4-1200w.webp', width: 1200, height: 900 },
+    1920: { path: '/images/realisations/creation-4-1920w.webp', width: 1920, height: 1440 }
     },
   },
   'cloture-1': {
@@ -47,49 +121,64 @@ export const images: Record<string, ImageEntry> = {
     1920: { path: '/images/realisations/cloture-1-1920w.webp', width: 1920, height: 1440 }
     },
   },
-  'cloture-2': {
-    slug: 'cloture-2',
-    category: 'cloture',
-    alt: 'Cloture decorative en panneaux rigides installee par Art des Jardins',
-    tags: ['cloture', 'panneaux', 'rigides'],
-    originalWidth: 5712,
-    originalHeight: 4284,
-    blurDataURI: 'data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAAAQBQCdASoUABQAPzmUwFmvKiajqAgB4CcJYgDE2A8w7UFx1CfIdhTo8O5aqk5lnBoAAP65NXOQ+kkqtRsqt13jDgqqQW4zqoitprPesk74ZIWwPhqkpG2TPYbCefl8doPJFBuagNFJ4ajUORS2wwGF2Rab2gAA',
+  'arrosage-1': {
+    slug: 'arrosage-1',
+    category: 'arrosage',
+    alt: 'Systeme d\'arrosage automatique installe dans un jardin paysager a Angers',
+    tags: ['arrosage', 'automatique', 'jardin'],
+    originalWidth: 3840,
+    originalHeight: 2160,
+    blurDataURI: 'data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAABQBACdASoUABQAPzmUwFovKaakKAgB4CcJQBkTAeyR4hfrOEAQe6aIMx5oAPi9y9cklCz+ryePjhqHHlYym5HMExFkB98XWuVwgJKRseuzrg+6XkhuE1R+wgzM+AAA',
     sizes: {
-    480: { path: '/images/realisations/cloture-2-480w.webp', width: 480, height: 360 },
-    800: { path: '/images/realisations/cloture-2-800w.webp', width: 800, height: 600 },
-    1200: { path: '/images/realisations/cloture-2-1200w.webp', width: 1200, height: 900 },
-    1920: { path: '/images/realisations/cloture-2-1920w.webp', width: 1920, height: 1440 }
+    480: { path: '/images/realisations/arrosage-1-480w.webp', width: 480, height: 270 },
+    800: { path: '/images/realisations/arrosage-1-800w.webp', width: 800, height: 450 },
+    1200: { path: '/images/realisations/arrosage-1-1200w.webp', width: 1200, height: 675 },
+    1920: { path: '/images/realisations/arrosage-1-1920w.webp', width: 1920, height: 1080 }
     },
   },
-  'cloture-3': {
-    slug: 'cloture-3',
-    category: 'cloture',
-    alt: 'Amenagement de cloture et portillon pour entree de propriete',
-    tags: ['cloture', 'portillon', 'entree'],
-    originalWidth: 4284,
-    originalHeight: 5712,
-    blurDataURI: 'data:image/webp;base64,UklGRnwAAABXRUJQVlA4IHAAAADwAwCdASoUABQAPzmUwVmvKicjqAgB4CcJZQDHMAim9q03jsSaf/kAAOJDP1jqJchu/nZD3jgaYNoqX/avrrvTtz/61TF4FJ9T8UXm0AqopB248/gFQ92YSLPqjz/gzwOcrECiOs0J+KgRZ+A4mAAA',
-    sizes: {
-    480: { path: '/images/realisations/cloture-3-480w.webp', width: 480, height: 640 },
-    800: { path: '/images/realisations/cloture-3-800w.webp', width: 800, height: 1067 },
-    1200: { path: '/images/realisations/cloture-3-1200w.webp', width: 1200, height: 1600 },
-    1920: { path: '/images/realisations/cloture-3-1920w.webp', width: 1920, height: 2560 }
-    },
-  },
-  'cloture-4': {
-    slug: 'cloture-4',
-    category: 'cloture',
-    alt: 'Installation de cloture composite moderne dans le Maine-et-Loire',
-    tags: ['cloture', 'composite', 'moderne'],
+  'creation-9': {
+    slug: 'creation-9',
+    category: 'creation',
+    alt: 'Parc paysager amenage avec allee en gravier et espace reception - creation paysagere Angers',
+    tags: ['creation', 'parc', 'allee', 'reception'],
     originalWidth: 5712,
     originalHeight: 4284,
-    blurDataURI: 'data:image/webp;base64,UklGRn4AAABXRUJQVlA4IHIAAADwAwCdASoUABQAPzmKulWvKSWjKA1R4CcJYwC/OAsk9Erv5GvMrgEAAP61m9EiWmRve7k7GidR26DO4ArjY9Yo+aRftGgTIDCq6rAvcvtkU0QSfwmXUagZ+FM8pK8zxlc7uFMnRJdLG85l30pbZpVoAAA=',
+    blurDataURI: 'data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAACQBACdASoUABQAPzmUwVmvKicjqAgB4CcJZADE2Ap3Y0sz67zKkXDlkUm8UdQA/bOZ+XfFM9a+vtiJek+dfHXNU9u/UMK3IV03FXdp0TqEegTelfiGyZkYpBpblWYQ3ErQJFBaGelSHm13Go4x/eg2w957QPRWQZBxnywAAAA=',
     sizes: {
-    480: { path: '/images/realisations/cloture-4-480w.webp', width: 480, height: 360 },
-    800: { path: '/images/realisations/cloture-4-800w.webp', width: 800, height: 600 },
-    1200: { path: '/images/realisations/cloture-4-1200w.webp', width: 1200, height: 900 },
-    1920: { path: '/images/realisations/cloture-4-1920w.webp', width: 1920, height: 1440 }
+    480: { path: '/images/realisations/creation-9-480w.webp', width: 480, height: 360 },
+    800: { path: '/images/realisations/creation-9-800w.webp', width: 800, height: 600 },
+    1200: { path: '/images/realisations/creation-9-1200w.webp', width: 1200, height: 900 },
+    1920: { path: '/images/realisations/creation-9-1920w.webp', width: 1920, height: 1440 }
+    },
+  },
+  'creation-8': {
+    slug: 'creation-8',
+    category: 'creation',
+    alt: 'Muret en acier corten avec escalier et plantations paysageres pres d\'Angers',
+    tags: ['creation', 'corten', 'escalier', 'plantations'],
+    originalWidth: 4032,
+    originalHeight: 3024,
+    blurDataURI: 'data:image/webp;base64,UklGRpgAAABXRUJQVlA4IIwAAABwBACdASoUABQAPzmQvVgvKaYjqAqp4CcJYgCw7A3R0Q21bZpWhnIm7SkIAAD2JZ7MQACzb0upIB/EMtkOp4gRko6OAHXu84m8/zIWeRwxp3NMjJBC/7IR5Z8y2ycKb5L4+Yrp/ZF/F+41tnqJU/XgRJelDFonw33qoNPE2m533oV8iTvBYmxFwAAAAA==',
+    sizes: {
+    480: { path: '/images/realisations/creation-8-480w.webp', width: 480, height: 360 },
+    800: { path: '/images/realisations/creation-8-800w.webp', width: 800, height: 600 },
+    1200: { path: '/images/realisations/creation-8-1200w.webp', width: 1200, height: 900 },
+    1920: { path: '/images/realisations/creation-8-1920w.webp', width: 1920, height: 1440 }
+    },
+  },
+  'creation-5': {
+    slug: 'creation-5',
+    category: 'creation',
+    alt: 'Pergola en bois et allee en pas japonais dans un jardin paysager a Angers',
+    tags: ['creation', 'pergola', 'bois', 'allee'],
+    originalWidth: 4032,
+    originalHeight: 3024,
+    blurDataURI: 'data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAACQBACdASoUABQAPzmUwFmvKiajqAgB4CcJQBjIAW87GOQN8KWW2mSl1nkEqDAA9qrsQz7bOVgIy4QXoMl78/kBIVjLB/xFZ+ffeLmWzqKaLTSmv9tw7UFElO2ChEkk1DRTPJAYWaHLjiy14+COkrjJE3bgTtwaYdXS5oAA',
+    sizes: {
+    480: { path: '/images/realisations/creation-5-480w.webp', width: 480, height: 360 },
+    800: { path: '/images/realisations/creation-5-800w.webp', width: 800, height: 600 },
+    1200: { path: '/images/realisations/creation-5-1200w.webp', width: 1200, height: 900 },
+    1920: { path: '/images/realisations/creation-5-1920w.webp', width: 1920, height: 1440 }
     },
   },
   'creation-1': {
@@ -136,6 +225,36 @@ export const images: Record<string, ImageEntry> = {
     1920: { path: '/images/realisations/creation-3-1920w.webp', width: 1920, height: 1440 }
     },
   },
+  'entretien-1': {
+    slug: 'entretien-1',
+    category: 'entretien',
+    alt: 'Haie taillee impeccablement par les jardiniers d\'Art des Jardins',
+    tags: ['entretien', 'haie', 'taille'],
+    originalWidth: 4032,
+    originalHeight: 3024,
+    blurDataURI: 'data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAACwBACdASoUABQAPzmGvVQvKSajKA1R4CcJagCxFIAAoHUBQfbTjsmQK9/dESwAAP3btK9xw7WfwoufFka0d9zlmCi6pCJI7kOxLBC2TsjWfcXPeI4aE6cn1doAUJM2AOqNh9YdntuyHlqoC6SKJV2FY0L1pEqyeFcL9MjlIb66fwAA',
+    sizes: {
+    480: { path: '/images/realisations/entretien-1-480w.webp', width: 480, height: 360 },
+    800: { path: '/images/realisations/entretien-1-800w.webp', width: 800, height: 600 },
+    1200: { path: '/images/realisations/entretien-1-1200w.webp', width: 1200, height: 900 },
+    1920: { path: '/images/realisations/entretien-1-1920w.webp', width: 1920, height: 1440 }
+    },
+  },
+  'entretien-3': {
+    slug: 'entretien-3',
+    category: 'entretien',
+    alt: 'Pelouse parfaitement entretenue au coucher de soleil - entretien jardin Angers',
+    tags: ['entretien', 'pelouse', 'coucher-soleil'],
+    originalWidth: 4032,
+    originalHeight: 3024,
+    blurDataURI: 'data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAAAQBACdASoUABQAPzmKu1WvKS0jKA1R4CcJYgCdMt8Bl+6y7wALGOllAADJXHoplweOUMqXIgZWu0MHEUM3lwNIiZrX2mK0FOIzjPC/aHoKrnp7pecHnr0kItxdJ1vPUJOaBDUwAAA=',
+    sizes: {
+    480: { path: '/images/realisations/entretien-3-480w.webp', width: 480, height: 360 },
+    800: { path: '/images/realisations/entretien-3-800w.webp', width: 800, height: 600 },
+    1200: { path: '/images/realisations/entretien-3-1200w.webp', width: 1200, height: 900 },
+    1920: { path: '/images/realisations/entretien-3-1920w.webp', width: 1920, height: 1440 }
+    },
+  },
   'elagage-1': {
     slug: 'elagage-1',
     category: 'elagage',
@@ -149,20 +268,6 @@ export const images: Record<string, ImageEntry> = {
     800: { path: '/images/realisations/elagage-1-800w.webp', width: 800, height: 1067 },
     1200: { path: '/images/realisations/elagage-1-1200w.webp', width: 1200, height: 1600 },
     1920: { path: '/images/realisations/elagage-1-1920w.webp', width: 1920, height: 2560 }
-    },
-  },
-  'elagage-2': {
-    slug: 'elagage-2',
-    category: 'elagage',
-    alt: 'Elagueur professionnel en action dans un arbre a Angers',
-    tags: ['elagage', 'professionnel', 'intervention'],
-    originalWidth: 1200,
-    originalHeight: 1600,
-    blurDataURI: 'data:image/webp;base64,UklGRoYAAABXRUJQVlA4IHoAAADQBACdASoUABQAPzmOuVavKaUjqA1R4CcJYgC90BF+2bx5pJzSINDcJaq1XtqdcAD+dYqTV+yHIvYrkhfNiG6jIilmMWDbvyaFYIQiX2FdLE0QodJt77fuUTgD2QUMYzDy9Xpvmki/OLMcmcE7qCQQp7Y6HAa3OmAAAA==',
-    sizes: {
-    480: { path: '/images/realisations/elagage-2-480w.webp', width: 480, height: 640 },
-    800: { path: '/images/realisations/elagage-2-800w.webp', width: 800, height: 1067 },
-    1200: { path: '/images/realisations/elagage-2-1200w.webp', width: 1200, height: 1600 }
     },
   },
   'elagage-3': {
@@ -210,34 +315,19 @@ export const images: Record<string, ImageEntry> = {
     1920: { path: '/images/realisations/elagage-5-1920w.webp', width: 1920, height: 2560 }
     },
   },
-  'entretien-1': {
-    slug: 'entretien-1',
-    category: 'entretien',
-    alt: 'Haie taillee impeccablement par les jardiniers d\'Art des Jardins',
-    tags: ['entretien', 'haie', 'taille'],
-    originalWidth: 4032,
-    originalHeight: 3024,
-    blurDataURI: 'data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAACwBACdASoUABQAPzmGvVQvKSajKA1R4CcJagCxFIAAoHUBQfbTjsmQK9/dESwAAP3btK9xw7WfwoufFka0d9zlmCi6pCJI7kOxLBC2TsjWfcXPeI4aE6cn1doAUJM2AOqNh9YdntuyHlqoC6SKJV2FY0L1pEqyeFcL9MjlIb66fwAA',
+  'terrasse-3': {
+    slug: 'terrasse-3',
+    category: 'terrasse',
+    alt: 'Creation de terrasse et espace de vie exterieur a Angers',
+    tags: ['terrasse', 'espace-vie', 'exterieur'],
+    originalWidth: 3024,
+    originalHeight: 4032,
+    blurDataURI: 'data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAACwBACdASoUABQAPzmSu1gvKiWjqAqp4CcJQBajdDgpFXepSCBHjxMlU9xYXjgAAP4Zw/Y3Je59k0m/rePaJQCm/hvkT+oZFlA3O53mJV7/yij3lHvc1Ig7hobrLrJjMOYTc6XLww8P/4NJQ+QMNnq6mzXo8j0/AAA=',
     sizes: {
-    480: { path: '/images/realisations/entretien-1-480w.webp', width: 480, height: 360 },
-    800: { path: '/images/realisations/entretien-1-800w.webp', width: 800, height: 600 },
-    1200: { path: '/images/realisations/entretien-1-1200w.webp', width: 1200, height: 900 },
-    1920: { path: '/images/realisations/entretien-1-1920w.webp', width: 1920, height: 1440 }
-    },
-  },
-  'entretien-2': {
-    slug: 'entretien-2',
-    category: 'entretien',
-    alt: 'Jardin paysager avec piscine et topiaires parfaitement entretenus',
-    tags: ['entretien', 'piscine', 'topiaires', 'jardin'],
-    originalWidth: 2208,
-    originalHeight: 1656,
-    blurDataURI: 'data:image/webp;base64,UklGRp4AAABXRUJQVlA4IJIAAADQBACdASoUABQAPzmUwFmvKiajqAgB4CcJQBbZAiM9JN84XVp7nTrrJWlVR2gIAAD+ZZacilhSe6Xpe8Y4Nf2moLKZtvdknrnNkd7QaZ7jzxYoMHWDauRqGl2VwJNH1vJmoezruDl/NV2HlXvgF0ARzGAiwpCeh99FdpuA8JuNEVfgLHRn9Tde3nnaujZvvYAAAA==',
-    sizes: {
-    480: { path: '/images/realisations/entretien-2-480w.webp', width: 480, height: 360 },
-    800: { path: '/images/realisations/entretien-2-800w.webp', width: 800, height: 600 },
-    1200: { path: '/images/realisations/entretien-2-1200w.webp', width: 1200, height: 900 },
-    1920: { path: '/images/realisations/entretien-2-1920w.webp', width: 1920, height: 1440 }
+    480: { path: '/images/realisations/terrasse-3-480w.webp', width: 480, height: 640 },
+    800: { path: '/images/realisations/terrasse-3-800w.webp', width: 800, height: 1067 },
+    1200: { path: '/images/realisations/terrasse-3-1200w.webp', width: 1200, height: 1600 },
+    1920: { path: '/images/realisations/terrasse-3-1920w.webp', width: 1920, height: 2560 }
     },
   },
   'terrasse-1': {
@@ -255,139 +345,79 @@ export const images: Record<string, ImageEntry> = {
     1920: { path: '/images/realisations/terrasse-1-1920w.webp', width: 1920, height: 1440 }
     },
   },
-  'terrasse-2': {
-    slug: 'terrasse-2',
-    category: 'terrasse',
-    alt: 'Terrasse en pierre naturelle avec amenagement paysager complet',
-    tags: ['terrasse', 'pierre', 'amenagement'],
-    originalWidth: 4032,
-    originalHeight: 3024,
-    blurDataURI: 'data:image/webp;base64,UklGRowAAABXRUJQVlA4IIAAAACQBACdASoUABQAPzmUwFmvKiajqAgB4CcJZwDCgAzquIOF84TZCkTxfMikwgAAzfkki1zconyY9AJM/0Wf2ttGAstzIz3Li1LUBLjX5Mr/VEbAiYSHIKWZsDuMNiIlSgmDK4/gM6Rq3vF8MB+RvRgGsk0VOVHa81oVoMN9slgAAA==',
+  'cloture-2': {
+    slug: 'cloture-2',
+    category: 'cloture',
+    alt: 'Cloture decorative en panneaux rigides installee par Art des Jardins',
+    tags: ['cloture', 'panneaux', 'rigides'],
+    originalWidth: 5712,
+    originalHeight: 4284,
+    blurDataURI: 'data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAAAQBQCdASoUABQAPzmUwFmvKiajqAgB4CcJYgDE2A8w7UFx1CfIdhTo8O5aqk5lnBoAAP65NXOQ+kkqtRsqt13jDgqqQW4zqoitprPesk74ZIWwPhqkpG2TPYbCefl8doPJFBuagNFJ4ajUORS2wwGF2Rab2gAA',
     sizes: {
-    480: { path: '/images/realisations/terrasse-2-480w.webp', width: 480, height: 360 },
-    800: { path: '/images/realisations/terrasse-2-800w.webp', width: 800, height: 600 },
-    1200: { path: '/images/realisations/terrasse-2-1200w.webp', width: 1200, height: 900 },
-    1920: { path: '/images/realisations/terrasse-2-1920w.webp', width: 1920, height: 1440 }
+    480: { path: '/images/realisations/cloture-2-480w.webp', width: 480, height: 360 },
+    800: { path: '/images/realisations/cloture-2-800w.webp', width: 800, height: 600 },
+    1200: { path: '/images/realisations/cloture-2-1200w.webp', width: 1200, height: 900 },
+    1920: { path: '/images/realisations/cloture-2-1920w.webp', width: 1920, height: 1440 }
     },
   },
-  'terrasse-3': {
-    slug: 'terrasse-3',
-    category: 'terrasse',
-    alt: 'Creation de terrasse et espace de vie exterieur a Angers',
-    tags: ['terrasse', 'espace-vie', 'exterieur'],
-    originalWidth: 3024,
-    originalHeight: 4032,
-    blurDataURI: 'data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAACwBACdASoUABQAPzmSu1gvKiWjqAqp4CcJQBajdDgpFXepSCBHjxMlU9xYXjgAAP4Zw/Y3Je59k0m/rePaJQCm/hvkT+oZFlA3O53mJV7/yij3lHvc1Ig7hobrLrJjMOYTc6XLww8P/4NJQ+QMNnq6mzXo8j0/AAA=',
-    sizes: {
-    480: { path: '/images/realisations/terrasse-3-480w.webp', width: 480, height: 640 },
-    800: { path: '/images/realisations/terrasse-3-800w.webp', width: 800, height: 1067 },
-    1200: { path: '/images/realisations/terrasse-3-1200w.webp', width: 1200, height: 1600 },
-    1920: { path: '/images/realisations/terrasse-3-1920w.webp', width: 1920, height: 2560 }
-    },
-  },
-  'creation-4': {
-    slug: 'creation-4',
-    category: 'creation',
-    alt: 'Escalier en ardoise et pas japonais avec paillage bois - amenagement jardin Angers',
-    tags: ['creation', 'escalier', 'ardoise', 'pas-japonais'],
-    originalWidth: 4032,
-    originalHeight: 3024,
-    blurDataURI: 'data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAABwBACdASoUABQAPzmMuVavKSUjqA1R4CcJYwC4MAzjXjw9ohestMpms0TGwAD6iVOxJzu3USbRC0hpb8+biKGgkveFqwj7ioOtVIv0JWg11GH1Tp8E+pTY9XRDhMxnwZYWyK5m5VWYib3/bHLS/UD9UcQuVVpNZMKb8HlEj4HTv+SHBj1QMKptMAA=',
-    sizes: {
-    480: { path: '/images/realisations/creation-4-480w.webp', width: 480, height: 360 },
-    800: { path: '/images/realisations/creation-4-800w.webp', width: 800, height: 600 },
-    1200: { path: '/images/realisations/creation-4-1200w.webp', width: 1200, height: 900 },
-    1920: { path: '/images/realisations/creation-4-1920w.webp', width: 1920, height: 1440 }
-    },
-  },
-  'creation-5': {
-    slug: 'creation-5',
-    category: 'creation',
-    alt: 'Pergola en bois et allee en pas japonais dans un jardin paysager a Angers',
-    tags: ['creation', 'pergola', 'bois', 'allee'],
-    originalWidth: 4032,
-    originalHeight: 3024,
-    blurDataURI: 'data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAACQBACdASoUABQAPzmUwFmvKiajqAgB4CcJQBjIAW87GOQN8KWW2mSl1nkEqDAA9qrsQz7bOVgIy4QXoMl78/kBIVjLB/xFZ+ffeLmWzqKaLTSmv9tw7UFElO2ChEkk1DRTPJAYWaHLjiy14+COkrjJE3bgTtwaYdXS5oAA',
-    sizes: {
-    480: { path: '/images/realisations/creation-5-480w.webp', width: 480, height: 360 },
-    800: { path: '/images/realisations/creation-5-800w.webp', width: 800, height: 600 },
-    1200: { path: '/images/realisations/creation-5-1200w.webp', width: 1200, height: 900 },
-    1920: { path: '/images/realisations/creation-5-1920w.webp', width: 1920, height: 1440 }
-    },
-  },
-  'creation-6': {
-    slug: 'creation-6',
-    category: 'creation',
-    alt: 'Allee paysagere en gravier dans un parc arbore - paysagiste Angers',
-    tags: ['creation', 'allee', 'gravier', 'parc'],
+  'cloture-3': {
+    slug: 'cloture-3',
+    category: 'cloture',
+    alt: 'Amenagement de cloture et portillon pour entree de propriete',
+    tags: ['cloture', 'portillon', 'entree'],
     originalWidth: 4284,
     originalHeight: 5712,
-    blurDataURI: 'data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAADwAwCdASoUABQAPzmKulWvKSWjKA1R4CcJQBbZAfj+R+46c71sIeEAAP5JhqyIgV4loNmfM+90iPbuxr4c6rhMSciclminy2ZcZ/FptTkqvu95gyTQKtP+eW4016fT9jBtgAAA',
+    blurDataURI: 'data:image/webp;base64,UklGRnwAAABXRUJQVlA4IHAAAADwAwCdASoUABQAPzmUwVmvKicjqAgB4CcJZQDHMAim9q03jsSaf/kAAOJDP1jqJchu/nZD3jgaYNoqX/avrrvTtz/61TF4FJ9T8UXm0AqopB248/gFQ92YSLPqjz/gzwOcrECiOs0J+KgRZ+A4mAAA',
     sizes: {
-    480: { path: '/images/realisations/creation-6-480w.webp', width: 480, height: 640 },
-    800: { path: '/images/realisations/creation-6-800w.webp', width: 800, height: 1067 },
-    1200: { path: '/images/realisations/creation-6-1200w.webp', width: 1200, height: 1600 },
-    1920: { path: '/images/realisations/creation-6-1920w.webp', width: 1920, height: 2560 }
+    480: { path: '/images/realisations/cloture-3-480w.webp', width: 480, height: 640 },
+    800: { path: '/images/realisations/cloture-3-800w.webp', width: 800, height: 1067 },
+    1200: { path: '/images/realisations/cloture-3-1200w.webp', width: 1200, height: 1600 },
+    1920: { path: '/images/realisations/cloture-3-1920w.webp', width: 1920, height: 2560 }
     },
   },
-  'creation-7': {
-    slug: 'creation-7',
-    category: 'creation',
-    alt: 'Terrasse en gravier stabilise avec muret en acier corten et massifs fleuris - paysagiste Angers',
-    tags: ['creation', 'terrasse', 'corten', 'massifs'],
+  'cloture-4': {
+    slug: 'cloture-4',
+    category: 'cloture',
+    alt: 'Installation de cloture composite moderne dans le Maine-et-Loire',
+    tags: ['cloture', 'composite', 'moderne'],
     originalWidth: 5712,
     originalHeight: 4284,
-    blurDataURI: 'data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAABwBACdASoUABQAPzmUwVmvKicjqAgB4CcJYwDA3AVTnshDa/IsAX2fFy+MgAD5NFqINHmn7iuloniXPPp+ZyHSVr81EsLoCfCvvn2b+JSiiS7nZaPb+n7nOFuqhf57qBhawklYaUKiVy7fG4bZMOkwAcErCvBv3MwJP4AA',
+    blurDataURI: 'data:image/webp;base64,UklGRn4AAABXRUJQVlA4IHIAAADwAwCdASoUABQAPzmKulWvKSWjKA1R4CcJYwC/OAsk9Erv5GvMrgEAAP61m9EiWmRve7k7GidR26DO4ArjY9Yo+aRftGgTIDCq6rAvcvtkU0QSfwmXUagZ+FM8pK8zxlc7uFMnRJdLG85l30pbZpVoAAA=',
     sizes: {
-    480: { path: '/images/realisations/creation-7-480w.webp', width: 480, height: 360 },
-    800: { path: '/images/realisations/creation-7-800w.webp', width: 800, height: 600 },
-    1200: { path: '/images/realisations/creation-7-1200w.webp', width: 1200, height: 900 },
-    1920: { path: '/images/realisations/creation-7-1920w.webp', width: 1920, height: 1440 }
+    480: { path: '/images/realisations/cloture-4-480w.webp', width: 480, height: 360 },
+    800: { path: '/images/realisations/cloture-4-800w.webp', width: 800, height: 600 },
+    1200: { path: '/images/realisations/cloture-4-1200w.webp', width: 1200, height: 900 },
+    1920: { path: '/images/realisations/cloture-4-1920w.webp', width: 1920, height: 1440 }
     },
   },
-  'creation-8': {
-    slug: 'creation-8',
-    category: 'creation',
-    alt: 'Muret en acier corten avec escalier et plantations paysageres pres d\'Angers',
-    tags: ['creation', 'corten', 'escalier', 'plantations'],
-    originalWidth: 4032,
-    originalHeight: 3024,
-    blurDataURI: 'data:image/webp;base64,UklGRpgAAABXRUJQVlA4IIwAAABwBACdASoUABQAPzmQvVgvKaYjqAqp4CcJYgCw7A3R0Q21bZpWhnIm7SkIAAD2JZ7MQACzb0upIB/EMtkOp4gRko6OAHXu84m8/zIWeRwxp3NMjJBC/7IR5Z8y2ycKb5L4+Yrp/ZF/F+41tnqJU/XgRJelDFonw33qoNPE2m533oV8iTvBYmxFwAAAAA==',
-    sizes: {
-    480: { path: '/images/realisations/creation-8-480w.webp', width: 480, height: 360 },
-    800: { path: '/images/realisations/creation-8-800w.webp', width: 800, height: 600 },
-    1200: { path: '/images/realisations/creation-8-1200w.webp', width: 1200, height: 900 },
-    1920: { path: '/images/realisations/creation-8-1920w.webp', width: 1920, height: 1440 }
-    },
-  },
-  'creation-9': {
-    slug: 'creation-9',
-    category: 'creation',
-    alt: 'Parc paysager amenage avec allee en gravier et espace reception - creation paysagere Angers',
-    tags: ['creation', 'parc', 'allee', 'reception'],
-    originalWidth: 5712,
-    originalHeight: 4284,
-    blurDataURI: 'data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAACQBACdASoUABQAPzmUwVmvKicjqAgB4CcJZADE2Ap3Y0sz67zKkXDlkUm8UdQA/bOZ+XfFM9a+vtiJek+dfHXNU9u/UMK3IV03FXdp0TqEegTelfiGyZkYpBpblWYQ3ErQJFBaGelSHm13Go4x/eg2w957QPRWQZBxnywAAAA=',
-    sizes: {
-    480: { path: '/images/realisations/creation-9-480w.webp', width: 480, height: 360 },
-    800: { path: '/images/realisations/creation-9-800w.webp', width: 800, height: 600 },
-    1200: { path: '/images/realisations/creation-9-1200w.webp', width: 1200, height: 900 },
-    1920: { path: '/images/realisations/creation-9-1920w.webp', width: 1920, height: 1440 }
-    },
-  },
-  'entretien-3': {
-    slug: 'entretien-3',
+  'chantier-avant-1': {
+    slug: 'chantier-avant-1',
     category: 'entretien',
-    alt: 'Pelouse parfaitement entretenue au coucher de soleil - entretien jardin Angers',
-    tags: ['entretien', 'pelouse', 'coucher-soleil'],
+    alt: 'Jardin envahi par la vegetation avant intervention de debroussaillage a Angers',
+    tags: ['entretien', 'debroussaillage', 'avant'],
     originalWidth: 4032,
     originalHeight: 3024,
-    blurDataURI: 'data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAAAQBACdASoUABQAPzmKu1WvKS0jKA1R4CcJYgCdMt8Bl+6y7wALGOllAADJXHoplweOUMqXIgZWu0MHEUM3lwNIiZrX2mK0FOIzjPC/aHoKrnp7pecHnr0kItxdJ1vPUJOaBDUwAAA=',
+    blurDataURI: 'data:image/webp;base64,UklGRoYAAABXRUJQVlA4IHoAAACwBACdASoUABQAPzmQuVivKaUjqAqp4CcJYgCsM1XBXLsG6RKZnh7Wl/1tRNucAP5UBlK2vuy/PXlLjSK0JKgmBEq2Xix5KNxX+TQZ337TDM9mtwKMOAfXGpgT9waIFac+TVISWCRXnTTHDC/GC8LFA5qzZoaFpIYKAA==',
     sizes: {
-    480: { path: '/images/realisations/entretien-3-480w.webp', width: 480, height: 360 },
-    800: { path: '/images/realisations/entretien-3-800w.webp', width: 800, height: 600 },
-    1200: { path: '/images/realisations/entretien-3-1200w.webp', width: 1200, height: 900 },
-    1920: { path: '/images/realisations/entretien-3-1920w.webp', width: 1920, height: 1440 }
+    480: { path: '/images/realisations/chantier-avant-1-480w.webp', width: 480, height: 360 },
+    800: { path: '/images/realisations/chantier-avant-1-800w.webp', width: 800, height: 600 },
+    1200: { path: '/images/realisations/chantier-avant-1-1200w.webp', width: 1200, height: 900 },
+    1920: { path: '/images/realisations/chantier-avant-1-1920w.webp', width: 1920, height: 1440 }
+    },
+  },
+  'chantier-apres-1': {
+    slug: 'chantier-apres-1',
+    category: 'entretien',
+    alt: 'Jardin defriche et remis au propre apres debroussaillage par Art des Jardins',
+    tags: ['entretien', 'debroussaillage', 'apres'],
+    originalWidth: 4032,
+    originalHeight: 3024,
+    blurDataURI: 'data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAAAQBACdASoUABQAPzmOwFcvKacjqAqp4CcJYwDA3A+CT+9uoTYNGhpZxgD+cqbOazTuoYTdhpOyoErbokfCRpwEONF00cJqAYPR46vR6BbRHj4NDQLuflC2fGX/aEuzk+HGA8WVA/OIFjS50SAAAA==',
+    sizes: {
+    480: { path: '/images/realisations/chantier-apres-1-480w.webp', width: 480, height: 360 },
+    800: { path: '/images/realisations/chantier-apres-1-800w.webp', width: 800, height: 600 },
+    1200: { path: '/images/realisations/chantier-apres-1-1200w.webp', width: 1200, height: 900 },
+    1920: { path: '/images/realisations/chantier-apres-1-1920w.webp', width: 1920, height: 1440 }
     },
   }
 };

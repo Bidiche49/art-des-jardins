@@ -27,6 +27,14 @@ const projects = [
     title: 'Création d\'un jardin contemporain',
     location: 'Avrillé (49)',
   },
+  {
+    before: '/images/realisations/chantier-avant-1-800w.webp',
+    after: '/images/realisations/chantier-apres-1-800w.webp',
+    beforeAlt: 'Jardin envahi par la végétation avant débroussaillage',
+    afterAlt: 'Jardin défriché et remis au propre après intervention',
+    title: 'Débroussaillage et remise au propre',
+    location: 'Maine-et-Loire (49)',
+  },
 ];
 
 export function BeforeAfterSection() {
@@ -40,7 +48,7 @@ export function BeforeAfterSection() {
           Glissez le curseur pour découvrir la transformation de ces espaces verts
           par notre équipe.
         </p>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 gap-8">
           {projects.map((project, i) => (
             <BeforeAfterSlider key={i} {...project} />
           ))}
