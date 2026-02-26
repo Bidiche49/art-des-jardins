@@ -7,7 +7,7 @@ import { StatsCounter } from '@/components/ui/StatsCounter';
 import { PhotoGallery } from '@/components/ui/PhotoGallery';
 import { AnimateOnScroll } from '@/components/ui/AnimateOnScroll';
 import { BeforeAfterSection } from '@/components/BeforeAfterSection';
-import { serviceCardImages } from '@/lib/images-manifest';
+import { serviceCardImages, getSrcSet, getDefaultSrc, getImage } from '@/lib/images-manifest';
 import { IconRcPro, IconDecennale, IconExperience, IconDevis48h, IconZone30km, IconInstagram } from '@/lib/icons';
 
 export default function HomePage() {
@@ -130,7 +130,17 @@ export default function HomePage() {
             </p>
           </AnimateOnScroll>
           <AnimateOnScroll>
-            <PhotoGallery maxItems={8} showFilters={false} />
+            <PhotoGallery
+              maxItems={8}
+              showFilters={false}
+              excludeSlugs={[
+                'entretien-2', // hero
+                'creation-9', 'entretien-3', 'elagage-2', 'elagage-1', // service cards
+                'entretien-1', 'creation-1', 'creation-2', 'chantier-avant-1', 'chantier-apres-1', // avant/après
+                'creation-6', // chantier non fini
+                'terrasse-2', // utilisée section zones
+              ]}
+            />
           </AnimateOnScroll>
           <AnimateOnScroll>
             <div className="text-center mt-8">
@@ -157,21 +167,35 @@ export default function HomePage() {
 
       {/* Zone d'intervention */}
       <section className="py-16 lg:py-24 bg-gray-50">
-        <div className="container-custom max-w-4xl">
+        <div className="container-custom max-w-5xl">
           <AnimateOnScroll>
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
               Paysagiste à Angers et dans le Maine-et-Loire
             </h2>
           </AnimateOnScroll>
           <AnimateOnScroll>
-            <div className="prose prose-lg text-gray-600 mx-auto">
-              <p>
-                Nous intervenons dans un rayon de 30 km autour d&apos;Angers pour tous vos travaux de jardinage
-                et d&apos;aménagement paysager. Notre zone d&apos;intervention couvre notamment :
-              </p>
-              <p>
-                Intervention possible hors département pour les projets d&apos;envergure.
-              </p>
+            <div className="grid md:grid-cols-2 gap-8 items-center mb-8">
+              <div className="prose prose-lg text-gray-600">
+                <p>
+                  Nous intervenons dans un rayon de 30 km autour d&apos;Angers pour tous vos travaux de jardinage
+                  et d&apos;aménagement paysager. Notre zone d&apos;intervention couvre notamment :
+                </p>
+                <p>
+                  Intervention possible hors département pour les projets d&apos;envergure.
+                </p>
+              </div>
+              {(() => {
+                const zoneImage = getImage('terrasse-2');
+                if (!zoneImage) return null;
+                return (
+                  <div className="rounded-xl overflow-hidden shadow-md">
+                    <picture>
+                      <source type="image/webp" srcSet={getSrcSet(zoneImage)} sizes="(max-width: 768px) 100vw, 50vw" />
+                      <img src={getDefaultSrc(zoneImage, 800)} alt={zoneImage.alt} loading="lazy" className="w-full h-auto" />
+                    </picture>
+                  </div>
+                );
+              })()}
             </div>
             <div className="flex flex-wrap justify-center gap-3 mt-6">
               {[

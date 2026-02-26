@@ -8,6 +8,7 @@ interface PhotoGalleryProps {
   maxItems?: number;
   showFilters?: boolean;
   initialCategory?: string;
+  excludeSlugs?: string[];
 }
 
 const categoryLabels: Record<string, string> = {
@@ -19,15 +20,18 @@ const categoryLabels: Record<string, string> = {
   arrosage: 'Arrosage',
 };
 
-export function PhotoGallery({ maxItems, showFilters = true, initialCategory }: PhotoGalleryProps) {
+export function PhotoGallery({ maxItems, showFilters = true, initialCategory, excludeSlugs }: PhotoGalleryProps) {
   const [activeCategory, setActiveCategory] = useState<string | null>(initialCategory || null);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   const allImages = Object.values(images);
-  const filtered = activeCategory
-    ? allImages.filter((img) => img.category === activeCategory)
+  const excluded = excludeSlugs
+    ? allImages.filter((img) => !excludeSlugs.includes(img.slug))
     : allImages;
+  const filtered = activeCategory
+    ? excluded.filter((img) => img.category === activeCategory)
+    : excluded;
   const displayed = maxItems ? filtered.slice(0, maxItems) : filtered;
 
   const openLightbox = useCallback((index: number) => {
