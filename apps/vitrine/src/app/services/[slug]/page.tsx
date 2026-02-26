@@ -118,14 +118,15 @@ export default function ServicePage({ params }: PageProps) {
                   </ul>
                 </div>
 
-                {/* Tarif indicatif */}
-                <div className="bg-amber-50 rounded-xl p-6 border border-amber-100">
-                  <h3 className="text-lg font-bold text-amber-900 mb-2">Tarif indicatif</h3>
-                  <p className="text-2xl font-bold text-amber-800 mb-2">{service.priceRange.label}</p>
-                  <p className="text-xs text-amber-700">
-                    Prix indicatif selon la complexité du chantier. Un devis précis et gratuit est
-                    systématiquement établi avant intervention.
+                {/* CTA Devis */}
+                <div className="bg-primary-50 rounded-xl p-6 border border-primary-100">
+                  <h3 className="text-lg font-bold text-primary-900 mb-2">Devis gratuit et personnalisé</h3>
+                  <p className="text-sm text-primary-700 mb-4">
+                    Chaque projet est unique. Contactez-nous pour recevoir une estimation adaptée à vos besoins.
                   </p>
+                  <Link href="/contact/" className="btn-primary w-full text-center block">
+                    Demander un devis gratuit
+                  </Link>
                 </div>
 
                 {/* CTA Card */}
@@ -154,7 +155,7 @@ export default function ServicePage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* Credit d'impot (entretien only) */}
+      {/* Credit d'impot (entretien only) - Placé en avant pour conversion */}
       {service.slug === 'entretien-jardin' && <TaxCreditSection />}
 
       {/* Process */}
