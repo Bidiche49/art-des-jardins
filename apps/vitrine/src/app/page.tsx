@@ -56,8 +56,8 @@ export default function HomePage() {
               <span className="font-medium">Angers et 30 km</span>
             </div>
             <div className="flex items-center gap-2">
-              <IconEuro className="w-5 h-5 text-green-600 flex-shrink-0" />
-              <span className="font-medium text-green-700">Crédit d&apos;impôt 50 %</span>
+              <IconEuro className="w-5 h-5 text-primary-600 flex-shrink-0" />
+              <span className="font-medium">Crédit d&apos;impôt 50 %</span>
             </div>
           </div>
         </div>
@@ -91,15 +91,15 @@ export default function HomePage() {
       </section>
 
       {/* Tax Credit Accent */}
-      <section className="py-3 bg-green-50 border-y border-green-100">
+      <section className="py-3 bg-primary-50 border-y border-primary-100">
         <div className="container-custom">
           <Link
             href="/services/entretien-jardin/"
-            className="flex items-center justify-center gap-2 text-sm text-green-800 hover:text-green-900 transition-colors"
+            className="flex items-center justify-center gap-2 text-sm text-primary-800 hover:text-primary-900 transition-colors"
           >
-            <IconEuro className="w-4 h-4 text-green-600 hidden sm:block" />
+            <IconEuro className="w-4 h-4 text-primary-600 hidden sm:block" />
             <span>Entretien de jardin — Bénéficiez de <strong>50 % de crédit d&apos;impôt</strong></span>
-            <span className="text-green-600" aria-hidden="true">&rarr;</span>
+            <span className="text-primary-600" aria-hidden="true">&rarr;</span>
           </Link>
         </div>
       </section>
