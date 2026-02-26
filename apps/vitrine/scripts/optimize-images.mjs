@@ -54,7 +54,7 @@ const IMAGE_CATALOG = [
 // OG image mappings
 const OG_IMAGES = [
   { source: 'Entretien_2.JPG', output: 'og-image.jpg', alt: 'Art des Jardins - Paysagiste Angers' },
-  { source: 'Creation_6.jpg', output: 'og-paysagisme.jpg', alt: 'Paysagisme Angers - Art des Jardins' },
+  { source: 'Creation_9.jpg', output: 'og-paysagisme.jpg', alt: 'Paysagisme Angers - Art des Jardins' },
   { source: 'Elagage_3.jpeg', output: 'og-elagage.jpg', alt: 'Elagage Angers - Art des Jardins' },
   { source: 'Entretien_3.jpg', output: 'og-entretien.jpg', alt: 'Entretien Jardin Angers - Art des Jardins' },
   { source: 'Elagage_1.JPG', output: 'og-abattage.jpg', alt: 'Abattage Arbres Angers - Art des Jardins' },
@@ -264,7 +264,7 @@ export function getDefaultSrc(entry: ImageEntry, preferredWidth = 800): string {
 // Hero image mappings per page
 export const heroImages = {
   homepage: 'entretien-2',
-  'paysagiste-angers': 'creation-6',
+  'paysagiste-angers': 'creation-9',
   'elagage-angers': 'elagage-3',
   'entretien-jardin-angers': 'entretien-3',
   'abattage-angers': 'elagage-1',
@@ -273,7 +273,7 @@ export const heroImages = {
 
 // Service card image mappings
 export const serviceCardImages = {
-  paysagisme: 'creation-6',
+  paysagisme: 'creation-9',
   'entretien-jardin': 'entretien-3',
   elagage: 'elagage-2',
   abattage: 'elagage-1',
@@ -281,7 +281,7 @@ export const serviceCardImages = {
 
 // Service hero mappings for dynamic [serviceCity] pages
 export const serviceHeroImages: Record<string, string> = {
-  paysagiste: 'creation-6',
+  paysagiste: 'creation-9',
   'entretien-jardin': 'entretien-3',
   elagage: 'elagage-3',
   abattage: 'elagage-1',

@@ -450,7 +450,7 @@ export function getDefaultSrc(entry: ImageEntry, preferredWidth = 800): string {
 // Hero image mappings per page
 export const heroImages = {
   homepage: 'entretien-2',
-  'paysagiste-angers': 'creation-6',
+  'paysagiste-angers': 'creation-9',
   'elagage-angers': 'elagage-3',
   'entretien-jardin-angers': 'entretien-3',
   'abattage-angers': 'elagage-1',
@@ -459,7 +459,7 @@ export const heroImages = {
 
 // Service card image mappings
 export const serviceCardImages = {
-  paysagisme: 'creation-6',
+  paysagisme: 'creation-9',
   'entretien-jardin': 'entretien-3',
   elagage: 'elagage-2',
   abattage: 'elagage-1',
@@ -467,7 +467,7 @@ export const serviceCardImages = {
 
 // Service hero mappings for dynamic [serviceCity] pages
 export const serviceHeroImages: Record<string, string> = {
-  paysagiste: 'creation-6',
+  paysagiste: 'creation-9',
   'entretien-jardin': 'entretien-3',
   elagage: 'elagage-3',
   abattage: 'elagage-1',
