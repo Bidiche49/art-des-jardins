@@ -8,9 +8,9 @@
 
 | Type | Prochain ID |
 |------|-------------|
-| BUG | BUG-011 |
+| BUG | BUG-020 |
 | FEAT | FEAT-125 |
-| IMP | IMP-057 |
+| IMP | IMP-083 |
 
 ---
 
