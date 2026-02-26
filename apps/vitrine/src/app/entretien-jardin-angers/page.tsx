@@ -12,19 +12,22 @@ const service = serviceTypes.find((s) => s.service === 'entretien-jardin')!;
 const city = cities.find((c) => c.slug === 'angers')!;
 
 export const metadata: Metadata = {
-  title: 'Entretien de Jardin Angers - Tonte, Taille | Art des Jardins',
+  title: 'Entretien de Jardin Angers - 50% Crédit d\'Impôt | Art des Jardins',
   description:
-    'Service d\'entretien de jardin à Angers. Tonte pelouse, taille haies, désherbage, ramassage feuilles. Contrat annuel ou ponctuel. Devis gratuit.',
+    'Entretien de jardin à Angers avec 50 % de crédit d\'impôt. Tonte pelouse, taille haies, désherbage. Professionnel agréé services à la personne. Devis gratuit.',
   keywords: [
     'entretien jardin angers',
+    'crédit impôt entretien jardin',
+    'crédit impôt jardinage',
     'jardinier angers',
     'tonte pelouse angers',
     'taille haie angers',
     'entretien jardin 49',
+    'service à la personne jardinage',
   ],
   openGraph: {
-    title: 'Entretien Jardin Angers - Art des Jardins',
-    description: 'Service d\'entretien de jardin professionnel à Angers.',
+    title: 'Entretien Jardin Angers - 50% Crédit d\'Impôt | Art des Jardins',
+    description: 'Entretien de jardin à Angers avec 50 % de crédit d\'impôt. Professionnel agréé, devis gratuit.',
     type: 'website',
     images: [{ url: ogImages.entretien, width: 1200, height: 630 }],
   },
@@ -45,7 +48,7 @@ export default function EntretienJardinAngersPage() {
       <HeroSection
         imageSlug="entretien-1"
         title="Entretien de Jardin à Angers"
-        subtitle="Art des Jardins assure l'entretien régulier de votre jardin à Angers. Tonte, taille, désherbage... Profitez d'un extérieur impeccable sans effort."
+        subtitle="Entretien de jardin à Angers — Bénéficiez de 50 % de crédit d'impôt. Tonte, taille, désherbage par un professionnel agréé."
       >
         <div className="flex flex-col sm:flex-row gap-4">
           <Link href="/contact/" className="btn-primary bg-white text-primary-700 hover:bg-gray-100">
@@ -104,34 +107,6 @@ export default function EntretienJardinAngersPage() {
                 ))}
               </div>
 
-              <h3 className="text-2xl font-bold mt-12 mb-6">Nos formules d'entretien</h3>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="bg-white border border-gray-200 rounded-xl p-6">
-                  <h4 className="font-bold text-lg mb-2">Contrat annuel</h4>
-                  <p className="text-gray-600 text-sm mb-4">
-                    Interventions régulières toute l'année selon un calendrier établi ensemble.
-                    Tarif dégressif et priorité d'intervention.
-                  </p>
-                  <ul className="text-sm text-gray-600 space-y-2">
-                    <li>• 10 à 15 passages par an</li>
-                    <li>• Tonte, taille, désherbage inclus</li>
-                    <li>• Évacuation des déchets</li>
-                    <li>• Conseils personnalisés</li>
-                  </ul>
-                </div>
-                <div className="bg-white border border-gray-200 rounded-xl p-6">
-                  <h4 className="font-bold text-lg mb-2">Intervention ponctuelle</h4>
-                  <p className="text-gray-600 text-sm mb-4">
-                    Pour un besoin spécifique ou un rattrapage. Intervention rapide sur devis.
-                  </p>
-                  <ul className="text-sm text-gray-600 space-y-2">
-                    <li>• Remise en état après absence</li>
-                    <li>• Préparation pour événement</li>
-                    <li>• Nettoyage saisonnier</li>
-                    <li>• Taille exceptionnelle</li>
-                  </ul>
-                </div>
-              </div>
             </div>
 
             {/* Sidebar */}
@@ -156,6 +131,10 @@ export default function EntretienJardinAngersPage() {
                       <IconCheck className="w-5 h-5 mt-0.5 flex-shrink-0" />
                       <span>Suivi personnalisé</span>
                     </li>
+                    <li className="flex items-start gap-2">
+                      <IconCheck className="w-5 h-5 mt-0.5 flex-shrink-0" />
+                      <span className="font-semibold text-green-700">50 % de crédit d'impôt</span>
+                    </li>
                   </ul>
                 </div>
 
@@ -174,8 +153,42 @@ export default function EntretienJardinAngersPage() {
         </div>
       </section>
 
-      {/* Credit d'impot */}
+      {/* Credit d'impot - Section mise en avant */}
       <TaxCreditSection />
+
+      {/* Formules d'entretien */}
+      <section className="py-16 lg:py-24 bg-gray-50">
+        <div className="container-custom max-w-4xl">
+          <h2 className="text-3xl font-bold mb-8 text-center">Nos formules d'entretien</h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="bg-white border border-gray-200 rounded-xl p-6">
+              <h3 className="font-bold text-lg mb-2">Contrat annuel</h3>
+              <p className="text-gray-600 text-sm mb-4">
+                Interventions régulières toute l'année selon un calendrier établi ensemble.
+                Tarif dégressif et priorité d'intervention.
+              </p>
+              <ul className="text-sm text-gray-600 space-y-2">
+                <li>• 10 à 15 passages par an</li>
+                <li>• Tonte, taille, désherbage inclus</li>
+                <li>• Évacuation des déchets</li>
+                <li>• Conseils personnalisés</li>
+              </ul>
+            </div>
+            <div className="bg-white border border-gray-200 rounded-xl p-6">
+              <h3 className="font-bold text-lg mb-2">Intervention ponctuelle</h3>
+              <p className="text-gray-600 text-sm mb-4">
+                Pour un besoin spécifique ou un rattrapage. Intervention rapide sur devis.
+              </p>
+              <ul className="text-sm text-gray-600 space-y-2">
+                <li>• Remise en état après absence</li>
+                <li>• Préparation pour événement</li>
+                <li>• Nettoyage saisonnier</li>
+                <li>• Taille exceptionnelle</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* CTA */}
       <section className="relative py-16 overflow-hidden">
