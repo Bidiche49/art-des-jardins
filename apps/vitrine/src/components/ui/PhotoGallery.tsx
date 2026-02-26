@@ -125,9 +125,6 @@ export function PhotoGallery({ maxItems, showFilters = true, initialCategory }: 
                 />
               </picture>
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors" />
-              <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                <p className="text-white text-sm">{image.alt}</p>
-              </div>
             </div>
           </button>
         ))}
@@ -176,11 +173,8 @@ export function PhotoGallery({ maxItems, showFilters = true, initialCategory }: 
                 className="max-h-[85vh] max-w-[90vw] object-contain rounded-lg"
               />
             </picture>
-            <p className="text-white/80 text-center mt-4 text-sm">
-              {displayed[lightboxIndex].alt}
-              <span className="text-white/50 ml-2">
-                {lightboxIndex + 1} / {displayed.length}
-              </span>
+            <p className="text-white/50 text-center mt-4 text-sm">
+              {lightboxIndex + 1} / {displayed.length}
             </p>
           </div>
         )}
