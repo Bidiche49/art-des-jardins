@@ -14,21 +14,6 @@ export const metadata: Metadata = {
   },
 };
 
-const team = [
-  {
-    name: 'Associé fondateur',
-    role: 'Gérant & Paysagiste',
-    bio: 'Passionné par l\'aménagement paysager depuis plus de 10 ans, il supervise la conception des projets et la relation client. Son expertise couvre la création de jardins, le choix des végétaux et la gestion de chantier.',
-    initials: 'AF',
-  },
-  {
-    name: 'Associé fondateur',
-    role: 'Responsable technique & Élagueur',
-    bio: 'Spécialiste de l\'élagage et des travaux en hauteur, il dirige les interventions techniques sur le terrain. Certifié pour le travail en hauteur et l\'utilisation de nacelles, il garantit la sécurité de chaque chantier.',
-    initials: 'AF',
-  },
-];
-
 const values = [
   {
     title: 'Qualité artisanale',
@@ -64,25 +49,8 @@ const stats = [
 ];
 
 export default function AProposPage() {
-  const personSchemas = team.map((member, i) => ({
-    '@context': 'https://schema.org',
-    '@type': 'Person',
-    name: member.name,
-    jobTitle: member.role,
-    worksFor: {
-      '@type': 'Organization',
-      name: 'Art des Jardins',
-      url: 'https://art-et-jardin.fr',
-    },
-    description: member.bio,
-  }));
-
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchemas) }}
-      />
 
       {/* Hero */}
       <HeroSection
@@ -108,6 +76,12 @@ export default function AProposPage() {
               proche de nos clients.
             </p>
             <p>
+              Notre force, c&apos;est la complémentarité. Conception paysagère, choix des végétaux
+              et relation client d&apos;un côté ; expertise technique, élagage et travaux en hauteur
+              de l&apos;autre. Cette double compétence nous permet d&apos;intervenir sur l&apos;ensemble
+              de vos projets, de la création de jardin à l&apos;abattage d&apos;arbres.
+            </p>
+            <p>
               Après des années d&apos;expérience dans des entreprises de paysage du Maine-et-Loire,
               nous avons voulu créer une structure à taille humaine, où la qualité du travail et la
               satisfaction client passent avant tout. Chaque projet est pour nous l&apos;occasion de
@@ -131,33 +105,6 @@ export default function AProposPage() {
               <div key={stat.label}>
                 <div className="text-4xl md:text-5xl font-bold mb-2">{stat.value}</div>
                 <div className="text-primary-100 text-sm">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Équipe */}
-      <section className="py-16 lg:py-24">
-        <div className="container-custom">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Notre équipe</h2>
-          <p className="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
-            Une équipe soudée de professionnels passionnés, à votre service pour tous vos projets
-            d&apos;espaces verts.
-          </p>
-          <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
-            {team.map((member, i) => (
-              <div key={i} className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-                <div className="h-48 bg-gradient-to-br from-primary-100 to-primary-200 flex items-center justify-center">
-                  <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center shadow-md">
-                    <span className="text-3xl font-bold text-primary-600">{member.initials}</span>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900">{member.name}</h3>
-                  <p className="text-primary-600 font-medium text-sm mb-3">{member.role}</p>
-                  <p className="text-gray-600 text-sm">{member.bio}</p>
-                </div>
               </div>
             ))}
           </div>
