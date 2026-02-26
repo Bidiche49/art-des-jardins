@@ -275,7 +275,7 @@ export default function ArticlePage({ params }: PageProps) {
 
       {/* CTA */}
       <section className="relative py-16 overflow-hidden">
-        <img src="/images/realisations/creation-2-1200w.webp" alt="" loading="lazy" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover" />
+        <img src="/images/realisations/creation-7-1200w.webp" alt="" loading="lazy" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 hero-overlay-strong" />
         <div className="container-custom text-center relative z-10">
           <h2 className="text-3xl font-bold mb-4 text-white">Vous avez un projet ?</h2>
