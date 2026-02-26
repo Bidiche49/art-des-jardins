@@ -9,8 +9,8 @@
 | Type | Prochain ID |
 |------|-------------|
 | BUG | BUG-011 |
-| FEAT | FEAT-124 |
-| IMP | IMP-054 |
+| FEAT | FEAT-125 |
+| IMP | IMP-056 |
 
 ---
 
@@ -449,6 +449,7 @@
 | FEAT-118 | Tracking GA4 + events conversion | Haute | SEO | ❌ Compte GA4 |
 | FEAT-122 | Service API dans docker-compose | Critique | Prod API | ✅ |
 | FEAT-123 | docker-compose.prod.yml + Caddy HTTPS | Critique | Prod API | ✅ |
+| FEAT-124 | Section "Nos chantiers en action" vitrine | Haute | Vitrine | ✅ |
 
 ### Ready (11) - AUTOMATISABLES
 
@@ -599,6 +600,7 @@
 | IMP-026 | Service Worker skipWaiting PWA | Moyenne | Audit | ✅ |
 | IMP-027 | Gestion erreurs PWA (toasts) | Moyenne | Audit | ✅ |
 | IMP-050 | Ajouter assurance décennale (accueil + FAQ) | Haute | Retour client | ✅ |
+| IMP-054 | Integrer 7 nouvelles photos realisations finies | Haute | Vitrine | ✅ |
 | IMP-051 | Configurer SMTP Brevo (emails prod) | Critique | Prod API | ❌ Compte Brevo |
 | IMP-052 | Configurer Scaleway S3 (stockage prod) | Haute | Prod API | ❌ Compte Scaleway |
 | IMP-053 | .env.production securise + checklist | Critique | Prod API | ⚠️ Secrets manuels |

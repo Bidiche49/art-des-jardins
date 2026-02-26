@@ -36,14 +36,21 @@ const IMAGE_CATALOG = [
   { file: 'Terasse_1.jpeg', slug: 'terrasse-1', category: 'terrasse', alt: 'Terrasse en bois composite amenagee dans un jardin paysager', tags: ['terrasse', 'bois', 'composite'] },
   { file: 'Terrasse_2.jpeg', slug: 'terrasse-2', category: 'terrasse', alt: 'Terrasse en pierre naturelle avec amenagement paysager complet', tags: ['terrasse', 'pierre', 'amenagement'] },
   { file: 'Terrasse_3.jpeg', slug: 'terrasse-3', category: 'terrasse', alt: 'Creation de terrasse et espace de vie exterieur a Angers', tags: ['terrasse', 'espace-vie', 'exterieur'] },
+  { file: 'Creation_4.jpg', slug: 'creation-4', category: 'creation', alt: 'Escalier en ardoise et pas japonais avec paillage bois - amenagement jardin Angers', tags: ['creation', 'escalier', 'ardoise', 'pas-japonais'] },
+  { file: 'Creation_5.jpg', slug: 'creation-5', category: 'creation', alt: 'Pergola en bois et allee en pas japonais dans un jardin paysager a Angers', tags: ['creation', 'pergola', 'bois', 'allee'] },
+  { file: 'Creation_6.jpg', slug: 'creation-6', category: 'creation', alt: 'Allee paysagere en gravier dans un parc arbore - paysagiste Angers', tags: ['creation', 'allee', 'gravier', 'parc'] },
+  { file: 'Creation_7.jpg', slug: 'creation-7', category: 'creation', alt: 'Terrasse en gravier stabilise avec muret en acier corten et massifs fleuris - paysagiste Angers', tags: ['creation', 'terrasse', 'corten', 'massifs'] },
+  { file: 'Creation_8.jpg', slug: 'creation-8', category: 'creation', alt: 'Muret en acier corten avec escalier et plantations paysageres pres d\'Angers', tags: ['creation', 'corten', 'escalier', 'plantations'] },
+  { file: 'Creation_9.jpg', slug: 'creation-9', category: 'creation', alt: 'Parc paysager amenage avec allee en gravier et espace reception - creation paysagere Angers', tags: ['creation', 'parc', 'allee', 'reception'] },
+  { file: 'Entretien_3.jpg', slug: 'entretien-3', category: 'entretien', alt: 'Pelouse parfaitement entretenue au coucher de soleil - entretien jardin Angers', tags: ['entretien', 'pelouse', 'coucher-soleil'] },
 ];
 
 // OG image mappings
 const OG_IMAGES = [
   { source: 'Entretien_2.JPG', output: 'og-image.jpg', alt: 'Art des Jardins - Paysagiste Angers' },
-  { source: 'Creation_2.jpeg', output: 'og-paysagisme.jpg', alt: 'Paysagisme Angers - Art des Jardins' },
+  { source: 'Creation_6.jpg', output: 'og-paysagisme.jpg', alt: 'Paysagisme Angers - Art des Jardins' },
   { source: 'Elagage_3.jpeg', output: 'og-elagage.jpg', alt: 'Elagage Angers - Art des Jardins' },
-  { source: 'Entretien_1.jpeg', output: 'og-entretien.jpg', alt: 'Entretien Jardin Angers - Art des Jardins' },
+  { source: 'Entretien_3.jpg', output: 'og-entretien.jpg', alt: 'Entretien Jardin Angers - Art des Jardins' },
   { source: 'Elagage_1.JPG', output: 'og-abattage.jpg', alt: 'Abattage Arbres Angers - Art des Jardins' },
 ];
 
@@ -251,25 +258,25 @@ export function getDefaultSrc(entry: ImageEntry, preferredWidth = 800): string {
 // Hero image mappings per page
 export const heroImages = {
   homepage: 'entretien-2',
-  'paysagiste-angers': 'creation-2',
+  'paysagiste-angers': 'creation-6',
   'elagage-angers': 'elagage-3',
-  'entretien-jardin-angers': 'entretien-1',
+  'entretien-jardin-angers': 'entretien-3',
   'abattage-angers': 'elagage-1',
   contact: 'terrasse-2',
 } as const;
 
 // Service card image mappings
 export const serviceCardImages = {
-  paysagisme: 'creation-2',
-  'entretien-jardin': 'entretien-1',
+  paysagisme: 'creation-6',
+  'entretien-jardin': 'entretien-3',
   elagage: 'elagage-2',
   abattage: 'elagage-1',
 } as const;
 
 // Service hero mappings for dynamic [serviceCity] pages
 export const serviceHeroImages: Record<string, string> = {
-  paysagiste: 'creation-2',
-  'entretien-jardin': 'entretien-1',
+  paysagiste: 'creation-6',
+  'entretien-jardin': 'entretien-3',
   elagage: 'elagage-3',
   abattage: 'elagage-1',
 };

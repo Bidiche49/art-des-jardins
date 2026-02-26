@@ -95,7 +95,7 @@ export default function EntretienJardinAngersPage() {
                 </p>
               </div>
 
-              <InlineGallery slugs={['entretien-2']} columns={2} />
+              <InlineGallery slugs={['entretien-1', 'entretien-2']} columns={2} />
 
               <h3 className="text-2xl font-bold mt-12 mb-6">Nos prestations d'entretien</h3>
               <div className="grid sm:grid-cols-2 gap-4">
