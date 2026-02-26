@@ -316,9 +316,9 @@ export function getDefaultSrc(entry: ImageEntry, preferredWidth = 800): string {
 export const heroImages = {
   homepage: 'entretien-2',
   'paysagiste-angers': 'creation-2',
-  'elagage-angers': 'elagage-3',
+  'elagage-angers': 'elagage-1',
   'entretien-jardin-angers': 'entretien-1',
-  'abattage-angers': 'elagage-1',
+  'abattage-angers': 'elagage-3',
   contact: 'terrasse-2',
 } as const;
 
@@ -334,8 +334,8 @@ export const serviceCardImages = {
 export const serviceHeroImages: Record<string, string> = {
   paysagiste: 'creation-2',
   'entretien-jardin': 'entretien-1',
-  elagage: 'elagage-3',
-  abattage: 'elagage-1',
+  elagage: 'elagage-1',
+  abattage: 'elagage-3',
 };
 
 // OG image paths per service

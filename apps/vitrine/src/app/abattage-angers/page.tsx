@@ -42,7 +42,7 @@ export default function AbattageAngersPage() {
 
       {/* Hero */}
       <HeroSection
-        imageSlug="elagage-1"
+        imageSlug="elagage-3"
         title="Abattage d'Arbres à Angers"
         subtitle="Art des Jardins réalise l'abattage sécurisé d'arbres à Angers. Arbres dangereux, malades ou gênants : intervention professionnelle garantie."
       >
