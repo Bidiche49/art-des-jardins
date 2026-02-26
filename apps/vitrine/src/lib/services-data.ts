@@ -10,7 +10,7 @@ export interface ServiceData {
   description: string;
   features: string[];
   benefits: string[];
-  priceRange: {
+  priceRange?: {
     lowPrice: number;
     highPrice: number;
     unit: string;
@@ -52,12 +52,15 @@ export const services: ServiceData[] = [
       adaptés au climat de la Loire, sélectionnés pour leur robustesse et leur beauté durable.
     `,
     features: [
-      'Conception de plans paysagers personnalisés',
-      'Création de terrasses et espaces de vie extérieurs',
+      'Conseils et propositions d\'aménagements personnalisés',
+      'Création de terrasses (tout matériaux)',
+      'Allée et terrassement divers',
       'Plantation de massifs, arbres et arbustes',
       'Engazonnement et création de pelouses',
       'Installation de systèmes d\'arrosage automatique',
-      'Aménagement de bassins et points d\'eau',
+      'Pergola sur mesure',
+      'Maçonneries extérieures',
+      'Cabane dans les arbres',
       'Pose de clôtures et bordures',
       'Éclairage de jardin',
     ],
@@ -68,12 +71,6 @@ export const services: ServiceData[] = [
       'Végétaux adaptés au climat local',
       'Respect de votre budget',
     ],
-    priceRange: {
-      lowPrice: 50,
-      highPrice: 150,
-      unit: '/m²',
-      label: '50 € – 150 € / m²',
-    },
     process: [
       {
         title: 'Visite et analyse',
@@ -103,14 +100,14 @@ export const services: ServiceData[] = [
     ],
     faq: [
       {
-        question: 'Quel est le coût moyen d\'un aménagement de jardin ?',
+        question: 'Combien coûte un aménagement paysager ?',
         answer:
-          'Le prix varie selon la surface et la complexité du projet. Comptez entre 50 et 150€/m2 pour un aménagement complet. Nous établissons toujours un devis détaillé et gratuit avant de commencer.',
+          'Chaque projet est unique. Le coût dépend de la surface, des matériaux et des plantations choisis. Contactez-nous pour un devis gratuit et personnalisé.',
       },
       {
         question: 'Quelle est la meilleure période pour aménager un jardin ?',
         answer:
-          'L\'automne et le printemps sont idéaux pour les plantations. Cependant, nous pouvons réaliser les travaux de terrassement et de maçonnerie toute l\'année.',
+          'L\'automne et l\'hiver sont idéaux pour la plantation, cependant nous réalisons les travaux d\'aménagement toute l\'année.',
       },
       {
         question: 'Proposez-vous un service d\'entretien après l\'aménagement ?',
@@ -159,12 +156,6 @@ export const services: ServiceData[] = [
       'Conseils de jardinage inclus',
       'Tarifs dégressifs en contrat annuel',
     ],
-    priceRange: {
-      lowPrice: 30,
-      highPrice: 60,
-      unit: '/heure',
-      label: '30 € – 60 € / heure',
-    },
     process: [
       {
         title: 'Évaluation des besoins',
@@ -203,6 +194,11 @@ export const services: ServiceData[] = [
         answer:
           'Oui, nous pouvons intervenir en votre absence. C\'est même l\'idéal pour que vous retrouviez un jardin impeccable à votre retour.',
       },
+      {
+        question: 'Quel est le tarif d\'un entretien de jardin ?',
+        answer:
+          'Le tarif dépend de la surface, de la fréquence et des prestations souhaitées. Avec le crédit d\'impôt de 50 %, le coût réel est divisé par deux. Demandez votre devis gratuit.',
+      },
     ],
   },
   {
@@ -212,7 +208,7 @@ export const services: ServiceData[] = [
     icon: '🪓',
     metaTitle: 'Élagage Angers - Taille d\'Arbres Professionnel | Art des Jardins',
     metaDescription:
-      'Service d\'élagage professionnel à Angers. Taille d\'arbres, éclaircissage, haubanage, soin des arbres. Élagueurs certifiés. Devis gratuit.',
+      'Service d\'élagage professionnel à Angers. Taille d\'arbres, éclaircissage, taille de sécurisation, diagnostic phytosanitaire. Élagueurs certifiés. Devis gratuit.',
     heroTitle: 'Élagage Professionnel à Angers',
     heroSubtitle:
       'Des arbres sains et esthétiques grâce à l\'expertise de nos élagueurs certifiés.',
@@ -225,17 +221,12 @@ export const services: ServiceData[] = [
       la physiologie de l'arbre pour garantir une cicatrisation optimale.
 
       Nous intervenons aussi bien chez les particuliers que pour les copropriétés, les entreprises et les collectivités.
-      Notre parc de matériel professionnel (nacelles, broyeurs) nous permet d'intervenir sur les arbres les plus
-      imposants en toute sécurité.
     `,
     features: [
       'Taille de formation pour jeunes arbres',
       'Taille d\'entretien et éclaircissage',
       'Taille de réduction de volume',
       'Taille de sécurisation (branches dangereuses)',
-      'Haubanage et consolidation',
-      'Démontage technique',
-      'Soin des arbres malades',
       'Diagnostic phytosanitaire',
     ],
     benefits: [
@@ -245,12 +236,6 @@ export const services: ServiceData[] = [
       'Respect de la législation (distances, hauteurs)',
       'Intervention sécurisée et assurée',
     ],
-    priceRange: {
-      lowPrice: 100,
-      highPrice: 800,
-      unit: '/arbre',
-      label: '100 € – 800 € / arbre',
-    },
     process: [
       {
         title: 'Diagnostic sur place',
@@ -260,7 +245,7 @@ export const services: ServiceData[] = [
       {
         title: 'Devis détaillé',
         description:
-          'Nous vous remettons un devis précisant le type de taille, les moyens utilisés et le prix.',
+          'Nous vous remettons un devis détaillé précisant le type de taille et les moyens utilisés.',
       },
       {
         title: 'Intervention',
@@ -288,6 +273,11 @@ export const services: ServiceData[] = [
         question: 'Quelle est la différence entre élagage et taille ?',
         answer:
           'L\'élagage concerne la coupe de grosses branches sur les arbres de grande taille, tandis que la taille s\'applique aux arbustes et haies. Les techniques et le matériel diffèrent.',
+      },
+      {
+        question: 'Combien coûte un élagage d\'arbre ?',
+        answer:
+          'Le prix varie selon l\'essence, la hauteur et l\'accessibilité de l\'arbre. Nous établissons un devis gratuit après visite sur place.',
       },
     ],
   },
@@ -321,6 +311,7 @@ export const services: ServiceData[] = [
       'Intervention sur arbres dangereux (tempête)',
       'Dessouchage à la rogneuse',
       'Évacuation et valorisation du bois',
+      'Fendage du bois',
       'Débroussaillage associé',
       'Conseil pour replantation',
     ],
@@ -331,12 +322,6 @@ export const services: ServiceData[] = [
       'Entreprise assurée',
       'Terrain nettoyé et prêt à l\'emploi',
     ],
-    priceRange: {
-      lowPrice: 300,
-      highPrice: 2000,
-      unit: '/arbre',
-      label: '300 € – 2 000 € / arbre',
-    },
     process: [
       {
         title: 'Évaluation du chantier',
@@ -379,6 +364,11 @@ export const services: ServiceData[] = [
         question: 'Intervenez-vous en urgence après tempête ?',
         answer:
           'Oui, nous disposons d\'une ligne d\'urgence pour les arbres tombés ou dangereux. Nous intervenons rapidement pour sécuriser les lieux.',
+      },
+      {
+        question: 'Quel est le prix d\'un abattage d\'arbre ?',
+        answer:
+          'Le coût dépend de la hauteur, de l\'environnement (zone contrainte ou dégagée) et de l\'évacuation. Contactez-nous pour une évaluation gratuite.',
       },
     ],
   },

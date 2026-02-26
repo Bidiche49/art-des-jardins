@@ -30,12 +30,12 @@ export const serviceTypes: ServiceCityData[] = [
     metaDescriptionTemplate:
       'Paysagiste professionnel à {city}. Aménagement de jardin, terrasse, engazonnement, plantation. Devis gratuit sous 48h.',
     features: [
-      'Conception de jardins sur mesure',
-      'Création de terrasses et allées',
+      'Conseils et propositions d\'aménagements personnalisés',
+      'Création de terrasses (tout matériaux)',
+      'Allée et terrassement divers',
       'Plantation d\'arbres et arbustes',
-      'Engazonnement et pelouse',
-      'Arrosage automatique',
-      'Éclairage de jardin',
+      'Pergola sur mesure',
+      'Maçonneries extérieures',
     ],
   },
   {
@@ -47,11 +47,10 @@ export const serviceTypes: ServiceCityData[] = [
     metaDescriptionTemplate:
       'Élagueur professionnel à {city}. Taille d\'arbres, éclaircissage, taille de sécurisation. Élagueurs certifiés. Devis gratuit.',
     features: [
-      'Taille de formation et d\'entretien',
-      'Éclaircissage de couronne',
-      'Taille de réduction',
+      'Taille de formation pour jeunes arbres',
+      'Taille d\'entretien et éclaircissage',
+      'Taille de réduction de volume',
       'Taille de sécurisation',
-      'Haubanage',
       'Diagnostic phytosanitaire',
     ],
   },
@@ -85,6 +84,7 @@ export const serviceTypes: ServiceCityData[] = [
       'Démontage technique',
       'Dessouchage à la rogneuse',
       'Évacuation du bois',
+      'Fendage du bois',
       'Intervention d\'urgence',
       'Sécurisation après tempête',
     ],
