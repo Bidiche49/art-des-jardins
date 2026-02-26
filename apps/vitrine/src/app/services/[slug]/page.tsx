@@ -119,24 +119,13 @@ export default function ServicePage({ params }: PageProps) {
                 </div>
 
                 {/* CTA Devis */}
-                <div className="bg-primary-50 rounded-xl p-6 border border-primary-100">
-                  <h3 className="text-lg font-bold text-primary-900 mb-2">Devis gratuit et personnalisé</h3>
-                  <p className="text-sm text-primary-700 mb-4">
-                    Chaque projet est unique. Contactez-nous pour recevoir une estimation adaptée à vos besoins.
+                <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+                  <h3 className="text-lg font-bold mb-2">Devis gratuit et personnalisé</h3>
+                  <p className="text-gray-600 text-sm mb-4">
+                    Chaque projet est unique. Contactez-nous pour recevoir une estimation adaptée à vos besoins sous 48h après la visite.
                   </p>
                   <Link href="/contact/" className="btn-primary w-full text-center block">
                     Demander un devis gratuit
-                  </Link>
-                </div>
-
-                {/* CTA Card */}
-                <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
-                  <h3 className="text-lg font-bold mb-2">Devis gratuit</h3>
-                  <p className="text-gray-600 text-sm mb-4">
-                    Recevez une estimation personnalisée sous 48h.
-                  </p>
-                  <Link href="/contact/" className="btn-primary w-full text-center block">
-                    Demander un devis
                   </Link>
                   <p className="text-center text-sm text-gray-500 mt-3">
                     Ou appelez-nous :{' '}
