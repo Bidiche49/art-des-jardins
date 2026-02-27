@@ -127,6 +127,12 @@
   column-gap: 1rem;
 }
 
+@media (max-width: 479px) {
+  .gallery-masonry {
+    columns: 1;
+  }
+}
+
 @media (min-width: 768px) {
   .gallery-masonry {
     columns: 3;

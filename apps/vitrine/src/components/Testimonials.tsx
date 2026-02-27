@@ -149,7 +149,7 @@ export function Testimonials() {
                 </div>
                 <StarRating rating={testimonial.rating} />
               </div>
-              <p className="text-gray-600 mb-4 line-clamp-4">{testimonial.text}</p>
+              <p className="text-gray-600 mb-4 line-clamp-5 md:line-clamp-4">{testimonial.text}</p>
               <div className="flex items-center justify-between text-sm">
                 <span className="text-primary-600 font-medium">{testimonial.service}</span>
                 <span className="text-gray-400">

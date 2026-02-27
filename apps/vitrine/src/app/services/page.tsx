@@ -43,14 +43,14 @@ export default function ServicesPage() {
       {/* Services Grid - with photos */}
       <section className="py-16 lg:py-24">
         <div className="container-custom">
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, i) => {
               const imageSlug = serviceCardImages[service.slug as keyof typeof serviceCardImages];
               return (
                 <AnimateOnScroll key={service.slug} delay={i * 100} className="h-full">
                   <Link
                     href={`/services/${service.slug}/`}
-                    className="service-card group flex flex-col h-full bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all"
+                    className="service-card group flex flex-col h-full bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-300"
                   >
                     {imageSlug && (
                       <div className="aspect-[16/9] overflow-hidden relative">
@@ -63,7 +63,7 @@ export default function ServicesPage() {
                           src={`/images/realisations/${imageSlug}-800w.webp`}
                           alt={images[imageSlug]?.alt || service.title}
                           loading="lazy"
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                         />
                         <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/40 to-transparent" />
                       </div>

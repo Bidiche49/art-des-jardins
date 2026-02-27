@@ -69,7 +69,7 @@ export function BeforeAfterSlider({
     <div className="group">
       <div
         ref={containerRef}
-        className="relative overflow-hidden rounded-2xl select-none aspect-[4/3] touch-none shadow-lg group-hover:shadow-xl transition-shadow duration-300"
+        className="relative overflow-hidden rounded-xl select-none aspect-[4/3] touch-none shadow-md group-hover:shadow-lg transition-shadow duration-300"
         role="slider"
         aria-label="Comparer avant et après"
         aria-valuemin={0}

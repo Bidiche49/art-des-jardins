@@ -27,7 +27,7 @@ export function Footer() {
             <div className="text-gray-400 space-y-2">
               <p className="flex items-center gap-2">
                 <IconPin className="w-4 h-4 text-primary-500 flex-shrink-0" />
-                9 bis rue Rouget de l'Isle, 49130 Les Ponts-de-Ce
+                9 bis rue Rouget de l'Isle, 49130 Les Ponts-de-Cé
               </p>
               <div className="flex items-start gap-2">
                 <IconPhone className="w-4 h-4 text-primary-500 flex-shrink-0 mt-0.5" />
@@ -57,28 +57,28 @@ export function Footer() {
           </div>
 
           {/* Nav columns: 2 cols on mobile, integrated in 4-col grid on md+ */}
-          <div className="grid grid-cols-2 gap-8 md:contents">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 md:contents">
             {/* Services */}
             <div>
               <h3 className="text-white font-semibold mb-3 md:mb-4">Services</h3>
               <ul className="space-y-1 md:space-y-2">
                 <li>
-                  <Link href="/paysagiste-angers" className="block py-1.5 md:py-0 hover:text-white transition-colors">
+                  <Link href="/paysagiste-angers" className="block py-2 md:py-0 hover:text-white transition-colors">
                     Paysagiste Angers
                   </Link>
                 </li>
                 <li>
-                  <Link href="/entretien-jardin-angers" className="block py-1.5 md:py-0 hover:text-white transition-colors">
+                  <Link href="/entretien-jardin-angers" className="block py-2 md:py-0 hover:text-white transition-colors">
                     Entretien jardin
                   </Link>
                 </li>
                 <li>
-                  <Link href="/elagage-angers" className="block py-1.5 md:py-0 hover:text-white transition-colors">
+                  <Link href="/elagage-angers" className="block py-2 md:py-0 hover:text-white transition-colors">
                     Élagage Angers
                   </Link>
                 </li>
                 <li>
-                  <Link href="/abattage-angers" className="block py-1.5 md:py-0 hover:text-white transition-colors">
+                  <Link href="/abattage-angers" className="block py-2 md:py-0 hover:text-white transition-colors">
                     Abattage
                   </Link>
                 </li>
@@ -90,37 +90,37 @@ export function Footer() {
               <h3 className="text-white font-semibold mb-3 md:mb-4">Informations</h3>
               <ul className="space-y-1 md:space-y-2">
                 <li>
-                  <Link href="/a-propos" className="block py-1.5 md:py-0 hover:text-white transition-colors">
+                  <Link href="/a-propos" className="block py-2 md:py-0 hover:text-white transition-colors">
                     À propos
                   </Link>
                 </li>
                 <li>
-                  <Link href="/realisations" className="block py-1.5 md:py-0 hover:text-white transition-colors">
+                  <Link href="/realisations" className="block py-2 md:py-0 hover:text-white transition-colors">
                     Réalisations
                   </Link>
                 </li>
                 <li>
-                  <Link href="/mentions-legales" className="block py-1.5 md:py-0 hover:text-white transition-colors">
+                  <Link href="/mentions-legales" className="block py-2 md:py-0 hover:text-white transition-colors">
                     Mentions légales
                   </Link>
                 </li>
                 <li>
-                  <Link href="/politique-confidentialite" className="block py-1.5 md:py-0 hover:text-white transition-colors">
+                  <Link href="/politique-confidentialite" className="block py-2 md:py-0 hover:text-white transition-colors">
                     Confidentialité
                   </Link>
                 </li>
                 <li>
-                  <Link href="/conseils" className="block py-1.5 md:py-0 hover:text-white transition-colors">
+                  <Link href="/conseils" className="block py-2 md:py-0 hover:text-white transition-colors">
                     Conseils jardinage
                   </Link>
                 </li>
                 <li>
-                  <Link href="/faq" className="block py-1.5 md:py-0 hover:text-white transition-colors">
+                  <Link href="/faq" className="block py-2 md:py-0 hover:text-white transition-colors">
                     FAQ
                   </Link>
                 </li>
                 <li>
-                  <Link href="/contact" className="block py-1.5 md:py-0 hover:text-white transition-colors">
+                  <Link href="/contact" className="block py-2 md:py-0 hover:text-white transition-colors">
                     Contact
                   </Link>
                 </li>

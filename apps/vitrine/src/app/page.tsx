@@ -32,9 +32,9 @@ export default function HomePage() {
       </HeroSection>
 
       {/* Trust Band */}
-      <section className="py-6 bg-white border-b border-gray-100">
-        <div className="container-custom">
-          <div className="flex flex-wrap justify-center items-center gap-6 md:gap-10 text-gray-600 text-sm">
+      <section className="py-8 md:py-10 bg-white border-b border-gray-100">
+        <div className="container-custom max-w-5xl">
+          <div className="flex flex-wrap justify-center items-center gap-6 md:gap-10 lg:gap-16 text-gray-600 text-sm">
             <div className="flex items-center gap-2">
               <IconRcPro className="w-5 h-5 text-primary-600 flex-shrink-0" />
               <span className="font-medium">Assurance RC Pro</span>

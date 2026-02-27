@@ -43,7 +43,7 @@ export function HeroSection({
   }[overlay];
 
   return (
-    <section className="hero-section relative text-white min-h-[500px] lg:min-h-[600px] flex items-center">
+    <section className="hero-section relative text-white min-h-[500px] lg:min-h-[700px] flex items-center">
       {/* Preload hero image for better LCP */}
       <link rel="preload" as="image" type="image/webp" imageSrcSet={srcSet} imageSizes="100vw" />
       <HeroClient

@@ -67,7 +67,7 @@ export default function ContactPage() {
             {/* Contact Form */}
             <div className="lg:col-span-2">
               {/* Process en 3 étapes */}
-              <div className="grid grid-cols-3 gap-4 mb-8">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
                 {[
                   { step: '1', title: 'Vous nous contactez', desc: 'Via ce formulaire ou par téléphone' },
                   { step: '2', title: 'Visite gratuite', desc: 'Nous venons étudier votre projet sur place' },
@@ -91,7 +91,7 @@ export default function ContactPage() {
 
             {/* Contact Info Sidebar */}
             <div className="lg:col-span-1">
-              <div className="sticky top-24 space-y-6">
+              <div className="lg:sticky lg:top-24 space-y-6">
                 {/* Contact Cards */}
                 <div className="space-y-4">
                   {contactInfo.map((info, i) => (
@@ -178,7 +178,7 @@ export default function ContactPage() {
       <section className="bg-gray-100">
         <div className="container-custom py-8">
           <h2 className="text-2xl font-bold mb-6 text-center">Notre zone d&apos;intervention</h2>
-          <div className="rounded-xl overflow-hidden h-80 bg-gray-200">
+          <div className="rounded-xl overflow-hidden h-64 md:h-80 bg-gray-200">
             <iframe
               src="https://maps.google.com/maps?q=9+bis+rue+Rouget+de+l%27Isle,+49130+Les+Ponts-de-C%C3%A9&t=&z=14&ie=UTF8&iwloc=&output=embed"
               width="100%"

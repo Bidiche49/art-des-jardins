@@ -264,7 +264,7 @@ export function ContactForm() {
         />
       </div>
 
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
         <div>
           <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
             Nom complet <span className="text-red-500">*</span>
@@ -302,7 +302,7 @@ export function ContactForm() {
         </div>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
         <div>
           <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
             Téléphone

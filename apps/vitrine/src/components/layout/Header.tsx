@@ -85,6 +85,18 @@ export function Header() {
     };
   }, []);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
+
   const handleMouseEnter = () => {
     clearTimeout(timeoutRef.current);
     setServicesOpen(true);
@@ -143,7 +155,7 @@ export function Header() {
                     : 'opacity-0 invisible -translate-y-2'
                 }`}
               >
-                <div className="bg-white rounded-xl shadow-xl border border-gray-100 p-4 w-[540px]">
+                <div className="bg-white rounded-xl shadow-xl border border-gray-100 p-4 w-[540px] max-w-[calc(100vw-2rem)]">
                   <div className="grid grid-cols-2 gap-1">
                     {serviceMenuItems.map((item) => (
                       <Link
@@ -161,7 +173,7 @@ export function Header() {
                               {item.title}
                             </span>
                             {item.badge && (
-                              <span className="text-[10px] font-semibold bg-secondary-100 text-secondary-700 px-1.5 py-0.5 rounded-full leading-none whitespace-nowrap">
+                              <span className="text-xs font-semibold bg-secondary-100 text-secondary-700 px-1.5 py-0.5 rounded-full leading-none whitespace-nowrap">
                                 {item.badge}
                               </span>
                             )}
@@ -223,7 +235,7 @@ export function Header() {
           {/* Mobile menu button */}
           <button
             type="button"
-            className="md:hidden p-2 rounded-md text-gray-700"
+            className="md:hidden p-3 rounded-md text-gray-700"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-menu"
@@ -284,7 +296,7 @@ export function Header() {
                           <span className="text-primary-600">{item.icon}</span>
                           {item.title}
                           {item.badge && (
-                            <span className="text-[10px] font-semibold bg-secondary-100 text-secondary-700 px-1.5 py-0.5 rounded-full leading-none">
+                            <span className="text-xs font-semibold bg-secondary-100 text-secondary-700 px-1.5 py-0.5 rounded-full leading-none">
                               {item.badge}
                             </span>
                           )}
