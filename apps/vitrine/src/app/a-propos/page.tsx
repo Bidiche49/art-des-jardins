@@ -129,7 +129,7 @@ export default function AProposPage() {
           <p className="text-white/80 mb-8 max-w-xl mx-auto">
             Contactez-nous pour un devis gratuit et sans engagement.
           </p>
-          <Link href="/contact/" className="btn-primary bg-white text-primary-700 hover:bg-gray-100">
+          <Link href="/contact/" className="btn-primary-light">
             Demander un devis gratuit
           </Link>
         </div>

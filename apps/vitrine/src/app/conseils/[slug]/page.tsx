@@ -285,7 +285,7 @@ export default function ArticlePage({ params }: PageProps) {
           <p className="text-white/80 mb-8 max-w-xl mx-auto">
             Nos paysagistes à Angers se déplacent gratuitement pour étudier votre projet.
           </p>
-          <Link href="/contact/" className="btn-primary bg-white text-primary-700 hover:bg-gray-100">
+          <Link href="/contact/" className="btn-primary-light">
             Demander un devis gratuit
           </Link>
         </div>

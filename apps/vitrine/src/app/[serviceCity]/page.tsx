@@ -99,7 +99,7 @@ export default function ServiceCityPage({ params }: PageProps) {
         ]}
       >
         <div className="flex flex-col sm:flex-row gap-4">
-          <Link href="/contact/" className="btn-primary bg-white text-primary-700 hover:bg-gray-100">
+          <Link href="/contact/" className="btn-primary-light">
             Demander un devis gratuit
           </Link>
           <a
@@ -126,7 +126,12 @@ export default function ServiceCityPage({ params }: PageProps) {
                   {' '}{service.serviceDescription}.
                 </p>
                 <p>{city.description}</p>
-                <p>{city.specificContent}</p>
+                {city.specificContent
+                  .split('\n\n')
+                  .filter((p) => p.trim())
+                  .map((paragraph, i) => (
+                    <p key={i}>{paragraph.replace(/\s+/g, ' ').trim()}</p>
+                  ))}
                 {city.neighborhoods && city.neighborhoods.length > 0 && (
                   <p>
                     Nous intervenons dans tous les quartiers de {city.name} : {city.neighborhoods.join(', ')}.
@@ -265,7 +270,7 @@ export default function ServiceCityPage({ params }: PageProps) {
             Contactez Art des Jardins pour un devis gratuit et sans engagement.
             Intervention rapide à {city.name}.
           </p>
-          <Link href="/contact/" className="btn-primary bg-white text-primary-700 hover:bg-gray-100">
+          <Link href="/contact/" className="btn-primary-light">
             Demander un devis gratuit
           </Link>
         </div>

@@ -54,7 +54,7 @@ export default function AbattageAngersPage() {
         subtitle="Art des Jardins réalise l'abattage sécurisé d'arbres à Angers. Arbres dangereux, malades ou gênants : intervention professionnelle garantie."
       >
         <div className="flex flex-col sm:flex-row gap-4">
-          <Link href="/contact/" className="btn-primary bg-white text-primary-700 hover:bg-gray-100">
+          <Link href="/contact/" className="btn-primary-light">
             Demander un devis gratuit
           </Link>
           <a
@@ -200,7 +200,7 @@ export default function AbattageAngersPage() {
             Contactez-nous pour une évaluation gratuite et un devis sur mesure.
             Intervention sécurisée garantie.
           </p>
-          <Link href="/contact/" className="btn-primary bg-white text-primary-700 hover:bg-gray-100">
+          <Link href="/contact/" className="btn-primary-light">
             Demander un devis gratuit
           </Link>
         </div>

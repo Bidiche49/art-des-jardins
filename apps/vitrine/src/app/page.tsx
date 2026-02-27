@@ -22,7 +22,7 @@ export default function HomePage() {
         subtitle="Aménagement de jardins, entretien, élagage et abattage. Devis gratuit sous 48h suite au rendez-vous."
       >
         <div className="flex flex-col sm:flex-row gap-4">
-          <Link href="/contact" className="btn-primary bg-white text-primary-700 hover:bg-gray-100">
+          <Link href="/contact" className="btn-primary-light">
             Demander ma visite gratuite
           </Link>
           <Link href="/services" className="btn-secondary bg-transparent border-2 border-white text-white hover:bg-white/10">
@@ -267,7 +267,7 @@ export default function HomePage() {
             Contactez-nous pour un devis gratuit et sans engagement. Intervention rapide dans tout
             Angers et ses environs. Crédit d&apos;impôt 50 % sur l&apos;entretien de jardin.
           </p>
-          <Link href="/contact" className="btn-primary bg-white text-primary-700 hover:bg-gray-100">
+          <Link href="/contact" className="btn-primary-light">
             Contactez-nous
           </Link>
         </div>

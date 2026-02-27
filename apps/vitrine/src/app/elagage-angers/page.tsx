@@ -54,7 +54,7 @@ export default function ElagageAngersPage() {
         subtitle="Art des Jardins, élagueurs professionnels certifiés à Angers. Taille d'arbres, éclaircissage, sécurisation. Intervention rapide et devis gratuit."
       >
         <div className="flex flex-col sm:flex-row gap-4">
-          <Link href="/contact/" className="btn-primary bg-white text-primary-700 hover:bg-gray-100">
+          <Link href="/contact/" className="btn-primary-light">
             Demander un devis gratuit
           </Link>
           <a
@@ -192,7 +192,7 @@ export default function ElagageAngersPage() {
           <p className="text-white/80 mb-8 max-w-xl mx-auto">
             Contactez-nous pour un diagnostic gratuit de vos arbres et un devis détaillé.
           </p>
-          <Link href="/contact/" className="btn-primary bg-white text-primary-700 hover:bg-gray-100">
+          <Link href="/contact/" className="btn-primary-light">
             Demander un devis gratuit
           </Link>
         </div>

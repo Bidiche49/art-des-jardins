@@ -117,7 +117,7 @@ export default function RealisationsPage() {
           </p>
           <Link
             href="/contact/"
-            className="btn-primary bg-white text-primary-700 hover:bg-gray-100"
+            className="btn-primary-light"
           >
             Demander un devis gratuit
           </Link>
