@@ -15,23 +15,30 @@ const stats: Stat[] = [
   { value: 48, suffix: 'h', label: 'Devis gratuit sous' },
 ];
 
+function easeOutCubic(t: number): number {
+  return 1 - Math.pow(1 - t, 3);
+}
+
 function useCountUp(target: number, isVisible: boolean, duration = 2000) {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
     if (!isVisible) return;
-    let start = 0;
-    const increment = target / (duration / 16);
-    const timer = setInterval(() => {
-      start += increment;
-      if (start >= target) {
-        setCount(target);
-        clearInterval(timer);
-      } else {
-        setCount(Math.floor(start));
+    const start = performance.now();
+    let raf: number;
+
+    function tick(now: number) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = easeOutCubic(progress);
+      setCount(Math.round(eased * target));
+      if (progress < 1) {
+        raf = requestAnimationFrame(tick);
       }
-    }, 16);
-    return () => clearInterval(timer);
+    }
+
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
   }, [target, isVisible, duration]);
 
   return count;
@@ -42,11 +49,11 @@ function StatItem({ stat, isVisible }: { stat: Stat; isVisible: boolean }) {
 
   return (
     <div className="text-center">
-      <div className="text-4xl md:text-5xl font-bold text-white mb-2">
+      <div className="font-serif text-5xl md:text-6xl font-bold text-secondary-400 mb-2">
         {count}
-        {stat.suffix}
+        <span className="text-4xl md:text-5xl">{stat.suffix}</span>
       </div>
-      <div className="text-white/80 text-sm md:text-base">{stat.label}</div>
+      <div className="text-white/80 text-sm md:text-base font-sans">{stat.label}</div>
     </div>
   );
 }
@@ -83,8 +90,15 @@ export function StatsCounter() {
       {/* Content */}
       <div className="container-custom relative z-10">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-          {stats.map((stat) => (
-            <StatItem key={stat.label} stat={stat} isVisible={isVisible} />
+          {stats.map((stat, i) => (
+            <div key={stat.label} className="flex items-center">
+              <div className="flex-1">
+                <StatItem stat={stat} isVisible={isVisible} />
+              </div>
+              {i < stats.length - 1 && (
+                <div className="hidden md:block w-px h-16 bg-white/20 ml-6" />
+              )}
+            </div>
           ))}
         </div>
       </div>
