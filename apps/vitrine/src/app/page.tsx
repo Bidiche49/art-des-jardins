@@ -69,7 +69,7 @@ export default function HomePage() {
           <AnimateOnScroll>
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Nos services de paysagiste à Angers</h2>
           </AnimateOnScroll>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
             {services.map((service, i) => (
               <AnimateOnScroll key={service.title} delay={i * 100} className="h-full">
                 <ServiceCard
@@ -297,9 +297,21 @@ const services: { title: string; description: string; href: string; imageSlug: s
     imageSlug: serviceCardImages.elagage,
   },
   {
-    title: 'Abattage',
-    description: 'Abattage sécurisé d\'arbres dangereux ou gênants.',
-    href: '/services/abattage/',
-    imageSlug: serviceCardImages.abattage,
+    title: 'Terrasses',
+    description: 'Création de terrasses bois, composite et pierre.',
+    href: '/services/terrasse/',
+    imageSlug: serviceCardImages.terrasse,
+  },
+  {
+    title: 'Clôtures',
+    description: 'Pose de clôtures, portails et délimitations.',
+    href: '/services/cloture/',
+    imageSlug: serviceCardImages.cloture,
+  },
+  {
+    title: 'Taille de haies',
+    description: 'Taille et entretien de haies de toutes essences.',
+    href: '/services/taille-haies/',
+    imageSlug: serviceCardImages['taille-haies'],
   },
 ];

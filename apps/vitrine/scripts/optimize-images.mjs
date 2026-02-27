@@ -277,6 +277,11 @@ export const serviceCardImages = {
   'entretien-jardin': 'entretien-3',
   elagage: 'elagage-2',
   abattage: 'elagage-1',
+  terrasse: 'terrasse-1',
+  cloture: 'cloture-2',
+  'taille-haies': 'entretien-1',
+  debroussaillage: 'chantier-avant-1',
+  'arrosage-automatique': 'arrosage-1',
 } as const;
 
 // Service hero mappings for dynamic [serviceCity] pages
@@ -285,6 +290,11 @@ export const serviceHeroImages: Record<string, string> = {
   'entretien-jardin': 'entretien-3',
   elagage: 'elagage-3',
   abattage: 'elagage-1',
+  terrasse: 'terrasse-1',
+  cloture: 'cloture-2',
+  'taille-haies': 'entretien-1',
+  debroussaillage: 'chantier-avant-1',
+  'arrosage-automatique': 'arrosage-1',
 };
 
 // OG image paths per service
