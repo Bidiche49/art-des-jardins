@@ -7,6 +7,7 @@ import { StatsCounter } from '@/components/ui/StatsCounter';
 import { PhotoGallery } from '@/components/ui/PhotoGallery';
 import { AnimateOnScroll } from '@/components/ui/AnimateOnScroll';
 import { BeforeAfterSection } from '@/components/BeforeAfterSection';
+import { Testimonials } from '@/components/Testimonials';
 import { serviceCardImages, getSrcSet, getDefaultSrc, getImage } from '@/lib/images-manifest';
 import { IconRcPro, IconDecennale, IconExperience, IconDevis48h, IconZone30km, IconInstagram, IconEuro } from '@/lib/icons';
 
@@ -23,10 +24,10 @@ export default function HomePage() {
       >
         <div className="flex flex-col sm:flex-row gap-4">
           <Link href="/contact" className="btn-primary bg-white text-primary-700 hover:bg-gray-100">
-            Demander un devis gratuit
+            Obtenir mon devis en 48h
           </Link>
           <Link href="/services" className="btn-secondary bg-transparent border-2 border-white text-white hover:bg-white/10">
-            Nos services
+            Découvrir nos services
           </Link>
         </div>
       </HeroSection>
@@ -166,6 +167,24 @@ export default function HomePage() {
 
       {/* Avant / Après */}
       <BeforeAfterSection />
+
+      {/* CTA intermédiaire */}
+      <section className="py-12 lg:py-16 bg-primary-50">
+        <div className="container-custom text-center">
+          <h2 className="text-2xl md:text-3xl font-bold mb-4">
+            Votre jardin mérite aussi cette transformation
+          </h2>
+          <p className="text-gray-600 mb-6 max-w-xl mx-auto">
+            Chaque projet commence par une visite gratuite. Parlons de vos envies.
+          </p>
+          <Link href="/contact" className="btn-primary">
+            Demander un devis gratuit
+          </Link>
+        </div>
+      </section>
+
+      {/* Témoignages */}
+      <Testimonials />
 
       {/* FAQ */}
       <HomeFAQ />
