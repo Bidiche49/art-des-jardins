@@ -1,6 +1,8 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { HeroSection } from '@/components/ui/HeroSection';
+import { StatsCounter } from '@/components/ui/StatsCounter';
+import { AnimateOnScroll } from '@/components/ui/AnimateOnScroll';
 import { IconQualite, IconEquipe, IconEcologie, IconTransparence } from '@/lib/icons';
 
 export const metadata: Metadata = {
@@ -44,12 +46,6 @@ const values = [
   },
 ];
 
-const stats = [
-  { value: '16+', label: 'Années d\'expérience cumulée' },
-  { value: '30 km', label: 'Zone d\'intervention' },
-  { value: '100%', label: 'Assuré RC Pro & décennale' },
-  { value: '48h', label: 'Devis gratuit sous' },
-];
 
 export default function AProposPage() {
   return (
@@ -101,18 +97,9 @@ export default function AProposPage() {
       </section>
 
       {/* Chiffres clés */}
-      <section className="py-16 bg-primary-600 text-white">
-        <div className="container-custom">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {stats.map((stat) => (
-              <div key={stat.label}>
-                <div className="text-4xl md:text-5xl font-bold mb-2">{stat.value}</div>
-                <div className="text-primary-100 text-sm">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <AnimateOnScroll>
+        <StatsCounter />
+      </AnimateOnScroll>
 
       {/* Valeurs */}
       <section className="py-16 lg:py-24 bg-gray-50">
