@@ -52,17 +52,17 @@
 /* Hero overlays - text zone opaque, image breathes at top */
 .hero-overlay {
   background:
-    linear-gradient(to top, rgba(35, 50, 25, 0.8) 0%, rgba(35, 50, 25, 0.65) 35%, rgba(35, 50, 25, 0.2) 65%, rgba(0, 0, 0, 0.05) 100%);
+    linear-gradient(to top, rgba(35, 50, 25, 0.55) 0%, rgba(35, 50, 25, 0.45) 35%, rgba(35, 50, 25, 0.15) 65%, rgba(0, 0, 0, 0.05) 100%);
 }
 
 .hero-overlay-strong {
   background:
-    linear-gradient(to top, rgba(35, 50, 25, 0.88) 0%, rgba(35, 50, 25, 0.7) 40%, rgba(35, 50, 25, 0.25) 70%, rgba(0, 0, 0, 0.08) 100%);
+    linear-gradient(to top, rgba(35, 50, 25, 0.7) 0%, rgba(35, 50, 25, 0.55) 40%, rgba(35, 50, 25, 0.2) 70%, rgba(0, 0, 0, 0.05) 100%);
 }
 
 .hero-overlay-light {
   background:
-    linear-gradient(to top, rgba(35, 50, 25, 0.7) 0%, rgba(35, 50, 25, 0.45) 30%, rgba(35, 50, 25, 0.1) 55%, transparent 75%);
+    linear-gradient(to top, rgba(35, 50, 25, 0.5) 0%, rgba(35, 50, 25, 0.3) 30%, rgba(35, 50, 25, 0.08) 55%, transparent 75%);
 }
 
 /* Stronger text shadows to compensate lighter overlay */
