@@ -64,21 +64,49 @@ export function HeroSection({
   );
 }
 
+function BreadcrumbSchema({ items }: { items: { label: string; href?: string }[] }) {
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((item, i) => {
+      const entry: Record<string, unknown> = {
+        '@type': 'ListItem',
+        position: i + 1,
+        name: item.label,
+      };
+      if (item.href) {
+        entry.item = `https://art-et-jardin.fr${item.href}`;
+      }
+      return entry;
+    }),
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
 function Breadcrumbs({ items }: { items: { label: string; href?: string }[] }) {
   return (
-    <nav className="text-white/70 text-sm mb-4" aria-label="Breadcrumb">
-      {items.map((item, i) => (
-        <span key={i}>
-          {i > 0 && <span className="mx-2">/</span>}
-          {item.href ? (
-            <a href={item.href} className="hover:text-white transition-colors">
-              {item.label}
-            </a>
-          ) : (
-            <span className="text-white">{item.label}</span>
-          )}
-        </span>
-      ))}
-    </nav>
+    <>
+      <BreadcrumbSchema items={items} />
+      <nav className="text-white/70 text-sm mb-4" aria-label="Breadcrumb">
+        {items.map((item, i) => (
+          <span key={i}>
+            {i > 0 && <span className="mx-2">/</span>}
+            {item.href ? (
+              <a href={item.href} className="hover:text-white transition-colors">
+                {item.label}
+              </a>
+            ) : (
+              <span className="text-white">{item.label}</span>
+            )}
+          </span>
+        ))}
+      </nav>
+    </>
   );
 }
