@@ -95,6 +95,11 @@ export function Footer() {
                   </Link>
                 </li>
                 <li>
+                  <Link href="/realisations" className="block py-1.5 md:py-0 hover:text-white transition-colors">
+                    Réalisations
+                  </Link>
+                </li>
+                <li>
                   <Link href="/mentions-legales" className="block py-1.5 md:py-0 hover:text-white transition-colors">
                     Mentions légales
                   </Link>
@@ -107,6 +112,11 @@ export function Footer() {
                 <li>
                   <Link href="/conseils" className="block py-1.5 md:py-0 hover:text-white transition-colors">
                     Conseils jardinage
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/faq" className="block py-1.5 md:py-0 hover:text-white transition-colors">
+                    FAQ
                   </Link>
                 </li>
                 <li>

@@ -185,6 +185,12 @@ export function Header() {
             </div>
 
             <Link
+              href="/realisations"
+              className="text-gray-700 hover:text-primary-600 font-medium transition-colors"
+            >
+              Réalisations
+            </Link>
+            <Link
               href="/paysagiste-angers"
               className="text-gray-700 hover:text-primary-600 font-medium transition-colors"
             >
@@ -296,6 +302,13 @@ export function Header() {
                 </div>
               </div>
 
+              <Link
+                href="/realisations"
+                className="block py-2 text-gray-700 hover:text-primary-600 font-medium"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Réalisations
+              </Link>
               <Link
                 href="/paysagiste-angers"
                 className="block py-2 text-gray-700 hover:text-primary-600 font-medium"

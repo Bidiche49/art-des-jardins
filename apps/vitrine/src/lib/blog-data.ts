@@ -385,6 +385,1157 @@ Nous connaissons parfaitement la réglementation locale en Maine-et-Loire. Avant
       },
     ],
   },
+  {
+    slug: 'preparer-jardin-hiver-angers',
+    title: 'Préparer son jardin pour l\'hiver à Angers : le guide complet',
+    metaTitle: 'Préparer son Jardin pour l\'Hiver à Angers | Art des Jardins',
+    metaDescription:
+      'Comment protéger votre jardin avant l\'hiver en Anjou ? Taille, paillage, hivernage, protection des plantes. Conseils de paysagistes professionnels à Angers.',
+    excerpt:
+      'L\'automne est le moment clé pour préparer votre jardin à affronter l\'hiver angevin. Voici les gestes essentiels.',
+    category: 'Entretien',
+    readTime: 7,
+    publishDate: '2026-02-18',
+    imageSlug: 'entretien-3',
+    content: `
+L'hiver en Anjou est généralement doux grâce à l'influence océanique, avec des températures moyennes entre 3 et 8 °C. Mais les gelées tardives (jusqu'en avril) et les épisodes de froid sec peuvent fragiliser vos plantations si elles ne sont pas préparées. Voici un guide complet pour protéger votre jardin.
+
+## Octobre-novembre : les travaux prioritaires
+
+### Nettoyer et ranger
+- **Ramasser les feuilles mortes** : laissées au sol, elles étouffent la pelouse et favorisent les maladies fongiques. En revanche, elles constituent un excellent paillis pour les massifs.
+- **Arracher les annuelles fanées** et nettoyer les massifs.
+- **Rentrer les outils** et vider les bacs à eau pour éviter le gel.
+
+### Tondre une dernière fois
+Avant que la pelouse ne se mette en dormance, effectuez une dernière tonte à 5-6 cm de hauteur. Ne coupez pas trop court : l'herbe a besoin de réserves pour passer l'hiver.
+
+### Tailler les haies et arbustes
+En Maine-et-Loire, la dernière taille d'automne se fait idéalement en octobre-novembre. Les haies de thuya, laurier et photinia supportent bien une taille tardive. Évitez de tailler les arbustes à floraison printanière (forsythia, lilas) : vous supprimeriez les boutons floraux.
+
+## Le paillage : votre meilleur allié
+
+Le paillage est le geste le plus important pour protéger votre jardin en hiver. Il isole les racines du froid, limite l'évaporation et enrichit le sol en se décomposant.
+
+**Les matériaux recommandés :**
+- **Feuilles mortes broyées** : gratuit et très efficace (10-15 cm d'épaisseur)
+- **Broyat de branches** : excellent retour au sol après un élagage
+- **Paille** : idéale pour le potager
+- **Écorces de pin** : esthétiques pour les massifs d'ornement
+
+**Épaisseur recommandée** : 5 à 10 cm minimum sur tous les massifs, pieds d'arbustes et plates-bandes.
+
+## Protéger les plantes fragiles
+
+Le climat angevin est favorable à de nombreuses plantes méditerranéennes et subtropicales, mais certaines nécessitent une protection hivernale :
+
+### Voiles d'hivernage
+- **Laurier-rose, olivier, bougainvillier** : enveloppez-les d'un voile d'hivernage dès que les températures passent sous 0 °C.
+- **Palmiers** : rassemblez les palmes et entourez le stipe d'un voile.
+
+### Plantes en pot
+- **Rentrez à l'abri** (garage, véranda) les agrumes, géraniums et plantes tropicales.
+- **Surélevez les pots** restés dehors sur des cales pour faciliter le drainage.
+- **Protégez les pots en terre cuite** qui éclatent au gel : entourez-les de bulles ou de jute.
+
+## L'arrosage et le drainage
+
+### Arrosage automatique
+Si vous avez un système d'arrosage automatique, l'hivernage est indispensable avant les premières gelées :
+- Purgez le circuit d'eau complètement
+- Protégez le programmateur et les vannes
+- Fermez le robinet d'alimentation
+
+### Drainage du terrain
+Profitez de l'automne pour vérifier que l'eau s'écoule correctement. En sol argileux (fréquent dans l'agglomération d'Angers), les zones de stagnation favorisent le pourrissement des racines. Si nécessaire, creusez des rigoles de drainage ou installez un drain agricole.
+
+## Planter en automne : le bon réflexe
+
+L'automne est la saison idéale pour planter en Maine-et-Loire. Le sol est encore chaud, les pluies sont régulières et les racines ont tout l'hiver pour s'installer :
+
+- **Arbres et arbustes à feuilles caduques** : de novembre à mars
+- **Haies** : octobre-novembre pour un enracinement optimal
+- **Bulbes de printemps** : tulipes, narcisses, crocus en octobre-novembre
+- **Fruitiers** : novembre à février
+
+## Le potager en hiver
+
+- **Semez des engrais verts** (moutarde, phacélie, seigle) sur les parcelles vides : ils protègent et enrichissent le sol.
+- **Protégez les cultures d'hiver** (poireaux, choux, mâche) avec du paillis ou un voile.
+- **Retournez la terre** au bêchage grossier : les gelées émiettent les mottes naturellement.
+
+## Quand faire appel à un professionnel ?
+
+Si votre jardin est grand ou si vous manquez de temps, un contrat d'entretien annuel prend en charge tous ces travaux saisonniers. À Angers, Art des Jardins propose des interventions de préparation hivernale complètes : taille, paillage, hivernage, nettoyage et dernière tonte.
+    `,
+    faq: [
+      {
+        question: 'Quand faut-il commencer à préparer son jardin pour l\'hiver ?',
+        answer:
+          'En Anjou, commencez dès octobre par le ramassage des feuilles et la dernière tonte. Les protections hivernales (voiles, paillage) se mettent en place en novembre, avant les premières gelées.',
+      },
+      {
+        question: 'Faut-il arroser son jardin en hiver ?',
+        answer:
+          'En général non, les pluies hivernales suffisent en Maine-et-Loire. Seules les plantations récentes et les plantes en pot à l\'abri peuvent nécessiter un arrosage léger par temps sec prolongé.',
+      },
+      {
+        question: 'Peut-on planter en hiver à Angers ?',
+        answer:
+          'Oui, l\'hiver angevin est doux et permet de planter arbres, arbustes et haies de novembre à mars, sauf en période de gel. C\'est même la saison idéale pour les végétaux à racines nues.',
+      },
+    ],
+  },
+  {
+    slug: 'que-planter-printemps-maine-et-loire',
+    title: 'Que planter au printemps dans le Maine-et-Loire ?',
+    metaTitle: 'Que Planter au Printemps dans le Maine-et-Loire ? | Art des Jardins',
+    metaDescription:
+      'Quels arbres, arbustes et fleurs planter au printemps en Anjou ? Sélection de végétaux adaptés au climat et au sol du Maine-et-Loire.',
+    excerpt:
+      'Découvrez les végétaux les mieux adaptés au printemps angevin : arbres, arbustes, vivaces et graminées.',
+    category: 'Aménagement',
+    readTime: 8,
+    publishDate: '2026-02-20',
+    imageSlug: 'creation-3',
+    content: `
+Le printemps est la saison de tous les possibles au jardin. En Maine-et-Loire, le climat océanique dégradé offre des conditions idéales pour une grande variété de plantations. Voici notre sélection de végétaux qui prospèrent dans les sols et le climat angevins.
+
+## Le climat et les sols du Maine-et-Loire
+
+Avant de planter, il est important de connaître les caractéristiques locales :
+
+- **Climat** : hivers doux (3-8 °C), étés modérés (20-25 °C), précipitations réparties toute l'année (650 mm/an)
+- **Zone de rusticité** : 8b à 9a (minimum -9 °C à -3 °C)
+- **Sols dominants** : schisteux autour d'Angers, argilo-calcaires en vallée, sablonneux vers Saumur
+- **pH** : généralement neutre à légèrement acide (6,5-7)
+
+## Arbres : les valeurs sûres pour le 49
+
+### Arbres d'ornement
+- **Magnolia grandiflora** : superbe feuillage persistant, floraison spectaculaire en juin. Résiste bien au sol schisteux d'Angers.
+- **Liquidambar** : couleurs d'automne extraordinaires (rouge, orange, pourpre). Supporte les sols lourds.
+- **Albizia (arbre de soie)** : floraison rose en été, port étalé parfait pour l'ombrage.
+- **Catalpa** : grandes feuilles décoratives, croissance rapide, peu exigeant.
+
+### Arbres fruitiers
+- **Pommier et poirier** : variétés angevines (Reinette du Maine, Doyenné du Comice). Plantation en mars.
+- **Cerisier** : bien adapté aux sols drainés du Maine-et-Loire.
+- **Figuier** : prospère dans les zones abritées d'Angers, en plein soleil.
+
+## Arbustes pour une haie ou un massif
+
+### Haies persistantes
+- **Photinia 'Red Robin'** : jeunes pousses rouges, croissance rapide, peu d'entretien.
+- **Eleagnus** : feuillage argenté persistant, très résistant à la sécheresse.
+- **Viburnum tinus (laurier-tin)** : floraison hivernale blanche, baies bleues, indigène.
+
+### Haies champêtres (recommandées pour la biodiversité)
+- **Cornouiller sanguin** : bois rouge en hiver, baies pour les oiseaux.
+- **Noisetier** : très rustique, production de noisettes, idéal en haie libre.
+- **Aubépine** : floraison printanière parfumée, baies rouges, épineux (bonne protection).
+- **Charme** : conserve ses feuilles sèches en hiver (écran visuel), très adapté au 49.
+
+### Arbustes de massif
+- **Hortensia** : le grand classique de l'Anjou ! Sol frais, mi-ombre. Variétés macrophylla, paniculata ou quercifolia.
+- **Camélia** : sol acide à neutre, floraison précoce (février-avril). Très présent dans les jardins angevins.
+- **Lavande** : plein soleil, sol drainé. Parfaite en bordure de terrasse ou d'allée.
+- **Rosier** : l'Anjou est un terroir historique de la rose. Variétés paysagères (Meilland, Delbard) résistantes aux maladies.
+
+## Vivaces et graminées
+
+### Vivaces fleuries
+- **Agapanthe** : floraison bleue spectaculaire en été. Demande un sol drainé et le plein soleil.
+- **Géranium vivace** : couvre-sol increvable, floraison longue, zéro entretien.
+- **Echinacea** : fleurs rose-pourpre, attire les pollinisateurs, résiste à la sécheresse.
+- **Heuchère** : feuillage coloré toute l'année, parfaite à mi-ombre.
+- **Gaura** : légère et gracieuse, floraison de juin à octobre, très peu d'eau.
+
+### Graminées ornementales
+- **Miscanthus** : grands épis plumeux, brise-vue naturel, facile.
+- **Pennisetum** : touffe compacte, épis soyeux, parfait en bordure.
+- **Stipa tenuifolia (cheveux d'ange)** : légère, mouvement au vent, sol sec.
+
+## Quand planter au printemps ?
+
+| Période | Végétaux |
+|---|---|
+| Mars | Arbustes en conteneur, vivaces, graminées |
+| Avril | Rosiers, lavande, plantes méditerranéennes |
+| Mai | Annuelles, plantes fragiles (après les Saints de Glace, le 13 mai) |
+
+**Attention** : les Saints de Glace (11-13 mai) sont le repère traditionnel pour les plantations gélives. En Anjou, les dernières gelées tombent rarement après mi-avril, mais la prudence reste de mise.
+
+## Nos conseils de plantation
+
+- **Trempez les mottes** 15 minutes dans l'eau avant plantation
+- **Creusez un trou 2 fois plus large** que la motte
+- **Mélangez le terreau** avec la terre d'origine (50/50)
+- **Arrosez copieusement** à la plantation, puis régulièrement la première année
+- **Paillez immédiatement** (5-10 cm) pour conserver l'humidité
+
+## Besoin d'un projet complet ?
+
+Art des Jardins conçoit et réalise des aménagements paysagers adaptés au terroir angevin. Nous sélectionnons des végétaux robustes et esthétiques, adaptés à votre sol et à votre exposition. Demandez votre visite gratuite.
+    `,
+    faq: [
+      {
+        question: 'Quelles plantes résistent le mieux à la sécheresse en Anjou ?',
+        answer:
+          'La lavande, le romarin, la gaura, les graminées ornementales (stipa, pennisetum) et l\'eleagnus sont très résistants à la sécheresse. Les oliviers et figuiers s\'adaptent aussi bien au climat angevin.',
+      },
+      {
+        question: 'Peut-on planter des oliviers à Angers ?',
+        answer:
+          'Oui, les oliviers supportent le climat angevin à condition d\'être plantés en plein soleil, dans un sol bien drainé et à l\'abri des vents froids. Protégez-les avec un voile d\'hivernage les premières années.',
+      },
+    ],
+  },
+  {
+    slug: 'meilleurs-arbres-jardin-angers',
+    title: 'Les meilleurs arbres pour un jardin à Angers',
+    metaTitle: 'Meilleurs Arbres pour un Jardin à Angers (Sol Schisteux) | Art des Jardins',
+    metaDescription:
+      'Quels arbres planter dans un jardin à Angers ? Sélection adaptée au sol schisteux et au climat angevin. Conseils de paysagistes professionnels.',
+    excerpt:
+      'Choisir le bon arbre pour votre jardin angevin : essences adaptées au sol schisteux, dimensions et entretien.',
+    category: 'Aménagement',
+    readTime: 7,
+    publishDate: '2026-02-22',
+    imageSlug: 'elagage-4',
+    content: `
+Planter un arbre est un investissement sur le long terme. En choisissant une essence adaptée au sol et au climat d'Angers, vous vous assurez un arbre vigoureux, esthétique et facile à entretenir pendant des décennies.
+
+## Comprendre le sol angevin
+
+Le sous-sol d'Angers et de sa proche périphérie (Les Ponts-de-Cé, Trélazé, Avrillé) est majoritairement **schisteux**. Ce sol a des caractéristiques particulières :
+
+- **Texture** : argilo-schisteuse, compacte, avec des fragments de roche
+- **Drainage** : moyen à faible, tendance à retenir l'eau en hiver
+- **pH** : neutre à légèrement acide (6-7)
+- **Fertilité** : correcte, enrichie par la décomposition du schiste
+
+Ce type de sol convient à de nombreuses essences mais est défavorable aux arbres qui demandent un sol calcaire ou très drainant.
+
+## Arbres de petit gabarit (5-8 m) — jardins de ville
+
+### Érable du Japon (Acer palmatum)
+Le roi des petits jardins. Feuillage découpé virant au rouge vif en automne. Se plaît en sol frais et acide — parfait pour le schiste angevin. Mi-ombre recommandée.
+
+### Arbre de Judée (Cercis siliquastrum)
+Floraison rose spectaculaire en avril, directement sur le bois. Port étalé, 6-8 m. Tolère les sols calcaires et argileux. Un classique des jardins de l'Anjou.
+
+### Cornus kousa (cornouiller du Japon)
+Floraison blanche en juin, fruits rouges décoratifs, écorce décorative. Sol frais, bien adapté au 49. Atteint 5-7 m.
+
+### Magnolia soulangeana
+Floraison précoce (mars-avril) en grandes fleurs roses ou blanches. Sol neutre à acide, situation abritée des vents froids. L'un des plus beaux arbres de printemps à Angers.
+
+## Arbres de taille moyenne (8-15 m) — jardins familiaux
+
+### Liquidambar styraciflua
+Couleurs d'automne exceptionnelles : rouge, orange, pourpre. Supporte les sols argileux et humides. Croissance régulière, port pyramidal. Un choix sûr pour les jardins angevins.
+
+### Albizia julibrissin (arbre de soie)
+Floraison rose en pompons de juin à septembre. Port étalé en parasol, parfait pour l'ombrage. Résiste aux étés secs et à la chaleur urbaine. Rustique jusqu'à -15 °C.
+
+### Prunus serrulata (cerisier du Japon)
+Floraison printanière abondante en blanc ou rose. Port léger et aérien. Sol ordinaire, drainé. Les variétés 'Kanzan' et 'Shirofugen' sont magnifiques en isolé.
+
+### Chêne vert (Quercus ilex)
+Persistant, très résistant à la sécheresse et au vent. Pousse bien en sol schisteux. Port arrondi, 10-15 m à maturité. Idéal si vous cherchez un écran vert toute l'année.
+
+## Arbres de grand gabarit (15-25 m) — grands jardins
+
+### Chêne sessile (Quercus petraea)
+L'arbre roi de l'Anjou. Longévité exceptionnelle (200-500 ans), port majestueux. Parfaitement adapté au sol schisteux. Atteint 20-25 m mais croissance lente.
+
+### Tulipier de Virginie (Liriodendron tulipifera)
+Feuilles en forme de tulipe, floraison jaune-vert en juin. Couleurs d'automne dorées. Sol profond et frais. Atteint 20-25 m. Un arbre spectaculaire pour les grands espaces.
+
+### Tilleul (Tilia cordata)
+Arbre traditionnel des campagnes angevines. Floraison parfumée en juin-juillet (miel de tilleul), ombrage dense. Sol ordinaire, résiste bien à la sécheresse. 15-20 m.
+
+## Arbres à éviter à Angers
+
+Certaines essences sont déconseillées dans l'agglomération angevine :
+- **Bouleau** : souffre en sol argileux, allergène
+- **Peuplier** : racines invasives, bois fragile, allergène
+- **Saule pleureur** : racines qui cherchent les canalisations, demande beaucoup d'eau
+- **Mimosa** : gélif sous -5 °C, inadapté aux hivers froids
+
+## Comment bien planter un arbre ?
+
+- **Période** : de novembre à mars pour les arbres à racines nues, toute l'année pour les conteneurs
+- **Trou** : 3 fois le volume de la motte, décompactez le fond
+- **Tuteurage** : indispensable les 2-3 premières années (tuteur oblique face au vent dominant, sud-ouest à Angers)
+- **Arrosage** : régulier la première année (20-30 litres par semaine en été)
+- **Paillage** : 10 cm autour du pied, sans toucher le tronc
+
+## L'avis du professionnel
+
+Le choix d'un arbre engage pour des décennies. Chez Art des Jardins, nous étudions votre terrain (sol, exposition, espace disponible) avant de vous recommander les essences les plus adaptées. Nous gérons aussi l'élagage et l'entretien de vos arbres existants.
+    `,
+    faq: [
+      {
+        question: 'Quel arbre pousse vite pour faire de l\'ombre ?',
+        answer:
+          'L\'albizia et le catalpa sont les arbres d\'ombrage à croissance la plus rapide (1-1,5 m par an). Le liquidambar et le tulipier sont aussi rapides tout en offrant une belle structure à long terme.',
+      },
+      {
+        question: 'Quel arbre planter près d\'une maison ?',
+        answer:
+          'Choisissez un arbre à racines non invasives et à port compact : érable du Japon, cornouiller, magnolia soulangeana. Plantez à minimum 5 m de la maison. Évitez les saules, peupliers et marronniers.',
+      },
+      {
+        question: 'Combien coûte la plantation d\'un arbre par un professionnel ?',
+        answer:
+          'Le coût comprend le végétal, la livraison, le trou de plantation et le tuteurage. Contactez-nous pour un devis gratuit adapté à votre projet.',
+      },
+    ],
+  },
+  {
+    slug: 'amenager-petit-jardin-ville-angers',
+    title: 'Aménager un petit jardin de ville à Angers : idées et astuces',
+    metaTitle: 'Aménager un Petit Jardin de Ville à Angers | Art des Jardins',
+    metaDescription:
+      'Comment aménager un petit jardin en ville à Angers ? Idées de paysagiste : terrasse, plantations, clôture, éclairage. Optimisez votre espace extérieur.',
+    excerpt:
+      'Même un petit espace peut devenir un jardin d\'exception. Nos astuces de paysagiste pour optimiser votre extérieur en ville.',
+    category: 'Aménagement',
+    readTime: 6,
+    publishDate: '2026-02-24',
+    imageSlug: 'creation-4',
+    content: `
+À Angers, les jardins de ville mesurent souvent entre 20 et 80 m². C'est suffisant pour créer un véritable espace de vie extérieur — à condition d'optimiser chaque mètre carré. Voici nos conseils de paysagiste pour tirer le meilleur de votre petit jardin.
+
+## Les principes d'un petit jardin réussi
+
+### 1. Structurer l'espace
+Un petit jardin non structuré paraît encore plus petit. Délimitez des zones distinctes :
+- **Zone de vie** : terrasse pour manger et se détendre
+- **Zone végétale** : massifs, arbustes, pots
+- **Zone de passage** : allée ou pas japonais
+
+En créant plusieurs espaces, vous donnez l'illusion de profondeur et de variété.
+
+### 2. Jouer avec les niveaux
+Surélevez certaines zones (terrasse surélevée, murets, jardinières en hauteur) pour créer du volume et du relief. Un niveau de terrasse légèrement décalé par rapport au gazon suffit à dynamiser l'ensemble.
+
+### 3. Utiliser les verticales
+Quand on manque de surface, on grimpe :
+- **Plantes grimpantes** sur treillis ou câbles (jasmin, clématite, chèvrefeuille)
+- **Mur végétal** ou jardinières accrochées
+- **Arbres en espalier** le long d'un mur
+
+## La terrasse : le cœur du petit jardin
+
+Dans un jardin de ville, la terrasse occupe souvent 30 à 50 % de la surface totale. C'est le lieu de vie principal.
+
+**Matériaux recommandés pour les petits espaces :**
+- **Bois composite** : chaleureux, sans entretien, large choix de teintes. Idéal en ville.
+- **Dalles sur plots** : installation rapide, démontable (pratique en location).
+- **Pierre naturelle** : ardoise locale ou grès, effet haut de gamme.
+
+**Astuce** : choisissez un revêtement clair pour agrandir visuellement l'espace. Évitez les motifs chargés.
+
+## Les plantations adaptées
+
+### Arbustes compacts
+- **Nandina domestica** : feuillage persistant, couleurs d'automne, 1-1,5 m
+- **Skimmia** : floraison parfumée, baies rouges, mi-ombre, 1 m
+- **Pittosporum tobira 'Nana'** : boule compacte, parfumé, persistant
+
+### Arbres pour petit jardin
+- **Érable du Japon** : le choix numéro 1 en petit espace, 3-5 m
+- **Arbre de Judée** : floraison spectaculaire, port étalé, 5-6 m
+- **Olivier** : esthétique méditerranéenne, taille contrôlable, rustique à Angers
+
+### Plantes grimpantes
+- **Jasmin étoilé** : parfumé, persistant, croissance rapide
+- **Glycine** : floraison spectaculaire mais demande de la taille
+- **Clématite** : fleurs variées, se marie avec les rosiers grimpants
+
+## L'éclairage : indispensable en ville
+
+L'éclairage transforme un petit jardin le soir. Quelques principes :
+- **Spots encastrés** dans la terrasse pour baliser
+- **Guirlandes lumineuses** pour une ambiance chaleureuse
+- **Uplighting** sur un bel arbre ou un mur en pierre pour créer de la profondeur
+- **Bornes solaires** le long des allées : zéro consommation
+
+## La clôture : intimité et esthétique
+
+En ville, la clôture est essentielle pour l'intimité. Nos solutions préférées pour les petits jardins :
+- **Panneau composite à lames horizontales** : contemporain, occultant, sans entretien
+- **Brise-vue végétal** : bambou en bac (non traçant !), graminées hautes
+- **Mur enduit** avec plantes grimpantes : discret et vivant
+
+**Règle d'urbanisme** : vérifiez le PLU d'Angers pour la hauteur maximale autorisée (généralement 2 m en limite de propriété).
+
+## Budget indicatif
+
+| Prestation | Prix indicatif |
+|---|---|
+| Terrasse composite (20 m²) | 2 500 – 4 000 € |
+| Plantation complète | 1 500 – 3 000 € |
+| Éclairage jardin | 500 – 1 500 € |
+| Clôture composite (10 ml) | 1 000 – 2 500 € |
+| **Total petit jardin complet** | **5 000 – 10 000 €** |
+
+## Faites appel à un paysagiste
+
+Un paysagiste optimise chaque centimètre carré de votre jardin. Chez Art des Jardins, nous réalisons des aménagements de petits jardins de ville à Angers et alentours. Visite et devis gratuits.
+    `,
+    faq: [
+      {
+        question: 'Quelle surface minimum pour aménager un jardin ?',
+        answer:
+          'Même un espace de 10-15 m² peut être aménagé avec goût : quelques plantes en pot, un éclairage, un petit coin terrasse. Il n\'y a pas de surface minimum pour profiter de son extérieur.',
+      },
+      {
+        question: 'Comment rendre un petit jardin plus grand visuellement ?',
+        answer:
+          'Utilisez des couleurs claires pour le sol, créez des niveaux, installez un miroir de jardin, plantez des végétaux à feuillage fin et aéré, et guidez le regard avec une allée en perspective.',
+      },
+    ],
+  },
+  {
+    slug: 'haies-cloture-quelle-essence-choisir',
+    title: 'Haies de clôture : quelle essence choisir dans le 49 ?',
+    metaTitle: 'Quelle Haie de Clôture Choisir dans le Maine-et-Loire ? | Art des Jardins',
+    metaDescription:
+      'Haie de thuya, laurier, photinia ou champêtre ? Comparatif des essences de haies adaptées au Maine-et-Loire. Prix, entretien et conseils.',
+    excerpt:
+      'Thuya, laurier, photinia, haie champêtre... quelle essence choisir pour votre haie dans le Maine-et-Loire ?',
+    category: 'Aménagement',
+    readTime: 7,
+    publishDate: '2026-02-25',
+    imageSlug: 'cloture-1',
+    content: `
+La haie est le mode de clôture le plus naturel et le plus économique. Mais toutes les essences ne se valent pas : croissance, entretien, esthétique, durée de vie... Voici un comparatif complet des haies adaptées au Maine-et-Loire.
+
+## Haies persistantes : le classique
+
+### Thuya (Thuja plicata, T. occidentalis)
+- **Croissance** : rapide (40-60 cm/an)
+- **Hauteur adulte** : 3-5 m (taillé à 2 m en haie)
+- **Avantages** : écran opaque toute l'année, peu coûteux
+- **Inconvénients** : brunissement fréquent, aspect monotone, sensible aux acariens, bois mort inesthétique
+- **Entretien** : 2 tailles par an minimum
+- **Notre avis** : en perte de popularité. Préférez le laurier ou le photinia pour un écran persistant.
+
+### Laurier-cerise (Prunus laurocerasus)
+- **Croissance** : rapide (30-50 cm/an)
+- **Hauteur adulte** : 4-6 m (taillé à 2 m)
+- **Avantages** : feuillage brillant, très dense, résistant au froid, supporte l'ombre
+- **Inconvénients** : taille fréquente, allergisant (baies toxiques)
+- **Entretien** : 2 tailles par an, sécateur recommandé (pas taille-haie pour un beau rendu)
+- **Notre avis** : excellent rapport qualité/prix pour l'occultation.
+
+### Photinia 'Red Robin'
+- **Croissance** : rapide (30-40 cm/an)
+- **Hauteur adulte** : 3-4 m
+- **Avantages** : jeunes pousses rouges spectaculaires, bicolore, moderne
+- **Inconvénients** : sensible à l'entomosporiose (taches foliaires) en sol humide
+- **Entretien** : 2 tailles par an, traitement fongique si nécessaire
+- **Notre avis** : très esthétique, bien adapté au 49 en sol drainé.
+
+### Eleagnus ebbingei
+- **Croissance** : rapide (30-40 cm/an)
+- **Hauteur adulte** : 3-4 m
+- **Avantages** : feuillage argenté élégant, très résistant sécheresse et vent, floraison parfumée en automne
+- **Inconvénients** : port un peu désorganisé sans taille
+- **Entretien** : 1-2 tailles par an
+- **Notre avis** : excellent choix polyvalent, souvent méconnu.
+
+## Haies champêtres : la tendance biodiversité
+
+Les haies champêtres mélangent plusieurs essences locales. Elles sont plus belles, plus résistantes aux maladies et accueillent la faune (oiseaux, insectes pollinisateurs).
+
+### Essences recommandées pour le 49
+- **Charme** : conserve ses feuilles sèches en hiver, excellente occultation
+- **Noisetier** : croissance rapide, noisettes, rustique
+- **Cornouiller sanguin** : bois rouge en hiver, baies pour oiseaux
+- **Aubépine** : épineux, floraison blanche parfumée, baies rouges
+- **Troène** : semi-persistant, floraison parfumée, très facile
+- **Viburnum opulus (boule de neige)** : floraison spectaculaire, baies rouges
+- **Houx** : persistant, baies rouges, épineux
+
+### Avantages de la haie champêtre
+- Résistante aux maladies (diversité = sécurité)
+- Favorable à la biodiversité (oiseaux, insectes, hérissons)
+- Moins d'entretien qu'une haie monospécifique
+- Aspect naturel et changeant selon les saisons
+- Subventions possibles dans certaines communes
+
+## Haies fleuries : le plus esthétique
+
+Pour une haie colorée et parfumée :
+- **Forsythia** : floraison jaune vif en mars
+- **Lilas** : floraison parfumée en mai
+- **Weigelia** : floraison rose en mai-juin
+- **Deutzia** : floraison blanche en juin
+- **Abelia** : floraison rose de juin à octobre
+
+**Inconvénient** : les haies fleuries sont rarement opaques en hiver (caduques).
+
+## Comparatif prix
+
+| Essence | Prix unitaire (60-80 cm) | Prix au mètre linéaire | Tailles/an |
+|---|---|---|---|
+| Thuya | 3-5 € | 6-10 € | 2-3 |
+| Laurier-cerise | 5-8 € | 10-16 € | 2 |
+| Photinia | 6-10 € | 12-20 € | 2 |
+| Eleagnus | 6-10 € | 12-20 € | 1-2 |
+| Haie champêtre (mix) | 3-6 € | 9-18 € | 1 |
+
+*Prix indicatifs hors pose. Plantation espacée de 50-80 cm selon l'essence.*
+
+## La réglementation
+
+- **Distance de plantation** : 50 cm de la limite pour une haie de moins de 2 m, 2 m pour une haie de plus de 2 m (Code civil, art. 671)
+- **Hauteur** : vérifiez le PLU de votre commune. En général, 2 m maximum en limite de propriété.
+- **Entretien obligatoire** : vous devez tailler votre haie côté voisin si elle dépasse la limite.
+
+## Art des Jardins plante et entretient vos haies
+
+Nous plantons des haies dans toute l'agglomération d'Angers : choix des essences, préparation du sol, plantation et paillage. Nous proposons aussi des contrats de taille annuels avec crédit d'impôt de 50 %.
+    `,
+    faq: [
+      {
+        question: 'Quelle est la haie qui pousse le plus vite ?',
+        answer:
+          'Le thuya et le laurier-cerise sont les plus rapides (40-60 cm/an). Le photinia et l\'eleagnus suivent de près (30-40 cm/an). Comptez 2-3 ans pour obtenir un écran opaque de 1,5 m.',
+      },
+      {
+        question: 'Quelle haie sans entretien ?',
+        answer:
+          'Aucune haie n\'est totalement sans entretien, mais l\'eleagnus et la haie champêtre nécessitent seulement 1 taille par an. Le bambou non traçant en bac est aussi peu exigeant.',
+      },
+      {
+        question: 'Mon voisin refuse de tailler sa haie, que faire ?',
+        answer:
+          'Vous pouvez mettre votre voisin en demeure par courrier recommandé. Si la haie dépasse la limite de propriété, vous avez le droit de couper les branches qui avancent de votre côté (art. 673 du Code civil).',
+      },
+    ],
+  },
+  {
+    slug: 'comment-choisir-paysagiste-angers',
+    title: 'Comment choisir son paysagiste à Angers : 7 critères essentiels',
+    metaTitle: 'Comment Choisir son Paysagiste à Angers ? 7 Critères | Art des Jardins',
+    metaDescription:
+      'Comment bien choisir un paysagiste à Angers ? Assurance, devis, réalisations, avis clients... Les 7 critères pour ne pas se tromper.',
+    excerpt:
+      'Choisir un bon paysagiste est crucial pour la réussite de votre projet. Voici les 7 critères à vérifier avant de signer.',
+    category: 'Aménagement',
+    readTime: 6,
+    publishDate: '2026-02-26',
+    imageSlug: 'creation-9',
+    content: `
+Confier l'aménagement de votre jardin à un professionnel est un investissement. Pour éviter les mauvaises surprises, prenez le temps de vérifier ces 7 critères avant de choisir votre paysagiste à Angers.
+
+## 1. Vérifiez les assurances
+
+C'est le critère numéro 1 et le plus souvent négligé. Un paysagiste professionnel doit obligatoirement être couvert par :
+
+- **Responsabilité civile professionnelle (RC Pro)** : couvre les dommages causés à votre propriété pendant les travaux (bris de canalisation, dégât sur un mur, etc.)
+- **Assurance décennale** : obligatoire pour les ouvrages durables (terrasses, murets, clôtures, allées). Elle garantit la réparation des défauts de solidité pendant 10 ans après la fin du chantier.
+
+**Comment vérifier ?** Demandez une attestation d'assurance en cours de validité. Un professionnel sérieux vous la fournira sans hésiter.
+
+## 2. Exigez un devis détaillé et écrit
+
+Un bon devis doit mentionner :
+- Le détail de chaque poste (terrassement, matériaux, végétaux, main-d'œuvre)
+- Les quantités et prix unitaires
+- Le montant total TTC
+- Les conditions de paiement (acompte, échéancier)
+- Le délai de réalisation
+- Les conditions d'annulation
+
+**Méfiez-vous** des devis oraux, des forfaits sans détail et des prix anormalement bas.
+
+## 3. Consultez les réalisations
+
+Un paysagiste compétent est fier de montrer son travail. Demandez :
+- Des **photos de chantiers** terminés (avant/après)
+- La possibilité de **visiter un chantier en cours** ou récent
+- Des **références clients** à contacter
+
+Les réseaux sociaux (Instagram, Facebook) sont aussi un bon indicateur du savoir-faire.
+
+## 4. Vérifiez l'immatriculation
+
+Un paysagiste en règle possède :
+- Un **numéro SIRET** actif (vérifiable sur societe.com ou infogreffe.fr)
+- Une inscription au **registre du commerce** (RCS) ou à la chambre de métiers
+- Un **code NAF** cohérent (81.30Z pour les services d'aménagement paysager)
+
+**Attention aux autoentrepreneurs sans assurance décennale** : ils n'ont pas l'obligation de la souscrire mais ne peuvent légalement pas réaliser d'ouvrages durables (terrasses, murets).
+
+## 5. Évaluez le conseil et l'écoute
+
+Un bon paysagiste ne se contente pas d'exécuter : il vous conseille. Lors du premier rendez-vous, observez si le professionnel :
+- **Pose des questions** sur vos habitudes, vos envies, votre budget
+- **Écoute vos contraintes** (enfants, animaux, entretien limité)
+- **Propose des solutions adaptées** plutôt qu'un catalogue standard
+- **Visite votre terrain** avant d'établir le devis (obligatoire pour un devis sérieux)
+
+## 6. Comparez plusieurs devis
+
+Demandez au moins 2-3 devis pour comparer les approches et les tarifs. Mais attention : le moins cher n'est pas toujours le meilleur choix.
+
+**Critères de comparaison :**
+- Qualité des matériaux proposés
+- Variétés de végétaux (plants de pépinière locale vs grande surface)
+- Garantie sur les plantations
+- Inclusion ou non de l'évacuation des déchets
+- Détail du suivi après chantier
+
+## 7. Vérifiez les avis clients
+
+Les avis en ligne (Google, Pages Jaunes) donnent un bon aperçu de la satisfaction des clients. Regardez :
+- La **note globale** et le **nombre d'avis** (plus il y en a, plus c'est fiable)
+- Les **réponses du professionnel** aux avis négatifs (signe de sérieux)
+- Les **photos** partagées par les clients
+
+## Les signaux d'alerte
+
+Méfiez-vous d'un paysagiste qui :
+- Refuse de fournir une attestation d'assurance
+- Demande un paiement intégral avant les travaux
+- N'a pas de numéro SIRET
+- Ne se déplace pas avant le devis
+- Propose des tarifs très en dessous du marché
+- Ne fournit pas de contrat écrit
+
+## Le crédit d'impôt : un avantage à connaître
+
+Les travaux d'entretien de jardin (tonte, taille de haies, désherbage) réalisés par un professionnel ouvrent droit à un crédit d'impôt de 50 %. C'est un avantage fiscal significatif qui réduit le coût réel de moitié.
+
+**Attention** : seuls les travaux d'entretien sont éligibles, pas les travaux de création (terrasse, plantation, aménagement).
+
+## Art des Jardins : nos engagements
+
+Chez Art des Jardins, nous cochons toutes les cases : assurance RC Pro et décennale, devis gratuit détaillé sous 48h, photos de réalisations, équipe formée et passionnée. Nous intervenons dans un rayon de 30 km autour d'Angers.
+    `,
+    faq: [
+      {
+        question: 'Quelle est la différence entre un paysagiste et un jardinier ?',
+        answer:
+          'Le paysagiste conçoit et réalise des aménagements (terrasses, plantations, création de jardins). Le jardinier assure l\'entretien courant (tonte, taille, désherbage). Beaucoup d\'entreprises, comme Art des Jardins, proposent les deux services.',
+      },
+      {
+        question: 'Combien de devis demander avant de choisir ?',
+        answer:
+          'Idéalement 2 à 3 devis pour pouvoir comparer les approches et les tarifs. Au-delà, cela ralentit le projet sans apporter plus de clarté.',
+      },
+    ],
+  },
+  {
+    slug: 'arrosage-automatique-guide-installation',
+    title: 'Arrosage automatique : guide d\'installation et coûts',
+    metaTitle: 'Arrosage Automatique : Guide d\'Installation et Prix | Art des Jardins',
+    metaDescription:
+      'Comment installer un arrosage automatique au jardin ? Tuyères, turbines, goutte-à-goutte, programmateur. Guide complet et prix par un paysagiste à Angers.',
+    excerpt:
+      'Tout savoir sur l\'arrosage automatique : types de système, installation, programmation et budget.',
+    category: 'Aménagement',
+    readTime: 7,
+    publishDate: '2026-02-27',
+    imageSlug: 'arrosage-1',
+    content: `
+Un système d'arrosage automatique bien conçu vous fait gagner du temps, économise l'eau et maintient votre jardin verdoyant toute l'année. Voici un guide complet pour comprendre les options, l'installation et les coûts.
+
+## Les types d'arrosage automatique
+
+### Arrosage enterré par tuyères
+- **Usage** : pelouses de petite à moyenne surface (rayon 2-5 m)
+- **Principe** : buses escamotables qui montent sous pression et arrosent en arc de cercle
+- **Avantage** : discret, efficace, débit réglable
+- **Idéal pour** : jardins de ville, petites pelouses
+
+### Arrosage enterré par turbines
+- **Usage** : grandes pelouses (rayon 5-15 m)
+- **Principe** : buses rotatives qui couvrent de grandes surfaces
+- **Avantage** : portée importante, peu de points d'arrosage nécessaires
+- **Idéal pour** : grands jardins, parcs
+
+### Goutte-à-goutte
+- **Usage** : massifs, haies, potagers, jardinières
+- **Principe** : tuyau microporeux ou goutteurs individuels au pied de chaque plante
+- **Avantage** : économe en eau (90 % d'efficacité), pas de mouillage du feuillage
+- **Idéal pour** : zones plantées, potagers, plantes exigeantes
+
+### Micro-aspersion
+- **Usage** : massifs, couvre-sols, potagers
+- **Principe** : petits asperseurs à faible débit
+- **Avantage** : arrosage doux et régulier
+- **Idéal pour** : semis, jeunes plantations
+
+## La conception du réseau
+
+### Étude préalable
+Avant toute installation, il faut déterminer :
+- **Le débit disponible** : mesurez le débit de votre robinet (en litres/minute). Un débit de 20-25 L/min est un minimum.
+- **La pression** : idéalement 2-4 bars. Un réducteur de pression peut être nécessaire.
+- **Le plan de votre jardin** : surfaces à arroser, type de végétaux, zones d'ombre.
+
+### Le zonage
+Le jardin est divisé en zones arrosées séquentiellement :
+- **Zone 1** : pelouse avant (tuyères ou turbines)
+- **Zone 2** : pelouse arrière
+- **Zone 3** : massifs et haies (goutte-à-goutte)
+- **Zone 4** : potager (goutte-à-goutte ou micro-aspersion)
+
+Chaque zone est alimentée par une électrovanne commandée par le programmateur.
+
+## L'installation étape par étape
+
+### 1. Tranchage
+Des tranchées de 20-30 cm de profondeur sont creusées pour enterrer les tuyaux en polyéthylène. Sur une pelouse existante, le gazon est découpé proprement et remis en place après la pose.
+
+### 2. Pose du réseau
+Les tuyaux (PE 25 ou 32 mm) sont posés dans les tranchées avec les raccords, les électrovannes et les purges.
+
+### 3. Installation des arroseurs
+Les tuyères et turbines sont positionnées selon le plan, avec un espacement calculé pour couvrir toute la surface sans zone sèche.
+
+### 4. Raccordement du programmateur
+Le programmateur (ou contrôleur) est installé à l'abri (garage, local technique) et raccordé aux électrovannes.
+
+### 5. Réglages et tests
+Chaque zone est testée individuellement : portée, angle, débit. Les cycles d'arrosage sont programmés.
+
+## Le programmateur : le cerveau du système
+
+Les programmateurs modernes offrent des fonctionnalités avancées :
+- **Programmation multi-zones** : chaque zone a son propre horaire
+- **Sonde d'humidité** : désactive l'arrosage si le sol est déjà humide
+- **Pluviomètre** : suspend l'arrosage en cas de pluie
+- **Pilotage Wi-Fi** : contrôle depuis votre smartphone (modèles connectés)
+
+**Conseil** : programmez l'arrosage **tôt le matin** (5h-7h). L'eau a le temps de pénétrer avant l'évaporation et le feuillage sèche rapidement, limitant les maladies.
+
+## L'entretien saisonnier
+
+### Hivernage (octobre-novembre)
+- Purge complète du circuit par soufflage à l'air comprimé
+- Coupure de l'alimentation en eau
+- Protection du programmateur contre le gel
+
+### Remise en route (mars-avril)
+- Ouverture de l'alimentation
+- Vérification de chaque zone (buses bouchées, fuites)
+- Reprogrammation des cycles selon la saison
+
+## Budget indicatif
+
+| Surface jardin | Nombre de zones | Budget indicatif (fourni-posé) |
+|---|---|---|
+| 50 m² | 2-3 | 1 500 – 2 500 € |
+| 100 m² | 3-4 | 2 500 – 4 000 € |
+| 200 m² | 4-6 | 4 000 – 6 000 € |
+| 300 m² et + | 6+ | 6 000 – 10 000 € |
+
+*Prix incluant tuyaux, arroseurs, programmateur, tranchage et main-d'œuvre.*
+
+## Pourquoi faire appel à un professionnel ?
+
+Une installation mal conçue gaspille l'eau, crée des zones sèches ou sature le sol. Art des Jardins conçoit et installe des systèmes d'arrosage automatique optimisés pour votre jardin. Nous assurons aussi l'hivernage et la remise en route annuelle.
+    `,
+    faq: [
+      {
+        question: 'L\'arrosage automatique abîme-t-il la pelouse à l\'installation ?',
+        answer:
+          'Le tranchage laisse des traces visibles pendant 2-4 semaines. Le gazon se referme naturellement. Sur une pelouse en bon état, les cicatrices disparaissent complètement en un mois.',
+      },
+      {
+        question: 'Peut-on raccorder l\'arrosage à une cuve de récupération d\'eau de pluie ?',
+        answer:
+          'Oui, c\'est possible avec une pompe surpresseur. La cuve doit avoir un volume suffisant (minimum 1 000 L) et la pompe un débit adapté au nombre de zones. C\'est une solution écologique et économique.',
+      },
+      {
+        question: 'Quelle économie d\'eau avec un arrosage automatique ?',
+        answer:
+          'Un système bien conçu avec sonde d\'humidité économise 30 à 50 % d\'eau par rapport à un arrosage manuel. Le goutte-à-goutte est le plus économe avec 90 % d\'efficacité.',
+      },
+    ],
+  },
+  {
+    slug: 'terrasse-bois-ou-pierre-comparatif',
+    title: 'Terrasse bois ou pierre : comparatif pour le climat angevin',
+    metaTitle: 'Terrasse Bois ou Pierre : Quel Choix à Angers ? | Art des Jardins',
+    metaDescription:
+      'Bois, composite ou pierre naturelle pour votre terrasse à Angers ? Comparatif complet : durabilité, entretien, prix, esthétique selon le climat angevin.',
+    excerpt:
+      'Bois, composite ou pierre ? Quel matériau choisir pour votre terrasse à Angers selon le climat local.',
+    category: 'Aménagement',
+    readTime: 6,
+    publishDate: '2026-03-01',
+    imageSlug: 'terrasse-1',
+    content: `
+Le choix du matériau de terrasse impacte directement l'esthétique, l'entretien et la durabilité de votre aménagement. À Angers, le climat océanique (pluies régulières, hivers doux, étés modérés) influence ce choix. Voici un comparatif détaillé.
+
+## Les options disponibles
+
+### 1. Bois naturel
+Le bois naturel reste le matériau le plus chaleureux. Plusieurs essences sont adaptées à l'extérieur :
+
+**Pin traité autoclave (classe 4)**
+- Prix : 30-50 €/m² (pose comprise : 80-120 €/m²)
+- Durée de vie : 10-15 ans
+- Entretien : dégriseur + saturateur tous les 2 ans
+- Avantage : le plus économique
+- Inconvénient : grise rapidement, peut se fendre
+
+**Bois exotique (ipé, cumaru, padouk)**
+- Prix : 80-120 €/m² (pose comprise : 130-180 €/m²)
+- Durée de vie : 25-40 ans
+- Entretien : saturateur annuel (ou laisser griser)
+- Avantage : très dense, imputrescible, noble
+- Inconvénient : coût élevé, impact écologique
+
+**Chêne ou châtaignier**
+- Prix : 50-80 €/m² (pose comprise : 100-150 €/m²)
+- Durée de vie : 20-30 ans
+- Entretien : saturateur tous les 2 ans
+- Avantage : local, caractère, tanins naturels anti-pourriture
+- Inconvénient : tannage qui tache les premiers mois
+
+### 2. Bois composite
+Le composite (fibres de bois + résine) est devenu le matériau le plus populaire pour les terrasses.
+
+- Prix : 40-80 €/m² (pose comprise : 100-150 €/m²)
+- Durée de vie : 20-30 ans
+- Entretien : nettoyage au jet annuel, aucun traitement
+- Avantage : imputrescible, ne grise pas, large choix de teintes, antidérapant
+- Inconvénient : aspect plastique pour les entrées de gamme, chauffe au soleil
+
+**À Angers** : le composite est un excellent choix car il résiste parfaitement à l'humidité ambiante et ne nécessite aucun entretien malgré les pluies fréquentes.
+
+### 3. Pierre naturelle
+La pierre apporte un cachet incomparable et une durabilité exceptionnelle.
+
+**Ardoise (schiste)**
+- Prix : 60-100 €/m² (pose comprise : 120-180 €/m²)
+- Durée de vie : 50+ ans
+- Entretien : quasi nul
+- Avantage : matériau local (carrières de Trélazé), noble, intemporel
+- Inconvénient : glissante par temps humide si non traitée
+
+**Grès, granit**
+- Prix : 80-150 €/m² (pose comprise : 150-250 €/m²)
+- Durée de vie : 50+ ans
+- Entretien : quasi nul
+- Avantage : robuste, élégant, grande variété de teintes
+- Inconvénient : pose plus longue, coût élevé
+
+**Travertin**
+- Prix : 40-70 €/m² (pose comprise : 100-140 €/m²)
+- Durée de vie : 30-50 ans
+- Entretien : hydrofuge tous les 3-5 ans
+- Avantage : lumineux, ne chauffe pas au soleil, antidérapant naturel
+- Inconvénient : poreux, sensible aux taches
+
+### 4. Dalles sur plots
+Les dalles (béton, grès cérame ou pierre reconstituée) posées sur plots sont une alternative pratique.
+
+- Prix : 40-80 €/m² (pose comprise : 80-130 €/m²)
+- Durée de vie : 30+ ans
+- Entretien : nettoyage au jet
+- Avantage : pose rapide sans fondation, accès aux réseaux, pas de joints
+- Inconvénient : hauteur de pose (minimum 5 cm), résonance sous les pas
+
+## Tableau comparatif
+
+| Critère | Bois naturel | Composite | Pierre naturelle | Dalles sur plots |
+|---|---|---|---|---|
+| Budget | €€ | €€ | €€€ | €€ |
+| Durabilité | 10-30 ans | 20-30 ans | 50+ ans | 30+ ans |
+| Entretien | Régulier | Minimal | Quasi nul | Minimal |
+| Esthétique | Chaleureuse | Moderne | Noble | Contemporaine |
+| Résistance humidité | Moyenne | Excellente | Excellente | Excellente |
+| Chaleur au soleil | Modérée | Élevée | Modérée | Faible |
+
+## Notre recommandation pour Angers
+
+Pour le climat angevin (humidité, pluies régulières), nous recommandons :
+
+- **Budget modéré** : composite de qualité (gamme intermédiaire à haute)
+- **Budget confortable** : ardoise locale ou grès pour un résultat intemporel
+- **Charme et authenticité** : chêne ou châtaignier local avec entretien régulier
+
+L'ardoise de Trélazé est un choix particulièrement pertinent à Angers : local, durable et en parfaite harmonie avec l'architecture angevine.
+
+## Faites le bon choix avec un professionnel
+
+Art des Jardins vous accompagne dans le choix et la réalisation de votre terrasse à Angers. Nous travaillons tous les matériaux et vous conseillons la solution la plus adaptée à votre projet et à votre budget.
+    `,
+    faq: [
+      {
+        question: 'Quelle terrasse résiste le mieux à la pluie ?',
+        answer:
+          'Le composite et la pierre naturelle résistent le mieux à l\'humidité. Le bois naturel nécessite un traitement régulier pour conserver ses qualités dans un climat pluvieux comme celui d\'Angers.',
+      },
+      {
+        question: 'Peut-on poser une terrasse soi-même ?',
+        answer:
+          'La pose de dalles sur plots est accessible aux bricoleurs. En revanche, une terrasse en bois ou en pierre nécessite un terrassement et une structure porteuse qui demandent un savoir-faire professionnel pour garantir la durabilité.',
+      },
+    ],
+  },
+  {
+    slug: 'gazon-semis-ou-placage',
+    title: 'Gazon : semis ou placage, que choisir ?',
+    metaTitle: 'Gazon Semis ou Placage : Lequel Choisir ? | Art des Jardins Angers',
+    metaDescription:
+      'Semis de gazon ou gazon en rouleaux (placage) ? Comparatif complet : prix, délai, résultat, entretien. Conseils de paysagiste à Angers.',
+    excerpt:
+      'Semis ou placage de gazon ? Comparatif des deux méthodes pour obtenir une belle pelouse à Angers.',
+    category: 'Entretien',
+    readTime: 5,
+    publishDate: '2026-03-03',
+    imageSlug: 'entretien-1',
+    content: `
+Vous rêvez d'une belle pelouse verte ? Deux méthodes s'offrent à vous : le semis traditionnel ou le placage (gazon en rouleaux). Chacune a ses avantages selon votre budget, votre patience et l'usage prévu.
+
+## Le semis de gazon
+
+### Principe
+Des graines sont semées sur un sol préparé, puis arrosées régulièrement jusqu'à la levée (7-15 jours) et l'enracinement complet (2-3 mois).
+
+### Avantages
+- **Prix** : 2-5 €/m² (semences + préparation), le plus économique
+- **Choix des variétés** : large gamme de mélanges (sport, ornement, ombre, sécheresse)
+- **Surface** : idéal pour les grandes surfaces (plus de 100 m²)
+- **Enracinement** : les racines s'adaptent parfaitement au sol existant
+
+### Inconvénients
+- **Délai** : 2-3 mois avant de pouvoir marcher dessus, 6 mois pour un gazon dense
+- **Période** : uniquement au printemps (avril-mai) ou en automne (septembre-octobre)
+- **Entretien initial** : arrosage quotidien pendant 3-4 semaines, désherbage manuel
+- **Aléas** : risque de levée irrégulière (oiseaux, pluies fortes, sécheresse)
+
+### Mélanges recommandés pour le 49
+- **Gazon sport** : ray-grass anglais + fétuque élevée. Résistant au piétinement, idéal pour les familles.
+- **Gazon ornement** : fétuque rouge traçante + agrostide. Fin et dense, effet tapis vert.
+- **Gazon rustique** : fétuque élevée + ray-grass. Tolérant sécheresse et ombre, peu d'entretien.
+
+## Le placage de gazon (gazon en rouleaux)
+
+### Principe
+Des bandes de gazon pré-cultivé (rouleaux de 40 cm x 2,5 m) sont déroulées sur un sol préparé. Le résultat est immédiat.
+
+### Avantages
+- **Résultat immédiat** : pelouse verte dès le jour J
+- **Utilisable rapidement** : marche possible après 2-3 semaines
+- **Pas de mauvaises herbes** : le gazon dense empêche leur levée
+- **Toute l'année** : pose possible de mars à novembre (hors gel et canicule)
+- **Régularité parfaite** : pas de zones clairsemées
+
+### Inconvénients
+- **Prix** : 8-15 €/m² (fourni-posé), 3 à 5 fois plus cher que le semis
+- **Choix limité** : 2-3 variétés standard chez les producteurs
+- **Logistique** : les rouleaux doivent être posés dans les 24h après livraison
+- **Arrosage** : abondant les 2 premières semaines pour la reprise
+
+## Comparatif détaillé
+
+| Critère | Semis | Placage |
+|---|---|---|
+| Prix au m² | 2-5 € | 8-15 € |
+| Résultat visible | 2-3 semaines (levée) | Immédiat |
+| Utilisable | 2-3 mois | 2-3 semaines |
+| Période de pose | Printemps / automne | Mars à novembre |
+| Choix variétal | Large | Limité |
+| Risque d'échec | Moyen | Faible |
+| Surface idéale | Toute surface | Petite à moyenne (< 200 m²) |
+
+## La préparation du sol : l'étape cruciale
+
+Quelle que soit la méthode choisie, la préparation du sol est identique et déterminante :
+
+1. **Désherbage** : éliminer toutes les mauvaises herbes existantes
+2. **Décompactage** : bêchage ou passage de motoculteur sur 15-20 cm
+3. **Amendement** : apport de terreau et/ou de compost si le sol est pauvre
+4. **Nivellement** : ratissage fin pour obtenir une surface plane et régulière
+5. **Roulage** : passage du rouleau pour tasser légèrement et repérer les creux
+6. **Affinage** : dernier ratissage avant le semis ou la pose
+
+**En sol schisteux (Angers)** : ajoutez une couche de terre végétale de 5-10 cm si le sol est très caillouteux.
+
+## L'entretien de la première année
+
+### Arrosage
+- **Semis** : 2-3 fois par jour en fine pluie pendant 3 semaines, puis 2 fois par semaine
+- **Placage** : 1 fois par jour pendant 2 semaines, puis 2 fois par semaine
+
+### Première tonte
+- **Semis** : quand le gazon atteint 8-10 cm (environ 4-6 semaines après la levée). Tondre à 6 cm.
+- **Placage** : 10-15 jours après la pose. Tondre à 5-6 cm.
+
+### Fertilisation
+Premier apport d'engrais gazon 2 mois après la pose ou la levée, puis au printemps et en automne.
+
+## Notre recommandation
+
+- **Petit jardin de ville (< 100 m²)** : placage, pour un résultat immédiat et sans risque
+- **Grand jardin (> 100 m²)** : semis, nettement plus économique sur de grandes surfaces
+- **Urgence ou événement** : placage, seule solution pour un résultat rapide
+
+Art des Jardins réalise la création et la réfection de pelouses à Angers et environs. Nous préparons le sol, semons ou posons le gazon et vous conseillons sur l'entretien.
+    `,
+    faq: [
+      {
+        question: 'Quand semer du gazon à Angers ?',
+        answer:
+          'Les meilleures périodes sont mi-septembre à mi-octobre (idéal) et mi-avril à mi-mai. L\'automne est préférable car le sol est chaud, les pluies régulières et la concurrence des mauvaises herbes est moindre.',
+      },
+      {
+        question: 'Comment entretenir un gazon neuf ?',
+        answer:
+          'Arrosez régulièrement (sol humide mais pas détrempé), attendez 8-10 cm de hauteur avant la première tonte, ne marchez pas dessus pendant 4-6 semaines pour le semis (2-3 semaines pour le placage).',
+      },
+      {
+        question: 'Le gazon en rouleaux reprend-il toujours ?',
+        answer:
+          'Oui, à condition de bien préparer le sol et d\'arroser abondamment les 15 premiers jours. Le taux de reprise est supérieur à 95 % avec une pose professionnelle.',
+      },
+    ],
+  },
+  {
+    slug: 'jardin-ecologique-angers-conseils',
+    title: 'Jardin écologique à Angers : nos conseils professionnels',
+    metaTitle: 'Jardin Écologique à Angers : Conseils de Paysagiste | Art des Jardins',
+    metaDescription:
+      'Comment créer un jardin écologique à Angers ? Paillage, compost, plantes locales, récupération d\'eau, biodiversité. Conseils de paysagistes professionnels.',
+    excerpt:
+      'Créer un jardin respectueux de l\'environnement à Angers : nos conseils pratiques pour un extérieur durable.',
+    category: 'Entretien',
+    readTime: 7,
+    publishDate: '2026-03-05',
+    imageSlug: 'creation-5',
+    content: `
+Un jardin écologique n'est pas un jardin en friche. C'est un espace pensé pour fonctionner en harmonie avec son environnement : moins d'eau, moins de produits chimiques, plus de biodiversité — et tout aussi beau qu'un jardin classique. Voici comment y parvenir à Angers.
+
+## Principes d'un jardin écologique
+
+### 1. Choisir des plantes adaptées au terroir
+La clé d'un jardin écologique est de travailler avec la nature plutôt que contre elle. En Maine-et-Loire, choisissez des végétaux adaptés au sol et au climat :
+
+**Arbres locaux** : chêne sessile, charme, tilleul, érable champêtre
+**Arbustes** : cornouiller, troène, viorne, noisetier, aubépine
+**Vivaces robustes** : géranium vivace, echinacea, achillée, sauge, gaura, graminées
+**Couvre-sols** : lierre, pervenche, géranium macrorrhizum, thym
+
+Ces plantes demandent peu d'arrosage une fois installées et résistent aux maladies sans traitement.
+
+### 2. Le sol vivant : la base de tout
+
+Un sol en bonne santé produit des plantes en bonne santé. Pour améliorer votre sol :
+
+**Paillage permanent**
+Le paillage est le geste écologique numéro 1. Il protège le sol, retient l'humidité, nourrit les micro-organismes et limite les mauvaises herbes.
+- Feuilles mortes broyées, BRF (bois raméal fragmenté), paille, tonte séchée
+- Épaisseur : 5-10 cm, renouvelé chaque année
+- Ne jamais laisser le sol nu
+
+**Compost maison**
+Le compost transforme vos déchets verts en or noir pour le jardin :
+- Épluchures de légumes, marc de café, coquilles d'œufs
+- Tonte de pelouse (en couches fines), feuilles mortes
+- Branchages broyés (après élagage par exemple)
+- Mûr en 6-12 mois, utilisable comme amendement
+
+### 3. Économiser l'eau
+
+**Récupération d'eau de pluie**
+À Angers, les précipitations annuelles (650 mm) permettent de récupérer un volume significatif :
+- Toiture de 100 m² = 65 000 litres/an récupérables
+- Cuve de 1 000 à 5 000 L enterrée ou hors-sol
+- Raccordable à un système d'arrosage automatique avec pompe
+
+**Arrosage raisonné**
+- Arrosez le matin tôt (moins d'évaporation)
+- Privilégiez le goutte-à-goutte (90 % d'efficacité vs 50 % pour l'aspersion)
+- Un paillage épais réduit les besoins d'arrosage de 40 à 70 %
+- Après 2-3 ans d'installation, la plupart des plantes locales n'ont plus besoin d'arrosage
+
+### 4. Zéro produit chimique
+
+Depuis la loi Labbé (2019), les pesticides de synthèse sont interdits pour les particuliers. Voici les alternatives :
+
+**Désherbage**
+- Paillage (la meilleure prévention)
+- Désherbage manuel ou à la binette
+- Eau bouillante sur les allées et terrasses
+- Vinaigre blanc (14°) en solution diluée sur les pavés
+
+**Lutte contre les ravageurs**
+- Favoriser les auxiliaires : coccinelles (pucerons), hérissons (limaces), mésanges (chenilles)
+- Purins végétaux : ortie (fertilisant + répulsif), prêle (anti-fongique)
+- Savon noir contre les pucerons
+- Pièges à bière pour les limaces
+
+### 5. Favoriser la biodiversité
+
+Un jardin riche en vie est un jardin équilibré :
+
+**Accueillir les pollinisateurs**
+- Plantez des fleurs mellifères (lavande, sauge, bourrache, phacélie)
+- Laissez une zone de prairie fleurie (même petite)
+- Installez un hôtel à insectes (rondins percés, tiges creuses)
+
+**Accueillir les oiseaux**
+- Haie champêtre avec baies (aubépine, troène, viorne)
+- Nichoirs adaptés aux espèces locales (mésange, rouge-gorge)
+- Point d'eau (même une simple coupelle)
+
+**Accueillir les hérissons**
+- Laissez un passage de 12 cm sous les clôtures
+- Tas de bois ou de feuilles dans un coin du jardin
+- Pas de produits anti-limaces chimiques (mortels pour les hérissons)
+
+## La pelouse écologique
+
+La pelouse classique (ray-grass pur, tondu à 3 cm, arrosé et fertilisé) est un gouffre écologique. Alternatives :
+
+- **Pelouse rustique** : mélange avec trèfle nain (fixe l'azote, reste vert en été)
+- **Prairie fleurie** : fauchée 2 fois par an, spectaculaire et zéro entretien
+- **Gazon de substitution** : dichondra, thym serpolet, lippia (zéro tonte)
+
+## Le coût d'un jardin écologique
+
+Un jardin écologique n'est pas plus cher à créer qu'un jardin classique. Il est même souvent plus économique à long terme :
+- Moins d'arrosage (récupération d'eau + paillage)
+- Pas de produits chimiques
+- Moins de tonte (pelouse rustique ou prairie)
+- Compost gratuit remplaçant les engrais
+
+## Art des Jardins et l'éco-jardinage
+
+Chez Art des Jardins, nous intégrons les principes écologiques dans tous nos projets : choix de végétaux locaux, paillage systématique, gestion raisonnée de l'eau, évacuation des déchets verts vers le compostage. Nous vous accompagnons dans la création d'un jardin beau et responsable.
+    `,
+    faq: [
+      {
+        question: 'Un jardin écologique est-il plus beau qu\'un jardin classique ?',
+        answer:
+          'Un jardin écologique bien conçu est tout aussi beau, voire plus intéressant qu\'un jardin classique. Il change avec les saisons, attire les papillons et les oiseaux, et possède un charme naturel que les jardins trop ordonnés n\'ont pas.',
+      },
+      {
+        question: 'Comment se débarrasser des mauvaises herbes sans désherbant ?',
+        answer:
+          'Le paillage est la solution la plus efficace : 10 cm de paillis empêchent 90 % des mauvaises herbes de pousser. Pour le reste, le désherbage manuel ou l\'eau bouillante suffisent.',
+      },
+      {
+        question: 'Peut-on avoir un beau gazon sans engrais chimique ?',
+        answer:
+          'Oui, en utilisant du compost maison, en laissant les tontes sur place (mulching) et en intégrant du trèfle nain au mélange. Le trèfle fixe naturellement l\'azote et maintient le gazon vert même en été.',
+      },
+    ],
+  },
 ];
 
 export function getArticleBySlug(slug: string): BlogArticle | undefined {
