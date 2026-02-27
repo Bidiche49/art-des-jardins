@@ -54,6 +54,11 @@ export default function ServicesPage() {
                   >
                     {imageSlug && (
                       <div className="aspect-[16/9] overflow-hidden relative">
+                        {['entretien-jardin', 'taille-haies', 'debroussaillage'].includes(service.slug) && (
+                          <span className="absolute top-3 left-3 z-10 bg-primary-600 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-sm">
+                            Crédit d&apos;impôt 50&nbsp;%
+                          </span>
+                        )}
                         <img
                           src={`/images/realisations/${imageSlug}-800w.webp`}
                           alt={images[imageSlug]?.alt || service.title}

@@ -627,7 +627,7 @@ export const services: ServiceData[] = [
       {
         question: 'Combien coûte la taille de haie ?',
         answer:
-          'Le prix dépend du linéaire, de la hauteur et de l\'accessibilité. Nous proposons des tarifs dégressifs dans le cadre de contrats annuels. Demandez votre devis gratuit.',
+          'Le prix dépend du linéaire, de la hauteur et de l\'accessibilité. Nous proposons des tarifs dégressifs dans le cadre de contrats annuels. Avec le crédit d\'impôt de 50 %, le coût réel est divisé par deux. Demandez votre devis gratuit.',
       },
     ],
   },

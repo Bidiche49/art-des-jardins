@@ -313,5 +313,6 @@ const services: { title: string; description: string; href: string; imageSlug: s
     description: 'Taille et entretien de haies de toutes essences.',
     href: '/services/taille-haies/',
     imageSlug: serviceCardImages['taille-haies'],
+    badge: 'Crédit d\'impôt 50 %',
   },
 ];

@@ -162,8 +162,10 @@ export default function ServicePage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* Credit d'impot (entretien only) - Placé en avant pour conversion */}
-      {service.slug === 'entretien-jardin' && <TaxCreditSection />}
+      {/* Credit d'impot - services éligibles */}
+      {['entretien-jardin', 'taille-haies', 'debroussaillage'].includes(service.slug) && (
+        <TaxCreditSection serviceSlug={service.slug} />
+      )}
 
       {/* Process */}
       <section className="py-16 lg:py-24 bg-gray-50">

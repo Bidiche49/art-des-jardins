@@ -1,7 +1,49 @@
 import Link from 'next/link';
 import { IconCheck } from '@/lib/icons';
 
-export function TaxCreditSection() {
+interface TaxCreditExample {
+  label: string;
+  total: string;
+  credit: string;
+  net: string;
+  perMonth: string;
+}
+
+interface TaxCreditConfig {
+  title: string;
+  subtitle: string;
+  example: TaxCreditExample;
+  ctaLabel: string;
+}
+
+const configs: Record<string, TaxCreditConfig> = {
+  'entretien-jardin': {
+    title: 'l\u2019entretien de jardin',
+    subtitle: 'En tant que professionnel agréé services à la personne, nos prestations d\u2019entretien vous ouvrent droit à un crédit d\u2019impôt immédiat de 50\u00a0%.',
+    example: { label: 'Contrat entretien annuel', total: '1\u202f200\u00a0€', credit: '- 600\u00a0€', net: '600\u00a0€', perMonth: 'Soit seulement 50\u00a0€ / mois pour un jardin impeccable' },
+    ctaLabel: 'Demander un devis entretien',
+  },
+  'taille-haies': {
+    title: 'la taille de haies',
+    subtitle: 'La taille de haies fait partie des petits travaux de jardinage éligibles au crédit d\u2019impôt de 50\u00a0%. Profitez-en\u00a0!',
+    example: { label: 'Taille de haies annuelle (2 passages)', total: '600\u00a0€', credit: '- 300\u00a0€', net: '300\u00a0€', perMonth: 'Soit seulement 25\u00a0€ / mois pour des haies impeccables' },
+    ctaLabel: 'Demander un devis taille de haies',
+  },
+  debroussaillage: {
+    title: 'le débroussaillage',
+    subtitle: 'Le débroussaillage réalisé par un professionnel agréé est éligible au crédit d\u2019impôt de 50\u00a0%. Remettez votre terrain en état à moindre coût\u00a0!',
+    example: { label: 'Débroussaillage terrain', total: '800\u00a0€', credit: '- 400\u00a0€', net: '400\u00a0€', perMonth: 'Le coût réel divisé par deux grâce au crédit d\u2019impôt' },
+    ctaLabel: 'Demander un devis débroussaillage',
+  },
+};
+
+interface TaxCreditSectionProps {
+  serviceSlug?: string;
+}
+
+export function TaxCreditSection({ serviceSlug = 'entretien-jardin' }: TaxCreditSectionProps) {
+  const config = configs[serviceSlug] || configs['entretien-jardin'];
+
   return (
     <section className="py-16 lg:py-24 bg-gradient-to-br from-green-50 to-emerald-50">
       <div className="container-custom max-w-4xl">
@@ -13,11 +55,10 @@ export function TaxCreditSection() {
             Avantage fiscal
           </span>
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
-            50 % de crédit d&apos;impôt sur l&apos;entretien de jardin
+            50&nbsp;% de crédit d&apos;impôt sur {config.title}
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            En tant que professionnel agréé services à la personne, nos prestations d&apos;entretien
-            vous ouvrent droit à un crédit d&apos;impôt immédiat de 50 %.
+            {config.subtitle}
           </p>
         </div>
 
@@ -28,10 +69,10 @@ export function TaxCreditSection() {
               <h3 className="text-xl font-bold mb-4 text-green-900">Comment ça marche ?</h3>
               <div className="space-y-4 text-gray-600">
                 <p>
-                  Les travaux d&apos;entretien de jardin réalisés par un professionnel agréé ouvrent
-                  droit à un <strong className="text-green-800">crédit d&apos;impôt de 50 %</strong> des
-                  sommes versées, dans la limite de <strong className="text-green-800">5 000 € par an</strong> (soit
-                  2 500 € de crédit d&apos;impôt maximum).
+                  Les petits travaux de jardinage réalisés par un professionnel agréé ouvrent
+                  droit à un <strong className="text-green-800">crédit d&apos;impôt de 50&nbsp;%</strong> des
+                  sommes versées, dans la limite de <strong className="text-green-800">5&nbsp;000&nbsp;€ par an</strong> (soit
+                  2&nbsp;500&nbsp;€ de crédit d&apos;impôt maximum).
                 </p>
                 <p>
                   Ce dispositif s&apos;applique à <strong>tous les foyers fiscaux</strong>, que vous soyez imposable
@@ -40,7 +81,7 @@ export function TaxCreditSection() {
                 </p>
                 <p>
                   L&apos;avance immédiate de crédit d&apos;impôt vous permet de ne payer que
-                  50 % du montant dès la facturation, sans attendre votre déclaration de revenus.
+                  50&nbsp;% du montant dès la facturation, sans attendre votre déclaration de revenus.
                 </p>
               </div>
             </div>
@@ -51,18 +92,18 @@ export function TaxCreditSection() {
                 <h4 className="font-bold text-green-900 mb-3">Exemple concret</h4>
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Contrat entretien annuel</span>
-                    <span className="font-medium">1 200 €</span>
+                    <span className="text-gray-600">{config.example.label}</span>
+                    <span className="font-medium">{config.example.total}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Crédit d&apos;impôt (50 %)</span>
-                    <span className="font-bold text-green-700">- 600 €</span>
+                    <span className="text-gray-600">Crédit d&apos;impôt (50&nbsp;%)</span>
+                    <span className="font-bold text-green-700">{config.example.credit}</span>
                   </div>
                   <div className="border-t border-green-200 pt-2 flex justify-between">
                     <span className="font-bold text-green-900">Coût réel pour vous</span>
-                    <span className="font-bold text-green-900 text-lg">600 €</span>
+                    <span className="font-bold text-green-900 text-lg">{config.example.net}</span>
                   </div>
-                  <p className="text-xs text-gray-500 mt-1">Soit seulement 50 € / mois pour un jardin impeccable</p>
+                  <p className="text-xs text-gray-500 mt-1">{config.example.perMonth}</p>
                 </div>
               </div>
 
@@ -91,7 +132,7 @@ export function TaxCreditSection() {
 
           <div className="mt-8 text-center">
             <Link href="/contact/" className="btn-primary">
-              Demander un devis entretien
+              {config.ctaLabel}
             </Link>
             <p className="text-xs text-gray-500 mt-3">
               Devis gratuit et sans engagement — Crédit d&apos;impôt déduit automatiquement
