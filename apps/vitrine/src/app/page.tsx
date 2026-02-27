@@ -20,6 +20,7 @@ export default function HomePage() {
         imageSlug="entretien-2"
         title="Votre paysagiste à Angers"
         subtitle="Aménagement de jardins, entretien, élagage et abattage dans tout le Maine-et-Loire."
+        fullHeight
       >
         <div className="flex flex-col sm:flex-row gap-4">
           <Link href="/contact" className="btn-primary-light">
@@ -32,9 +33,9 @@ export default function HomePage() {
       </HeroSection>
 
       {/* Trust Band */}
-      <section className="py-8 md:py-10 bg-white border-b border-gray-100">
+      <section className="py-5 lg:py-6 bg-white border-b border-gray-100">
         <div className="container-custom max-w-5xl">
-          <div className="flex flex-wrap justify-center items-center gap-6 md:gap-10 lg:gap-16 text-gray-600 text-sm">
+          <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-2 md:gap-x-10 md:gap-y-3 lg:gap-x-14 text-gray-600 text-sm">
             <div className="flex items-center gap-2">
               <IconRcPro className="w-5 h-5 text-primary-600 flex-shrink-0" />
               <span className="font-medium">Assurance RC Pro</span>
@@ -64,10 +65,18 @@ export default function HomePage() {
       </section>
 
       {/* Services Section */}
-      <section className="pt-10 pb-16 lg:pt-14 lg:pb-24 bg-gray-50">
+      <section className="pt-8 pb-16 lg:pt-10 lg:pb-24 bg-gray-50">
         <div className="container-custom">
           <AnimateOnScroll>
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Nos services de paysagiste à Angers</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 lg:mb-6">Nos services de paysagiste à Angers</h2>
+            <div className="hidden lg:flex justify-center mb-8">
+              <div className="scroll-hint">
+                <svg className="w-5 h-5 text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3" />
+                </svg>
+              </div>
+            </div>
+            <div className="mb-8 lg:hidden" />
           </AnimateOnScroll>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
             {services.map((service, i) => (
