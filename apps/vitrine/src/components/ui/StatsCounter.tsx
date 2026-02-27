@@ -10,9 +10,9 @@ interface Stat {
 
 const stats: Stat[] = [
   { value: 16, suffix: ' ans', label: 'D\'expérience cumulée' },
-  { value: 500, suffix: '+', label: 'Projets réalisés' },
-  { value: 100, suffix: '%', label: 'Assuré et certifié' },
-  { value: 48, suffix: 'h', label: 'Délai de réponse' },
+  { value: 30, suffix: ' km', label: 'Zone d\'intervention' },
+  { value: 100, suffix: '%', label: 'Assuré RC Pro & décennale' },
+  { value: 48, suffix: 'h', label: 'Devis gratuit sous' },
 ];
 
 function useCountUp(target: number, isVisible: boolean, duration = 2000) {

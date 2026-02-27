@@ -43,9 +43,9 @@ const values = [
 
 const stats = [
   { value: '16+', label: 'Années d\'expérience cumulée' },
-  { value: '500+', label: 'Projets réalisés' },
-  { value: '100%', label: 'Assuré & certifié' },
   { value: '30 km', label: 'Zone d\'intervention' },
+  { value: '100%', label: 'Assuré RC Pro & décennale' },
+  { value: '48h', label: 'Devis gratuit sous' },
 ];
 
 export default function AProposPage() {
@@ -56,7 +56,7 @@ export default function AProposPage() {
       <HeroSection
         imageSlug="creation-2"
         title="À propos d'Art des Jardins"
-        subtitle="Deux passionnés du paysage au service de votre jardin depuis 2024."
+        subtitle="Deux passionnés du paysage au service de votre jardin depuis 2026."
         breadcrumbs={[
           { label: 'Accueil', href: '/' },
           { label: 'À propos' },
