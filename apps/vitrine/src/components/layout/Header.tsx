@@ -124,7 +124,7 @@ export function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-6 xl:space-x-8">
             <Link
               href="/"
               className="text-gray-700 hover:text-primary-600 font-medium transition-colors"
@@ -235,7 +235,7 @@ export function Header() {
           {/* Mobile menu button */}
           <button
             type="button"
-            className="md:hidden p-3 rounded-md text-gray-700"
+            className="lg:hidden p-3 rounded-md text-gray-700"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-menu"
@@ -254,7 +254,7 @@ export function Header() {
           id="mobile-menu"
           role="navigation"
           aria-label="Menu principal"
-          className={`md:hidden grid transition-[grid-template-rows] duration-300 ease-in-out ${
+          className={`lg:hidden grid transition-[grid-template-rows] duration-300 ease-in-out ${
             mobileMenuOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
           }`}
         >
