@@ -1,5 +1,6 @@
 import { type ImageEntry, getImage, getSrcSet, getDefaultSrc } from '@/lib/images-manifest';
 import { HeroClient } from './HeroClient';
+import { ScrollIndicator } from './ScrollIndicator';
 
 interface HeroSectionProps {
   imageSlug: string;
@@ -64,6 +65,7 @@ export function HeroSection({
         )}
         {children}
       </div>
+      {fullHeight && <ScrollIndicator />}
     </section>
   );
 }
