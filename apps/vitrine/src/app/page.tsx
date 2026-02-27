@@ -15,27 +15,28 @@ export default function HomePage() {
     <>
       <LocalBusinessSchema />
 
-      {/* Hero Section */}
-      <HeroSection
-        imageSlug="entretien-2"
-        title="Votre paysagiste à Angers"
-        subtitle="Aménagement de jardins, entretien, élagage et abattage dans tout le Maine-et-Loire."
-        fullHeight
-      >
-        <div className="flex flex-col sm:flex-row gap-4">
-          <Link href="/contact" className="btn-primary-light">
-            Demander ma visite gratuite
-          </Link>
-          <Link href="/services" className="btn-secondary bg-transparent border-2 border-white text-white hover:bg-white/10">
-            Découvrir nos services
-          </Link>
-        </div>
-      </HeroSection>
+      {/* Hero + Trust Band = 100vh on desktop */}
+      <div className="lg:flex lg:flex-col lg:min-h-[calc(100vh-4rem)]">
+        <HeroSection
+          imageSlug="entretien-2"
+          title="Votre paysagiste à Angers"
+          subtitle="Aménagement de jardins, entretien, élagage et abattage dans tout le Maine-et-Loire."
+          fullHeight
+        >
+          <div className="flex flex-col sm:flex-row gap-4">
+            <Link href="/contact" className="btn-primary-light">
+              Demander ma visite gratuite
+            </Link>
+            <Link href="/services" className="btn-secondary bg-transparent border-2 border-white text-white hover:bg-white/10">
+              Découvrir nos services
+            </Link>
+          </div>
+        </HeroSection>
 
-      {/* Trust Band */}
-      <section className="py-5 lg:py-6 bg-white border-b border-gray-100">
-        <div className="container-custom max-w-5xl">
-          <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-2 md:gap-x-10 md:gap-y-3 lg:gap-x-14 text-gray-600 text-sm">
+        {/* Trust Band */}
+        <section className="py-6 lg:py-8 bg-white border-b border-gray-100">
+          <div className="container-custom max-w-5xl">
+            <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-3 md:gap-x-10 md:gap-y-4 lg:gap-x-14 text-gray-600 text-sm">
             <div className="flex items-center gap-2">
               <IconRcPro className="w-5 h-5 text-primary-600 flex-shrink-0" />
               <span className="font-medium">Assurance RC Pro</span>
@@ -62,10 +63,11 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-      </section>
+        </section>
+      </div>
 
       {/* Services Section */}
-      <section className="pt-8 pb-16 lg:pt-10 lg:pb-24 bg-gray-50">
+      <section className="pt-12 pb-16 lg:pt-16 lg:pb-24 bg-gray-50">
         <div className="container-custom">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 lg:mb-12">Nos services de paysagiste à Angers</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
