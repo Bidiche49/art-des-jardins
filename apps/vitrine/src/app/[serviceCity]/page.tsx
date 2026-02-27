@@ -158,7 +158,7 @@ export default function ServiceCityPage({ params }: PageProps) {
                   },
                   {
                     title: 'Expérience',
-                    description: 'Plus de 10 ans d\'expérience dans le Maine-et-Loire.',
+                    description: '16 ans d\'expérience cumulée en aménagement paysager.',
                   },
                   {
                     title: 'Qualité',

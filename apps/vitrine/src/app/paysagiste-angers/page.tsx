@@ -13,7 +13,7 @@ const city = cities.find((c) => c.slug === 'angers')!;
 export const metadata: Metadata = {
   title: 'Paysagiste Angers - Aménagement Jardin | Art des Jardins',
   description:
-    'Paysagiste professionnel à Angers. Aménagement de jardin, terrasse, plantation, engazonnement. Plus de 10 ans d\'expérience. Devis gratuit sous 48h.',
+    'Paysagiste professionnel à Angers. Aménagement de jardin, terrasse, plantation, engazonnement. 16 ans d\'expérience cumulée. Devis gratuit sous 48h.',
   keywords: [
     'paysagiste angers',
     'jardinier angers',
@@ -76,8 +76,8 @@ export default function PaysagisteAngersPage() {
               </h2>
               <div className="prose prose-lg max-w-none text-gray-600">
                 <p>
-                  Bienvenue chez Art des Jardins, votre <strong>paysagiste à Angers</strong> depuis
-                  plus de 10 ans. Notre équipe de professionnels passionnés met son expertise
+                  Bienvenue chez Art des Jardins, votre <strong>paysagiste à Angers</strong>.
+                  Forts de 16 ans d'expérience cumulée, nos associés mettent leur savoir-faire
                   au service de vos projets d'aménagement extérieur, qu'il s'agisse de créer
                   un jardin de A à Z ou de transformer un espace existant.
                 </p>
@@ -147,7 +147,7 @@ export default function PaysagisteAngersPage() {
             {[
               {
                 title: 'Expertise locale',
-                description: 'Plus de 10 ans d\'expérience à Angers et ses environs.',
+                description: '16 ans d\'expérience cumulée en aménagement paysager.',
               },
               {
                 title: 'Conseil personnalisé',
