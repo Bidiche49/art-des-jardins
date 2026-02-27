@@ -20,8 +20,8 @@
 |------|---------|-------|------|-------|
 | Bugs | 10 | 0 | 1 | 11 |
 | Features | 39 | 10 | 76 | 125 |
-| Improvements | 41 | 7 | 22 | 70 |
-| **Total** | **90** | **17** | **98** | **206** |
+| Improvements | 37 | 7 | 26 | 70 |
+| **Total** | **86** | **17** | **102** | **206** |
 
 ---
 
@@ -399,10 +399,10 @@
 | 8 | IMP-025 | BreadcrumbList schema toutes pages (existant) | Basse | S | **DONE** |
 | 9 | IMP-089 | Completer sameAs dans schema LocalBusiness | Moyenne | XS | **DONE** |
 | 10 | IMP-095 | HowTo schema sections process | Basse | S | **DONE** |
-| 11 | IMP-087 | Lazy-load iframe Google Maps | Moyenne | XS | |
-| 12 | IMP-090 | Preload hero image par page | Moyenne | S | |
-| 13 | IMP-096 | dns-prefetch et preconnect | Basse | XS | |
-| 14 | IMP-099 | Optimiser poids fonts Cormorant | Basse | XS | |
+| 11 | IMP-087 | Lazy-load iframe Google Maps | Moyenne | XS | **DONE** |
+| 12 | IMP-090 | Preload hero image par page | Moyenne | S | **DONE** |
+| 13 | IMP-096 | dns-prefetch et preconnect | Basse | XS | **DONE** |
+| 14 | IMP-099 | Optimiser poids fonts Cormorant | Basse | XS | **DONE** |
 
 ### Phase 3 - Reorganisation UX + CRO
 
@@ -424,9 +424,9 @@
 
 | Ordre | Ticket | Description | Priorite | Complexite | Statut |
 |-------|--------|-------------|----------|------------|--------|
-| 21 | IMP-092 | Couleur secondary (or) plus presente | Moyenne | S | |
-| 22 | IMP-093 | Style premium StatsCounter | Basse | S | |
-| 23 | IMP-094 | CTA buttons enrichis (micro-interactions) | Basse | S | |
+| 21 | IMP-092 | Couleur secondary (or) plus presente | Moyenne | S | Fait |
+| 22 | IMP-093 | Style premium StatsCounter | Basse | S | Fait |
+| 23 | IMP-094 | CTA buttons enrichis (micro-interactions) | Basse | S | Fait |
 
 ---
 
@@ -633,7 +633,7 @@
 
 ## Improvements
 
-### Pending (28)
+### Pending (24)
 
 | ID | Titre | Priorite | Phase | Raison |
 |----|-------|----------|-------|--------|
@@ -660,16 +660,12 @@
 | IMP-051 | Configurer SMTP Brevo (emails prod) | Critique | Prod API | ❌ Compte Brevo |
 | IMP-052 | Configurer Scaleway S3 (stockage prod) | Haute | Prod API | ❌ Compte Scaleway |
 | IMP-053 | .env.production securise + checklist | Critique | Prod API | ⚠️ Secrets manuels |
-| IMP-087 | Lazy-load iframe Google Maps | Moyenne | Audit Premium | ✅ |
 | IMP-088 | Maillage interne blog → services | Moyenne | Audit Premium | ✅ |
-| IMP-090 | Preload hero image par page | Moyenne | Audit Premium | ✅ |
 | IMP-091 | Enrichir contenu pages villes (800+ mots) | Haute | Audit Premium | ✅ |
 | IMP-092 | Couleur secondary (or) plus presente | Moyenne | Audit Premium | ✅ |
 | IMP-093 | Style premium StatsCounter | Basse | Audit Premium | ✅ |
 | IMP-094 | CTA buttons enrichis (micro-interactions) | Basse | Audit Premium | ✅ |
-| IMP-096 | dns-prefetch et preconnect | Basse | Audit Premium | ✅ |
 | IMP-098 | Reorganiser sections homepage | Haute | Audit Premium | ✅ |
-| IMP-099 | Optimiser poids fonts Cormorant | Basse | Audit Premium | ✅ |
 
 ### Ready (7) - AUTOMATISABLES
 
@@ -683,7 +679,7 @@
 | IMP-006 | Expiration sessions inactives | Moyenne | S | security, auth, ux | 12 |
 | IMP-008 | Backup chiffre | Moyenne | S | security, backup | 13 |
 
-### Done (30)
+### Done (34)
 
 | ID | Titre | Priorite | Date resolution |
 |----|-------|----------|-----------------|
@@ -718,6 +714,10 @@
 | IMP-025 | BreadcrumbList Schema.org vitrine | Basse | 2026-02-27 |
 | IMP-089 | Completer sameAs schema LocalBusiness | Moyenne | 2026-02-27 |
 | IMP-095 | HowTo schema sections process | Basse | 2026-02-27 |
+| IMP-087 | Lazy-load iframe Google Maps | Moyenne | 2026-02-27 |
+| IMP-090 | Preload hero image par page | Moyenne | 2026-02-27 |
+| IMP-096 | dns-prefetch et preconnect | Basse | 2026-02-27 |
+| IMP-099 | Optimiser poids fonts Cormorant | Basse | 2026-02-27 |
 
 ---
 
