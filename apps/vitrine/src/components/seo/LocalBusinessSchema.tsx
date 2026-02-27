@@ -70,10 +70,10 @@ export function LocalBusinessSchema() {
     },
     sameAs: [
       'https://www.instagram.com/artdesjardins_49',
-      // TODO: Ajouter les autres URLs réelles des profils
+      'https://www.societe.com/societe/art-des-jardins-999636806.html',
+      // TODO: Ajouter quand les profils seront créés
       // 'https://www.google.com/maps/place/Art+des+Jardins/...',
       // 'https://www.pagesjaunes.fr/pros/...',
-      // 'https://www.facebook.com/artdesjardins49/',
     ],
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
