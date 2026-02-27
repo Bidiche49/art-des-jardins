@@ -84,12 +84,6 @@ export default function PaysagisteAngersPage() {
                 <p>
                   {city.description}
                 </p>
-                {city.specificContent
-                  .split('\n\n')
-                  .filter((p) => p.trim())
-                  .map((paragraph, i) => (
-                    <p key={i}>{paragraph.replace(/\s+/g, ' ').trim()}</p>
-                  ))}
                 <p>
                   Nous intervenons dans tous les quartiers d'Angers : {city.neighborhoods?.join(', ')}.
                   Notre connaissance du terrain et des réglementations locales nous permet de vous
