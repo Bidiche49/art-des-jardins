@@ -10,7 +10,7 @@ import { Analytics } from '@/components/Analytics';
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
-  weight: ['400', '600', '700'],
+  weight: ['400', '700'],
   variable: '--font-cormorant',
 });
 
@@ -103,12 +103,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="fr" className={`${inter.variable} ${cormorant.variable}`}>
       <head>
-        <link
-          rel="preload"
-          as="image"
-          type="image/webp"
-          href="/images/realisations/entretien-2-1920w.webp"
-        />
+        <link rel="dns-prefetch" href="//maps.google.com" />
+        <link rel="dns-prefetch" href="//maps.gstatic.com" />
+        <link rel="preconnect" href="https://maps.google.com" crossOrigin="anonymous" />
       </head>
       <body className="min-h-screen flex flex-col">
         <Analytics />

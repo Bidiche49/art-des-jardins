@@ -178,7 +178,7 @@ export default function ContactPage() {
       <section className="bg-gray-100">
         <div className="container-custom py-8">
           <h2 className="text-2xl font-bold mb-6 text-center">Notre zone d&apos;intervention</h2>
-          <div className="rounded-xl overflow-hidden h-80">
+          <div className="rounded-xl overflow-hidden h-80 bg-gray-200">
             <iframe
               src="https://maps.google.com/maps?q=9+bis+rue+Rouget+de+l%27Isle,+49130+Les+Ponts-de-C%C3%A9&t=&z=14&ie=UTF8&iwloc=&output=embed"
               width="100%"
