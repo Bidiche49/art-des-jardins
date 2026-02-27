@@ -64,9 +64,9 @@ const faqCategories: FAQCategory[] = [
     serviceHref: '/services/paysagisme/',
     items: [
       {
-        question: 'Combien coûte un aménagement paysager ?',
+        question: 'Comment est établi le prix d\'une prestation ?',
         answer:
-          'Chaque projet est unique. Le coût dépend de la surface, des matériaux et des plantations choisis. Contactez-nous pour un devis gratuit et personnalisé.',
+          'Chaque projet est unique. Nous établissons un devis personnalisé après une visite gratuite sur place, en tenant compte de la surface, des matériaux, de la complexité du chantier et de vos souhaits. Le devis est détaillé, transparent et sans engagement.',
       },
       {
         question: 'Quelle est la meilleure période pour aménager un jardin ?',
@@ -100,11 +100,6 @@ const faqCategories: FAQCategory[] = [
         answer:
           'Oui, nous pouvons intervenir en votre absence. C\'est même l\'idéal pour que vous retrouviez un jardin impeccable à votre retour.',
       },
-      {
-        question: 'Quel est le tarif d\'un entretien de jardin ?',
-        answer:
-          'Le tarif dépend de la surface, de la fréquence et des prestations souhaitées. Avec le crédit d\'impôt de 50 %, le coût réel est divisé par deux. Demandez votre devis gratuit.',
-      },
     ],
   },
   {
@@ -126,11 +121,6 @@ const faqCategories: FAQCategory[] = [
         question: 'Quelle est la différence entre élagage et taille ?',
         answer:
           'L\'élagage concerne la coupe de grosses branches sur les arbres de grande taille, tandis que la taille s\'applique aux arbustes et haies. Les techniques et le matériel diffèrent.',
-      },
-      {
-        question: 'Combien coûte un élagage d\'arbre ?',
-        answer:
-          'Le prix varie selon l\'essence, la hauteur et l\'accessibilité de l\'arbre. Nous établissons un devis gratuit après visite sur place.',
       },
     ],
   },
@@ -154,11 +144,6 @@ const faqCategories: FAQCategory[] = [
         answer:
           'Oui, nous disposons d\'une ligne d\'urgence pour les arbres tombés ou dangereux. Nous intervenons rapidement pour sécuriser les lieux.',
       },
-      {
-        question: 'Quel est le prix d\'un abattage d\'arbre ?',
-        answer:
-          'Le coût dépend de la hauteur, de l\'environnement (zone contrainte ou dégagée) et de l\'évacuation. Contactez-nous pour une évaluation gratuite.',
-      },
     ],
   },
   {
@@ -180,11 +165,6 @@ const faqCategories: FAQCategory[] = [
         question: 'Combien de temps dure la construction d\'une terrasse ?',
         answer:
           'Comptez généralement 1 à 2 semaines pour une terrasse standard, selon la surface et la complexité du projet. Nous vous communiquons un planning précis au moment du devis.',
-      },
-      {
-        question: 'Quel est le prix d\'une terrasse ?',
-        answer:
-          'Le coût varie selon le matériau, la surface et les aménagements associés. Contactez-nous pour un devis gratuit et personnalisé après visite sur place.',
       },
     ],
   },
@@ -230,11 +210,6 @@ const faqCategories: FAQCategory[] = [
         answer:
           'Les haies de plus de 2 m de haut doivent être plantées à 2 m minimum de la limite de propriété. En dessous de 2 m, la distance minimale est de 50 cm. Nous veillons au respect de ces règles.',
       },
-      {
-        question: 'Combien coûte la taille de haie ?',
-        answer:
-          'Le prix dépend du linéaire, de la hauteur et de l\'accessibilité. Nous proposons des tarifs dégressifs dans le cadre de contrats annuels. Avec le crédit d\'impôt de 50 %, le coût réel est divisé par deux. Demandez votre devis gratuit.',
-      },
     ],
   },
   {
@@ -278,11 +253,6 @@ const faqCategories: FAQCategory[] = [
         question: 'Que faire de l\'arrosage en hiver ?',
         answer:
           'Nous réalisons l\'hivernage de votre système : purge complète du circuit, protection du programmateur et des vannes. La remise en route se fait au printemps.',
-      },
-      {
-        question: 'Quel budget pour un arrosage automatique ?',
-        answer:
-          'Le coût dépend de la surface à arroser, du nombre de zones et des équipements choisis. Nous établissons un devis détaillé après étude de votre jardin.',
       },
     ],
   },
