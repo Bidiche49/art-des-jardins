@@ -23,7 +23,7 @@ export default function HomePage() {
       >
         <div className="flex flex-col sm:flex-row gap-4">
           <Link href="/contact" className="btn-primary bg-white text-primary-700 hover:bg-gray-100">
-            Obtenir mon devis en 48h
+            Demander ma visite gratuite
           </Link>
           <Link href="/services" className="btn-secondary bg-transparent border-2 border-white text-white hover:bg-white/10">
             Découvrir nos services
