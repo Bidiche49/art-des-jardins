@@ -55,7 +55,6 @@ export function BeforeAfterSlider({
     isDragging.current = false;
   }, []);
 
-  // Keyboard accessibility
   const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
     if (e.key === 'ArrowLeft') {
       e.preventDefault();
@@ -67,10 +66,10 @@ export function BeforeAfterSlider({
   }, []);
 
   return (
-    <div>
+    <div className="group">
       <div
         ref={containerRef}
-        className="relative overflow-hidden rounded-xl select-none aspect-[4/3] touch-none"
+        className="relative overflow-hidden rounded-2xl select-none aspect-[4/3] touch-none shadow-lg group-hover:shadow-xl transition-shadow duration-300"
         role="slider"
         aria-label="Comparer avant et après"
         aria-valuemin={0}
@@ -109,27 +108,35 @@ export function BeforeAfterSlider({
 
         {/* Slider line + handle */}
         <div
-          className="absolute top-0 bottom-0 w-0.5 bg-white shadow-lg z-10 pointer-events-none"
+          className="absolute top-0 bottom-0 w-0.5 bg-white/90 shadow-lg z-10 pointer-events-none"
           style={{ left: `${position}%` }}
         >
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center">
-            <IconSliderArrows className="w-5 h-5 text-gray-700" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-11 h-11 bg-white rounded-full shadow-xl flex items-center justify-center ring-2 ring-secondary-400/50">
+            <IconSliderArrows className="w-5 h-5 text-secondary-600" />
           </div>
         </div>
 
         {/* Labels */}
-        <div className="absolute top-3 left-3 bg-black/60 text-white text-xs font-medium px-2 py-1 rounded pointer-events-none">
+        <span className="absolute bottom-3 left-3 bg-primary-800/80 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1.5 rounded-full pointer-events-none tracking-wide uppercase">
           Avant
-        </div>
-        <div className="absolute top-3 right-3 bg-black/60 text-white text-xs font-medium px-2 py-1 rounded pointer-events-none">
+        </span>
+        <span className="absolute bottom-3 right-3 bg-secondary-500/90 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1.5 rounded-full pointer-events-none tracking-wide uppercase">
           Après
-        </div>
+        </span>
       </div>
 
       {(title || location) && (
-        <div className="mt-3">
-          {title && <p className="font-medium text-gray-900">{title}</p>}
-          {location && <p className="text-sm text-gray-500">{location}</p>}
+        <div className="mt-4 px-1">
+          {title && <p className="font-semibold text-gray-900">{title}</p>}
+          {location && (
+            <p className="text-sm text-gray-500 flex items-center gap-1 mt-0.5">
+              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              {location}
+            </p>
+          )}
         </div>
       )}
     </div>
