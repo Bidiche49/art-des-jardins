@@ -1297,7 +1297,7 @@ Art des Jardins vous accompagne dans le choix et la réalisation de votre terras
     category: 'Entretien',
     readTime: 5,
     publishDate: '2026-03-03',
-    imageSlug: 'entretien-1',
+    imageSlug: 'entretien-2',
     content: `
 Vous rêvez d'une belle pelouse verte ? Deux méthodes s'offrent à vous : le semis traditionnel ou le placage (gazon en rouleaux). Chacune a ses avantages selon votre budget, votre patience et l'usage prévu.
 
