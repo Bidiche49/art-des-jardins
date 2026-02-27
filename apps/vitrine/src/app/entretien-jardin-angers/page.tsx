@@ -25,6 +25,9 @@ export const metadata: Metadata = {
     'entretien jardin 49',
     'service à la personne jardinage',
   ],
+  alternates: {
+    canonical: '/entretien-jardin-angers/',
+  },
   openGraph: {
     title: 'Entretien Jardin Angers - 50% Crédit d\'Impôt | Art des Jardins',
     description: 'Entretien de jardin à Angers avec 50 % de crédit d\'impôt. Professionnel agréé, devis gratuit.',
@@ -46,6 +49,10 @@ export default function EntretienJardinAngersPage() {
 
       {/* Hero */}
       <HeroSection
+        breadcrumbs={[
+          { label: 'Accueil', href: '/' },
+          { label: 'Entretien jardin Angers' },
+        ]}
         imageSlug="entretien-3"
         title="Entretien de Jardin à Angers"
         subtitle="Entretien de jardin à Angers — Bénéficiez de 50 % de crédit d'impôt. Tonte, taille, désherbage par un professionnel agréé."

@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: 'Conseils Jardinage - Blog Paysagiste | Art des Jardins Angers',
   description:
     'Conseils de jardinage par des professionnels : élagage, entretien, aménagement, réglementation. Guides pratiques pour votre jardin à Angers et en Anjou.',
+  alternates: {
+    canonical: '/conseils/',
+  },
   openGraph: {
     title: 'Conseils Jardinage - Art des Jardins',
     description: 'Guides et conseils de jardinage par des paysagistes professionnels.',

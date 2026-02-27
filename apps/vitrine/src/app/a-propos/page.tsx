@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: 'À propos - Art des Jardins | Paysagiste Angers',
   description:
     'Découvrez Art des Jardins, entreprise de paysage à Angers. Deux associés passionnés, 16 ans d\'expérience cumulée. Notre histoire, notre équipe, nos valeurs.',
+  alternates: {
+    canonical: '/a-propos/',
+  },
   openGraph: {
     title: 'À propos - Art des Jardins',
     description: 'Notre histoire, notre équipe de paysagistes à Angers.',

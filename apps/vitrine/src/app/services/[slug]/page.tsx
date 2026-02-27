@@ -28,6 +28,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: service.metaTitle,
     description: service.metaDescription,
+    alternates: {
+      canonical: `/services/${params.slug}/`,
+    },
     openGraph: {
       title: service.metaTitle,
       description: service.metaDescription,
@@ -64,6 +67,21 @@ export default function ServicePage({ params }: PageProps) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'HowTo',
+          name: `Comment fonctionne notre service ${service.shortTitle.toLowerCase()} ?`,
+          description: service.metaDescription,
+          step: service.process.map((step, i) => ({
+            '@type': 'HowToStep',
+            position: i + 1,
+            name: step.title,
+            text: step.description,
+          })),
+        }) }}
       />
 
       {/* Hero */}

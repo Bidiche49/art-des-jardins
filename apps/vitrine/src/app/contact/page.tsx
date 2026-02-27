@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: 'Contact - Devis Gratuit',
   description:
     'Contactez Art des Jardins pour un devis gratuit. Paysagiste, entretien de jardin, élagage, abattage à Angers et environs. Réponse sous 48h.',
+  alternates: {
+    canonical: '/contact/',
+  },
   openGraph: {
     title: 'Contact Art des Jardins - Devis Gratuit',
     description: 'Demandez un devis gratuit pour vos travaux de jardinage à Angers.',

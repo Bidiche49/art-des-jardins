@@ -21,6 +21,9 @@ export const metadata: Metadata = {
     'coupe arbre angers',
     'abattage urgence angers',
   ],
+  alternates: {
+    canonical: '/abattage-angers/',
+  },
   openGraph: {
     title: 'Abattage Arbres Angers - Art des Jardins',
     description: 'Service d\'abattage d\'arbres professionnel et sécurisé à Angers.',
@@ -42,6 +45,10 @@ export default function AbattageAngersPage() {
 
       {/* Hero */}
       <HeroSection
+        breadcrumbs={[
+          { label: 'Accueil', href: '/' },
+          { label: 'Abattage Angers' },
+        ]}
         imageSlug="elagage-3"
         title="Abattage d'Arbres à Angers"
         subtitle="Art des Jardins réalise l'abattage sécurisé d'arbres à Angers. Arbres dangereux, malades ou gênants : intervention professionnelle garantie."

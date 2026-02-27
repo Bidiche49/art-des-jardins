@@ -21,6 +21,9 @@ export const metadata: Metadata = {
     'création jardin angers',
     'paysagiste 49',
   ],
+  alternates: {
+    canonical: '/paysagiste-angers/',
+  },
   openGraph: {
     title: 'Paysagiste Angers - Art des Jardins',
     description: 'Votre paysagiste de confiance à Angers pour tous vos projets de jardin.',
@@ -45,6 +48,10 @@ export default function PaysagisteAngersPage() {
         imageSlug="creation-9"
         title="Paysagiste à Angers"
         subtitle="Art des Jardins, votre partenaire de confiance pour l'aménagement et la création de jardins à Angers et dans tout le Maine-et-Loire. Devis gratuit sous 48h."
+        breadcrumbs={[
+          { label: 'Accueil', href: '/' },
+          { label: 'Paysagiste Angers' },
+        ]}
       >
         <div className="flex flex-col sm:flex-row gap-4">
           <Link href="/contact/" className="btn-primary bg-white text-primary-700 hover:bg-gray-100">

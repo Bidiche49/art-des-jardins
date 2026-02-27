@@ -3,6 +3,9 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Mentions Légales',
   description: 'Mentions légales du site Art des Jardins - Paysagiste à Angers.',
+  alternates: {
+    canonical: '/mentions-legales/',
+  },
   robots: {
     index: false,
     follow: true,

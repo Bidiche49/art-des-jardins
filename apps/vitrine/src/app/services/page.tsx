@@ -11,6 +11,9 @@ export const metadata: Metadata = {
   title: 'Nos Services d\'Aménagement Paysager',
   description:
     'Découvrez tous nos services d\'aménagement paysager à Angers : création de jardin, entretien, élagage, abattage. Professionnels qualifiés, devis gratuit.',
+  alternates: {
+    canonical: '/services/',
+  },
   openGraph: {
     title: 'Services Paysagiste Angers | Art des Jardins',
     description: 'Aménagement, entretien, élagage, abattage - Tous nos services d\'aménagement paysager',

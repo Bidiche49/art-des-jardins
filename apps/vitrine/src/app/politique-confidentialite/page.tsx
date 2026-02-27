@@ -3,6 +3,9 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Politique de Confidentialité',
   description: 'Politique de confidentialité et protection des données personnelles - Art des Jardins.',
+  alternates: {
+    canonical: '/politique-confidentialite/',
+  },
   robots: {
     index: false,
     follow: true,

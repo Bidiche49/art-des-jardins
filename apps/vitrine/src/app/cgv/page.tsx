@@ -3,6 +3,9 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Conditions Generales de Vente',
   description: 'Conditions generales de vente des prestations Art des Jardins - Paysagiste a Angers.',
+  alternates: {
+    canonical: '/cgv/',
+  },
   robots: {
     index: false,
     follow: true,

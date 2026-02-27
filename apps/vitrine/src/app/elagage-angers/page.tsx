@@ -21,6 +21,9 @@ export const metadata: Metadata = {
     'élagage 49',
     'élagueur maine-et-loire',
   ],
+  alternates: {
+    canonical: '/elagage-angers/',
+  },
   openGraph: {
     title: 'Élagage Angers - Art des Jardins',
     description: 'Service d\'élagage professionnel à Angers par des élagueurs certifiés.',
@@ -42,6 +45,10 @@ export default function ElagageAngersPage() {
 
       {/* Hero */}
       <HeroSection
+        breadcrumbs={[
+          { label: 'Accueil', href: '/' },
+          { label: 'Élagage Angers' },
+        ]}
         imageSlug="elagage-1"
         title="Élagage à Angers"
         subtitle="Art des Jardins, élagueurs professionnels certifiés à Angers. Taille d'arbres, éclaircissage, sécurisation. Intervention rapide et devis gratuit."
