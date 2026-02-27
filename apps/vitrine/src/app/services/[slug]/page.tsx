@@ -171,9 +171,9 @@ export default function ServicePage({ params }: PageProps) {
       <section className="py-16 lg:py-24 bg-gray-50">
         <div className="container-custom">
           <h2 className="text-3xl font-bold text-center mb-12">Comment ça marche ?</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
+          <div className="flex flex-wrap justify-center gap-6">
             {service.process.map((step, i) => (
-              <div key={i} className="relative">
+              <div key={i} className="relative w-full md:w-[calc(33.333%-1rem)] lg:w-[calc(20%-1.2rem)]">
                 <div className="bg-white rounded-xl p-6 h-full shadow-sm">
                   <div className="w-10 h-10 bg-primary-600 text-white rounded-full flex items-center justify-center font-bold mb-4">
                     {i + 1}
