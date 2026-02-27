@@ -82,7 +82,7 @@ export default function RealisationsPage() {
       />
 
       {/* Gallery */}
-      <section className="py-16 lg:py-24">
+      <section className="pt-8 pb-16 lg:pt-10 lg:pb-24">
         <div className="container-custom">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
             Galerie de projets

@@ -365,7 +365,7 @@ export function FAQContent() {
   };
 
   return (
-    <section className="py-16 lg:py-24">
+    <section className="pt-8 pb-16 lg:pt-10 lg:pb-24">
       <FAQSchemas />
       <div className="container-custom">
         {/* Quick nav */}

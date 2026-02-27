@@ -61,7 +61,7 @@ export default function ContactPage() {
       />
 
       {/* Contact Section */}
-      <section className="py-16 lg:py-24">
+      <section className="pt-8 pb-16 lg:pt-10 lg:pb-24">
         <div className="container-custom">
           <div className="grid lg:grid-cols-3 gap-12">
             {/* Contact Form */}
