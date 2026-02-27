@@ -9,7 +9,7 @@ export function LocalBusinessSchema() {
     url: 'https://art-et-jardin.fr',
     image: 'https://art-et-jardin.fr/images/og-image.jpg',
     logo: 'https://art-et-jardin.fr/images/logo.png',
-    foundingDate: '2024',
+    foundingDate: '2026',
     numberOfEmployees: {
       '@type': 'QuantitativeValue',
       value: 2,
@@ -66,7 +66,7 @@ export function LocalBusinessSchema() {
     identifier: {
       '@type': 'PropertyValue',
       name: 'SIRET',
-      value: '123 456 789 00012', // TODO: Remplacer par le vrai SIRET
+      value: '999 636 806 00013',
     },
     sameAs: [
       'https://www.instagram.com/artdesjardins_49',

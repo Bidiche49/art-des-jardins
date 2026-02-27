@@ -121,7 +121,7 @@ export function Footer() {
 
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500 space-y-1">
           <p>&copy; {currentYear} SARL Art des Jardins. Tous droits réservés.</p>
-          <p className="text-xs text-gray-600">SARL Art des Jardins - SIRET 123 456 789 00012 - RCS Angers</p>
+          <p className="text-xs text-gray-600">SARL Art des Jardins - SIRET 999 636 806 00013 - TVA FR36999636806 - RCS Angers</p>
         </div>
       </div>
     </footer>
