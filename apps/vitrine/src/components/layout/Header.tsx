@@ -7,7 +7,9 @@ import {
   IconAmenagement,
   IconEntretien,
   IconElagage,
-  IconAbattage,
+  IconTerrasse,
+  IconCloture,
+  IconTailleHaies,
   IconChevronDown,
   IconPhone,
   IconMenu,
@@ -26,6 +28,7 @@ const serviceMenuItems = [
     description: 'Tonte, taille, désherbage, entretien régulier',
     href: '/services/entretien-jardin/',
     icon: <IconEntretien className="w-6 h-6" />,
+    badge: 'Crédit d\u2019impôt',
   },
   {
     title: 'Élagage',
@@ -34,10 +37,23 @@ const serviceMenuItems = [
     icon: <IconElagage className="w-6 h-6" />,
   },
   {
-    title: 'Abattage',
-    description: 'Abattage sécurisé et dessouchage d\'arbres',
-    href: '/services/abattage/',
-    icon: <IconAbattage className="w-6 h-6" />,
+    title: 'Terrasses',
+    description: 'Bois, composite, pierre — espaces de vie extérieurs',
+    href: '/services/terrasse/',
+    icon: <IconTerrasse className="w-6 h-6" />,
+  },
+  {
+    title: 'Clôtures',
+    description: 'Panneaux, bois, composite, portails sur mesure',
+    href: '/services/cloture/',
+    icon: <IconCloture className="w-6 h-6" />,
+  },
+  {
+    title: 'Taille de haies',
+    description: 'Taille, rabattage et entretien de haies',
+    href: '/services/taille-haies/',
+    icon: <IconTailleHaies className="w-6 h-6" />,
+    badge: 'Crédit d\u2019impôt',
   },
 ];
 
@@ -127,8 +143,8 @@ export function Header() {
                     : 'opacity-0 invisible -translate-y-2'
                 }`}
               >
-                <div className="bg-white rounded-xl shadow-xl border border-gray-100 p-4 w-[480px]">
-                  <div className="grid grid-cols-2 gap-2">
+                <div className="bg-white rounded-xl shadow-xl border border-gray-100 p-4 w-[540px]">
+                  <div className="grid grid-cols-2 gap-1">
                     {serviceMenuItems.map((item) => (
                       <Link
                         key={item.href}
@@ -140,8 +156,15 @@ export function Header() {
                           {item.icon}
                         </div>
                         <div>
-                          <div className="font-medium text-gray-900 group-hover:text-primary-700 text-sm">
-                            {item.title}
+                          <div className="flex items-center gap-1.5">
+                            <span className="font-medium text-gray-900 group-hover:text-primary-700 text-sm">
+                              {item.title}
+                            </span>
+                            {item.badge && (
+                              <span className="text-[10px] font-semibold bg-green-100 text-green-700 px-1.5 py-0.5 rounded-full leading-none whitespace-nowrap">
+                                {item.badge}
+                              </span>
+                            )}
                           </div>
                           <div className="text-xs text-gray-500 mt-0.5">{item.description}</div>
                         </div>
@@ -254,6 +277,11 @@ export function Header() {
                         >
                           <span className="text-primary-600">{item.icon}</span>
                           {item.title}
+                          {item.badge && (
+                            <span className="text-[10px] font-semibold bg-green-100 text-green-700 px-1.5 py-0.5 rounded-full leading-none">
+                              {item.badge}
+                            </span>
+                          )}
                         </Link>
                       ))}
                       <Link
