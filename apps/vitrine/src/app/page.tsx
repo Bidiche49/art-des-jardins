@@ -19,7 +19,7 @@ export default function HomePage() {
       <HeroSection
         imageSlug="entretien-2"
         title="Votre paysagiste à Angers"
-        subtitle="Aménagement de jardins, entretien, élagage et abattage. Devis gratuit sous 48h suite au rendez-vous."
+        subtitle="Aménagement de jardins, entretien, élagage et abattage dans tout le Maine-et-Loire."
       >
         <div className="flex flex-col sm:flex-row gap-4">
           <Link href="/contact" className="btn-primary-light">
@@ -174,10 +174,10 @@ export default function HomePage() {
             Votre jardin mérite aussi cette transformation
           </h2>
           <p className="text-gray-600 mb-6 max-w-xl mx-auto">
-            Chaque projet commence par une visite gratuite. Parlons de vos envies.
+            Chaque projet commence par une écoute attentive de vos envies.
           </p>
           <Link href="/contact" className="btn-primary">
-            Demander un devis gratuit
+            Parlons de votre projet
           </Link>
         </div>
       </section>
@@ -249,8 +249,8 @@ export default function HomePage() {
             <div className="prose prose-lg text-gray-600 mx-auto mt-6">
               <p>
                 Quel que soit votre projet — entretien de jardin, création d&apos;espace vert, élagage
-                ou abattage — nous nous déplaçons gratuitement pour établir un diagnostic et un devis
-                personnalisé.
+                ou abattage — nous nous déplaçons pour comprendre vos besoins et vous proposer
+                la solution la plus adaptée.
               </p>
             </div>
           </AnimateOnScroll>
@@ -264,11 +264,11 @@ export default function HomePage() {
         <div className="container-custom text-center relative z-10">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Prêt à transformer votre jardin ?</h2>
           <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
-            Contactez-nous pour un devis gratuit et sans engagement. Intervention rapide dans tout
-            Angers et ses environs. Crédit d&apos;impôt 50 % sur l&apos;entretien de jardin.
+            Intervention rapide dans tout Angers et ses environs.
+            Crédit d&apos;impôt 50 % sur l&apos;entretien de jardin.
           </p>
           <Link href="/contact" className="btn-primary-light">
-            Contactez-nous
+            Demander une visite conseil
           </Link>
         </div>
       </section>
