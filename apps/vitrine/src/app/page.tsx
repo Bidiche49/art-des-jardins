@@ -7,7 +7,6 @@ import { StatsCounter } from '@/components/ui/StatsCounter';
 import { PhotoGallery } from '@/components/ui/PhotoGallery';
 import { AnimateOnScroll } from '@/components/ui/AnimateOnScroll';
 import { BeforeAfterSection } from '@/components/BeforeAfterSection';
-import { Testimonials } from '@/components/Testimonials';
 import { serviceCardImages, getSrcSet, getDefaultSrc, getImage } from '@/lib/images-manifest';
 import { IconRcPro, IconDecennale, IconExperience, IconDevis48h, IconZone30km, IconInstagram, IconEuro } from '@/lib/icons';
 
@@ -182,9 +181,6 @@ export default function HomePage() {
           </Link>
         </div>
       </section>
-
-      {/* Témoignages */}
-      <Testimonials />
 
       {/* FAQ */}
       <HomeFAQ />
