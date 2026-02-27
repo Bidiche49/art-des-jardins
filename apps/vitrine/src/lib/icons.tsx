@@ -23,6 +23,9 @@ export { CalendarIcon as IconCalendar } from '@heroicons/react/24/outline';
 export { ArrowUpTrayIcon as IconUpload } from '@heroicons/react/24/outline';
 export { SunIcon as IconSun } from '@heroicons/react/24/outline';
 export { CurrencyEuroIcon as IconEuro } from '@heroicons/react/24/outline';
+export { SparklesIcon as IconQualite } from '@heroicons/react/24/outline';
+export { UserGroupIcon as IconEquipe } from '@heroicons/react/24/outline';
+export { DocumentCheckIcon as IconTransparence } from '@heroicons/react/24/outline';
 
 // Variantes solid
 export { StarIcon as IconStarFilled } from '@heroicons/react/24/solid';
@@ -77,41 +80,13 @@ export function IconAbattage({ className }: IconProps) {
 }
 
 // ─── B. Valeurs / Confiance ───────────────────────────
-
-export function IconQualite({ className }: IconProps) {
-  return (
-    <svg className={className} {...svgBase}>
-      <path d="M12 3l2.5 5 5.5.5-4 3.5 1.2 5.5L12 15l-5.2 2.5L8 12 4 8.5l5.5-.5z" />
-      <path d="M12 9c1.5-2 3-2 4.5 0" />
-    </svg>
-  );
-}
-
-export function IconEquipe({ className }: IconProps) {
-  return (
-    <svg className={className} {...svgBase}>
-      <circle cx="8" cy="9" r="2" />
-      <circle cx="16" cy="9" r="2" />
-      <path d="M4 18c1.5-3 6.5-3 8 0" />
-      <path d="M12 18c1.5-3 6.5-3 8 0" />
-    </svg>
-  );
-}
+// IconQualite, IconEquipe, IconTransparence → re-exported Heroicons (see top)
 
 export function IconEcologie({ className }: IconProps) {
   return (
     <svg className={className} {...svgBase}>
-      <path d="M12 20c5-4 5-10 0-13-5 3-5 9 0 13z" />
-      <path d="M12 7c0 5-3 7-6 8" />
-    </svg>
-  );
-}
-
-export function IconTransparence({ className }: IconProps) {
-  return (
-    <svg className={className} {...svgBase}>
-      <path d="M6 4h9l3 3v11H6z" />
-      <path d="M9 13l2 2 4-4" />
+      <path d="M12 3c6 5 6 12 0 17-6-5-6-12 0-17Z" />
+      <path d="M12 20V8" />
     </svg>
   );
 }
