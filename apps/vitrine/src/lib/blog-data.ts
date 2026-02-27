@@ -85,57 +85,46 @@ Un élagueur professionnel connaît les spécificités de chaque espèce et adap
   {
     slug: 'prix-paysagiste-amenagement-jardin',
     title: 'Prix paysagiste : combien coûte un aménagement de jardin ?',
-    metaTitle: 'Prix Paysagiste 2026 : Tarifs Aménagement Jardin | Art des Jardins',
+    metaTitle: 'Prix Paysagiste : Budget Aménagement Jardin | Art des Jardins',
     metaDescription:
-      'Combien coûte un paysagiste ? Tarifs détaillés pour l\'aménagement de jardin : création, terrasse, plantation. Prix au m² et exemples chiffrés.',
+      'Combien coûte un paysagiste ? Les facteurs qui influencent le budget d\'un aménagement de jardin : surface, matériaux, végétaux. Devis gratuit à Angers.',
     excerpt:
-      'Le coût d\'un aménagement paysager varie selon la complexité. Voici nos tarifs indicatifs détaillés.',
+      'Le coût d\'un aménagement paysager varie selon de nombreux facteurs. Découvrez ce qui influence votre budget.',
     category: 'Aménagement',
     readTime: 5,
     publishDate: '2026-02-05',
     imageSlug: 'creation-2',
     content: `
-Le budget d'un aménagement de jardin dépend de nombreux facteurs : surface, complexité, choix des matériaux et des végétaux. Voici un guide complet pour estimer votre projet.
+Le budget d'un aménagement de jardin dépend de nombreux facteurs : surface, complexité, choix des matériaux et des végétaux. Voici un guide complet pour comprendre ce qui influence votre projet.
 
-## Fourchettes de prix au m²
-
-| Type de prestation | Prix indicatif |
-|---|---|
-| Engazonnement simple | 8 – 15 €/m² |
-| Plantation de massifs | 30 – 80 €/m² |
-| Création de terrasse (bois) | 100 – 200 €/m² |
-| Création de terrasse (pierre) | 80 – 150 €/m² |
-| Aménagement complet jardin | 50 – 150 €/m² |
-| Arrosage automatique | 15 – 30 €/m² |
-
-## Ce qui influence le prix
+## Ce qui influence le budget
 
 ### La surface
-Plus la surface est grande, plus le prix au m² diminue grâce aux économies d'échelle. Un jardin de 50 m² coûtera proportionnellement plus cher qu'un jardin de 200 m².
+Plus la surface est grande, plus le coût au m² diminue grâce aux économies d'échelle. Un petit jardin de ville coûtera proportionnellement plus cher qu'un grand jardin.
 
 ### L'état du terrain
 Un terrain plat et accessible sera moins coûteux à aménager qu'un terrain en pente nécessitant du terrassement, des murets de soutènement ou un drainage.
 
 ### Le choix des végétaux
-Les arbres de grande taille (3-4 m) coûtent nettement plus cher que des jeunes plants. Les espèces rares ou méditerranéennes sont aussi plus onéreuses que les essences locales.
+Les arbres de grande taille coûtent nettement plus cher que des jeunes plants. Les espèces rares ou méditerranéennes sont aussi plus onéreuses que les essences locales. Le choix entre des plants de pépinière locale et de grande surface impacte aussi le budget.
 
 ### Les matériaux
-Pierre naturelle, bois exotique, béton désactivé... le choix des matériaux pour terrasses, allées et bordures a un impact significatif sur le budget.
+Pierre naturelle, bois exotique, béton désactivé... le choix des matériaux pour terrasses, allées et bordures a un impact significatif sur le budget. Le bois composite et le pin traité sont les options les plus accessibles, tandis que la pierre naturelle et les bois exotiques représentent un investissement plus important.
 
-## Exemples de budgets
+### Le type de prestations
+Un simple engazonnement est nettement plus abordable qu'un aménagement complet incluant terrasse, plantations, éclairage et arrosage automatique. Les projets peuvent être réalisés par étapes pour étaler le budget.
 
-**Petit jardin de ville (50 m²)** : 3 000 – 6 000 €
-- Engazonnement, quelques arbustes, bordures, éclairage simple
+## Exemples de projets
 
-**Jardin familial (150 m²)** : 8 000 – 18 000 €
-- Terrasse, pelouse, massifs plantés, haie, arrosage
+**Petit jardin de ville** : engazonnement, quelques arbustes, bordures, éclairage simple. Le budget varie selon la surface et les finitions choisies.
 
-**Grand jardin (300 m² et +)** : 15 000 – 40 000 €
-- Conception complète, terrasse, allées, plantation, éclairage, arrosage automatique
+**Jardin familial** : terrasse, pelouse, massifs plantés, haie, arrosage. Un projet plus complet qui peut être réalisé en plusieurs phases.
+
+**Grand jardin** : conception complète, terrasse, allées, plantation, éclairage, arrosage automatique. La surface plus importante permet des économies d'échelle mais le budget global est naturellement plus conséquent.
 
 ## Le devis : une étape indispensable
 
-Chaque jardin est unique. Chez Art des Jardins, nous réalisons systématiquement une visite gratuite pour évaluer votre terrain, comprendre vos envies et établir un devis détaillé. Pas de mauvaise surprise : tout est chiffré poste par poste.
+Chaque jardin est unique, c'est pourquoi il est impossible de donner des tarifs standard. Chez Art des Jardins, nous réalisons systématiquement une **visite gratuite** pour évaluer votre terrain, comprendre vos envies et établir un devis détaillé. Pas de mauvaise surprise : tout est chiffré poste par poste. Contactez-nous pour obtenir votre devis personnalisé.
     `,
     faq: [
       {
@@ -773,15 +762,11 @@ En ville, la clôture est essentielle pour l'intimité. Nos solutions préféré
 
 **Règle d'urbanisme** : vérifiez le PLU d'Angers pour la hauteur maximale autorisée (généralement 2 m en limite de propriété).
 
-## Budget indicatif
+## Quel budget prévoir ?
 
-| Prestation | Prix indicatif |
-|---|---|
-| Terrasse composite (20 m²) | 2 500 – 4 000 € |
-| Plantation complète | 1 500 – 3 000 € |
-| Éclairage jardin | 500 – 1 500 € |
-| Clôture composite (10 ml) | 1 000 – 2 500 € |
-| **Total petit jardin complet** | **5 000 – 10 000 €** |
+Le budget d'un petit jardin de ville dépend des prestations choisies : terrasse, plantations, éclairage, clôture... Chaque poste peut être adapté à votre enveloppe. L'avantage d'un petit espace, c'est qu'un aménagement complet reste accessible et que le résultat est visible immédiatement. Il est aussi possible d'échelonner les travaux en plusieurs phases pour répartir l'investissement.
+
+Contactez-nous pour un devis gratuit et personnalisé adapté à votre projet.
 
 ## Faites appel à un paysagiste
 
@@ -805,7 +790,7 @@ Un paysagiste optimise chaque centimètre carré de votre jardin. Chez Art des J
     title: 'Haies de clôture : quelle essence choisir dans le 49 ?',
     metaTitle: 'Quelle Haie de Clôture Choisir dans le Maine-et-Loire ? | Art des Jardins',
     metaDescription:
-      'Haie de thuya, laurier, photinia ou champêtre ? Comparatif des essences de haies adaptées au Maine-et-Loire. Prix, entretien et conseils.',
+      'Haie de thuya, laurier, photinia ou champêtre ? Comparatif des essences de haies adaptées au Maine-et-Loire. Entretien, croissance et conseils.',
     excerpt:
       'Thuya, laurier, photinia, haie champêtre... quelle essence choisir pour votre haie dans le Maine-et-Loire ?',
     category: 'Aménagement',
@@ -880,17 +865,17 @@ Pour une haie colorée et parfumée :
 
 **Inconvénient** : les haies fleuries sont rarement opaques en hiver (caduques).
 
-## Comparatif prix
+## Comparatif entretien et croissance
 
-| Essence | Prix unitaire (60-80 cm) | Prix au mètre linéaire | Tailles/an |
-|---|---|---|---|
-| Thuya | 3-5 € | 6-10 € | 2-3 |
-| Laurier-cerise | 5-8 € | 10-16 € | 2 |
-| Photinia | 6-10 € | 12-20 € | 2 |
-| Eleagnus | 6-10 € | 12-20 € | 1-2 |
-| Haie champêtre (mix) | 3-6 € | 9-18 € | 1 |
+| Essence | Croissance annuelle | Hauteur adulte | Tailles/an | Niveau d'entretien |
+|---|---|---|---|---|
+| Thuya | 40-60 cm | 3-5 m | 2-3 | Moyen |
+| Laurier-cerise | 30-50 cm | 4-6 m | 2 | Moyen |
+| Photinia | 30-40 cm | 3-4 m | 2 | Moyen |
+| Eleagnus | 30-40 cm | 3-4 m | 1-2 | Faible |
+| Haie champêtre (mix) | Variable | 2-4 m | 1 | Faible |
 
-*Prix indicatifs hors pose. Plantation espacée de 50-80 cm selon l'essence.*
+*Le thuya et la haie champêtre sont les options les plus accessibles. Le photinia et l'eleagnus représentent un investissement intermédiaire. Demandez-nous un devis pour connaître le budget adapté à votre linéaire.*
 
 ## La réglementation
 
@@ -1035,10 +1020,10 @@ Chez Art des Jardins, nous cochons toutes les cases : assurance RC Pro et décen
   },
   {
     slug: 'arrosage-automatique-guide-installation',
-    title: 'Arrosage automatique : guide d\'installation et coûts',
-    metaTitle: 'Arrosage Automatique : Guide d\'Installation et Prix | Art des Jardins',
+    title: 'Arrosage automatique : guide complet d\'installation',
+    metaTitle: 'Arrosage Automatique : Guide Complet d\'Installation | Art des Jardins',
     metaDescription:
-      'Comment installer un arrosage automatique au jardin ? Tuyères, turbines, goutte-à-goutte, programmateur. Guide complet et prix par un paysagiste à Angers.',
+      'Comment installer un arrosage automatique au jardin ? Tuyères, turbines, goutte-à-goutte, programmateur. Guide complet par un paysagiste à Angers.',
     excerpt:
       'Tout savoir sur l\'arrosage automatique : types de système, installation, programmation et budget.',
     category: 'Aménagement',
@@ -1130,16 +1115,19 @@ Les programmateurs modernes offrent des fonctionnalités avancées :
 - Vérification de chaque zone (buses bouchées, fuites)
 - Reprogrammation des cycles selon la saison
 
-## Budget indicatif
+## Ce qui influence le budget
 
-| Surface jardin | Nombre de zones | Budget indicatif (fourni-posé) |
-|---|---|---|
-| 50 m² | 2-3 | 1 500 – 2 500 € |
-| 100 m² | 3-4 | 2 500 – 4 000 € |
-| 200 m² | 4-6 | 4 000 – 6 000 € |
-| 300 m² et + | 6+ | 6 000 – 10 000 € |
+Le coût d'un arrosage automatique dépend de plusieurs facteurs :
 
-*Prix incluant tuyaux, arroseurs, programmateur, tranchage et main-d'œuvre.*
+| Facteur | Impact sur le budget |
+|---|---|
+| Surface du jardin | Plus la surface est grande, plus le réseau est étendu |
+| Nombre de zones | Chaque zone nécessite une électrovanne et un circuit dédié |
+| Type d'arroseurs | Les turbines couvrent plus de surface mais sont plus coûteuses que les tuyères |
+| Programmateur | Les modèles connectés (Wi-Fi) avec sonde d'humidité sont plus onéreux |
+| Accessibilité du terrain | Un terrain en pente ou encombré complique le tranchage |
+
+Un petit jardin de ville nécessite généralement 2 à 3 zones, tandis qu'un grand jardin peut en demander 6 ou plus. Contactez-nous pour un devis gratuit adapté à votre surface et vos besoins.
 
 ## Pourquoi faire appel à un professionnel ?
 
@@ -1168,7 +1156,7 @@ Une installation mal conçue gaspille l'eau, crée des zones sèches ou sature l
     title: 'Terrasse bois ou pierre : comparatif pour le climat angevin',
     metaTitle: 'Terrasse Bois ou Pierre : Quel Choix à Angers ? | Art des Jardins',
     metaDescription:
-      'Bois, composite ou pierre naturelle pour votre terrasse à Angers ? Comparatif complet : durabilité, entretien, prix, esthétique selon le climat angevin.',
+      'Bois, composite ou pierre naturelle pour votre terrasse à Angers ? Comparatif complet : durabilité, entretien, esthétique selon le climat angevin.',
     excerpt:
       'Bois, composite ou pierre ? Quel matériau choisir pour votre terrasse à Angers selon le climat local.',
     category: 'Aménagement',
@@ -1184,21 +1172,18 @@ Le choix du matériau de terrasse impacte directement l'esthétique, l'entretien
 Le bois naturel reste le matériau le plus chaleureux. Plusieurs essences sont adaptées à l'extérieur :
 
 **Pin traité autoclave (classe 4)**
-- Prix : 30-50 €/m² (pose comprise : 80-120 €/m²)
 - Durée de vie : 10-15 ans
 - Entretien : dégriseur + saturateur tous les 2 ans
-- Avantage : le plus économique
+- Avantage : l'option la plus accessible en bois naturel
 - Inconvénient : grise rapidement, peut se fendre
 
 **Bois exotique (ipé, cumaru, padouk)**
-- Prix : 80-120 €/m² (pose comprise : 130-180 €/m²)
 - Durée de vie : 25-40 ans
 - Entretien : saturateur annuel (ou laisser griser)
 - Avantage : très dense, imputrescible, noble
-- Inconvénient : coût élevé, impact écologique
+- Inconvénient : investissement plus important, impact écologique
 
 **Chêne ou châtaignier**
-- Prix : 50-80 €/m² (pose comprise : 100-150 €/m²)
 - Durée de vie : 20-30 ans
 - Entretien : saturateur tous les 2 ans
 - Avantage : local, caractère, tanins naturels anti-pourriture
@@ -1207,10 +1192,9 @@ Le bois naturel reste le matériau le plus chaleureux. Plusieurs essences sont a
 ### 2. Bois composite
 Le composite (fibres de bois + résine) est devenu le matériau le plus populaire pour les terrasses.
 
-- Prix : 40-80 €/m² (pose comprise : 100-150 €/m²)
 - Durée de vie : 20-30 ans
 - Entretien : nettoyage au jet annuel, aucun traitement
-- Avantage : imputrescible, ne grise pas, large choix de teintes, antidérapant
+- Avantage : imputrescible, ne grise pas, large choix de teintes, antidérapant, budget intermédiaire
 - Inconvénient : aspect plastique pour les entrées de gamme, chauffe au soleil
 
 **À Angers** : le composite est un excellent choix car il résiste parfaitement à l'humidité ambiante et ne nécessite aucun entretien malgré les pluies fréquentes.
@@ -1219,21 +1203,18 @@ Le composite (fibres de bois + résine) est devenu le matériau le plus populair
 La pierre apporte un cachet incomparable et une durabilité exceptionnelle.
 
 **Ardoise (schiste)**
-- Prix : 60-100 €/m² (pose comprise : 120-180 €/m²)
 - Durée de vie : 50+ ans
 - Entretien : quasi nul
 - Avantage : matériau local (carrières de Trélazé), noble, intemporel
 - Inconvénient : glissante par temps humide si non traitée
 
 **Grès, granit**
-- Prix : 80-150 €/m² (pose comprise : 150-250 €/m²)
 - Durée de vie : 50+ ans
 - Entretien : quasi nul
 - Avantage : robuste, élégant, grande variété de teintes
-- Inconvénient : pose plus longue, coût élevé
+- Inconvénient : pose plus longue, investissement conséquent
 
 **Travertin**
-- Prix : 40-70 €/m² (pose comprise : 100-140 €/m²)
 - Durée de vie : 30-50 ans
 - Entretien : hydrofuge tous les 3-5 ans
 - Avantage : lumineux, ne chauffe pas au soleil, antidérapant naturel
@@ -1242,17 +1223,16 @@ La pierre apporte un cachet incomparable et une durabilité exceptionnelle.
 ### 4. Dalles sur plots
 Les dalles (béton, grès cérame ou pierre reconstituée) posées sur plots sont une alternative pratique.
 
-- Prix : 40-80 €/m² (pose comprise : 80-130 €/m²)
 - Durée de vie : 30+ ans
 - Entretien : nettoyage au jet
-- Avantage : pose rapide sans fondation, accès aux réseaux, pas de joints
+- Avantage : pose rapide sans fondation, accès aux réseaux, pas de joints, budget accessible
 - Inconvénient : hauteur de pose (minimum 5 cm), résonance sous les pas
 
 ## Tableau comparatif
 
 | Critère | Bois naturel | Composite | Pierre naturelle | Dalles sur plots |
 |---|---|---|---|---|
-| Budget | €€ | €€ | €€€ | €€ |
+| Budget | Accessible à élevé | Intermédiaire | Élevé | Accessible |
 | Durabilité | 10-30 ans | 20-30 ans | 50+ ans | 30+ ans |
 | Entretien | Régulier | Minimal | Quasi nul | Minimal |
 | Esthétique | Chaleureuse | Moderne | Noble | Contemporaine |
@@ -1291,7 +1271,7 @@ Art des Jardins vous accompagne dans le choix et la réalisation de votre terras
     title: 'Gazon : semis ou placage, que choisir ?',
     metaTitle: 'Gazon Semis ou Placage : Lequel Choisir ? | Art des Jardins Angers',
     metaDescription:
-      'Semis de gazon ou gazon en rouleaux (placage) ? Comparatif complet : prix, délai, résultat, entretien. Conseils de paysagiste à Angers.',
+      'Semis de gazon ou gazon en rouleaux (placage) ? Comparatif complet : délai, résultat, entretien. Conseils de paysagiste à Angers.',
     excerpt:
       'Semis ou placage de gazon ? Comparatif des deux méthodes pour obtenir une belle pelouse à Angers.',
     category: 'Entretien',
@@ -1307,7 +1287,7 @@ Vous rêvez d'une belle pelouse verte ? Deux méthodes s'offrent à vous : le se
 Des graines sont semées sur un sol préparé, puis arrosées régulièrement jusqu'à la levée (7-15 jours) et l'enracinement complet (2-3 mois).
 
 ### Avantages
-- **Prix** : 2-5 €/m² (semences + préparation), le plus économique
+- **Budget** : la méthode la plus économique, idéale pour les grandes surfaces
 - **Choix des variétés** : large gamme de mélanges (sport, ornement, ombre, sécheresse)
 - **Surface** : idéal pour les grandes surfaces (plus de 100 m²)
 - **Enracinement** : les racines s'adaptent parfaitement au sol existant
@@ -1336,7 +1316,7 @@ Des bandes de gazon pré-cultivé (rouleaux de 40 cm x 2,5 m) sont déroulées s
 - **Régularité parfaite** : pas de zones clairsemées
 
 ### Inconvénients
-- **Prix** : 8-15 €/m² (fourni-posé), 3 à 5 fois plus cher que le semis
+- **Budget** : investissement plus important que le semis (3 à 5 fois supérieur), à considérer pour les petites et moyennes surfaces
 - **Choix limité** : 2-3 variétés standard chez les producteurs
 - **Logistique** : les rouleaux doivent être posés dans les 24h après livraison
 - **Arrosage** : abondant les 2 premières semaines pour la reprise
@@ -1345,7 +1325,7 @@ Des bandes de gazon pré-cultivé (rouleaux de 40 cm x 2,5 m) sont déroulées s
 
 | Critère | Semis | Placage |
 |---|---|---|
-| Prix au m² | 2-5 € | 8-15 € |
+| Budget | Économique | Plus conséquent |
 | Résultat visible | 2-3 semaines (levée) | Immédiat |
 | Utilisable | 2-3 mois | 2-3 semaines |
 | Période de pose | Printemps / automne | Mars à novembre |
