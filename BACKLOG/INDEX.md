@@ -8,9 +8,9 @@
 
 | Type | Prochain ID |
 |------|-------------|
-| BUG | BUG-020 |
-| FEAT | FEAT-125 |
-| IMP | IMP-083 |
+| BUG | BUG-021 |
+| FEAT | FEAT-128 |
+| IMP | IMP-100 |
 
 ---
 
@@ -18,10 +18,10 @@
 
 | Type | Pending | Ready | Done | Total |
 |------|---------|-------|------|-------|
-| Bugs | 9 | 0 | 1 | 10 |
-| Features | 36 | 10 | 76 | 122 |
-| Improvements | 24 | 7 | 22 | 53 |
-| **Total** | **70** | **17** | **98** | **185** |
+| Bugs | 10 | 0 | 1 | 11 |
+| Features | 39 | 10 | 76 | 125 |
+| Improvements | 41 | 7 | 22 | 70 |
+| **Total** | **90** | **17** | **98** | **206** |
 
 ---
 
@@ -375,6 +375,61 @@
 
 ---
 
+## Roadmap Audit UX/SEO/CRO Premium (NOUVEAU - 2026-02-27)
+
+> **OBJECTIF:** Audit expert complet (UX, Design, SEO, CRO, Performance). Maximiser conversions et SEO local.
+> **SOURCE:** Audit 10 phases par equipe 5 agents d'exploration.
+
+### Phase 1 - Fixes critiques credibilite + conversion (Quick Wins)
+
+| Ordre | Ticket | Description | Priorite | Complexite | Statut |
+|-------|--------|-------------|----------|------------|--------|
+| 1 | BUG-020 | SIRET et infos juridiques incorrects (footer + schema) | Critique | XS | **DONE** |
+| 2 | IMP-083 | Ajouter Testimonials sur la homepage | Critique | XS | **DONE** |
+| 3 | IMP-084 | Ajuster stats homepage (chiffres realistes) | Haute | XS | **DONE** |
+| 4 | IMP-085 | CTA entre sections Before/After et FAQ | Haute | XS | **DONE** |
+| 5 | IMP-097 | Optimiser wording CTA hero | Moyenne | XS | **DONE** |
+| 6 | IMP-086 | Reduire opacite hero overlays | Haute | XS | **DONE** |
+
+### Phase 2 - SEO technique + Performance
+
+| Ordre | Ticket | Description | Priorite | Complexite | Statut |
+|-------|--------|-------------|----------|------------|--------|
+| 7 | IMP-013 | Canonical URLs per-page (existant) | Critique | S | |
+| 8 | IMP-025 | BreadcrumbList schema toutes pages (existant) | Basse | S | |
+| 9 | IMP-089 | Completer sameAs dans schema LocalBusiness | Moyenne | XS | |
+| 10 | IMP-095 | HowTo schema sections process | Basse | S | |
+| 11 | IMP-087 | Lazy-load iframe Google Maps | Moyenne | XS | |
+| 12 | IMP-090 | Preload hero image par page | Moyenne | S | |
+| 13 | IMP-096 | dns-prefetch et preconnect | Basse | XS | |
+| 14 | IMP-099 | Optimiser poids fonts Cormorant | Basse | XS | |
+
+### Phase 3 - Reorganisation UX + CRO
+
+| Ordre | Ticket | Description | Priorite | Complexite | Statut |
+|-------|--------|-------------|----------|------------|--------|
+| 15 | IMP-098 | Reorganiser sections homepage (flow conversion) | Haute | S | |
+| 16 | IMP-088 | Renforcer maillage interne blog → services | Moyenne | S | |
+
+### Phase 4 - Contenu SEO
+
+| Ordre | Ticket | Description | Priorite | Complexite | Statut |
+|-------|--------|-------------|----------|------------|--------|
+| 17 | FEAT-125 | 10+ articles blog supplementaires | Haute | L | |
+| 18 | IMP-091 | Enrichir contenu pages villes (800+ mots) | Haute | L | |
+| 19 | FEAT-126 | Page /realisations/ dediee avec filtres | Haute | M | |
+| 20 | FEAT-127 | Page /faq/ dediee autonome | Moyenne | S | |
+
+### Phase 5 - Design premium
+
+| Ordre | Ticket | Description | Priorite | Complexite | Statut |
+|-------|--------|-------------|----------|------------|--------|
+| 21 | IMP-092 | Couleur secondary (or) plus presente | Moyenne | S | |
+| 22 | IMP-093 | Style premium StatsCounter | Basse | S | |
+| 23 | IMP-094 | CTA buttons enrichis (micro-interactions) | Basse | S | |
+
+---
+
 ## Roadmap Audit Qualite
 
 > **OBJECTIF:** Corriger les problemes identifies par l'audit complet (securite, code quality, SEO, infra).
@@ -428,7 +483,7 @@
 
 ## Features
 
-### Pending (37) - dont 22 Flutter + 6 NON AUTOMATISABLES + 3 Deploy + 5 Audit + 1 SEO
+### Pending (40)
 
 | ID | Titre | Priorite | Phase | Raison |
 |----|-------|----------|-------|--------|
@@ -450,6 +505,9 @@
 | FEAT-122 | Service API dans docker-compose | Critique | Prod API | ✅ |
 | FEAT-123 | docker-compose.prod.yml + Caddy HTTPS | Critique | Prod API | ✅ |
 | FEAT-124 | Section "Nos chantiers en action" vitrine | Haute | Vitrine | ✅ |
+| FEAT-125 | 10+ articles blog supplementaires SEO | Haute | Audit Premium | ✅ |
+| FEAT-126 | Page /realisations/ dediee avec filtres | Haute | Audit Premium | ✅ |
+| FEAT-127 | Page /faq/ dediee autonome | Moyenne | Audit Premium | ✅ |
 
 ### Ready (11) - AUTOMATISABLES
 
@@ -551,7 +609,7 @@
 
 ## Bugs
 
-### Pending (9) - Audit securite + SEO
+### Pending (9)
 
 | ID | Titre | Priorite | Complexite | Tags |
 |----|-------|----------|------------|------|
@@ -564,18 +622,18 @@
 | BUG-007 | CORS dev autorise toutes origines | Moyenne | XS | security, api |
 | BUG-009 | Formulaire contact WEB3FORMS non configure | Critique | XS | vitrine, conversion |
 | BUG-010 | Google Search Console non activee | Critique | XS | seo, vitrine, infra |
-
-### Done (1)
+### Done (2)
 
 | ID | Titre | Priorite | Date resolution |
 |----|-------|----------|-----------------|
 | BUG-008 | Accents manquants meta/contenus vitrine | Critique | 2026-02-16 |
+| BUG-020 | SIRET et infos juridiques incorrects footer+schema | Critique | 2026-02-27 |
 
 ---
 
 ## Improvements
 
-### Pending (20) - dont 1 NON AUTOMATISABLE + 19 Audit
+### Pending (32)
 
 | ID | Titre | Priorite | Phase | Raison |
 |----|-------|----------|-------|--------|
@@ -604,6 +662,18 @@
 | IMP-051 | Configurer SMTP Brevo (emails prod) | Critique | Prod API | ❌ Compte Brevo |
 | IMP-052 | Configurer Scaleway S3 (stockage prod) | Haute | Prod API | ❌ Compte Scaleway |
 | IMP-053 | .env.production securise + checklist | Critique | Prod API | ⚠️ Secrets manuels |
+| IMP-087 | Lazy-load iframe Google Maps | Moyenne | Audit Premium | ✅ |
+| IMP-088 | Maillage interne blog → services | Moyenne | Audit Premium | ✅ |
+| IMP-089 | Completer sameAs schema LocalBusiness | Moyenne | Audit Premium | ✅ |
+| IMP-090 | Preload hero image par page | Moyenne | Audit Premium | ✅ |
+| IMP-091 | Enrichir contenu pages villes (800+ mots) | Haute | Audit Premium | ✅ |
+| IMP-092 | Couleur secondary (or) plus presente | Moyenne | Audit Premium | ✅ |
+| IMP-093 | Style premium StatsCounter | Basse | Audit Premium | ✅ |
+| IMP-094 | CTA buttons enrichis (micro-interactions) | Basse | Audit Premium | ✅ |
+| IMP-095 | HowTo schema sections process | Basse | Audit Premium | ✅ |
+| IMP-096 | dns-prefetch et preconnect | Basse | Audit Premium | ✅ |
+| IMP-098 | Reorganiser sections homepage | Haute | Audit Premium | ✅ |
+| IMP-099 | Optimiser poids fonts Cormorant | Basse | Audit Premium | ✅ |
 
 ### Ready (7) - AUTOMATISABLES
 
@@ -617,7 +687,7 @@
 | IMP-006 | Expiration sessions inactives | Moyenne | S | security, auth, ux | 12 |
 | IMP-008 | Backup chiffre | Moyenne | S | security, backup | 13 |
 
-### Done (21)
+### Done (26)
 
 | ID | Titre | Priorite | Date resolution |
 |----|-------|----------|-----------------|
@@ -643,6 +713,11 @@
 | IMP-047 | Conversion HEIC apercu + thumbnails Canvas | Moyenne | 2026-02-16 |
 | IMP-048 | Responsive mobile footer | Basse | 2026-02-16 |
 | IMP-049 | Alignement visuel identite site / logo | Haute | 2026-02-19 |
+| IMP-083 | Ajouter Testimonials sur homepage | Critique | 2026-02-27 |
+| IMP-084 | Ajuster stats homepage (chiffres realistes) | Haute | 2026-02-27 |
+| IMP-085 | CTA entre Before/After et FAQ | Haute | 2026-02-27 |
+| IMP-086 | Reduire opacite hero overlays | Haute | 2026-02-27 |
+| IMP-097 | Optimiser wording CTA hero | Moyenne | 2026-02-27 |
 
 ---
 
