@@ -102,7 +102,7 @@ export function PhotoGallery({ maxItems, showFilters = true, initialCategory, ex
       )}
 
       {/* Gallery Grid */}
-      <div className="gallery-masonry">
+      <div className={activeCategory ? 'gallery-grid' : 'gallery-masonry'}>
         {displayed.map((image, index) => (
           <button
             key={image.slug}
