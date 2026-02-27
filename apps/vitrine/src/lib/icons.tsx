@@ -23,7 +23,7 @@ export { CalendarIcon as IconCalendar } from '@heroicons/react/24/outline';
 export { ArrowUpTrayIcon as IconUpload } from '@heroicons/react/24/outline';
 export { SunIcon as IconSun } from '@heroicons/react/24/outline';
 export { CurrencyEuroIcon as IconEuro } from '@heroicons/react/24/outline';
-export { SparklesIcon as IconQualite } from '@heroicons/react/24/outline';
+export { ShieldCheckIcon as IconQualite } from '@heroicons/react/24/outline';
 export { UserGroupIcon as IconEquipe } from '@heroicons/react/24/outline';
 export { DocumentCheckIcon as IconTransparence } from '@heroicons/react/24/outline';
 

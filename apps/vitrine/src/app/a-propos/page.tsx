@@ -44,7 +44,6 @@ const values = [
 const stats = [
   { value: '16+', label: 'Années d\'expérience cumulée' },
   { value: '500+', label: 'Projets réalisés' },
-  { value: '4.8/5', label: 'Satisfaction client' },
   { value: '30 km', label: 'Zone d\'intervention' },
 ];
 
