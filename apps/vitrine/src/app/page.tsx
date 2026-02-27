@@ -67,17 +67,15 @@ export default function HomePage() {
       {/* Services Section */}
       <section className="pt-8 pb-16 lg:pt-10 lg:pb-24 bg-gray-50">
         <div className="container-custom">
-          <AnimateOnScroll>
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 lg:mb-6">Nos services de paysagiste à Angers</h2>
-            <div className="hidden lg:flex justify-center mb-8">
-              <div className="scroll-hint">
-                <svg className="w-5 h-5 text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3" />
-                </svg>
-              </div>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 lg:mb-6">Nos services de paysagiste à Angers</h2>
+          <div className="hidden lg:flex justify-center mb-8">
+            <div className="scroll-hint">
+              <svg className="w-5 h-5 text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3" />
+              </svg>
             </div>
-            <div className="mb-8 lg:hidden" />
-          </AnimateOnScroll>
+          </div>
+          <div className="mb-8 lg:hidden" />
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
             {services.map((service, i) => (
               <AnimateOnScroll key={service.title} delay={i * 100} className="h-full">
