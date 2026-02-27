@@ -53,7 +53,7 @@ export default function ContactPage() {
       <HeroSection
         imageSlug="terrasse-2"
         title="Contactez-nous"
-        subtitle="Besoin d'un devis ou d'un conseil ? Remplissez le formulaire ci-dessous ou contactez-nous directement. Réponse garantie sous 48h."
+        subtitle="Demandez votre visite gratuite. Nous venons sur place, étudions votre projet et vous remettrons un devis détaillé sous 48h."
         overlay="strong"
       />
 
@@ -63,8 +63,25 @@ export default function ContactPage() {
           <div className="grid lg:grid-cols-3 gap-12">
             {/* Contact Form */}
             <div className="lg:col-span-2">
+              {/* Process en 3 étapes */}
+              <div className="grid grid-cols-3 gap-4 mb-8">
+                {[
+                  { step: '1', title: 'Vous nous contactez', desc: 'Via ce formulaire ou par téléphone' },
+                  { step: '2', title: 'Visite gratuite', desc: 'Nous venons étudier votre projet sur place' },
+                  { step: '3', title: 'Devis sous 48h', desc: 'Détaillé, transparent et sans engagement' },
+                ].map((item) => (
+                  <div key={item.step} className="text-center">
+                    <div className="w-10 h-10 bg-primary-600 text-white rounded-full flex items-center justify-center font-bold mx-auto mb-2">
+                      {item.step}
+                    </div>
+                    <h3 className="font-semibold text-sm text-gray-900">{item.title}</h3>
+                    <p className="text-xs text-gray-500 mt-1">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+
               <div id="contact-form-container" className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
-                <h2 className="text-2xl font-bold mb-6">Demande de devis gratuit</h2>
+                <h2 className="text-2xl font-bold mb-6">Demande de visite gratuite</h2>
                 <ContactForm />
               </div>
             </div>
