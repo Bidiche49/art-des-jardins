@@ -161,7 +161,7 @@ export function Header() {
                               {item.title}
                             </span>
                             {item.badge && (
-                              <span className="text-[10px] font-semibold bg-green-100 text-green-700 px-1.5 py-0.5 rounded-full leading-none whitespace-nowrap">
+                              <span className="text-[10px] font-semibold bg-primary-100 text-primary-700 px-1.5 py-0.5 rounded-full leading-none whitespace-nowrap">
                                 {item.badge}
                               </span>
                             )}
@@ -278,7 +278,7 @@ export function Header() {
                           <span className="text-primary-600">{item.icon}</span>
                           {item.title}
                           {item.badge && (
-                            <span className="text-[10px] font-semibold bg-green-100 text-green-700 px-1.5 py-0.5 rounded-full leading-none">
+                            <span className="text-[10px] font-semibold bg-primary-100 text-primary-700 px-1.5 py-0.5 rounded-full leading-none">
                               {item.badge}
                             </span>
                           )}
