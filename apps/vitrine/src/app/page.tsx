@@ -56,8 +56,8 @@ export default function HomePage() {
               <span className="font-medium">Angers et 30 km</span>
             </div>
             <div className="flex items-center gap-2">
-              <IconEuro className="w-5 h-5 text-primary-600 flex-shrink-0" />
-              <span className="font-medium">Crédit d&apos;impôt 50 %</span>
+              <IconEuro className="w-5 h-5 text-secondary-500 flex-shrink-0" />
+              <span className="font-medium text-secondary-700">Crédit d&apos;impôt 50 %</span>
             </div>
           </div>
         </div>

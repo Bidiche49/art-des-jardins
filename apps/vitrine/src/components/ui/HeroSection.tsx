@@ -44,6 +44,8 @@ export function HeroSection({
 
   return (
     <section className="hero-section relative text-white min-h-[500px] lg:min-h-[600px] flex items-center">
+      {/* Preload hero image for better LCP */}
+      <link rel="preload" as="image" type="image/webp" imageSrcSet={srcSet} imageSizes="100vw" />
       <HeroClient
         srcSet={srcSet}
         defaultSrc={defaultSrc}
@@ -53,7 +55,7 @@ export function HeroSection({
       />
       <div className="container-custom relative z-10 py-16 lg:py-24">
         {breadcrumbs && <Breadcrumbs items={breadcrumbs} />}
-        <div className="w-16 h-1 bg-primary-500 rounded-full mb-6" />
+        <div className="w-16 h-1 bg-secondary-500 rounded-full mb-6" />
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 hero-text-shadow">{title}</h1>
         {subtitle && (
           <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl hero-text-shadow-subtle">{subtitle}</p>
