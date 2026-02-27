@@ -41,7 +41,7 @@ export default function MentionsLegalesPage() {
             <li><strong>SIRET :</strong> 999 636 806 00013</li>
             <li><strong>TVA intracommunautaire :</strong> FR36999636806</li>
             <li><strong>RCS :</strong> Angers</li>
-            <li><strong>Code NAF :</strong> 8130Z - Services d'aménagement paysager</li>
+            <li><strong>Code NAF :</strong> 81.30Z - Services d'aménagement paysager</li>
             <li><strong>Capital social :</strong> 5 000 euros</li>
             <li><strong>Téléphone :</strong> 07 81 16 07 37 / 06 59 68 49 16</li>
             <li><strong>Email :</strong> artdesjardins49@gmail.com</li>
