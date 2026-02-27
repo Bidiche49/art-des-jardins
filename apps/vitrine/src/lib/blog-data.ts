@@ -24,7 +24,7 @@ export const articles: BlogArticle[] = [
     category: 'Élagage',
     readTime: 6,
     publishDate: '2026-02-01',
-    imageSlug: 'elagage-1',
+    imageSlug: 'elagage-3',
     content: `
 L'élagage est un geste essentiel pour la santé et la sécurité de vos arbres. Mais attention : élaguer au mauvais moment peut fragiliser l'arbre, favoriser les maladies ou compromettre la cicatrisation. Voici notre guide complet.
 
@@ -326,7 +326,7 @@ L'entretien des haies de moins de 3,5 m de hauteur est éligible au **crédit d'
     category: 'Abattage',
     readTime: 5,
     publishDate: '2026-02-14',
-    imageSlug: 'abattage-1',
+    imageSlug: 'elagage-1',
     content: `
 Vous souhaitez abattre un arbre dans votre jardin ? Avant toute intervention, il est essentiel de vérifier la réglementation applicable. Dans certains cas, une autorisation est obligatoire sous peine d'amende.
 
