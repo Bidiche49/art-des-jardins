@@ -30,7 +30,7 @@ export default function ServicesPage() {
       />
 
       {/* Hero */}
-      <section className="bg-gradient-to-br from-primary-600 to-primary-800 text-white py-16 lg:py-24">
+      <section className="bg-gradient-to-br from-primary-600 to-primary-800 text-white py-16 lg:py-24 min-h-[400px] lg:min-h-[450px] flex items-center">
         <div className="container-custom">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Nos Services</h1>
           <p className="text-xl text-primary-100 max-w-2xl">
