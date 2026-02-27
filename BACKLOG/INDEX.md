@@ -395,10 +395,10 @@
 
 | Ordre | Ticket | Description | Priorite | Complexite | Statut |
 |-------|--------|-------------|----------|------------|--------|
-| 7 | IMP-013 | Canonical URLs per-page (existant) | Critique | S | |
-| 8 | IMP-025 | BreadcrumbList schema toutes pages (existant) | Basse | S | |
-| 9 | IMP-089 | Completer sameAs dans schema LocalBusiness | Moyenne | XS | |
-| 10 | IMP-095 | HowTo schema sections process | Basse | S | |
+| 7 | IMP-013 | Canonical URLs per-page (existant) | Critique | S | **DONE** |
+| 8 | IMP-025 | BreadcrumbList schema toutes pages (existant) | Basse | S | **DONE** |
+| 9 | IMP-089 | Completer sameAs dans schema LocalBusiness | Moyenne | XS | **DONE** |
+| 10 | IMP-095 | HowTo schema sections process | Basse | S | **DONE** |
 | 11 | IMP-087 | Lazy-load iframe Google Maps | Moyenne | XS | |
 | 12 | IMP-090 | Preload hero image par page | Moyenne | S | |
 | 13 | IMP-096 | dns-prefetch et preconnect | Basse | XS | |
@@ -633,7 +633,7 @@
 
 ## Improvements
 
-### Pending (32)
+### Pending (28)
 
 | ID | Titre | Priorite | Phase | Raison |
 |----|-------|----------|-------|--------|
@@ -642,7 +642,6 @@
 | IMP-010 | Supprimer console.log en production | Haute | Audit | ✅ |
 | IMP-011 | Remplacer types any par interfaces | Haute | Audit | ✅ |
 | IMP-012 | Centraliser business data vitrine | Haute | Audit | ✅ |
-| IMP-013 | Canonical URLs pages vitrine | Critique | Audit | ✅ |
 | IMP-014 | Schema.org ServiceSchema incomplet | Haute | Audit | ✅ |
 | IMP-015 | useOfflineSync → Dexie | Haute | Audit | ✅ |
 | IMP-016 | Chiffrer backups BDD | Haute | Audit | ✅ |
@@ -654,7 +653,6 @@
 | IMP-022 | Validation DTO statut API | Moyenne | Audit | ✅ |
 | IMP-023 | process.env → ConfigService API | Moyenne | Audit | ✅ |
 | IMP-024 | Endpoints mockes stats/categories | Moyenne | Audit | ✅ |
-| IMP-025 | BreadcrumbList Schema.org vitrine | Basse | Audit | ✅ |
 | IMP-026 | Service Worker skipWaiting PWA | Moyenne | Audit | ✅ |
 | IMP-027 | Gestion erreurs PWA (toasts) | Moyenne | Audit | ✅ |
 | IMP-050 | Ajouter assurance décennale (accueil + FAQ) | Haute | Retour client | ✅ |
@@ -664,13 +662,11 @@
 | IMP-053 | .env.production securise + checklist | Critique | Prod API | ⚠️ Secrets manuels |
 | IMP-087 | Lazy-load iframe Google Maps | Moyenne | Audit Premium | ✅ |
 | IMP-088 | Maillage interne blog → services | Moyenne | Audit Premium | ✅ |
-| IMP-089 | Completer sameAs schema LocalBusiness | Moyenne | Audit Premium | ✅ |
 | IMP-090 | Preload hero image par page | Moyenne | Audit Premium | ✅ |
 | IMP-091 | Enrichir contenu pages villes (800+ mots) | Haute | Audit Premium | ✅ |
 | IMP-092 | Couleur secondary (or) plus presente | Moyenne | Audit Premium | ✅ |
 | IMP-093 | Style premium StatsCounter | Basse | Audit Premium | ✅ |
 | IMP-094 | CTA buttons enrichis (micro-interactions) | Basse | Audit Premium | ✅ |
-| IMP-095 | HowTo schema sections process | Basse | Audit Premium | ✅ |
 | IMP-096 | dns-prefetch et preconnect | Basse | Audit Premium | ✅ |
 | IMP-098 | Reorganiser sections homepage | Haute | Audit Premium | ✅ |
 | IMP-099 | Optimiser poids fonts Cormorant | Basse | Audit Premium | ✅ |
@@ -687,7 +683,7 @@
 | IMP-006 | Expiration sessions inactives | Moyenne | S | security, auth, ux | 12 |
 | IMP-008 | Backup chiffre | Moyenne | S | security, backup | 13 |
 
-### Done (26)
+### Done (30)
 
 | ID | Titre | Priorite | Date resolution |
 |----|-------|----------|-----------------|
@@ -718,6 +714,10 @@
 | IMP-085 | CTA entre Before/After et FAQ | Haute | 2026-02-27 |
 | IMP-086 | Reduire opacite hero overlays | Haute | 2026-02-27 |
 | IMP-097 | Optimiser wording CTA hero | Moyenne | 2026-02-27 |
+| IMP-013 | Canonical URLs pages vitrine | Critique | 2026-02-27 |
+| IMP-025 | BreadcrumbList Schema.org vitrine | Basse | 2026-02-27 |
+| IMP-089 | Completer sameAs schema LocalBusiness | Moyenne | 2026-02-27 |
+| IMP-095 | HowTo schema sections process | Basse | 2026-02-27 |
 
 ---
 
