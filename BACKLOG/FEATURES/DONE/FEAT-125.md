@@ -1,7 +1,7 @@
 # FEAT-125: 10+ articles blog supplementaires SEO longue traine
 
 **Type:** Feature
-**Statut:** A faire
+**Statut:** Fait
 **Priorite:** Haute
 **Complexite:** L
 **Tags:** vitrine, seo, contenu, blog

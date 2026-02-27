@@ -19,9 +19,9 @@
 | Type | Pending | Ready | Done | Total |
 |------|---------|-------|------|-------|
 | Bugs | 10 | 0 | 1 | 11 |
-| Features | 39 | 10 | 76 | 125 |
-| Improvements | 37 | 7 | 26 | 70 |
-| **Total** | **86** | **17** | **102** | **206** |
+| Features | 36 | 10 | 79 | 125 |
+| Improvements | 33 | 7 | 30 | 70 |
+| **Total** | **79** | **17** | **109** | **206** |
 
 ---
 
@@ -415,18 +415,18 @@
 
 | Ordre | Ticket | Description | Priorite | Complexite | Statut |
 |-------|--------|-------------|----------|------------|--------|
-| 17 | FEAT-125 | 10+ articles blog supplementaires | Haute | L | |
-| 18 | IMP-091 | Enrichir contenu pages villes (800+ mots) | Haute | L | |
-| 19 | FEAT-126 | Page /realisations/ dediee avec filtres | Haute | M | |
-| 20 | FEAT-127 | Page /faq/ dediee autonome | Moyenne | S | |
+| 17 | FEAT-125 | 10+ articles blog supplementaires | Haute | L | **DONE** |
+| 18 | IMP-091 | Enrichir contenu pages villes (800+ mots) | Haute | L | **DONE** |
+| 19 | FEAT-126 | Page /realisations/ dediee avec filtres | Haute | M | **DONE** |
+| 20 | FEAT-127 | Page /faq/ dediee autonome | Moyenne | S | **DONE** |
 
 ### Phase 5 - Design premium
 
 | Ordre | Ticket | Description | Priorite | Complexite | Statut |
 |-------|--------|-------------|----------|------------|--------|
-| 21 | IMP-092 | Couleur secondary (or) plus presente | Moyenne | S | Fait |
-| 22 | IMP-093 | Style premium StatsCounter | Basse | S | Fait |
-| 23 | IMP-094 | CTA buttons enrichis (micro-interactions) | Basse | S | Fait |
+| 21 | IMP-092 | Couleur secondary (or) plus presente | Moyenne | S | **DONE** |
+| 22 | IMP-093 | Style premium StatsCounter | Basse | S | **DONE** |
+| 23 | IMP-094 | CTA buttons enrichis (micro-interactions) | Basse | S | **DONE** |
 
 ---
 
@@ -483,7 +483,7 @@
 
 ## Features
 
-### Pending (40)
+### Pending (37)
 
 | ID | Titre | Priorite | Phase | Raison |
 |----|-------|----------|-------|--------|
@@ -505,9 +505,6 @@
 | FEAT-122 | Service API dans docker-compose | Critique | Prod API | ✅ |
 | FEAT-123 | docker-compose.prod.yml + Caddy HTTPS | Critique | Prod API | ✅ |
 | FEAT-124 | Section "Nos chantiers en action" vitrine | Haute | Vitrine | ✅ |
-| FEAT-125 | 10+ articles blog supplementaires SEO | Haute | Audit Premium | ✅ |
-| FEAT-126 | Page /realisations/ dediee avec filtres | Haute | Audit Premium | ✅ |
-| FEAT-127 | Page /faq/ dediee autonome | Moyenne | Audit Premium | ✅ |
 
 ### Ready (11) - AUTOMATISABLES
 
@@ -525,7 +522,7 @@
 | FEAT-073 | Meteo integree | Basse | S | api, ux, integration | 15 |
 | FEAT-077 | Authentification biometrique (WebAuthn) | Haute | M | security, auth, ux, pwa, mobile | 12 |
 
-### Done (71)
+### Done (74)
 
 | ID | Titre | Priorite | Date resolution |
 |----|-------|----------|-----------------|
@@ -604,6 +601,9 @@
 | FEAT-117 | Section credit d'impot / CESU | Haute | 2026-02-16 |
 | FEAT-119 | Mega-menu services header | Basse | 2026-02-16 |
 | FEAT-120 | Schema AggregateOffer prix | Basse | 2026-02-16 |
+| FEAT-125 | 10+ articles blog supplementaires SEO | Haute | 2026-02-28 |
+| FEAT-126 | Page /realisations/ dediee avec filtres | Haute | 2026-02-28 |
+| FEAT-127 | Page /faq/ dediee autonome | Moyenne | 2026-02-28 |
 
 ---
 
@@ -633,7 +633,7 @@
 
 ## Improvements
 
-### Pending (24)
+### Pending (20)
 
 | ID | Titre | Priorite | Phase | Raison |
 |----|-------|----------|-------|--------|
@@ -661,10 +661,6 @@
 | IMP-052 | Configurer Scaleway S3 (stockage prod) | Haute | Prod API | ❌ Compte Scaleway |
 | IMP-053 | .env.production securise + checklist | Critique | Prod API | ⚠️ Secrets manuels |
 | IMP-088 | Maillage interne blog → services | Moyenne | Audit Premium | ✅ |
-| IMP-091 | Enrichir contenu pages villes (800+ mots) | Haute | Audit Premium | ✅ |
-| IMP-092 | Couleur secondary (or) plus presente | Moyenne | Audit Premium | ✅ |
-| IMP-093 | Style premium StatsCounter | Basse | Audit Premium | ✅ |
-| IMP-094 | CTA buttons enrichis (micro-interactions) | Basse | Audit Premium | ✅ |
 | IMP-098 | Reorganiser sections homepage | Haute | Audit Premium | ✅ |
 
 ### Ready (7) - AUTOMATISABLES
@@ -679,7 +675,7 @@
 | IMP-006 | Expiration sessions inactives | Moyenne | S | security, auth, ux | 12 |
 | IMP-008 | Backup chiffre | Moyenne | S | security, backup | 13 |
 
-### Done (34)
+### Done (38)
 
 | ID | Titre | Priorite | Date resolution |
 |----|-------|----------|-----------------|
@@ -718,6 +714,10 @@
 | IMP-090 | Preload hero image par page | Moyenne | 2026-02-27 |
 | IMP-096 | dns-prefetch et preconnect | Basse | 2026-02-27 |
 | IMP-099 | Optimiser poids fonts Cormorant | Basse | 2026-02-27 |
+| IMP-091 | Enrichir contenu pages villes (800+ mots) | Haute | 2026-02-27 |
+| IMP-092 | Couleur secondary (or) plus presente | Moyenne | 2026-02-27 |
+| IMP-093 | Style premium StatsCounter | Basse | 2026-02-27 |
+| IMP-094 | CTA buttons enrichis (micro-interactions) | Basse | 2026-02-27 |
 
 ---
 

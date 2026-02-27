@@ -1,7 +1,7 @@
 # FEAT-127: Page /faq/ dediee autonome
 
 **Type:** Feature
-**Statut:** A faire
+**Statut:** Fait
 **Priorite:** Moyenne
 **Complexite:** S
 **Tags:** vitrine, seo, ux
