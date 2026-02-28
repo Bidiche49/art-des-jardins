@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { LocalBusinessSchema } from '@/components/seo/LocalBusinessSchema';
 import { HomeFAQ } from '@/components/HomeFAQ';
+import { Testimonials } from '@/components/Testimonials';
 import { HeroSection } from '@/components/ui/HeroSection';
 import { ServiceCard } from '@/components/ui/ServiceCard';
 import { StatsCounter } from '@/components/ui/StatsCounter';
@@ -91,40 +92,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* About Section */}
-      <section className="py-16 lg:py-24">
-        <div className="container-custom max-w-4xl">
-          <AnimateOnScroll>
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
-              Art des Jardins, votre paysagiste de confiance à Angers
-            </h2>
-          </AnimateOnScroll>
-          <AnimateOnScroll>
-            <div className="prose prose-lg text-gray-600 mx-auto">
-              <p>
-                Fondée par deux associés passionnés cumulant plus de <strong>16 ans d&apos;expérience</strong> dans
-                l&apos;aménagement paysager, Art des Jardins est une entreprise de paysage basée aux Ponts-de-Cé,
-                à proximité immédiate d&apos;Angers. Nous accompagnons particuliers, professionnels et syndics dans
-                tous leurs projets d&apos;espaces verts : <Link href="/services/paysagisme/" className="text-primary-600 hover:text-primary-700">création de jardins</Link>,{' '}
-                <Link href="/services/entretien-jardin/" className="text-primary-600 hover:text-primary-700">entretien régulier</Link>,{' '}
-                <Link href="/services/elagage/" className="text-primary-600 hover:text-primary-700">élagage</Link> et{' '}
-                <Link href="/services/abattage/" className="text-primary-600 hover:text-primary-700">abattage d&apos;arbres</Link>.
-              </p>
-              <p>
-                Notre approche sur mesure garantit un résultat à la hauteur de vos attentes, que ce soit pour
-                un petit jardin de ville ou un grand espace paysager. Chaque projet commence par une visite
-                gratuite pour comprendre vos besoins, votre terrain et votre budget. Nous vous proposons ensuite
-                un devis détaillé et transparent, sans mauvaise surprise.
-              </p>
-            </div>
-          </AnimateOnScroll>
-        </div>
-      </section>
-
-      {/* Stats Counter */}
-      <AnimateOnScroll>
-        <StatsCounter />
-      </AnimateOnScroll>
+      {/* Testimonials */}
+      <Testimonials />
 
       {/* Gallery Preview */}
       <section className="py-16 lg:py-24">
@@ -183,8 +152,38 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* About Section */}
+      <section className="py-16 lg:py-24">
+        <div className="container-custom max-w-4xl">
+          <AnimateOnScroll>
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
+              Art des Jardins, votre paysagiste de confiance à Angers
+            </h2>
+          </AnimateOnScroll>
+          <AnimateOnScroll>
+            <div className="prose prose-lg text-gray-600 mx-auto text-center">
+              <p>
+                Fondée par deux associés passionnés cumulant plus de <strong>16 ans d&apos;expérience</strong>,
+                Art des Jardins accompagne particuliers, professionnels et syndics dans tous leurs projets
+                d&apos;espaces verts à Angers et dans le Maine-et-Loire.
+              </p>
+              <p>
+                <Link href="/a-propos/" className="text-primary-600 hover:text-primary-700 font-medium">
+                  Découvrir notre histoire &rarr;
+                </Link>
+              </p>
+            </div>
+          </AnimateOnScroll>
+        </div>
+      </section>
+
       {/* FAQ */}
       <HomeFAQ />
+
+      {/* Stats Counter */}
+      <AnimateOnScroll>
+        <StatsCounter />
+      </AnimateOnScroll>
 
       {/* Zone d'intervention */}
       <section className="py-16 lg:py-24 bg-gray-50">
