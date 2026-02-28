@@ -20,8 +20,8 @@
 |------|---------|-------|------|-------|
 | Bugs | 10 | 0 | 1 | 11 |
 | Features | 36 | 10 | 79 | 125 |
-| Improvements | 33 | 7 | 30 | 70 |
-| **Total** | **79** | **17** | **109** | **206** |
+| Improvements | 31 | 7 | 32 | 70 |
+| **Total** | **77** | **17** | **111** | **206** |
 
 ---
 
@@ -408,8 +408,8 @@
 
 | Ordre | Ticket | Description | Priorite | Complexite | Statut |
 |-------|--------|-------------|----------|------------|--------|
-| 15 | IMP-098 | Reorganiser sections homepage (flow conversion) | Haute | S | |
-| 16 | IMP-088 | Renforcer maillage interne blog → services | Moyenne | S | |
+| 15 | IMP-098 | Reorganiser sections homepage (flow conversion) | Haute | S | **DONE** |
+| 16 | IMP-088 | Renforcer maillage interne blog → services | Moyenne | S | **DONE** |
 
 ### Phase 4 - Contenu SEO
 
@@ -633,7 +633,7 @@
 
 ## Improvements
 
-### Pending (20)
+### Pending (18)
 
 | ID | Titre | Priorite | Phase | Raison |
 |----|-------|----------|-------|--------|
@@ -660,8 +660,6 @@
 | IMP-051 | Configurer SMTP Brevo (emails prod) | Critique | Prod API | ❌ Compte Brevo |
 | IMP-052 | Configurer Scaleway S3 (stockage prod) | Haute | Prod API | ❌ Compte Scaleway |
 | IMP-053 | .env.production securise + checklist | Critique | Prod API | ⚠️ Secrets manuels |
-| IMP-088 | Maillage interne blog → services | Moyenne | Audit Premium | ✅ |
-| IMP-098 | Reorganiser sections homepage | Haute | Audit Premium | ✅ |
 
 ### Ready (7) - AUTOMATISABLES
 
@@ -675,7 +673,7 @@
 | IMP-006 | Expiration sessions inactives | Moyenne | S | security, auth, ux | 12 |
 | IMP-008 | Backup chiffre | Moyenne | S | security, backup | 13 |
 
-### Done (38)
+### Done (40)
 
 | ID | Titre | Priorite | Date resolution |
 |----|-------|----------|-----------------|
@@ -718,6 +716,8 @@
 | IMP-092 | Couleur secondary (or) plus presente | Moyenne | 2026-02-27 |
 | IMP-093 | Style premium StatsCounter | Basse | 2026-02-27 |
 | IMP-094 | CTA buttons enrichis (micro-interactions) | Basse | 2026-02-27 |
+| IMP-088 | Maillage interne blog → services | Moyenne | 2026-02-28 |
+| IMP-098 | Reorganiser sections homepage | Haute | 2026-02-28 |
 
 ---
 
