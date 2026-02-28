@@ -4,6 +4,7 @@ import { services } from '@/lib/services-data';
 import { ServiceSchema } from '@/components/seo/ServiceSchema';
 import { ServiceCard } from '@/components/ui/ServiceCard';
 import { AnimateOnScroll } from '@/components/ui/AnimateOnScroll';
+import { HeroSection } from '@/components/ui/HeroSection';
 import { serviceCardImages, images } from '@/lib/images-manifest';
 import { IconCheck, IconChevronRight } from '@/lib/icons';
 
@@ -30,15 +31,15 @@ export default function ServicesPage() {
       />
 
       {/* Hero */}
-      <section className="bg-gradient-to-br from-primary-600 to-primary-800 text-white py-16 lg:py-24 min-h-[400px] lg:min-h-[580px] flex items-center">
-        <div className="container-custom">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Nos Services</h1>
-          <p className="text-xl text-primary-100 max-w-2xl">
-            Art des Jardins vous accompagne dans tous vos projets d'espaces verts. De la conception à
-            l'entretien, découvrez nos prestations professionnelles.
-          </p>
-        </div>
-      </section>
+      <HeroSection
+        imageSlug="creation-7"
+        title="Nos Services"
+        subtitle="Art des Jardins vous accompagne dans tous vos projets d'espaces verts. De la conception à l'entretien, découvrez nos prestations professionnelles."
+        breadcrumbs={[
+          { label: 'Accueil', href: '/' },
+          { label: 'Services' },
+        ]}
+      />
 
       {/* Services Grid - with photos */}
       <section className="py-16 lg:py-24">
