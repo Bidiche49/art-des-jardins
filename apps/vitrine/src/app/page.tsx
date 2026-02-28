@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { LocalBusinessSchema } from '@/components/seo/LocalBusinessSchema';
 import { HomeFAQ } from '@/components/HomeFAQ';
-import { Testimonials } from '@/components/Testimonials';
+// import { Testimonials } from '@/components/Testimonials'; // DESACTIVE — avis fictifs, reactiver avec de vrais avis
 import { HeroSection } from '@/components/ui/HeroSection';
 import { ServiceCard } from '@/components/ui/ServiceCard';
 import { StatsCounter } from '@/components/ui/StatsCounter';
@@ -92,8 +92,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <Testimonials />
+      {/* Testimonials — DESACTIVE : les avis actuels sont fictifs (placeholder).
+         Reactiver <Testimonials /> uniquement quand de vrais avis clients seront disponibles.
+         Le composant est pret dans @/components/Testimonials.tsx */}
 
       {/* Gallery Preview */}
       <section className="py-16 lg:py-24">

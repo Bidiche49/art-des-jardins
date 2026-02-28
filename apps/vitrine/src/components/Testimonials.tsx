@@ -1,3 +1,7 @@
+// ATTENTION : Les avis ci-dessous sont FICTIFS (placeholders).
+// NE PAS afficher sur le site tant qu'il n'y a pas de vrais avis clients.
+// Remplacer le contenu du tableau `testimonials` par de vrais temoignages avant activation.
+
 interface Testimonial {
   name: string;
   location: string;
