@@ -48,6 +48,11 @@ const services = [
   { value: 'entretien', label: 'Entretien de jardin' },
   { value: 'elagage', label: 'Élagage / Taille d\'arbres' },
   { value: 'abattage', label: 'Abattage / Dessouchage' },
+  { value: 'terrasse', label: 'Terrasse / Aménagement extérieur' },
+  { value: 'cloture', label: 'Clôture / Portail' },
+  { value: 'taille-haies', label: 'Taille de haies' },
+  { value: 'debroussaillage', label: 'Débroussaillage / Nettoyage terrain' },
+  { value: 'arrosage', label: 'Arrosage automatique' },
   { value: 'autre', label: 'Autre demande' },
 ];
 
