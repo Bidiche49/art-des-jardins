@@ -102,11 +102,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fr" className={`${inter.variable} ${cormorant.variable}`}>
-      <head>
-        <link rel="dns-prefetch" href="//maps.google.com" />
-        <link rel="dns-prefetch" href="//maps.gstatic.com" />
-        <link rel="preconnect" href="https://maps.google.com" crossOrigin="anonymous" />
-      </head>
+      <head />
       <body className="min-h-screen flex flex-col">
         <Analytics />
         <Header />

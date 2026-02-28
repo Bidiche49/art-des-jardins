@@ -52,6 +52,10 @@ const contactInfo = [
 export default function ContactPage() {
   return (
     <>
+      <link rel="dns-prefetch" href="//maps.google.com" />
+      <link rel="dns-prefetch" href="//maps.gstatic.com" />
+      <link rel="preconnect" href="https://maps.google.com" crossOrigin="anonymous" />
+
       {/* Hero */}
       <HeroSection
         imageSlug="terrasse-2"
