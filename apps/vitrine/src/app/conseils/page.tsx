@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { articles } from '@/lib/blog-data';
 import { HeroSection } from '@/components/ui/HeroSection';
+import { getImage, getDefaultSrc } from '@/lib/images-manifest';
 
 export const metadata: Metadata = {
   title: 'Conseils Jardinage - Blog Paysagiste | Art des Jardins Angers',
@@ -41,7 +42,7 @@ export default function ConseilsPage() {
               >
                 <div className="aspect-[16/9] overflow-hidden bg-gray-100">
                   <img
-                    src={`/images/realisations/${article.imageSlug}-800w.webp`}
+                    src={getDefaultSrc(getImage(article.imageSlug)!, 800)}
                     alt={article.title}
                     loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"

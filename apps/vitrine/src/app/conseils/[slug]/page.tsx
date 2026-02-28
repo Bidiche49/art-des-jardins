@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { articles, getArticleBySlug } from '@/lib/blog-data';
+import { getImage, getDefaultSrc } from '@/lib/images-manifest';
 
 interface PageProps {
   params: { slug: string };
@@ -28,7 +29,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       publishedTime: article.publishDate,
       images: [
         {
-          url: `/images/realisations/${article.imageSlug}-1200w.webp`,
+          url: getDefaultSrc(getImage(article.imageSlug)!, 1200),
           width: 1200,
           height: 630,
         },
@@ -106,7 +107,7 @@ export default function ArticlePage({ params }: PageProps) {
     '@type': 'Article',
     headline: article.title,
     description: article.metaDescription,
-    image: `https://art-et-jardin.fr/images/realisations/${article.imageSlug}-1200w.webp`,
+    image: `https://art-et-jardin.fr${getDefaultSrc(getImage(article.imageSlug)!, 1200)}`,
     datePublished: article.publishDate,
     author: {
       '@type': 'Organization',
@@ -181,14 +182,14 @@ export default function ArticlePage({ params }: PageProps) {
 
       <article>
         {/* Hero image */}
-        <div className="relative h-64 md:h-96 overflow-hidden">
+        <div className="relative min-h-[400px] lg:min-h-[580px] overflow-hidden flex flex-col">
           <img
-            src={`/images/realisations/${article.imageSlug}-1920w.webp`}
+            src={getDefaultSrc(getImage(article.imageSlug)!, 1920)}
             alt={article.title}
             className="absolute inset-0 w-full h-full object-cover"
           />
           <div className="absolute inset-0 hero-overlay-strong" />
-          <div className="container-custom relative z-10 h-full flex flex-col justify-end pb-8">
+          <div className="container-custom relative z-10 flex-1 flex flex-col justify-end py-12 lg:py-16">
             <nav className="text-sm text-white/70 mb-4">
               <Link href="/" className="hover:text-white">Accueil</Link>
               <span className="mx-2">/</span>
@@ -278,7 +279,7 @@ export default function ArticlePage({ params }: PageProps) {
 
       {/* CTA */}
       <section className="relative py-16 overflow-hidden">
-        <img src={`/images/realisations/${article.imageSlug}-1200w.webp`} alt="" loading="lazy" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover" />
+        <img src={getDefaultSrc(getImage(article.imageSlug)!, 1200)} alt="" loading="lazy" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 hero-overlay-strong" />
         <div className="container-custom text-center relative z-10">
           <h2 className="text-3xl font-bold mb-4 text-white">Vous avez un projet ?</h2>
