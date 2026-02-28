@@ -93,7 +93,7 @@ Un <a href="/services/elagage/" class="text-primary-600 underline decoration-pri
     category: 'Aménagement',
     readTime: 5,
     publishDate: '2026-02-05',
-    imageSlug: 'creation-2',
+    imageSlug: 'blog-garden-design',
     content: `
 Le budget d'un <a href="/services/paysagisme/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">aménagement de jardin</a> dépend de nombreux facteurs : surface, complexité, choix des matériaux et des végétaux. Voici un guide complet pour comprendre ce qui influence votre projet.
 
@@ -385,7 +385,7 @@ Spécialiste de l'<a href="/services/abattage/" class="text-primary-600 underlin
     category: 'Entretien',
     readTime: 7,
     publishDate: '2026-02-18',
-    imageSlug: 'entretien-3',
+    imageSlug: 'blog-autumn-garden',
     content: `
 L'hiver en Anjou est généralement doux grâce à l'influence océanique, avec des températures moyennes entre 3 et 8 °C. Mais les gelées tardives (jusqu'en avril) et les épisodes de froid sec peuvent fragiliser vos plantations si elles ne sont pas préparées. Voici un guide complet pour protéger votre jardin.
 
@@ -591,7 +591,7 @@ Art des Jardins conçoit et réalise des <a href="/services/paysagisme/" class="
     category: 'Aménagement',
     readTime: 7,
     publishDate: '2026-02-22',
-    imageSlug: 'elagage-4',
+    imageSlug: 'blog-tree-garden',
     content: `
 Planter un arbre est un investissement sur le long terme. En choisissant une essence adaptée au sol et au climat d'Angers, vous vous assurez un arbre vigoureux, esthétique et facile à entretenir pendant des décennies. Découvrez aussi nos conseils pour votre <a href="/services/paysagisme/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">aménagement paysager</a>.
 
@@ -694,7 +694,7 @@ Le choix d'un arbre engage pour des décennies. Chez Art des Jardins, <a href="/
     category: 'Aménagement',
     readTime: 6,
     publishDate: '2026-02-24',
-    imageSlug: 'creation-4',
+    imageSlug: 'blog-small-garden',
     content: `
 À Angers, les jardins de ville mesurent souvent entre 20 et 80 m². C'est suffisant pour créer un véritable espace de vie extérieur — à condition d'optimiser chaque mètre carré. Voici nos conseils de paysagiste pour tirer le meilleur de votre petit jardin.
 
@@ -1275,7 +1275,7 @@ Art des Jardins vous accompagne dans le choix et la <a href="/services/terrasse/
     category: 'Entretien',
     readTime: 5,
     publishDate: '2026-03-03',
-    imageSlug: 'entretien-2',
+    imageSlug: 'blog-green-lawn',
     content: `
 Vous rêvez d'une belle pelouse verte ? Deux méthodes s'offrent à vous : le semis traditionnel ou le placage (gazon en rouleaux). Chacune a ses avantages selon votre budget, votre patience et l'usage prévu.
 
@@ -1394,7 +1394,7 @@ Art des Jardins réalise la création et la réfection de pelouses à <a href="/
     category: 'Entretien',
     readTime: 7,
     publishDate: '2026-03-05',
-    imageSlug: 'creation-5',
+    imageSlug: 'blog-wildflower-meadow',
     content: `
 Un jardin écologique n'est pas un jardin en friche. C'est un espace pensé pour fonctionner en harmonie avec son environnement : moins d'eau, moins de produits chimiques, plus de biodiversité — et tout aussi beau qu'un jardin classique. Voici comment y parvenir à Angers avec un <a href="/services/entretien-jardin/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">entretien de jardin</a> adapté.
 
@@ -1609,7 +1609,7 @@ Art des Jardins intervient pour le <a href="/services/debroussaillage/" class="t
     category: 'Entretien',
     readTime: 5,
     publishDate: '2026-03-12',
-    imageSlug: 'creation-7',
+    imageSlug: 'entretien-3',
     content: `
 Faire entretenir son jardin par un professionnel coûte deux fois moins cher grâce au crédit d'impôt. Voici comment en profiter en 2026.
 

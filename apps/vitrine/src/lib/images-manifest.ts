@@ -479,10 +479,100 @@ export const images: Record<string, ImageEntry> = {
     1200: { path: '/images/realisations/terrasse-1-avant-1200w.webp', width: 1200, height: 900 },
     1920: { path: '/images/realisations/terrasse-1-avant-1920w.webp', width: 1920, height: 1440 }
     },
+  },
+  'blog-garden-design': {
+    slug: 'blog-garden-design',
+    category: 'blog',
+    alt: 'Jardin paysager amenage avec table et vegetation luxuriante',
+    tags: ['blog', 'design', 'amenagement', 'jardin'],
+    originalWidth: 2400,
+    originalHeight: 1600,
+    blurDataURI: 'data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAACwBACdASoUABQAPzmSu1gvKiWjqAqp4CcJYgC+SA2KZ7i96JwM+LQAfTnNT02AAP6gzC2JmZaQ2cFuztO1A6lV88YA6eHQwxPdCqrUvFyYZmAvWHGoQuXKmfRe20OmY700OqjzEpcRskJlnzwxEqhxogg8q0oFuEeIBPgDUfSM60fbIoJ+AAAA',
+    sizes: {
+    480: { path: '/images/blog/blog-garden-design-480w.webp', width: 480, height: 320 },
+    800: { path: '/images/blog/blog-garden-design-800w.webp', width: 800, height: 533 },
+    1200: { path: '/images/blog/blog-garden-design-1200w.webp', width: 1200, height: 800 },
+    1920: { path: '/images/blog/blog-garden-design-1920w.webp', width: 1920, height: 1280 }
+    },
+  },
+  'blog-autumn-garden': {
+    slug: 'blog-autumn-garden',
+    category: 'blog',
+    alt: 'Feuilles mortes sur pelouse en automne - preparation jardin pour hiver',
+    tags: ['blog', 'automne', 'feuilles', 'hiver'],
+    originalWidth: 2400,
+    originalHeight: 1602,
+    blurDataURI: 'data:image/webp;base64,UklGRp4AAABXRUJQVlA4IJIAAABwBACdASoUABQAPzmSv1mvKaajqAgB4CcJZl2ATKAJoYisarKkODFTLJdTgAD+eDrf44iP8sMIdT0w1Q3NYYTGyNcD3nm8HH9PDgp5M8zFxg2+MwK6Ui0GiYhX6ckAJ7oBmfHkeYrfUziNu+Vx7Wn5FGuBk5PcLluiuMQ+SpwL1+N8c7t9MQAxQn9YJCI/R6VgAA==',
+    sizes: {
+    480: { path: '/images/blog/blog-autumn-garden-480w.webp', width: 480, height: 320 },
+    800: { path: '/images/blog/blog-autumn-garden-800w.webp', width: 800, height: 534 },
+    1200: { path: '/images/blog/blog-autumn-garden-1200w.webp', width: 1200, height: 801 },
+    1920: { path: '/images/blog/blog-autumn-garden-1920w.webp', width: 1920, height: 1282 }
+    },
+  },
+  'blog-tree-garden': {
+    slug: 'blog-tree-garden',
+    category: 'blog',
+    alt: 'Arbre ornemental dans un parc paysager verdoyant',
+    tags: ['blog', 'arbre', 'parc', 'ornement'],
+    originalWidth: 2400,
+    originalHeight: 1564,
+    blurDataURI: 'data:image/webp;base64,UklGRqIAAABXRUJQVlA4IJYAAAAwBACdASoUABQAPzmSwFmvKaajqAgB4CcJQBlAAIXbpaoxKXW/h+xCNcwA/sib+XWV2E36twqR8rPXDa7WcDC/LjufMST+ROcu+8NS4zyYHq8ibxwvsmAtv6+EwBEwsLcwwlgI6HNCVzZBP+VvV7Lb6KWsdfjejZn+Ul7n+hKInqUY5ciNheo2V+k50EVJ53w10iJAAAA=',
+    sizes: {
+    480: { path: '/images/blog/blog-tree-garden-480w.webp', width: 480, height: 313 },
+    800: { path: '/images/blog/blog-tree-garden-800w.webp', width: 800, height: 521 },
+    1200: { path: '/images/blog/blog-tree-garden-1200w.webp', width: 1200, height: 782 },
+    1920: { path: '/images/blog/blog-tree-garden-1920w.webp', width: 1920, height: 1251 }
+    },
+  },
+  'blog-small-garden': {
+    slug: 'blog-small-garden',
+    category: 'blog',
+    alt: 'Petit jardin urbain avec plantes en pots et cour ensoleillee',
+    tags: ['blog', 'petit-jardin', 'urbain', 'cour'],
+    originalWidth: 2400,
+    originalHeight: 1601,
+    blurDataURI: 'data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAABwBACdASoUABQAPzmUwVmvKicjqAgB4CcJYgC7AA8NRVamf+4Lwsh7DUpnGAD+r54L0IzVCz5cI7YuwF0m9FobojH+OrfU0g2V+SrTSE3gvcqo6m/V6P2Cg9aHtJYqM+yzm//eI7zssgObBNFP+lAW/Bp1oRB+BvaJJxgDT9AHRkAA',
+    sizes: {
+    480: { path: '/images/blog/blog-small-garden-480w.webp', width: 480, height: 320 },
+    800: { path: '/images/blog/blog-small-garden-800w.webp', width: 800, height: 533 },
+    1200: { path: '/images/blog/blog-small-garden-1200w.webp', width: 1200, height: 801 },
+    1920: { path: '/images/blog/blog-small-garden-1920w.webp', width: 1920, height: 1281 }
+    },
+  },
+  'blog-green-lawn': {
+    slug: 'blog-green-lawn',
+    category: 'blog',
+    alt: 'Gazon vert et dense baigne de lumiere naturelle',
+    tags: ['blog', 'gazon', 'pelouse', 'vert'],
+    originalWidth: 2400,
+    originalHeight: 1600,
+    blurDataURI: 'data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAACwBACdASoUABQAPzmCu1cvJ6WjsBgIAeAnCWQAnTLHQamDAF74Oj6V0etbCuEAAPxEjdhc5K1NWkPrljmU/SQUs6sLtEq90MZRi5X0sJR45RcLSom5+gNUxL7M43iUAAA=',
+    sizes: {
+    480: { path: '/images/blog/blog-green-lawn-480w.webp', width: 480, height: 320 },
+    800: { path: '/images/blog/blog-green-lawn-800w.webp', width: 800, height: 533 },
+    1200: { path: '/images/blog/blog-green-lawn-1200w.webp', width: 1200, height: 800 },
+    1920: { path: '/images/blog/blog-green-lawn-1920w.webp', width: 1920, height: 1280 }
+    },
+  },
+  'blog-wildflower-meadow': {
+    slug: 'blog-wildflower-meadow',
+    category: 'blog',
+    alt: 'Prairie fleurie naturelle avec fleurs sauvages et arbres en arriere-plan',
+    tags: ['blog', 'ecologique', 'prairie', 'fleurs-sauvages'],
+    originalWidth: 2400,
+    originalHeight: 1600,
+    blurDataURI: 'data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADwAwCdASoUABQAPzmQvVgvKaYjqAqp4CcJZgDE2A2IvJMWvKS/8ZwAAP6e+f91k3VAPoqzsiIswWDoG9FD76M0xn4UVYoL4dVXDlbhIdkTlyLZIM2V5gAA',
+    sizes: {
+    480: { path: '/images/blog/blog-wildflower-meadow-480w.webp', width: 480, height: 320 },
+    800: { path: '/images/blog/blog-wildflower-meadow-800w.webp', width: 800, height: 533 },
+    1200: { path: '/images/blog/blog-wildflower-meadow-1200w.webp', width: 1200, height: 800 },
+    1920: { path: '/images/blog/blog-wildflower-meadow-1920w.webp', width: 1920, height: 1280 }
+    },
   }
 };
 
-export const categories = ['creation', 'elagage', 'entretien', 'terrasse', 'cloture', 'arrosage'] as const;
+export const categories = ['creation', 'elagage', 'entretien', 'terrasse', 'cloture', 'arrosage', 'blog'] as const;
 export type ImageCategory = typeof categories[number];
 
 export function getImagesByCategory(category: ImageCategory): ImageEntry[] {
