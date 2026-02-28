@@ -435,8 +435,8 @@ export const images: Record<string, ImageEntry> = {
     1920: { path: '/images/realisations/creation-8-avant-1920w.webp', width: 1903, height: 1476 }
     },
   },
-  'creation-9-avant': {
-    slug: 'creation-9-avant',
+  'creation-10-avant': {
+    slug: 'creation-10-avant',
     category: 'creation',
     alt: 'Jardin en friche avec vegetation desordonnee avant amenagement paysager',
     tags: ['creation', 'avant', 'friche'],
@@ -444,10 +444,25 @@ export const images: Record<string, ImageEntry> = {
     originalHeight: 1536,
     blurDataURI: 'data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAAAQBQCdASoUABQAPzmUwVmvKicjqAgB4CcJQBdgAiaV/WdzoIUeeeIIm5UbU27otUqAAP7TF3lsZKEwOPQMl6kSjrmEcEkGJtUdjmhDfUZbuRfT2VGGxA2jkxojt8DoMxHqme1YYskpMOt3b1p3c0XfqvQPNLjaimjbYAywAAA=',
     sizes: {
-    480: { path: '/images/realisations/creation-9-avant-480w.webp', width: 480, height: 360 },
-    800: { path: '/images/realisations/creation-9-avant-800w.webp', width: 800, height: 600 },
-    1200: { path: '/images/realisations/creation-9-avant-1200w.webp', width: 1200, height: 900 },
-    1920: { path: '/images/realisations/creation-9-avant-1920w.webp', width: 1920, height: 1440 }
+    480: { path: '/images/realisations/creation-10-avant-480w.webp', width: 480, height: 360 },
+    800: { path: '/images/realisations/creation-10-avant-800w.webp', width: 800, height: 600 },
+    1200: { path: '/images/realisations/creation-10-avant-1200w.webp', width: 1200, height: 900 },
+    1920: { path: '/images/realisations/creation-10-avant-1920w.webp', width: 1920, height: 1440 }
+    },
+  },
+  'creation-10': {
+    slug: 'creation-10',
+    category: 'creation',
+    alt: 'Jardin amenage avec allee en paves et massifs vegetaux apres creation paysagere',
+    tags: ['creation', 'allee', 'paves', 'massifs'],
+    originalWidth: 2048,
+    originalHeight: 1536,
+    blurDataURI: 'data:image/webp;base64,UklGRpwAAABXRUJQVlA4IJAAAABwBQCdASoUABQAPzmUwVmvKicjqAgB4CcJQBibAhy/837kJ6CqkVqoCPEsJZhUA5isLq4AAP7TOMOkEtUn8voUyTFd7CwLoCi0WDmvMoyMGvrMVhEdmbvf/eI/a7XYeveR0Jm4G5OUTHeKhlShnG3HFP8twFSyt6SVAkTXNGLmLCgLvwZ4YgZMMzgJVWSAAAA=',
+    sizes: {
+    480: { path: '/images/realisations/creation-10-480w.webp', width: 480, height: 360 },
+    800: { path: '/images/realisations/creation-10-800w.webp', width: 800, height: 600 },
+    1200: { path: '/images/realisations/creation-10-1200w.webp', width: 1200, height: 900 },
+    1920: { path: '/images/realisations/creation-10-1920w.webp', width: 1920, height: 1440 }
     },
   },
   'terrasse-1-avant': {

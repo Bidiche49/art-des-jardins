@@ -13,11 +13,11 @@ const projects = [
     location: 'Maine-et-Loire (49)',
   },
   {
-    before: '/images/realisations/creation-9-avant-800w.webp',
-    after: '/images/realisations/creation-9-800w.webp',
+    before: '/images/realisations/creation-10-avant-800w.webp',
+    after: '/images/realisations/creation-10-800w.webp',
     beforeAlt: 'Jardin en friche avec végétation désordonnée avant aménagement',
-    afterAlt: 'Parc paysager avec allée en gravier et espace réception',
-    title: 'Création d\'un parc paysager avec espace réception',
+    afterAlt: 'Jardin aménagé avec allée en pavés et massifs végétaux',
+    title: 'Aménagement complet d\'un jardin en friche',
     location: 'Maine-et-Loire (49)',
   },
   {
