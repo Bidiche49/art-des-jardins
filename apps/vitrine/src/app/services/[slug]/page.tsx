@@ -219,7 +219,7 @@ export default function ServicePage({ params }: PageProps) {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/contact/" className="btn-primary-light">
-              Demander un devis
+              Demander un devis gratuit
             </Link>
             <a
               href="tel:+33781160737"

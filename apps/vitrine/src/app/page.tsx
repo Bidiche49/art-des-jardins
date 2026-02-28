@@ -148,7 +148,7 @@ export default function HomePage() {
             Chaque projet commence par une écoute attentive de vos envies.
           </p>
           <Link href="/contact" className="btn-primary">
-            Parlons de votre projet
+            Demander un devis gratuit
           </Link>
         </div>
       </section>
