@@ -794,7 +794,7 @@ Un <a href="/paysagiste-angers/" class="text-primary-600 underline decoration-pr
     category: 'Aménagement',
     readTime: 7,
     publishDate: '2026-02-25',
-    imageSlug: 'cloture-1',
+    imageSlug: 'cloture-4',
     content: `
 La haie est le mode de clôture le plus naturel et le plus économique. Mais toutes les essences ne se valent pas : croissance, entretien, esthétique, durée de vie... Voici un comparatif complet des haies adaptées au Maine-et-Loire.
 
@@ -1710,7 +1710,7 @@ Pour l'<a href="/services/entretien-jardin/" class="text-primary-600 underline d
     category: 'Aménagement',
     readTime: 7,
     publishDate: '2026-03-16',
-    imageSlug: 'cloture-4',
+    imageSlug: 'cloture-1',
     content: `
 Grillage, bois, composite, aluminium ou gabion : chaque matériau de clôture a ses forces et ses limites. Voici un comparatif honnête pour vous aider à choisir.
 

@@ -8,7 +8,7 @@
 
 | Type | Prochain ID |
 |------|-------------|
-| BUG | BUG-022 |
+| BUG | BUG-023 |
 | FEAT | FEAT-128 |
 | IMP | IMP-119 |
 
@@ -628,6 +628,7 @@
 |----|-------|----------|-----------------|
 | BUG-008 | Accents manquants meta/contenus vitrine | Critique | 2026-02-16 |
 | BUG-020 | SIRET et infos juridiques incorrects footer+schema | Critique | 2026-02-27 |
+| BUG-022 | Images blog-* cassees sur 6 articles (chemins en dur) | Haute | 2026-02-28 |
 
 ---
 
