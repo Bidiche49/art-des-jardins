@@ -25,7 +25,7 @@ export default function HomePage() {
           fullHeight
         >
           <div className="flex flex-col sm:flex-row gap-4">
-            <Link href="/contact" className="btn-primary-light">
+            <Link href="/contact" className="btn-primary">
               Demander ma visite gratuite
             </Link>
             <Link href="/services" className="btn-secondary bg-transparent border-2 border-white text-white hover:bg-white/10">
