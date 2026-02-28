@@ -1514,6 +1514,494 @@ Chez Art des Jardins, nous intégrons les principes écologiques dans tous nos p
       },
     ],
   },
+  {
+    slug: 'debroussaillage-obligatoire-reglementation',
+    title: 'Débroussaillage obligatoire : ce que dit la loi en 2026',
+    metaTitle: 'Débroussaillage Obligatoire : Réglementation 2026 | Art des Jardins',
+    metaDescription:
+      'Le débroussaillage est-il obligatoire chez vous ? Réglementation, distances, sanctions. Guide complet pour le Maine-et-Loire par un paysagiste professionnel.',
+    excerpt:
+      'Le débroussaillage est une obligation légale dans certaines zones. Distances, sanctions, nouveautés 2025 : tout ce qu\'il faut savoir.',
+    category: 'Entretien',
+    readTime: 6,
+    publishDate: '2026-03-08',
+    imageSlug: 'chantier-avant-1',
+    content: `
+Le débroussaillage n'est pas qu'une question d'esthétique. Dans certaines zones, c'est une <strong>obligation légale</strong> dont le non-respect entraîne des amendes. Voici ce qu'il faut savoir en 2026.
+
+## Qui est concerné ?
+
+L'obligation de débroussaillement (OLD) s'applique dans les <strong>communes classées à risque d'incendie de forêt</strong>. Depuis 2024, la liste s'étend bien au-delà du Sud de la France : certaines communes de l'Ouest sont concernées par les obligations de prévention.
+
+<strong>Vous devez débroussailler si :</strong>
+- Votre terrain se situe à moins de 200 m d'un bois, d'une forêt ou d'une lande
+- Vous êtes dans une commune soumise à un plan de prévention des risques d'incendie de forêt (PPRIF)
+- Votre mairie ou préfecture a pris un arrêté imposant le débroussaillage
+
+## Les distances à respecter
+
+La réglementation impose un débroussaillage dans un rayon de <strong>50 mètres</strong> autour de toute construction, même si ce périmètre déborde sur la parcelle voisine. Dans certains secteurs à risque élevé, ce rayon peut être porté à <strong>100 mètres</strong> par arrêté préfectoral.
+
+<strong>Ce que « débroussailler » implique concrètement :</strong>
+- Éliminer les broussailles, ronces et végétation sèche
+- Élaguer les branches basses des arbres (jusqu'à 2 m de hauteur)
+- Supprimer les arbres morts
+- Créer une discontinuité entre les houppiers (couronnes des arbres)
+- Entretenir régulièrement pour éviter le retour de la végétation
+
+## Les sanctions
+
+<strong>Non-respect de l'obligation :</strong>
+- Mise en demeure par la mairie avec un délai de mise en conformité
+- Amende de <strong>1 500 €</strong> en cas de non-exécution
+- Si la commune fait réaliser les travaux d'office, les frais sont à votre charge (souvent bien supérieurs à l'amende)
+
+<strong>En cas de sinistre :</strong>
+- Votre assurance peut réduire ou refuser l'indemnisation si vous n'avez pas débroussaillé
+- Votre responsabilité civile peut être engagée en cas de propagation à des propriétés voisines
+
+## Nouveauté 2025 : l'obligation d'information
+
+Depuis le 1er janvier 2025, tout vendeur ou bailleur d'un bien situé en zone soumise à l'OLD doit <strong>informer l'acquéreur ou le locataire</strong> de cette obligation. Cette information doit figurer dans l'acte de vente ou le bail.
+
+## Le débroussaillage en Maine-et-Loire
+
+Le Maine-et-Loire n'est pas classé en zone de risque « élevé » comme les départements méditerranéens. Cependant, les sécheresses estivales de plus en plus fréquentes dans l'Ouest rendent le débroussaillage pertinent pour tout propriétaire ayant un terrain boisé ou en friche.
+
+Vérifiez auprès de votre mairie si un arrêté local impose le débroussaillage dans votre commune. Les communes de l'agglomération d'Angers peuvent avoir des réglementations spécifiques via le PLU.
+
+## Quand débroussailler ?
+
+La période idéale se situe <strong>entre février et avril</strong>, avant la reprise de végétation et la période de nidification. Un second passage en fin d'été (septembre) permet de maintenir le terrain propre.
+
+## Pourquoi faire appel à un professionnel ?
+
+Un terrain en friche avec ronces, arbustes enchevêtrés et végétation dense nécessite du matériel adapté : débroussailleuse professionnelle, broyeur de végétaux, tronçonneuse. Sans équipement, le travail est pénible, long et risqué.
+
+Art des Jardins intervient pour le <a href="/services/debroussaillage/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">débroussaillage de terrains</a> dans toute l'agglomération d'Angers. Nous broyons les végétaux sur place ou les évacuons, et vous remettons un terrain propre et conforme. <a href="/contact/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">Demandez un devis gratuit</a>.
+    `,
+    faq: [
+      {
+        question: 'Le Maine-et-Loire est-il concerné par l\'obligation de débroussaillage ?',
+        answer:
+          'Le département n\'est pas en zone de risque « élevé » comme le Sud, mais certaines communes peuvent prendre des arrêtés locaux imposant le débroussaillage, notamment près des zones boisées. Renseignez-vous auprès de votre mairie.',
+      },
+      {
+        question: 'Combien coûte un débroussaillage professionnel ?',
+        answer:
+          'Le prix dépend de la surface, de la densité de végétation et de l\'accessibilité du terrain. Pour une parcelle standard envahie de ronces, comptez une intervention de 1 à 3 jours. Nous établissons un devis gratuit après visite.',
+      },
+      {
+        question: 'Quelle est la différence entre débroussaillage et défrichage ?',
+        answer:
+          'Le débroussaillage consiste à éliminer la végétation basse (ronces, broussailles, herbes hautes) sans modifier la nature du terrain. Le défrichage va plus loin : il transforme un espace boisé en terrain cultivable ou constructible, et nécessite souvent une autorisation administrative.',
+      },
+    ],
+  },
+  {
+    slug: 'credit-impot-jardinage-2026',
+    title: 'Crédit d\'impôt jardinage 2026 : comment en profiter',
+    metaTitle: 'Crédit d\'Impôt Jardinage 2026 : Guide Complet | Art des Jardins',
+    metaDescription:
+      'Crédit d\'impôt de 50 % pour l\'entretien de jardin en 2026 : conditions, plafond, travaux éligibles. Tout savoir pour réduire votre facture de moitié.',
+    excerpt:
+      'Faire entretenir son jardin par un professionnel coûte deux fois moins cher grâce au crédit d\'impôt de 50 %. Mode d\'emploi.',
+    category: 'Entretien',
+    readTime: 5,
+    publishDate: '2026-03-12',
+    imageSlug: 'creation-7',
+    content: `
+Faire entretenir son jardin par un professionnel coûte deux fois moins cher grâce au crédit d'impôt. Voici comment en profiter en 2026.
+
+## Le principe : 50 % de crédit d'impôt
+
+Le crédit d'impôt pour les services à la personne (SAP) permet de déduire <strong>50 % des sommes dépensées</strong> pour l'entretien de votre jardin de votre impôt sur le revenu. Si vous ne payez pas d'impôt, l'État vous rembourse la différence : c'est un crédit, pas une simple réduction.
+
+<strong>Exemple concret :</strong>
+Vous payez 2 000 € d'entretien de jardin dans l'année → vous récupérez 1 000 € sur votre impôt.
+
+## Le plafond 2026
+
+Le plafond annuel est de <strong>5 000 €</strong> de dépenses par foyer fiscal, soit un avantage fiscal maximum de <strong>2 500 €</strong> par an. Ce plafond concerne uniquement les « petits travaux de jardinage », pas l'ensemble des services à la personne.
+
+## Les travaux éligibles
+
+<strong>Éligible :</strong>
+- Tonte de pelouse
+- Taille de haies et d'arbustes (jusqu'à 3,5 m de hauteur)
+- Désherbage et petit débroussaillage
+- Ramassage de feuilles
+- Bêchage et petit entretien des massifs
+- Arrachage de mauvaises herbes
+- Entretien du potager
+
+<strong>Non éligible :</strong>
+- Création de jardin et aménagement paysager
+- Élagage d'arbres de grande hauteur (> 3,5 m)
+- Abattage d'arbres
+- Pose de clôtures
+- Construction de terrasse
+- Installation d'arrosage automatique
+
+<strong>La règle simple</strong> : l'entretien courant est éligible, les travaux de création et les interventions lourdes ne le sont pas.
+
+## Les conditions à remplir
+
+- Les travaux doivent être réalisés <strong>à votre domicile</strong> (résidence principale ou secondaire)
+- Le prestataire doit être déclaré en tant qu'<strong>organisme de services à la personne (SAP)</strong> ou vous devez employer un salarié à domicile via le CESU
+- Les factures doivent détailler les prestations et le nombre d'heures
+- Conservez les factures pour votre déclaration de revenus
+
+## L'avance immédiate : ne plus attendre le remboursement
+
+Depuis 2022, le dispositif d'<strong>avance immédiate</strong> permet de ne payer que 50 % du montant au moment de la prestation. L'URSSAF verse directement les 50 % restants au prestataire. Fini l'attente du remboursement fiscal l'année suivante.
+
+Pour en bénéficier, votre prestataire doit être inscrit au dispositif auprès de l'URSSAF.
+
+## Comment déclarer ?
+
+1. Conservez toutes les factures de votre prestataire
+2. Dans votre déclaration de revenus, reportez le montant total dans la case <strong>7DB</strong> (services à la personne)
+3. L'administration calcule automatiquement le crédit de 50 %
+4. Le remboursement apparaît sur votre avis d'imposition
+
+## En résumé
+
+| | Montant |
+|---|---|
+| Plafond de dépenses | 5 000 €/an |
+| Crédit d'impôt | 50 % |
+| Avantage fiscal maximum | 2 500 €/an |
+| Avance immédiate | Oui (selon prestataire) |
+
+Pour l'<a href="/services/entretien-jardin/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">entretien de votre jardin à Angers</a>, Art des Jardins est déclaré en tant que prestataire de services à la personne. Nos <a href="/services/taille-haies/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">tailles de haies</a>, tontes et entretiens courants sont éligibles au crédit d'impôt. <a href="/contact/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">Demandez un devis</a> — le montant affiché est divisé par deux grâce à l'avantage fiscal.
+    `,
+    faq: [
+      {
+        question: 'L\'élagage est-il éligible au crédit d\'impôt ?',
+        answer:
+          'Non. L\'élagage d\'arbres de grande hauteur (plus de 3,5 m) n\'est pas considéré comme un « petit travail de jardinage » et n\'est donc pas éligible. En revanche, la taille d\'arbustes et de haies jusqu\'à 3,5 m de hauteur est éligible.',
+      },
+      {
+        question: 'Comment fonctionne l\'avance immédiate URSSAF ?',
+        answer:
+          'Avec l\'avance immédiate, vous ne payez que 50 % du montant de la facture. L\'URSSAF verse directement les 50 % restants au prestataire. C\'est automatique si votre prestataire est inscrit au dispositif. Vous n\'avez rien à avancer.',
+      },
+      {
+        question: 'Le crédit d\'impôt jardinage va-t-il disparaître ?',
+        answer:
+          'Le dispositif est reconduit chaque année dans la loi de finances. En 2026, il est maintenu aux mêmes conditions (50 %, plafond 5 000 €). Il fait l\'objet de discussions régulières mais reste en place depuis de nombreuses années.',
+      },
+      {
+        question: 'Peut-on en bénéficier pour une résidence secondaire ?',
+        answer:
+          'Oui. Le crédit d\'impôt s\'applique aux travaux d\'entretien réalisés aussi bien dans votre résidence principale que dans votre résidence secondaire. Le plafond de 5 000 € est commun à l\'ensemble des résidences.',
+      },
+    ],
+  },
+  {
+    slug: 'cloture-jardin-quel-materiau-choisir',
+    title: 'Clôture de jardin : quel matériau choisir ?',
+    metaTitle: 'Clôture Jardin : Quel Matériau Choisir ? | Art des Jardins',
+    metaDescription:
+      'Bois, composite, aluminium, grillage ou gabion ? Comparatif complet des matériaux de clôture pour votre jardin. Avantages, durée de vie et budget.',
+    excerpt:
+      'Grillage, bois, composite, aluminium ou gabion : chaque matériau de clôture a ses forces et ses limites. Comparatif honnête.',
+    category: 'Aménagement',
+    readTime: 7,
+    publishDate: '2026-03-16',
+    imageSlug: 'cloture-4',
+    content: `
+Grillage, bois, composite, aluminium ou gabion : chaque matériau de clôture a ses forces et ses limites. Voici un comparatif honnête pour vous aider à choisir.
+
+## 1. Le grillage rigide
+
+<strong>Le rapport qualité/prix imbattable.</strong>
+
+Le panneau rigide en acier galvanisé est le choix le plus courant pour délimiter un terrain.
+
+- <strong>Durée de vie</strong> : 20-30 ans (avec traitement anti-corrosion)
+- <strong>Entretien</strong> : quasi nul
+- <strong>Avantages</strong> : économique, installation rapide, solide, laisse passer la lumière
+- <strong>Limites</strong> : pas d'occultation (sauf ajout de lattes ou brise-vue), aspect industriel
+
+Le grillage rigide s'intègre facilement dans un jardin en ajoutant une <a href="/conseils/haies-cloture-quelle-essence-choisir/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">haie plantée</a> devant ou des lattes d'occultation.
+
+## 2. Le bois
+
+<strong>Le charme naturel.</strong>
+
+Panneaux, palissades ou lames de bois (pin traité, châtaignier, douglas) apportent une ambiance chaleureuse.
+
+- <strong>Durée de vie</strong> : 10-20 ans selon l'essence et le traitement
+- <strong>Entretien</strong> : lasure ou saturateur tous les 2-3 ans
+- <strong>Avantages</strong> : esthétique naturel, bonne occultation, personnalisable
+- <strong>Limites</strong> : grise avec le temps sans entretien, sensible à l'humidité
+
+Notre conseil : privilégiez le <strong>pin traité autoclave classe 4</strong> pour un bon rapport durabilité/prix, ou le <strong>châtaignier</strong> naturellement imputrescible si vous voulez éviter les traitements chimiques.
+
+## 3. Le composite
+
+<strong>La tranquillité sans entretien.</strong>
+
+Les lames composites (mélange bois/résine) imitent l'aspect du bois sans ses contraintes.
+
+- <strong>Durée de vie</strong> : 25-30 ans
+- <strong>Entretien</strong> : nettoyage au jet d'eau une fois par an
+- <strong>Avantages</strong> : ne grise pas, ne pourrit pas, ne se fend pas, occultation totale
+- <strong>Limites</strong> : aspect plus uniforme que le bois naturel, coût plus élevé
+
+Le composite est idéal pour une clôture qui doit rester belle longtemps sans entretien. Il se décline en de nombreux coloris et finitions.
+
+## 4. L'aluminium
+
+<strong>La modernité durable.</strong>
+
+L'aluminium offre un rendu contemporain avec des profils fins et élégants.
+
+- <strong>Durée de vie</strong> : 30-40 ans
+- <strong>Entretien</strong> : lavage à l'eau savonneuse occasionnel
+- <strong>Avantages</strong> : ne rouille jamais, léger, lignes modernes, thermolaqué (choix de couleurs)
+- <strong>Limites</strong> : coût élevé, aspect « neuf » permanent (pas de patine)
+
+L'aluminium est le choix premium pour les projets contemporains. Il s'accorde bien avec les portails motorisés.
+
+## 5. Le gabion
+
+<strong>Le mur végétalisable.</strong>
+
+Les gabions sont des cages métalliques remplies de pierres (galets, schiste, granit).
+
+- <strong>Durée de vie</strong> : 40-50 ans
+- <strong>Entretien</strong> : aucun
+- <strong>Avantages</strong> : très solide, excellent brise-vent, aspect minéral, végétalisable
+- <strong>Limites</strong> : encombrant (40-50 cm d'épaisseur), poids important, pose technique
+
+En Maine-et-Loire, le gabion rempli de <strong>schiste local</strong> s'intègre parfaitement au paysage angevin.
+
+## Comparatif récapitulatif
+
+| Matériau | Budget | Durée de vie | Entretien | Occultation |
+|---|---|---|---|---|
+| Grillage rigide | € | 20-30 ans | Aucun | Non (sauf ajout) |
+| Bois | €€ | 10-20 ans | Régulier | Oui |
+| Composite | €€€ | 25-30 ans | Minimal | Oui |
+| Aluminium | €€€€ | 30-40 ans | Minimal | Oui ou partiel |
+| Gabion | €€€ | 40-50 ans | Aucun | Oui |
+
+## La réglementation à connaître
+
+Avant de poser une clôture, vérifiez :
+- <strong>Le PLU de votre commune</strong> : il peut imposer un matériau, une hauteur ou une couleur
+- <strong>La déclaration préalable</strong> : obligatoire dans la plupart des communes
+- <strong>Les distances</strong> : une clôture se pose en limite de propriété ou en retrait, jamais sur la propriété du voisin
+- <strong>La mitoyenneté</strong> : si la clôture est mitoyenne, l'accord du voisin et le partage des frais sont recommandés
+
+Art des Jardins pose tous types de <a href="/services/cloture/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">clôtures</a> dans l'agglomération d'<a href="/paysagiste-angers/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">Angers</a>. Nous vous conseillons sur le matériau adapté à votre terrain et votre budget, et nous prenons en charge les démarches de déclaration préalable.
+    `,
+    faq: [
+      {
+        question: 'Quelle est la clôture la moins chère ?',
+        answer:
+          'Le grillage rigide en panneaux est le matériau le plus économique. Il offre une délimitation solide et durable pour un budget maîtrisé. L\'ajout de lattes ou d\'une haie permet ensuite de créer de l\'occultation progressivement.',
+      },
+      {
+        question: 'Faut-il une autorisation pour poser une clôture ?',
+        answer:
+          'Dans la plupart des communes, une déclaration préalable de travaux est nécessaire. Certaines zones (secteur sauvegardé, périmètre de monument historique) peuvent exiger des contraintes supplémentaires. Vérifiez le PLU de votre commune.',
+      },
+      {
+        question: 'Quelle clôture pour ne pas avoir d\'entretien ?',
+        answer:
+          'Le grillage rigide, l\'aluminium thermolaqué et le gabion ne nécessitent pratiquement aucun entretien. Le composite demande un simple nettoyage annuel. Seul le bois naturel réclame un traitement régulier (lasure ou saturateur tous les 2-3 ans).',
+      },
+    ],
+  },
+  {
+    slug: 'amenager-allee-jardin-materiaux',
+    title: 'Aménager une allée de jardin : matériaux et techniques',
+    metaTitle: 'Allée de Jardin : Matériaux et Techniques | Art des Jardins',
+    metaDescription:
+      'Gravier, pavés, pierre, bois ou béton ? Guide complet pour choisir et réaliser votre allée de jardin. Conseils de paysagiste professionnel à Angers.',
+    excerpt:
+      'Le choix du matériau d\'allée impacte l\'esthétique, l\'entretien et la durabilité. Voici les options avec leurs avantages et limites.',
+    category: 'Aménagement',
+    readTime: 6,
+    publishDate: '2026-03-20',
+    imageSlug: 'creation-6',
+    content: `
+L'allée structure votre jardin et facilite l'accès à la maison, au garage ou au fond du terrain. Le choix du matériau impacte directement l'esthétique, l'entretien et la durabilité. Voici les options.
+
+## 1. Le gravier stabilisé
+
+<strong>Le plus utilisé en aménagement paysager.</strong>
+
+Le gravier (calcaire, granit, silex ou schiste) est économique, drainant et facile à mettre en œuvre. Posé sur alvéoles stabilisatrices, il ne se disperse pas et supporte le passage de véhicules.
+
+- <strong>Avantages</strong> : naturel, drainant, grande variété de couleurs, perméable (pas besoin de récupérer les eaux pluviales)
+- <strong>Limites</strong> : peut se déplacer sans stabilisateur, nécessite un désherbage régulier si non stabilisé
+- <strong>Idéal pour</strong> : allées piétonnes, allées de jardin naturel, grandes surfaces
+
+En Maine-et-Loire, le <strong>gravier de schiste ardoisier</strong> local donne un rendu élégant et s'intègre naturellement au paysage angevin.
+
+## 2. Les pavés et dalles
+
+<strong>Le plus durable et structuré.</strong>
+
+Pavés autobloquants, pavés en pierre naturelle (granit, grès) ou dalles en pierre reconstituée : les options sont nombreuses.
+
+- <strong>Avantages</strong> : très résistant, carrossable, esthétique soigné, pas de désherbage (si joints serrés)
+- <strong>Limites</strong> : pose technique (lit de sable compacté + fondation), coût plus élevé
+- <strong>Idéal pour</strong> : allées carrossables, entrées de propriété, allées formelles
+
+Les pavés en granit récupéré offrent un charme ancien. Les dalles en pierre reconstituée permettent un aspect pierre naturelle à moindre coût.
+
+## 3. Le béton décoratif
+
+<strong>Le caméléon.</strong>
+
+Le béton se décline en versions désactivé (gravillons apparents), imprimé (imitation pierre ou bois), balayé (strié antidérapant) ou teinté dans la masse.
+
+- <strong>Avantages</strong> : monolithique (pas de joints), très résistant, carrossable, grande variété de rendus
+- <strong>Limites</strong> : fissuration possible si joints de dilatation insuffisants, peu perméable
+- <strong>Idéal pour</strong> : allées carrossables, grandes surfaces uniformes
+
+## 4. Le bois et les pas japonais
+
+<strong>L'allée naturelle.</strong>
+
+Traverses en bois (chêne, pin traité), rondins ou pas japonais (dalles espacées dans le gazon ou le gravier) créent un parcours organique.
+
+- <strong>Avantages</strong> : charme naturel, intégration paysagère, pose flexible
+- <strong>Limites</strong> : glissant par temps humide (bois), durée de vie limitée pour les bois non traités
+- <strong>Idéal pour</strong> : jardins naturels, parcours piéton, accès secondaires
+
+Les traverses de chêne patinent magnifiquement avec le temps et durent plusieurs dizaines d'années.
+
+## 5. Les enrobés et résines
+
+<strong>L'option technique.</strong>
+
+L'enrobé à chaud (bitume) ou la résine de marbre (granulats liés par une résine) sont des solutions pour les allées très sollicitées.
+
+- <strong>Avantages</strong> : surface parfaitement lisse, carrossable, rapide à poser
+- <strong>Limites</strong> : enrobé = aspect routier (sauf finition colorée), résine = coût élevé
+- <strong>Idéal pour</strong> : accès de garage, allées très fréquentées
+
+## Les questions à se poser
+
+| Question | Impact sur le choix |
+|---|---|
+| L'allée est-elle piétonne ou carrossable ? | Élimine les matériaux trop fragiles |
+| Quel est le style du jardin ? | Naturel → gravier/bois. Contemporain → béton/dalles |
+| Quel entretien êtes-vous prêt à faire ? | Gravier = désherbage. Pavés = quasi rien |
+| Le terrain est-il en pente ? | En pente → pavés ou béton (le gravier glisse) |
+| Faut-il gérer le ruissellement ? | Gravier et résine drainante = perméables |
+
+## La préparation du terrain
+
+Quel que soit le matériau, une allée durable repose sur une bonne préparation :
+1. <strong>Décaissement</strong> : retirer 20-30 cm de terre végétale
+2. <strong>Fondation</strong> : couche de tout-venant compacté (15-20 cm)
+3. <strong>Lit de pose</strong> : sable stabilisé ou gravillons fins (3-5 cm)
+4. <strong>Bordures</strong> : indispensables pour contenir le matériau et dessiner le tracé
+5. <strong>Drainage</strong> : prévoir une légère pente (2 %) pour évacuer l'eau
+
+Un <a href="/services/paysagisme/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">paysagiste professionnel</a> maîtrise ces étapes et vous garantit une allée qui ne bougera pas avec le temps. <a href="/contact/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">Contactez-nous</a> pour un devis sur mesure.
+    `,
+    faq: [
+      {
+        question: 'Quel est le matériau le plus économique pour une allée ?',
+        answer:
+          'Le gravier est le matériau le moins coûteux. Posé sur un géotextile avec des bordures, il offre un résultat esthétique pour un budget maîtrisé. Le gravier stabilisé (avec alvéoles) coûte un peu plus mais évite la dispersion.',
+      },
+      {
+        question: 'Comment empêcher les mauvaises herbes dans une allée en gravier ?',
+        answer:
+          'Un géotextile posé sous le gravier bloque la majorité des adventices. Pour les quelques herbes qui poussent dans le gravier, un désherbage manuel ou de l\'eau bouillante suffisent. Le gravier stabilisé sur alvéoles limite encore davantage le problème.',
+      },
+      {
+        question: 'Peut-on rouler en voiture sur une allée en gravier ?',
+        answer:
+          'Oui, à condition d\'utiliser du gravier stabilisé sur alvéoles avec une fondation de tout-venant compacté d\'au moins 20 cm. Sans stabilisateur, les pneus creusent des ornières et projettent les cailloux.',
+      },
+    ],
+  },
+  {
+    slug: 'avant-apres-transformations-jardins-angers',
+    title: 'Avant/après : 4 transformations de jardins près d\'Angers',
+    metaTitle: 'Avant/Après : Transformations Jardins Angers | Art des Jardins',
+    metaDescription:
+      'Découvrez 4 transformations de jardins réalisées près d\'Angers : débroussaillage, création paysagère, terrasse bois. Photos avant/après et détails.',
+    excerpt:
+      'Chaque jardin a du potentiel. Voici quatre chantiers réalisés dans la région d\'Angers, avec photos avant et après.',
+    category: 'Aménagement',
+    readTime: 5,
+    publishDate: '2026-03-24',
+    imageSlug: 'creation-10',
+    content: `
+Chaque jardin a du potentiel. Voici quatre chantiers réalisés dans la région d'Angers, avec les photos avant et après intervention.
+
+## 1. Débroussaillage : de la jungle au jardin
+
+<strong>Le terrain</strong> : parcelle envahie par les ronces, les broussailles et la végétation incontrôlée. Accès devenu impossible, terrain inexploitable.
+
+<strong>L'intervention</strong> : <a href="/services/debroussaillage/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">débroussaillage complet</a> au broyeur professionnel, évacuation des souches et déchets, nivellement du sol.
+
+<strong>Le résultat</strong> : un terrain propre, dégagé et prêt pour un futur aménagement ou une simple utilisation en espace vert.
+
+<strong>Durée</strong> : 2 jours pour une parcelle de cette taille.
+
+## 2. Création paysagère : d'une pelouse nue à un parc structuré
+
+<strong>Le terrain</strong> : grand espace en herbe sans structure ni plantations. Fonctionnel mais sans caractère.
+
+<strong>L'intervention</strong> : conception d'un plan d'aménagement, création de murets en acier corten pour structurer les espaces, plantation d'arbustes et de vivaces, pose d'un escalier paysager.
+
+<strong>Le résultat</strong> : un parc structuré avec des zones distinctes (circulation, repos, plantations), une identité forte grâce aux matériaux (corten, pierre) et des plantations qui prendront de l'ampleur chaque année.
+
+## 3. Allée et massifs : d'un jardin en friche à un espace composé
+
+<strong>Le terrain</strong> : végétation désordonnée, pas de cheminement défini, mélange de plantes sans cohérence.
+
+<strong>L'intervention</strong> : défrichage, création d'une allée en pavés avec bordures, plantation de massifs structurés avec des espèces adaptées au sol angevin.
+
+<strong>Le résultat</strong> : un jardin lisible avec une allée nette, des massifs équilibrés et un ensemble cohérent qui met en valeur la maison.
+
+## 4. Terrasse bois : du spa posé sur l'herbe à un vrai espace de vie
+
+<strong>Le terrain</strong> : un spa installé directement sur la pelouse, sans aménagement autour. Accès boueux par temps de pluie.
+
+<strong>L'intervention</strong> : création d'une <a href="/services/terrasse/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">terrasse en bois</a> sur mesure intégrant le spa, avec accès de plain-pied depuis la maison.
+
+<strong>Le résultat</strong> : un espace de détente abouti, propre et utilisable en toute saison. La terrasse protège le spa et facilite l'entretien.
+
+## Ce qui fait la différence
+
+Tous ces chantiers partagent un point commun : <strong>la préparation du terrain</strong>. Aucune transformation durable ne se fait sans un travail soigné en amont — terrassement, drainage, fondations.
+
+C'est ce travail invisible qui distingue un <a href="/services/paysagisme/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">aménagement professionnel</a> d'un bricolage qui ne tient pas deux hivers.
+
+Découvrez toutes nos réalisations sur la page <a href="/realisations/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">galerie</a>, ou <a href="/contact/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">contactez-nous</a> pour discuter de la transformation de votre jardin.
+    `,
+    faq: [
+      {
+        question: 'Combien de temps dure un aménagement paysager complet ?',
+        answer:
+          'Cela dépend de l\'ampleur du projet. Un débroussaillage prend 1 à 3 jours, une terrasse 1 à 2 semaines, un aménagement complet avec plantations 2 à 4 semaines. Nous vous communiquons un planning précis dans le devis.',
+      },
+      {
+        question: 'Peut-on réaliser un aménagement par étapes ?',
+        answer:
+          'Tout à fait. Nous concevons le projet global dès le départ pour garantir la cohérence, puis nous réalisons les travaux en plusieurs phases selon votre budget. Par exemple : terrasse la première année, plantations la deuxième.',
+      },
+      {
+        question: 'Intervenez-vous sur des terrains très en friche ?',
+        answer:
+          'Oui, c\'est même une de nos spécialités. Nous disposons du matériel professionnel pour venir à bout de tous les terrains : débroussailleuses, broyeurs, mini-pelle. Aucun terrain n\'est trop envahi pour être transformé.',
+      },
+    ],
+  },
 ];
 
 export function getArticleBySlug(slug: string): BlogArticle | undefined {
