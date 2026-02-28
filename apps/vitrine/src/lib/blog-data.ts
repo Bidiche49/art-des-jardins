@@ -16,7 +16,7 @@ export const articles: BlogArticle[] = [
   {
     slug: 'quand-elaguer-ses-arbres',
     title: 'Quand élaguer ses arbres ? Guide complet par espèce',
-    metaTitle: 'Quand Élaguer ses Arbres ? Calendrier par Espèce | Art des Jardins',
+    metaTitle: 'Quand Élaguer ses Arbres ? Calendrier par Espèce',
     metaDescription:
       'Découvrez la meilleure période pour élaguer vos arbres selon l\'espèce : chêne, tilleul, cerisier, pin... Guide complet par un élagueur professionnel à Angers.',
     excerpt:
@@ -85,7 +85,7 @@ Un <a href="/services/elagage/" class="text-primary-600 underline decoration-pri
   {
     slug: 'prix-paysagiste-amenagement-jardin',
     title: 'Prix paysagiste : combien coûte un aménagement de jardin ?',
-    metaTitle: 'Prix Paysagiste : Budget Aménagement Jardin | Art des Jardins',
+    metaTitle: 'Prix Paysagiste : Budget Aménagement Jardin',
     metaDescription:
       'Combien coûte un paysagiste ? Les facteurs qui influencent le budget d\'un aménagement de jardin : surface, matériaux, végétaux. Devis gratuit à Angers.',
     excerpt:
@@ -114,13 +114,13 @@ Pierre naturelle, bois exotique, béton désactivé... le choix des matériaux p
 ### Le type de prestations
 Un simple engazonnement est nettement plus abordable qu'un aménagement complet incluant terrasse, plantations, éclairage et arrosage automatique. Les projets peuvent être réalisés par étapes pour étaler le budget.
 
-## Exemples de projets
+## Exemples de projets types
 
-**Petit jardin de ville** : engazonnement, quelques arbustes, bordures, éclairage simple. Le budget varie selon la surface et les finitions choisies.
+**Petit jardin de ville (20-80 m²)** : terrasse en composite ou dalles, quelques arbustes compacts (nandina, pittosporum), éclairage d'ambiance et clôture occultante. À Angers, ces jardins de centre-ville ou des faubourgs se réalisent en 1 à 2 semaines.
 
-**Jardin familial** : terrasse, pelouse, massifs plantés, haie, arrosage. Un projet plus complet qui peut être réalisé en plusieurs phases.
+**Jardin familial (100-300 m²)** : terrasse, pelouse semée ou plaquée, massifs plantés, haie mixte et arrosage automatique. Le projet peut être découpé en phases pour étaler l'investissement, en commençant par la terrasse et la pelouse.
 
-**Grand jardin** : conception complète, terrasse, allées, plantation, éclairage, arrosage automatique. La surface plus importante permet des économies d'échelle mais le budget global est naturellement plus conséquent.
+**Grand jardin (300 m² et plus)** : conception paysagère complète avec terrasse, allées en pierre ou gravier stabilisé, plantations d'arbres et massifs, éclairage et arrosage intégré. En sol schisteux (typique d'Angers et des Ponts-de-Cé), le terrassement et le drainage sont des postes à anticiper.
 
 ## Le devis : une étape indispensable
 
@@ -142,7 +142,7 @@ Chaque jardin est unique, c'est pourquoi il est impossible de donner des tarifs 
   {
     slug: 'entretien-jardin-calendrier-mois-par-mois',
     title: 'Entretien de jardin : le calendrier mois par mois',
-    metaTitle: 'Calendrier Entretien Jardin Mois par Mois | Art des Jardins Angers',
+    metaTitle: 'Calendrier Entretien Jardin Mois par Mois',
     metaDescription:
       'Que faire au jardin chaque mois ? Calendrier complet d\'entretien : tonte, taille, plantation, traitement. Conseils de jardiniers professionnels à Angers.',
     excerpt:
@@ -239,7 +239,7 @@ Avec un <a href="/services/entretien-jardin/" class="text-primary-600 underline 
   {
     slug: 'taille-haie-quand-comment',
     title: 'Taille de haie : quand et comment tailler ?',
-    metaTitle: 'Taille de Haie : Quand et Comment Tailler ? | Art des Jardins',
+    metaTitle: 'Taille de Haie : Quand et Comment Tailler ?',
     metaDescription:
       'Guide complet sur la taille de haie : meilleure période, technique, fréquence. Haie de thuya, laurier, photinia... Conseils de professionnels.',
     excerpt:
@@ -285,7 +285,7 @@ La plupart des haies nécessitent **deux tailles par an** :
 - **Nettoyer et désinfecter les outils** entre les haies pour éviter de propager des maladies
 
 ### La réglementation
-Attention : la loi interdit la taille de haies du **1er mars au 31 août** dans certaines zones pour protéger la nidification des oiseaux. Renseignez-vous auprès de votre mairie.
+Le Code de l'environnement (art. L411-1) protège les oiseaux nicheurs et leurs nids en toute saison. En pratique, **évitez de tailler vos haies entre mi-mars et fin juillet** si vous observez des nids actifs. L'interdiction calendaire stricte (1er mars — 31 août) concerne les exploitations agricoles, pas les jardins privés, mais la prudence reste de mise.
 
 ## Le saviez-vous ?
 
@@ -307,7 +307,7 @@ L'entretien des haies de moins de 3,5 m de hauteur est éligible au **crédit d'
   {
     slug: 'abattage-arbre-reglementation-autorisation',
     title: 'Abattage d\'arbre : réglementation et autorisation',
-    metaTitle: 'Abattage d\'Arbre : Réglementation et Autorisation 2026 | Art des Jardins',
+    metaTitle: 'Abattage d\'Arbre : Réglementation et Autorisation',
     metaDescription:
       'Faut-il une autorisation pour abattre un arbre ? PLU, EBC, arbres classés... Tout savoir sur la réglementation de l\'abattage d\'arbres en Maine-et-Loire.',
     excerpt:
@@ -370,7 +370,7 @@ Spécialiste de l'<a href="/services/abattage/" class="text-primary-600 underlin
       {
         question: 'Mon voisin veut abattre un arbre qui me gêne, quels sont mes droits ?',
         answer:
-          'Si les branches dépassent chez vous, vous pouvez demander à votre voisin de les couper (art. 673 du Code civil). Pour l\'abattage, seul le propriétaire de l\'arbre peut décider, sauf si l\'arbre présente un danger avéré.',
+          'Depuis la réforme de 2023 (art. 673 du Code civil), vous pouvez exiger la coupe des branches qui dépassent chez vous, et les couper vous-même aux frais du voisin s\'il ne réagit pas après mise en demeure. L\'abattage reste la décision du propriétaire, sauf danger avéré.',
       },
     ],
   },
@@ -478,7 +478,7 @@ Si votre jardin est grand ou si vous manquez de temps, un <a href="/services/ent
   {
     slug: 'que-planter-printemps-maine-et-loire',
     title: 'Que planter au printemps dans le Maine-et-Loire ?',
-    metaTitle: 'Que Planter au Printemps dans le Maine-et-Loire ? | Art des Jardins',
+    metaTitle: 'Que Planter au Printemps en Maine-et-Loire ?',
     metaDescription:
       'Quels arbres, arbustes et fleurs planter au printemps en Anjou ? Sélection de végétaux adaptés au climat et au sol du Maine-et-Loire.',
     excerpt:
@@ -486,7 +486,7 @@ Si votre jardin est grand ou si vous manquez de temps, un <a href="/services/ent
     category: 'Aménagement',
     readTime: 8,
     publishDate: '2026-02-20',
-    imageSlug: 'creation-3',
+    imageSlug: 'creation-1',
     content: `
 Le printemps est la saison de tous les possibles au jardin. En Maine-et-Loire, le climat océanique dégradé offre des conditions idéales pour une grande variété de plantations. Voici notre sélection de végétaux qui prospèrent dans les sols et le climat angevins.
 
@@ -583,7 +583,7 @@ Art des Jardins conçoit et réalise des <a href="/services/paysagisme/" class="
   {
     slug: 'meilleurs-arbres-jardin-angers',
     title: 'Les meilleurs arbres pour un jardin à Angers',
-    metaTitle: 'Meilleurs Arbres pour un Jardin à Angers (Sol Schisteux) | Art des Jardins',
+    metaTitle: 'Les Meilleurs Arbres pour un Jardin à Angers',
     metaDescription:
       'Quels arbres planter dans un jardin à Angers ? Sélection adaptée au sol schisteux et au climat angevin. Conseils de paysagistes professionnels.',
     excerpt:
@@ -686,7 +686,7 @@ Le choix d'un arbre engage pour des décennies. Chez Art des Jardins, <a href="/
   {
     slug: 'amenager-petit-jardin-ville-angers',
     title: 'Aménager un petit jardin de ville à Angers : idées et astuces',
-    metaTitle: 'Aménager un Petit Jardin de Ville à Angers | Art des Jardins',
+    metaTitle: 'Aménager un Petit Jardin de Ville à Angers',
     metaDescription:
       'Comment aménager un petit jardin en ville à Angers ? Idées de paysagiste : terrasse, plantations, clôture, éclairage. Optimisez votre espace extérieur.',
     excerpt:
@@ -764,9 +764,7 @@ En ville, la clôture est essentielle pour l'intimité. Nos solutions préféré
 
 ## Quel budget prévoir ?
 
-Le budget d'un petit jardin de ville dépend des prestations choisies : terrasse, plantations, éclairage, clôture... Chaque poste peut être adapté à votre enveloppe. L'avantage d'un petit espace, c'est qu'un aménagement complet reste accessible et que le résultat est visible immédiatement. Il est aussi possible d'échelonner les travaux en plusieurs phases pour répartir l'investissement.
-
-Contactez-nous pour un devis gratuit et personnalisé adapté à votre projet.
+L'avantage d'un petit espace : un aménagement complet reste accessible et le résultat est immédiat. Il est aussi possible d'échelonner (terrasse la première année, plantations et éclairage l'année suivante) pour répartir l'investissement.
 
 ## Faites appel à un paysagiste
 
@@ -788,7 +786,7 @@ Un <a href="/paysagiste-angers/" class="text-primary-600 underline decoration-pr
   {
     slug: 'haies-cloture-quelle-essence-choisir',
     title: 'Haies de clôture : quelle essence choisir dans le 49 ?',
-    metaTitle: 'Quelle Haie de Clôture Choisir dans le Maine-et-Loire ? | Art des Jardins',
+    metaTitle: 'Quelle Haie Choisir dans le Maine-et-Loire ?',
     metaDescription:
       'Haie de thuya, laurier, photinia ou champêtre ? Comparatif des essences de haies adaptées au Maine-et-Loire. Entretien, croissance et conseils.',
     excerpt:
@@ -908,7 +906,7 @@ Nous plantons des haies et installons des <a href="/services/cloture/" class="te
   {
     slug: 'comment-choisir-paysagiste-angers',
     title: 'Comment choisir son paysagiste à Angers : 7 critères essentiels',
-    metaTitle: 'Comment Choisir son Paysagiste à Angers ? 7 Critères | Art des Jardins',
+    metaTitle: 'Choisir son Paysagiste à Angers : 7 Critères',
     metaDescription:
       'Comment bien choisir un paysagiste à Angers ? Assurance, devis, réalisations, avis clients... Les 7 critères pour ne pas se tromper.',
     excerpt:
@@ -957,7 +955,7 @@ Un paysagiste en règle possède :
 - Une inscription au **registre du commerce** (RCS) ou à la chambre de métiers
 - Un **code NAF** cohérent (81.30Z pour les services d'aménagement paysager)
 
-**Attention aux autoentrepreneurs sans assurance décennale** : ils n'ont pas l'obligation de la souscrire mais ne peuvent légalement pas réaliser d'ouvrages durables (terrasses, murets).
+**Attention aux autoentrepreneurs sans assurance décennale** : tout professionnel réalisant des ouvrages durables (terrasses, murets, clôtures) est légalement tenu de la souscrire, quel que soit son statut. Si un autoentrepreneur ne peut pas vous fournir d'attestation décennale, il n'est pas en règle pour ce type de travaux.
 
 ## 5. Évaluez le conseil et l'écoute
 
@@ -1021,7 +1019,7 @@ Chez Art des Jardins, <a href="/paysagiste-angers/" class="text-primary-600 unde
   {
     slug: 'arrosage-automatique-guide-installation',
     title: 'Arrosage automatique : guide complet d\'installation',
-    metaTitle: 'Arrosage Automatique : Guide Complet d\'Installation | Art des Jardins',
+    metaTitle: 'Arrosage Automatique : Guide d\'Installation',
     metaDescription:
       'Comment installer un arrosage automatique au jardin ? Tuyères, turbines, goutte-à-goutte, programmateur. Guide complet par un paysagiste à Angers.',
     excerpt:
@@ -1154,7 +1152,7 @@ Une installation mal conçue gaspille l'eau, crée des zones sèches ou sature l
   {
     slug: 'terrasse-bois-ou-pierre-comparatif',
     title: 'Terrasse bois ou pierre : comparatif pour le climat angevin',
-    metaTitle: 'Terrasse Bois ou Pierre : Quel Choix à Angers ? | Art des Jardins',
+    metaTitle: 'Terrasse Bois ou Pierre à Angers : Comparatif',
     metaDescription:
       'Bois, composite ou pierre naturelle pour votre terrasse à Angers ? Comparatif complet : durabilité, entretien, esthétique selon le climat angevin.',
     excerpt:
@@ -1269,7 +1267,7 @@ Art des Jardins vous accompagne dans le choix et la <a href="/services/terrasse/
   {
     slug: 'gazon-semis-ou-placage',
     title: 'Gazon : semis ou placage, que choisir ?',
-    metaTitle: 'Gazon Semis ou Placage : Lequel Choisir ? | Art des Jardins Angers',
+    metaTitle: 'Gazon : Semis ou Placage, Que Choisir ?',
     metaDescription:
       'Semis de gazon ou gazon en rouleaux (placage) ? Comparatif complet : délai, résultat, entretien. Conseils de paysagiste à Angers.',
     excerpt:
@@ -1388,7 +1386,7 @@ Art des Jardins réalise la création et la réfection de pelouses à <a href="/
   {
     slug: 'jardin-ecologique-angers-conseils',
     title: 'Jardin écologique à Angers : nos conseils professionnels',
-    metaTitle: 'Jardin Écologique à Angers : Conseils de Paysagiste | Art des Jardins',
+    metaTitle: 'Jardin Écologique à Angers : Conseils Pro',
     metaDescription:
       'Comment créer un jardin écologique à Angers ? Paillage, compost, plantes locales, récupération d\'eau, biodiversité. Conseils de paysagistes professionnels.',
     excerpt:
