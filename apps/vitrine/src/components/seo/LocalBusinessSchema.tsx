@@ -115,6 +115,51 @@ export function LocalBusinessSchema() {
           },
           priceRange: 'Sur devis',
         },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Terrasse',
+            description: 'Création de terrasses bois, composite et pierre',
+          },
+          priceRange: 'Sur devis',
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Clôture',
+            description: 'Pose de clôtures, portails et délimitations',
+          },
+          priceRange: 'Sur devis',
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Taille de haies',
+            description: 'Taille et entretien de haies',
+          },
+          priceRange: 'Sur devis',
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Débroussaillage',
+            description: 'Débroussaillage et nettoyage de terrain',
+          },
+          priceRange: 'Sur devis',
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Arrosage automatique',
+            description: 'Installation de systèmes d\'arrosage automatique',
+          },
+          priceRange: 'Sur devis',
+        },
       ],
     },
   };
