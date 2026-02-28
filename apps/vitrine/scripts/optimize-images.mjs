@@ -46,9 +46,12 @@ const IMAGE_CATALOG = [
   { file: 'Cloture_2.jpeg', slug: 'cloture-2', category: 'cloture', alt: 'Cloture decorative en panneaux rigides installee par Art des Jardins', tags: ['cloture', 'panneaux', 'rigides'] },
   { file: 'Cloture_3.jpeg', slug: 'cloture-3', category: 'cloture', alt: 'Amenagement de cloture et portillon pour entree de propriete', tags: ['cloture', 'portillon', 'entree'] },
   { file: 'Cloture_4.jpeg', slug: 'cloture-4', category: 'cloture', alt: 'Installation de cloture composite moderne dans le Maine-et-Loire', tags: ['cloture', 'composite', 'moderne'] },
-  // Before/After pair - debroussaillage
+  // Before/After pairs
   { file: 'Chantier_avant_1.jpg', slug: 'chantier-avant-1', category: 'entretien', alt: 'Jardin envahi par la vegetation avant intervention de debroussaillage a Angers', tags: ['entretien', 'debroussaillage', 'avant'] },
   { file: 'Chantier_avant_3.jpg', slug: 'chantier-apres-1', category: 'entretien', alt: 'Jardin defriche et remis au propre apres debroussaillage par Art des Jardins', tags: ['entretien', 'debroussaillage', 'apres'] },
+  { file: 'Creation_8_avant.JPG', slug: 'creation-8-avant', category: 'creation', alt: 'Parc non amenage avec pelouse brute avant creation paysagere a Angers', tags: ['creation', 'avant', 'parc'] },
+  { file: 'Creation_9_avant.jpeg', slug: 'creation-9-avant', category: 'creation', alt: 'Jardin en friche avec vegetation desordonnee avant amenagement paysager', tags: ['creation', 'avant', 'friche'] },
+  { file: 'Terasse_1_avant.jpeg', slug: 'terrasse-1-avant', category: 'terrasse', alt: 'Spa pose sur herbe sans amenagement avant construction terrasse bois', tags: ['terrasse', 'avant', 'spa'] },
 ];
 
 // OG image mappings

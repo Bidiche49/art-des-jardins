@@ -419,6 +419,51 @@ export const images: Record<string, ImageEntry> = {
     1200: { path: '/images/realisations/chantier-apres-1-1200w.webp', width: 1200, height: 900 },
     1920: { path: '/images/realisations/chantier-apres-1-1920w.webp', width: 1920, height: 1440 }
     },
+  },
+  'creation-8-avant': {
+    slug: 'creation-8-avant',
+    category: 'creation',
+    alt: 'Parc non amenage avec pelouse brute avant creation paysagere a Angers',
+    tags: ['creation', 'avant', 'parc'],
+    originalWidth: 1903,
+    originalHeight: 1476,
+    blurDataURI: 'data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAACQBACdASoUABQAPzmKu1UvKSYjKA1R4CcJagC06A2eLjfdit0YSXbA/e+syJgA9wbZq5TX6Xnx1cEz4xBJcVpCkCEL7hzc76kFs8DB/NkQTr7ZVmkWPbA2oPfH/YhO2PexcS9m4TqEWBYwkdYQdX1CEHZ+K2XgAAA=',
+    sizes: {
+    480: { path: '/images/realisations/creation-8-avant-480w.webp', width: 480, height: 372 },
+    800: { path: '/images/realisations/creation-8-avant-800w.webp', width: 800, height: 620 },
+    1200: { path: '/images/realisations/creation-8-avant-1200w.webp', width: 1200, height: 931 },
+    1920: { path: '/images/realisations/creation-8-avant-1920w.webp', width: 1903, height: 1476 }
+    },
+  },
+  'creation-9-avant': {
+    slug: 'creation-9-avant',
+    category: 'creation',
+    alt: 'Jardin en friche avec vegetation desordonnee avant amenagement paysager',
+    tags: ['creation', 'avant', 'friche'],
+    originalWidth: 2048,
+    originalHeight: 1536,
+    blurDataURI: 'data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAAAQBQCdASoUABQAPzmUwVmvKicjqAgB4CcJQBdgAiaV/WdzoIUeeeIIm5UbU27otUqAAP7TF3lsZKEwOPQMl6kSjrmEcEkGJtUdjmhDfUZbuRfT2VGGxA2jkxojt8DoMxHqme1YYskpMOt3b1p3c0XfqvQPNLjaimjbYAywAAA=',
+    sizes: {
+    480: { path: '/images/realisations/creation-9-avant-480w.webp', width: 480, height: 360 },
+    800: { path: '/images/realisations/creation-9-avant-800w.webp', width: 800, height: 600 },
+    1200: { path: '/images/realisations/creation-9-avant-1200w.webp', width: 1200, height: 900 },
+    1920: { path: '/images/realisations/creation-9-avant-1920w.webp', width: 1920, height: 1440 }
+    },
+  },
+  'terrasse-1-avant': {
+    slug: 'terrasse-1-avant',
+    category: 'terrasse',
+    alt: 'Spa pose sur herbe sans amenagement avant construction terrasse bois',
+    tags: ['terrasse', 'avant', 'spa'],
+    originalWidth: 2048,
+    originalHeight: 1536,
+    blurDataURI: 'data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAAAQBACdASoUABQAPzmQvFgvKaWjqAqp4CcJQBdgAaE809sa7F8FivVm4AD+3ugTO39tdo2pQg/frtpvLFXLG7UAOsP9BGSjk0XEK+LQj8DK0CiJG7JdKmBDB3mXzVZQjlAvY+L+w2pqGkRq3AIFraaB/yAcdAAA',
+    sizes: {
+    480: { path: '/images/realisations/terrasse-1-avant-480w.webp', width: 480, height: 360 },
+    800: { path: '/images/realisations/terrasse-1-avant-800w.webp', width: 800, height: 600 },
+    1200: { path: '/images/realisations/terrasse-1-avant-1200w.webp', width: 1200, height: 900 },
+    1920: { path: '/images/realisations/terrasse-1-avant-1920w.webp', width: 1920, height: 1440 }
+    },
   }
 };
 
