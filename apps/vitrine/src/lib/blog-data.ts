@@ -2002,6 +2002,352 @@ Découvrez toutes nos réalisations sur la page <a href="/realisations/" class="
       },
     ],
   },
+  {
+    slug: 'arbres-haies-voisinage-droits-reglementation',
+    title: 'Arbres et haies entre voisins : vos droits et obligations',
+    metaTitle: 'Arbres et Haies entre Voisins : Droits et Obligations',
+    metaDescription:
+      'Distance de plantation, branches qui dépassent, racines envahissantes, prescription trentenaire. La réglementation complète sur les arbres entre voisins.',
+    excerpt:
+      'La règle des 2 mètres, les branches qui dépassent, les racines : tout ce que dit la loi sur les arbres et haies entre voisins.',
+    category: 'Élagage',
+    readTime: 7,
+    publishDate: '2026-03-28',
+    imageSlug: 'elagage-5',
+    content: `
+Les arbres et les haies sont la première source de conflits de voisinage en France. Avant d'en arriver au tribunal, mieux vaut connaître les règles. Voici ce que dit la loi — et ce que vous pouvez faire concrètement.
+
+## La règle des 2 mètres / 50 centimètres
+
+L'<strong>article 671 du Code civil</strong> fixe les distances minimales de plantation par rapport à la limite de propriété :
+
+<strong>Plantation de plus de 2 m de hauteur</strong> → minimum <strong>2 mètres</strong> de la limite séparative
+<strong>Plantation de 2 m ou moins</strong> → minimum <strong>50 centimètres</strong> de la limite séparative
+
+La distance se mesure depuis le centre du tronc (pas depuis les branches) jusqu'à la ligne séparative. La hauteur prise en compte est celle de l'arbre <strong>au moment du constat</strong>, pas celle à la plantation. Un arbuste planté à 80 cm de la limite qui dépasse ensuite 2 m de hauteur devient non conforme.
+
+<strong>Exceptions à cette règle :</strong>
+- Le PLU de votre commune peut imposer des distances différentes
+- Les usages locaux reconnus peuvent s'appliquer (rares en Maine-et-Loire)
+- Un accord écrit entre voisins (titre) prévaut sur la règle légale
+- Les espaliers contre un mur mitoyen sont autorisés sans distance, à condition de ne pas dépasser la crête du mur
+
+## Les branches qui dépassent chez vous
+
+C'est le sujet qui génère le plus de tensions. L'<strong>article 673 du Code civil</strong> pose le principe : si les branches de l'arbre de votre voisin avancent au-dessus de votre propriété, vous pouvez le <strong>contraindre à les couper</strong>.
+
+<strong>La procédure depuis la réforme de 2023 :</strong>
+1. Vous demandez à votre voisin de couper les branches (courrier amiable)
+2. Sans réponse, vous envoyez une <strong>mise en demeure par lettre recommandée</strong> avec un délai raisonnable (15 à 30 jours)
+3. Si le voisin ne réagit toujours pas, vous pouvez <strong>faire couper les branches vous-même</strong>, à ses frais
+
+<strong>Point important :</strong> ce droit de couper les branches est <strong>imprescriptible</strong>. Même si les branches dépassent depuis 40 ans, vous pouvez toujours exiger leur coupe.
+
+## Les racines : vous pouvez les couper vous-même
+
+Contrairement aux branches, vous avez le droit de <strong>couper vous-même les racines</strong> du voisin qui avancent sur votre terrain. Pas besoin de lui demander l'autorisation. La coupe se fait à la <strong>limite de la ligne séparative</strong> : vous ne pouvez pas aller couper sur son terrain.
+
+Ce droit est également imprescriptible. En revanche, si la coupe des racines fragilise dangereusement l'arbre et qu'il tombe, votre responsabilité peut être engagée. Dans le doute, faites appel à un <a href="/services/elagage/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">professionnel de l'élagage</a>.
+
+## La prescription trentenaire : l'arbre est là depuis plus de 30 ans
+
+L'<strong>article 672 du Code civil</strong> prévoit une exception importante : si un arbre est planté en violation des distances légales <strong>depuis plus de 30 ans</strong> sans que le voisin ne l'ait contesté, le voisin <strong>perd son droit d'exiger l'arrachage</strong>.
+
+<strong>Ce que le voisin peut encore faire malgré les 30 ans :</strong>
+- Exiger l'élagage des branches qui dépassent (droit imprescriptible)
+- Couper les racines qui avancent chez lui
+- Demander l'abattage si l'arbre est <strong>dangereux</strong> (malade, instable)
+- Invoquer un <strong>trouble anormal de voisinage</strong> si l'arbre cause des nuisances réelles (racines qui fissurent les fondations, ombrage total)
+
+<strong>Comment prouver les 30 ans ?</strong> Photos aériennes historiques (Géoportail IGN remonte aux années 1950), actes notariés, témoignages de voisins.
+
+## Les haies mitoyennes
+
+Une haie plantée exactement sur la ligne séparative est <strong>mitoyenne</strong> (article 670 du Code civil). Dans ce cas :
+- Les deux voisins en sont copropriétaires
+- Les frais d'entretien sont partagés
+- Chacun entretient son côté
+- Aucun des deux ne peut la supprimer sans l'accord de l'autre
+- Si l'un la détruit, il doit la remplacer à ses frais
+
+Une haie plantée entièrement sur le terrain d'un voisin lui appartient seul. Elle est soumise aux distances de l'article 671.
+
+## Responsabilité en cas de dégâts
+
+Le propriétaire d'un arbre est <strong>présumé responsable</strong> des dommages causés par cet arbre (article 1242 du Code civil). Un arbre mal entretenu dont une branche tombe chez le voisin engage la responsabilité de son propriétaire.
+
+<strong>En cas de tempête :</strong> la force majeure peut exonérer le propriétaire, mais uniquement si l'événement était véritablement imprévisible et irrésistible. Si l'arbre présentait déjà des signes de fragilité (maladie, branches mortes), la responsabilité du propriétaire est engagée même en cas de tempête.
+
+## Les recours : de l'amiable au tribunal
+
+<strong>1. Dialogue et mise en demeure</strong> — Toujours commencer par une discussion, puis un courrier recommandé citant les articles du Code civil applicables.
+
+<strong>2. Conciliation obligatoire</strong> — Depuis 2020, une tentative de résolution amiable est obligatoire avant de saisir le tribunal pour tout litige inférieur à 5 000 €. Le conciliateur de justice est gratuit et disponible dans chaque tribunal.
+
+<strong>3. Tribunal judiciaire</strong> — En dernier recours, le juge peut ordonner l'élagage ou l'arrachage sous astreinte (pénalité journalière) et condamner le voisin à des dommages et intérêts.
+
+## Art des Jardins vous accompagne
+
+Avant d'en arriver au conflit, un <a href="/services/elagage/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">élagage préventif</a> régulier évite la plupart des problèmes de voisinage. Nous intervenons pour l'<a href="/elagage-angers/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">élagage à Angers</a> et dans tout le Maine-et-Loire : taille douce, réduction de couronne, mise en conformité. <a href="/contact/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">Demandez un devis gratuit</a>.
+    `,
+    faq: [
+      {
+        question: 'Mon voisin refuse de couper les branches qui dépassent chez moi, que faire ?',
+        answer:
+          'Envoyez une mise en demeure par lettre recommandée en citant l\'article 673 du Code civil. Fixez un délai de 15 à 30 jours. Passé ce délai, vous pouvez faire réaliser l\'élagage vous-même et lui adresser la facture. En cas de refus de payer, saisissez le tribunal judiciaire.',
+      },
+      {
+        question: 'Puis-je exiger que mon voisin abatte son arbre planté trop près de ma limite ?',
+        answer:
+          'Oui, à condition que l\'arbre soit planté depuis moins de 30 ans en violation des distances légales (2 m pour les arbres de plus de 2 m de haut, 50 cm pour les autres). Passé 30 ans sans contestation, vous ne pouvez plus exiger l\'arrachage, mais vous gardez le droit de faire couper les branches et les racines.',
+      },
+      {
+        question: 'Qui paie si l\'arbre de mon voisin tombe chez moi ?',
+        answer:
+          'Si l\'arbre était visiblement mal entretenu ou malade, c\'est l\'assurance responsabilité civile de votre voisin qui prend en charge les dégâts. Si l\'arbre était sain et la chute due à un événement exceptionnel (tempête), c\'est votre propre assurance habitation qui intervient. Documentez l\'état de l\'arbre avant sinistre si possible.',
+      },
+    ],
+  },
+  {
+    slug: 'jardin-facile-sans-entretien-plantes-conseils',
+    title: 'Jardin facile : comment réduire l\'entretien à presque rien',
+    metaTitle: 'Jardin Sans Entretien : Plantes et Conseils de Paysagiste',
+    metaDescription:
+      'Couvre-sols, graminées, paillage, alternatives au gazon : nos conseils de paysagiste à Angers pour un jardin beau toute l\'année avec un minimum d\'entretien.',
+    excerpt:
+      'Un jardin beau toute l\'année sans y passer ses week-ends ? C\'est une question de conception, pas de magie.',
+    category: 'Aménagement',
+    readTime: 8,
+    publishDate: '2026-04-02',
+    imageSlug: 'creation-4',
+    content: `
+Un jardin sans entretien, ça n'existe pas. Mais un jardin qui ne demande que <strong>2 à 3 journées par an</strong> après quelques années de maturité, c'est tout à fait possible. Le secret n'est pas dans les produits ou les gadgets : il est dans la <a href="/services/paysagisme/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">conception</a>.
+
+## Le premier poste à réduire : la pelouse
+
+La pelouse est la surface la plus chronophage d'un jardin. Tonte hebdomadaire de mars à octobre, scarification, fertilisation, arrosage en été. Sur un jardin de 200 m², c'est <strong>60 à 80 heures par an</strong> de travail.
+
+La solution : ne garder que ce dont vous avez vraiment besoin (zone de jeux, accès terrasse) et remplacer le reste.
+
+<strong>Alternatives à la pelouse :</strong>
+- <strong>Prairie fleurie</strong> : 1 fauche par an en septembre, très beau, attire les pollinisateurs. Semis à 5-7 g/m² sur sol maigre (pas d'engrais)
+- <strong>Couvre-sols piétinables</strong> : trèfle blanc (<em>Trifolium repens</em>), thym serpolet (<em>Thymus serpyllum</em>), phyla (<em>Lippia nodiflora</em>). Jamais de tonte, arrosage quasi nul
+- <strong>Gravier + pas japonais</strong> : géotextile de qualité + gravillon concassé 5-8 cm. Permanent, net, zéro entretien
+
+## Les couvre-sols : votre meilleur allié
+
+Un sol nu, c'est un sol qui se fait coloniser par les adventices. La nature a horreur du vide. La solution : couvrir chaque centimètre carré avec des plantes basses qui font le travail à votre place.
+
+<strong>En plein soleil :</strong>
+- <em>Geranium macrorrhizum</em> — feuillage semi-persistant parfumé, couvre 1 m² par plant, increvable
+- <em>Erigeron karvinskianus</em> (vergerette) — se ressème seul, floraison de juin à octobre
+- <em>Sedum spurium</em> — sol pauvre et sec, feuillage charnu, aucun soin
+- <em>Thymus serpyllum</em> — piétinable, aromatique, tapissant
+
+<strong>À l'ombre :</strong>
+- <em>Vinca minor</em> (pervenche) — persistant, colonise vite, tolère l'ombre profonde
+- <em>Pachysandra terminalis</em> — dense, persistant, couvre tout en 2-3 ans
+- <em>Epimedium</em> — tolère sécheresse et ombre, feuillage changeant avec les saisons
+
+<strong>Densité de plantation :</strong> 5 à 7 plants/m² en quinconce pour un résultat en 2 saisons. Pailler entre les plants à la plantation.
+
+## Les arbustes qui ne se taillent pas
+
+Le piège classique : planter un arbuste vigoureux dans un espace trop petit, puis passer sa vie à le tailler. La solution est de choisir des espèces dont la <strong>forme naturelle adulte</strong> correspond à l'espace disponible.
+
+<strong>Compacts (moins d'1 m) :</strong>
+- <em>Nandina domestica</em> 'Fire Power' — 60-80 cm, feuillage vert→rouge, rustique -20°C
+- <em>Pittosporum tenuifolium</em> 'Golf Ball' — 80 cm, forme boule naturelle, zéro taille
+- <em>Viburnum davidii</em> — 80-100 cm, feuillage nervuré persistant, baies bleutées
+
+<strong>Moyens (1 à 2 m) :</strong>
+- <em>Mahonia aquifolium</em> — floraison jaune en hiver, baies, supporte l'ombre
+- <em>Sarcococca confusa</em> — parfum enivrant en hiver, persistant, zéro taille
+- <em>Leucothoe fontanesiana</em> — port retombant gracieux, persistant
+
+Le climat doux d'Angers permet de cultiver des espèces comme le pittosporum et le leucothoe sans protection hivernale.
+
+## Le paillage : 8 cm qui changent tout
+
+Un paillage de <strong>8 à 10 cm d'épaisseur</strong> réduit le désherbage de <strong>80 à 90 %</strong>. C'est l'investissement le plus rentable d'un jardin facile.
+
+<strong>BRF (Bois Raméal Fragmenté)</strong> : le meilleur choix. Il nourrit le sol en se décomposant, favorise la vie microbienne. Renouvellement tous les 2-3 ans.
+
+<strong>Copeaux d'écorce</strong> : plus esthétiques, durée de vie 3-4 ans. Acidifient légèrement le sol (idéal pour hortensias, rhododendrons).
+
+<strong>Paillage minéral</strong> (pouzzolane, schiste) : permanent, idéal pour les jardins secs et les zones gravillonnées. N'améliore pas le sol mais ne se décompose jamais.
+
+<strong>Règle d'or :</strong> laisser 5 à 10 cm de dégagement autour des troncs et tiges pour éviter la pourriture du collet.
+
+## Les graminées : un geste par an
+
+Les graminées ornementales sont les championnes du « planter-oublier ». Elles ne demandent qu'un seul geste : un rabattage au sécateur fin février, à 15-20 cm du sol.
+
+<strong>Les incontournables pour le 49 :</strong>
+- <em>Miscanthus sinensis</em> 'Gracillimus' — 1,5-2 m, tous sols, spectaculaire en automne
+- <em>Calamagrostis</em> × <em>acutiflora</em> 'Karl Foerster' — port dressé vertical, très structurant
+- <em>Pennisetum alopecuroides</em> 'Hameln' — 70-90 cm, épis soyeux d'août à octobre
+- <em>Festuca glauca</em> 'Elijah Blue' — 20-30 cm, bleu-argent, sol sec, compact
+
+Toutes sont rustiques à -20°C et parfaitement adaptées au climat angevin.
+
+## L'arrosage automatique : le temps gagné
+
+Un système de <a href="/conseils/arrosage-automatique-guide-installation/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">goutte-à-goutte programmé</a> réduit la consommation d'eau de <strong>50 à 70 %</strong> par rapport à l'arrosage manuel, et vous libère totalement de cette tâche. Associé à un récupérateur d'eau de pluie (800-1 000 litres), les 700-800 mm de précipitations annuelles à Angers couvrent l'essentiel des besoins.
+
+## Concevoir pour la maturité
+
+Le piège le plus courant : planter trop serré pour un effet immédiat. En 5 ans, c'est la jungle et il faut tout tailler. Calculez les dimensions adultes, acceptez un jardin aéré les 3 premières années, et paillez généreusement en attendant.
+
+<strong>Ce qu'un jardin bien conçu demande réellement :</strong>
+- <strong>Années 1-2</strong> : désherbage léger entre les plants, arrosage d'installation, ajustement du paillage
+- <strong>Années 3-5</strong> : 2-3 interventions par an (rabattage des graminées, division de vivaces si nécessaire)
+- <strong>Après 5 ans</strong> : 1 à 2 journées par an si la conception est solide
+
+## Art des Jardins conçoit votre jardin facile
+
+La clé d'un jardin sans entretien, c'est la <a href="/services/paysagisme/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">conception initiale</a>. Nous créons des jardins pensés pour le long terme : plantes adaptées au sol angevin, paillage durable, systèmes d'arrosage intégrés. Le résultat : un jardin beau toute l'année qui ne vous prend que quelques heures par an. <a href="/contact/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">Contactez-nous pour en discuter</a>.
+    `,
+    faq: [
+      {
+        question: 'Un jardin sans entretien, c\'est vraiment possible ?',
+        answer:
+          'Un jardin à zéro entretien, non. Un jardin à 15-25 heures par an au lieu de 100, oui. La clé est la conception : couvre-sols au lieu de pelouse, arbustes à forme naturelle au lieu de haies à tailler, paillage épais sur tous les massifs, arrosage automatique. Après 3-5 ans de maturité, le jardin devient quasi autonome.',
+      },
+      {
+        question: 'Quel budget prévoir pour un jardin facile d\'entretien ?',
+        answer:
+          'L\'investissement initial est plus élevé qu\'un jardin classique (plus de plantes, paillage, arrosage automatique), mais le retour sur investissement se fait en 2-3 ans grâce aux économies d\'eau et au temps gagné. Pour un jardin de 100 m² de massifs : comptez 3 000 à 6 000 € en fournitures végétales et paillage, et 1 000 à 2 500 € pour un arrosage goutte-à-goutte.',
+      },
+      {
+        question: 'Quelles plantes choisir pour un jardin sans arrosage à Angers ?',
+        answer:
+          'Le climat angevin permet de belles associations résistantes à la sécheresse : lavande, sauge (Salvia nemorosa), échinacée, pérovskia, népéta, graminées (miscanthus, fétuque). Plantez en automne pour que les racines s\'installent avec les pluies hivernales. Avec un paillage minéral, ces plantes ne demandent aucun arrosage après la première année.',
+      },
+    ],
+  },
+  {
+    slug: 'terrasse-permis-construire-reglementation',
+    title: 'Terrasse extérieure : faut-il un permis de construire ?',
+    metaTitle: 'Terrasse : Permis de Construire ou Déclaration Préalable ?',
+    metaDescription:
+      'Terrasse de plain-pied, surélevée, couverte : quelles autorisations d\'urbanisme ? Seuils de surface, démarches et sanctions. Guide complet pour votre projet.',
+    excerpt:
+      'Toutes les terrasses ne nécessitent pas les mêmes formalités. Voici comment savoir ce qui s\'applique à votre projet.',
+    category: 'Aménagement',
+    readTime: 6,
+    publishDate: '2026-04-06',
+    imageSlug: 'terrasse-2',
+    content: `
+Vous envisagez une <a href="/services/terrasse/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">terrasse</a> pour profiter de votre jardin ? Avant de choisir entre <a href="/conseils/terrasse-bois-ou-pierre-comparatif/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">bois ou pierre</a>, une question s'impose : faut-il une autorisation ? La réponse dépend de trois critères : la hauteur, la surface et votre localisation.
+
+## Terrasse de plain-pied : généralement libre
+
+Bonne nouvelle : une terrasse construite <strong>au niveau du sol naturel</strong> (moins de 60 cm de surélévation) est <strong>dispensée de toute formalité</strong> (article R*421-2 du Code de l'urbanisme). Ni déclaration préalable, ni permis de construire.
+
+C'est le cas de la majorité des terrasses en bois, en dalles ou en gravier posées directement sur le terrain ou sur plots à faible hauteur.
+
+<strong>Exception importante :</strong> si votre propriété se situe dans un <strong>secteur protégé</strong> (périmètre d'un monument historique, site classé, site patrimonial remarquable), une déclaration préalable est obligatoire quelle que soit la hauteur.
+
+## Terrasse surélevée : le seuil des 60 cm
+
+Dès que votre terrasse dépasse <strong>60 cm de hauteur</strong> par rapport au terrain naturel, elle est considérée comme une construction et les règles changent :
+
+<strong>En zone urbaine couverte par un PLU :</strong>
+- Moins de 5 m² d'emprise au sol → aucune formalité
+- De 5 à 40 m² → <strong>déclaration préalable</strong>
+- Au-delà de 40 m² → <strong>permis de construire</strong>
+
+<strong>Hors zone urbaine :</strong>
+- Moins de 5 m² → aucune formalité
+- De 5 à 20 m² → <strong>déclaration préalable</strong>
+- Au-delà de 20 m² → <strong>permis de construire</strong>
+
+## Terrasse couverte : pergola, auvent, véranda
+
+Dès qu'un toit couvre votre terrasse, les règles se durcissent car la couverture crée une <strong>emprise au sol</strong>.
+
+<strong>Pergola ouverte</strong> (sans parois latérales) : mêmes seuils que la terrasse surélevée.
+
+<strong>Véranda ou pergola fermée</strong> : crée en plus une <strong>surface de plancher</strong>. Mêmes seuils de surface, mais toute modification de la façade impose au minimum une déclaration préalable.
+
+<strong>Pergola bioclimatique à lames orientables</strong> : traitée comme une pergola ouverte si les lames ne créent pas de parois.
+
+## Le rôle du PLU
+
+Le Plan Local d'Urbanisme de votre commune peut imposer des règles <strong>plus restrictives</strong> que le Code de l'urbanisme national. Il peut notamment :
+- Exiger une déclaration préalable dès le premier mètre carré
+- Imposer des matériaux spécifiques (bois, pierre locale)
+- Limiter la surface de terrasse autorisée
+- Fixer des règles d'aspect architectural (couleurs, finitions)
+
+<strong>À Angers et dans l'agglomération</strong>, le PLUi (Plan Local d'Urbanisme intercommunal) contient des prescriptions spécifiques selon les quartiers. Consultez le service urbanisme de votre mairie ou le <strong>Géoportail de l'Urbanisme</strong> avant tout projet.
+
+## Les règles de distance et de vue
+
+### Par rapport aux limites de propriété
+
+En l'absence de règle spécifique dans le PLU, la construction doit être implantée <strong>soit en limite séparative, soit à 3 mètres minimum</strong> de la limite parcellaire (article R111-17 du Code de l'urbanisme).
+
+### Le droit de vue (Code civil)
+
+Si votre terrasse surélevée offre une vue directe sur la propriété voisine :
+- <strong>Vue droite</strong> (face à la limite) : distance minimale de <strong>1,90 m</strong>
+- <strong>Vue oblique</strong> (en angle) : distance minimale de <strong>0,60 m</strong>
+
+Ces règles ne s'appliquent pas aux terrasses de plain-pied (pas de vue en surplomb).
+
+## Les délais d'instruction
+
+<strong>Déclaration préalable :</strong> 1 mois (2 mois en secteur protégé / zone ABF).
+<strong>Permis de construire :</strong> 2 mois pour une maison individuelle (3 mois en secteur protégé).
+
+En l'absence de réponse dans le délai, l'autorisation est réputée accordée (accord tacite). Conservez bien la preuve de dépôt.
+
+## Les sanctions
+
+Construire sans autorisation alors qu'elle était requise expose à :
+- Une amende de <strong>1 200 à 300 000 €</strong> (article L480-4 du Code de l'urbanisme)
+- Une obligation de <strong>démolition ou mise en conformité</strong>
+- Une <strong>astreinte</strong> pouvant atteindre 1 000 € par jour de retard
+
+<strong>Prescription :</strong> les poursuites pénales se prescrivent par 6 ans. Mais une construction réalisée sans permis alors qu'un permis était requis reste théoriquement attaquable sans limite de temps par l'administration.
+
+## La taxe d'aménagement
+
+<strong>Terrasse non couverte</strong> (sans toit) : pas de taxe d'aménagement. Elle ne crée pas de surface taxable.
+
+<strong>Terrasse couverte</strong> (pergola fermée, véranda) : la surface sous une hauteur de plafond de 1,80 m ou plus est taxable. En 2026, la valeur forfaitaire est de 892 €/m² (hors Île-de-France), multipliée par les taux communal et départemental.
+
+## Récapitulatif
+
+<strong>Terrasse de plain-pied (< 60 cm)</strong> : aucune formalité sauf en secteur protégé.
+<strong>Terrasse surélevée (> 60 cm)</strong> : déclaration préalable entre 5 et 40 m² en zone urbaine, permis au-delà.
+<strong>Terrasse couverte</strong> : soumise aux mêmes seuils de surface, avec déclaration systématique si modification de façade.
+<strong>Dans tous les cas</strong> : consultez le PLU de votre commune.
+
+## Art des Jardins vous accompagne
+
+Nous concevons et réalisons des <a href="/services/terrasse/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">terrasses</a> dans toute l'agglomération d'Angers. Avant de démarrer votre projet, nous vérifions les contraintes réglementaires applicables à votre parcelle et vous orientons vers les démarches nécessaires. <a href="/contact/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">Demandez votre devis gratuit</a>.
+    `,
+    faq: [
+      {
+        question: 'Faut-il un permis de construire pour une terrasse en bois sur plots ?',
+        answer:
+          'Non, dans la grande majorité des cas. Une terrasse en bois sur plots est généralement de plain-pied (moins de 60 cm de hauteur) et donc dispensée de toute formalité. Seule exception : si votre propriété se trouve en secteur protégé (périmètre monument historique, site classé), une déclaration préalable est nécessaire même pour une terrasse de plain-pied.',
+      },
+      {
+        question: 'Quelle est la surface maximum de terrasse sans autorisation ?',
+        answer:
+          'Pour une terrasse de plain-pied (moins de 60 cm), aucune limite de surface en zone non protégée. Pour une terrasse surélevée (plus de 60 cm), vous pouvez aller jusqu\'à 5 m² sans formalité. Entre 5 et 40 m² en zone urbaine PLU (20 m² hors zone urbaine), une déclaration préalable suffit. Au-delà, un permis de construire est obligatoire.',
+      },
+      {
+        question: 'Mon voisin a construit une terrasse surélevée avec vue chez moi, que faire ?',
+        answer:
+          'Si la terrasse surélevée offre une vue directe sur votre propriété à moins de 1,90 m de la limite séparative, elle est en infraction avec le Code civil (articles 678-679). Vous pouvez demander à votre voisin de se mettre en conformité (brise-vue, recul). Vérifiez également si une autorisation d\'urbanisme a été obtenue auprès de la mairie.',
+      },
+    ],
+  },
 ];
 
 export function getArticleBySlug(slug: string): BlogArticle | undefined {
