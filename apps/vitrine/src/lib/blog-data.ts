@@ -67,7 +67,7 @@ Pour la majorité des arbres à feuilles caduques, **la période idéale d'élag
 
 ## Pourquoi faire appel à un professionnel ?
 
-Un <a href="/services/elagage/" class="text-primary-600 hover:text-primary-700">élagueur professionnel</a> connaît les spécificités de chaque espèce et adapte sa technique. À <a href="/elagage-angers/" class="text-primary-600 hover:text-primary-700">Angers, Art des Jardins intervient</a> toute l'année avec un calendrier adapté à chaque arbre. Nous réalisons un <a href="/contact/" class="text-primary-600 hover:text-primary-700">diagnostic gratuit</a> avant toute intervention.
+Un <a href="/services/elagage/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">élagueur professionnel</a> connaît les spécificités de chaque espèce et adapte sa technique. À <a href="/elagage-angers/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">Angers, Art des Jardins intervient</a> toute l'année avec un calendrier adapté à chaque arbre. Nous réalisons un <a href="/contact/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">diagnostic gratuit</a> avant toute intervention.
     `,
     faq: [
       {
@@ -95,7 +95,7 @@ Un <a href="/services/elagage/" class="text-primary-600 hover:text-primary-700">
     publishDate: '2026-02-05',
     imageSlug: 'creation-2',
     content: `
-Le budget d'un <a href="/services/paysagisme/" class="text-primary-600 hover:text-primary-700">aménagement de jardin</a> dépend de nombreux facteurs : surface, complexité, choix des matériaux et des végétaux. Voici un guide complet pour comprendre ce qui influence votre projet.
+Le budget d'un <a href="/services/paysagisme/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">aménagement de jardin</a> dépend de nombreux facteurs : surface, complexité, choix des matériaux et des végétaux. Voici un guide complet pour comprendre ce qui influence votre projet.
 
 ## Ce qui influence le budget
 
@@ -124,7 +124,7 @@ Un simple engazonnement est nettement plus abordable qu'un aménagement complet 
 
 ## Le devis : une étape indispensable
 
-Chaque jardin est unique, c'est pourquoi il est impossible de donner des tarifs standard. Chez Art des Jardins, <a href="/paysagiste-angers/" class="text-primary-600 hover:text-primary-700">paysagiste à Angers</a>, nous réalisons systématiquement une **visite gratuite** pour évaluer votre terrain, comprendre vos envies et établir un devis détaillé. Pas de mauvaise surprise : tout est chiffré poste par poste. <a href="/contact/" class="text-primary-600 hover:text-primary-700">Contactez-nous pour obtenir votre devis personnalisé</a>.
+Chaque jardin est unique, c'est pourquoi il est impossible de donner des tarifs standard. Chez Art des Jardins, <a href="/paysagiste-angers/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">paysagiste à Angers</a>, nous réalisons systématiquement une **visite gratuite** pour évaluer votre terrain, comprendre vos envies et établir un devis détaillé. Pas de mauvaise surprise : tout est chiffré poste par poste. <a href="/contact/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">Contactez-nous pour obtenir votre devis personnalisé</a>.
     `,
     faq: [
       {
@@ -213,7 +213,7 @@ Un beau jardin, c'est un jardin entretenu au bon moment. Voici le calendrier moi
 ## Hiver : le repos actif
 
 ### Décembre-Février
-- <a href="/services/elagage/" class="text-primary-600 hover:text-primary-700">Élagage des arbres</a> caducs (hors gel)
+- <a href="/services/elagage/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">Élagage des arbres</a> caducs (hors gel)
 - Taille de formation des arbres fruitiers
 - Entretien du matériel
 - Planification des projets de printemps
@@ -221,7 +221,7 @@ Un beau jardin, c'est un jardin entretenu au bon moment. Voici le calendrier moi
 
 ## Confier son entretien à un professionnel
 
-Avec un <a href="/services/entretien-jardin/" class="text-primary-600 hover:text-primary-700">contrat d'entretien</a> chez Art des Jardins, vous n'avez plus à vous soucier du calendrier : nous intervenons aux bons moments avec les bons gestes. De 10 à 15 passages par an selon votre jardin, dans toute <a href="/entretien-jardin-angers/" class="text-primary-600 hover:text-primary-700">l'agglomération d'Angers</a>.
+Avec un <a href="/services/entretien-jardin/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">contrat d'entretien</a> chez Art des Jardins, vous n'avez plus à vous soucier du calendrier : nous intervenons aux bons moments avec les bons gestes. De 10 à 15 passages par an selon votre jardin, dans toute <a href="/entretien-jardin-angers/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">l'agglomération d'Angers</a>.
     `,
     faq: [
       {
@@ -249,7 +249,7 @@ Avec un <a href="/services/entretien-jardin/" class="text-primary-600 hover:text
     publishDate: '2026-02-12',
     imageSlug: 'entretien-1',
     content: `
-Une haie bien taillée est un atout pour votre jardin : elle structure l'espace, protège du vent et des regards. Encore faut-il la tailler correctement et au bon moment. Retrouvez aussi notre <a href="/services/entretien-jardin/" class="text-primary-600 hover:text-primary-700">guide complet d'entretien de jardin</a>.
+Une haie bien taillée est un atout pour votre jardin : elle structure l'espace, protège du vent et des regards. Encore faut-il la tailler correctement et au bon moment. Retrouvez aussi notre <a href="/services/entretien-jardin/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">guide complet d'entretien de jardin</a>.
 
 ## Quand tailler sa haie ?
 
@@ -289,7 +289,7 @@ Attention : la loi interdit la taille de haies du **1er mars au 31 août** dans 
 
 ## Le saviez-vous ?
 
-L'entretien des haies de moins de 3,5 m de hauteur est éligible au **crédit d'impôt de 50 %** dans le cadre des services à la personne. Chez Art des Jardins, nos prestations de <a href="/services/taille-haies/" class="text-primary-600 hover:text-primary-700">taille de haie</a> ouvrent droit à cet avantage fiscal, partout dans <a href="/entretien-jardin-angers/" class="text-primary-600 hover:text-primary-700">l'agglomération d'Angers</a>.
+L'entretien des haies de moins de 3,5 m de hauteur est éligible au **crédit d'impôt de 50 %** dans le cadre des services à la personne. Chez Art des Jardins, nos prestations de <a href="/services/taille-haies/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">taille de haie</a> ouvrent droit à cet avantage fiscal, partout dans <a href="/entretien-jardin-angers/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">l'agglomération d'Angers</a>.
     `,
     faq: [
       {
@@ -359,7 +359,7 @@ Vous pouvez généralement abattre sans autorisation :
 
 ## Art des Jardins vous accompagne
 
-Spécialiste de l'<a href="/services/abattage/" class="text-primary-600 hover:text-primary-700">abattage d'arbres</a>, nous connaissons parfaitement la réglementation locale en Maine-et-Loire. Avant toute intervention d'<a href="/abattage-angers/" class="text-primary-600 hover:text-primary-700">abattage à Angers</a> et environs, nous vérifions les contraintes applicables à votre parcelle et vous accompagnons dans les démarches administratives si nécessaire. <a href="/contact/" class="text-primary-600 hover:text-primary-700">Demandez votre devis gratuit</a>.
+Spécialiste de l'<a href="/services/abattage/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">abattage d'arbres</a>, nous connaissons parfaitement la réglementation locale en Maine-et-Loire. Avant toute intervention d'<a href="/abattage-angers/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">abattage à Angers</a> et environs, nous vérifions les contraintes applicables à votre parcelle et vous accompagnons dans les démarches administratives si nécessaire. <a href="/contact/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">Demandez votre devis gratuit</a>.
     `,
     faq: [
       {
@@ -455,7 +455,7 @@ L'automne est la saison idéale pour planter en Maine-et-Loire. Le sol est encor
 
 ## Quand faire appel à un professionnel ?
 
-Si votre jardin est grand ou si vous manquez de temps, un <a href="/services/entretien-jardin/" class="text-primary-600 hover:text-primary-700">contrat d'entretien annuel</a> prend en charge tous ces travaux saisonniers. Pour l'<a href="/entretien-jardin-angers/" class="text-primary-600 hover:text-primary-700">entretien de jardin à Angers</a>, Art des Jardins propose des interventions de préparation hivernale complètes : taille, paillage, hivernage, nettoyage et dernière tonte. <a href="/contact/" class="text-primary-600 hover:text-primary-700">Contactez-nous</a> pour un devis gratuit.
+Si votre jardin est grand ou si vous manquez de temps, un <a href="/services/entretien-jardin/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">contrat d'entretien annuel</a> prend en charge tous ces travaux saisonniers. Pour l'<a href="/entretien-jardin-angers/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">entretien de jardin à Angers</a>, Art des Jardins propose des interventions de préparation hivernale complètes : taille, paillage, hivernage, nettoyage et dernière tonte. <a href="/contact/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">Contactez-nous</a> pour un devis gratuit.
     `,
     faq: [
       {
@@ -565,7 +565,7 @@ Avant de planter, il est important de connaître les caractéristiques locales :
 
 ## Besoin d'un projet complet ?
 
-Art des Jardins conçoit et réalise des <a href="/services/paysagisme/" class="text-primary-600 hover:text-primary-700">aménagements paysagers</a> adaptés au terroir angevin. En tant que <a href="/paysagiste-angers/" class="text-primary-600 hover:text-primary-700">paysagiste à Angers</a>, nous sélectionnons des végétaux robustes et esthétiques, adaptés à votre sol et à votre exposition. <a href="/contact/" class="text-primary-600 hover:text-primary-700">Demandez votre visite gratuite</a>.
+Art des Jardins conçoit et réalise des <a href="/services/paysagisme/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">aménagements paysagers</a> adaptés au terroir angevin. En tant que <a href="/paysagiste-angers/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">paysagiste à Angers</a>, nous sélectionnons des végétaux robustes et esthétiques, adaptés à votre sol et à votre exposition. <a href="/contact/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">Demandez votre visite gratuite</a>.
     `,
     faq: [
       {
@@ -593,7 +593,7 @@ Art des Jardins conçoit et réalise des <a href="/services/paysagisme/" class="
     publishDate: '2026-02-22',
     imageSlug: 'elagage-4',
     content: `
-Planter un arbre est un investissement sur le long terme. En choisissant une essence adaptée au sol et au climat d'Angers, vous vous assurez un arbre vigoureux, esthétique et facile à entretenir pendant des décennies. Découvrez aussi nos conseils pour votre <a href="/services/paysagisme/" class="text-primary-600 hover:text-primary-700">aménagement paysager</a>.
+Planter un arbre est un investissement sur le long terme. En choisissant une essence adaptée au sol et au climat d'Angers, vous vous assurez un arbre vigoureux, esthétique et facile à entretenir pendant des décennies. Découvrez aussi nos conseils pour votre <a href="/services/paysagisme/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">aménagement paysager</a>.
 
 ## Comprendre le sol angevin
 
@@ -663,7 +663,7 @@ Certaines essences sont déconseillées dans l'agglomération angevine :
 
 ## L'avis du professionnel
 
-Le choix d'un arbre engage pour des décennies. Chez Art des Jardins, <a href="/paysagiste-angers/" class="text-primary-600 hover:text-primary-700">paysagiste à Angers</a>, nous étudions votre terrain (sol, exposition, espace disponible) avant de vous recommander les essences les plus adaptées. Nous gérons aussi l'<a href="/services/elagage/" class="text-primary-600 hover:text-primary-700">élagage</a> et l'entretien de vos arbres existants.
+Le choix d'un arbre engage pour des décennies. Chez Art des Jardins, <a href="/paysagiste-angers/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">paysagiste à Angers</a>, nous étudions votre terrain (sol, exposition, espace disponible) avant de vous recommander les essences les plus adaptées. Nous gérons aussi l'<a href="/services/elagage/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">élagage</a> et l'entretien de vos arbres existants.
     `,
     faq: [
       {
@@ -719,7 +719,7 @@ Quand on manque de surface, on grimpe :
 
 ## La terrasse : le cœur du petit jardin
 
-Dans un jardin de ville, la <a href="/services/terrasse/" class="text-primary-600 hover:text-primary-700">terrasse</a> occupe souvent 30 à 50 % de la surface totale. C'est le lieu de vie principal.
+Dans un jardin de ville, la <a href="/services/terrasse/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">terrasse</a> occupe souvent 30 à 50 % de la surface totale. C'est le lieu de vie principal.
 
 **Matériaux recommandés pour les petits espaces :**
 - **Bois composite** : chaleureux, sans entretien, large choix de teintes. Idéal en ville.
@@ -770,7 +770,7 @@ Contactez-nous pour un devis gratuit et personnalisé adapté à votre projet.
 
 ## Faites appel à un paysagiste
 
-Un <a href="/paysagiste-angers/" class="text-primary-600 hover:text-primary-700">paysagiste à Angers</a> optimise chaque centimètre carré de votre jardin. Chez Art des Jardins, nous réalisons des <a href="/services/paysagisme/" class="text-primary-600 hover:text-primary-700">aménagements paysagers</a> de petits jardins de ville à Angers et alentours. <a href="/contact/" class="text-primary-600 hover:text-primary-700">Visite et devis gratuits</a>.
+Un <a href="/paysagiste-angers/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">paysagiste à Angers</a> optimise chaque centimètre carré de votre jardin. Chez Art des Jardins, nous réalisons des <a href="/services/paysagisme/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">aménagements paysagers</a> de petits jardins de ville à Angers et alentours. <a href="/contact/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">Visite et devis gratuits</a>.
     `,
     faq: [
       {
@@ -885,7 +885,7 @@ Pour une haie colorée et parfumée :
 
 ## Art des Jardins plante et entretient vos haies
 
-Nous plantons des haies et installons des <a href="/services/cloture/" class="text-primary-600 hover:text-primary-700">clôtures</a> dans toute l'agglomération d'<a href="/paysagiste-angers/" class="text-primary-600 hover:text-primary-700">Angers</a> : choix des essences, préparation du sol, plantation et paillage. Nous proposons aussi des contrats de <a href="/services/taille-haies/" class="text-primary-600 hover:text-primary-700">taille de haies</a> annuels avec crédit d'impôt de 50 %.
+Nous plantons des haies et installons des <a href="/services/cloture/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">clôtures</a> dans toute l'agglomération d'<a href="/paysagiste-angers/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">Angers</a> : choix des essences, préparation du sol, plantation et paillage. Nous proposons aussi des contrats de <a href="/services/taille-haies/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">taille de haies</a> annuels avec crédit d'impôt de 50 %.
     `,
     faq: [
       {
@@ -1003,7 +1003,7 @@ Les travaux d'entretien de jardin (tonte, taille de haies, désherbage) réalis�
 
 ## Art des Jardins : nos engagements
 
-Chez Art des Jardins, <a href="/paysagiste-angers/" class="text-primary-600 hover:text-primary-700">paysagiste à Angers</a>, nous cochons toutes les cases : assurance RC Pro et décennale, <a href="/contact/" class="text-primary-600 hover:text-primary-700">devis gratuit</a> détaillé sous 48h, photos de réalisations, équipe formée et passionnée. Découvrez nos <a href="/services/paysagisme/" class="text-primary-600 hover:text-primary-700">services d'aménagement paysager</a> dans un rayon de 30 km autour d'Angers.
+Chez Art des Jardins, <a href="/paysagiste-angers/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">paysagiste à Angers</a>, nous cochons toutes les cases : assurance RC Pro et décennale, <a href="/contact/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">devis gratuit</a> détaillé sous 48h, photos de réalisations, équipe formée et passionnée. Découvrez nos <a href="/services/paysagisme/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">services d'aménagement paysager</a> dans un rayon de 30 km autour d'Angers.
     `,
     faq: [
       {
@@ -1031,7 +1031,7 @@ Chez Art des Jardins, <a href="/paysagiste-angers/" class="text-primary-600 hove
     publishDate: '2026-02-27',
     imageSlug: 'arrosage-1',
     content: `
-Un système d'arrosage automatique bien conçu vous fait gagner du temps, économise l'eau et maintient votre jardin verdoyant toute l'année. Voici un guide complet pour comprendre les options, l'installation et les coûts. <a href="/contact/" class="text-primary-600 hover:text-primary-700">Demandez un devis gratuit</a> pour votre projet.
+Un système d'arrosage automatique bien conçu vous fait gagner du temps, économise l'eau et maintient votre jardin verdoyant toute l'année. Voici un guide complet pour comprendre les options, l'installation et les coûts. <a href="/contact/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">Demandez un devis gratuit</a> pour votre projet.
 
 ## Les types d'arrosage automatique
 
@@ -1131,7 +1131,7 @@ Un petit jardin de ville nécessite généralement 2 à 3 zones, tandis qu'un gr
 
 ## Pourquoi faire appel à un professionnel ?
 
-Une installation mal conçue gaspille l'eau, crée des zones sèches ou sature le sol. Art des Jardins conçoit et installe des systèmes d'<a href="/services/arrosage-automatique/" class="text-primary-600 hover:text-primary-700">arrosage automatique</a> optimisés pour votre jardin à <a href="/paysagiste-angers/" class="text-primary-600 hover:text-primary-700">Angers et ses environs</a>. Nous assurons aussi l'hivernage et la remise en route annuelle.
+Une installation mal conçue gaspille l'eau, crée des zones sèches ou sature le sol. Art des Jardins conçoit et installe des systèmes d'<a href="/services/arrosage-automatique/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">arrosage automatique</a> optimisés pour votre jardin à <a href="/paysagiste-angers/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">Angers et ses environs</a>. Nous assurons aussi l'hivernage et la remise en route annuelle.
     `,
     faq: [
       {
@@ -1251,7 +1251,7 @@ L'ardoise de Trélazé est un choix particulièrement pertinent à Angers : loca
 
 ## Faites le bon choix avec un professionnel
 
-Art des Jardins vous accompagne dans le choix et la <a href="/services/terrasse/" class="text-primary-600 hover:text-primary-700">réalisation de votre terrasse</a> à <a href="/paysagiste-angers/" class="text-primary-600 hover:text-primary-700">Angers</a>. Nous travaillons tous les matériaux et vous conseillons la solution la plus adaptée à votre projet et à votre budget. <a href="/contact/" class="text-primary-600 hover:text-primary-700">Contactez-nous pour un devis gratuit</a>.
+Art des Jardins vous accompagne dans le choix et la <a href="/services/terrasse/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">réalisation de votre terrasse</a> à <a href="/paysagiste-angers/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">Angers</a>. Nous travaillons tous les matériaux et vous conseillons la solution la plus adaptée à votre projet et à votre budget. <a href="/contact/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">Contactez-nous pour un devis gratuit</a>.
     `,
     faq: [
       {
@@ -1365,7 +1365,7 @@ Premier apport d'engrais gazon 2 mois après la pose ou la levée, puis au print
 - **Grand jardin (> 100 m²)** : semis, nettement plus économique sur de grandes surfaces
 - **Urgence ou événement** : placage, seule solution pour un résultat rapide
 
-Art des Jardins réalise la création et la réfection de pelouses à <a href="/entretien-jardin-angers/" class="text-primary-600 hover:text-primary-700">Angers</a> et environs. Nous préparons le sol, semons ou posons le gazon et vous conseillons sur l'<a href="/services/entretien-jardin/" class="text-primary-600 hover:text-primary-700">entretien de votre jardin</a>. <a href="/contact/" class="text-primary-600 hover:text-primary-700">Demandez votre devis gratuit</a>.
+Art des Jardins réalise la création et la réfection de pelouses à <a href="/entretien-jardin-angers/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">Angers</a> et environs. Nous préparons le sol, semons ou posons le gazon et vous conseillons sur l'<a href="/services/entretien-jardin/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">entretien de votre jardin</a>. <a href="/contact/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">Demandez votre devis gratuit</a>.
     `,
     faq: [
       {
@@ -1398,7 +1398,7 @@ Art des Jardins réalise la création et la réfection de pelouses à <a href="/
     publishDate: '2026-03-05',
     imageSlug: 'creation-5',
     content: `
-Un jardin écologique n'est pas un jardin en friche. C'est un espace pensé pour fonctionner en harmonie avec son environnement : moins d'eau, moins de produits chimiques, plus de biodiversité — et tout aussi beau qu'un jardin classique. Voici comment y parvenir à Angers avec un <a href="/services/entretien-jardin/" class="text-primary-600 hover:text-primary-700">entretien de jardin</a> adapté.
+Un jardin écologique n'est pas un jardin en friche. C'est un espace pensé pour fonctionner en harmonie avec son environnement : moins d'eau, moins de produits chimiques, plus de biodiversité — et tout aussi beau qu'un jardin classique. Voici comment y parvenir à Angers avec un <a href="/services/entretien-jardin/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">entretien de jardin</a> adapté.
 
 ## Principes d'un jardin écologique
 
@@ -1496,7 +1496,7 @@ Un jardin écologique n'est pas plus cher à créer qu'un jardin classique. Il e
 
 ## Art des Jardins et l'éco-jardinage
 
-Chez Art des Jardins, nous intégrons les principes écologiques dans tous nos projets : choix de végétaux locaux, paillage systématique, gestion raisonnée de l'eau, <a href="/services/debroussaillage/" class="text-primary-600 hover:text-primary-700">débroussaillage</a> et évacuation des déchets verts vers le compostage. Pour l'<a href="/entretien-jardin-angers/" class="text-primary-600 hover:text-primary-700">entretien écologique de votre jardin à Angers</a>, nous vous accompagnons dans la création d'un espace beau et responsable.
+Chez Art des Jardins, nous intégrons les principes écologiques dans tous nos projets : choix de végétaux locaux, paillage systématique, gestion raisonnée de l'eau, <a href="/services/debroussaillage/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">débroussaillage</a> et évacuation des déchets verts vers le compostage. Pour l'<a href="/entretien-jardin-angers/" class="text-primary-600 underline decoration-primary-300 hover:text-primary-700 hover:decoration-primary-500">entretien écologique de votre jardin à Angers</a>, nous vous accompagnons dans la création d'un espace beau et responsable.
     `,
     faq: [
       {
