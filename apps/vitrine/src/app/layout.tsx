@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
     default: 'Paysagiste Angers - Art des Jardins | Devis Gratuit',
-    template: '%s | Art des Jardins',
+    template: '%s | Art des Jardins - Paysagiste Angers',
   },
   description:
     'Paysagiste professionnel à Angers et Maine-et-Loire. Aménagement de jardins, entretien, élagage, abattage. 16 ans d\'expérience cumulée. Devis gratuit sous 48h.',
