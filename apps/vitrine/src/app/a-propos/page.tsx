@@ -130,7 +130,7 @@ export default function AProposPage() {
             Contactez-nous pour un devis gratuit et sans engagement.
           </p>
           <Link href="/contact/" className="btn-primary-light">
-            Demander un devis gratuit
+            Parlons de votre projet
           </Link>
         </div>
       </section>
