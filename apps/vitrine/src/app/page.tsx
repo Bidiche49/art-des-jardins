@@ -119,7 +119,10 @@ export default function HomePage() {
             />
           </AnimateOnScroll>
           <AnimateOnScroll>
-            <div className="text-center mt-8">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
+              <Link href="/contact/" className="btn-primary">
+                Demander un devis gratuit
+              </Link>
               <a
                 href="https://www.instagram.com/artdesjardins_49"
                 target="_blank"
@@ -127,7 +130,7 @@ export default function HomePage() {
                 className="inline-flex items-center gap-2 text-primary-600 hover:text-primary-700 font-medium transition-colors"
               >
                 <IconInstagram className="w-5 h-5" />
-                Découvrez plus de réalisations sur Instagram
+                Plus de réalisations sur Instagram
                 <span aria-hidden="true">&rarr;</span>
               </a>
             </div>

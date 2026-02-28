@@ -95,6 +95,32 @@ export default function RealisationsPage() {
         </div>
       </section>
 
+      {/* CTA après galerie */}
+      <section className="relative py-16 overflow-hidden">
+        <img
+          src="/images/realisations/creation-4-1200w.webp"
+          alt=""
+          loading="lazy"
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 hero-overlay-strong" />
+        <div className="container-custom text-center relative z-10">
+          <h2 className="text-3xl font-bold mb-4 text-white">
+            Envie d&apos;un jardin qui vous ressemble ?
+          </h2>
+          <p className="text-white/80 mb-8 max-w-xl mx-auto">
+            Chaque projet commence par une écoute attentive de vos envies. Contactez-nous pour en discuter.
+          </p>
+          <Link
+            href="/contact/"
+            className="btn-primary-light"
+          >
+            Demander un devis gratuit
+          </Link>
+        </div>
+      </section>
+
       {/* Before / After */}
       <BeforeAfterSection />
 
